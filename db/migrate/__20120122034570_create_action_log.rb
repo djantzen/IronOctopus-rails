@@ -1,23 +1,24 @@
-class CreateActionLog < ActiveRecord::Migration
+class CreateActions < ActiveRecord::Migration
 
   def self.up
     execute <<-OES
-      create table reporting.action_log (
+      create table reporting.actions (
         user_id integer not null references application.users,
         controller_id integer not null references reporting.controllers,
+        action_name text not null,
         device_id integer not null references reporting.devices,
-        date_id integer not null references reporting.dates,
+        day_id integer not null references reporting.days,
         occurred_at timestamptz not null,
       );
-      comment on table reporting.action_log is 'A running log of all user-initiated actions in the application.';
-      grant select on reporting.users_routines to reporter;
-      grant insert, select, update on reporting.users_routines to application;
+      comment on table reporting.actions is 'A running log of all user-initiated actions in the application.';
+      grant select on reporting.actions to reporter;
+      grant insert, select on reporting.actions to application;
     OES
   end
   
   def self.down
     execute <<-OES
-      drop table application.users_routines;
+      drop table reporting.actions;
     OES
   end
   

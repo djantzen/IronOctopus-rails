@@ -4,9 +4,9 @@ class CreateMeasurements < ActiveRecord::Migration
     execute <<-OES
       create table application.measurements (
         measurement_id serial primary key,
-        duration real not null default 0,
+        duration integer not null default 0,
         resistance real not null default 0,
-        repetitions real not null default 1,
+        repetitions integer not null default 1,
         pace real not null default 0,
         distance real not null default 0,
         calories integer not null default 0,

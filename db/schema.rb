@@ -36,10 +36,22 @@ ActiveRecord::Schema.define(:version => 20120122034545) do
 
   add_index "activity_types", ["name"], :name => "activity_types_uniq_idx_name", :unique => true
 
+  create_table "days", :id => false, :force => true do |t|
+    t.integer  "day_id",     :null => false
+    t.date     "full_date",  :null => false
+    t.integer  "year",       :null => false
+    t.integer  "month",      :null => false
+    t.integer  "day",        :null => false
+    t.datetime "created_at"
+  end
+
+  add_index "days", ["day", "month", "year"], :name => "days_idx_year_month_day", :unique => true
+  add_index "days", ["full_date"], :name => "days_idx_full_date", :unique => true
+
   create_table "measurements", :primary_key => "measurement_id", :force => true do |t|
-    t.float    "duration",           :default => 0.0, :null => false
+    t.integer  "duration",           :default => 0,   :null => false
     t.float    "resistance",         :default => 0.0, :null => false
-    t.float    "repetitions",        :default => 1.0, :null => false
+    t.integer  "repetitions",        :default => 1,   :null => false
     t.float    "pace",               :default => 0.0, :null => false
     t.float    "distance",           :default => 0.0, :null => false
     t.integer  "calories",           :default => 0,   :null => false
@@ -82,6 +94,7 @@ ActiveRecord::Schema.define(:version => 20120122034545) do
     t.integer  "measurement_id", :null => false
     t.datetime "start_time",     :null => false
     t.datetime "end_time",       :null => false
+    t.integer  "start_day_id",   :null => false
   end
 
 end

@@ -10,7 +10,7 @@ class CreateUnits < ActiveRecord::Migration
 
       create unique index units_uniq_idx_name on application.units (lower(name));
 
-      grant delete, insert, select, update on application.units to application;
+      grant insert, select on application.units to application;
       grant select on application.units to reporter;
       grant usage on application.units_unit_id_seq to application;
 

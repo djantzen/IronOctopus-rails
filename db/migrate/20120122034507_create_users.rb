@@ -15,7 +15,7 @@ class CreateUsers < ActiveRecord::Migration
       create unique index users_uniq_idx_email on application.users (lower(email));
 
       grant select on application.users to reporter;
-      grant delete, insert, select, update on application.users to application;
+      grant insert, select, update on application.users to application;
       grant usage on application.users_user_id_seq to application;
       
       comment on table application.users is 'All users in the systems.';

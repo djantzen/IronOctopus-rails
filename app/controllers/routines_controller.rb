@@ -1,5 +1,5 @@
 class RoutinesController < ApplicationController
-  
+  include StringUtils
   def index
     user = User.find_by_login(params['user_id'])
     
@@ -16,7 +16,7 @@ class RoutinesController < ApplicationController
     denorm_routines = routines.map do |routine|
         next if routine.activity_sets.nil?
         {
-            :routine_id => user.login + '_' + routine.name.gsub(/\s+/, '').downcase,
+            :routine_id => user.login + '_' + as_identifier(routine.name),
             :name => routine.name,
             :goal => routine.goal,
             :owner => routine.owner.login,

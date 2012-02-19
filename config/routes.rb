@@ -60,9 +60,9 @@ IronOctopus::Application.routes.draw do
 #  resources :measurement
   resources :activities
   
-  resources :routines do
-    resources :activity_sets
-  end
+#  resources :routines do
+#    resources :activity_sets
+#  end
   
 # When I construct a routine, I say, new routine for a user
 # optionally, from a template
@@ -74,12 +74,12 @@ IronOctopus::Application.routes.draw do
 # I list routines I have created
 # routines/index?creator_id/1
 
-
+resources :work
+ 
   
 # (.:format)  optional
 # match => "/:year(/:month(/:day))" => info#about, :constraints => { :year => /\d{4}/ }
   resources :users do
     resources :routines
-    resources :work
   end
 end

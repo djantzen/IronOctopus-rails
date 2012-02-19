@@ -6,5 +6,11 @@ class Routine < ActiveRecord::Base
   has_many :activities, :through => :activity_sets
   has_many :measurements, :through => :activity_sets
   has_many :activity_sets
+
+  include StringUtils
+
+  def natural_id
+    as_identifier(name)
+  end
   
 end

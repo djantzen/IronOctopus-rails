@@ -53,8 +53,11 @@ activity_sets = ActivitySet.create([
                                           :position => 2 },
                                         ])
 
+day = Day.find_or_create(Time.new.utc)
+
 work = Work.create([
                     { :user => users[2], :routine => routines[0],
                       :measurement => measurements[0], :activity => activities[0],
-                      :start_time => Time.new, :end_time => Time.new + 1.minute}
+                      :start_time => Time.new, :end_time => Time.new + 1.minute, :start_day => day
+                    }
                   ])
