@@ -23,7 +23,9 @@ units = Unit.create([
 
 activity_types = ActivityType.create([
                                         { :name => 'Cardiovascular' },
-                                        { :name => 'Weight Training' }
+                                        { :name => 'Weight Training' },
+                                        { :name => 'Rest' },
+                                        { :name => 'Plyometrics' }
                                     ])
 
 activities = Activity.create([

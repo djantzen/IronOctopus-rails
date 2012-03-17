@@ -14,7 +14,12 @@
   <%= r.label :goal, 'Goal' %>:
   <%= r.text_field :goal %><br />
   <%= r.submit %>
+  
+  <%= select("activity_type", "activity_type_id", ActivityType.find(:all).collect { |at| [at.name, at.activity_type_id] }) %>
+  
+  
 <% end %>
+
 
 </body>
 </html>

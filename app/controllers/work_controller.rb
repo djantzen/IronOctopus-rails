@@ -4,36 +4,31 @@ class WorkController < ApplicationController
   include StringUtils
   
   def index
-    raise params.inspect
+    wtf params
   end
 
   def create
-    wtf(params)
     user = User.find_by_login(params['login'])
     activity = Activity.find_by_name(params['activity'])
-    measurement_key = {
-                          :resistance => params['resistance'],
-                          :repetitions => params['repetitions']
-                        }
-    
     routine = user.routines.find_by_name(params['routine'])
+    measurement_key = {
+                        :resistance => params['resistance'],
+                        :repetitions => params['repetitions']
+                      }
     measurement = Measurement.find_or_create(measurement_key)
+    day = Day.find_or_create(params['start_time'])
     
-    work = Work.new
-    work.user = user
-    work.activity = activity
-    work.measurement = measurement
-    work.routine = routine
-    work.start_time = params['start_time']
-    work.end_time = params['end_time']
-    work.start_day = Day.find_or_create(params['start_time'])
-    wtf(work)
+    work = Work.new(:user => user, :activity => activity, :measurement => measurement,
+                    :routine => routine, :start_time => params['start_time'], :end_time => params['end_time'],
+                    :start_day => day)
+    wtf work 
     
     work.save
+    render :json => work
   end
 
   def show
-
+    wtf params
   end
   
 end

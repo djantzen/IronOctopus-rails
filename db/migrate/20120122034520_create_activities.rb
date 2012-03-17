@@ -5,8 +5,8 @@ class CreateActivities < ActiveRecord::Migration
       create table application.activities (
         activity_id serial primary key,
         name text not null,
-        activity_type_id integer not null references application.activity_types,
-        creator_id integer not null references application.users (user_id),
+        activity_type_id integer not null references application.activity_types deferrable,
+        creator_id integer not null references application.users (user_id) deferrable,
         created_at timestamptz not null default now(),
         updated_at timestamptz not null default now()
       );
@@ -15,7 +15,7 @@ class CreateActivities < ActiveRecord::Migration
       
       grant select on application.activities to reporter;
       grant delete, insert, select, update on application.activities to application;
-      grant usage on application.activities_activity_id_seq to application;
+      grant select, update, usage on application.activities_activity_id_seq to application;
 
       comment on table application.activities is 'All activities or exercises available in the system e.g. ''Bench Press''';
     OES

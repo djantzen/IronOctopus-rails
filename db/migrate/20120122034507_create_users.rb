@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration
         user_id serial primary key,
         login text not null,
         email text not null,
-        password text not null,
+        password_digest text not null,
         created_at timestamptz not null default now(),
         updated_at timestamptz not null default now()
       );
@@ -15,8 +15,8 @@ class CreateUsers < ActiveRecord::Migration
       create unique index users_uniq_idx_email on application.users (lower(email));
 
       grant select on application.users to reporter;
-      grant insert, select, update on application.users to application;
-      grant usage on application.users_user_id_seq to application;
+      grant delete, insert, select, update on application.users to application;
+      grant select, usage, update on application.users_user_id_seq to application;
       
       comment on table application.users is 'All users in the systems.';
     OES

@@ -1,7 +1,5 @@
 class Measurement < ActiveRecord::Base
 
-  include LogUtils
-
   has_many :routines, :through => :activity_sets
   belongs_to :distance_unit, :class_name => 'Unit', :foreign_key => 'distance_unit_id'
   belongs_to :pace_unit, :class_name => 'Unit', :foreign_key => 'pace_unit_id'
@@ -18,8 +16,6 @@ class Measurement < ActiveRecord::Base
     # When we look up a measurement, be sure to get the one with the attributes we care about
     # AND the defaults, not just the first to match desired attributes.
     key_plus_defaults = lookup_hash.merge(measurement_key)
-    
-    puts pp key_plus_defaults
     
     measurement = Measurement.find(:first, :conditions => key_plus_defaults)
     if measurement.nil?

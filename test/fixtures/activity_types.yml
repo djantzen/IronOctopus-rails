@@ -4,8 +4,11 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-push_pull_upper_bench_press:
-  activity: bench_press
-  measurement: bench_press_measurement_one
-  routine: push_pull_upper
-
+weight_training:
+  name: "Weight Training"
+cardiovascular:
+  name: Cardiovascular
+plymetrics:
+  name: Plymetrics
+rest:
+  name: rest

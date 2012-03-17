@@ -3,9 +3,9 @@ class CreateActivitySets < ActiveRecord::Migration
   def self.up
     execute <<-OES
       create table application.activity_sets (
-        routine_id integer not null references application.routines,
-        activity_id integer not null references application.activities,
-        measurement_id integer not null references application.measurements,
+        routine_id integer not null references application.routines deferrable,
+        activity_id integer not null references application.activities deferrable,
+        measurement_id integer not null references application.measurements deferrable,
         position real not null default 1,
         optional boolean not null default false,
         primary key (routine_id, activity_id, measurement_id, position)

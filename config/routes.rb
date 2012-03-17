@@ -48,8 +48,9 @@ IronOctopus::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
-
+  root :to => 'welcome#index'
+  match 'login' => 'sessions#new'
+ 
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
@@ -57,12 +58,10 @@ IronOctopus::Application.routes.draw do
   # match ':controller(/:action(/:id(.:format)))'
 
 #  resources :activity_sets
-#  resources :measurement
+  resources :sessions
   resources :activities
   
-#  resources :routines do
-#    resources :activity_sets
-#  end
+  resources :routines
   
 # When I construct a routine, I say, new routine for a user
 # optionally, from a template

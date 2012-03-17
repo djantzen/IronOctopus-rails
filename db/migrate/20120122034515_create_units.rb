@@ -10,9 +10,9 @@ class CreateUnits < ActiveRecord::Migration
 
       create unique index units_uniq_idx_name on application.units (lower(name));
 
-      grant insert, select on application.units to application;
+      grant delete, insert, select, update on application.units to application;
       grant select on application.units to reporter;
-      grant usage on application.units_unit_id_seq to application;
+      grant select, update, usage on application.units_unit_id_seq to application;
 
       comment on table application.units is 'Stores units of measure for modifying numeric values, e.g. ''Pound'', ''Kilogram'', ''Sock''';
     OES

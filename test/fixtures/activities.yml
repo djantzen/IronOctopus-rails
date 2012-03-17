@@ -4,8 +4,47 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+bench_press:
+  name: "Bench Press"
+  activity_type: weight_training
+  creator: system
+  
+curl_and_press:
+  name: "Curl and Press"
+  activity_type: weight_training
+  creator: system
+
+back_squat:
+  name: "Back Squat"
+  activity_type: weight_training
+  creator: system
+  
+clean_and_jerk:
+  name: "Clean and Jerk"
+  activity_type: weight_training
+  creator: system
+
+simple_rest:
+  name: "Rest"
+  activity_type: rest
+  creator: system
+  
+walking_rest:
+  name: "Walking Rest"
+  activity_type: rest
+  creator: system
+
+treadmill_run:
+  name: "Treadmill Run"
+  activity_type: cardiovascular
+  creator: system
+
+treadmill_walk:
+  name: "Treadmill Walk"
+  activity_type: cardiovascular
+  creator: system
+  
+treadmill_program:
+  name: "Treadmill Program"
+  activity_type: cardiovascular
+  creator: system
