@@ -5,3 +5,5 @@
 require File.expand_path('../config/application', __FILE__)
 
 IronOctopus::Application.load_tasks
+
+require 'lib/active_record_fkey_hack'

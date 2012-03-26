@@ -7,6 +7,9 @@ class Routine < ActiveRecord::Base
   has_many :measurements, :through => :activity_sets
   has_many :activity_sets
 
+  accepts_nested_attributes_for :activity_sets, :allow_destroy => :true,
+    :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
+
   include StringUtils
 
   def natural_id

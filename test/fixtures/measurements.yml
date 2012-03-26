@@ -7,5 +7,4 @@
 bench_press_measurement_one:
   resistance: 135
   resistance_unit: pounds
-  repetitions: 10
   

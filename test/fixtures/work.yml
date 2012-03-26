@@ -1,0 +1,8 @@
+sally_does_the_bench_press:
+  user: sally_the_client
+  routine: sallys_push_pull_upper
+  activity: bench_press
+  measurement: bench_press_measurement_one
+  start_time: '2012-03-16 14:01:32Z'
+  end_time: '2012-03-16 14:02:15Z'
+  start_day_id: 20120316

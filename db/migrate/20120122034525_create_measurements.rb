@@ -6,7 +6,6 @@ class CreateMeasurements < ActiveRecord::Migration
         measurement_id serial primary key,
         duration integer not null default 0,
         resistance real not null default 0,
-        repetitions integer not null default 1,
         pace real not null default 0,
         distance real not null default 0,
         calories integer not null default 0,
@@ -16,7 +15,7 @@ class CreateMeasurements < ActiveRecord::Migration
         created_at timestamptz not null default now()
       );
       create unique index measurement_uniq_idx on application.measurements (
-        duration, resistance, repetitions, pace, distance, calories,
+        duration, resistance, pace, distance, calories,
         distance_unit_id, resistance_unit_id, pace_unit_id);
       
       grant select on application.measurements to reporter;

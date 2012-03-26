@@ -2,7 +2,7 @@ class Day < ActiveRecord::Base
   has_many :work, :class_name => 'Work', :foreign_key => 'start_day_id'
   
   def self.as_smart_id(time)
-    time.strftime("%Y%m%d").to_i
+    Time.parse(time).strftime("%Y%m%d").to_i
   end
 
   def self.from_time(time)

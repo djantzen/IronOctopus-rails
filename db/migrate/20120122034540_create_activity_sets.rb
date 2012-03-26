@@ -5,6 +5,7 @@ class CreateActivitySets < ActiveRecord::Migration
       create table application.activity_sets (
         routine_id integer not null references application.routines deferrable,
         activity_id integer not null references application.activities deferrable,
+        repetitions integer not null default 1,
         measurement_id integer not null references application.measurements deferrable,
         position real not null default 1,
         optional boolean not null default false,

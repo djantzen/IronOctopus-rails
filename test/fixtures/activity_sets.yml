@@ -6,6 +6,7 @@
 #
 push_pull_upper_bench_press:
   activity: bench_press
+  repetitions: 10
   measurement: bench_press_measurement_one
-  routine: push_pull_upper
+  routine: sallys_push_pull_upper
 

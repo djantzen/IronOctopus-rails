@@ -12,6 +12,8 @@ users = User.create([
                        { :login => 'client', :email => 'client@gmail.com', :password => 'pw' }
                     ])
 
+users[1].students << users[2]
+
 unit = Unit.new({ :name => 'None', :abbr => 'None' })
 unit.unit_id = 0
 unit.save
@@ -38,18 +40,20 @@ routines = Routine.create([
                           ])
 
 measurements = Measurement.create([
-                                      { :resistance => 100, :repetitions => 10, :resistance_unit_id => units[0] },
-                                      { :resistance => 30, :repetitions => 10, :resistance_unit_id => units[0] }
+                                      { :resistance => 100, :resistance_unit_id => units[0] },
+                                      { :resistance => 30, :resistance_unit_id => units[0] }
                                   ])
 
 activity_sets = ActivitySet.create([
                                         {
                                           :routine => routines[0],
+                                          :repetitions => 10,
                                           :measurement => measurements[0],
                                           :activity => activities[0],
                                           :position => 1 },
                                         {
                                           :routine => routines[0],
+                                          :repetitions => 10,
                                           :measurement => measurements[1],
                                           :activity => activities[1],
                                           :position => 2 },

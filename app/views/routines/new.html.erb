@@ -1,25 +1,29 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>IronOctopus</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<script>
+  $(document).ready(function() {
+      $('#new-activity-set-button').click(function() {
+        $('#activity-sets').append("<%= escape_javascript(render :partial => 'activity_sets/form') %>");
+      });
+  });
+</script>
 
-<%= form_for @routine do |r| %>
-  <%= r.label :name, 'Name' %>:
-  <%= r.text_field :name %><br />
-  <%= r.label :goal, 'Goal' %>:
-  <%= r.text_field :goal %><br />
-  <%= r.submit %>
-  
-  <%= select("activity_type", "activity_type_id", ActivityType.find(:all).collect { |at| [at.name, at.activity_type_id] }) %>
-  
-  
-<% end %>
+<% students = current_user.students.map { |u| u.login } %>
 
+<div id="new-routine">
+  <%= form_tag "/routines" do %>
 
-</body>
-</html>
+    <%= label_tag "routine[owner]", "Owner" %>:
+    <%= select_tag("routine[owner]", options_for_select(students)) %>
+    
+    <div id="new-routine-basic-info">
+      <%= label_tag "routine[name]", "Name" %>: <%= text_field_tag "routine[name]" %>
+      <%= label_tag "routine[goal]", "Goal" %>: <%= text_field_tag "routine[goal]" %>
+    </div>
+    
+    <div id="activity-sets"></div>
+
+    <input type="button" value="New set" id="new-activity-set-button"/>
+
+    <%= submit_tag "Create Routine" %>
+    
+  <% end %>
+</div>
