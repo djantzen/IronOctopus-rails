@@ -1,0 +1,44 @@
+// Place all the styles related to the test controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+div.new-activity-set-form {
+  border: 1px solid;
+  width: 80%; height: 20px; background: white;
+  padding: 5px;
+}
+
+div.new-activity-set-form .handle {
+  width: 5%;
+  float: left;
+  border: 1px solid;
+  height: 100%;
+}
+
+div.new-activity-set-form .activity-set-attributes {
+  float: left;
+}
+
+#select-activity-type-dialog {
+  border: 1px solid;  
+}
+
+.ui-selecting { background: #FECA40; }
+.ui-selected { background: #F39814; color: red; }
+
+.ui-selecting .handle { background: #ddd; }
+.ui-selected .handle { background: #cde; }
+
+div.activity-set-controls {
+
+}
+
+div.delete-activity-set-button {
+  float: left;
+  border: 1px solid;
+}
+
+div.clone-activity-set-button {
+  float: left;
+  border: 1px solid;
+}

@@ -1,18 +1,74 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 <script>
   $(document).ready(function() {
-      $('#new-activity-set-button').click(function() {
-        $('#activity-sets').append("<%= escape_javascript(render :partial => 'activity_sets/form') %>");
+
+    var delete_activity_set_function = function() {
+      console.info("call delete");
+      $(".delete-activity-set-button").click(function() {
+        $(this).parent().remove();
       });
+      $(".clone-activity-set-button").click(function() {
+        var template = $(this).parent();
+        var clone = template.clone(true);
+        $("select", clone).each(alert($(this).text()));
+        $("select", clone).val($("select", template).val());
+        console.info($("select", template).val());
+        clone.insertAfter(template);
+      });
+
+    };
+
+//$(".delete-activity-set-button").click(function() {
+//  $(this).parent().remove();
+//});
+//$(".clone-activity-set-button").click(function() {
+//  $(this).parent().clone().appendTo($(this).parent().parent());
+//});
+
+
+    $("#select-activity-type-dialog").dialog({
+      autoOpen: false, modal: true,
+      buttons: {
+        "Ok": function() {
+          var activity_type = $("#activity_type").val();
+          if (activity_type === "Weight Training")
+            $("#activity-sets").append("<%= escape_javascript(render :partial => 'activity_sets/form', :locals => { :activity_type => 'Weight Training'}) %>");
+          else if (activity_type === "Cardiovascular")
+            $("#activity-sets").append("<%= escape_javascript(render :partial => 'activity_sets/form', :locals => { :activity_type => 'Cardiovascular'}) %>");
+          else if (activity_type === "Rest")
+            $("#activity-sets").append("<%= escape_javascript(render :partial => 'activity_sets/form', :locals => { :activity_type => 'Rest'}) %>");
+          else if (activity_type === "Plyometric")
+            $("#activity-sets").append("<%= escape_javascript(render :partial => 'activity_sets/form', :locals => { :activity_type => 'Plyometric'}) %>");
+            
+          delete_activity_set_function();  
+          $(this).dialog("close");
+        }
+      }
+    });
+  
+    $("#new-activity-set-button").click(function() {
+      $("#select-activity-type-dialog").dialog("open");
+    });
+    
+    $("#activity-sets").sortable({ handle: ".handle" })
+      .disableSelection()
+        .selectable({filter: "div.new-activity-set-form"}); // make sure not to mark every child as selected
   });
+  
 </script>
 
-<% students = current_user.students.map { |u| u.login } %>
+<% clients = current_user.clients.map { |u| u.login } %>
+<% activity_types = ActivityType.find(:all).map { |at| at.name } %>
+
+<div id="select-activity-type-dialog" style="display:none">
+  <%= select_tag("activity_type", options_for_select(activity_types)) %>
+</div>
 
 <div id="new-routine">
   <%= form_tag "/routines" do %>
 
-    <%= label_tag "routine[owner]", "Owner" %>:
-    <%= select_tag("routine[owner]", options_for_select(students)) %>
+    <%= label_tag "routine[client]", "New routine for" %>:
+    <%= select_tag("routine[client]", options_for_select(clients)) %>
     
     <div id="new-routine-basic-info">
       <%= label_tag "routine[name]", "Name" %>: <%= text_field_tag "routine[name]" %>
@@ -24,6 +80,20 @@
     <input type="button" value="New set" id="new-activity-set-button"/>
 
     <%= submit_tag "Create Routine" %>
-    
+
   <% end %>
+  
 </div>
+
+
+<!--
+
+User clicks New Set.
+Dialog pops up: ActivityType?
+Activity Select menu.
+
+Weight Training -> reps, resistance
+Cardio -> speed, distance, pace
+
+
+-->

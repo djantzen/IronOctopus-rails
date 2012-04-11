@@ -22,7 +22,8 @@ class RoutinesController < ApplicationController
             :name => routine.name,
             :goal => routine.goal,
             :owner => routine.owner.login,
-            :creator => routine.creator.login,
+            :trainer => routine.trainer.login,
+            :client => routine.client.login,
             :activity_sets => routine.activity_sets.map do |set|
             {
                 :activity => set.activity.name,
@@ -32,9 +33,7 @@ class RoutinesController < ApplicationController
                 :pace => set.measurement.pace,
                 :calories => set.measurement.calories,
                 :resistance => set.measurement.resistance,
-                :distance_unit => set.measurement.distance_unit.name,
-                :pace_unit => set.measurement.pace_unit.name,
-                :resistance_unit => set.measurement.resistance_unit.name
+                :incline => set.measurement.incline
             }
             end
         }
@@ -49,7 +48,7 @@ class RoutinesController < ApplicationController
 
   def create
     wtf params
-    @routine = normalize_routine(params[:routine])
+    @routine = normalize_routine(current_user, params[:routine])
     wtf @routine
     
     @routine.save
@@ -70,9 +69,10 @@ class RoutinesController < ApplicationController
       :name => routine.name,
       :goal => routine.goal,
       :owner => routine.owner.login,
-      :creator => routine.creator.login,
+      :trainer => routine.trainer.login,
+      :client => routine.client.login,
       :activity_sets => routine.activity_sets.map do |set|
-      {
+        {
           :activity => set.activity.name,
           :repetitions => set.repetitions,
           :position => set.position,
@@ -80,46 +80,40 @@ class RoutinesController < ApplicationController
           :pace => set.measurement.pace,
           :calories => set.measurement.calories,
           :resistance => set.measurement.resistance,
-          :distance_unit => set.measurement.distance_unit.name,
-          :pace_unit => set.measurement.pace_unit.name,
-          :resistance_unit => set.measurement.resistance_unit.name
-      }
+          :incline => set.measurement.incline
+        }
       end
     }
   end
 
-  def normalize_routine(routine_hash)
+  def normalize_routine(trainer, routine_hash)
     routine = Routine.new
+    routine.trainer = trainer
     routine.name = routine_hash[:name]
     routine.goal = routine_hash[:goal]
-    routine.owner = User.find_by_login(routine_hash[:owner])
-    routine.creator = current_user
+    routine.owner = trainer
+    routine.client = User.find_by_login(routine_hash[:client])
     
     position = 0
     routine_hash[:activity_sets].each do |activity_set_hash|
       position += 1
       activity = Activity.find_by_name(activity_set_hash[:activity])      
-      resistance_unit = Unit.find_by_name(activity_set_hash[:resistance_unit] || 'None')
-      distance_unit = Unit.find_by_name(activity_set_hash[:distance_unit] || 'None')
-      pace_unit = Unit.find_by_name(activity_set_hash[:pace_unit] || 'None')
       
       measurement_hash = {
         :resistance => activity_set_hash[:resistance],
         :distance => activity_set_hash[:distance],
         :pace => activity_set_hash[:pace],
         :calories => activity_set_hash[:calories],
-        :distance_unit_id => distance_unit.unit_id,
-        :pace_unit_id => pace_unit.unit_id,
-        :resistance_unit_id => resistance_unit.unit_id
+        :incline => activity_set_hash[:incline]
       }
 
       measurement = Measurement.find_or_create(measurement_hash)
       
       activity_set = ActivitySet.new
-      activity_set.measurement = measurement
+      activity_set.routine = routine
       activity_set.activity = activity
       activity_set.repetitions = activity_set_hash[:repetitions]
-      activity_set.routine = routine
+      activity_set.measurement = measurement
       activity_set.position = position
       
       routine.activity_sets << activity_set

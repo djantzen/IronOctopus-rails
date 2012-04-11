@@ -17,7 +17,8 @@ class RoutinesControllerTest < ActionController::TestCase
     test "normalize a new routine for sally" do
       controller = RoutinesController.new
       params = {
-        :creator => 'bob_the_trainer',
+        :trainer => 'bob_the_trainer',
+        :client => 'sally_the_client',
         :owner => 'sally_the_client',
         :name => 'Leg Blaster',
         :goal => 'Blast yer gams!',
@@ -25,14 +26,12 @@ class RoutinesControllerTest < ActionController::TestCase
           {
             :activity => 'Back Squat',
             :repetitions => 12,
-            :resistance => 90,
-            :resistance_unit => 'Pounds'
+            :resistance => 90
           },
           {
             :activity => 'Hamstring Curl',
             :repetitions => 12,
-            :resistance => 40,
-            :resistance_unit => 'Pounds'
+            :resistance => 40
           }
         ]
       }

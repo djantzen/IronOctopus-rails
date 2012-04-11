@@ -1,7 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
 bench_press:
   name: "Bench Press"
   activity_type: weight_training
   creator: system
+  implements: barbell
+  
+dumbbell_bench_press:
+  name: "Dumbbell Bench Press"
+  activity_type: weight_training
+  creator: system  
+  implements: dumbbell
   
 curl_and_press:
   name: "Curl and Press"

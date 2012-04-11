@@ -7,21 +7,12 @@
 #   Mayor.create(:name => 'Emanuel', :city => cities.first)
 
 users = User.create([
-                      { :login => 'system', :email => 'system@iron-octopus.com', :password => 'pw' },
-                       { :login => 'trainer', :email => 'trainer@gmail.com', :password => 'pw' },
-                       { :login => 'client', :email => 'client@gmail.com', :password => 'pw' }
+                      { :login => 'system', :email => 'system@iron-octopus.com', :password => 'password' },
+                       { :login => 'trainer', :email => 'trainer@gmail.com', :password => 'password' },
+                       { :login => 'client', :email => 'client@gmail.com', :password => 'password' }
                     ])
 
-users[1].students << users[2]
-
-unit = Unit.new({ :name => 'None', :abbr => 'None' })
-unit.unit_id = 0
-unit.save
-
-units = Unit.create([
-                      { :name => 'Pounds', :abbr => 'lb' },
-                      { :name => 'Kilograms', :abbr => 'kg' }
-                    ])
+users[1].clients << users[2]
 
 activity_types = ActivityType.create([
                                         { :name => 'Cardiovascular' },
@@ -36,12 +27,12 @@ activities = Activity.create([
                     ])
 
 routines = Routine.create([
-                            { :name => 'Push Pull Upper', :goal => 'Balanced upper body workout', :creator => users[1], :owner => users[2] }
+                            { :name => 'Push Pull Upper', :goal => 'Balanced upper body workout', :trainer => users[1], :owner => users[2], :client => users[2] }
                           ])
 
 measurements = Measurement.create([
-                                      { :resistance => 100, :resistance_unit_id => units[0] },
-                                      { :resistance => 30, :resistance_unit_id => units[0] }
+                                      { :resistance => 100 },
+                                      { :resistance => 30 }
                                   ])
 
 activity_sets = ActivitySet.create([

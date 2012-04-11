@@ -1,23 +1,41 @@
 class Day < ActiveRecord::Base
   has_many :work, :class_name => 'Work', :foreign_key => 'start_day_id'
   
-  def self.as_smart_id(time)
-    Time.parse(time).strftime("%Y%m%d").to_i
-  end
+  def self.find_or_create(arg)
 
-  def self.from_time(time)
-    the_day = Day.new(:full_date => time.to_date, :year => time.to_date.year,
-                      :month => time.to_date.month, :day => time.to_date.day)
-    the_day.day_id = as_smart_id(time)
-    the_day
-  end
-  
-  def self.find_or_create(time)
-    the_day = Day.find_by_full_date(time.to_date)
+    date = if arg.is_a?(String) then
+      Date.parse(arg)
+    elsif arg.is_a?(Date) then
+      arg
+    elsif arg.is_a?(Time) then
+      arg.to_date
+    else
+      raise ArgumentError, "Argument must a date or string"
+    end
+    
+    the_day = Day.find_by_full_date(date)
     if the_day.nil?
-      the_day = from_time(time)
+      the_day = from_date(date)
       the_day.save
     end
     the_day
   end
+
+  def self.as_smart_id(date)
+    raise ArgumentError "Argument must a date or time" unless date.is_a? Date or date.is_a? Time
+    date.strftime("%Y%m%d").to_i
+  end
+
+  private
+
+  def self.from_date(date)
+    raise ArgumentError "Argument must time" unless date.is_a? Date
+
+    the_day = Day.new(:full_date => date, :year => date.year,
+                      :month => date.month, :day => date.day)
+    the_day.day_id = as_smart_id(date)
+    the_day
+  end
+
+
 end

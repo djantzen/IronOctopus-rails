@@ -4,4 +4,5 @@ class Activity < ActiveRecord::Base
   has_many :measurements, :through => :activity_sets
   has_many :routines, :through => :activity_sets
   has_many :activity_sets
+  has_and_belongs_to_many :implements, :class_name => 'Implement', :foreign_key => 'activity_id', :association_foreign_key => 'implement_id'
 end

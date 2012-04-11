@@ -1,18 +1,21 @@
 sallys_push_pull_upper:
   name: "Push Pull Upper"
   goal: "Balanced upper body weight training"
-  creator: bob_the_trainer
+  trainer: bob_the_trainer
   owner: sally_the_client
+  client: sally_the_client
 
 jims_olympic_lift_training:
   name: "Olympic Lift Training"
   goal: "Explosive power"
-  creator: bob_the_trainer
+  trainer: bob_the_trainer
   owner: jim_the_client
+  client: jim_the_client
 
 sallys_whole_body_mix:
   name: "Whole Body Mix"
   goal: "Balanced overall workout"
-  creator: mary_the_trainer
-  owner: sally_the_client
+  trainer: mary_the_trainer
+  client: sally_the_client
+  owner: mary_the_trainer
 

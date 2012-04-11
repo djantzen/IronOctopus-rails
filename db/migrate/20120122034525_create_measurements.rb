@@ -9,14 +9,11 @@ class CreateMeasurements < ActiveRecord::Migration
         pace real not null default 0,
         distance real not null default 0,
         calories integer not null default 0,
-        distance_unit_id integer not null default 0 references application.units (unit_id) deferrable,
-        resistance_unit_id integer not null default 0 references application.units (unit_id) deferrable,
-        pace_unit_id integer not null default 0 references application.units (unit_id) deferrable,
+        incline real not null default 0,
         created_at timestamptz not null default now()
       );
       create unique index measurement_uniq_idx on application.measurements (
-        duration, resistance, pace, distance, calories,
-        distance_unit_id, resistance_unit_id, pace_unit_id);
+        duration, resistance, pace, distance, calories, incline);
       
       grant select on application.measurements to reporter;
       grant delete, insert, select, update on application.measurements to application;
@@ -24,6 +21,10 @@ class CreateMeasurements < ActiveRecord::Migration
       
       comment on table application.measurements is 'Measures associated with a set or work record.';
       comment on column application.measurements.duration is 'In seconds.';
+      comment on column application.measurements.distance is 'In meters.';
+      comment on column application.measurements.resistance is 'In kilograms.';
+      comment on column application.measurements.pace is 'In kilometers per hour.';
+      comment on column application.measurements.incline is 'In degrees.';
     OES
   end
   

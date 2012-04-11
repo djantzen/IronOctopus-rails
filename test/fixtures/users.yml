@@ -11,20 +11,23 @@ system:
 
 bob_the_trainer:
   login: bob_the_trainer
-  password_digest: password
+  password_digest: "$2a$10$4z5sSjDtOHRM3c/fcU2UAu89oEjPx6W9E6MbAxMYobidSovwPlX0W"
   email: bob_the_trainer@gmail.com
+  trainers: bob_the_trainer
 
 sally_the_client:
   login: sally_the_client
-  password_digest: password
+  password_digest: "$2a$10$H0MiAwH.IpBEJOLG4ODixegZOUt9Xbq49ycxg5m67vUeiMuNeHE7m"
   email: sally_the_client@gmail.com
-  
+  trainers: bob_the_trainer
+    
 mary_the_trainer:
   login: mary_the_trainer
-  password_digest: password
+  password_digest: "$2a$10$WDflu1AAxveyIe9H6pieh.8W/ANSaTbHHnJWvWgUhLdO/cceN63c."
   email: mary_the_trainer@gmail.com
 
 jim_the_client:
   login: jim_the_client
-  password_digest: password
+  password_digest: "$2a$10$LAY1h5ECJ6UzB8Pv3Zpw6OIh5rLLx13niKnOBF8PiS8CR33kg9ukS"
   email: jim_the_client@gmail.com
+  trainers: mary_the_trainer

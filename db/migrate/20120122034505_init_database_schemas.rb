@@ -13,11 +13,15 @@ class InitDatabaseSchemas < ActiveRecord::Migration
       alter role application set search_path=application,reporting,public;
       alter role reporter set search_path=reporting,application,public;
       alter role administrator set search_path=application,reporting,public;
+      
+      grant select on public.schema_migrations to application;
     EOS
   end
 
   def down
     execute <<-EOS
+      revoke select on public.schema_migrations from application;
+    
       alter role administrator set search_path=public;
       alter role application set search_path=public;
       alter role reporter set search_path=public;
