@@ -10,7 +10,6 @@
       $(".clone-activity-set-button").click(function() {
         var template = $(this).parent();
         var clone = template.clone(true);
-        $("select", clone).each(alert($(this).text()));
         $("select", clone).val($("select", template).val());
         console.info($("select", template).val());
         clone.insertAfter(template);
@@ -51,11 +50,66 @@
     });
     
     $("#activity-sets").sortable({ handle: ".handle" })
-      .disableSelection()
-        .selectable({filter: "div.new-activity-set-form"}); // make sure not to mark every child as selected
+      .disableSelection();
+//        .selectable({filter: "div.new-activity-set-form"}); // make sure not to mark every child as selected
+
+
+
+    var generate_facet_key = function(facet_nodes) {
+      var facets = [];
+      facet_nodes.each(function() {
+        facets.push($(this).text());
+      });
+      var facet_key = facets.sort().join('').replace(/\s/g, '').toLowerCase();
+      return facet_key;
+    }
+
+    $("#activity-list div.activity").each(function() {
+        var facet_target_superkey = generate_facet_key($(this).find("div.facet-target"));        
+        var facet_target_superkey_div = $(document.createElement("div"));
+        facet_target_superkey_div.append(facet_target_superkey);
+        facet_target_superkey_div.addClass("facet-target-superkey");
+        $(this).append(facet_target_superkey_div);    
+    });
+    
+    var update_facet_filtered_activities = function() {
+  
+      var facet_key = generate_facet_key($("#selected-activity-facets div"));
+
+      $("#activity-list div.activity").each(function() {
+        var activity = $(this);
+        var facet_target_superkey = activity.find("div.facet-target-superkey").text();
+        console.info("facet key " + facet_key + " facet superkey " + facet_target_superkey);          
+        
+        if (facet_target_superkey.indexOf(facet_key) == -1) {
+          console.info("no match for " + facet_key + " facet superkey " + facet_target_superkey);
+          activity.removeClass("facet-included-activity");
+          activity.addClass("facet-excluded-activity");
+        } else {
+          console.info("MATCH for " + facet_key + " facet superkey " + facet_target_superkey);
+          activity.removeClass("facet-excluded-activity");
+          activity.addClass("facet-included-activity");
+        }
+      });
+    }
+
+    $("div.facet").click(function() {
+      var facet_name = $(this).text().trim();
+      if ($(this).hasClass("facet-selected")) {
+        $(this).removeClass("facet-selected");
+        $("#selected-activity-facets div:contains(" + facet_name + ")").remove();
+      } else {
+        $(this).addClass("facet-selected");
+        var selected_facet_div = document.createElement("div");
+        selected_facet_div.appendChild(document.createTextNode(facet_name));
+        $("#selected-activity-facets").append(selected_facet_div);
+      }
+      update_facet_filtered_activities();
+    });
   });
   
 </script>
+
 
 <% clients = current_user.clients.map { |u| u.login } %>
 <% activity_types = ActivityType.find(:all).map { |at| at.name } %>
@@ -85,15 +139,33 @@
   
 </div>
 
+<div id="selected-activity-facets">
+  
+</div>
 
-<!--
+<div id="activity-facets-panel">
+  <div id="anatomy-list">
+    <% @anatomy.each do |anatomy| %>
+      <div class="facet"><%= anatomy %></div>
+    <% end %>
+  </div>
+  <div id="implement-list">
+    <% @implements.each do |implement| %>
+      <div class="facet"><%= implement.name %></div>
+    <% end %>
+  </div>
+</div>
 
-User clicks New Set.
-Dialog pops up: ActivityType?
-Activity Select menu.
-
-Weight Training -> reps, resistance
-Cardio -> speed, distance, pace
-
-
--->
+<div id="facet-filtered-activities-panel">
+  <div id="activity-list">
+    <% @activities.each do |activity| %>
+      <div class="activity">
+        <% activity.implements.each do |implement| %>
+          <div class="facet-target"><%= implement.name %></div>
+        <% end %>
+        <div class="facet-target"><%= "Legs" %></div>
+        <%= activity.name %>
+      </div>
+    <% end %>
+  </div>
+</div>

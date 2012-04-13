@@ -4,23 +4,25 @@ bench_press:
   name: "Bench Press"
   activity_type: weight_training
   creator: system
-  implements: barbell
+  implements: barbell, bench
   
 dumbbell_bench_press:
   name: "Dumbbell Bench Press"
   activity_type: weight_training
   creator: system  
-  implements: dumbbell
+  implements: dumbbell, bench
   
 curl_and_press:
   name: "Curl and Press"
   activity_type: weight_training
   creator: system
+  implements: dumbbell
 
 back_squat:
   name: "Back Squat"
   activity_type: weight_training
   creator: system
+  implements: barbell, power_rack
 
 hamstring_curl:
   name: "Hamstring Curl"
@@ -31,6 +33,7 @@ clean_and_jerk:
   name: "Clean and Jerk"
   activity_type: weight_training
   creator: system
+  implements: barbell
 
 simple_rest:
   name: "Rest"
@@ -46,13 +49,16 @@ treadmill_run:
   name: "Treadmill Run"
   activity_type: cardiovascular
   creator: system
+  implements: treadmill
 
 treadmill_walk:
   name: "Treadmill Walk"
   activity_type: cardiovascular
   creator: system
+  implements: treadmill
   
 treadmill_program:
   name: "Treadmill Program"
   activity_type: cardiovascular
   creator: system
+  implements: treadmill

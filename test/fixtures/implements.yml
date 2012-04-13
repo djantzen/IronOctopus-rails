@@ -3,5 +3,17 @@
 barbell:
   name: Barbell
 
+bench:
+  name: Bench
+
 dumbbell:
   name: Dumbbell
+  
+power_rack:
+  name: Power Rack
+
+treadmill:
+  name: Treadmill
+  
+rowing_machine:
+  name: Rowing Machine

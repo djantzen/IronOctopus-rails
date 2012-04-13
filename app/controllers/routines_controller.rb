@@ -44,12 +44,14 @@ class RoutinesController < ApplicationController
       
   def new
     @routine = Routine.new
+    @activities = Activity.find(:all)
+    @implements = Implement.find(:all)
+    @anatomy = ['Back', 'Legs', 'Arms', 'Chest'];
   end
 
   def create
     wtf params
     @routine = normalize_routine(current_user, params[:routine])
-    wtf @routine
     
     @routine.save
 

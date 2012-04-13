@@ -5,3 +5,33 @@
  *= require_self
  *= require_tree . 
 */
+
+.backgrounded {
+  background-image: url('iron_octopus_by_mr_sloow.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+
+.facet {
+  border: 1px solid;
+}
+
+.facet-selected {
+  border-color: green;
+}
+
+.facet-included-activity {
+  display: block;  
+}
+
+.facet-excluded-activity {
+  display: none;  
+}
+
+.facet-target {
+  display: none;
+}
+
+.facet-target-superkey {
+  display: none;
+}
