@@ -2,9 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-div.new-activity-set-form {
+.activity-set-form-template {
+  display: none;
+}
+
+div.activity-set-form {
+  display: block;
   border: 1px solid;
-  width: 80%; height: 20px; background: white;
+  width: 100%;
+  height: 50px;
   padding: 5px;
 }
 
@@ -40,5 +46,48 @@ div.delete-activity-set-button {
 
 div.clone-activity-set-button {
   float: left;
+  border: 1px solid;
+}
+
+div.facet {
+  border: 1px solid;
+}
+
+div.facet-selected {
+  border: 3px double;
+  border-color: green;
+}
+
+.facet-included-activity {
+  display: block;  
+}
+
+.facet-excluded-activity {
+  display: none;  
+}
+
+.faceting-control {
+  display: none;
+}
+
+#activity-facets-panel {
+  border: 1px solid;
+  width: 20%;
+  float: left;
+}
+
+#facet-filtered-activities-panel {
+  border: 1px solid;
+  width: 20%;
+  float: left;
+}
+
+#new-routine {
+  border: 1px solid;
+  width: 50%%;
+  float: left;
+}
+
+.activity {
   border: 1px solid;
 }

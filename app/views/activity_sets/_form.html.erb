@@ -1,54 +1,42 @@
-<script>
-</script>
-
-<div class="new-activity-set-form">
+<div class="activity-set-form-template">
   
-  <% activities = ActivityType.find_by_name(activity_type).activities.map { |a| a.name } %>
-
   <% resistances = (1..100).map { |i| i * 2.5 } %>
   <% paces = (1..15).map { |i| [i,i += 0.5] }.flatten %>
   <% durations = (1..360).map { |i| i } %>
-  <div class="handle"></div>
+  
   <div class="activity-set-attributes">
-
-    <% if activity_type.eql? "Weight Training" %>    
-      <div class="weight-training-activity-set">
-        <%= label_tag "routine[activity_sets][][activity]", "Activity" %>:
-        <%= select_tag("routine[activity_sets][][activity]", options_for_select(activities)) %>
+    <span class="activity-display-name"><%= activity.name %></span>
+    <%= hidden_field_tag "routine[activity_sets][][activity]", activity.name %>
+    <% if activity.activity_type.name.eql? "Weight Training" %>    
+      <span class="weight-training-activity-set">
         <%= label_tag "routine[activity_sets][][repetitions]", "Repetitions" %>:
         <%= select_tag("routine[activity_sets][][repetitions]", options_for_select((1..20).to_a, 8)) %>
         <%= label_tag "routine[activity_sets][][resistance]", "Resistance" %>:
         <%= select_tag("routine[activity_sets][][resistance]", options_for_select(resistances, 100.0)) %>
-      </div>
-    <% elsif activity_type.eql? "Cardiovascular" %>    
-      <div class="cardiovascular-activity-set">
+      </span>
+    <% elsif activity.activity_type.name.eql? "Cardiovascular" %>    
+      <span class="cardiovascular-activity-set">
         <%= hidden_field_tag "routine[activity_sets][][repetitions]", 1 %>
-        <%= label_tag "routine[activity_sets][][activity]", "Activity" %>:
-        <%= select_tag("routine[activity_sets][][activity]", options_for_select(activities)) %>
         <%= label_tag "routine[activity_sets][][distance]", "Distance" %>:
         <%= select_tag("routine[activity_sets][][distance]", options_for_select((1..20).to_a, 8)) %>
         <%= label_tag "routine[activity_sets][][pace]", "Pace" %>:
         <%= select_tag("routine[activity_sets][][pace]", options_for_select(paces, 6)) %>
         <%= label_tag "routine[activity_sets][][duration]", "Duration" %>:
         <%= select_tag("routine[activity_sets][][duration]", options_for_select(durations, 900)) %>
-      </div>
-    <% elsif activity_type.eql? "Rest" %>    
-      <div class="rest-activity-set">
-        <%= label_tag "routine[activity_sets][][activity]", "Activity" %>:
-        <%= select_tag("routine[activity_sets][][activity]", options_for_select(activities)) %>
+      </span>
+    <% elsif activity.activity_type.name.eql? "Rest" %>    
+      <span class="rest-activity-set">
         <%= hidden_field_tag "routine[activity_sets][][repetitions]", 1 %>
         <%= label_tag "routine[activity_sets][][duration]", "Duration" %>:
         <%= select_tag("routine[activity_sets][][duration]", options_for_select(durations, 60)) %>
-      </div>
-    <% elsif activity_type.eql? "Plyometric" %>    
-      <div class="weight-training-activity-set">
-        <%= label_tag "routine[activity_sets][][activity]", "Activity" %>:
-        <%= select_tag("routine[activity_sets][][activity]", options_for_select(activities)) %>
+      </span>
+    <% elsif activity.activity_type.name.eql? "Plyometric" %>    
+      <div class="plyometric-training-activity-set">
         <%= label_tag "routine[activity_sets][][repetitions]", "Repetitions" %>:
         <%= select_tag("routine[activity_sets][][repetitions]", options_for_select((1..20).to_a, 8)) %>
-      </div>
+      </span>
     <% end %>        
   </div>
-  <div class="delete-activity-set-button">delete</div>
-  <div class="clone-activity-set-button">clone</div>
+  <span class="delete-activity-set-button">delete</span>
+  <span class="clone-activity-set-button">clone</span>
 </div>

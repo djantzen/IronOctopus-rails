@@ -1,191 +1,115 @@
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-<script>
-  $(document).ready(function() {
+<!--<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script> -->
 
-    /*
-     * Clone and delete functions
-     */
-    var delete_activity_set_function = function() {
-      console.info("call delete");
-      $(".delete-activity-set-button").click(function() {
-        $(this).parent().remove();
-      });
-      $(".clone-activity-set-button").click(function() {
-        var template = $(this).parent();
-        var clone = template.clone(true);
-        $("select", clone).val($("select", template).val());
-        console.info($("select", template).val());
-        clone.insertAfter(template);
-      });
+<div id="routine-builder-panel">  
+  <div id="activity-facets-panel">
+    
+    <div id="activity-type-list">
+      <div class="facet-header">Type of Activity</div>
+      <ul>
+        <% @activity_types.each do |activity_type| %>
+          <li>
+            <div class="facet">
+              <%= activity_type.name %>
+              <span class="faceting-control">
+                <%= activity_type.name %>
+              </span>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
 
-    };
-
-
-    $("#select-activity-type-dialog").dialog({
-      autoOpen: false, modal: true,
-      buttons: {
-        "Ok": function() {
-          var activity_type = $("#activity_type").val();
-          if (activity_type === "Weight Training")
-            $("#activity-sets").append("<%= escape_javascript(render :partial => 'activity_sets/form', :locals => { :activity_type => 'Weight Training'}) %>");
-          else if (activity_type === "Cardiovascular")
-            $("#activity-sets").append("<%= escape_javascript(render :partial => 'activity_sets/form', :locals => { :activity_type => 'Cardiovascular'}) %>");
-          else if (activity_type === "Rest")
-            $("#activity-sets").append("<%= escape_javascript(render :partial => 'activity_sets/form', :locals => { :activity_type => 'Rest'}) %>");
-          else if (activity_type === "Plyometric")
-            $("#activity-sets").append("<%= escape_javascript(render :partial => 'activity_sets/form', :locals => { :activity_type => 'Plyometric'}) %>");
-            
-          delete_activity_set_function();  
-          $(this).dialog("close");
-        }
-      }
-    });
+    <div id="body-part-list">
+      <div class="facet-header">Anatomy Involved</div>
+      <ul>
+        <% group_body_parts_by_region(@body_parts).each_pair do |region, body_parts| %>
+          <li>
+            <div class="facet">
+              <%= region %>
+              <span class="faceting-control">
+                <%= region %>
+              </span>
+            </div>
+          </li>
+          <ul>
+            <% body_parts.each do |body_part| %>
+              <li>
+                <div class="facet">
+                  <%= body_part.common_name %> (<%= body_part.formal_name %>)
+                  <span class="faceting-control">
+                    <%= body_part.formal_name %>
+                  </span>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+      </ul>
+    </div>
+    <div class="facet-header">Implements</div>
+    <ul id="implement-list">
+      <% @implements.each do |implement| %>
+        <li>
+          <div class="facet">
+            <%= implement.name %>
+            <span class="faceting-control">
+              <%= implement.name %>
+            </span>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
   
-    $("#new-activity-set-button").click(function() {
-      $("#select-activity-type-dialog").dialog("open");
-    });
-    
-    $("#activity-sets").sortable({ handle: ".handle" })
-      .disableSelection();
-//        .selectable({filter: "div.new-activity-set-form"}); // make sure not to mark every child as selected
+  <div id="facet-filtered-activities-panel">
+    <ul id="activity-list">
+      <% @activities.each do |activity| %>
+        <li id="<%= activity.name.gsub(/\s/, '').downcase %>" class="activity facet-included-activity">
+          <%= activity.name %>
+          <%= render :partial => 'activity_sets/form', :locals => { :activity => activity } %>
+          <span class="faceting-control">
+            <%= activity.activity_type.name %>
+          </span>
+          <% activity.implements.each do |implement| %>
+            <span class="faceting-control">
+              <%= implement.name %>
+            </span>
+          <% end %>
+          <% group_body_parts_by_region(activity.body_parts).each_pair do |region, body_parts| %>
+            <span class="faceting-control">
+              <%= region %>
+            </span>
+            <% body_parts.each do |body_part| %>
+              <span class="faceting-control">
+                <%= body_part.formal_name %>
+              </span>
+            <% end %>
+          <% end %>        
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  
+  <div id="new-routine">
+    <%= form_tag "/routines" do %>
 
-
-    /*
-     * Function for generating the key for a facet based on facet nodes. Will look for text within
-     * a div with class identifier. Join pattern is regex string for facets (not facet-targets).
-     */
-    var generate_facet_key = function(facet_nodes, join_pattern) {
-      var facets = [];
-      facet_nodes.each(function() {
-        facets.push($(this).text());
-      });
-
-      var facet_key = facets.sort().join(join_pattern).toIdentifier();
-      return facet_key;
-    }
-
-    /*
-     * On page load generate a superkey for each activity
-     */
-    $("#activity-list div.activity").each(function() {
-        var facet_target_superkey = generate_facet_key($(this).find("div.faceting-control"), "");        
-        var facet_target_superkey_div = $(document.createElement("div"));
-        facet_target_superkey_div.append(facet_target_superkey);
-        facet_target_superkey_div.addClass("faceting-control facet-target-superkey");
-        $(this).append(facet_target_superkey_div);    
-    });
-    
-    /*
-     * Updates the list of activities after a facet has been added or removed
-     */
-    var update_facet_filtered_activities = function(restrict_results) {
+      <%= label_tag "routine[client]", "New routine for" %>:
+      <%= select_tag("routine[client]", options_for_select(@clients)) %>
       
-      // Get the key describing currently selected facets  
-      var facet_key = new RegExp(generate_facet_key($("#activity-facets-panel div.facet-selected div.faceting-control"), "\\w*?"));
-      var activities = restrict_results ? $("#activity-list div.facet-included-activity"):
-        $("#activity-list div.facet-excluded-activity");
-
-      activities.each(function() {
-        var activity = $(this);
-        var facet_target_superkey = activity.find("div.facet-target-superkey").text();
-        
-        if (facet_target_superkey.match(facet_key)) {
-          console.info("MATCH for " + facet_key + " facet superkey " + facet_target_superkey);
-          activity.removeClass("facet-excluded-activity");
-          activity.addClass("facet-included-activity");
-        } else {
-          console.info("no match for " + facet_key + " facet superkey " + facet_target_superkey);
-          activity.removeClass("facet-included-activity");
-          activity.addClass("facet-excluded-activity");
-        }
-      });
-    }
-
-    /*
-     * When a facet is added or removed, apply CSS
-     */
-    $("#activity-facets-panel div.facet").click(function() {
-      var facet_name = $(this).find("div.faceting-control").text().trim();
-      var restrict_results = true;
-      if ($(this).hasClass("facet-selected")) {
-        $(this).removeClass("facet-selected");
-        restrict_results = false;
-      } else {
-        $(this).addClass("facet-selected");
-      }
-      update_facet_filtered_activities(restrict_results);
-    });
-
-  });
+      <div id="new-routine-basic-info">
+        <%= label_tag "routine[name]", "Name" %>: <%= text_field_tag "routine[name]" %>
+        <%= label_tag "routine[goal]", "Goal" %>: <%= text_field_tag "routine[goal]" %>
+      </div>
+      
+      <!-- sortable container for all of our new sets -->
+      <ul id="activity-sets"></ul>
   
-</script>
-
-
-<% clients = current_user.clients.map { |u| u.login } %>
-<% activity_types = ActivityType.find(:all).map { |at| at.name } %>
-
-<div id="select-activity-type-dialog" style="display:none">
-  <%= select_tag("activity_type", options_for_select(activity_types)) %>
-</div>
-
-<div id="new-routine">
-  <%= form_tag "/routines" do %>
-
-    <%= label_tag "routine[client]", "New routine for" %>:
-    <%= select_tag("routine[client]", options_for_select(clients)) %>
-    
-    <div id="new-routine-basic-info">
-      <%= label_tag "routine[name]", "Name" %>: <%= text_field_tag "routine[name]" %>
-      <%= label_tag "routine[goal]", "Goal" %>: <%= text_field_tag "routine[goal]" %>
-    </div>
-    
-    <div id="activity-sets"></div>
-
-    <input type="button" value="New set" id="new-activity-set-button"/>
-
-    <%= submit_tag "Create Routine" %>
-
-  <% end %>
+      <input type="button" value="New set" id="new-activity-set-button"/>
   
-</div>
+      <%= submit_tag "Create Routine" %>
+  
+    <% end %>
+    
+  </div>
 
-<div id="activity-facets-panel">
-  <div id="body-part-list">
-    <div class="facet-header">
-      Anatomy
-    </div>
-    <% @body_parts.each do |body_part| %>
-      <div class="facet">
-        <div class="faceting-control"><%= body_part.common_name %></div>
-        <%= body_part.common_name %>(<%= body_part.formal_name %>)
-      </div>
-    <% end %>
-  </div>
-  <div class="facet-header">
-    Implements
-  </div>
-  <div id="implement-list">
-    <% @implements.each do |implement| %>
-      <div class="facet">
-        <div class="faceting-control"><%= implement.name %></div>
-        <%= implement.name %>
-      </div>
-    <% end %>
-  </div>
-</div>
-
-<div id="facet-filtered-activities-panel">
-  <div id="activity-list">
-    <% @activities.each do |activity| %>
-      <div class="activity facet-included-activity">
-        <% activity.implements.each do |implement| %>
-          <div class="faceting-control"><%= implement.name %></div>
-        <% end %>
-        <% activity.body_parts.each do |body_part| %>
-          <div class="faceting-control"><%= body_part.common_name %></div>
-        <% end %>
-        <%= activity.name %>
-      </div>
-    <% end %>
-  </div>
 </div>

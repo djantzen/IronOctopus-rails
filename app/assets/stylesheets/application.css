@@ -12,24 +12,3 @@
   background-size: 100% auto;
 }
 
-.facet {
-  border: 1px solid;
-}
-
-.facet-selected {
-  border: 3px double;
-  border-color: green;
-}
-
-.facet-included-activity {
-  display: block;  
-}
-
-.facet-excluded-activity {
-  display: none;  
-}
-
-.faceting-control {
-  display: none;
-}
-
