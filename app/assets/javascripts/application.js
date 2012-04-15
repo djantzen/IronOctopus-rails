@@ -10,3 +10,7 @@
 
 console.info("applicationload");
 
+var to_identifier_regexp = new RegExp("[\\s(){}_']", "g");
+String.prototype.toIdentifier = function() {
+  return this.replace(to_identifier_regexp, '').toLowerCase();
+};

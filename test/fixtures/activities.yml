@@ -17,23 +17,27 @@ curl_and_press:
   activity_type: weight_training
   creator: system
   implements: dumbbell
+  body_parts: biceps_brachii, triceps_brachii
 
-back_squat:
-  name: "Back Squat"
+squat:
+  name: "Squat"
   activity_type: weight_training
   creator: system
   implements: barbell, power_rack
+  body_parts: quadriceps, gluteus_maximus, hamstring
 
 hamstring_curl:
   name: "Hamstring Curl"
   activity_type: weight_training
   creator: system
+  body_parts: hamstring
   
 clean_and_jerk:
   name: "Clean and Jerk"
   activity_type: weight_training
   creator: system
   implements: barbell
+  body_parts: quadriceps, gluteus_maximus, hamstring, posterior_deltoid
 
 simple_rest:
   name: "Rest"

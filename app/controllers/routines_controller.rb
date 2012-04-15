@@ -44,9 +44,9 @@ class RoutinesController < ApplicationController
       
   def new
     @routine = Routine.new
-    @activities = Activity.find(:all)
+    @activities = Activity.find(:all, :include => [:body_parts, :implements])
     @implements = Implement.find(:all)
-    @anatomy = ['Back', 'Legs', 'Arms', 'Chest'];
+    @body_parts = BodyPart.find(:all)
   end
 
   def create

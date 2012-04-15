@@ -17,6 +17,7 @@
 }
 
 .facet-selected {
+  border: 3px double;
   border-color: green;
 }
 
@@ -28,10 +29,7 @@
   display: none;  
 }
 
-.facet-target {
+.faceting-control {
   display: none;
 }
 
-.facet-target-superkey {
-  display: none;
-}

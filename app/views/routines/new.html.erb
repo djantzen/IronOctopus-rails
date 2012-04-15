@@ -2,6 +2,9 @@
 <script>
   $(document).ready(function() {
 
+    /*
+     * Clone and delete functions
+     */
     var delete_activity_set_function = function() {
       console.info("call delete");
       $(".delete-activity-set-button").click(function() {
@@ -16,13 +19,6 @@
       });
 
     };
-
-//$(".delete-activity-set-button").click(function() {
-//  $(this).parent().remove();
-//});
-//$(".clone-activity-set-button").click(function() {
-//  $(this).parent().clone().appendTo($(this).parent().parent());
-//});
 
 
     $("#select-activity-type-dialog").dialog({
@@ -54,58 +50,72 @@
 //        .selectable({filter: "div.new-activity-set-form"}); // make sure not to mark every child as selected
 
 
-
-    var generate_facet_key = function(facet_nodes) {
+    /*
+     * Function for generating the key for a facet based on facet nodes. Will look for text within
+     * a div with class identifier. Join pattern is regex string for facets (not facet-targets).
+     */
+    var generate_facet_key = function(facet_nodes, join_pattern) {
       var facets = [];
       facet_nodes.each(function() {
         facets.push($(this).text());
       });
-      var facet_key = facets.sort().join('').replace(/\s/g, '').toLowerCase();
+
+      var facet_key = facets.sort().join(join_pattern).toIdentifier();
       return facet_key;
     }
 
+    /*
+     * On page load generate a superkey for each activity
+     */
     $("#activity-list div.activity").each(function() {
-        var facet_target_superkey = generate_facet_key($(this).find("div.facet-target"));        
+        var facet_target_superkey = generate_facet_key($(this).find("div.faceting-control"), "");        
         var facet_target_superkey_div = $(document.createElement("div"));
         facet_target_superkey_div.append(facet_target_superkey);
-        facet_target_superkey_div.addClass("facet-target-superkey");
+        facet_target_superkey_div.addClass("faceting-control facet-target-superkey");
         $(this).append(facet_target_superkey_div);    
     });
     
-    var update_facet_filtered_activities = function() {
-  
-      var facet_key = generate_facet_key($("#selected-activity-facets div"));
+    /*
+     * Updates the list of activities after a facet has been added or removed
+     */
+    var update_facet_filtered_activities = function(restrict_results) {
+      
+      // Get the key describing currently selected facets  
+      var facet_key = new RegExp(generate_facet_key($("#activity-facets-panel div.facet-selected div.faceting-control"), "\\w*?"));
+      var activities = restrict_results ? $("#activity-list div.facet-included-activity"):
+        $("#activity-list div.facet-excluded-activity");
 
-      $("#activity-list div.activity").each(function() {
+      activities.each(function() {
         var activity = $(this);
         var facet_target_superkey = activity.find("div.facet-target-superkey").text();
-        console.info("facet key " + facet_key + " facet superkey " + facet_target_superkey);          
         
-        if (facet_target_superkey.indexOf(facet_key) == -1) {
-          console.info("no match for " + facet_key + " facet superkey " + facet_target_superkey);
-          activity.removeClass("facet-included-activity");
-          activity.addClass("facet-excluded-activity");
-        } else {
+        if (facet_target_superkey.match(facet_key)) {
           console.info("MATCH for " + facet_key + " facet superkey " + facet_target_superkey);
           activity.removeClass("facet-excluded-activity");
           activity.addClass("facet-included-activity");
+        } else {
+          console.info("no match for " + facet_key + " facet superkey " + facet_target_superkey);
+          activity.removeClass("facet-included-activity");
+          activity.addClass("facet-excluded-activity");
         }
       });
     }
 
-    $("div.facet").click(function() {
-      var facet_name = $(this).text().trim();
+    /*
+     * When a facet is added or removed, apply CSS
+     */
+    $("#activity-facets-panel div.facet").click(function() {
+      var facet_name = $(this).find("div.faceting-control").text().trim();
+      var restrict_results = true;
       if ($(this).hasClass("facet-selected")) {
         $(this).removeClass("facet-selected");
-        $("#selected-activity-facets div:contains(" + facet_name + ")").remove();
+        restrict_results = false;
       } else {
         $(this).addClass("facet-selected");
-        var selected_facet_div = document.createElement("div");
-        selected_facet_div.appendChild(document.createTextNode(facet_name));
-        $("#selected-activity-facets").append(selected_facet_div);
       }
-      update_facet_filtered_activities();
+      update_facet_filtered_activities(restrict_results);
     });
+
   });
   
 </script>
@@ -139,19 +149,27 @@
   
 </div>
 
-<div id="selected-activity-facets">
-  
-</div>
-
 <div id="activity-facets-panel">
-  <div id="anatomy-list">
-    <% @anatomy.each do |anatomy| %>
-      <div class="facet"><%= anatomy %></div>
+  <div id="body-part-list">
+    <div class="facet-header">
+      Anatomy
+    </div>
+    <% @body_parts.each do |body_part| %>
+      <div class="facet">
+        <div class="faceting-control"><%= body_part.common_name %></div>
+        <%= body_part.common_name %>(<%= body_part.formal_name %>)
+      </div>
     <% end %>
+  </div>
+  <div class="facet-header">
+    Implements
   </div>
   <div id="implement-list">
     <% @implements.each do |implement| %>
-      <div class="facet"><%= implement.name %></div>
+      <div class="facet">
+        <div class="faceting-control"><%= implement.name %></div>
+        <%= implement.name %>
+      </div>
     <% end %>
   </div>
 </div>
@@ -159,11 +177,13 @@
 <div id="facet-filtered-activities-panel">
   <div id="activity-list">
     <% @activities.each do |activity| %>
-      <div class="activity">
+      <div class="activity facet-included-activity">
         <% activity.implements.each do |implement| %>
-          <div class="facet-target"><%= implement.name %></div>
+          <div class="faceting-control"><%= implement.name %></div>
         <% end %>
-        <div class="facet-target"><%= "Legs" %></div>
+        <% activity.body_parts.each do |body_part| %>
+          <div class="faceting-control"><%= body_part.common_name %></div>
+        <% end %>
         <%= activity.name %>
       </div>
     <% end %>

@@ -17,3 +17,6 @@ treadmill:
   
 rowing_machine:
   name: Rowing Machine
+
+body_weight:
+  name: Body Weight

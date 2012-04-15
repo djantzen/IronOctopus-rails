@@ -11,6 +11,8 @@ class CreateImplements < ActiveRecord::Migration
       grant delete, insert, select, update on application.implements to application;
       grant select, update, usage on application.implements_implement_id_seq to application;
 
+      create unique index implements_uniq_idx_name on application.implements (lower(name));
+
       comment on table application.implements is 'An implement to be utilized in the performance of an activity.';
     OES
   end
