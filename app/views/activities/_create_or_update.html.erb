@@ -1,0 +1,50 @@
+<div>
+  <%= form_for @activity do |form| %>
+    <%= form.label :name, 'Name' %>:
+    <%= form.text_field :name %><br />
+    <%= form.label :instructions, 'Instructions' %>:
+    <%= form.text_field :instructions %><br />
+    <%= form.label :activity_type, 'Activity Type' %>:
+    <%= form.select :activity_type,
+      @activity_types.map { |activity_type | [activity_type.name, activity_type.activity_type_id] }, :selected => @activity.activity_type.activity_type_id %><br />
+    
+    <div id="attribute-panel">
+  
+      <div>Anatomy Involved</div>
+      <div id="available-body-part-list">
+        <% @body_parts.each do |body_part| %>
+          <% if @activity.body_parts.include?(body_part) %>
+            <div id="<%= body_part.formal_name %>" class="activity-attribute selected-activity-attribute">
+              <%= body_part.common_name %> (<%= body_part.formal_name %>)
+              <%= hidden_field_tag "activity[body_parts][]", body_part.formal_name, :class => "activity-attribute-control" %> 
+            </div>
+          <% else %>
+            <div id="<%= body_part.formal_name %>" class="activity-attribute">
+              <%= body_part.common_name %> (<%= body_part.formal_name %>)
+            </div>  
+          <% end %>
+        <% end %>
+      </div>
+  
+      <div>Implements</div>
+      <div id="available-implement-list">
+        <% @implements.each do |implement| %>
+          <% if @activity.implements.include?(implement) %>
+            <div id="<%= implement.name %>" class="activity-attribute selected-activity-attribute">
+              <%= implement.name %>
+              <%= hidden_field_tag "activity[implements][]", implement.name, :class => "activity-attribute-control" %>
+            </div>     
+          <% else %>
+            <div id="<%= implement.name %>" class="activity-attribute">
+              <%= implement.name %>
+            </div>     
+          <% end %>
+        <% end %>
+      </div>
+  
+    </div>
+    
+    <%= submit_tag "Save" %>
+
+  <% end %>
+</div>

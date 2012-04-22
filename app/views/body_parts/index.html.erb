@@ -1,0 +1,6 @@
+<% @body_parts.each do |body_part| %>
+
+  <div><%= link_to(body_part.formal_name, body_part) %></div>
+  
+<% end %>
+<div><%= link_to("Create New", :action => :new) %></div>

@@ -5,7 +5,7 @@ class InitDatabaseSchemas < ActiveRecord::Migration
       create schema reporting;
 
       comment on schema application is 'Operational schema.';
-      comment on schema application is 'Reporting and analysis schema.';
+      comment on schema reporting is 'Reporting and analysis schema.';
 
       grant usage on schema application to application, reporter;
       grant usage on schema reporting to application, reporter;

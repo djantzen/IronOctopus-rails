@@ -1,11 +1,10 @@
 <div class="activity-set-form-template">
-  
+  <div class="handle activity-display-name"><%= activity.name %></div>
   <% resistances = (1..100).map { |i| i * 2.5 } %>
   <% paces = (1..15).map { |i| [i,i += 0.5] }.flatten %>
   <% durations = (1..360).map { |i| i } %>
   
   <div class="activity-set-attributes">
-    <span class="activity-display-name"><%= activity.name %></span>
     <%= hidden_field_tag "routine[activity_sets][][activity]", activity.name %>
     <% if activity.activity_type.name.eql? "Weight Training" %>    
       <span class="weight-training-activity-set">

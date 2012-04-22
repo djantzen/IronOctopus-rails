@@ -17,7 +17,7 @@ class CreateRoutines < ActiveRecord::Migration
       grant delete, insert, select, update on application.routines to application;
       grant select, update, usage on application.routines_routine_id_seq to application;
 
-      create unique index routines_uniq_idx_owner_name on application.routines (owner_id, lower(name));
+      create unique index routines_uniq_idx_owner_name on application.routines (owner_id, lower(regexp_replace(name, '\s', 'g')));
       create index routines_idx_trainer on application.routines (trainer_id);
       create index routines_idx_owner on application.routines (owner_id);
       create index routines_idx_client on application.routines (client_id);

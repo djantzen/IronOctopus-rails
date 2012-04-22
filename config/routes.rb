@@ -57,23 +57,13 @@ IronOctopus::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
 
-#  resources :activity_sets
   resources :sessions
   resources :activities
-  
+  resources :implements
+  resources :body_parts
   resources :routines
   
-# When I construct a routine, I say, new routine for a user
-# optionally, from a template
-# Thus: routine creation, returns a routine_id
-# Next, I select an activity and measurement 
-# routine is assigned the activity and measurement, thus creating an activity set
-# I may move the activity set within the routine
-# routines/new {user_id, name, goal, creator_id}
-# I list routines I have created
-# routines/index?creator_id/1
-
-resources :work
+  resources :work
  
   
 # (.:format)  optional

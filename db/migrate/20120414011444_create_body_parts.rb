@@ -8,6 +8,7 @@ class CreateBodyParts < ActiveRecord::Migration
         role text not null default 'Not yet specified',
         category text not null default 'Muscle',
         region text not null,
+        creator_id integer not null references application.users(user_id) deferrable,
         created_at timestamptz not null default now(),
         updated_at timestamptz not null default now()
       );
@@ -16,7 +17,7 @@ class CreateBodyParts < ActiveRecord::Migration
       grant delete, insert, select, update on application.body_parts to application;
       grant select, update, usage on application.body_parts_body_part_id_seq to application;
 
-      create unique index body_parts_uniq_idx_name on application.body_parts (lower(formal_name));
+      create unique index body_parts_uniq_idx_name on application.body_parts (lower(regexp_replace(formal_name, '\s', 'g')));
 
       comment on table application.body_parts is 'A reference table of basic human physiology.';
     OES

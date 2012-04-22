@@ -7,4 +7,12 @@ module RoutinesHelper
       hash
     end
   end
+
+  def group_implements_by_category(implements)
+    implements.inject({}) do |hash, implement|
+      hash[implement.category] ||= []
+      hash[implement.category] << implement
+      hash
+    end
+  end
 end

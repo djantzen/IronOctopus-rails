@@ -1,0 +1,28 @@
+<h2><%= @activity.name %></h2>
+<div><%= @activity.activity_type.name %></div>
+
+<div><%= @activity.instructions %></div>
+
+<div>
+  <div>Anatomy</div>
+  <ul>
+    <% @activity.body_parts.each do |body_part| %>
+      <li>
+        <%= body_part.common_name %> (<%= body_part.formal_name%>)
+      </li>    
+    <% end %>
+  </ul>
+
+  <div>Implements</div>
+  <ul>
+    <% @activity.implements.each do |implement| %>
+      <li>
+        <%= implement.name %>
+      </li>    
+    <% end %>
+  </ul>
+  
+  
+</div>
+
+<%= link_to("Edit", :action => :edit, :id => @activity.activity_id) %>

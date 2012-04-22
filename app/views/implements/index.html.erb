@@ -1,0 +1,7 @@
+<% @implements.each do |implement| %>
+
+  <div><%= link_to(implement.name, implement) %></div>
+  
+<% end %>
+
+<div><%= link_to("Create New", :action => :new) %></div>

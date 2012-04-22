@@ -1,0 +1,103 @@
+// Place all the styles related to the test controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#routine-builder-panel {
+  margin: 75px;
+}
+
+#activity-facets-panel {
+  border: 1px solid;
+  width: 30%;
+  float: left;
+}
+
+#facet-filtered-activities-panel {
+  border: 1px solid;
+  width: 19%;
+  float: left;
+
+}
+
+#activity-list {
+  list-style: none;
+}
+
+#new-routine {
+  border: 1px solid;
+  width: 50%;
+  float: left;
+}
+
+#activity-sets {
+  border: 1px solid;
+  padding: 25px;
+}
+
+.activity-set-form-template {
+  display: none;
+}
+
+div.activity-set-form {
+  display: block; 
+  border: 1px solid;
+  height: 60px;
+  padding: 5px;
+}
+
+.activity-set-form .handle {
+  width: 100%;
+  border: 1px solid;
+  height: 20px;
+}
+
+.activity-display-name {
+  text-align: center;
+  font-weight: bold; 
+}
+
+div.new-activity-set-form .activity-set-attributes {
+  float: left;
+}
+
+
+.delete-activity-set-button {
+  float: left;
+  border: 1px solid;
+}
+
+.clone-activity-set-button {
+  float: left;
+  border: 1px solid;
+}
+
+.facet {
+  border: 1px solid;
+}
+
+.facet-selected {
+  background-color: green;
+}
+
+.facet-included-activity {
+  display: block;  
+}
+
+.facet-excluded-activity {
+  display: none;  
+}
+
+.faceting-control {
+  display: none;
+}
+
+
+.activity {
+  border: 1px solid;
+}
+
+.ui-selecting { background: #FECA40; }
+.ui-selected { background: #F39814; color: red; }
+
+.ui-selecting .handle { background: #ddd; }
+.ui-selected .handle { background: #cde; }

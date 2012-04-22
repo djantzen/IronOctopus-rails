@@ -1,6 +1,6 @@
 class RoutinesController < ApplicationController
-  include StringUtils
-  include LogUtils
+#  include StringUtils
+#  include LogUtils
   include RoutinesHelper
 
   def index
@@ -46,7 +46,7 @@ class RoutinesController < ApplicationController
   def new
     @routine = Routine.new
     @clients = current_user.clients.map { |u| u.login }
-    @activity_types = ActivityType.find(:all)#.map { |at| at.name } 
+    @activity_types = ActivityType.find(:all)
     @activities = Activity.find(:all, :include => [:body_parts, :implements, :activity_type], :order => :name)
     @implements = Implement.find(:all)
     @body_parts = BodyPart.find(:all)

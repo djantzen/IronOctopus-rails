@@ -1,5 +1,3 @@
-<!--<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script> -->
-
 <div id="routine-builder-panel">  
   <div id="activity-facets-panel">
     
@@ -19,62 +17,69 @@
       </ul>
     </div>
 
-    <div id="body-part-list">
-      <div class="facet-header">Anatomy Involved</div>
-      <ul>
-        <% group_body_parts_by_region(@body_parts).each_pair do |region, body_parts| %>
-          <li>
-            <div class="facet">
-              <%= region %>
-              <span class="faceting-control">
-                <%= region %>
-              </span>
-            </div>
-          </li>
-          <ul>
-            <% body_parts.each do |body_part| %>
-              <li>
-                <div class="facet">
-                  <%= body_part.common_name %> (<%= body_part.formal_name %>)
-                  <span class="faceting-control">
-                    <%= body_part.formal_name %>
-                  </span>
-                </div>
-              </li>
-            <% end %>
-          </ul>
-        <% end %>
-      </ul>
-    </div>
-    <div class="facet-header">Implements</div>
-    <ul id="implement-list">
-      <% @implements.each do |implement| %>
+    <div class="facet-header">Anatomy Involved</div>
+    <ul id="body-part-list">
+      <% group_body_parts_by_region(@body_parts).each_pair do |region, body_parts| %>
         <li>
           <div class="facet">
-            <%= implement.name %>
+            <%= region %>
             <span class="faceting-control">
-              <%= implement.name %>
+              <%= region %>
             </span>
           </div>
         </li>
+        <ul>
+          <% body_parts.each do |body_part| %>
+            <li>
+              <div class="facet">
+                <%= body_part.common_name %> (<%= body_part.formal_name %>)
+                <span class="faceting-control">
+                  <%= body_part.formal_name %>
+                </span>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </ul>
+    
+    <div class="facet-header">Implements</div>
+    <ul id="implement-list">
+      <% group_implements_by_category(@implements).each_pair do |category, implements| %>
+        <li>
+          <div class="facet">
+            <%= category %>
+            <span class="faceting-control">
+              <%= category %>
+            </span>
+          </div>
+        </li>
+        <ul>
+          <% implements.each do |implement| %>
+            <li>
+              <div class="facet">
+                <%= implement.name %>
+                <span class="faceting-control">
+                  <%= implement.name %>
+                </span>
+              </div>
+            </li>
+          <% end %>
+        </ul>        
       <% end %>
     </ul>
   </div>
   
   <div id="facet-filtered-activities-panel">
-    <ul id="activity-list">
+    <div id="activity-list">
       <% @activities.each do |activity| %>
-        <li id="<%= activity.name.gsub(/\s/, '').downcase %>" class="activity facet-included-activity">
+        <div id="<%= activity.name.gsub(/\s/, '').downcase %>" class="activity facet-included-activity">
           <%= activity.name %>
           <%= render :partial => 'activity_sets/form', :locals => { :activity => activity } %>
+
           <span class="faceting-control">
             <%= activity.activity_type.name %>
           </span>
-          <% activity.implements.each do |implement| %>
-            <span class="faceting-control">
-              <%= implement.name %>
-            </span>
-          <% end %>
           <% group_body_parts_by_region(activity.body_parts).each_pair do |region, body_parts| %>
             <span class="faceting-control">
               <%= region %>
@@ -82,12 +87,24 @@
             <% body_parts.each do |body_part| %>
               <span class="faceting-control">
                 <%= body_part.formal_name %>
-              </span>
+              </span> 
             <% end %>
           <% end %>        
-        </li>
+
+          <% group_implements_by_category(activity.implements).each_pair do |category, implements| %>
+            <span class="faceting-control">
+              <%= category %>
+            </span>
+            <% implements.each do |implement| %>
+              <span class="faceting-control">
+                <%= implement.name %>
+              </span> 
+            <% end %>
+          <% end %>        
+
+        </div>
       <% end %>
-    </ul>
+    </div>
   </div>
   
   <div id="new-routine">
@@ -103,8 +120,6 @@
       
       <!-- sortable container for all of our new sets -->
       <ul id="activity-sets"></ul>
-  
-      <input type="button" value="New set" id="new-activity-set-button"/>
   
       <%= submit_tag "Create Routine" %>
   

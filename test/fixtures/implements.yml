@@ -2,21 +2,35 @@
 
 barbell:
   name: Barbell
+  category: Free Weight
+  creator: system
 
 bench:
   name: Bench
+  category: Equipment
+  creator: system
 
 dumbbell:
   name: Dumbbell
+  category: Free Weight
+  creator: system
   
 power_rack:
   name: Power Rack
+  category: Free Weight
+  creator: system
 
 treadmill:
   name: Treadmill
+  category: Cardio Machine
+  creator: system
   
 rowing_machine:
   name: Rowing Machine
+  category: Cardio Machine
+  creator: system
 
 body_weight:
   name: Body Weight
+  category: Resistance
+  creator: system

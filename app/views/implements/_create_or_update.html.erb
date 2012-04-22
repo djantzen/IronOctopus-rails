@@ -1,0 +1,10 @@
+<div>
+  <%= form_for @implement do |form| %>
+    <%= form.label :name, 'Name' %>:
+    <%= form.text_field :name %><br />
+    <%= form.label :category, 'Category' %>
+    <%= form.select :category, Implement.all_categories, :selected => @implement.category %>    
+    <%= submit_tag "Save" %>
+
+  <% end %>
+</div>

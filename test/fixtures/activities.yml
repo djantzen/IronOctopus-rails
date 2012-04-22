@@ -18,7 +18,7 @@ curl_and_press:
   creator: system
   implements: dumbbell
   body_parts: biceps_brachii, triceps_brachii
-
+  
 squat:
   name: "Squat"
   activity_type: weight_training

@@ -4,6 +4,8 @@ class CreateImplements < ActiveRecord::Migration
       create table application.implements (
         implement_id serial primary key,
         name text not null,
+        category text not null default 'None',
+        creator_id integer not null references application.users(user_id) deferrable,
         created_at timestamptz not null default now()
       );
 
@@ -11,7 +13,7 @@ class CreateImplements < ActiveRecord::Migration
       grant delete, insert, select, update on application.implements to application;
       grant select, update, usage on application.implements_implement_id_seq to application;
 
-      create unique index implements_uniq_idx_name on application.implements (lower(name));
+      create unique index implements_uniq_idx_name on application.implements (lower(regexp_replace(name, '\s', 'g')));
 
       comment on table application.implements is 'An implement to be utilized in the performance of an activity.';
     OES

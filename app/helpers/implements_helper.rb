@@ -1,0 +1,2 @@
+module ImplementsHelper
+end
