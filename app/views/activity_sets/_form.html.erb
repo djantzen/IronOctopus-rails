@@ -1,4 +1,4 @@
-<div class="activity-set-form-template">
+<div class=<%= template ? "activity-set-form-template" : "activity-set-form" %> >
   <div class="handle activity-display-name"><%= activity.name %></div>
   <% resistances = (1..100).map { |i| i * 2.5 } %>
   <% paces = (1..15).map { |i| [i,i += 0.5] }.flatten %>

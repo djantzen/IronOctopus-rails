@@ -2,7 +2,7 @@ $(document).ready(function() {
     
     $("#activity-sets").sortable({ handle: ".handle" })
       .disableSelection()
-        .selectable({ filter: ".activity-set-form", // make sure not to mark every child as selected
+        .selectable({ filter: ".activity-set-form", // make sure not to mark every descendant as selected
                       selected: function(event, ui) { console.info($(this));
                       }
                     }); 

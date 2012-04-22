@@ -1,22 +1,14 @@
 class RoutinesController < ApplicationController
-#  include StringUtils
-#  include LogUtils
+
   include RoutinesHelper
+  respond_to :json, :html
 
   def index
-    user = User.find_by_login(params['user_id'])
+    user = current_user
     
-    if user.nil?
-        raise "Wrong user dude"
-    end
+    @routines = Routine.find(:all, :conditions => "trainer_id = #{user.user_id}")
     
-    routines = user.routines
-
-    if routines.nil?
-        raise "No routines dude"
-    end
-    
-    denorm_routines = routines.map do |routine|
+    denorm_routines = @routines.map do |routine|
         next if routine.activity_sets.nil?
         {
             :routine_id => user.login + '_' + as_identifier(routine.name),
@@ -40,7 +32,10 @@ class RoutinesController < ApplicationController
         }
     end
     
-    render :json => denorm_routines
+    respond_with do |format|
+      format.html { render :html => @routines }
+      format.json { render :json => denorm_routines.to_json }
+    end
   end
       
   def new
@@ -55,20 +50,38 @@ class RoutinesController < ApplicationController
 
   def create
     wtf params
-    @routine = normalize_routine(current_user, params[:routine])
+    @routine = normalize_routine(current_user, Routine.new, params[:routine])
     
     @routine.save
-
-#    render :json => activity
+    redirect_to(@routine)
   end
 
   # GET /activities/1.json
   def show
-    routines = Routine.find(params[:id])
-    
-    render :json => routines
+    @routine = Routine.find(params[:id])
+    respond_with do |format|
+      format.html { render :html => @routine }
+      format.json { render :json => denormalize_routine(@routine).to_json }
+    end
   end
 
+  def edit
+    @routine = Routine.find(params[:id])
+    @clients = current_user.clients.map { |u| u.login }
+    @activity_types = ActivityType.find(:all)
+    @activities = Activity.find(:all, :include => [:body_parts, :implements, :activity_type], :order => :name)
+    @implements = Implement.find(:all)
+    @body_parts = BodyPart.find(:all)
+  end
+  
+  def update
+    wtf params
+    routine = params[:id] ? Routine.find(params[:id]) : Routine.new
+    @routine = normalize_routine(current_user, routine, params[:routine])
+    
+    @routine.save
+    redirect_to(@routine)
+  end
 
   def denormalize_routine(routine)
     {
@@ -92,8 +105,7 @@ class RoutinesController < ApplicationController
     }
   end
 
-  def normalize_routine(trainer, routine_hash)
-    routine = Routine.new
+  def normalize_routine(trainer, routine, routine_hash)
     routine.trainer = trainer
     routine.name = routine_hash[:name]
     routine.goal = routine_hash[:goal]
@@ -125,6 +137,12 @@ class RoutinesController < ApplicationController
       routine.activity_sets << activity_set
     end
     
+    routine
+  end
+
+  #eh?
+  def create_or_update(params)
+    routine = params[:id] ? Routine.find(params[:id]) : normalize_routine(current_user, params[:routine])    
     routine
   end
   

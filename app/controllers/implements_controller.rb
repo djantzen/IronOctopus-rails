@@ -34,6 +34,7 @@ class ImplementsController < ApplicationController
     implement = params[:id] ? Implement.find(params[:id]) : Implement.new
 
     implement.name = params[:implement][:name]
+    implement.category = params[:implement][:category]
     implement
   end
 

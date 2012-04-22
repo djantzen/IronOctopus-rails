@@ -1,0 +1,20 @@
+<div>
+  <h2>
+    <%= @routine.name %>
+  </h2>
+  <div>
+    Goal
+  </div>
+  <div>
+    <%= @routine.goal %>
+  </div>
+  <% @routine.activity_sets.each do |activity_set| %>
+    <ul>
+      <li>
+        <%= activity_set.activity.name %>
+      </li>
+    </ul>  
+  <% end %>
+  <%= link_to("Edit", :action => :edit, :id => @routine.routine_id) %>
+  <%= link_to("Routine List", :action => :index) %>
+</div>
