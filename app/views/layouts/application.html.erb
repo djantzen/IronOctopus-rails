@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>IronOctopus</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body class="backgrounded">
-
-<%= yield %>
-
-</body>
+  <head>
+    <title>IronOctopus</title>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body class="backgrounded">
+    <div class="page-positioned"/>
+      <%= link_to("Home", :controller => :site, :action => "index") %>
+      <%= link_to("Logout", :controller => :sessions, :action => "destroy") %>
+  
+      <%= yield %>
+    </div>
+  </body>
 </html>

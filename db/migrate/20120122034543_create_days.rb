@@ -14,8 +14,8 @@ class CreateDays < ActiveRecord::Migration
       create unique index days_idx_full_date on reporting.days (full_date);
       create unique index days_idx_year_month_day on reporting.days (day, month, year);
 
-      grant select on reporting.days to reporter;
-      grant delete, insert, select, update on reporting.days to application;
+      grant select on reporting.days to reader;
+      grant delete, insert, update on reporting.days to writer;
 
       comment on table reporting.days is 'A dimension for date-based reporting.';
     OES

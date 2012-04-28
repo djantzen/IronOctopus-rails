@@ -15,9 +15,9 @@ class CreateActivities < ActiveRecord::Migration
 
       create unique index activities_uniq_idx_name on application.activities (lower(regexp_replace(name, '\s', 'g')));
       
-      grant select on application.activities to reporter;
-      grant delete, insert, select, update on application.activities to application;
-      grant select, update, usage on application.activities_activity_id_seq to application;
+      grant select on application.activities to reader;
+      grant delete, insert, update on application.activities to writer;
+      grant select, update, usage on application.activities_activity_id_seq to writer;
 
       comment on table application.activities is 'All activities or exercises available in the system e.g. ''Bench Press''';
     OES

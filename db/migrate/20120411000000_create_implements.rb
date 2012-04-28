@@ -9,9 +9,9 @@ class CreateImplements < ActiveRecord::Migration
         created_at timestamptz not null default now()
       );
 
-      grant select on application.implements to reporter;
-      grant delete, insert, select, update on application.implements to application;
-      grant select, update, usage on application.implements_implement_id_seq to application;
+      grant select on application.implements to reader;
+      grant delete, insert, update on application.implements to writer;
+      grant select, update, usage on application.implements_implement_id_seq to writer;
 
       create unique index implements_uniq_idx_name on application.implements (lower(regexp_replace(name, '\s', 'g')));
 

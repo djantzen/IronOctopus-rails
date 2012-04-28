@@ -14,8 +14,8 @@ class CreateWork < ActiveRecord::Migration
         primary key (user_id, start_day_id, routine_id, activity_id, measurement_id, start_time, end_time)
       );
 
-      grant select on reporting.work to reporter;
-      grant delete, insert, select, update on reporting.work to application;
+      grant select on reporting.work to reader;
+      grant delete, insert, update on reporting.work to writer;
 
       comment on table reporting.work is 'A running log of metrics achieved during the performance of activities.';
     OES

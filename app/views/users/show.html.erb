@@ -1,0 +1,19 @@
+<div>
+  <div>
+      <%= @user.first_name %> <%= @user.last_name %>
+  </div>
+  <div>
+    <ul>
+      <% @routines.each do |routine| %>
+        <li>
+          <span>
+            <%= link_to routine.name, routine %>
+          </span>
+          <span>
+            <%= routine.goal %>
+          </span>
+        </li>      
+      <% end %>
+    </ul>
+  </div>
+</div>

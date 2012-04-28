@@ -8,8 +8,8 @@ class CreateActivitiesBodyParts < ActiveRecord::Migration
         primary key (activity_id, body_part_id)
       );
 
-      grant select on application.activities_body_parts to reporter;
-      grant delete, insert, select, update on application.activities_body_parts to application;
+      grant select on application.activities_body_parts to reader;
+      grant delete, insert, update on application.activities_body_parts to writer;
 
       comment on table application.activities_body_parts is 'A table mapping activities to body parts';
     OES

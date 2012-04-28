@@ -37,22 +37,21 @@ $(document).ready(function() {
         var facet_target_superkey_node = $(document.createElement("span"));
         facet_target_superkey_node.append(facet_target_superkey);
         facet_target_superkey_node.addClass("faceting-control facet-target-superkey");
-        $(this).append(facet_target_superkey_node);
+        $(this).append(facet_target_superkey_node);    
+    });
     
-        // wire up the delete button        
-        $(this).find(".activity-set-form-template .delete-activity-set-button").click(function() {
-          $(this).parent().remove();
-        });
-        // wire up the clone button
-        $(this).find(".activity-set-form-template .clone-activity-set-button").click(function() {
-          var original = $(this).parent();
-          var clone = original.clone(true);
-          original.find("select").each(function() { // copy over selected attributes since clone() doesn't
-            clone.find("select[name='" + $(this).attr("name") + "']").val($(this).attr("value"));
-          });
-          clone.insertAfter(original);
-        });
-    
+    // wire up the delete button        
+    $(this).find(".delete-activity-set-button").click(function() {
+      $(this).parent().remove();
+    });
+    // wire up the clone button
+    $(this).find(".clone-activity-set-button").click(function() {
+      var original = $(this).parent();
+      var clone = original.clone(true);
+      original.find("select").each(function() { // copy over selected attributes since clone() doesn't
+        clone.find("select[name='" + $(this).attr("name") + "']").val($(this).attr("value"));
+      });
+      clone.insertAfter(original);
     });
     
     /*

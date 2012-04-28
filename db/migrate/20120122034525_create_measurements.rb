@@ -15,9 +15,9 @@ class CreateMeasurements < ActiveRecord::Migration
       create unique index measurement_uniq_idx on application.measurements (
         duration, resistance, pace, distance, calories, incline);
       
-      grant select on application.measurements to reporter;
-      grant delete, insert, select, update on application.measurements to application;
-      grant select, update, usage on application.measurements_measurement_id_seq to application;
+      grant select on application.measurements to reader;
+      grant delete, insert, update on application.measurements to writer;
+      grant select, update, usage on application.measurements_measurement_id_seq to writer;
       
       comment on table application.measurements is 'Measures associated with a set or work record.';
       comment on column application.measurements.duration is 'In seconds.';

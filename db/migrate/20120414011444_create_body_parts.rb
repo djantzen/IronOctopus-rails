@@ -13,9 +13,9 @@ class CreateBodyParts < ActiveRecord::Migration
         updated_at timestamptz not null default now()
       );
 
-      grant select on application.body_parts to reporter;
-      grant delete, insert, select, update on application.body_parts to application;
-      grant select, update, usage on application.body_parts_body_part_id_seq to application;
+      grant select on application.body_parts to reader;
+      grant delete, insert, update on application.body_parts to writer;
+      grant select, update, usage on application.body_parts_body_part_id_seq to writer;
 
       create unique index body_parts_uniq_idx_name on application.body_parts (lower(regexp_replace(formal_name, '\s', 'g')));
 

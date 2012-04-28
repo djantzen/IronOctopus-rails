@@ -108,27 +108,24 @@
   </div>
   
   <div id="new-routine">
-    <%= form_tag "/routines" do %>
+    <%= form_for @routine do |form| %>
 
-      <%= label_tag "routine[client]", "New routine for" %>:
+      <%= form.label "routine[client]", "New routine for" %>:
       <%= select_tag("routine[client]", options_for_select(@clients)) %>
-      
       <div id="new-routine-basic-info">
-        <%= label_tag "routine[name]", "Name" %>: <%= text_field_tag "routine[name]" %>
-        <%= label_tag "routine[goal]", "Goal" %>: <%= text_field_tag "routine[goal]" %>
+        <%= form.label :name, "Name" %>:
+        <%= form.text_field :name %><br />
+        <%= form.label :goal, "Goal" %>:
+        <%= form.text_field :goal %><br />
       </div>
-      
-      <!-- sortable container for all of our new sets -->
       <ul id="activity-sets">
         <% @routine.activity_sets.each do |activity_set| %>
           <%= render :partial => 'activity_sets/form', :locals => { :activity => activity_set.activity, :template => false } %>
         <% end %>        
       </ul>
-  
-      <%= submit_tag "Create Routine" %>
-  
+      <%= submit_tag "Save" %>
+      <%= link_to "Cancel", "/site" %>
     <% end %>
-    
   </div>
 
 </div>

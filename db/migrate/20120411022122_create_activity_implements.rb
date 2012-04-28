@@ -8,8 +8,8 @@ class CreateActivityImplements < ActiveRecord::Migration
         primary key (activity_id, implement_id)
       );
 
-      grant select on application.activities_implements to reporter;
-      grant delete, insert, select, update on application.activities_implements to application;
+      grant select on application.activities_implements to reader;
+      grant delete, insert, update on application.activities_implements to writer;
 
       comment on table application.activities_implements is 'A mapping table joining activities to implements.';
     OES

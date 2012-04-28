@@ -9,9 +9,9 @@ class CreateActivityTypes < ActiveRecord::Migration
       
       create unique index activity_types_uniq_idx_name on application.activity_types (name);
       
-      grant delete, insert, select, update on application.activity_types to application;
-      grant select on application.activity_types to reporter;
-      grant select, update, usage on application.activity_types_activity_type_id_seq to application;
+      grant select on application.activity_types to reader;
+      grant delete, insert, update on application.activity_types to writer;
+      grant select, update, usage on application.activity_types_activity_type_id_seq to writer;
       comment on table application.activity_types is 'Organizes activities into categories like ''Cardiovascular'', ''Weight Training'', ''Plyometrics''';
     OES
   end

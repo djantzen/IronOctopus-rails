@@ -1,4 +1,6 @@
 IronOctopus::Application.routes.draw do
+  get "site/index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -50,7 +52,7 @@ IronOctopus::Application.routes.draw do
   # just remember to delete public/index.html.
   root :to => 'welcome#index'
   match 'login' => 'sessions#new'
- 
+  match 'site' => 'site#index'
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
@@ -58,6 +60,9 @@ IronOctopus::Application.routes.draw do
   # match ':controller(/:action(/:id(.:format)))'
 
   resources :sessions
+  get "log_out" => "sessions#destroy", :as => "log_out"
+  get "log_in" => "sessions#new", :as => "log_in"
+  
   resources :activities
   resources :implements
   resources :body_parts

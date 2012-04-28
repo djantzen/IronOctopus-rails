@@ -15,8 +15,8 @@ class CreateActivitySets < ActiveRecord::Migration
       create unique index activity_sets_uniq_idx_routine_id_position on application.activity_sets
         (routine_id, position);
 
-      grant select on application.activity_sets to reporter;
-      grant delete, insert, select, update on application.activity_sets to application;
+      grant select on application.activity_sets to reader;
+      grant delete, insert, update on application.activity_sets to writer;
 
       comment on table application.activity_sets is 'Maps routines, activities and activity sets to a user.';
       comment on column application.activity_sets.position is

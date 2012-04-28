@@ -77,6 +77,9 @@ class RoutinesController < ApplicationController
   def update
     wtf params
     routine = params[:id] ? Routine.find(params[:id]) : Routine.new
+    routine.activity_sets.each do |activity_set|
+      activity_set.delete
+    end
     @routine = normalize_routine(current_user, routine, params[:routine])
     
     @routine.save

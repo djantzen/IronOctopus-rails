@@ -9,8 +9,8 @@ class CreateUserRelationships < ActiveRecord::Migration
         primary key (trainer_id, client_id)
       );
 
-      grant select on application.user_relationships to reporter;
-      grant delete, insert, select, update on application.user_relationships to application;
+      grant select on application.user_relationships to reader;
+      grant delete, insert, update on application.user_relationships to writer;
 
       comment on table application.user_relationships is 'A table to construct the graph of user relationships';
     OES

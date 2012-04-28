@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  respond_to :json, :html
+
   def new 
     @user = User.new
   end
@@ -14,21 +16,21 @@ class UsersController < ApplicationController
   end
   
   def index
-    users = User.find(:all)
-    render :json => users
-  end
-
-  def login
-    return "you did it!"
+#    @users = User.find(:all)
+#    render :json => users
   end
 
   # GET /users/1.json
   def show
-    puts "PARAMS #{params.inspect}"
+    @user = User.find(params['id'])
+    @user.password_digest = nil
+    @routines = @user.routines
     
-    user = User.find(params['id'])
-    user.password = nil
-    render :json => user
+    respond_with do |format|
+      format.html { render :html => @user }
+      format.json { render :json => @user.to_json }
+    end
+     
   end
 
   
