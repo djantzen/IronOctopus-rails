@@ -3,7 +3,7 @@ require 'test_helper'
 class RoutinesControllerTest < ActionController::TestCase
     include LogUtils
   
-    test "fetch the JSON representation of sallys push pull upper routine" do
+    test "fetch the JSON representation of sallys routines" do
       params = { :user_id => 'sally_the_client', :format => 'json' }
   
       get :index, params
@@ -19,7 +19,6 @@ class RoutinesControllerTest < ActionController::TestCase
       params = {
         :trainer => 'bob_the_trainer',
         :client => 'sally_the_client',
-        :owner => 'sally_the_client',
         :name => 'Leg Blaster',
         :goal => 'Blast yer gams!',
         :activity_sets => [

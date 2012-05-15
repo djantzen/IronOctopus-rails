@@ -2,6 +2,9 @@ class SessionsController < ApplicationController
 
   def new
   end
+  
+  def register_new_device
+  end
 
   def create
     user = User.find_by_login(params[:login])
@@ -12,6 +15,7 @@ class SessionsController < ApplicationController
       flash.now.alert = "Invalid email or password"
       render :new
     end
+    
   end
   
   def destroy

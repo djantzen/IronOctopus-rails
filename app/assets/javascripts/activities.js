@@ -1,21 +1,21 @@
 $(document).ready(function() {
 
   $("#available-body-part-list div.activity-attribute").click(function() {
-    if ($(this).hasClass("selected-activity-attribute")) {
-      $(this).removeClass("selected-activity-attribute");
+    if ($(this).hasClass("ui-state-active")) {
+      $(this).removeClass("ui-state-active");
       $(this).find("input.activity-attribute-control").remove();
     } else {
-      $(this).addClass("selected-activity-attribute");
+      $(this).addClass("ui-state-active");
       $(this).append("<input name='activity[body_parts][]' type='hidden' value='" + $(this).attr("id") + "' class='activity-attribute-control'>");
     }
   });
 
   $("#available-implement-list div.activity-attribute").click(function() {
-    if ($(this).hasClass("selected-activity-attribute")) {
-      $(this).removeClass("selected-activity-attribute");
+    if ($(this).hasClass("ui-state-active")) {
+      $(this).removeClass("ui-state-active");
       $(this).find("input.activity-attribute-control").remove();
     } else {
-      $(this).addClass("selected-activity-attribute");
+      $(this).addClass("ui-state-active");
       $(this).append("<input name='activity[implements][]' type='hidden' value='" + $(this).attr("id") + "' class='activity-attribute-control'>");
     }
   });

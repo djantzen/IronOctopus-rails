@@ -7,9 +7,11 @@
 */
 
 .backgrounded {
-  background-image: url('iron_octopus_by_mr_sloow.jpg');
+/*  background-image: url('iron_octopus_by_mr_sloow.jpg');
   background-repeat: no-repeat;
   background-size: 100% auto;
+*/
+  background-color: lightgrey;
 }
 
 .page-positioned {

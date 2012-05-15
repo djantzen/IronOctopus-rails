@@ -1,11 +1,11 @@
 $(document).ready(function() {
     
     $("#activity-sets").sortable({ handle: ".handle" })
-      .disableSelection()
-        .selectable({ filter: ".activity-set-form", // make sure not to mark every descendant as selected
-                      selected: function(event, ui) { console.info($(this));
-                      }
-                    }); 
+      .disableSelection();
+//        .selectable({ filter: ".activity-set-form", // make sure not to mark every descendant as selected
+//                      selected: function(event, ui) { console.info($(this));
+//                      }
+//                    }); 
 
     $(".activity").click(function() {
       var new_activity_set = $(this).find(".activity-set-form-template").clone(true);
@@ -40,12 +40,19 @@ $(document).ready(function() {
         $(this).append(facet_target_superkey_node);    
     });
     
+    $(".clear-selections").click(function() {
+      $(this).parent().find(".ui-state-active").each(function() {
+        $(this).removeClass("ui-state-active");
+      });
+      update_facet_filtered_activities(false);
+    });
+    
     // wire up the delete button        
-    $(this).find(".delete-activity-set-button").click(function() {
+    $(".delete-activity-set-button").click(function() {
       $(this).parent().remove();
     });
     // wire up the clone button
-    $(this).find(".clone-activity-set-button").click(function() {
+    $(".clone-activity-set-button").click(function() {
       var original = $(this).parent();
       var clone = original.clone(true);
       original.find("select").each(function() { // copy over selected attributes since clone() doesn't
@@ -60,7 +67,7 @@ $(document).ready(function() {
     var update_facet_filtered_activities = function(restrict_results) {
       
       // Get the key describing currently selected facets  
-      var facet_key = new RegExp(generate_facet_key($("#activity-facets-panel div.facet-selected .faceting-control"), false));
+      var facet_key = new RegExp(generate_facet_key($("#activity-facets-panel div.ui-state-active .faceting-control"), false));
       // Only examine activities that might change as a result of the facet addition or removal.
       var activities = restrict_results ? $("#activity-list .facet-included-activity"):
         $("#activity-list .facet-excluded-activity");
@@ -87,11 +94,11 @@ $(document).ready(function() {
     $("#activity-facets-panel div.facet").click(function() {
       var facet_name = $(this).find(".faceting-control").text().trim();
       var restrict_results = true;
-      if ($(this).hasClass("facet-selected")) {
-        $(this).removeClass("facet-selected");
+      if ($(this).hasClass("ui-state-active")) {
+        $(this).removeClass("ui-state-active");
         restrict_results = false;
       } else {
-        $(this).addClass("facet-selected");
+        $(this).addClass("ui-state-active");
       }
       update_facet_filtered_activities(restrict_results);
     });

@@ -4,11 +4,11 @@ class ActivitiesController < ApplicationController
   
   def index
 
-    @activities = Activity.find(:all)
+    @activities = Activity.find(:all, :include => :activity_type)
 
     json_activities = @activities.map do |a|
       {
-        :activity_id => a.name.to_identifier,
+        :activity_key => a.name.to_identifier,
         :name => a.name,
         :activity_type => a.activity_type.name
       }
@@ -25,7 +25,7 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new
     @body_parts = BodyPart.find(:all)
     @implements = Implement.find(:all)
-    @activity_types = ActivityType.find(:all)
+    @activity_types = ActivityType.find(:all, :order => :name)
   end
 
   def create

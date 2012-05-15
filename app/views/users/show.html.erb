@@ -1,13 +1,13 @@
 <div>
   <div>
-      <%= @user.first_name %> <%= @user.last_name %>
+    <%= @user.first_name %> <%= @user.last_name %>
   </div>
   <div>
     <ul>
       <% @routines.each do |routine| %>
         <li>
           <span>
-            <%= link_to routine.name, routine %>
+            <%= link_to(routine.name, edit_user_routine_path(@user, routine)) %>
           </span>
           <span>
             <%= routine.goal %>
@@ -15,5 +15,8 @@
         </li>      
       <% end %>
     </ul>
+    <%= link_to_if @user.trainers.include?(current_user), "Create new routine for #{@user.first_name}",
+        new_user_routine_path(@user) %>
+  
   </div>
 </div>

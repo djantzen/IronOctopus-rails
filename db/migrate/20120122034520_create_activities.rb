@@ -13,7 +13,7 @@ class CreateActivities < ActiveRecord::Migration
         updated_at timestamptz not null default now()
       );
 
-      create unique index activities_uniq_idx_name on application.activities (lower(regexp_replace(name, '\s', 'g')));
+      create unique index activities_uniq_idx_name on application.activities (lower(regexp_replace(name, '\s', '', 'g')));
       
       grant select on application.activities to reader;
       grant delete, insert, update on application.activities to writer;

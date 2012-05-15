@@ -1,13 +1,71 @@
+<script>
+	$(document).ready(function() {
+		$( "#site-listings" ).tabs();
+	});
+</script>
 
 <div id="site-listings">
+  <ul>
+    <li><a href="#client-list">Clients</a></li>
+    <li><a href="#routine-list">Routines</a></li>
+    <li><a href="#activity-list">Activities</a></li>
+    <li><a href="#implement-list">Implements</a></li>
+  </ul>
   <div id="client-list">
     <h2>Clients</h2>
-      <ul>
-        <% @clients.each do |client| %>
-          <li>
-            <%= link_to client.last_name + ", " + client.first_name, client %>
-          </li>
-        <% end %>
-      <ul>
+    <ul>
+      <% @clients.each do |client| %>
+        <li>
+          <%= link_to client.last_name + ", " + client.first_name, client %>
+        </li>
+      <% end %>
+      <div>
+        <%= link_to("Create New", :controller => :users, :action => :new) %>
+      </div>
+    <ul>
   </div>
+
+  <div id="routine-list">
+    <h2>Routines</h2>
+    <ul>
+      <% @routines.each do |routine| %>
+        <li>
+        <%= link_to(routine.name, edit_user_routine_path(routine.client, routine)) %>
+        </li>
+      <% end %>
+      <div>
+        <%= link_to("Create New", new_routine_path) %>
+      </div>
+    <ul>
+  </div>
+
+  <div id="activity-list">
+    <h2>Activities</h2>
+    <ul>
+      <% @activities.each do |activity| %>
+        <li>
+          <%= link_to activity.name, activity %>
+        </li>
+      <% end %>
+      <div>
+        <%= link_to("Create New", :controller => :activities, :action => :new) %>
+      </div>
+    <ul>
+  </div>
+
+  <div id="implement-list">
+    <h2>Implements</h2>
+    <ul>
+      <% @implements.each do |implement| %>
+        <li>
+          <%= link_to implement.name, implement %>
+        </li>
+      <% end %>
+      <div>
+        <%= link_to("Create New", :controller => :implements, :action => :new) %>
+      </div>
+    <ul>
+  </div>
+
+
 </div>

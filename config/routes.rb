@@ -67,7 +67,7 @@ IronOctopus::Application.routes.draw do
   resources :implements
   resources :body_parts
   resources :routines
-  
+  resources :devices
   resources :work
  
   

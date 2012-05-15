@@ -2,19 +2,20 @@
   <%= form_for @activity do |form| %>
     <%= form.label :name, 'Name' %>:
     <%= form.text_field :name %><br />
-    <%= form.label :instructions, 'Instructions' %>:
+    <%= form.label :instructions, "Instructions" %>:
     <%= form.text_field :instructions %><br />
-    <%= form.label :activity_type, 'Activity Type' %>:
+    <%= form.label :activity_type, "Activity Type" %>:
     <%= form.select :activity_type,
-      @activity_types.map { |activity_type | [activity_type.name, activity_type.activity_type_id] }, :selected => @activity.activity_type.activity_type_id %><br />
+      @activity_types.map { |activity_type | [activity_type.name, activity_type.activity_type_id] },
+        :selected => @activity.activity_type.nil? ? nil : @activity.activity_type.activity_type_id %><br />
     
-    <div id="attribute-panel">
+    <div id="attribute-panel" class="ui-state-default">
   
       <div>Anatomy Involved</div>
       <div id="available-body-part-list">
         <% @body_parts.each do |body_part| %>
           <% if @activity.body_parts.include?(body_part) %>
-            <div id="<%= body_part.formal_name %>" class="activity-attribute selected-activity-attribute">
+            <div id="<%= body_part.formal_name %>" class="activity-attribute ui-state-active">
               <%= body_part.common_name %> (<%= body_part.formal_name %>)
               <%= hidden_field_tag "activity[body_parts][]", body_part.formal_name, :class => "activity-attribute-control" %> 
             </div>
@@ -30,7 +31,7 @@
       <div id="available-implement-list">
         <% @implements.each do |implement| %>
           <% if @activity.implements.include?(implement) %>
-            <div id="<%= implement.name %>" class="activity-attribute selected-activity-attribute">
+            <div id="<%= implement.name %>" class="activity-attribute ui-state-active">
               <%= implement.name %>
               <%= hidden_field_tag "activity[implements][]", implement.name, :class => "activity-attribute-control" %>
             </div>     

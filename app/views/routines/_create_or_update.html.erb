@@ -1,11 +1,12 @@
 <div id="routine-builder-panel">  
   <div id="activity-facets-panel">
+  <div class="clear-selections ui-state-default">Clear Selections</div>
     
     <div id="activity-type-list">
       <div class="facet-header">Type of Activity</div>
       <ul>
         <% @activity_types.each do |activity_type| %>
-          <li>
+          <li class="ui-state-default">
             <div class="facet">
               <%= activity_type.name %>
               <span class="faceting-control">
@@ -20,7 +21,7 @@
     <div class="facet-header">Anatomy Involved</div>
     <ul id="body-part-list">
       <% group_body_parts_by_region(@body_parts).each_pair do |region, body_parts| %>
-        <li>
+        <li class="ui-state-default">
           <div class="facet">
             <%= region %>
             <span class="faceting-control">
@@ -30,7 +31,7 @@
         </li>
         <ul>
           <% body_parts.each do |body_part| %>
-            <li>
+            <li class="ui-state-default">
               <div class="facet">
                 <%= body_part.common_name %> (<%= body_part.formal_name %>)
                 <span class="faceting-control">
@@ -46,7 +47,7 @@
     <div class="facet-header">Implements</div>
     <ul id="implement-list">
       <% group_implements_by_category(@implements).each_pair do |category, implements| %>
-        <li>
+        <li class="ui-state-default">
           <div class="facet">
             <%= category %>
             <span class="faceting-control">
@@ -56,7 +57,7 @@
         </li>
         <ul>
           <% implements.each do |implement| %>
-            <li>
+            <li class="ui-state-default">
               <div class="facet">
                 <%= implement.name %>
                 <span class="faceting-control">
@@ -73,9 +74,9 @@
   <div id="facet-filtered-activities-panel">
     <div id="activity-list">
       <% @activities.each do |activity| %>
-        <div id="<%= activity.name.gsub(/\s/, '').downcase %>" class="activity facet-included-activity">
+        <div id="<%= activity.name.to_identifier %>" class="activity facet-included-activity">
           <%= activity.name %>
-          <%= render :partial => 'activity_sets/form', :locals => { :activity => activity, :template => true } %>
+          <%= render :partial => "activity_sets/form", :locals => { :activity => activity, :template => true } %>
 
           <span class="faceting-control">
             <%= activity.activity_type.name %>
@@ -89,7 +90,7 @@
                 <%= body_part.formal_name %>
               </span> 
             <% end %>
-          <% end %>        
+          <% end %>
 
           <% group_implements_by_category(activity.implements).each_pair do |category, implements| %>
             <span class="faceting-control">
@@ -107,12 +108,20 @@
     </div>
   </div>
   
-  <div id="new-routine">
+  <div id="routine-activity-set-list">
     <%= form_for @routine do |form| %>
-
-      <%= form.label "routine[client]", "New routine for" %>:
-      <%= select_tag("routine[client]", options_for_select(@clients)) %>
-      <div id="new-routine-basic-info">
+      <%= form.label "routine[client]", "Client" %>:
+      <%= hidden_field_tag "routine[trainer]", @trainer.login %>
+      <% if @client.nil? %>
+        <%= select_tag "routine[client]", options_for_select(@clients) %>
+      <% else %>
+        <%= hidden_field_tag "routine[client]", @client.login %>
+        <span>
+          <%= @client.first_name %>
+          <%= @client.last_name %>
+        </span>
+      <% end %>     
+      <div id="routine-basic-info">
         <%= form.label :name, "Name" %>:
         <%= form.text_field :name %><br />
         <%= form.label :goal, "Goal" %>:
