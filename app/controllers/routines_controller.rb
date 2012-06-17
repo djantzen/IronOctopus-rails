@@ -31,8 +31,7 @@ class RoutinesController < ApplicationController
   def create
     routine = normalize_routine(Routine.new, params[:routine])
     routine.save
-    redirect_to(routine.client)
-#     redirect_to(user_routine_path, routine.client, routine)
+    redirect_to user_routine_path(routine.client, routine)
   end
 
   def show

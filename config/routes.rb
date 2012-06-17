@@ -68,12 +68,13 @@ IronOctopus::Application.routes.draw do
   resources :body_parts
   resources :routines
   resources :devices
-  resources :work
+#  resources :work
  
   
 # (.:format)  optional
 # match => "/:year(/:month(/:day))" => info#about, :constraints => { :year => /\d{4}/ }
   resources :users do
     resources :routines
+    resources :work
   end
 end

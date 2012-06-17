@@ -14,4 +14,8 @@ class Routine < ActiveRecord::Base
     as_identifier(name)
   end
   
+  def find_by_natural_key(key)
+      
+  end
+  
 end
