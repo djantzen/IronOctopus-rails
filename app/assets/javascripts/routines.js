@@ -1,11 +1,11 @@
 $(document).ready(function() {
     
     $("#activity-sets").sortable({ handle: ".handle" })
-      .disableSelection();
-//        .selectable({ filter: ".activity-set-form", // make sure not to mark every descendant as selected
-//                      selected: function(event, ui) { console.info($(this));
-//                      }
-//                    }); 
+      .disableSelection()
+        .selectable({ filter: ".activity-set-form", // make sure not to mark every descendant as selected
+                      selected: function(event, ui) { console.info($(this));
+                      }
+                    }); 
 
     $(".activity").click(function() {
       var new_activity_set = $(this).find(".activity-set-form-template").clone(true);

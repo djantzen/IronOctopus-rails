@@ -1,8 +1,27 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-
 push_pull_upper_bench_press:
-  activity: bench_press
-  repetitions: 10
-  measurement: bench_press_measurement_one
   routine: sallys_push_pull_upper
+  activity: bench_press
+  position: 1.0
+  repetitions: 10
+  measurement: resistance_one
 
+push_pull_upper_curl_and_press:
+  routine: sallys_push_pull_upper
+  activity: curl_and_press
+  position: 2.0
+  repetitions: 8
+  measurement: resistance_one
+
+sallys_whole_body_mix_squat:
+  routine: sallys_whole_body_mix
+  activity: squat
+  position: 1.0
+  repetitions: 6
+  measurement: resistance_one
+  
+sallys_whole_body_mix_treadmill_run:
+  routine: sallys_whole_body_mix
+  activity: treadmill_run
+  position: 2.0
+  measurement: cardio_one
+  

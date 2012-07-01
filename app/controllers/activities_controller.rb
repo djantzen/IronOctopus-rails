@@ -3,7 +3,7 @@ class ActivitiesController < ApplicationController
   respond_to :json, :html
   
   def index
-    @activities = Activity.find(:all, :include => :activity_type)
+    @activities = Activity.find(:all, :include => :activity_type, :order => :name)
 
     json_activities = @activities.map do |a|
       {

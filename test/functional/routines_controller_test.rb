@@ -10,8 +10,9 @@ class RoutinesControllerTest < ActionController::TestCase
   
       routines = JSON.parse(@response.body)
       sallys_push_pull_upper = routines[0]
-      
+      sallys_whole_body_mix = routines[1]
       assert_equal 'Push Pull Upper', sallys_push_pull_upper['name']
+      assert_equal 'Whole Body Mix', sallys_whole_body_mix['name']      
     end
     
     test "normalize a new routine for sally" do
@@ -34,7 +35,7 @@ class RoutinesControllerTest < ActionController::TestCase
           }
         ]
       }
-      routine = controller.normalize_routine(params)
+      routine = controller.normalize_routine(Routine.new, params)
       assert_equal 'Leg Blaster', routine.name
       assert_equal 2, routine.activity_sets.length
     end

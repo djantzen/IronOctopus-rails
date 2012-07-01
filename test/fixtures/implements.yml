@@ -10,6 +10,11 @@ bench:
   category: Equipment
   creator: system
 
+box:
+  name: Box
+  category: Equipment
+  creator: system
+
 dumbbell:
   name: Dumbbell
   category: Free Weight

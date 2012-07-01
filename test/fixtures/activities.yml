@@ -6,6 +6,12 @@ bench_press:
   creator: system
   implements: barbell, bench
   
+box_jump:
+  name: "Box Jump"
+  activity_type: plyometric
+  creator: system
+  implements: box
+  
 dumbbell_bench_press:
   name: "Dumbbell Bench Press"
   activity_type: weight_training

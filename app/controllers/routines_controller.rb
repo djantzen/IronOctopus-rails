@@ -5,7 +5,7 @@ class RoutinesController < ApplicationController
 
   def index
     user = User.find_by_login(params[:user_id])
-    @routines = Routine.find(:all, :conditions => "client_id = #{user.user_id}")
+    @routines = Routine.find(:all, :conditions => "client_id = #{user.user_id}", :order => :name)
     
     denorm_routines = @routines.map do |routine|
       denormalize_routine(routine)
@@ -74,6 +74,7 @@ class RoutinesController < ApplicationController
         {
           :activity => set.activity.name,
           :repetitions => set.repetitions,
+          :distance => set.measurement.distance,
           :position => set.position,
           :duration => set.measurement.duration,
           :pace => set.measurement.pace,

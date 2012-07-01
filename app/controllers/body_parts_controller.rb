@@ -31,7 +31,7 @@ class BodyPartsController < ApplicationController
   
   private
   def create_or_update(params)
-    wtf params
+    wtf? params
     body_part = params[:id] ? BodyPart.find(params[:id]) : BodyPart.new
 
     body_part.common_name = params[:body_part][:common_name]
