@@ -91,26 +91,26 @@ class RoutinesController < ApplicationController
     routine.name = params[:name]
     routine.goal = params[:goal]
     routine.client = User.find_by_login(params[:client]) if routine.client.nil?
-    
+    wtf? params    
     position = 0
     params[:activity_sets].each do |activity_set_hash|
       position += 1
       activity = Activity.find_by_name(activity_set_hash[:activity])      
-      
+       
       measurement_hash = {
         :resistance => activity_set_hash[:resistance],
         :distance => activity_set_hash[:distance],
+        :duration => activity_set_hash[:duration],
         :pace => activity_set_hash[:pace],
         :calories => activity_set_hash[:calories],
         :incline => activity_set_hash[:incline]
       }
 
       measurement = Measurement.find_or_create(measurement_hash)
-      
       activity_set = ActivitySet.new
       activity_set.routine = routine
       activity_set.activity = activity
-      activity_set.repetitions = activity_set_hash[:repetitions]
+      activity_set.repetitions = activity_set_hash[:repetitions] || 1
       activity_set.measurement = measurement
       activity_set.position = position
       

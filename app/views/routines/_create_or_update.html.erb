@@ -76,7 +76,7 @@
       <% @activities.each do |activity| %>
         <div id="<%= activity.name.to_identifier %>" class="activity facet-included-activity">
           <%= activity.name %>
-          <%= render :partial => "activity_sets/form", :locals => { :activity => activity, :template => true } %>
+          <%= render :partial => "activity_sets/form", :locals => { :activity => activity, :activity_set => nil, :template => true } %>
 
           <span class="faceting-control">
             <%= activity.activity_type.name %>
@@ -129,7 +129,8 @@
       </div>
       <ul id="activity-sets">
         <% @routine.activity_sets.each do |activity_set| %>
-          <%= render :partial => 'activity_sets/form', :locals => { :activity => activity_set.activity, :template => false } %>
+          <%= render :partial => 'activity_sets/form', :locals => { :activity => activity_set.activity,
+                                                                    :activity_set => activity_set, :template => false } %>
         <% end %>        
       </ul>
       <%= submit_tag "Save" %>

@@ -7,35 +7,33 @@
   <div class="activity-set-attributes">
     <%= hidden_field_tag "routine[activity_sets][][activity]", activity.name %>
     <% if activity.activity_type.name.eql? "Weight Training" %>    
-      <span class="weight-training-activity-set">
-        <%= label_tag "routine[activity_sets][][repetitions]", "Repetitions" %>:
-        <%= select_tag("routine[activity_sets][][repetitions]", options_for_select((1..20).to_a, 8)) %>
-        <%= label_tag "routine[activity_sets][][resistance]", "Resistance" %>:
-        <%= select_tag("routine[activity_sets][][resistance]", options_for_select(resistances, 100.0)) %>
-      </span>
+      <div class="weight-training-activity-set">
+       <%= render :partial => "measure_selector", :locals => { :measure => "Repetitions", :interval => 1,
+                                                               :initial_value => activity_set.nil? ? 1 : activity_set.repetitions } %>
+       <%= render :partial => "measure_selector", :locals => { :measure => "Resistance", :interval => 2.5,
+                                                               :initial_value => activity_set.nil? ? 1 : activity_set.measurement.resistance } %>
+      </div>
     <% elsif activity.activity_type.name.eql? "Cardiovascular" %>    
-      <span class="cardiovascular-activity-set">
-        <%= hidden_field_tag "routine[activity_sets][][repetitions]", 1 %>
-        <%= label_tag "routine[activity_sets][][distance]", "Distance" %>:
-        <%= select_tag("routine[activity_sets][][distance]", options_for_select((1..20).to_a, 8)) %>
-        <%= label_tag "routine[activity_sets][][pace]", "Pace" %>:
-        <%= select_tag("routine[activity_sets][][pace]", options_for_select(paces, 6)) %>
-        <%= label_tag "routine[activity_sets][][incline]", "Incline" %>:
-        <%= select_tag("routine[activity_sets][][incline]", options_for_select(paces, 6)) %>
-        <%= label_tag "routine[activity_sets][][duration]", "Duration" %>:
-        <%= select_tag("routine[activity_sets][][duration]", options_for_select(durations, 900)) %>
-      </span>
+      <div class="cardiovascular-activity-set">
+        <%= render :partial => "measure_selector", :locals => { :measure => "Distance", :interval => 1,
+                                                               :initial_value => activity_set.nil? ? 1 : activity_set.measurement.distance } %>
+        <%= render :partial => "measure_selector", :locals => { :measure => "Pace", :interval => 1,
+                                                               :initial_value => activity_set.nil? ? 1 : activity_set.measurement.pace } %>
+        <%= render :partial => "measure_selector", :locals => { :measure => "Incline", :interval => 1,
+                                                               :initial_value => activity_set.nil? ? 1 : activity_set.measurement.incline } %>
+        <%= render :partial => "measure_selector", :locals => { :measure => "Duration", :interval => 1,
+                                                               :initial_value => activity_set.nil? ? 1 : activity_set.measurement.duration } %>
+      </div>
     <% elsif activity.activity_type.name.eql? "Rest" %>    
-      <span class="rest-activity-set">
-        <%= hidden_field_tag "routine[activity_sets][][repetitions]", 1 %>
-        <%= label_tag "routine[activity_sets][][duration]", "Duration" %>:
-        <%= select_tag("routine[activity_sets][][duration]", options_for_select(durations, 60)) %>
-      </span>
+      <div class="rest-activity-set">
+        <%= render :partial => "measure_selector", :locals => { :measure => "Duration", :interval => 1,
+                                                               :initial_value => activity_set.nil? ? 1 : activity_set.measurement.duration } %>
+      </div>
     <% elsif activity.activity_type.name.eql? "Plyometric" %>    
-      <span class="plyometric-training-activity-set">
-        <%= label_tag "routine[activity_sets][][repetitions]", "Repetitions" %>:
-        <%= select_tag("routine[activity_sets][][repetitions]", options_for_select((1..20).to_a, 8)) %>
-      </span>
+      <div class="plyometric-training-activity-set">
+        <%= render :partial => "measure_selector", :locals => { :measure => "Repetitions", :interval => 1,
+                                                               :initial_value => activity_set.nil? ? 1 : activity_set.repetitions } %>
+      </div>
     <% end %>        
   </div>
   <span class="delete-activity-set-button">delete</span>

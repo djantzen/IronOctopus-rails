@@ -40,7 +40,7 @@
 div.activity-set-form {
   display: block; 
   border: 1px solid;
-  height: 60px;
+  height: 100px;
   padding: 5px;
 }
 
@@ -100,3 +100,7 @@ div.new-activity-set-form .activity-set-attributes {
 
 .ui-selecting .handle { background: #ddd; }
 .ui-selected .handle { background: #cde; }
+
+input.measure {
+  max-width: 50px;  
+}

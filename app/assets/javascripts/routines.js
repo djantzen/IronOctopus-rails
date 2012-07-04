@@ -1,11 +1,11 @@
 $(document).ready(function() {
     
     $("#activity-sets").sortable({ handle: ".handle" })
-      .disableSelection()
-        .selectable({ filter: ".activity-set-form", // make sure not to mark every descendant as selected
+      .disableSelection();
+/*        .selectable({ filter: ".activity-set-form", // make sure not to mark every descendant as selected
                       selected: function(event, ui) { console.info($(this));
                       }
-                    }); 
+                    }); */
 
     $(".activity").click(function() {
       var new_activity_set = $(this).find(".activity-set-form-template").clone(true);
@@ -103,4 +103,22 @@ $(document).ready(function() {
       update_facet_filtered_activities(restrict_results);
     });
 
+    $(".increment").click(function() {
+      var measure_selector_node = $(this).parents("div.measure_selector");
+      var measure_node = measure_selector_node.find(".measure");
+      var measure = parseFloat(measure_node.val());    
+      var interval = parseFloat(measure_selector_node.find("span.measure_interval").text());
+      console.info(measure + interval);
+      measure_node.val(measure + interval);    
+    });
+  
+    $(".decrement").click(function() {
+      var measure_selector_node = $(this).parents("div.measure_selector");
+      var measure_node = measure_selector_node.find(".measure");
+      var measure = parseFloat(measure_node.val());    
+      var interval = parseFloat(measure_selector_node.find("span.measure_interval").text());
+      console.info(measure - interval);
+      measure_node.val(measure - interval);    
+    });
+  
 });

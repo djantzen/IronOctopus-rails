@@ -3,7 +3,7 @@ class ActivitiesController < ApplicationController
   respond_to :json, :html
   
   def index
-    @activities = Activity.find(:all, :include => :activity_type, :order => :name)
+    @activities = Activity.all(:include => :activity_type, :order => :name)
 
     json_activities = @activities.map do |a|
       {
@@ -21,9 +21,9 @@ class ActivitiesController < ApplicationController
 
   def new
     @activity = Activity.new
-    @body_parts = BodyPart.find(:all)
-    @implements = Implement.find(:all)
-    @activity_types = ActivityType.find(:all, :order => :name)
+    @body_parts = BodyPart.all
+    @implements = Implement.all
+    @activity_types = ActivityType.all(:order => :name)
   end
 
   def create
@@ -40,9 +40,9 @@ class ActivitiesController < ApplicationController
 
   def edit
     @activity = Activity.find(params[:id])
-    @body_parts = BodyPart.find(:all)
-    @implements = Implement.find(:all)        
-    @activity_types = ActivityType.find(:all)
+    @body_parts = BodyPart.all
+    @implements = Implement.all
+    @activity_types = ActivityType.all(:order => :name)
   end
   
   def update
