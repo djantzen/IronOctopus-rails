@@ -60,7 +60,7 @@ migrate_test:
   username: administrator
   password: administrator
 
-test:
+test: &test
   adapter: postgresql
   encoding: unicode
   database: iron_octopus_test
@@ -83,3 +83,6 @@ production:
   pool: 5
   username: application
   password: application
+
+cucumber:
+  <<: *test

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
-  respond_to :json, :html
+  respond_to :html
+#  before_filter :authenticate_user
 
   def new 
     @user = User.new
@@ -8,8 +9,9 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(params[:user])
-    @user.trainers << current_user
+#    @user.trainers << current_user ? current_user : @user
     if @user.save
+      session[:user_id] = @user.user_id
       redirect_to root_url, :notice => "Signed up!"
     else
       render :new
@@ -17,7 +19,7 @@ class UsersController < ApplicationController
   end
   
   def index
-#    @users = User.find(:all)
+#    @users = User.all
 #    render :json => users
   end
 
@@ -29,7 +31,6 @@ class UsersController < ApplicationController
     
     respond_with do |format|
       format.html { render :html => @user }
-      format.json { render :json => @user.to_json }
     end
      
   end

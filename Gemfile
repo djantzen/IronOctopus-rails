@@ -37,3 +37,10 @@ gem 'rest-client'
 gem 'bcrypt-ruby'
 gem 'uuid'
 gem 'ruby-debug'
+
+group :test do
+  gem 'rspec-rails'
+  gem 'cucumber-rails'
+  gem 'capybara'
+  gem 'database_cleaner'
+end
