@@ -1,8 +1,7 @@
 require 'test_helper'
 
 class RoutinesControllerTest < ActionController::TestCase
-    include LogUtils
-  
+
     test "fetch the JSON representation of sallys routines" do
       params = { :user_id => 'sally_the_client', :format => 'json' }
   
@@ -24,11 +23,13 @@ class RoutinesControllerTest < ActionController::TestCase
         :goal => 'Blast yer gams!',
         :activity_sets => [
           {
+            :count => 2,
             :activity => 'Back Squat',
             :repetitions => 12,
             :resistance => 90
           },
           {
+            :count => 1,
             :activity => 'Hamstring Curl',
             :repetitions => 12,
             :resistance => 40
@@ -37,7 +38,7 @@ class RoutinesControllerTest < ActionController::TestCase
       }
       routine = controller.normalize_routine(Routine.new, params)
       assert_equal 'Leg Blaster', routine.name
-      assert_equal 2, routine.activity_sets.length
+      assert_equal 3, routine.activity_sets.length
     end
 #      post :create, params.to_json
  

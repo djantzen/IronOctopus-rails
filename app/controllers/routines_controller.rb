@@ -5,7 +5,7 @@ class RoutinesController < ApplicationController
 
   def index
     user = User.find_by_login(params[:user_id])
-    @routines = Routine.find(:all, :conditions => "client_id = #{user.user_id}", :order => :name)
+    @routines = Routine.all(:conditions => "client_id = #{user.user_id}", :order => :name)
     
     denorm_routines = @routines.map do |routine|
       denormalize_routine(routine)
@@ -22,10 +22,10 @@ class RoutinesController < ApplicationController
     @trainer = current_user
     @clients = current_user.clients.map { |u| ["#{u.first_name} #{u.last_name}", u.login] }
     @client = params[:user_id].nil? ? nil : User.find(params[:user_id]) 
-    @activity_types = ActivityType.find(:all)
-    @activities = Activity.find(:all, :include => [:body_parts, :implements, :activity_type], :order => :name)
-    @implements = Implement.find(:all)
-    @body_parts = BodyPart.find(:all)
+    @activity_types = ActivityType.all
+    @activities = Activity.all(:include => [:body_parts, :implements, :activity_type], :order => :name)
+    @implements = Implement.all
+    @body_parts = BodyPart.all
   end
 
   def create
@@ -47,10 +47,10 @@ class RoutinesController < ApplicationController
     @trainer = current_user
     @clients = current_user.clients.map { |u| u.login }
     @client = params[:user_id].nil? ? nil : User.find(params[:user_id]) 
-    @activity_types = ActivityType.find(:all)
-    @activities = Activity.find(:all, :include => [:body_parts, :implements, :activity_type], :order => :name)
-    @implements = Implement.find(:all)
-    @body_parts = BodyPart.find(:all)
+    @activity_types = ActivityType.all
+    @activities = Activity.all(:include => [:body_parts, :implements, :activity_type], :order => :name)
+    @implements = Implement.all
+    @body_parts = BodyPart.all
   end
   
   def update
@@ -91,9 +91,9 @@ class RoutinesController < ApplicationController
     routine.name = params[:name]
     routine.goal = params[:goal]
     routine.client = User.find_by_login(params[:client]) if routine.client.nil?
-    wtf? params    
+
     position = 0
-    params[:activity_sets].each do |activity_set_hash|
+    (params[:activity_sets] || []).each do |activity_set_hash|
       position += 1
       activity = Activity.find_by_name(activity_set_hash[:activity])      
        

@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(params[:user])
-#    @user.trainers << current_user ? current_user : @user
+    #    @user.trainers << current_user ? current_user : @user
     if @user.save
       session[:user_id] = @user.user_id
       redirect_to root_url, :notice => "Signed up!"

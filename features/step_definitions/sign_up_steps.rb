@@ -18,6 +18,19 @@ Then /^I should see "(.*?)"$/ do |arg1|
   page.should have_content(arg1)
 end
 
+Then /^I should land on the (.*?) page$/ do |arg1|
+  page.should have_content(arg1)
+end
+
+
 Then /^I should not be registered$/ do
-  assert_nil User.find_by_email("manisiva19@gmail.com")
+  assert_nil User.find_by_email("george_the_trainer@gmail.com")
+end
+
+Then /^I should be registered$/ do
+  assert_not_nil User.find_by_email("george_the_trainer@gmail.com")
+end
+
+And /^I should be the trainer$/ do
+
 end

@@ -1,37 +1,35 @@
 <div class=<%= template ? "activity-set-form-template" : "activity-set-form" %> >
   <div class="handle activity-display-name"><%= activity.name %></div>
-  <% resistances = (1..100).map { |i| i * 2.5 } %>
-  <% paces = (1..15).map { |i| [i,i += 0.5] }.flatten %>
-  <% durations = (1..360).map { |i| i } %>
-  
   <div class="activity-set-attributes">
     <%= hidden_field_tag "routine[activity_sets][][activity]", activity.name %>
     <% if activity.activity_type.name.eql? "Weight Training" %>    
       <div class="weight-training-activity-set">
-       <%= render :partial => "measure_selector", :locals => { :measure => "Repetitions", :interval => 1,
-                                                               :initial_value => activity_set.nil? ? 1 : activity_set.repetitions } %>
-       <%= render :partial => "measure_selector", :locals => { :measure => "Resistance", :interval => 2.5,
-                                                               :initial_value => activity_set.nil? ? 1 : activity_set.measurement.resistance } %>
+        <%= render :partial => "routines/measure_selector", :locals => { :measure => "Sets", :interval => 1, :initial_value =>  1 } %>
+        <%= render :partial => "routines/measure_selector", :locals => { :measure => "Repetitions", :interval => 1,
+                                                                :initial_value => activity_set.nil? ? 1 : activity_set.repetitions } %>
+        <%= render :partial => "routines/measure_selector", :locals => { :measure => "Resistance", :interval => 2.5,
+                                                                :initial_value => activity_set.nil? ? 1 : activity_set.measurement.resistance } %>
       </div>
     <% elsif activity.activity_type.name.eql? "Cardiovascular" %>    
       <div class="cardiovascular-activity-set">
-        <%= render :partial => "measure_selector", :locals => { :measure => "Distance", :interval => 1,
+        <%= render :partial => "routines/measure_selector", :locals => { :measure => "Distance", :interval => 1,
                                                                :initial_value => activity_set.nil? ? 1 : activity_set.measurement.distance } %>
-        <%= render :partial => "measure_selector", :locals => { :measure => "Pace", :interval => 1,
+        <%= render :partial => "routines/measure_selector", :locals => { :measure => "Pace", :interval => 1,
                                                                :initial_value => activity_set.nil? ? 1 : activity_set.measurement.pace } %>
-        <%= render :partial => "measure_selector", :locals => { :measure => "Incline", :interval => 1,
+        <%= render :partial => "routines/measure_selector", :locals => { :measure => "Incline", :interval => 1,
                                                                :initial_value => activity_set.nil? ? 1 : activity_set.measurement.incline } %>
-        <%= render :partial => "measure_selector", :locals => { :measure => "Duration", :interval => 1,
+        <%= render :partial => "routines/measure_selector", :locals => { :measure => "Duration", :interval => 1,
                                                                :initial_value => activity_set.nil? ? 1 : activity_set.measurement.duration } %>
       </div>
     <% elsif activity.activity_type.name.eql? "Rest" %>    
       <div class="rest-activity-set">
-        <%= render :partial => "measure_selector", :locals => { :measure => "Duration", :interval => 1,
+        <%= render :partial => "routines/measure_selector", :locals => { :measure => "Duration", :interval => 1,
                                                                :initial_value => activity_set.nil? ? 1 : activity_set.measurement.duration } %>
       </div>
     <% elsif activity.activity_type.name.eql? "Plyometric" %>    
       <div class="plyometric-training-activity-set">
-        <%= render :partial => "measure_selector", :locals => { :measure => "Repetitions", :interval => 1,
+        <%= render :partial => "routines/measure_selector", :locals => { :measure => "Sets", :interval => 1, :initial_value =>  1 } %>
+        <%= render :partial => "routines/measure_selector", :locals => { :measure => "Repetitions", :interval => 1,
                                                                :initial_value => activity_set.nil? ? 1 : activity_set.repetitions } %>
       </div>
     <% end %>        
