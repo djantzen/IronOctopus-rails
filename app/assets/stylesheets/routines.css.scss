@@ -2,19 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+label{display: block; float: left;}
+
 #routine-builder-panel {
 }
 
 #activity-facets-panel {
-  border: 1px solid;
-  width: 30%;
-  float: left;
+//  border: 1px solid;
+//  width: 30%;
+ // float: left;
 }
 
 #facet-filtered-activities-panel {
-  border: 1px solid;
-  width: 19%;
-  float: left;
+//  border: 1px solid;
+//  width: 19%;
+ // float: left;
 
 }
 
@@ -23,14 +25,14 @@
 }
 
 #routine-activity-set-list {
-  border: 1px solid;
-  width: 50%;
-  float: left;
+//  border: 1px solid;
+//  width: 50%;
+//  float: left;
 }
 
 #activity-sets {
-  border: 1px solid;
-  padding: 25px;
+//  border: 1px solid;
+//  padding: 25px;
 }
 
 .activity-set-form-template {
@@ -39,8 +41,8 @@
 
 div.activity-set-form {
   display: block; 
-  border: 1px solid;
-  height: 100px;
+//  border: 1px solid;
+//  height: 100px;
   padding: 5px;
 }
 
@@ -55,20 +57,20 @@ div.activity-set-form {
   font-weight: bold; 
 }
 
-div.new-activity-set-form .activity-set-attributes {
-  float: left;
-}
+//div.new-activity-set-form .activity-set-attributes {
+//  float: left;
+//}
 
 
-.delete-activity-set-button {
-  float: left;
-  border: 1px solid;
-}
-
-.clone-activity-set-button {
-  float: left;
-  border: 1px solid;
-}
+//.delete-activity-set-button {
+//  float: left;
+//  border: 1px solid;
+//}
+//
+//.clone-activity-set-button {
+//  float: left;
+//  border: 1px solid;
+//}
 
 .facet {
   border: 1px solid;
@@ -102,5 +104,5 @@ div.new-activity-set-form .activity-set-attributes {
 .ui-selected .handle { background: #cde; }
 
 input.measure {
-  max-width: 30px;
+  max-width: 35px;
 }

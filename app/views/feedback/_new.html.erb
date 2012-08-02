@@ -1,0 +1,18 @@
+<div id="new-feedback-form">
+  <%= form_for Feedback.new, :remote => true do |form| %>
+    <%= hidden_field_tag :user_id, current_user.user_id %>
+    <div class="row">
+      <div class="span1">
+        <%= form.label :remarks, "Whaddya think?"%>
+      </div>
+      <div class="span3">
+        <%= form.text_area :remarks %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span1 pull-right">
+        <%= submit_tag "Send", :id => "send-feedback-button", :class => "btn btn-primary"%>
+      </div>
+    </div>
+  <% end %>
+</div>

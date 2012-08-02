@@ -2,8 +2,8 @@ require 'test_helper'
 
 class RoutinesControllerTest < ActionController::TestCase
 
-    test "fetch the JSON representation of sallys routines" do
-      params = { :user_id => 'sally_the_client', :format => 'json' }
+    test "fetch the 1.0 JSON representation of sallys routines" do
+      params = { :user_id => 'sally_the_client', :format => 'json', :version => 1.0 }
   
       get :index, params
   
@@ -13,7 +13,17 @@ class RoutinesControllerTest < ActionController::TestCase
       assert_equal 'Push Pull Upper', sallys_push_pull_upper['name']
       assert_equal 'Whole Body Mix', sallys_whole_body_mix['name']      
     end
-    
+
+    test "fetch the 2.0 JSON representation of sallys routines" do
+      params = { :user_id => 'sally_the_client', :format => 'json', :version => 2.0 }
+
+      get :index, params
+
+      response = JSON.parse(@response.body)
+      assert_equal 'Unsupported API version: 2.0', response["message"]
+    end
+
+
     test "normalize a new routine for sally" do
       controller = RoutinesController.new
       params = {

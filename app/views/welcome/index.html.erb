@@ -1,21 +1,15 @@
-<div>
+<div class="center hero-unit">
   Welcome to Iron Octopus!
-  
-<h1>Log in</h1>
+</div>
+<div class="container">
+  <div class="row">
 
-<%= form_tag sessions_path do %>
-  <div class="notice"/>
-  <div class="field">
-    <%= label_tag :login %>
-    <%= text_field_tag :login, params[:login] %>
+    <div class="span3 offset2">
+      <%= render :partial => 'sessions/login' %>
+    </div>
+    <div class="span2 offset3">
+      <%=  link_to "Sign up!", new_user_path, :class => "btn btn-large btn-primary" %>
+    </div>
   </div>
-  <div class="field">
-    <%= label_tag :password %>
-    <%= password_field_tag :password %> 
-  </div>
-  <div class="actions"><%= submit_tag "Log in" %></div>
-<% end %>
-
-<%= link_to("Logout", :controller => "sessions", :action => 'destroy') %>
 
 </div>

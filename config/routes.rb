@@ -1,5 +1,4 @@
 IronOctopus::Application.routes.draw do
-  get "site/index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -69,8 +68,9 @@ IronOctopus::Application.routes.draw do
   resources :routines
   resources :devices
 #  resources :work
- 
-  
+
+  resources :feedback
+
 # (.:format)  optional
 # match => "/:year(/:month(/:day))" => info#about, :constraints => { :year => /\d{4}/ }
   resources :users do

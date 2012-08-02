@@ -1,5 +1,5 @@
-create user administrator createdb createrole with password 'administrator';
-alter user administrator set timezone = 'UTC';
+create role administrator with password 'administrator' login createdb createrole;
+alter role administrator set timezone = 'UTC';
 
 create role writer;
 create role reader;

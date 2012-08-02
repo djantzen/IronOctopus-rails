@@ -1,7 +1,9 @@
 <div class="measure_selector">
-  <label for="routine[activity_sets][][<%= measure.downcase %>]"><%= measure %></label>
-  <input type="button" class="decrement"/>
-  <span class="measure_interval" style="display:none"><%= interval %></span>
-  <input value="<%= initial_value %>" name="routine[activity_sets][][<%= measure.downcase %>]" class="measure"/>            
-  <input type="button" class="increment"/>
+    <label class="span1" for="routine[activity_sets][][<%= measure.downcase %>]"><%= measure %></label>
+    <div class="span2">
+    <input type="button" class="decrement btn"/>
+    <span class="measure_interval" style="display:none"><%= interval %></span>
+    <input value="<%= initial_value %>" name="routine[activity_sets][][<%= measure.downcase %>]" class="measure"/>
+    <input type="button" class="increment btn"/>
+    </div>
 </div>

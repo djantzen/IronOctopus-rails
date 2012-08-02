@@ -4,19 +4,28 @@ class RoutinesController < ApplicationController
   respond_to :json, :html
 
   def index
+    version = params[:version]
+
     user = User.find_by_login(params[:user_id])
     @routines = Routine.all(:conditions => "client_id = #{user.user_id}", :order => :name)
     
-    denorm_routines = @routines.map do |routine|
-      denormalize_routine(routine)
-    end
-    
     respond_with do |format|
       format.html { render :html => @routines }
-      format.json { render :json => denorm_routines.to_json }
+      format.json { render :json => versioned_index(version).to_json }
     end
   end
-      
+
+  def versioned_index(version)
+    if version == 1.0
+      denorm_routines = @routines.map do |routine|
+        denormalize_routine(routine)
+      end
+      return denorm_routines
+    else
+      return {:message => "Unsupported API version: #{version}"}
+    end
+  end
+
   def new
     @routine = Routine.new
     @trainer = current_user

@@ -1,16 +1,16 @@
 <script>
-	$(document).ready(function() {
-		$( "#site-listings" ).tabs();
-	});
+//	$(document).ready(function() {
+//		$( "#site-listings" ).tabs();
+//	});
 </script>
 
 <div id="site-listings">
-  <ul>
-    <li><a href="#client-list">Clients</a></li>
-    <li><a href="#routine-list">Routines</a></li>
-    <li><a href="#activity-list">Activities</a></li>
-    <li><a href="#implement-list">Implements</a></li>
-  </ul>
+  <!--<ul>-->
+    <!--<li><a href="#client-list">Clients</a></li>-->
+    <!--<li><a href="#routine-list">Routines</a></li>-->
+    <!--<li><a href="#activity-list">Activities</a></li>-->
+    <!--<li><a href="#implement-list">Implements</a></li>-->
+  <!--</ul>-->
   <div id="client-list">
     <h2>Clients</h2>
     <ul>
@@ -22,7 +22,7 @@
       <div>
         <%= link_to("Create New", :controller => :users, :action => :new) %>
       </div>
-    <ul>
+    </ul>
   </div>
 
   <div id="routine-list">
@@ -36,7 +36,7 @@
       <div>
         <%= link_to("Create New", new_routine_path) %>
       </div>
-    <ul>
+    </ul>
   </div>
 
   <div id="activity-list">
@@ -50,7 +50,7 @@
       <div>
         <%= link_to("Create New", :controller => :activities, :action => :new) %>
       </div>
-    <ul>
+    </ul>
   </div>
 
   <div id="implement-list">
@@ -64,7 +64,7 @@
       <div>
         <%= link_to("Create New", :controller => :implements, :action => :new) %>
       </div>
-    <ul>
+    </ul>
   </div>
 
 

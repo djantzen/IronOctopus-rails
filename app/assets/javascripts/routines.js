@@ -49,11 +49,11 @@ $(document).ready(function() {
     
     // wire up the delete button        
     $(".delete-activity-set-button").click(function() {
-      $(this).parent().remove();
+      $(this).parents("div.activity-set-form").remove();
     });
     // wire up the clone button
     $(".clone-activity-set-button").click(function() {
-      var original = $(this).parent();
+      var original = $(this).parents("div.activity-set-form");
       var clone = original.clone(true);
       original.find("select").each(function() { // copy over selected attributes since clone() doesn't
         clone.find("select[name='" + $(this).attr("name") + "']").val($(this).attr("value"));

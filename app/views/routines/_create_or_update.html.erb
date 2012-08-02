@@ -1,141 +1,164 @@
-<div id="routine-builder-panel">  
-  <div id="activity-facets-panel">
-  <div class="clear-selections ui-state-default">Clear Selections</div>
-    
-    <div id="activity-type-list">
-      <div class="facet-header">Type of Activity</div>
-      <ul>
-        <% @activity_types.each do |activity_type| %>
-          <li class="ui-state-default">
-            <div class="facet">
-              <%= activity_type.name %>
-              <span class="faceting-control">
-                <%= activity_type.name %>
-              </span>
-            </div>
-          </li>
-        <% end %>
-      </ul>
-    </div>
+<div id="routine-builder-panel" class="container">
+  <div class="row">
+    <div id="activity-facets-panel" class="span3">
+      <div class="clear-selections ui-state-default btn btn-primary">Clear Selections</div>
 
-    <div class="facet-header">Anatomy Involved</div>
-    <ul id="body-part-list">
-      <% group_body_parts_by_region(@body_parts).each_pair do |region, body_parts| %>
-        <li class="ui-state-default">
-          <div class="facet">
-            <%= region %>
-            <span class="faceting-control">
-              <%= region %>
-            </span>
-          </div>
-        </li>
+      <div id="activity-type-list">
+        <div class="facet-header">Type of Activity</div>
         <ul>
-          <% body_parts.each do |body_part| %>
+          <% @activity_types.each do |activity_type| %>
             <li class="ui-state-default">
               <div class="facet">
-                <%= body_part.common_name %> (<%= body_part.formal_name %>)
+                <%= activity_type.name %>
                 <span class="faceting-control">
-                  <%= body_part.formal_name %>
+                  <%= activity_type.name %>
                 </span>
               </div>
             </li>
           <% end %>
         </ul>
-      <% end %>
-    </ul>
-    
-    <div class="facet-header">Implements</div>
-    <ul id="implement-list">
-      <% group_implements_by_category(@implements).each_pair do |category, implements| %>
-        <li class="ui-state-default">
-          <div class="facet">
-            <%= category %>
-            <span class="faceting-control">
+      </div>
+
+      <div class="facet-header">Anatomy Involved</div>
+      <ul id="body-part-list">
+        <% group_body_parts_by_region(@body_parts).each_pair do |region, body_parts| %>
+          <li class="ui-state-default">
+            <div class="facet">
+              <%= region %>
+              <span class="faceting-control">
+                <%= region %>
+              </span>
+            </div>
+          </li>
+          <ul>
+            <% body_parts.each do |body_part| %>
+              <li class="ui-state-default">
+                <div class="facet">
+                  <%= body_part.common_name %> (<%= body_part.formal_name %>)
+                  <span class="faceting-control">
+                    <%= body_part.formal_name %>
+                  </span>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+      </ul>
+
+      <div class="facet-header">Implements</div>
+      <ul id="implement-list">
+        <% group_implements_by_category(@implements).each_pair do |category, implements| %>
+          <li class="ui-state-default">
+            <div class="facet">
               <%= category %>
+              <span class="faceting-control">
+                <%= category %>
+              </span>
+            </div>
+          </li>
+          <ul>
+            <% implements.each do |implement| %>
+              <li class="ui-state-default">
+                <div class="facet">
+                  <%= implement.name %>
+                  <span class="faceting-control">
+                    <%= implement.name %>
+                  </span>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+      </ul>
+    </div>
+
+    <div id="facet-filtered-activities-panel" class="span3">
+      <div>Activities</div>
+      <div id="activity-list">
+        <% @activities.each do |activity| %>
+          <div id="<%= activity.name.to_identifier %>" class="activity facet-included-activity">
+            <%= activity.name %>
+            <%= render :partial => "activity_sets/form", :locals => { :activity => activity, :activity_set => nil, :template => true } %>
+
+            <span class="faceting-control">
+              <%= activity.activity_type.name %>
             </span>
-          </div>
-        </li>
-        <ul>
-          <% implements.each do |implement| %>
-            <li class="ui-state-default">
-              <div class="facet">
-                <%= implement.name %>
+            <% group_body_parts_by_region(activity.body_parts).each_pair do |region, body_parts| %>
+              <span class="faceting-control">
+                <%= region %>
+              </span>
+              <% body_parts.each do |body_part| %>
+                <span class="faceting-control">
+                  <%= body_part.formal_name %>
+                </span>
+              <% end %>
+            <% end %>
+
+            <% group_implements_by_category(activity.implements).each_pair do |category, implements| %>
+              <span class="faceting-control">
+                <%= category %>
+              </span>
+              <% implements.each do |implement| %>
                 <span class="faceting-control">
                   <%= implement.name %>
                 </span>
+              <% end %>
+            <% end %>
+
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div id="routine-activity-set-list" class="span6">
+      <%= form_for @routine do |form| %>
+        <%= hidden_field_tag "routine[trainer]", @trainer.login %>
+          <div class="row">
+            <div class="span2">
+              <%= form.label "routine[client]", "Client" %>
+            </div>
+            <div class="span2">
+              <% if @client.nil? %>
+                <%= select_tag "routine[client]", options_for_select(@clients) %>
+              <% else %>
+                <%= hidden_field_tag "routine[client]", @client.login %>
+                <span>
+                  <%= @client.first_name %>
+                  <%= @client.last_name %>
+                </span>
+              <% end %>
+            </div>
+          </div>
+          <div class="row">
+            <div id="routine-basic-info">
+              <div class="span2">
+                <%= form.label :name, "Name" %>
+                <%= form.text_field :name %>
               </div>
-            </li>
-          <% end %>
-        </ul>        
-      <% end %>
-    </ul>
-  </div>
-  
-  <div id="facet-filtered-activities-panel">
-    <div id="activity-list">
-      <% @activities.each do |activity| %>
-        <div id="<%= activity.name.to_identifier %>" class="activity facet-included-activity">
-          <%= activity.name %>
-          <%= render :partial => "activity_sets/form", :locals => { :activity => activity, :activity_set => nil, :template => true } %>
-
-          <span class="faceting-control">
-            <%= activity.activity_type.name %>
-          </span>
-          <% group_body_parts_by_region(activity.body_parts).each_pair do |region, body_parts| %>
-            <span class="faceting-control">
-              <%= region %>
-            </span>
-            <% body_parts.each do |body_part| %>
-              <span class="faceting-control">
-                <%= body_part.formal_name %>
-              </span> 
-            <% end %>
-          <% end %>
-
-          <% group_implements_by_category(activity.implements).each_pair do |category, implements| %>
-            <span class="faceting-control">
-              <%= category %>
-            </span>
-            <% implements.each do |implement| %>
-              <span class="faceting-control">
-                <%= implement.name %>
-              </span> 
-            <% end %>
-          <% end %>        
-
-        </div>
-      <% end %>
+              <div class="span2">
+                <%= form.label :goal, "Goal" %>
+                <%= form.text_field :goal %>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span2">
+              <%= submit_tag "Save", :class => "btn-large btn-primary"%>
+            </div>
+            <div class="span2">
+              <%= link_to "Cancel", "/site" %>
+            </div>
+          </div>
+          <div class="row">
+            <ul id="activity-sets">
+              <% @routine.activity_sets.each do |activity_set| %>
+                <%= render :partial => 'activity_sets/form', :locals => { :activity => activity_set.activity,
+                                                                          :activity_set => activity_set, :template => false } %>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
-  
-  <div id="routine-activity-set-list">
-    <%= form_for @routine do |form| %>
-      <%= form.label "routine[client]", "Client" %>:
-      <%= hidden_field_tag "routine[trainer]", @trainer.login %>
-      <% if @client.nil? %>
-        <%= select_tag "routine[client]", options_for_select(@clients) %>
-      <% else %>
-        <%= hidden_field_tag "routine[client]", @client.login %>
-        <span>
-          <%= @client.first_name %>
-          <%= @client.last_name %>
-        </span>
-      <% end %>     
-      <div id="routine-basic-info">
-        <%= form.label :name, "Name" %>:
-        <%= form.text_field :name %><br />
-        <%= form.label :goal, "Goal" %>:
-        <%= form.text_field :goal %><br />
-      </div>
-      <ul id="activity-sets">
-        <% @routine.activity_sets.each do |activity_set| %>
-          <%= render :partial => 'activity_sets/form', :locals => { :activity => activity_set.activity,
-                                                                    :activity_set => activity_set, :template => false } %>
-        <% end %>        
-      </ul>
-      <%= submit_tag "Save" %>
-      <%= link_to "Cancel", "/site" %>
-    <% end %>
-  </div>
-
 </div>
