@@ -4,15 +4,29 @@ class RoutinesController < ApplicationController
   respond_to :json, :html
 
   def index
-    version = params[:version]
 
-    user = User.find_by_login(params[:user_id])
+    user = User.find_by_login(params[:login])
+
     @routines = Routine.all(:conditions => "client_id = #{user.user_id}", :order => :name)
-    
+
+    denorm_routines = @routines.map do |routine|
+      denormalize_routine(routine)
+    end
+
     respond_with do |format|
       format.html { render :html => @routines }
-      format.json { render :json => versioned_index(version).to_json }
+      format.json { render :json => denorm_routines.to_json }
     end
+  end
+
+  def by_trainer
+    user = User.find_by_login(params[:login])
+    @routines = Routine.all(:conditions => "trainer_id = #{user.user_id}", :order => :name)
+
+    respond_with do |format|
+      format.html { render :html => @routines, :template => "routines/index" }
+    end
+
   end
 
   def versioned_index(version)
@@ -30,7 +44,7 @@ class RoutinesController < ApplicationController
     @routine = Routine.new
     @trainer = current_user
     @clients = current_user.clients.map { |u| ["#{u.first_name} #{u.last_name}", u.login] }
-    @client = params[:user_id].nil? ? nil : User.find(params[:user_id]) 
+    @client = params[:user_id].nil? ? nil : User.find_by_login(params[:user_id])
     @activity_types = ActivityType.all
     @activities = Activity.all(:include => [:body_parts, :implements, :activity_type], :order => :name)
     @implements = Implement.all
@@ -44,7 +58,8 @@ class RoutinesController < ApplicationController
   end
 
   def show
-    @routine = Routine.find(params[:id])
+    client = User.find_by_login(params[:user_id])
+    @routine = Routine.first(:conditions => { :client_id => client.user_id, :permalink => params[:id] })
     respond_with do |format|
       format.html { render :html => @routine }
       format.json { render :json => denormalize_routine(@routine).to_json }
@@ -52,10 +67,10 @@ class RoutinesController < ApplicationController
   end
 
   def edit
-    @routine = Routine.find(params[:id])
+    @client = User.find_by_login(params[:user_id])
+    @routine = Routine.first(:conditions => { :client_id => @client.user_id, :permalink => params[:id] })
     @trainer = current_user
     @clients = current_user.clients.map { |u| u.login }
-    @client = params[:user_id].nil? ? nil : User.find(params[:user_id]) 
     @activity_types = ActivityType.all
     @activities = Activity.all(:include => [:body_parts, :implements, :activity_type], :order => :name)
     @implements = Implement.all
@@ -63,7 +78,8 @@ class RoutinesController < ApplicationController
   end
   
   def update
-    routine = Routine.find(params[:id])
+    client = User.find_by_login(params[:user_id])
+    routine = Routine.first(:conditions => { :client_id => client.user_id, :permalink => params[:id]} )
     routine.activity_sets.each do |activity_set|
       activity_set.delete
     end

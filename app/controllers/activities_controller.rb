@@ -35,11 +35,11 @@ class ActivitiesController < ApplicationController
 
   # GET /activities/1.json
   def show
-    @activity = Activity.find(params[:id], :include => [:activity_type, :body_parts, :implements])
+    @activity = Activity.find_by_permalink(params[:id], :include => [:activity_type, :body_parts, :implements])
   end
 
   def edit
-    @activity = Activity.find(params[:id])
+    @activity = Activity.find_by_permalink(params[:id])
     @body_parts = BodyPart.all
     @implements = Implement.all
     @activity_types = ActivityType.all(:order => :name)
@@ -53,7 +53,7 @@ class ActivitiesController < ApplicationController
 
   private
   def create_or_update(params)
-    activity = params[:id] ? Activity.find(params[:id]) : Activity.new
+    activity = params[:id] ? Activity.find_by_permalink(params[:id]) : Activity.new
 
     activity.body_parts.clear
     (params[:activity][:body_parts] || []).each do |formal_name|

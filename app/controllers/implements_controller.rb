@@ -16,7 +16,7 @@ class ImplementsController < ApplicationController
   end
 
   def edit
-    @implement = Implement.find(params[:id])
+    @implement = Implement.find_by_permalink(params[:id])
   end
   
   def update
@@ -26,7 +26,7 @@ class ImplementsController < ApplicationController
   end
   
   def show
-    @implement = Implement.find(params[:id])
+    @implement = Implement.find_by_permalink(params[:id])
   end
   
   private

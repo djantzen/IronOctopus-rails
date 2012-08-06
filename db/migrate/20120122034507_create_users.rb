@@ -13,7 +13,7 @@ class CreateUsers < ActiveRecord::Migration
         updated_at timestamptz not null default now()
       );
 
-      create unique index users_uniq_idx_login on application.users (lower(regexp_replace(login, '\s', '', 'g')));
+      create unique index users_uniq_idx_login on application.users (login);
       create unique index users_uniq_idx_email on application.users (lower(email));
 
       grant select on application.users to reader;

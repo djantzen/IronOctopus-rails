@@ -10,17 +10,25 @@
     <![endif]-->
   </head>
   <body>
-    <%= render :partial => "feedback/new" %>
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <div class="nav pull-right">
-            <%= link_to("Feedback", "#", :class => "btn btn-primary", :id => "new-feedback-button") %>
-          </div>
+          <% unless current_user.nil? %>
+            <ul class="nav pull-left">
+              <li><%= link_to("My Clients", clients_path(current_user)) %></li>
+              <li><%= link_to("My Routines", routines_by_trainer_path(current_user)) %></li>
+              <li><%= link_to("Activities", activities_path) %></li>
+              <li><%= link_to("Implements", implements_path) %></li>
+            </ul>
+            <div class="nav pull-right">
+              <%= link_to("Feedback", "#", :class => "btn btn-primary", :id => "new-feedback-button") %>
+              <%= render :partial => "feedback/new" %>
+            </div>
+          <% end %>
           <ul class="nav pull-right">
             <li><%= link_to("Home", :controller => :welcome) %></li>
             <li><%= session[:user_id].nil? ? link_to("Log In", new_session_path) : link_to("Log Out", :controller => :sessions, :action => :destroy)%></li>
-            <li><%= link_to "Help",    '#' %></li>
+            <!--<li><%= link_to "Help",    '#' %></li>-->
           </ul>
         </div>
       </div>

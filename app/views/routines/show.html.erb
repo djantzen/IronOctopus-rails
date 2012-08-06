@@ -15,6 +15,6 @@
       </li>
     </ul>  
   <% end %>
-  <%= link_to("Edit", :action => :edit, :id => @routine.routine_id) %>
+  <%= link_to("Edit", edit_user_routine_path(@routine.client, @routine)) %>
   <%= link_to("Routine List", :action => :index) %>
 </div>

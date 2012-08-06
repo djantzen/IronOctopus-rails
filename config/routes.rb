@@ -61,20 +61,26 @@ IronOctopus::Application.routes.draw do
   resources :sessions
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "log_in" => "sessions#new", :as => "log_in"
-  
+
+  # Sample of named route:
+  get '/trainers/:login/clients' => 'users#clients', :as => :clients
+  get '/trainers/:login/routines' => 'routines#by_trainer', :as => :routines_by_trainer
+
+  # This route can be invoked with purchase_url(:id => product.id)
+  #  match '/users/:user_id/routines/:role' => 'routines#index', :as => :routines
+
   resources :activities
   resources :implements
   resources :body_parts
-  resources :routines
   resources :devices
-#  resources :work
 
-  resources :feedback
-
+#  match "trainers/:trainer_id/routines/:routine_key" => "routines#index"
 # (.:format)  optional
 # match => "/:year(/:month(/:day))" => info#about, :constraints => { :year => /\d{4}/ }
+
   resources :users do
-    resources :routines
     resources :work
+    resources :feedback
+    resources :routines
   end
 end

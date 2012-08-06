@@ -16,7 +16,7 @@ class BodyPartsController < ApplicationController
   end
 
   def edit
-    @body_part = BodyPart.find(params[:id])
+    @body_part = BodyPart.find_by_permalink(params[:id])
   end
   
   def update
@@ -26,7 +26,7 @@ class BodyPartsController < ApplicationController
   end
   
   def show
-    @body_part = BodyPart.find(params[:id])
+    @body_part = BodyPart.find_by_permalink(params[:id])
   end
   
   private

@@ -1,16 +1,4 @@
-<script>
-//	$(document).ready(function() {
-//		$( "#site-listings" ).tabs();
-//	});
-</script>
-
 <div id="site-listings">
-  <!--<ul>-->
-    <!--<li><a href="#client-list">Clients</a></li>-->
-    <!--<li><a href="#routine-list">Routines</a></li>-->
-    <!--<li><a href="#activity-list">Activities</a></li>-->
-    <!--<li><a href="#implement-list">Implements</a></li>-->
-  <!--</ul>-->
   <div id="client-list">
     <h2>Clients</h2>
     <ul>
@@ -34,7 +22,7 @@
         </li>
       <% end %>
       <div>
-        <%= link_to("Create New", new_routine_path) %>
+        <%= link_to("Create New", new_user_routine_path(current_user)) %>
       </div>
     </ul>
   </div>

@@ -1,6 +1,5 @@
 <div id="new-feedback-form">
-  <%= form_for Feedback.new, :remote => true do |form| %>
-    <%= hidden_field_tag :user_id, current_user.user_id %>
+  <%= form_for [current_user, Feedback.new], :remote => true do |form| %>
     <div class="row">
       <div class="span1">
         <%= form.label :remarks, "Whaddya think?"%>

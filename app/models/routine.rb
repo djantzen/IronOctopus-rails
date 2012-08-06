@@ -10,4 +10,11 @@ class Routine < ActiveRecord::Base
   validates_presence_of :name, :on => [:create, :update]
   validates_presence_of :goal, :on => [:create, :update]
 #  validates_uniqueness_of :name, :scope => :client
+
+  before_save { self.permalink = name.to_identifier}
+
+  def to_param
+    permalink
+  end
+
 end

@@ -1,74 +1,86 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 bench_press:
-  name: "Bench Press"
+  name: Bench Press
   activity_type: weight_training
   creator: system
   implements: barbell, bench
+  permalink: benchpress
   
 box_jump:
-  name: "Box Jump"
+  name: Box Jump
   activity_type: plyometric
   creator: system
   implements: box
+  permalink: boxjump
   
 dumbbell_bench_press:
-  name: "Dumbbell Bench Press"
+  name: Dumbbell Bench Press
   activity_type: weight_training
   creator: system  
   implements: dumbbell, bench
+  permalink: dumbellbenchpress
   
 curl_and_press:
-  name: "Curl and Press"
+  name: Curl and Press
   activity_type: weight_training
   creator: system
   implements: dumbbell
   body_parts: biceps_brachii, triceps_brachii
-  
+  permalink: curlandpress
+
 squat:
-  name: "Squat"
+  name: Squat
   activity_type: weight_training
   creator: system
   implements: barbell, power_rack
   body_parts: quadriceps, gluteus_maximus, hamstring
+  permalink: squat
 
 hamstring_curl:
-  name: "Hamstring Curl"
+  name: Hamstring Curl
   activity_type: weight_training
   creator: system
   body_parts: hamstring
-  
+  permalink: hamstringcurl
+
 clean_and_jerk:
-  name: "Clean and Jerk"
+  name: Clean and Jerk
   activity_type: weight_training
   creator: system
   implements: barbell
   body_parts: quadriceps, gluteus_maximus, hamstring, posterior_deltoid
+  permalink: cleanandjerk
 
 simple_rest:
-  name: "Rest"
+  name: Rest
   activity_type: rest
   creator: system
-  
+  permalink: rest
+
 walking_rest:
-  name: "Walking Rest"
+  name: Walking Rest
   activity_type: rest
   creator: system
+  permalink: walkingrest
 
 treadmill_run:
-  name: "Treadmill Run"
+  name: Treadmill Run
   activity_type: cardiovascular
   creator: system
   implements: treadmill
+  permalink: treadmillrun
 
 treadmill_walk:
-  name: "Treadmill Walk"
+  name: Treadmill Walk
   activity_type: cardiovascular
   creator: system
   implements: treadmill
-  
+  permalink: treadmillwalk
+
 treadmill_program:
-  name: "Treadmill Program"
+  name: Treadmill Program
   activity_type: cardiovascular
   creator: system
   implements: treadmill
+  permalink: treadmillprogram

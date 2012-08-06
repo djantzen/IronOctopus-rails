@@ -14,6 +14,14 @@ class User < ActiveRecord::Base
   has_many :work, :class_name => 'Work', :foreign_key => 'user_id'
   has_many :feedback, :class_name => 'Feedback', :foreign_key => 'user_id'
 
-  has_and_belongs_to_many :clients, :class_name => 'User', :foreign_key => 'client_id', :association_foreign_key => 'trainer_id', :join_table => 'user_relationships'
+  has_and_belongs_to_many :clients, :class_name => 'User', :foreign_key => 'client_id', :association_foreign_key => 'trainer_id', :join_table => 'user_relationships', :order => 'last_name, first_name'
   has_and_belongs_to_many :trainers, :class_name => 'User', :foreign_key => 'trainer_id', :association_foreign_key => 'client_id', :join_table => 'user_relationships'
+
+  def to_param
+    login
+  end
+
+  def to_s
+    login
+  end
 end

@@ -111,14 +111,14 @@
     </div>
 
     <div id="routine-activity-set-list" class="span6">
-      <%= form_for @routine do |form| %>
+      <%= form_for [@client, @routine] do |form| %>
         <%= hidden_field_tag "routine[trainer]", @trainer.login %>
           <div class="row">
             <div class="span2">
               <%= form.label "routine[client]", "Client" %>
             </div>
             <div class="span2">
-              <% if @client.nil? %>
+              <% if @client == current_user %>
                 <%= select_tag "routine[client]", options_for_select(@clients) %>
               <% else %>
                 <%= hidden_field_tag "routine[client]", @client.login %>

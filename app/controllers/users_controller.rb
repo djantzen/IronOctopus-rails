@@ -17,7 +17,11 @@ class UsersController < ApplicationController
       render :new
     end
   end
-  
+
+  def clients
+    @clients = current_user.clients
+  end
+
   def index
 #    @users = User.all
 #    render :json => users
@@ -25,7 +29,7 @@ class UsersController < ApplicationController
 
   # GET /users/1.json
   def show
-    @user = User.find(params['id'])
+    @user = User.find_by_login(params['id'])
     @user.password_digest = nil
     @routines = @user.routines
     

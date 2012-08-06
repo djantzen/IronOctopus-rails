@@ -8,6 +8,7 @@ class CreateActivities < ActiveRecord::Migration
         instructions text not null default 'None',
         warnings text not null default 'None',
         activity_type_id integer not null references application.activity_types deferrable,
+        permalink text not null,
         creator_id integer not null references application.users (user_id) deferrable,
         created_at timestamptz not null default now(),
         updated_at timestamptz not null default now()

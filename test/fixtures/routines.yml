@@ -1,18 +1,20 @@
 sallys_push_pull_upper:
-  name: "Push Pull Upper"
-  goal: "Balanced upper body weight training"
+  name: Push Pull Upper
+  goal: Balanced upper body weight training
   trainer: bob_the_trainer
   client: sally_the_client
+  permalink: pushpullupper
 
 jims_olympic_lift_training:
-  name: "Olympic Lift Training"
-  goal: "Explosive power"
+  name: Olympic Lift Training
+  goal: Explosive power
   trainer: bob_the_trainer
   client: jim_the_client
-
+  permalink: olympiclifttraining
+  
 sallys_whole_body_mix:
-  name: "Whole Body Mix"
-  goal: "Balanced overall workout"
+  name: Whole Body Mix
+  goal: Balanced overall workout
   trainer: mary_the_trainer
   client: sally_the_client
-
+  permalink: wholebodymix

@@ -5,7 +5,7 @@ class SiteController < ApplicationController
     @routines = current_user.routines_created
     @activities = Activity.all(:order => :name)
     @implements = Implement.all(:order => :name)
-    @work = Work.all(:conditions => { :user_id => current_user })
+    #@work = Work.all(:conditions => { :user_id => current_user })
   end
 
 end

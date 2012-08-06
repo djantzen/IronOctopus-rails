@@ -25,5 +25,6 @@
   
 </div>
 
-<%= link_to("Edit", :action => :edit, :id => @activity.activity_id) %>
-<%= link_to("Activity List", :action => :index) %>
+<%= link_to("Edit", edit_activity_path(@activity), :class => "btn") %>
+
+<%= link_to("Activity List", activities_path) %>

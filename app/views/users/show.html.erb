@@ -15,8 +15,9 @@
         </li>      
       <% end %>
     </ul>
+
     <%= link_to_if @user.trainers.include?(current_user), "Create new routine for #{@user.first_name}",
-        new_user_routine_path(@user) %>
+        new_user_routine_path(@user), :class => "btn btn-primary" %>
   
   </div>
 </div>

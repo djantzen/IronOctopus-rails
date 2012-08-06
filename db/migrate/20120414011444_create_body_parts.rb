@@ -5,6 +5,7 @@ class CreateBodyParts < ActiveRecord::Migration
         body_part_id serial primary key,
         formal_name text not null,
         common_name text not null,
+        permalink text not null,
         role text not null default 'Not yet specified',
         category text not null default 'Muscle',
         region text not null,
@@ -17,7 +18,7 @@ class CreateBodyParts < ActiveRecord::Migration
       grant delete, insert, update on application.body_parts to writer;
       grant select, update, usage on application.body_parts_body_part_id_seq to writer;
 
-      create unique index body_parts_uniq_idx_name on application.body_parts (lower(regexp_replace(formal_name, '\s', '', 'g')));
+      create unique index body_parts_uniq_idx_name on application.body_parts (permalink);
 
       comment on table application.body_parts is 'A reference table of basic human physiology.';
     OES
