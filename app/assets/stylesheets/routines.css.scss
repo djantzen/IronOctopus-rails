@@ -106,3 +106,16 @@ div.activity-set-form {
 input.measure {
   max-width: 35px;
 }
+
+.unit_selector {
+  width: auto;
+  margin-top: 0;
+}
+
+.measure_label {
+  //margin-top: 10px;
+  text-align: right;
+  padding: 5px;
+  font-weight: bold;
+  float: none;
+}

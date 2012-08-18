@@ -5,7 +5,7 @@ class RoutinesController < ApplicationController
 
   def index
 
-    user = User.find_by_login(params[:login])
+    user = User.find_by_login(params[:user_id])
 
     @routines = Routine.all(:conditions => "client_id = #{user.user_id}", :order => :name)
 
@@ -20,7 +20,7 @@ class RoutinesController < ApplicationController
   end
 
   def by_trainer
-    user = User.find_by_login(params[:login])
+    user = User.find_by_login(params[:user_id])
     @routines = Routine.all(:conditions => "trainer_id = #{user.user_id}", :order => :name)
 
     respond_with do |format|
@@ -62,7 +62,14 @@ class RoutinesController < ApplicationController
     @routine = Routine.first(:conditions => { :client_id => client.user_id, :permalink => params[:id] })
     respond_with do |format|
       format.html { render :html => @routine }
-      format.json { render :json => denormalize_routine(@routine).to_json }
+    end
+  end
+
+  def sheet
+    client = User.find_by_login(params[:user_id])
+    @routine = Routine.first(:conditions => { :client_id => client.user_id, :permalink => params[:routine_name] })
+    respond_with do |format|
+      format.html { render :html => @routine }
     end
   end
 
@@ -79,13 +86,13 @@ class RoutinesController < ApplicationController
   
   def update
     client = User.find_by_login(params[:user_id])
-    routine = Routine.first(:conditions => { :client_id => client.user_id, :permalink => params[:id]} )
+    routine = Routine.first(:conditions => { :client_id => client.user_id, :permalink => params[:id] })
     routine.activity_sets.each do |activity_set|
       activity_set.delete
     end
     normalize_routine(routine, params[:routine])    
     routine.save
-    redirect_to(routine.client)
+    redirect_to(user_routine_path(client, routine))
   end
 
   def denormalize_routine(routine)

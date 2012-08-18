@@ -16,4 +16,15 @@ class Activity < ActiveRecord::Base
   def to_param
     permalink
   end
+
+  def measures
+    if activity_type.eql? "Weight Training"
+      [ :resistance ]
+    end
+  end
+
+  def to_s
+    name
+  end
+
 end

@@ -1,0 +1,32 @@
+@import "bootstrap";
+
+@media print {
+
+  #header, #footer {
+    display: none;
+  }
+
+  thead tr td {
+    font-weight: bold;
+    font-size: 14;
+    text-align: center;
+    padding: 5px;
+  }
+
+  td {
+    border: 1px solid;
+  }
+
+  .target-field {
+    min-width: 4em;
+  }
+
+
+  .sheet-input-box {
+    border: 1px solid;
+    width: 4em;
+  }
+
+
+}
+

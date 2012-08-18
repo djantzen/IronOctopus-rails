@@ -49,9 +49,9 @@ IronOctopus::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'welcome#index'
-  match 'login' => 'sessions#new'
-  match 'site' => 'site#index'
+  root :to => "welcome#index"
+  match "login" => "sessions#new"
+  match "site" => "site#index"
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
@@ -62,9 +62,11 @@ IronOctopus::Application.routes.draw do
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "log_in" => "sessions#new", :as => "log_in"
 
+  get "/users/:user_id/routines/:routine_name/sheet" => "routines#sheet", :as => "routine_sheet"
+
   # Sample of named route:
-  get '/trainers/:login/clients' => 'users#clients', :as => :clients
-  get '/trainers/:login/routines' => 'routines#by_trainer', :as => :routines_by_trainer
+  get "/trainers/:user_id/clients" => "users#clients", :as => :clients
+  get "/trainers/:user_id/routines" => "routines#by_trainer", :as => :routines_by_trainer
 
   # This route can be invoked with purchase_url(:id => product.id)
   #  match '/users/:user_id/routines/:role' => 'routines#index', :as => :routines

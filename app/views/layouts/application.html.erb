@@ -4,13 +4,14 @@
     <title>Iron Octopus</title>
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application" %>
+    <%= stylesheet_link_tag 'sheet', :media => 'print' %>
     <%= csrf_meta_tags %>
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   </head>
   <body>
-    <div class="navbar navbar-fixed-top">
+    <div id="header" class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
           <% unless current_user.nil? %>
@@ -36,7 +37,7 @@
     <!--<div class="container"/>-->
       <%= yield %>
     <!--</div>-->
-    <div class="navbar navbar-fixed-bottom">
+    <div id="footer" class="navbar navbar-fixed-bottom">
       <div class="navbar-inner">
         <div class="container">
           <div class="pull-left">

@@ -1,20 +1,45 @@
 <div>
-  <h2>
-    <%= @routine.name %>
-  </h2>
-  <div>
-    Goal
+  <div class="row">
+    <div class="span2 offset6">
+      <%= @routine.name %>
+    </div>
+    <div class="span2">
+      <%= @routine.goal %>
+    </div>
   </div>
-  <div>
-    <%= @routine.goal %>
+  <div class="row">
+    <div class="span2 offset6">
+      Created by <%= @routine.trainer.full_name %>
+    </div>
+    <div class="span2">
+      for <%= @routine.client.full_name %>
+    </div>
   </div>
+
   <% @routine.activity_sets.each do |activity_set| %>
-    <ul>
-      <li>
-        <%= activity_set.activity.name %>
-      </li>
-    </ul>  
+    <div class="row">
+      <div class="span2 offset1">
+        <%= link_to(activity_set.activity.name, activity_path(activity_set.activity)) %>
+      </div>
+      <% if activity_set.activity.activity_type.name.eql? "Weight Training" %>
+          <%= render :partial => "routines/measure_display", :locals => { :measure => "Repetitions", :value => activity_set.repetitions } %>
+          <%= render :partial => "routines/measure_display", :locals => { :measure => "Resistance", :value => activity_set.measurement.resistance } %>
+      <% elsif activity_set.activity.activity_type.name.eql? "Cardiovascular" %>
+          <%= render :partial => "routines/measure_display", :locals => { :measure => "Distance", :value => activity_set.measurement.distance } %>
+          <%= render :partial => "routines/measure_display", :locals => { :measure => "Pace", :value => activity_set.measurement.pace } %>
+          <%= render :partial => "routines/measure_display", :locals => { :measure => "Incline", :value => activity_set.measurement.incline } %>
+          <%= render :partial => "routines/measure_display", :locals => { :measure => "Duration", :value => activity_set.measurement.duration } %>
+      <% elsif activity_set.activity.activity_type.name.eql? "Rest" %>
+        <%= render :partial => "routines/measure_display", :locals => { :measure => "Duration", :value => activity_set.measurement.duration } %>
+      <% elsif activity_set.activity.activity_type.name.eql? "Plyometric" %>
+        <%= render :partial => "routines/measure_display", :locals => { :measure => "Repetitions", :value => activity_set.repetitions } %>
+      <% end %>
+    </div>
   <% end %>
-  <%= link_to("Edit", edit_user_routine_path(@routine.client, @routine)) %>
-  <%= link_to("Routine List", :action => :index) %>
+
+  <%= link_to("Edit", edit_user_routine_path(@routine.client, @routine), :class => "btn btn-primary") %>
+  <%= link_to("Routine List", routines_by_trainer_path(current_user)) %>
+
+  <%= link_to("Print", routine_sheet_path(@routine.client, @routine), :class => "btn btn-primary", :target => "_blank") %>
+
 </div>

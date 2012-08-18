@@ -1,19 +1,9 @@
 class FeedbackController < ApplicationController
-  respond_to :json
+  respond_to :json, :html
   def create
-
-    @feedback = Feedback.new(:user_id => params["user_id"], :remarks => params["feedback"]["remarks"])
+    user = User.find_by_login(params[:user_id])
+    @feedback = Feedback.new(:user_id => user.user_id, :remarks => params["feedback"]["remarks"])
     @feedback.save
-    #respond_to do |format|
-    #  if @feedback.save
-    #    format.html { redirect_to(@feedback, :notice => 'Feedback recorded.') }
-    #    format.js
-    #  else
-    #    format.html { render :action => "new" }
-    #    format.js
-    #  end
-    #end
-
   end
 
   def index
