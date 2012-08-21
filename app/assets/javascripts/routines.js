@@ -120,5 +120,11 @@ $(document).ready(function() {
       console.info(measure - interval);
       measure_node.val(measure - interval);    
     });
-  
+
+    $(".perform-activity-set-button").click(function() {
+        var form = $(this).parents("form");
+        form.submit();
+        form.remove();
+        return false;
+    });
 });

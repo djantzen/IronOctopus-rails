@@ -29,17 +29,6 @@ class RoutinesController < ApplicationController
 
   end
 
-  def versioned_index(version)
-    if version == 1.0
-      denorm_routines = @routines.map do |routine|
-        denormalize_routine(routine)
-      end
-      return denorm_routines
-    else
-      return {:message => "Unsupported API version: #{version}"}
-    end
-  end
-
   def new
     @routine = Routine.new
     @trainer = current_user
@@ -65,9 +54,17 @@ class RoutinesController < ApplicationController
     end
   end
 
+  def perform
+    client = User.find_by_login(params[:user_id])
+    @routine = Routine.first(:conditions => { :client_id => client.user_id, :permalink => params[:routine_id] })
+    respond_with do |format|
+      format.html { render :html => @routine }
+    end
+  end
+
   def sheet
     client = User.find_by_login(params[:user_id])
-    @routine = Routine.first(:conditions => { :client_id => client.user_id, :permalink => params[:routine_name] })
+    @routine = Routine.first(:conditions => { :client_id => client.user_id, :permalink => params[:routine_id] })
     respond_with do |format|
       format.html { render :html => @routine }
     end

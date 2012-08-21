@@ -62,7 +62,8 @@ IronOctopus::Application.routes.draw do
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "log_in" => "sessions#new", :as => "log_in"
 
-  get "/users/:user_id/routines/:routine_name/sheet" => "routines#sheet", :as => "routine_sheet"
+  get "/users/:user_id/routines/:routine_id/sheet" => "routines#sheet", :as => "routine_sheet"
+  get "/users/:user_id/routines/:routine_id/perform" => "routines#perform", :as => "perform_routine"
 
   # Sample of named route:
   get "/trainers/:user_id/clients" => "users#clients", :as => :clients

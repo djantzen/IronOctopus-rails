@@ -6,15 +6,11 @@
  *= require_tree . 
 */
 
-.backgrounded {
-/*  background-image: url('iron_octopus_by_mr_sloow.jpg');
-  background-repeat: no-repeat;
-  background-size: 100% auto;
-*/
-  background-color: lightgrey;
+.flash {
+  position: absolute;
+  text-align: center;
+  top: 50px;
+  width: 100%;
+  height: 50px;
+  background-color: red;
 }
-
-/*.page-positioned {*/
-  /*margin: 75px;*/
-/*}*/
-

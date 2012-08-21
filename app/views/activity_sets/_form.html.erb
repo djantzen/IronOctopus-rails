@@ -1,4 +1,4 @@
-<div class=<%= template ? "activity-set-form-template" : "activity-set-form" %> >
+<div class=<%= defined?(template) && template ? "activity-set-form-template" : "activity-set-form" %> >
   <div class="handle activity-display-name"><%= activity.name %></div>
   <div class="activity-set-attributes container">
     <%= hidden_field_tag "routine[activity_sets][][activity]", activity.name %>
@@ -47,7 +47,11 @@
     <% end %>        
   </div>
   <div class="row">
-    <div class="delete-activity-set-button span1 btn">Delete</div>
-    <div class="clone-activity-set-button span1 btn">Repeat</div>
+    <% if defined?(performance) && performance %>
+      <%= submit_tag "Done", :class => "perform-activity-set-button btn btn-primary"%>
+    <% else %>
+      <div class="delete-activity-set-button btn">Delete</div>
+      <div class="clone-activity-set-button btn">Repeat</div>
+    <% end %>
   </div>
 </div>

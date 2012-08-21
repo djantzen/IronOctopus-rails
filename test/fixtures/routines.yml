@@ -8,7 +8,7 @@ sallys_push_pull_upper:
 jims_olympic_lift_training:
   name: Olympic Lift Training
   goal: Explosive power
-  trainer: bob_the_trainer
+  trainer: mary_the_trainer
   client: jim_the_client
   permalink: olympiclifttraining
   
@@ -18,3 +18,10 @@ sallys_whole_body_mix:
   trainer: mary_the_trainer
   client: sally_the_client
   permalink: wholebodymix
+
+bobs_self_kick_butt:
+  name: Kicking my own Butt
+  goal: Prove self-referential routines work
+  trainer: bob_the_trainer
+  client: bob_the_trainer
+  permalink: bobsselfkickbutt

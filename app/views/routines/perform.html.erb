@@ -1,0 +1,16 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span6">
+      <ul id="activity-sets">
+        <% @routine.activity_sets.each do |activity_set| %>
+          <%= form_for [current_user, Work.new], :remote => true do |form| %>
+            <%= hidden_field_tag("routine[routine]", @routine.name) %>
+            <%= render :partial => 'activity_sets/form', :locals => { :activity => activity_set.activity,
+                                                                      :activity_set => activity_set,
+                                                                      :performance => true } %>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -8,9 +8,19 @@
 //= require jquery_ujs
 //= require_tree .
 
-console.info("applicationload");
+console.info("application load");
 
 var to_identifier_regexp = new RegExp("[\\s(){}\"_'\-]", "g");
 String.prototype.toIdentifier = function() {
   return this.replace(to_identifier_regexp, '').toLowerCase();
 };
+
+$(document).ready(function() {
+   if ($("#messages").text().trim() != '') {
+       $("#messages").fadeIn("slow");
+       setTimeout(function() {
+           $("#messages").fadeOut("slow")
+       }, 3000);
+
+   }
+});
