@@ -9,9 +9,14 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(params[:user])
-    #    @user.trainers << current_user ? current_user : @user
+
     if @user.save
-      session[:user_id] = @user.user_id
+      @user.trainers << @user # Every user can self-train
+      if current_user # If a trainer is creating this user
+        @user.trainers << current_user
+      else
+        session[:user_id] = @user.user_id
+      end
       redirect_to root_url, :notice => "Signed up!"
     else
       render :new

@@ -7,9 +7,7 @@
           <%= link_to client.last_name + ", " + client.first_name, client %>
         </li>
       <% end %>
-      <div>
-        <%= link_to("Create New", :controller => :users, :action => :new) %>
-      </div>
+      <%= link_to("Create New Client", new_user_path, :class => 'btn btn-primary') %>
     </ul>
   </div>
 
@@ -21,39 +19,10 @@
         <%= link_to(routine.name, edit_user_routine_path(routine.client, routine)) %>
         </li>
       <% end %>
-      <div>
-        <%= link_to("Create New", new_user_routine_path(current_user)) %>
-      </div>
+      <%= link_to("Create New", new_user_routine_path(current_user), :class => 'btn btn-primary') %>
     </ul>
   </div>
 
-  <div id="activity-list">
-    <h2>Activities</h2>
-    <ul>
-      <% @activities.each do |activity| %>
-        <li>
-          <%= link_to activity.name, activity %>
-        </li>
-      <% end %>
-      <div>
-        <%= link_to("Create New", :controller => :activities, :action => :new) %>
-      </div>
-    </ul>
-  </div>
-
-  <div id="implement-list">
-    <h2>Implements</h2>
-    <ul>
-      <% @implements.each do |implement| %>
-        <li>
-          <%= link_to implement.name, implement %>
-        </li>
-      <% end %>
-      <div>
-        <%= link_to("Create New", :controller => :implements, :action => :new) %>
-      </div>
-    </ul>
-  </div>
 
 
 </div>

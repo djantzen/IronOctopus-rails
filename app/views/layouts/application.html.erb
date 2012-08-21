@@ -16,7 +16,7 @@
         <div class="container">
           <% unless current_user.nil? %>
             <ul class="nav pull-left">
-              <% if current_user.clients.size > 0 %>
+              <% if current_user.is_trainer? %>
                 <li><%= link_to("My Clients", clients_path(current_user)) %></li>
                 <li><%= link_to("My Routines", user_routines_path(current_user)) %></li>
                 <li><%= link_to("My Clients' Routines", routines_by_trainer_path(current_user)) %></li>
@@ -33,7 +33,11 @@
           <% end %>
           <ul class="nav pull-right">
             <li><%= link_to("Home", :controller => :welcome) %></li>
-            <li><%= session[:user_id].nil? ? link_to("Log In", new_session_path) : link_to("Log Out", log_out_url) %> </li>
+            <% if session[:user_id].nil? %>
+              <li><%= link_to("Log In", new_session_path) %> </li>
+            <% else %>
+              <li><%= link_to("Log out #{User.find(session[:user_id]).login}", log_out_url) %></li>
+            <% end %>
           </ul>
         </div>
       </div>

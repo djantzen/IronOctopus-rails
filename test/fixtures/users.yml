@@ -19,7 +19,7 @@ sally_the_client:
   login: sally_the_client
   password_digest: "$2a$10$H0MiAwH.IpBEJOLG4ODixegZOUt9Xbq49ycxg5m67vUeiMuNeHE7m"
   email: sally_the_client@gmail.com
-  trainers: bob_the_trainer
+  trainers: bob_the_trainer, sally_the_client
   first_name: Sally
   last_name: Client
     
@@ -29,6 +29,7 @@ mary_the_trainer:
   email: mary_the_trainer@gmail.com
   first_name: Mary
   last_name: Trainer
+  trainers: mary_the_trainer
 
 jim_the_client:
   login: jim_the_client
@@ -36,4 +37,4 @@ jim_the_client:
   email: jim_the_client@gmail.com
   first_name: Jim
   last_name: Client
-  trainers: mary_the_trainer
+  trainers: mary_the_trainer, jim_the_client

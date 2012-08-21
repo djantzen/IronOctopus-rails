@@ -21,7 +21,8 @@ class RoutinesController < ApplicationController
 
   def by_trainer
     user = User.find_by_login(params[:user_id])
-    @routines = Routine.all(:conditions => "trainer_id = #{user.user_id}", :order => :name)
+    @routines = Routine.all(:conditions => "trainer_id = #{user.user_id} and client_id != #{user.user_id}",
+                            :order => :name)
 
     respond_with do |format|
       format.html { render :html => @routines, :template => "routines/index" }

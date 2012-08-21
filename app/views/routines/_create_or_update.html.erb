@@ -119,7 +119,7 @@
             </div>
             <div class="span2">
               <% if @client == current_user %>
-                <%= select_tag "routine[client]", options_for_select(@clients) %>
+                <%= select_tag "routine[client]", options_for_select(@clients, :selected => current_user.login) %>
               <% else %>
                 <%= hidden_field_tag "routine[client]", @client.login %>
                 <span>
