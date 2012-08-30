@@ -4,6 +4,11 @@ push_pull_upper_bench_press:
   position: 1.0
   repetitions: 10
   measurement: resistance_one
+  cadence_unit: none
+  distance_unit: none
+  duration_unit: none
+  resistance_unit: pound
+  speed_unit: none
 
 push_pull_upper_curl_and_press:
   routine: sallys_push_pull_upper
@@ -11,6 +16,11 @@ push_pull_upper_curl_and_press:
   position: 2.0
   repetitions: 8
   measurement: resistance_one
+  cadence_unit: none
+  distance_unit: none
+  duration_unit: none
+  resistance_unit: pound
+  speed_unit: none
 
 sallys_whole_body_mix_squat:
   routine: sallys_whole_body_mix
@@ -18,10 +28,20 @@ sallys_whole_body_mix_squat:
   position: 1.0
   repetitions: 6
   measurement: resistance_one
-  
+  cadence_unit: none
+  distance_unit: none
+  duration_unit: none
+  resistance_unit: pound
+  speed_unit: none
+
 sallys_whole_body_mix_treadmill_run:
   routine: sallys_whole_body_mix
   activity: treadmill_run
   position: 2.0
   measurement: cardio_one
-  
+  cadence_unit: none
+  distance_unit: mile
+  duration_unit: none
+  resistance_unit: none
+  speed_unit: none
+

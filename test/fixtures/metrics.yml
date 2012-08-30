@@ -1,0 +1,22 @@
+none:
+  name: None
+cadence:
+  name: Cadence
+calories:
+  name: Calories
+distance:
+  name: Distance
+duration:
+  name: Duration
+incline:
+  name: Incline
+level:
+  name: Level
+repetitions:
+  name: Repetitions
+resistance:
+  name: Resistance
+speed:
+  name: Speed
+
+

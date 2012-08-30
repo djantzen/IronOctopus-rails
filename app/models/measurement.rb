@@ -2,20 +2,21 @@ class Measurement < ActiveRecord::Base
 
   has_many :routines, :through => :activity_sets
   
-  DEFAULTS = { :duration => 0, :resistance => 0.0, :pace => 0.0, :distance => 0.0, :calories => 0, :incline => 0.0 }
+  DEFAULTS = { :cadence => 0.0, :calories => 0, :distance => 0.0, :duration => 0, :incline => 0.0,
+               :level => 0, :resistance => 0.0, :speed => 0.0 }
     
   def self.find_or_create(measurement_hash)
     # When we look up a measurement, be sure to get the one with the attributes we care about
     # AND the defaults, not just the first to match desired attributes.
     
     measurement_hash.each do |key, value|
-      raise raise(ArgumentError, "Unknown Measurement attribute #{key}") unless DEFAULTS.has_key?(key)
+      raise(ArgumentError, "Unknown Measurement attribute #{key}") unless DEFAULTS.has_key?(key)
       if value.nil?
         measurement_hash[key] = DEFAULTS[key]
       end
     end
     
-    measurement = Measurement.find(:first, :conditions => DEFAULTS.merge(measurement_hash))
+    measurement = Measurement.first(:conditions => DEFAULTS.merge(measurement_hash))
     if measurement.nil?
       measurement = Measurement.new(measurement_hash)
       measurement.save

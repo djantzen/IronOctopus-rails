@@ -1,35 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 cardiovascular:
   name: Cardiovascular
+olympic_lift:
+  name: Olympic Lift
+pilates:
+  name: Pilates
 plyometric:
   name: Plyometric
-rest:
-  name: Rest
-weight_training:
-  name: "Weight Training"
-
-
-
-# Resistance Training
-  # Kettlebell
-  # Free Weights
-  # Bodyweight
-  # Barbell
-  # Dumbbell
-  # Olympic
-  # Machine
-# Cardiovascular
-  # Run
-  # Walk
-  # Cycle
-  # Row
-  # Climb
-  # Calisthenics
-  # Jumprope
-  # Machine
-# Plyometrics
-  # Jumps
-  # Other
-# Rest
-  # Active
-  # Passive
+resistance:
+  name: Resistance
+sport:
+  name: Sport
+stretch:
+  name: Stretch
+yoga:
+  name: Yoga

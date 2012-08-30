@@ -4,7 +4,9 @@ class WorkController < ApplicationController
   respond_to :json, :html
 
   def index
-    wtf? params
+    @work = Work.all(:conditions => "user_id = #{current_user.user_id}",
+                     :order => "start_time desc",
+                     :include => [:activity, :measurement, :routine, :start_day])
   end
 
   def create

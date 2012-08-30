@@ -17,21 +17,27 @@
   </div>
 
   <% @routine.activity_sets.each do |activity_set| %>
-    <div class="row">
+    <div class="row-fluid">
       <div class="span2 offset1">
         <%= link_to(activity_set.activity.name, activity_path(activity_set.activity)) %>
       </div>
-      <% if activity_set.activity.activity_type.name.eql? "Weight Training" %>
+      <% activity_set.measurement do |measurement| %>
+        <%= render :partial => "routines/measure_display", :locals => { :measure => "Repetitions",
+                                                                        :value => activity_set.repetitions,
+                                                                        :unit => measure.unit} %>
+      <% end %>
+
+      <% if activity_set.activity.activity_type.name.eql? "XXWeight Training" %>
           <%= render :partial => "routines/measure_display", :locals => { :measure => "Repetitions", :value => activity_set.repetitions } %>
           <%= render :partial => "routines/measure_display", :locals => { :measure => "Resistance", :value => activity_set.measurement.resistance } %>
-      <% elsif activity_set.activity.activity_type.name.eql? "Cardiovascular" %>
+      <% elsif activity_set.activity.activity_type.name.eql? "XXCardiovascular" %>
           <%= render :partial => "routines/measure_display", :locals => { :measure => "Distance", :value => activity_set.measurement.distance } %>
           <%= render :partial => "routines/measure_display", :locals => { :measure => "Pace", :value => activity_set.measurement.pace } %>
           <%= render :partial => "routines/measure_display", :locals => { :measure => "Incline", :value => activity_set.measurement.incline } %>
           <%= render :partial => "routines/measure_display", :locals => { :measure => "Duration", :value => activity_set.measurement.duration } %>
-      <% elsif activity_set.activity.activity_type.name.eql? "Rest" %>
+      <% elsif activity_set.activity.activity_type.name.eql? "XXRest" %>
         <%= render :partial => "routines/measure_display", :locals => { :measure => "Duration", :value => activity_set.measurement.duration } %>
-      <% elsif activity_set.activity.activity_type.name.eql? "Plyometric" %>
+      <% elsif activity_set.activity.activity_type.name.eql? "XXPlyometric" %>
         <%= render :partial => "routines/measure_display", :locals => { :measure => "Repetitions", :value => activity_set.repetitions } %>
       <% end %>
     </div>

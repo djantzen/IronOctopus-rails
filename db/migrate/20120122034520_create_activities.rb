@@ -1,6 +1,7 @@
 class CreateActivities < ActiveRecord::Migration
+#        activity_type text not null default 'Resistance',
 
-  def self.up
+def self.up
     execute <<-OES
       create table application.activities (
         activity_id serial primary key,

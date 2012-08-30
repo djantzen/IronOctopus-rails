@@ -59,6 +59,8 @@ migrate_test:
   pool: 1
   username: administrator
   password: administrator
+  host: localhost
+  port: 5432
 
 test: &test
   adapter: postgresql
@@ -67,6 +69,8 @@ test: &test
   pool: 5
   username: application
   password: application
+  host: localhost
+  port: 5432
 
 migrate_production:
   adapter: postgresql
@@ -75,14 +79,18 @@ migrate_production:
   pool: 1
   username: administrator
   password: administrator
+  host: localhost
+  port: 5432
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: iron_octopus_production
+  database: iron_octopus
   pool: 5
   username: application
   password: application
+  host: localhost
+  port: 5432
 
 cucumber:
   <<: *test

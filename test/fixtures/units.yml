@@ -1,0 +1,53 @@
+none:
+  name: None
+  abbr: None
+  metric: none
+degree:
+  name: Degree
+  abbr: deg
+  metric: incline
+kilogram:
+  name: Kilogram
+  abbr: kg
+  metric: resistance
+  is_metric: true
+kilometer:
+  name: Kilometer
+  abbr: km
+  metric: distance
+  is_metric: true
+kilometer_per_hour:
+  name: Kilometer per Hour
+  abbr: kpm
+  metric: speed
+  is_metric: true
+mile:
+  name: Mile
+  abbr: mi
+  metric: distance
+minute:
+  name: Minute
+  abbr: min
+  metric: duration
+meter:
+  name: Meter
+  abbr: m
+  metric: distance
+  is_metric: true
+mile_per_hour:
+  name: Mile per Hour
+  abbr: mph
+  metric: speed
+pound:
+  name: Pound
+  abbr: lb
+  metric: resistance
+revolution_per_minute:
+  name: Revolution per Minute
+  abbr: rpm
+  metric: cadence
+second:
+  name: Second
+  abbr: sec
+  metric: duration
+

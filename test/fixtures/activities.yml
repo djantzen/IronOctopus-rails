@@ -2,10 +2,11 @@
 
 bench_press:
   name: Bench Press
-  activity_type: weight_training
+  activity_type: resistance
   creator: system
   implements: barbell, bench
   permalink: benchpress
+  metrics: repetitions, resistance
   
 box_jump:
   name: Box Jump
@@ -13,56 +14,50 @@ box_jump:
   creator: system
   implements: box
   permalink: boxjump
-  
+  metrics: repetitions
+
 dumbbell_bench_press:
   name: Dumbbell Bench Press
-  activity_type: weight_training
+  activity_type: resistance
   creator: system  
   implements: dumbbell, bench
   permalink: dumbellbenchpress
-  
+  metrics: repetitions, resistance
+
 curl_and_press:
   name: Curl and Press
-  activity_type: weight_training
+  activity_type: resistance
   creator: system
   implements: dumbbell
   body_parts: biceps_brachii, triceps_brachii
   permalink: curlandpress
+  metrics: repetitions, resistance
 
 squat:
   name: Squat
-  activity_type: weight_training
+  activity_type: resistance
   creator: system
   implements: barbell, power_rack
   body_parts: quadriceps, gluteus_maximus, hamstring
   permalink: squat
+  metrics: repetitions, resistance
 
 hamstring_curl:
   name: Hamstring Curl
-  activity_type: weight_training
+  activity_type: resistance
   creator: system
   body_parts: hamstring
   permalink: hamstringcurl
+  metrics: repetitions, resistance
 
 clean_and_jerk:
   name: Clean and Jerk
-  activity_type: weight_training
+  activity_type: resistance
   creator: system
   implements: barbell
   body_parts: quadriceps, gluteus_maximus, hamstring, posterior_deltoid
   permalink: cleanandjerk
-
-simple_rest:
-  name: Rest
-  activity_type: rest
-  creator: system
-  permalink: rest
-
-walking_rest:
-  name: Walking Rest
-  activity_type: rest
-  creator: system
-  permalink: walkingrest
+  metrics: repetitions, resistance
 
 treadmill_run:
   name: Treadmill Run
@@ -70,6 +65,7 @@ treadmill_run:
   creator: system
   implements: treadmill
   permalink: treadmillrun
+  metrics: duration, speed, incline, level, distance
 
 treadmill_walk:
   name: Treadmill Walk
@@ -77,6 +73,7 @@ treadmill_walk:
   creator: system
   implements: treadmill
   permalink: treadmillwalk
+  metrics: duration, speed, incline, level, distance
 
 treadmill_program:
   name: Treadmill Program
@@ -84,3 +81,4 @@ treadmill_program:
   creator: system
   implements: treadmill
   permalink: treadmillprogram
+  metrics: duration, speed, incline, level, distance

@@ -16,40 +16,22 @@ module RoutinesHelper
     end
   end
 
-  def kilometers_to_miles(kilometers)
-    kilometers * 0.6214
-  end
-
-  def miles_to_kilometers(miles)
-    miles * 1.609
-  end
-
-  def miles_to_meters(miles)
-    miles * 1609.3
-  end
-
-  def kilograms_to_pounds(kilograms)
-    kilograms * 2.2046
-  end
-
-  def pounds_to_kilograms(pounds)
-    pounds * 0.4536
-  end
-
-  def kph_to_mph(kph)
-    kph * 0.6213
-  end
-
-  def mph_to_kph(mph)
-    mph * 1.6093
-  end
-
-  def minutes_to_seconds(minutes)
-    minutes * 60.0
-  end
-
-  def seconds_to_minutes(seconds)
-    seconds / 60.0
+  def get_initial_value(activity_set, metric)
+    metric_name = metric.name.downcase
+    unit_column_name = "#{metric_name}_unit" # distance_unit, duration_unit, resistance_unit, speed_unit
+    raw_value = activity_set.nil? ? 1 : (eval("activity_set.measurement.#{metric_name}"))
+    case unit_column_name
+      when 'distance_unit'
+        [ Unit.convert_from_meters(raw_value, activity_set.distance_unit.name).round(1), activity_set.distance_unit.name ]
+      when 'duration_unit'
+        [ Unit.convert_from_seconds(raw_value, activity_set.duration_unit.name).round(1), activity_set.duration_unit.name ]
+      when 'resistance_unit'
+        [ Unit.convert_from_kilograms(raw_value, activity_set.resistance_unit.name).round(1), activity_set.resistance_unit.name ]
+      when 'speed_unit'
+        [ Unit.convert_from_kilometers_per_hour(raw_value, activity_set.speed_unit.name).round(1), activity_set.speed_unit.name ]
+      else
+        [ raw_value, 'None' ]
+    end
   end
 
 end

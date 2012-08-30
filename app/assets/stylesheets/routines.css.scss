@@ -76,8 +76,8 @@ div.activity-set-form {
   border: 1px solid;
 }
 
-.facet-selected {
-  background-color: green;
+.ui-state-active {
+  font-weight: bold;
 }
 
 .facet-included-activity {
@@ -107,9 +107,10 @@ input.measure {
   max-width: 35px;
 }
 
-.unit_selector {
+.unit-selector {
   width: auto;
-  margin-top: 0;
+  height: auto;
+  margin: 0;
 }
 
 .measure_label {
