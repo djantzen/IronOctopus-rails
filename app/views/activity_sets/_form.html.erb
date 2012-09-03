@@ -13,9 +13,11 @@
       <% else %>
         <div class="row">
           <% initial_value, unit = activity_set.nil? ? 1 : get_initial_value(activity_set, metric) %>
+          <%  %>
           <%= render :partial => "routines/measure_selector", :locals => { :measure => metric.name, :interval => 1,
                                                                            :initial_value => initial_value,
-                                                                           :units => metric.units.map { |u| u.name.pluralize }, :unit => unit } %>
+                                                                           :units => (defined?(performance) && performance) ? [unit.pluralize] : metric.units.map { |u| u.name.pluralize },
+                                                                           :unit => unit } %>
         </div>
       <% end %>
     <% end %>

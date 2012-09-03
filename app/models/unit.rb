@@ -58,10 +58,10 @@ class Unit < ActiveRecord::Base
   end
 
   def self.convert_to_kilograms(resistance, from_unit)
-    return if resistance.nil? || from_unit.nil? || from_unit.eql?('None')
+    return resistance.to_f if resistance.nil? || from_unit.nil? || from_unit.eql?('None')
     case from_unit
       when 'Kilogram'
-        resistance
+        resistance.to_f
       when 'Pound'
         pounds_to_kilograms(resistance)
       else
@@ -70,7 +70,7 @@ class Unit < ActiveRecord::Base
   end
 
   def self.convert_from_kilograms(resistance, to_unit)
-    return if resistance.nil? || to_unit.nil? || to_unit.eql?('None')
+    return resistance.to_f if resistance.nil? || to_unit.nil? || to_unit.eql?('None')
     case to_unit
       when 'Kilogram'
         resistance.to_f
@@ -82,10 +82,10 @@ class Unit < ActiveRecord::Base
   end
 
   def self.convert_to_meters(distance, from_unit)
-    return if distance.nil? || from_unit.nil? || from_unit.eql?('None')
+    return distance.to_f if distance.nil? || from_unit.nil? || from_unit.eql?('None')
     case from_unit
       when 'Meter'
-        distance
+        distance.to_f
       when 'Kilometer'
         kilometers_to_meters(distance)
       when 'Mile'
@@ -96,7 +96,7 @@ class Unit < ActiveRecord::Base
   end
 
   def self.convert_from_meters(distance, to_unit)
-    return if distance.nil? || to_unit.nil? || to_unit.eql?('None')
+    return distance.to_f if distance.nil? || to_unit.nil? || to_unit.eql?('None')
     case to_unit
       when 'Meter'
         distance.to_f
@@ -110,10 +110,10 @@ class Unit < ActiveRecord::Base
   end
 
   def self.convert_to_kilometers_per_hour(speed, from_unit)
-    return if speed.nil? || from_unit.nil? || from_unit.eql?('None')
+    return speed.to_f if speed.nil? || from_unit.nil? || from_unit.eql?('None')
     case from_unit
       when 'Kilometer per Hour'
-        speed
+        speed.to_f
       when 'Mile per Hour'
         mph_to_kph(speed)
       else
@@ -122,7 +122,7 @@ class Unit < ActiveRecord::Base
   end
 
   def self.convert_from_kilometers_per_hour(speed, to_unit)
-    return if speed.nil? || to_unit.nil? || to_unit.eql?('None')
+    return speed.to_f if speed.nil? || to_unit.nil? || to_unit.eql?('None')
     case to_unit
       when 'Kilometer per Hour'
         speed.to_f
@@ -134,7 +134,7 @@ class Unit < ActiveRecord::Base
   end
 
   def self.convert_to_seconds(duration, from_unit)
-    return if duration.nil? || from_unit.nil? || from_unit.eql?('None')
+    return duration.to_f if duration.nil? || from_unit.nil? || from_unit.eql?('None')
     case from_unit
       when 'Second'
         duration
@@ -146,7 +146,7 @@ class Unit < ActiveRecord::Base
   end
 
   def self.convert_from_seconds(duration, to_unit)
-    return if duration.nil? || to_unit.nil? || to_unit.eql?('None')
+    return duration.to_f if duration.nil? || to_unit.nil? || to_unit.eql?('None')
     case to_unit
       when 'Second'
         duration.to_f
@@ -157,5 +157,8 @@ class Unit < ActiveRecord::Base
     end
   end
 
+  def to_s
+    name
+  end
 
 end

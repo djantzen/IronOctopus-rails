@@ -1,8 +1,10 @@
-<% @activities.each do |activity| %>
+<div class="container">
+  <% @activities.each do |activity| %>
 
-  <div><%= link_to(activity.name, activity) %></div>
-  
-<% end %>
+    <div><%= link_to(activity.name, activity) %></div>
+
+  <% end %>
 
 
-<%= link_to("Create New Activity", new_activity_path, :class => "btn btn-primary") %>
+  <%= link_to("Create New Activity", new_activity_path, :class => "btn btn-primary") %>
+</div>

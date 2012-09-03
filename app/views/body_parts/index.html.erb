@@ -1,6 +1,10 @@
-<% @body_parts.each do |body_part| %>
+<div class="container">
 
-  <div><%= link_to(body_part.formal_name, body_part) %></div>
-  
-<% end %>
-<div><%= link_to("Create New", :action => :new) %></div>
+  <% @body_parts.each do |body_part| %>
+
+    <div><%= link_to(body_part.formal_name, body_part) %></div>
+
+  <% end %>
+  <div><%= link_to("Create New", new_body_part_path, :class => 'btn btn-primary') %></div>
+
+</div>

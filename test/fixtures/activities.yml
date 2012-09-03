@@ -7,6 +7,7 @@ bench_press:
   implements: barbell, bench
   permalink: benchpress
   metrics: repetitions, resistance
+  activity_attributes: push
   
 box_jump:
   name: Box Jump
@@ -23,6 +24,7 @@ dumbbell_bench_press:
   implements: dumbbell, bench
   permalink: dumbellbenchpress
   metrics: repetitions, resistance
+  activity_attributes: push
 
 curl_and_press:
   name: Curl and Press
@@ -32,6 +34,7 @@ curl_and_press:
   body_parts: biceps_brachii, triceps_brachii
   permalink: curlandpress
   metrics: repetitions, resistance
+  activity_attributes: pull, push
 
 squat:
   name: Squat
@@ -41,6 +44,7 @@ squat:
   body_parts: quadriceps, gluteus_maximus, hamstring
   permalink: squat
   metrics: repetitions, resistance
+  activity_attributes: push
 
 hamstring_curl:
   name: Hamstring Curl
@@ -49,6 +53,7 @@ hamstring_curl:
   body_parts: hamstring
   permalink: hamstringcurl
   metrics: repetitions, resistance
+  activity_attributes: pull, isolation
 
 clean_and_jerk:
   name: Clean and Jerk
@@ -58,6 +63,7 @@ clean_and_jerk:
   body_parts: quadriceps, gluteus_maximus, hamstring, posterior_deltoid
   permalink: cleanandjerk
   metrics: repetitions, resistance
+  activity_attributes: pull, push, compound
 
 treadmill_run:
   name: Treadmill Run

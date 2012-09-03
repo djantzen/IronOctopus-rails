@@ -27,46 +27,23 @@
       <td class="field-label">
         <%= activity_set.activity.name %>
       </td>
-      <% if activity_set.activity.activity_type.name.eql? "Weight Training" %>
-        <td>
-          <%= render :partial => "routines/measure_display", :locals => { :measure => "Repetitions", :value => activity_set.repetitions } %>
-        </td>
-        <td class="target-field"></td>
-        <td>
-          <%= render :partial => "routines/measure_display", :locals => { :measure => "Resistance", :value => activity_set.measurement.resistance } %>
-        </td>
-        <td class="target-field"></td>
-        <td colspan="4"/>
-      <% elsif activity_set.activity.activity_type.name.eql? "Cardiovascular" %>
-        <td>
-          <%= render :partial => "routines/measure_display", :locals => { :measure => "Distance", :value => activity_set.measurement.distance } %>
-        </td>
-        <td class="target-field"></td>
-        <td>
-          <%= render :partial => "routines/measure_display", :locals => { :measure => "Pace", :value => activity_set.measurement.pace } %>
-        </td>
-        <td class="target-field"></td>
-        <td>
-          <%= render :partial => "routines/measure_display", :locals => { :measure => "Incline", :value => activity_set.measurement.incline } %>
-        </td>
-        <td class="target-field"></td>
-        <td>
-          <%= render :partial => "routines/measure_display", :locals => { :measure => "Duration", :value => activity_set.measurement.duration } %>
-        </td>
-        <td class="target-field"></td>
-      <% elsif activity_set.activity.activity_type.name.eql? "Plyometric" %>
-        <td>
-          <%= render :partial => "routines/measure_display", :locals => { :measure => "Repetitions", :value => activity_set.repetitions } %>
-        </td>
-        <td class="target-field"></td>
-        <td colspan="6"/>
-      <% elsif activity_set.activity.activity_type.name.eql? "Rest" %>
-        <td>
-          <%= render :partial => "routines/measure_display", :locals => { :measure => "Duration", :value => activity_set.measurement.duration } %>
-        </td>
-        <td class="target-field"></td>
-        <td colspan="6"/>
+      <% activity_set.activity.metrics.each do |metric| %>
+        <% if metric.name.eql? 'Repetitions' %>
+          <td>
+            <%= render :partial => "routines/measure_display", :locals => { :measure => 'Repetitions',
+                                                                            :value => (activity_set.repetitions > 1) ? activity_set.repetitions : nil } %>
+          </td>
+          <td class="target-field"></td>
+        <% else %>
+          <td>
+            <% value, unit = activity_set.nil? ? 1 : get_initial_value(activity_set, metric) %>
+            <%= render :partial => "routines/measure_display", :locals => { :measure => metric.name, :value => value, :unit => (unit.pluralize unless unit.eql?('None')) } %>
+          </td>
+          <td class="target-field"></td>
+        <% end %>
       <% end %>
+      <td colspan="<%= Metric.count - activity_set.activity.metrics.size %>"/>
+
     </tr>
   <% end %>
 </table>

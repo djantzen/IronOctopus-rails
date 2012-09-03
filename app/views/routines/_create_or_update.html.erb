@@ -4,7 +4,7 @@
       <div class="clear-selections ui-state-default btn btn-primary">Clear Selections</div>
 
       <div id="activity-type-list">
-        <div class="facet-header">Type of Activity</div>
+        <h4 class="facet-header">Type of Activity</h4>
         <ul>
           <% @activity_types.each do |activity_type| %>
             <li class="ui-state-default">
@@ -19,7 +19,7 @@
         </ul>
       </div>
 
-      <div class="facet-header">Anatomy Involved</div>
+      <h4 class="facet-header">Anatomy Involved</h4>
       <ul id="body-part-list">
         <% group_body_parts_by_region(@body_parts).each_pair do |region, body_parts| %>
           <li class="ui-state-default">
@@ -45,7 +45,23 @@
         <% end %>
       </ul>
 
-      <div class="facet-header">Implements</div>
+      <div id="activity-attribute-list">
+        <h4 class="facet-header">Activity Attributes</h4>
+        <ul>
+          <% @activity_attributes.each do |attribute| %>
+            <li class="ui-state-default">
+              <div class="facet">
+                <%= attribute.name %>
+                <span class="faceting-control">
+                  <%= attribute.name %>
+                </span>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <h4 class="facet-header">Implements</h4>
       <ul id="implement-list">
         <% group_implements_by_category(@implements).each_pair do |category, implements| %>
           <li class="ui-state-default">
@@ -70,10 +86,11 @@
           </ul>
         <% end %>
       </ul>
+
     </div>
 
     <div id="facet-filtered-activities-panel" class="span3">
-      <div>Activities</div>
+      <h3>Activities</h3>
       <div id="activity-list">
         <% @activities.each do |activity| %>
           <div id="<%= activity.name.to_identifier %>" class="activity facet-included-activity">
@@ -104,7 +121,11 @@
                 </span>
               <% end %>
             <% end %>
-
+            <% activity.activity_attributes.each do |attribute| %>
+              <span class="faceting-control">
+                <%= attribute.name %>
+              </span>
+            <% end %>
           </div>
         <% end %>
       </div>

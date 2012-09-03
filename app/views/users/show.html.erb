@@ -7,7 +7,7 @@
       <% @routines.each do |routine| %>
         <li>
           <span>
-            <%= link_to(routine.name, edit_user_routine_path(@user, routine)) %>
+            <%= link_to(routine.name, user_routine_path(@user, routine)) %>
           </span>
           <span>
             <%= routine.goal %>

@@ -6,7 +6,7 @@
 #   inflect.plural /^(ox)$/i, '\1en'
 #   inflect.singular /^(ox)en/i, '\1'
 #   inflect.irregular 'person', 'people'
-#   inflect.uncountable %w( fish sheep )
+#     inflect.uncountable %w( fish sheep )
      inflect.plural "feedback", "feedback"
      inflect.singular "feedback", "feedback"
      inflect.plural "work", "work"
@@ -17,4 +17,6 @@
      inflect.singular "Miles per Hour", "Mile per Hour"
      inflect.plural "Revolution per Minute", "Revolutions per Minute"
      inflect.singular "Revolutions per Minute", "Revolution per Minute"
+     inflect.plural "None", "None"
+     inflect.singular "None", "None"
 end

@@ -14,7 +14,7 @@ class CreateMeasurements < ActiveRecord::Migration
         speed decimal not null default 0 check(speed between 0 and 100),
         created_at timestamptz not null default now()
       );
-      create unique index measurement_uniq_idx on application.measurements (
+      create unique index on application.measurements (
         cadence, calories, distance, duration, incline, level, resistance, speed);
       
       grant select on application.measurements to reader;

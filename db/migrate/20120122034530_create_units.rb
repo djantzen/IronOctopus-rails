@@ -10,10 +10,12 @@ class CreateUnits < ActiveRecord::Migration
         metric_id integer not null references application.metrics deferrable
       );
 
-      create unique index units_uniq_idx_name on application.units (name);
-      create unique index units_uniq_idx_abbr on application.units (abbr);
+      create unique index on application.units (name);
+      create unique index on application.units (abbr);
 
       grant select on application.units to reader;
+      grant delete, insert, update on application.units to writer;
+      grant select, update, usage on application.units_unit_id_seq to writer;
 
       comment on table application.units is 'Units associated with an activity set.';
     OES

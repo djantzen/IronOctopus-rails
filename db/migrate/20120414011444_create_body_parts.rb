@@ -18,7 +18,7 @@ class CreateBodyParts < ActiveRecord::Migration
       grant delete, insert, update on application.body_parts to writer;
       grant select, update, usage on application.body_parts_body_part_id_seq to writer;
 
-      create unique index body_parts_uniq_idx_name on application.body_parts (permalink);
+      create unique index on application.body_parts (permalink);
 
       comment on table application.body_parts is 'A reference table of basic human physiology.';
     OES

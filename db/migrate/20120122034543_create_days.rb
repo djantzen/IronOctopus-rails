@@ -11,8 +11,8 @@ class CreateDays < ActiveRecord::Migration
         created_at timestamptz default now()
       );
 
-      create unique index days_idx_full_date on reporting.days (full_date);
-      create unique index days_idx_year_month_day on reporting.days (day, month, year);
+      create unique index on reporting.days (full_date);
+      create unique index on reporting.days (day, month, year);
 
       grant select on reporting.days to reader;
       grant delete, insert, update on reporting.days to writer;

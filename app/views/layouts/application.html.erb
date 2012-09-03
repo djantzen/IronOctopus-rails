@@ -16,17 +16,12 @@
         <div class="container">
           <% unless current_user.nil? %>
             <ul class="nav pull-left">
-              <% if current_user.is_trainer? %>
-                <li><%= link_to("My Clients", clients_path(current_user)) %></li>
-                <li><%= link_to("My Routines", user_routines_path(current_user)) %></li>
-                <li><%= link_to("My Clients' Routines", routines_by_trainer_path(current_user)) %></li>
-                <li><%= link_to("My Work", user_work_index_path(current_user)) %></li>
-                <li><%= link_to("Activities", activities_path) %></li>
-                <li><%= link_to("Implements", implements_path) %></li>
-              <% else %>
-                <li><%= link_to("My Routines", user_routines_path(current_user)) %></li>
-                <li><%= link_to("My Work", user_work_index_path(current_user)) %></li>
-              <% end %>
+              <li><%= link_to("My Clients", clients_path(current_user)) %></li>
+              <li><%= link_to("My Routines", user_routines_path(current_user)) %></li>
+              <li><%= link_to("My Clients' Routines", routines_by_trainer_path(current_user)) %></li>
+              <li><%= link_to("My Work", user_work_index_path(current_user)) %></li>
+              <li><%= link_to("Activities", activities_path) %></li>
+              <li><%= link_to("Implements", implements_path) %></li>
             </ul>
             <div class="nav pull-right">
               <%= link_to("Feedback", "#", :class => "btn btn-primary", :id => "new-feedback-button") %>
@@ -44,7 +39,9 @@
         </div>
       </div>
     </div>
+
     <%= yield %>
+
     <div id="messages">
       <%= @messages %>
     </div>

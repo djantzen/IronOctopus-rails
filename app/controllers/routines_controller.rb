@@ -39,6 +39,7 @@ class RoutinesController < ApplicationController
     @activities = Activity.all(:include => [:body_parts, :implements, :activity_type], :order => :name)
     @implements = Implement.all
     @body_parts = BodyPart.all
+    @activity_attributes = ActivityAttribute.all(:order => :name)
   end
 
   def create
@@ -80,6 +81,7 @@ class RoutinesController < ApplicationController
     @activities = Activity.all(:include => [:body_parts, :implements, :activity_type], :order => :name)
     @implements = Implement.all
     @body_parts = BodyPart.all
+    @activity_attributes = ActivityAttribute.all(:order => :name)
   end
   
   def update
@@ -105,14 +107,16 @@ class RoutinesController < ApplicationController
       :activity_sets => routine.activity_sets.map do |set|
         {
           :activity => set.activity.name,
-          :repetitions => set.repetitions,
-          :distance => set.measurement.distance,
           :position => set.position,
-          :duration => set.measurement.duration,
-          :pace => set.measurement.pace,
+          :repetitions => set.repetitions,
+          :cadence => set.measurement.cadence,
           :calories => set.measurement.calories,
+          :distance => set.measurement.distance,
+          :duration => set.measurement.duration,
+          :incline => set.measurement.incline,
+          :level => set.measurement.level,
           :resistance => set.measurement.resistance,
-          :incline => set.measurement.incline
+          :speed => set.measurement.speed
         }
       end
     }

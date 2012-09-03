@@ -1,51 +1,99 @@
-<div>
+<div class="container">
   <%= form_for @activity do |form| %>
-    <%= form.label :name, 'Name' %>:
-    <%= form.text_field :name %><br />
-    <%= form.label :instructions, "Instructions" %>:
-    <%= form.text_field :instructions %><br />
-    <%= form.label :activity_type, "Activity Type" %>:
-    <%= form.select :activity_type,
-      @activity_types.map { |activity_type | [activity_type.name, activity_type.activity_type_id] },
-        :selected => @activity.activity_type.nil? ? nil : @activity.activity_type.activity_type_id %><br />
-    
-    <div id="attribute-panel" class="ui-state-default">
-  
-      <div>Anatomy Involved</div>
-      <div id="available-body-part-list">
-        <% @body_parts.each do |body_part| %>
-          <% if @activity.body_parts.include?(body_part) %>
-            <div id="<%= body_part.formal_name %>" class="activity-attribute ui-state-active">
-              <%= body_part.common_name %> (<%= body_part.formal_name %>)
-              <%= hidden_field_tag "activity[body_parts][]", body_part.formal_name, :class => "activity-attribute-control" %> 
-            </div>
-          <% else %>
-            <div id="<%= body_part.formal_name %>" class="activity-attribute">
-              <%= body_part.common_name %> (<%= body_part.formal_name %>)
-            </div>  
-          <% end %>
-        <% end %>
-      </div>
-  
-      <div>Implements</div>
-      <div id="available-implement-list">
-        <% @implements.each do |implement| %>
-          <% if @activity.implements.include?(implement) %>
-            <div id="<%= implement.name %>" class="activity-attribute ui-state-active">
-              <%= implement.name %>
-              <%= hidden_field_tag "activity[implements][]", implement.name, :class => "activity-attribute-control" %>
-            </div>     
-          <% else %>
-            <div id="<%= implement.name %>" class="activity-attribute">
-              <%= implement.name %>
-            </div>     
-          <% end %>
-        <% end %>
-      </div>
-  
+    <div class="row">
+      <%= form.label :name, 'Name' %>:
+      <%= form.text_field :name %><br />
+      <%= form.label :instructions, "Instructions" %>:
+      <%= form.text_field :instructions %><br />
+      <%= form.label :activity_type, "Activity Type" %>:
+      <%= form.select :activity_type,
+                      @activity_types.map { |activity_type | [activity_type.name, activity_type.activity_type_id] },
+                      :selected => @activity.activity_type.nil? ? nil : @activity.activity_type.activity_type_id %><br />
     </div>
-    
-    <%= submit_tag "Save" %>
+
+    <div class="row">
+      <div id="attribute-panel" class="ui-state-default">
+
+        <div class="span3">
+          <h3>Anatomy Involved</h3>
+          <div id="available-body-part-list" class="available-activity-facet-list">
+            <% @body_parts.each do |body_part| %>
+              <% if @activity.body_parts.include?(body_part) %>
+                <div id="<%= body_part.formal_name %>" class="activity-attribute ui-state-active">
+                  <%= body_part.common_name %> (<%= body_part.formal_name %>)
+                  <%= hidden_field_tag "activity[body_parts][]", body_part.formal_name, :class => "activity-attribute-control" %>
+                </div>
+              <% else %>
+                <div id="<%= body_part.formal_name %>" class="activity-attribute">
+                  <%= body_part.common_name %> (<%= body_part.formal_name %>)
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="span3">
+          <h3>Implements</h3>
+          <div id="available-implement-list" class="available-activity-facet-list">
+            <% @implements.each do |implement| %>
+              <% if @activity.implements.include?(implement) %>
+                <div id="<%= implement.name %>" class="activity-attribute ui-state-active">
+                  <%= implement.name %>
+                  <%= hidden_field_tag "activity[implements][]", implement.name, :class => "activity-attribute-control" %>
+                </div>
+              <% else %>
+                <div id="<%= implement.name %>" class="activity-attribute">
+                  <%= implement.name %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="span3">
+          <h3>Metrics</h3>
+          <div id="available-metric-list" class="available-activity-facet-list">
+            <% @metrics.each do |metric| %>
+              <% if @activity.metrics.include?(metric) %>
+                <div id="<%= metric.name %>" class="activity-attribute ui-state-active">
+                  <%= metric.name %>
+                  <%= hidden_field_tag "activity[metrics][]", metric.name, :class => "activity-attribute-control" %>
+                </div>
+              <% else %>
+                <div id="<%= metric.name %>" class="activity-attribute">
+                  <%= metric.name %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="span3">
+          <h3>Attributes</h3>
+          <div id="available-activity-attribute-list" class="available-activity-facet-list">
+            <% @activity_attributes.each do |attribute| %>
+              <% if @activity.activity_attributes.include?(attribute) %>
+                <div id="<%= attribute.name %>" class="activity-attribute ui-state-active">
+                  <%= attribute.name %>
+                  <%= hidden_field_tag "activity[activity_attributes][]", attribute.name, :class => "activity-attribute-control" %>
+                </div>
+              <% else %>
+                <div id="<%= attribute.name %>" class="activity-attribute">
+                  <%= attribute.name %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="row">
+      <%= submit_tag "Save" %>
+      <%= link_to("Cancel", activities_path) %>
+    </div>
 
   <% end %>
 </div>

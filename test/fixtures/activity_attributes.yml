@@ -1,0 +1,12 @@
+push:
+  name: Push
+  permalink: push
+pull:
+  name: Pull
+  permalink: pull
+compound:
+  name: Compound
+  permalink: compound
+isolation:
+  name: Isolation
+  permalink: isolation

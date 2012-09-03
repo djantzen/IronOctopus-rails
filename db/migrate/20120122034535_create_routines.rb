@@ -18,8 +18,9 @@ class CreateRoutines < ActiveRecord::Migration
       grant delete, insert, update on application.routines to writer;
       grant select, update, usage on application.routines_routine_id_seq to writer;
 
-      create unique index routines_uniq_idx_client_permalink on application.routines (client_id, permalink);
-      create index routines_idx_trainer on application.routines (trainer_id);
+      create unique index on application.routines (client_id, permalink);
+      create index on application.routines (trainer_id);
+      create index on application.routines (client_id);
 
       comment on table application.routines is 'A grouping of activity sets that may be assigned to a user.';
     OES

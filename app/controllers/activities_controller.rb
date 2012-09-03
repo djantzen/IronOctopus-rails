@@ -20,10 +20,13 @@ class ActivitiesController < ApplicationController
   end
 
   def new
+    #TODO why do we need all these?
     @activity = Activity.new
     @body_parts = BodyPart.all
     @implements = Implement.all
+    @metrics = Metric.all
     @activity_types = ActivityType.all(:order => :name)
+    @activity_attributes = ActivityAttribute.all(:order => :name)
   end
 
   def create
@@ -33,9 +36,8 @@ class ActivitiesController < ApplicationController
     redirect_to(activity)
   end
 
-  # GET /activities/1.json
   def show
-    @activity = Activity.find_by_permalink(params[:id], :include => [:activity_type, :body_parts, :implements])
+    @activity = Activity.find_by_permalink(params[:id], :include => [:activity_type, :body_parts, :implements, :metrics, :activity_attributes])
   end
 
   def edit
@@ -43,6 +45,8 @@ class ActivitiesController < ApplicationController
     @body_parts = BodyPart.all
     @implements = Implement.all
     @activity_types = ActivityType.all(:order => :name)
+    @metrics = Metric.all(:order => :name)
+    @activity_attributes = ActivityAttribute.all(:order => :name)
   end
   
   def update
@@ -65,6 +69,16 @@ class ActivitiesController < ApplicationController
     (params[:activity][:implements] || []).each do |name|
       implement = Implement.find_by_name(name)
       activity.implements << implement unless activity.implements.include?(implement)
+    end
+    activity.metrics.clear
+    (params[:activity][:metrics] || []).each do |name|
+      metric = Metric.find_by_name(name)
+      activity.metrics << metric unless activity.metrics.include?(metric)
+    end
+    activity.activity_attributes.clear
+    (params[:activity][:activity_attributes] || []).each do |name|
+      attribute = ActivityAttribute.find_by_name(name)
+      activity.activity_attributes << attribute unless activity.activity_attributes.include?(attribute)
     end
     activity.name = params[:activity][:name]
     activity.instructions = params[:activity][:instructions]

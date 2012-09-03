@@ -27,28 +27,37 @@ class WorkController < ApplicationController
     activity_sets = params[:routine][:activity_sets]
     user = User.find_by_login(params[:user_id])
     routine = user.routines.find_by_name(params[:routine][:routine])
-    activity_sets.each do |activity_set|
+    activity_sets.each do |activity_set_hash|
       begin
-        activity = Activity.find_by_name(activity_set[:activity])
+        activity = Activity.find_by_name(activity_set_hash[:activity])
+
+        distance_unit = Unit.lookup(activity_set_hash[:distance_unit])
+        duration_unit = Unit.lookup(activity_set_hash[:duration_unit])
+        speed_unit = Unit.lookup(activity_set_hash[:speed_unit])
+        resistance_unit = Unit.lookup(activity_set_hash[:resistance_unit])
+
         measurement_key = {
-          :calories => activity_set[:calories],
-          :distance => activity_set[:distance],
-          :duration => activity_set[:duration],
-          :incline => activity_set[:incline],
-          :pace => activity_set[:pace],
-          :resistance => activity_set[:resistance]
+          :cadence => activity_set_hash[:cadence],
+          :calories => activity_set_hash[:calories],
+          :distance => Unit.convert_to_meters(activity_set_hash[:distance], distance_unit.name),
+          :duration => Unit.convert_to_seconds(activity_set_hash[:duration], duration_unit.name),
+          :incline => activity_set_hash[:incline],
+          :level => activity_set_hash[:level],
+          :resistance => Unit.convert_to_kilograms(activity_set_hash[:resistance], resistance_unit.name),
+          :speed => Unit.convert_to_kilometers_per_hour(activity_set_hash[:speed], speed_unit.name)
         }
-        activity_set[:start_time] ||= Time.new
-        activity_set[:end_time] ||= Time.new
-        activity_set[:repetitions] ||= 1
+        activity_set_hash[:start_time] ||= Time.new
+        activity_set_hash[:end_time] ||= activity_set_hash[:start_time]
+        activity_set_hash[:repetitions] ||= 1
+
         measurement = Measurement.find_or_create(measurement_key)
-        day = Day.find_or_create(activity_set[:start_time])
+        day = Day.find_or_create(activity_set_hash[:start_time])
 
         work = Work.new(:user => user, :activity => activity,
                         :measurement => measurement,
-                        :repetitions => activity_set[:repetitions],
-                        :routine => routine, :start_time => activity_set[:start_time],
-                        :end_time => activity_set[:end_time],
+                        :repetitions => activity_set_hash[:repetitions],
+                        :routine => routine, :start_time => activity_set_hash[:start_time],
+                        :end_time => activity_set_hash[:end_time],
                         :start_day => day)
         work.save
       rescue Exception => e
@@ -86,7 +95,6 @@ class WorkController < ApplicationController
       end
     end
   end
-
 
   def show
     wtf? params

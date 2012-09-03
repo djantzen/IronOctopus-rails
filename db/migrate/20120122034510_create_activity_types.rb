@@ -7,7 +7,7 @@ class CreateActivityTypes < ActiveRecord::Migration
         name text not null
       );
       
-      create unique index activity_types_uniq_idx_name on application.activity_types (name);
+      create unique index on application.activity_types (name);
       
       grant select on application.activity_types to reader;
 

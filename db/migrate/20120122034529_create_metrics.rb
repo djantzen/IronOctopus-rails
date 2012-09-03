@@ -6,9 +6,12 @@ class CreateMetrics < ActiveRecord::Migration
         metric_id serial primary key,
         name text not null
       );
-      create unique index metrics_uniq_idx_name on application.metrics (name);
+
+      create unique index on application.metrics (name);
 
       grant select on application.metrics to reader;
+      grant delete, insert, update on application.metrics to writer;
+      grant select, update, usage on application.metrics_metric_id_seq to writer;
 
       comment on table application.metrics is 'Measures such as resistance, duration associated with an activity set.';
     OES

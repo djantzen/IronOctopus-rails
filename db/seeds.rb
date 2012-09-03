@@ -16,12 +16,14 @@ Metric.delete_all
 
 activity_types = ActivityType.create([
                                         { :name => 'Cardiovascular' },
+                                        { :name => 'Cycling' },
                                         { :name => 'Olympic Lift' },
                                         { :name => 'Pilates' },
                                         { :name => 'Plyometric' },
                                         { :name => 'Resistance' },
                                         { :name => 'Sport' },
                                         { :name => 'Stretch' },
+                                        { :name => 'Swimming' },
                                         { :name => 'Yoga'}
                                     ])
 
@@ -50,5 +52,8 @@ units = Unit.create([
                       { :name => 'Mile per Hour', :abbr => 'mph', :metric => Metric.find_by_name('Speed') },
                       { :name => 'Pound', :abbr => 'lb', :metric => Metric.find_by_name('Resistance') },
                       { :name => 'Revolution per Minute', :abbr => 'rpm', :metric => Metric.find_by_name('Cadence') },
-                      { :name => 'Second', :abbr => 'sec', :metric => Metric.find_by_name('Duration') }
+                      { :name => 'Second', :abbr => 'sec', :metric => Metric.find_by_name('Duration') },
+                      { :name => '50 Meter Lap', :abbr => '50m lap', :factor => 50, :composed_of => Unit.find_by_name('Meter'),
+                        :metric => Metric.find_by_name('Duration') }
+
                     ])

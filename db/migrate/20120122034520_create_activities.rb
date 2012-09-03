@@ -15,8 +15,8 @@ def self.up
         updated_at timestamptz not null default now()
       );
 
-      create unique index activities_uniq_idx_name on application.activities (lower(regexp_replace(name, '\s', '', 'g')));
-      
+      create unique index on application.activities(permalink);
+
       grant select on application.activities to reader;
       grant delete, insert, update on application.activities to writer;
       grant select, update, usage on application.activities_activity_id_seq to writer;
