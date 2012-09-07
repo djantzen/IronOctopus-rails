@@ -11,8 +11,8 @@ class UsersController < ApplicationController
     :address              => "smtp.gmail.com",
     :port                 => 587,
     :domain               => 'ironoctop.us',
-    :user_name            => 'david@ironoctop.us',
-    :password             => '/Q3Hpl[/',
+    :user_name            => '',
+    :password             => '',
     :authentication       => 'plain',
     :enable_starttls_auto => true
   }
