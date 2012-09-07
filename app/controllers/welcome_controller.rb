@@ -7,5 +7,9 @@ class WelcomeController < ApplicationController
       redirect_to :site
     end
   end
-  
+
+  def post_signup
+
+  end
+
 end

@@ -50,6 +50,7 @@ IronOctopus::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   root :to => "welcome#index"
+  get "post_signup" => "welcome#post_signup"
   match "login" => "sessions#new"
   match "site" => "site#index"
   # See how all your routes lay out with "rake routes"
@@ -61,6 +62,8 @@ IronOctopus::Application.routes.draw do
   resources :sessions
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "log_in" => "sessions#new", :as => "log_in"
+  get "confirm" => "sessions#confirm", :as => "confirm"
+  get "accept" => "invitations#accept", :as => "accept"
 
   get "/users/:user_id/routines/:routine_id/sheet" => "routines#sheet", :as => "routine_sheet"
   get "/users/:user_id/routines/:routine_id/perform" => "routines#perform", :as => "perform_routine"
@@ -68,6 +71,8 @@ IronOctopus::Application.routes.draw do
   # Sample of named route:
   get "/trainers/:user_id/clients" => "users#clients", :as => :clients
   get "/trainers/:user_id/routines" => "routines#by_trainer", :as => :routines_by_trainer
+
+#  match "/trainers/:user_id/invitations" => "users#invitations", :as => :invitations
 
   # This route can be invoked with purchase_url(:id => product.id)
   #  match '/users/:user_id/routines/:role' => 'routines#index', :as => :routines
@@ -85,5 +90,7 @@ IronOctopus::Application.routes.draw do
     resources :work
     resources :feedback
     resources :routines
+    resources :licenses
+    resources :invitations
   end
 end

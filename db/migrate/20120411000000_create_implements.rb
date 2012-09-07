@@ -4,9 +4,8 @@ class CreateImplements < ActiveRecord::Migration
       create table application.implements (
         implement_id serial primary key,
         name text not null,
-        permalink text not null,
         category text not null default 'None',
-        creator_id integer not null references application.users(user_id) deferrable,
+        permalink text not null,
         created_at timestamptz not null default now()
       );
 

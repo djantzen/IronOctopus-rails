@@ -3,47 +3,39 @@
 barbell:
   name: Barbell
   category: Free Weight
-  creator: system
   permalink: barbell
 
 bench:
   name: Bench
   category: Equipment
-  creator: system
   permalink: bench
 
 box:
   name: Box
   category: Equipment
-  creator: system
   permalink: box
 
 dumbbell:
   name: Dumbbell
   category: Free Weight
-  creator: system
   permalink: dumbell
 
 power_rack:
   name: Power Rack
   category: Free Weight
-  creator: system
   permalink: powerrack
 
 treadmill:
   name: Treadmill
   category: Cardio Machine
-  creator: system
   permalink: treadmill
   
 rowing_machine:
   name: Rowing Machine
   category: Cardio Machine
-  creator: system
   permalink: rowingmachine
 
 body_weight:
   name: Body Weight
   category: Resistance
-  creator: system
   permalink: bodyweight

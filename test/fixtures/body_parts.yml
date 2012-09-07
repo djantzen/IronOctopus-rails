@@ -2,63 +2,45 @@
 
 hamstring:
   formal_name: Hamstring
-  common_name: Rear Thigh
   region: Legs
-  creator: system
   permalink: hamstring
 
 gastrocnemius:
   formal_name: Gastrocnemius
-  common_name: Calf
   region: Legs
-  creator: system
   permalink: gastrocnemius
 
 biceps_brachii:
   formal_name: Biceps Brachii
-  common_name: Biceps
   region: Arms
-  creator: system
   permalink: bicepsbrachii
 
 triceps_brachii:
   formal_name: Triceps Brachii
-  common_name: Triceps
   region: Arms
-  creator: system
   permalink: tricepsbrachii
 
 gluteus_maximus:
   formal_name: Gluteus Maximus
-  common_name: Glutes
   region: Buttocks
-  creator: system
   permalink: gluteusmaximus
 
 trapezius:
   formal_name: Trapezius
-  common_name: Upper Back
   region: Back
-  creator: system
   permalink: trapezius
 
 quadriceps:
   formal_name: Quadriceps
-  common_name: Front Thigh
   region: Legs
-  creator: system
   permalink: quadriceps
   
 pectoralis_major:
   formal_name: Pectoralis Major
-  common_name: Pectoral
   region: Chest
-  creator: system
   permalink: pectoralismajor
 
 posterior_deltoid:
   formal_name: Posterior Deltoid
-  common_name: Rear Shoulder
   region: Shoulder
-  creator: system
   permalink: posteriordeltoid

@@ -1,6 +1,7 @@
 <div class="container">
   <h2>Sign Up</h2>
   <%= form_for @user do |f| %>
+    <%= hidden_field_tag "invitation_uuid", @invitation.invitation_uuid %>
 
     <% if @user.errors.any? %>
       <div class="error_messages">

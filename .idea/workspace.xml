@@ -2,82 +2,47 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46f8a447-b9ed-44ae-be1c-95fe4e4f3fab" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/activity_attribute.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20120931022445_create_activity_attributes.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20120931022446_create_activities_activity_attributes.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/fixtures/activity_attributes.yml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addyosmani-jquery-ui-bootstrap-a4d5636/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addyosmani-jquery-ui-bootstrap-a4d5636/css/custom-theme/images/ui-bg_flat_0_aaaaaa_40x100.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addyosmani-jquery-ui-bootstrap-a4d5636/css/custom-theme/images/ui-bg_glass_55_fbf9ee_1x400.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addyosmani-jquery-ui-bootstrap-a4d5636/css/custom-theme/images/ui-bg_glass_65_ffffff_1x400.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addyosmani-jquery-ui-bootstrap-a4d5636/css/custom-theme/images/ui-bg_glass_75_dadada_1x400.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addyosmani-jquery-ui-bootstrap-a4d5636/css/custom-theme/images/ui-bg_glass_75_e6e6e6_1x400.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addyosmani-jquery-ui-bootstrap-a4d5636/css/custom-theme/images/ui-bg_glass_75_ffffff_1x400.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addyosmani-jquery-ui-bootstrap-a4d5636/css/custom-theme/images/ui-bg_highlight-soft_75_cccccc_1x100.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addyosmani-jquery-ui-bootstrap-a4d5636/css/custom-theme/images/ui-bg_inset-soft_95_fef1ec_1x100.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addyosmani-jquery-ui-bootstrap-a4d5636/css/custom-theme/images/ui-icons_222222_256x240.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addyosmani-jquery-ui-bootstrap-a4d5636/css/custom-theme/images/ui-icons_2e83ff_256x240.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addyosmani-jquery-ui-bootstrap-a4d5636/css/custom-theme/images/ui-icons_454545_256x240.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addyosmani-jquery-ui-bootstrap-a4d5636/css/custom-theme/images/ui-icons_888888_256x240.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addyosmani-jquery-ui-bootstrap-a4d5636/css/custom-theme/images/ui-icons_cd0a0a_256x240.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addyosmani-jquery-ui-bootstrap-a4d5636/css/custom-theme/images/ui-icons_f6cf3b_256x240.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addyosmani-jquery-ui-bootstrap-a4d5636/css/custom-theme/jquery-ui-1.8.16.custom.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addyosmani-jquery-ui-bootstrap-a4d5636/css/custom-theme/jquery.ui.1.8.16.ie.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addyosmani-jquery-ui-bootstrap-a4d5636/css/demo.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addyosmani-jquery-ui-bootstrap-a4d5636/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addyosmani-jquery-ui-bootstrap-a4d5636/third-party/jQuery-UI-Date-Range-Picker/css/ui.daterangepicker.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addyosmani-jquery-ui-bootstrap-a4d5636/third-party/jQuery-UI-Date-Range-Picker/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addyosmani-jquery-ui-bootstrap-a4d5636/third-party/jQuery-UI-Date-Range-Picker/js/date.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addyosmani-jquery-ui-bootstrap-a4d5636/third-party/jQuery-UI-Date-Range-Picker/js/daterangepicker.jQuery.compressed.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addyosmani-jquery-ui-bootstrap-a4d5636/third-party/jQuery-UI-Date-Range-Picker/js/daterangepicker.jQuery.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addyosmani-jquery-ui-bootstrap-a4d5636/third-party/jQuery-UI-FileInput/css/enhanced.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addyosmani-jquery-ui-bootstrap-a4d5636/third-party/jQuery-UI-FileInput/images/icon-generic.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addyosmani-jquery-ui-bootstrap-a4d5636/third-party/jQuery-UI-FileInput/images/icon-image.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addyosmani-jquery-ui-bootstrap-a4d5636/third-party/jQuery-UI-FileInput/images/icon-media.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addyosmani-jquery-ui-bootstrap-a4d5636/third-party/jQuery-UI-FileInput/images/icon-zip.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addyosmani-jquery-ui-bootstrap-a4d5636/third-party/jQuery-UI-FileInput/js/enhance.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addyosmani-jquery-ui-bootstrap-a4d5636/third-party/jQuery-UI-FileInput/js/fileinput.jquery.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addyosmani-jquery-ui-bootstrap-a4d5636/third-party/wijmo/jquery.bgiframe-2.1.3-pre.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addyosmani-jquery-ui-bootstrap-a4d5636/third-party/wijmo/jquery.mousewheel.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addyosmani-jquery-ui-bootstrap-a4d5636/third-party/wijmo/jquery.wijmo-open.1.5.0.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/addyosmani-jquery-ui-bootstrap-a4d5636/third-party/wijmo/jquery.wijmo-open.1.5.0.min.js" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/invitations_controller.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/licenses_controller.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/invitation.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/invitations/accept.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/invitations/create.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/invitations/new.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/user_mailer/invitation_email.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/user_mailer/welcome_email.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/welcome/post_signup.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20120931122447_create_invitations.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/fixtures/invitations.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/IronOctopus-rails.iml" afterPath="$PROJECT_DIR$/.idea/IronOctopus-rails.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/activities.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/activities.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/routines.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/routines.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/activities.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/activities.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/activities_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/activities_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/routines_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/routines_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/work_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/work_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/activity.rb" afterPath="$PROJECT_DIR$/app/models/activity.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/body_part.rb" afterPath="$PROJECT_DIR$/app/models/body_part.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/metric.rb" afterPath="$PROJECT_DIR$/app/models/metric.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/sessions_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/sessions_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/welcome_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/welcome_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/feedback.rb" afterPath="$PROJECT_DIR$/app/models/feedback.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/unit.rb" afterPath="$PROJECT_DIR$/app/models/unit.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/activities/_create_or_update.html.erb" afterPath="$PROJECT_DIR$/app/views/activities/_create_or_update.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/activities/edit.html.erb" afterPath="$PROJECT_DIR$/app/views/activities/edit.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/activities/index.html.erb" afterPath="$PROJECT_DIR$/app/views/activities/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/activities/show.html.erb" afterPath="$PROJECT_DIR$/app/views/activities/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/activity_sets/_form.html.erb" afterPath="$PROJECT_DIR$/app/views/activity_sets/_form.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/body_parts/_create_or_update.html.erb" afterPath="$PROJECT_DIR$/app/views/body_parts/_create_or_update.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/body_parts/index.html.erb" afterPath="$PROJECT_DIR$/app/views/body_parts/index.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/user.rb" afterPath="$PROJECT_DIR$/app/models/user.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/work.rb" afterPath="$PROJECT_DIR$/app/models/work.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/routines/_create_or_update.html.erb" afterPath="$PROJECT_DIR$/app/views/routines/_create_or_update.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/routines/_measure_selector.html.erb" afterPath="$PROJECT_DIR$/app/views/routines/_measure_selector.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/routines/sheet.html.erb" afterPath="$PROJECT_DIR$/app/views/routines/sheet.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/routines/show.html.erb" afterPath="$PROJECT_DIR$/app/views/routines/show.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/routines/index.html.erb" afterPath="$PROJECT_DIR$/app/views/routines/index.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/site/index.html.erb" afterPath="$PROJECT_DIR$/app/views/site/index.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/clients.html.erb" afterPath="$PROJECT_DIR$/app/views/users/clients.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/new.html.erb" afterPath="$PROJECT_DIR$/app/views/users/new.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/show.html.erb" afterPath="$PROJECT_DIR$/app/views/users/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/initializers/inflections.rb" afterPath="$PROJECT_DIR$/config/initializers/inflections.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environments/development.rb" afterPath="$PROJECT_DIR$/config/environments/development.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20120122034507_create_users.rb" afterPath="$PROJECT_DIR$/db/migrate/20120122034507_create_users.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20120122034510_create_activity_types.rb" afterPath="$PROJECT_DIR$/db/migrate/20120122034510_create_activity_types.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20120122034520_create_activities.rb" afterPath="$PROJECT_DIR$/db/migrate/20120122034520_create_activities.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20120122034525_create_measurements.rb" afterPath="$PROJECT_DIR$/db/migrate/20120122034525_create_measurements.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20120122034529_create_metrics.rb" afterPath="$PROJECT_DIR$/db/migrate/20120122034529_create_metrics.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20120122034530_create_units.rb" afterPath="$PROJECT_DIR$/db/migrate/20120122034530_create_units.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20120122034535_create_routines.rb" afterPath="$PROJECT_DIR$/db/migrate/20120122034535_create_routines.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20120122034543_create_days.rb" afterPath="$PROJECT_DIR$/db/migrate/20120122034543_create_days.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20120411000000_create_implements.rb" afterPath="$PROJECT_DIR$/db/migrate/20120411000000_create_implements.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20120414011444_create_body_parts.rb" afterPath="$PROJECT_DIR$/db/migrate/20120414011444_create_body_parts.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/seeds.rb" afterPath="$PROJECT_DIR$/db/seeds.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/activities.yml" afterPath="$PROJECT_DIR$/test/fixtures/activities.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/activity_types.yml" afterPath="$PROJECT_DIR$/test/fixtures/activity_types.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/body_parts.yml" afterPath="$PROJECT_DIR$/test/fixtures/body_parts.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/implements.yml" afterPath="$PROJECT_DIR$/test/fixtures/implements.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/units.yml" afterPath="$PROJECT_DIR$/test/fixtures/units.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/users.yml" afterPath="$PROJECT_DIR$/test/fixtures/users.yml" />
     </list>
     <ignored path="IronOctopus-rails.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -103,73 +68,84 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="routines_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/routines_controller.rb">
+      <file leaf-file-name="user_mailer.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/mailers/user_mailer.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="84" column="0" selection-start="2837" selection-end="2837" vertical-scroll-proportion="0.0">
+            <state line="7" column="3" selection-start="221" selection-end="221" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routines.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/routines.js">
+      <file leaf-file-name="accept.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/invitations/accept.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="0" selection-start="1561" selection-end="1561" vertical-scroll-proportion="-12.115385">
+            <state line="16" column="0" selection-start="441" selection-end="441" vertical-scroll-proportion="-10.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_create_or_update.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/activities/_create_or_update.html.erb">
+      <file leaf-file-name="create.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/invitations/create.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="40" selection-start="163" selection-end="163" vertical-scroll-proportion="-2.5">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/activities/show.html.erb">
+      <file leaf-file-name="sessions_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/sessions_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="21" selection-start="21" selection-end="21" vertical-scroll-proportion="-0.0">
+            <state line="8" column="0" selection-start="152" selection-end="152" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/activities/index.html.erb">
+      <file leaf-file-name="20120931022447_create_licenses.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20120931022447_create_licenses.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="87" selection-start="221" selection-end="221" vertical-scroll-proportion="-5.0">
+            <state line="18" column="0" selection-start="892" selection-end="892" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_create_or_update.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/routines/_create_or_update.html.erb">
+      <file leaf-file-name="users.yml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/fixtures/users.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="54" selection-start="311" selection-end="311" vertical-scroll-proportion="-3.75">
+            <state line="36" column="20" selection-start="1136" selection-end="1136" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activities.css.scss" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/activities.css.scss">
+      <file leaf-file-name="invitations_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/invitations_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="0" selection-start="182" selection-end="257" vertical-scroll-proportion="0.0">
+            <state line="11" column="0" selection-start="228" selection-end="228" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="seeds.rb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/db/seeds.rb">
+      <file leaf-file-name="users_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="56" column="24" selection-start="3385" selection-end="3385" vertical-scroll-proportion="0.9292035">
+            <state line="6" column="0" selection-start="114" selection-end="114" vertical-scroll-proportion="0.0">
+              <folding>
+                <marker date="1346987115000" expanded="true" signature="702:790" placeholder="if ... end" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/models/user.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="0" selection-start="835" selection-end="835" vertical-scroll-proportion="0.6733167">
               <folding />
             </state>
           </provider>
@@ -191,22 +167,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/db/migrate/20120931022446_create_activities_activity_attributes.rb" />
-        <option value="$PROJECT_DIR$/app/models/activity_attribute.rb" />
-        <option value="$PROJECT_DIR$/app/models/activity.rb" />
-        <option value="$PROJECT_DIR$/app/models/body_part.rb" />
-        <option value="$PROJECT_DIR$/test/fixtures/activities.yml" />
-        <option value="$PROJECT_DIR$/test/fixtures/activity_attributes.yml" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/activities.js" />
-        <option value="$PROJECT_DIR$/app/controllers/activities_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/routines/_create_or_update.html.erb" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/activities.css.scss" />
-        <option value="$PROJECT_DIR$/app/views/activities/_create_or_update.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/activities/index.html.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/routines_controller.rb" />
+        <option value="$PROJECT_DIR$/config/routes.rb" />
+        <option value="$PROJECT_DIR$/app/views/invitations/create.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/user_mailer/invitation_email.html.erb" />
+        <option value="$PROJECT_DIR$/test/fixtures/invitations.yml" />
+        <option value="$PROJECT_DIR$/app/views/invitations/accept.html.erb" />
+        <option value="$PROJECT_DIR$/app/mailers/user_mailer.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20120931122448_create_confirmations.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/invitations_controller.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20120122034507_create_users.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20120931122447_create_invitations.rb" />
+        <option value="$PROJECT_DIR$/test/fixtures/users.yml" />
+        <option value="$PROJECT_DIR$/app/controllers/sessions_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/activities/show.html.erb" />
-        <option value="$PROJECT_DIR$/db/seeds.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20120931022447_create_licenses.rb" />
+        <option value="$PROJECT_DIR$/app/models/user.rb" />
       </list>
     </option>
   </component>
@@ -218,9 +194,10 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1680" />
-    <option name="width" value="1680" />
-    <option name="height" value="1050" />
+    <option name="x" value="-2" />
+    <option name="y" value="22" />
+    <option name="width" value="1280" />
+    <option name="height" value="774" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -301,64 +278,6 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="IronOctopus-rails" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="IronOctopus-rails" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="activities" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="IronOctopus-rails" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="IronOctopus-rails" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="IronOctopus-rails" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="IronOctopus-rails" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -378,16 +297,19 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="options.lastSelected" value="preferences.sourceCode.CSS" />
+    <property name="recentsLimit" value="5" />
     <property name="FullScreen" value="false" />
     <property name="RailsGeneratorsPopup.hiddenIncluded" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="options.searchVisible" value="true" />
+    <property name="Ruby.ViewRefParam.DefaultExtension" value="html.erb" />
     <property name="GoToClass.includeJavaFiles" value="false" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/test/fixtures" />
+      <recent name="$PROJECT_DIR$/app/controllers" />
       <recent name="$PROJECT_DIR$/db/migrate" />
       <recent name="$PROJECT_DIR$/app/models" />
       <recent name="$PROJECT_DIR$/app/assets/images" />
@@ -665,6 +587,13 @@
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_OPTIONS" VALUE="" />
       <method />
     </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote">
+      <JSRemoteDebuggerConfigurationSettings>
+        <option name="engineId" value="embedded" />
+        <option name="fileUrl" />
+      </JSRemoteDebuggerConfigurationSettings>
+      <method />
+    </configuration>
     <configuration default="true" type="CucumberRunConfigurationType" factoryName="Cucumber">
       <predefined_log_file id="RUBY_CUCUMBER" enabled="true" />
       <module name="" />
@@ -696,13 +625,6 @@
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_RUNNER_PATH" VALUE="" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_RUNNER" VALUE="false" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SETTINGS_VERSION" VALUE="2" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote">
-      <JSRemoteDebuggerConfigurationSettings>
-        <option name="engineId" value="embedded" />
-        <option name="fileUrl" />
-      </JSRemoteDebuggerConfigurationSettings>
       <method />
     </configuration>
     <configuration default="false" name="test" type="RakeRunConfigurationType" factoryName="Rake">
@@ -853,15 +775,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1680" y="0" width="1680" height="1050" extended-state="6" />
+    <frame x="-2" y="22" width="1280" height="774" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24785802" sideWeight="0.6463798" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35362014" sideWeight="0.95899636" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29092383" sideWeight="0.6838996" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31610045" sideWeight="0.99694" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32843652" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2633788" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -933,118 +855,124 @@
           <url>file://$PROJECT_DIR$/test/functional/routines_controller_test.rb</url>
           <line>21</line>
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="ruby-line">
+          <url>file://$PROJECT_DIR$/app/controllers/users_controller.rb</url>
+          <line>31</line>
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/body_parts/new.html.erb">
+    <entry file="file://$PROJECT_DIR$/test/fixtures/devices.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/fixtures/activity_attributes.yml">
+    <entry file="file://$PROJECT_DIR$/app/controllers/devices_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="10" selection-start="133" selection-end="133" vertical-scroll-proportion="0.22920203">
+        <state line="9" column="6" selection-start="306" selection-end="306" vertical-scroll-proportion="0.33333334">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/fixtures/activities.yml">
+    <entry file="file://$PROJECT_DIR$/app/models/device.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="38" selection-start="1342" selection-end="1342" vertical-scroll-proportion="0.6434635">
+        <state line="4" column="0" selection-start="113" selection-end="113" vertical-scroll-proportion="0.14814815">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/activities.js">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20120931122448_create_confirmations.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="63" selection-start="1734" selection-end="1734" vertical-scroll-proportion="0.0">
+        <state line="17" column="0" selection-start="686" selection-end="686" vertical-scroll-proportion="0.42079207">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/activities_controller.rb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20120122034507_create_users.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="7" selection-start="224" selection-end="224" vertical-scroll-proportion="0.0">
+        <state line="11" column="17" selection-start="334" selection-end="334" vertical-scroll-proportion="0.26369864">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/routines.js">
+    <entry file="file://$PROJECT_DIR$/test/fixtures/users.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="0" selection-start="1561" selection-end="1561" vertical-scroll-proportion="-12.115385">
+        <state line="36" column="20" selection-start="1136" selection-end="1136" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/routines.css.scss">
+    <entry file="file:///Library/Ruby/Gems/1.8/gems/actionpack-3.2.8/lib/action_controller/metal/rescue.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="121" column="1" selection-start="1798" selection-end="1798" vertical-scroll-proportion="0.9004425">
+        <state line="30" column="0" selection-start="1023" selection-end="1023" vertical-scroll-proportion="0.6126761">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/activities.css.scss">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20120931122447_create_invitations.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="182" selection-end="257" vertical-scroll-proportion="0.0">
+        <state line="19" column="0" selection-start="875" selection-end="875" vertical-scroll-proportion="0.45382166">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/activities/_create_or_update.html.erb">
+    <entry file="file:///Library/Ruby/Gems/1.8/gems/actionpack-3.2.8/lib/action_controller/metal/implicit_render.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="40" selection-start="163" selection-end="163" vertical-scroll-proportion="-2.5">
+        <state line="4" column="0" selection-start="101" selection-end="101" vertical-scroll-proportion="0.16216215">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/routine.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/invitations/accept.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="6" selection-start="6" selection-end="6" vertical-scroll-proportion="0.0">
+        <state line="16" column="0" selection-start="441" selection-end="441" vertical-scroll-proportion="-10.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/routines/_create_or_update.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/sessions_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="54" selection-start="311" selection-end="311" vertical-scroll-proportion="-3.75">
+        <state line="8" column="0" selection-start="152" selection-end="152" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/routines_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/invitations_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="0" selection-start="2837" selection-end="2837" vertical-scroll-proportion="0.0">
+        <state line="11" column="0" selection-start="228" selection-end="228" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="0" selection-start="1748" selection-end="1748" vertical-scroll-proportion="0.6988636">
+        <state line="23" column="0" selection-start="1003" selection-end="1003" vertical-scroll-proportion="0.34971097">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/activities/index.html.erb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20120931022447_create_licenses.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="87" selection-start="221" selection-end="221" vertical-scroll-proportion="-5.0">
+        <state line="18" column="0" selection-start="892" selection-end="892" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/activities/show.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="21" selection-start="21" selection-end="21" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="6" column="0" selection-start="114" selection-end="114" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1346987115000" expanded="true" signature="702:790" placeholder="if ... end" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/seeds.rb">
+    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="24" selection-start="3385" selection-end="3385" vertical-scroll-proportion="0.9292035">
+        <state line="18" column="0" selection-start="835" selection-end="835" vertical-scroll-proportion="0.6733167">
           <folding />
         </state>
       </provider>

@@ -1,12 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-system:
-  login: system
-  password_digest: password
-  email: system@ironoctopus.net
-  first_name: System
-  last_name: System
-
 bob_the_trainer:
   login: bob_the_trainer
   password_digest: "$2a$10$4z5sSjDtOHRM3c/fcU2UAu89oEjPx6W9E6MbAxMYobidSovwPlX0W"
@@ -14,6 +7,7 @@ bob_the_trainer:
   trainers: bob_the_trainer
   first_name: Bob
   last_name: Trainer
+  identity_confirmed: true
 
 sally_the_client:
   login: sally_the_client
@@ -22,7 +16,8 @@ sally_the_client:
   trainers: bob_the_trainer, sally_the_client
   first_name: Sally
   last_name: Client
-    
+  identity_confirmed: true
+
 mary_the_trainer:
   login: mary_the_trainer
   password_digest: "$2a$10$WDflu1AAxveyIe9H6pieh.8W/ANSaTbHHnJWvWgUhLdO/cceN63c."
@@ -30,6 +25,7 @@ mary_the_trainer:
   first_name: Mary
   last_name: Trainer
   trainers: mary_the_trainer
+  identity_confirmed: true
 
 jim_the_client:
   login: jim_the_client
@@ -38,3 +34,4 @@ jim_the_client:
   first_name: Jim
   last_name: Client
   trainers: mary_the_trainer, jim_the_client
+  identity_confirmed: true

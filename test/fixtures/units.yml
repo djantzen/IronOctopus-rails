@@ -50,4 +50,23 @@ second:
   name: Second
   abbr: sec
   metric: duration
-
+25_meter_lap:
+  name: 25 Meter Lap
+  abbr: 25m lap
+  metric: distance
+  is_metric: true
+50_meter_lap:
+  name: 50 Meter Lap
+  abbr: 50m lap
+  metric: distance
+  is_metric: true
+250_meter_lap:
+  name: 250 Meter Lap
+  abbr: 250m lap
+  metric: distance
+  is_metric: true
+400_meter_lap:
+  name: 400 Meter Lap
+  abbr: 400m lap
+  metric: distance
+  is_metric: true

@@ -1,6 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 cardiovascular:
   name: Cardiovascular
+cycling:
+  name: Cycling
 olympic_lift:
   name: Olympic Lift
 pilates:
@@ -13,5 +15,7 @@ sport:
   name: Sport
 stretch:
   name: Stretch
+swimming:
+  name: Swimming
 yoga:
   name: Yoga

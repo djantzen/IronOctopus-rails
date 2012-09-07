@@ -6,21 +6,51 @@ class UsersController < ApplicationController
   def new 
     @user = User.new
   end
-  
+
+  ActionMailer::Base.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => 'ironoctop.us',
+    :user_name            => 'david@ironoctop.us',
+    :password             => '/Q3Hpl[/',
+    :authentication       => 'plain',
+    :enable_starttls_auto => true
+  }
+
   def create
     @user = User.new(params[:user])
+    invitation_uuid = params[:invitation_uuid]
+    User.transaction do
 
-    if @user.save
-      @user.trainers << @user # Every user can self-train
-      if current_user # If a trainer is creating this user
-        @user.trainers << current_user
+      if @user.save
+        @user.trainers << @user # Every user can self-train
+        (1..5).each do
+          @user.licenses << License.new(:trainer => @user, :client => @user)
+        end
+
+        if invitation_uuid # they are legit, don't send confirmation email
+          invitation = Invitation.find_by_invitation_uuid(invitation_uuid)
+          license = invitation.license
+          license.client = @user
+          license.status = 'assigned'
+          license.save
+          @user.identity_confirmed = true
+          @user.trainers << license.trainer
+          @user.save
+          session[:user_id] = @user.user_id
+          render :html => @user
+        else
+          mail = UserMailer.welcome_email(@user, request)
+          mail.deliver
+          redirect_to post_signup_path
+        end
+
       else
-        session[:user_id] = @user.user_id
+        render :new
       end
-      redirect_to root_url, :notice => "Signed up!"
-    else
-      render :new
+
     end
+
   end
 
   def clients

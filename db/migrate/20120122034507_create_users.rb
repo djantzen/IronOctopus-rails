@@ -4,16 +4,17 @@ class CreateUsers < ActiveRecord::Migration
     execute <<-OES
       create table application.users (
         user_id serial primary key,
-        login text not null,
         first_name text not null,
         last_name text not null,
         email text not null,
+        login text not null,
         password_digest text not null,
+        identity_confirmed boolean default false,
         created_at timestamptz not null default now(),
         updated_at timestamptz not null default now()
       );
 
-      create unique index on application.users (login);
+      create unique index on application.users (lower(login));
       create unique index on application.users (lower(email));
 
       grant select on application.users to reader;

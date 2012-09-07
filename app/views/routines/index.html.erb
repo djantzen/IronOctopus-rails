@@ -1,4 +1,4 @@
-<div>
+<div class="container">
   <% @routines.each do |routine| %>
     <div>
       <%= link_to(routine.name, user_routine_path(routine.client, routine)) %>

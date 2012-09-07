@@ -4,12 +4,8 @@ class CreateBodyParts < ActiveRecord::Migration
       create table application.body_parts (
         body_part_id serial primary key,
         formal_name text not null,
-        common_name text not null,
-        permalink text not null,
-        role text not null default 'Not yet specified',
-        category text not null default 'Muscle',
         region text not null,
-        creator_id integer not null references application.users(user_id) deferrable,
+        permalink text not null,
         created_at timestamptz not null default now(),
         updated_at timestamptz not null default now()
       );

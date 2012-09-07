@@ -3,7 +3,7 @@
 bench_press:
   name: Bench Press
   activity_type: resistance
-  creator: system
+  creator: bob_the_trainer
   implements: barbell, bench
   permalink: benchpress
   metrics: repetitions, resistance
@@ -12,7 +12,7 @@ bench_press:
 box_jump:
   name: Box Jump
   activity_type: plyometric
-  creator: system
+  creator: bob_the_trainer
   implements: box
   permalink: boxjump
   metrics: repetitions
@@ -20,7 +20,7 @@ box_jump:
 dumbbell_bench_press:
   name: Dumbbell Bench Press
   activity_type: resistance
-  creator: system  
+  creator: bob_the_trainer
   implements: dumbbell, bench
   permalink: dumbellbenchpress
   metrics: repetitions, resistance
@@ -29,7 +29,7 @@ dumbbell_bench_press:
 curl_and_press:
   name: Curl and Press
   activity_type: resistance
-  creator: system
+  creator: bob_the_trainer
   implements: dumbbell
   body_parts: biceps_brachii, triceps_brachii
   permalink: curlandpress
@@ -39,7 +39,7 @@ curl_and_press:
 squat:
   name: Squat
   activity_type: resistance
-  creator: system
+  creator: mary_the_trainer
   implements: barbell, power_rack
   body_parts: quadriceps, gluteus_maximus, hamstring
   permalink: squat
@@ -49,7 +49,7 @@ squat:
 hamstring_curl:
   name: Hamstring Curl
   activity_type: resistance
-  creator: system
+  creator: mary_the_trainer
   body_parts: hamstring
   permalink: hamstringcurl
   metrics: repetitions, resistance
@@ -58,7 +58,7 @@ hamstring_curl:
 clean_and_jerk:
   name: Clean and Jerk
   activity_type: resistance
-  creator: system
+  creator: mary_the_trainer
   implements: barbell
   body_parts: quadriceps, gluteus_maximus, hamstring, posterior_deltoid
   permalink: cleanandjerk
@@ -68,7 +68,7 @@ clean_and_jerk:
 treadmill_run:
   name: Treadmill Run
   activity_type: cardiovascular
-  creator: system
+  creator: mary_the_trainer
   implements: treadmill
   permalink: treadmillrun
   metrics: duration, speed, incline, level, distance
@@ -76,7 +76,7 @@ treadmill_run:
 treadmill_walk:
   name: Treadmill Walk
   activity_type: cardiovascular
-  creator: system
+  creator: mary_the_trainer
   implements: treadmill
   permalink: treadmillwalk
   metrics: duration, speed, incline, level, distance
@@ -84,7 +84,7 @@ treadmill_walk:
 treadmill_program:
   name: Treadmill Program
   activity_type: cardiovascular
-  creator: system
+  creator: mary_the_trainer
   implements: treadmill
   permalink: treadmillprogram
   metrics: duration, speed, incline, level, distance
