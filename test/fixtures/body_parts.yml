@@ -1,46 +1,46 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 hamstring:
-  formal_name: Hamstring
+  name: Hamstring
   region: Legs
   permalink: hamstring
 
 gastrocnemius:
-  formal_name: Gastrocnemius
+  name: Gastrocnemius
   region: Legs
   permalink: gastrocnemius
 
 biceps_brachii:
-  formal_name: Biceps Brachii
+  name: Biceps Brachii
   region: Arms
   permalink: bicepsbrachii
 
 triceps_brachii:
-  formal_name: Triceps Brachii
+  name: Triceps Brachii
   region: Arms
   permalink: tricepsbrachii
 
 gluteus_maximus:
-  formal_name: Gluteus Maximus
+  name: Gluteus Maximus
   region: Buttocks
   permalink: gluteusmaximus
 
 trapezius:
-  formal_name: Trapezius
+  name: Trapezius
   region: Back
   permalink: trapezius
 
 quadriceps:
-  formal_name: Quadriceps
+  name: Quadriceps
   region: Legs
   permalink: quadriceps
   
 pectoralis_major:
-  formal_name: Pectoralis Major
+  name: Pectoralis Major
   region: Chest
   permalink: pectoralismajor
 
 posterior_deltoid:
-  formal_name: Posterior Deltoid
+  name: Posterior Deltoid
   region: Shoulder
   permalink: posteriordeltoid

@@ -3,4 +3,4 @@ cardio_one:
   distance: 1000
 resistance_one:
   resistance: 135
-  
+  repetitions: 10
