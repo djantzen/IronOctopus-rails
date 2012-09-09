@@ -34,9 +34,9 @@
             <% body_parts.each do |body_part| %>
               <li class="ui-state-default">
                 <div class="facet">
-                  <%= body_part.formal_name %>
+                  <%= body_part.name %>
                   <span class="faceting-control">
-                    <%= body_part.formal_name %>
+                    <%= body_part.name %>
                   </span>
                 </div>
               </li>
@@ -106,7 +106,7 @@
               </span>
               <% body_parts.each do |body_part| %>
                 <span class="faceting-control">
-                  <%= body_part.formal_name %>
+                  <%= body_part.name %>
                 </span>
               <% end %>
             <% end %>

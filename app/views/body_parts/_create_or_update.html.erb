@@ -1,9 +1,7 @@
 <div class="container">
   <%= form_for @body_part do |form| %>
-    <%= form.label :common_name, 'Common Name' %>:
-    <%= form.text_field :common_name %><br />
-    <%= form.label :formal_name, 'Formal Name' %>:
-    <%= form.text_field :formal_name %><br />
+    <%= form.label :name, 'Name' %>:
+    <%= form.text_field :name %><br />
     <%= form.label :region, 'Region' %>
     <%= form.select :region, BodyPart.all_regions, :selected => @body_part.region %>    
     <%= submit_tag "Save" %>

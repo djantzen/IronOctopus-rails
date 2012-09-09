@@ -6,7 +6,6 @@ class CreateWork < ActiveRecord::Migration
         user_id integer not null references application.users deferrable,
         routine_id integer not null references application.routines deferrable,
         activity_id integer not null references application.activities deferrable,
-        repetitions integer not null default 1,
         measurement_id integer not null references application.measurements deferrable,
         start_time timestamptz not null,
         end_time timestamptz not null,

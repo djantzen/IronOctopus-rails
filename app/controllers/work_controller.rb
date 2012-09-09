@@ -43,20 +43,21 @@ class WorkController < ApplicationController
           :duration => Unit.convert_to_seconds(activity_set_hash[:duration], duration_unit.name),
           :incline => activity_set_hash[:incline],
           :level => activity_set_hash[:level],
+          :repetitions => activity_set_hash[:repetitions],
           :resistance => Unit.convert_to_kilograms(activity_set_hash[:resistance], resistance_unit.name),
           :speed => Unit.convert_to_kilometers_per_hour(activity_set_hash[:speed], speed_unit.name)
         }
         activity_set_hash[:start_time] ||= Time.new
         activity_set_hash[:end_time] ||= activity_set_hash[:start_time]
-        activity_set_hash[:repetitions] ||= 1
 
         measurement = Measurement.find_or_create(measurement_key)
         day = Day.find_or_create(activity_set_hash[:start_time])
 
-        work = Work.new(:user => user, :activity => activity,
+        work = Work.new(:user => user,
+                        :activity => activity,
                         :measurement => measurement,
-                        :repetitions => activity_set_hash[:repetitions],
-                        :routine => routine, :start_time => activity_set_hash[:start_time],
+                        :routine => routine,
+                        :start_time => activity_set_hash[:start_time],
                         :end_time => activity_set_hash[:end_time],
                         :start_day => day)
         work.save

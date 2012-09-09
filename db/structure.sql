@@ -217,7 +217,6 @@ CREATE TABLE activity_sets (
     routine_id integer NOT NULL,
     "position" integer DEFAULT 1 NOT NULL,
     activity_id integer NOT NULL,
-    repetitions integer DEFAULT 1 NOT NULL,
     measurement_id integer NOT NULL,
     cadence_unit_id integer NOT NULL,
     distance_unit_id integer NOT NULL,
@@ -285,7 +284,7 @@ ALTER SEQUENCE activity_types_activity_type_id_seq OWNED BY activity_types.activ
 
 CREATE TABLE body_parts (
     body_part_id integer NOT NULL,
-    formal_name text NOT NULL,
+    name text NOT NULL,
     region text NOT NULL,
     permalink text NOT NULL,
     created_at timestamp with time zone DEFAULT now() NOT NULL,
@@ -553,6 +552,7 @@ CREATE TABLE measurements (
     duration integer DEFAULT 0 NOT NULL,
     incline numeric DEFAULT 0 NOT NULL,
     level integer DEFAULT 0 NOT NULL,
+    repetitions integer DEFAULT 0 NOT NULL,
     resistance numeric DEFAULT 0 NOT NULL,
     speed numeric DEFAULT 0 NOT NULL,
     created_at timestamp with time zone DEFAULT now() NOT NULL,
@@ -562,6 +562,7 @@ CREATE TABLE measurements (
     CONSTRAINT measurements_duration_check CHECK (((duration >= 0) AND (duration <= 86400))),
     CONSTRAINT measurements_incline_check CHECK (((incline >= (0)::numeric) AND (incline <= (20)::numeric))),
     CONSTRAINT measurements_level_check CHECK (((level >= 0) AND (level <= 20))),
+    CONSTRAINT measurements_repetitions_check CHECK (((repetitions >= 0) AND (repetitions <= 100))),
     CONSTRAINT measurements_resistance_check CHECK (((resistance >= (0)::numeric) AND (resistance <= (500)::numeric))),
     CONSTRAINT measurements_speed_check CHECK (((speed >= (0)::numeric) AND (speed <= (100)::numeric)))
 );
@@ -572,6 +573,34 @@ CREATE TABLE measurements (
 --
 
 COMMENT ON TABLE measurements IS 'Measures associated with a set or work record.';
+
+
+--
+-- Name: COLUMN measurements.distance; Type: COMMENT; Schema: application; Owner: -
+--
+
+COMMENT ON COLUMN measurements.distance IS 'In meters';
+
+
+--
+-- Name: COLUMN measurements.duration; Type: COMMENT; Schema: application; Owner: -
+--
+
+COMMENT ON COLUMN measurements.duration IS 'In seconds';
+
+
+--
+-- Name: COLUMN measurements.resistance; Type: COMMENT; Schema: application; Owner: -
+--
+
+COMMENT ON COLUMN measurements.resistance IS 'In kilograms';
+
+
+--
+-- Name: COLUMN measurements.speed; Type: COMMENT; Schema: application; Owner: -
+--
+
+COMMENT ON COLUMN measurements.speed IS 'In kilometers per hour';
 
 
 --
@@ -814,7 +843,6 @@ CREATE TABLE work (
     user_id integer NOT NULL,
     routine_id integer NOT NULL,
     activity_id integer NOT NULL,
-    repetitions integer DEFAULT 1 NOT NULL,
     measurement_id integer NOT NULL,
     start_time timestamp with time zone NOT NULL,
     end_time timestamp with time zone NOT NULL,
@@ -1170,14 +1198,14 @@ CREATE UNIQUE INDEX invitations_trainer_id_email_to_idx ON invitations USING btr
 -- Name: licenses_trainer_id_client_id_idx; Type: INDEX; Schema: application; Owner: -; Tablespace: 
 --
 
-CREATE UNIQUE INDEX licenses_trainer_id_client_id_idx ON licenses USING btree (trainer_id, client_id);
+CREATE UNIQUE INDEX licenses_trainer_id_client_id_idx ON licenses USING btree (trainer_id, client_id) WHERE (trainer_id <> client_id);
 
 
 --
--- Name: measurements_cadence_calories_distance_duration_incline_lev_idx; Type: INDEX; Schema: application; Owner: -; Tablespace: 
+-- Name: measures_uniq_idx_all; Type: INDEX; Schema: application; Owner: -; Tablespace: 
 --
 
-CREATE UNIQUE INDEX measurements_cadence_calories_distance_duration_incline_lev_idx ON measurements USING btree (cadence, calories, distance, duration, incline, level, resistance, speed);
+CREATE UNIQUE INDEX measures_uniq_idx_all ON measurements USING btree (cadence, calories, distance, duration, incline, level, repetitions, resistance, speed);
 
 
 --

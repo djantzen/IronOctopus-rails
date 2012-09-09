@@ -3,7 +3,7 @@ class CreateBodyParts < ActiveRecord::Migration
     execute <<-OES
       create table application.body_parts (
         body_part_id serial primary key,
-        formal_name text not null,
+        name text not null,
         region text not null,
         permalink text not null,
         created_at timestamptz not null default now(),

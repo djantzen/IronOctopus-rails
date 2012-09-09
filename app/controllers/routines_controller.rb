@@ -87,13 +87,13 @@ class RoutinesController < ApplicationController
   def update
     client = User.find_by_login(params[:user_id])
     routine = Routine.first(:conditions => { :client_id => client.user_id, :permalink => params[:id] })
-#    transaction do
+    Routine.transaction do
       routine.activity_sets.each do |activity_set|
         activity_set.delete
       end
       normalize_routine(routine, params[:routine])
       routine.save
- #   end
+    end
     redirect_to(user_routine_path(client, routine))
   end
 
@@ -108,7 +108,7 @@ class RoutinesController < ApplicationController
         {
           :activity => set.activity.name,
           :position => set.position,
-          :repetitions => set.repetitions,
+          :repetitions => set.measurement.repetitions,
           :cadence => set.measurement.cadence,
           :calories => set.measurement.calories,
           :distance => set.measurement.distance,
@@ -146,6 +146,7 @@ class RoutinesController < ApplicationController
         :duration => Unit.convert_to_seconds(activity_set_hash[:duration].to_f, duration_unit.name),
         :incline => activity_set_hash[:incline],
         :level => activity_set_hash[:level],
+        :repetitions => activity_set_hash[:repetitions],
         :resistance => Unit.convert_to_kilograms(activity_set_hash[:resistance].to_f, resistance_unit.name),
         :speed => Unit.convert_to_kilometers_per_hour(activity_set_hash[:speed].to_f, speed_unit.name),
       }
@@ -160,7 +161,6 @@ class RoutinesController < ApplicationController
       activity_set.duration_unit = duration_unit
       activity_set.speed_unit = speed_unit
       activity_set.resistance_unit = resistance_unit
-      activity_set.repetitions = activity_set_hash[:repetitions] || 1
       activity_set.measurement = measurement
 
       routine.activity_sets << activity_set

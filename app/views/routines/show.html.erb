@@ -24,17 +24,10 @@
       </div>
 
       <% activity_set.activity.metrics.each do |metric| %>
-        <% if metric.name.eql? 'Repetitions' %>
-          <div class="span2">
-            <%= render :partial => "routines/measure_display", :locals => { :measure => 'Repetitions',
-                                                                            :value => (activity_set.repetitions > 1) ? activity_set.repetitions : nil } %>
-          </div>
-        <% else %>
-          <div class="span2">
-            <% value, unit = activity_set.nil? ? 1 : get_initial_value(activity_set, metric) %>
-            <%= render :partial => "routines/measure_display", :locals => { :measure => metric.name, :value => value, :unit => (unit.pluralize unless unit.eql?('None')) } %>
-          </div>
-        <% end %>
+        <div class="span2">
+          <% value, unit = activity_set.nil? ? 1 : get_initial_value(activity_set, metric) %>
+          <%= render :partial => "routines/measure_display", :locals => { :measure => metric.name, :value => value, :unit => (unit.pluralize unless unit.eql?('None')) } %>
+        </div>
       <% end %>
     </div>
 

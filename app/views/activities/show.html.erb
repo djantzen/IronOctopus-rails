@@ -12,7 +12,7 @@
       <ul>
         <% @activity.body_parts.each do |body_part| %>
           <li>
-            <%= body_part.common_name %> (<%= body_part.formal_name%>)
+            <%= body_part.name%>
           </li>
         <% end %>
       </ul>

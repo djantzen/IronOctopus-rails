@@ -10,17 +10,24 @@ class CreateMeasurements < ActiveRecord::Migration
         duration integer not null default 0 check(duration between 0 and 86400),
         incline decimal not null default 0 check(incline between 0 and 20),
         level integer not null default 0 check(level between 0 and 20),
+        repetitions integer not null default 0 check(repetitions between 0 and 100),
         resistance decimal not null default 0 check(resistance between 0 and 500),
         speed decimal not null default 0 check(speed between 0 and 100),
         created_at timestamptz not null default now()
       );
-      create unique index on application.measurements (
-        cadence, calories, distance, duration, incline, level, resistance, speed);
+      create unique index measures_uniq_idx_all on application.measurements (
+        cadence, calories, distance, duration, incline, level, repetitions, resistance, speed
+      );
       
       grant select on application.measurements to reader;
       grant delete, insert, update on application.measurements to writer;
       grant select, update, usage on application.measurements_measurement_id_seq to writer;
-      
+
+      comment on column application.measurements.distance is 'In meters';
+      comment on column application.measurements.duration is 'In seconds';
+      comment on column application.measurements.resistance is 'In kilograms';
+      comment on column application.measurements.speed is 'In kilometers per hour';
+
       comment on table application.measurements is 'Measures associated with a set or work record.';
     OES
   end

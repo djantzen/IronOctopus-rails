@@ -3,7 +3,7 @@ class Measurement < ActiveRecord::Base
   has_many :routines, :through => :activity_sets
   
   DEFAULTS = { :cadence => 0.0, :calories => 0, :distance => 0.0, :duration => 0, :incline => 0.0,
-               :level => 0, :resistance => 0.0, :speed => 0.0 }
+               :level => 0, :repetitions => 0.0, :resistance => 0.0, :speed => 0.0 }
     
   def self.find_or_create(measurement_hash)
     # When we look up a measurement, be sure to get the one with the attributes we care about

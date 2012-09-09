@@ -60,8 +60,8 @@ class ActivitiesController < ApplicationController
     activity = params[:id] ? Activity.find_by_permalink(params[:id]) : Activity.new
 
     activity.body_parts.clear
-    (params[:activity][:body_parts] || []).each do |formal_name|
-      body_part = BodyPart.find_by_formal_name(formal_name)
+    (params[:activity][:body_parts] || []).each do |name|
+      body_part = BodyPart.find_by_name(name)
       activity.body_parts << body_part unless activity.body_parts.include?(body_part)
     end
 

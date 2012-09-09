@@ -24,8 +24,8 @@
         <%= link_to entry.activity.name, entry.activity %>
       </div>
       <div class="span4">
-        <% if entry.activity.activity_type.name.eql? "Weight Training" %>
-          <%= render :partial => "routines/measure_display", :locals => { :measure => "Repetitions", :value => entry.repetitions } %>
+        <% if entry.activity.activity_type.name.eql? "Resistance" %>
+          <%= render :partial => "routines/measure_display", :locals => { :measure => "Repetitions", :value => entry.measurement.repetitions } %>
           <%= render :partial => "routines/measure_display", :locals => { :measure => "Resistance", :value => entry.measurement.resistance } %>
         <% elsif entry.activity.activity_type.name.eql? "Cardiovascular" %>
           <%= render :partial => "routines/measure_display", :locals => { :measure => "Distance", :value => entry.measurement.distance } %>
@@ -35,7 +35,7 @@
         <% elsif entry.activity.activity_type.name.eql? "Rest" %>
           <%= render :partial => "routines/measure_display", :locals => { :measure => "Duration", :value => entry.measurement.duration } %>
         <% elsif entry.activity.activity_type.name.eql? "Plyometric" %>
-          <%= render :partial => "routines/measure_display", :locals => { :measure => "Repetitions", :value => entry.repetitions } %>
+          <%= render :partial => "routines/measure_display", :locals => { :measure => "Repetitions", :value => entry.measurement.repetitions } %>
         <% end %>
       </div>
       <div class="span1">
