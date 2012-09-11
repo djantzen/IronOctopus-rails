@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     :port                 => 587,
     :domain               => 'ironoctop.us',
     :user_name            => 'david@ironoctop.us',
-    :password             => '/Q3Hpl[/',
+    :password             => '',
     :authentication       => 'plain',
     :enable_starttls_auto => true
   }

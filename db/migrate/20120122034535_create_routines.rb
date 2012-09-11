@@ -8,8 +8,8 @@ class CreateRoutines < ActiveRecord::Migration
         permalink text not null,
         trainer_id integer not null references application.users (user_id) deferrable,
         client_id integer not null references application.users (user_id) deferrable,
-        has_been_sent boolean not null default false,
         goal text not null default 'Not specified',
+        days_of_week integer not null default 0,
         created_at timestamptz not null default now(),
         updated_at timestamptz not null default now()
       );
@@ -23,6 +23,7 @@ class CreateRoutines < ActiveRecord::Migration
       create index on application.routines (client_id);
 
       comment on table application.routines is 'A grouping of activity sets that may be assigned to a user.';
+      comment on column application.routines.days_of_week is 'A representation of days in binary: 1 Sunday, 2 Monday, 4 Tuesday, etc.';
     OES
   end
   

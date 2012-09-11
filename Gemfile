@@ -10,7 +10,8 @@ gem 'pg'
 gem 'json'
 gem 'execjs' # necessary on Ubuntu
 gem 'therubyracer' # necessary on Ubuntu
-gem 'bootstrap-sass', '2.0.4.2'
+gem 'bootstrap-sass', '2.0.4.0'
+gem 'capistrano'
 
 # Gems used only for assets and not required
 # in production environments by default.
