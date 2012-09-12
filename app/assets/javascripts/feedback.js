@@ -5,7 +5,6 @@
 $(document).ready(function() {
 
     $("#new-feedback-button").click(function() {
-//        $("#new-feedback-form").dialog({ dialogClass: "new-feedback-form", height: 300, width: 450, modal: true });
         $("#new-feedback-form").modal();
     });
 

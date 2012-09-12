@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  $("#available-body-part-list div.activity-attribute").click(function() {
+  $("#available-body-part-list .activity-attribute").click(function() {
     if ($(this).hasClass("ui-state-active")) {
       $(this).removeClass("ui-state-active");
       $(this).find("input.activity-attribute-control").remove();

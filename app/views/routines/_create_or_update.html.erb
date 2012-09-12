@@ -91,12 +91,16 @@
 
     <div id="facet-filtered-activities-panel" class="span3">
       <h3>Activities</h3>
+      <input type="text" id="activity-search-box"/>
       <div id="activity-list">
         <% @activities.each do |activity| %>
           <div id="<%= activity.name.to_identifier %>" class="activity facet-included-activity">
             <%= activity.name %>
             <%= render :partial => "activity_sets/form", :locals => { :activity => activity, :activity_set => nil, :template => true } %>
 
+            <span class="faceting-control">
+              <%= activity.name %>
+            </span>
             <span class="faceting-control">
               <%= activity.activity_type.name %>
             </span>

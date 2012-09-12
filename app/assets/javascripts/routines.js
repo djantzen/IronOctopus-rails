@@ -1,11 +1,7 @@
 $(document).ready(function() {
-    
+
     $("#activity-sets").sortable({ handle: ".handle" })
       .disableSelection();
-/*        .selectable({ filter: ".activity-set-form", // make sure not to mark every descendant as selected
-                      selected: function(event, ui) { console.info($(this));
-                      }
-                    }); */
 
     $(".activity").click(function() {
       var new_activity_set = $(this).find(".activity-set-form-template").clone(true);
@@ -22,7 +18,8 @@ $(document).ready(function() {
       var join_pattern = is_superkey ? "" : "\\w*?";
       var facets = [];
       facet_nodes.each(function() {
-        facets.push($(this).text().trim());
+        var stuff = $(this).text() || $(this).val();
+        facets.push(stuff.trim());
       });
 
       var facet_key = facets.sort().join(join_pattern).toIdentifier();
@@ -39,12 +36,16 @@ $(document).ready(function() {
         facet_target_superkey_node.addClass("faceting-control facet-target-superkey");
         $(this).append(facet_target_superkey_node);    
     });
-    
+
+    var clear_selections = function() {
+        $("#activity-facets-panel").find(".ui-state-active").each(function() {
+            $(this).removeClass("ui-state-active");
+        });
+        update_facet_filtered_activities(false);
+    };
+
     $(".clear-selections").click(function() {
-      $(this).parent().find(".ui-state-active").each(function() {
-        $(this).removeClass("ui-state-active");
-      });
-      update_facet_filtered_activities(false);
+        clear_selections();
     });
     
     // wire up the delete button        
@@ -60,7 +61,27 @@ $(document).ready(function() {
       });
       clone.insertAfter(original);
     });
-    
+
+    var search_facet_filtered_activities = function(search_box) {
+        var facet_key = new RegExp(generate_facet_key($("#activity-search-box"), false));
+        var activities = $("#activity-list div.facet-included-activity");
+
+        activities.each(function() {
+            var activity = $(this);
+            var facet_target_superkey = activity.find("span.facet-target-superkey").text();
+
+            if (facet_target_superkey.match(facet_key)) {
+                console.info("MATCH for " + facet_key + " facet superkey " + facet_target_superkey);
+                activity.removeClass("facet-excluded-activity");
+                activity.addClass("facet-included-activity");
+            } else {
+                console.info("no match for " + facet_key + " facet superkey " + facet_target_superkey);
+                activity.removeClass("facet-included-activity");
+                activity.addClass("facet-excluded-activity");
+            }
+        });
+    }
+
     /*
      * Updates the list of activities after a facet has been added or removed
      */
@@ -101,6 +122,11 @@ $(document).ready(function() {
         $(this).addClass("ui-state-active");
       }
       update_facet_filtered_activities(restrict_results);
+    });
+
+    $("#activity-search-box").keyup(function() {
+        clear_selections();
+        search_facet_filtered_activities($("#activity-search-box"));
     });
 
     $(".increment").click(function() {

@@ -16,20 +16,27 @@
 
         <div class="span3">
           <h3>Anatomy Involved</h3>
-          <div id="available-body-part-list" class="available-activity-facet-list">
-            <% @body_parts.each do |body_part| %>
-              <% if @activity.body_parts.include?(body_part) %>
-                <div id="<%= body_part.name %>" class="activity-attribute ui-state-active">
-                  <%= body_part.name %>
-                  <%= hidden_field_tag "activity[body_parts][]", body_part.name, :class => "activity-attribute-control" %>
-                </div>
-              <% else %>
-                <div id="<%= body_part.name %>" class="activity-attribute">
-                  <%= body_part.name %>
-                </div>
-              <% end %>
+          <ul id="available-body-part-list" class="available-activity-facet-list">
+            <% group_body_parts_by_region(@body_parts).each_pair do |region, body_parts| %>
+              <li>
+                <%= region %>
+              </li>
+              <ul>
+                <% body_parts.each do |body_part| %>
+                  <% if @activity.body_parts.include?(body_part) %>
+                    <li id="<%= body_part.name %>" class="activity-attribute ui-state-active">
+                      <%= body_part.name %>
+                      <%= hidden_field_tag "activity[body_parts][]", body_part.name, :class => "activity-attribute-control" %>
+                    </li>
+                  <% else %>
+                    <li id="<%= body_part.name %>" class="activity-attribute">
+                      <%= body_part.name %>
+                    </li>
+                  <% end %>
+                <% end %>
+              </ul>
             <% end %>
-          </div>
+          </ul>
         </div>
 
         <div class="span3">
@@ -91,7 +98,7 @@
     </div>
 
     <div class="row">
-      <%= submit_tag "Save" %>
+      <%= submit_tag "Save", :class => 'btn btn-primary' %>
       <%= link_to("Cancel", activities_path) %>
     </div>
 
