@@ -233,19 +233,19 @@ BodyPart.create([
                   { :region => 'Upper Leg', :name => 'Vastus Medialis' }
                 ])
 
-ActivityAttribute.create([{
-                            :name => 'Auxiliary Utility',
-                            :name => 'Basic Utility',
-                            :name => 'Power Utility',
-                            :name => 'Compound Mechanics',
-                            :name => 'Dynamic Contraction',
-                            :name => 'High Impact',
-                            :name => 'Isolated Mechanics',
-                            :name => 'Isometric Contraction',
-                            :name => 'Low Impact',
-                            :name => 'Medium Impact',
-                            :name => 'Non-Weight Bearing',
-                            :name => 'Pulling Force',
-                            :name => 'Pushing Force',
-                            :name => 'Weight Bearing'
-                          }])
+ActivityAttribute.create([
+                           { :name => 'Auxiliary Utility' },
+                           { :name => 'Basic Utility' },
+                           { :name => 'Power Utility' },
+                           { :name => 'Compound Mechanics' },
+                           { :name => 'Dynamic Contraction' },
+                           { :name => 'High Impact' },
+                           { :name => 'Isolated Mechanics' },
+                           { :name => 'Isometric Contraction' },
+                           { :name => 'Low Impact' },
+                           { :name => 'Medium Impact' },
+                           { :name => 'Non-Weight Bearing' },
+                           { :name => 'Pulling Force' },
+                           { :name => 'Pushing Force' },
+                           { :name => 'Weight Bearing' }
+                          ])

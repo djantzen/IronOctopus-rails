@@ -45,7 +45,7 @@ class ActivitiesController < ApplicationController
     @body_parts = BodyPart.all
     @implements = Implement.all
     @activity_types = ActivityType.all(:order => :name)
-    @metrics = Metric.all(:order => :name)
+    @metrics = Metric.all(:conditions => "name != 'None'", :order => :name)
     @activity_attributes = ActivityAttribute.all(:order => :name)
   end
   

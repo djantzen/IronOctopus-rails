@@ -11,6 +11,7 @@
     <![endif]-->
   </head>
   <body>
+    <%= render :partial => "feedback/new" %>
     <div id="header" class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
@@ -21,20 +22,15 @@
               <li><%= link_to("My Clients' Routines", routines_by_trainer_path(current_user)) %></li>
               <li><%= link_to("My Work", user_work_index_path(current_user)) %></li>
               <li><%= link_to("Activities", activities_path) %></li>
-              <li><%= link_to("Implements", implements_path) %></li>
+              <li><%= link_to("Implements", implements_url) %></li>
+            </ul>
+            <ul class="nav pull-right">
+              <li><%= link_to("Log out #{User.find(session[:user_id]).login}", log_out_url) %></li>
             </ul>
             <div class="nav pull-right">
               <%= link_to("Feedback", "#", :class => "btn btn-primary", :id => "new-feedback-button") %>
-              <%= render :partial => "feedback/new" %>
             </div>
           <% end %>
-          <ul class="nav pull-right">
-            <% if session[:user_id].nil? %>
-              <li><%= link_to("Log In", new_session_path) %> </li>
-            <% else %>
-              <li><%= link_to("Log out #{User.find(session[:user_id]).login}", log_out_url) %></li>
-            <% end %>
-          </ul>
         </div>
       </div>
     </div>
@@ -53,5 +49,6 @@
         </div>
       </div>
     </div>
+
   </body>
 </html>

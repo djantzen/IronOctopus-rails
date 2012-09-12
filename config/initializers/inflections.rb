@@ -19,4 +19,6 @@
      inflect.singular "Revolutions per Minute", "Revolution per Minute"
      inflect.plural "None", "None"
      inflect.singular "None", "None"
+     inflect.plural "Foot", "Feet"
+     inflect.singular "Feet", "Foot"
 end

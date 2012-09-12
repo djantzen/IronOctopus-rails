@@ -198,7 +198,7 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   execjs
-  jquery-rails
+  jquery-rails (= 2.1.2)
   json
   pg
   rails (= 3.1.3)
@@ -207,7 +207,7 @@ DEPENDENCIES
   rspec
   rspec-rails
   ruby-debug
-  sass-rails (~> 3.1.5)
+  sass-rails (~> 3.1.4)
   therubyracer
   uglifier (>= 1.0.3)
   uuid

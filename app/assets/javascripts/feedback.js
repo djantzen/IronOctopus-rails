@@ -5,12 +5,17 @@
 $(document).ready(function() {
 
     $("#new-feedback-button").click(function() {
-        $("#new-feedback-form").dialog({ dialogClass: "new-feedback-form-dialog", height: 300, width: 450 });
+//        $("#new-feedback-form").dialog({ dialogClass: "new-feedback-form", height: 300, width: 450, modal: true });
+        $("#new-feedback-form").modal();
     });
 
+
     $("#new-feedback-form form").bind('ajax:complete', function() {
-        $("#new-feedback-form").dialog("close");
+        $("#new-feedback-form").modal('hide');
         $("#new-feedback-form textarea").val(null);
     });
 
+    $("#cancel-feedback-button").click(function() {
+        $("#new-feedback-form textarea").val(null);
+    });
 });

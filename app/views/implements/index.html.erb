@@ -1,7 +1,7 @@
-<% @implements.each do |implement| %>
+<div class="container">
+  <% @implements.each do |implement| %>
+    <div><%= link_to(implement.name, implement) %></div>
+  <% end %>
+  <%= link_to("Create New Implement", new_implement_path, :class => "btn btn-primary") %>
+</div>
 
-  <div><%= link_to(implement.name, implement) %></div>
-  
-<% end %>
-
-<%= link_to("Create New Implement", new_implement_path, :class => "btn btn-primary") %>

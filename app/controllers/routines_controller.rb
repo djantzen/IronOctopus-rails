@@ -140,13 +140,13 @@ class RoutinesController < ApplicationController
       resistance_unit = Unit.lookup(activity_set_hash[:resistance_unit])
 
       measurement_hash = {
-        :calories => activity_set_hash[:calories],
-        :cadence => activity_set_hash[:cadence],
+        :calories => activity_set_hash[:calories].to_i,
+        :cadence => activity_set_hash[:cadence].to_f,
         :distance => Unit.convert_to_meters(activity_set_hash[:distance].to_f, distance_unit.name),
         :duration => Unit.convert_to_seconds(activity_set_hash[:duration].to_f, duration_unit.name),
-        :incline => activity_set_hash[:incline],
-        :level => activity_set_hash[:level],
-        :repetitions => activity_set_hash[:repetitions],
+        :incline => activity_set_hash[:incline].to_f,
+        :level => activity_set_hash[:level].to_i,
+        :repetitions => activity_set_hash[:repetitions].to_i,
         :resistance => Unit.convert_to_kilograms(activity_set_hash[:resistance].to_f, resistance_unit.name),
         :speed => Unit.convert_to_kilometers_per_hour(activity_set_hash[:speed].to_f, speed_unit.name),
       }
