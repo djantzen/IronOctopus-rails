@@ -10,7 +10,7 @@ $(document).ready(function() {
     }
   });
 
-  $("#available-implement-list div.activity-attribute").click(function() {
+  $("#available-implement-list .activity-attribute").click(function() {
     if ($(this).hasClass("ui-state-active")) {
       $(this).removeClass("ui-state-active");
       $(this).find("input.activity-attribute-control").remove();
@@ -20,7 +20,7 @@ $(document).ready(function() {
     }
   });
 
-  $("#available-metric-list div.activity-attribute").click(function() {
+  $("#available-metric-list .activity-attribute").click(function() {
     if ($(this).hasClass("ui-state-active")) {
       $(this).removeClass("ui-state-active");
       $(this).find("input.activity-attribute-control").remove();
@@ -30,7 +30,7 @@ $(document).ready(function() {
     }
   });
 
-  $("#available-activity-attribute-list div.activity-attribute").click(function() {
+  $("#available-activity-attribute-list .activity-attribute").click(function() {
     if ($(this).hasClass("ui-state-active")) {
       $(this).removeClass("ui-state-active");
       $(this).find("input.activity-attribute-control").remove();

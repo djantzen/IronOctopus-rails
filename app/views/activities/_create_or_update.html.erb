@@ -40,21 +40,28 @@
         </div>
 
         <div class="span3">
-          <h3>Implements</h3>
-          <div id="available-implement-list" class="available-activity-facet-list">
-            <% @implements.each do |implement| %>
-              <% if @activity.implements.include?(implement) %>
-                <div id="<%= implement.name %>" class="activity-attribute ui-state-active">
-                  <%= implement.name %>
-                  <%= hidden_field_tag "activity[implements][]", implement.name, :class => "activity-attribute-control" %>
-                </div>
-              <% else %>
-                <div id="<%= implement.name %>" class="activity-attribute">
-                  <%= implement.name %>
-                </div>
-              <% end %>
+          <h3>Implements Utilized</h3>
+          <ul id="available-implement-list" class="available-activity-facet-list">
+            <% group_implements_by_category(@implements).each_pair do |category, implements| %>
+              <li>
+                <%= category %>
+              </li>
+              <ul>
+                <% implements.each do |implement| %>
+                  <% if @activity.implements.include?(implement) %>
+                    <li id="<%= implement.name %>" class="activity-attribute ui-state-active">
+                      <%= implement.name %>
+                      <%= hidden_field_tag "activity[implements][]", implement.name, :class => "activity-attribute-control" %>
+                    </li>
+                  <% else %>
+                    <li id="<%= implement.name %>" class="activity-attribute">
+                      <%= implement.name %>
+                    </li>
+                  <% end %>
+                <% end %>
+              </ul>
             <% end %>
-          </div>
+          </ul>
         </div>
 
         <div class="span3">

@@ -12,6 +12,7 @@ gem 'execjs' # necessary on Ubuntu
 gem 'therubyracer' # necessary on Ubuntu
 gem 'bootstrap-sass', '2.0.4.0'
 gem 'capistrano'
+gem 'underscore-rails', '1.3.1'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -25,7 +26,7 @@ group :assets do
 end
 
 gem 'jquery-rails', '2.1.2'
-
+gem 'jquery-ui-rails', '2.0.0'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

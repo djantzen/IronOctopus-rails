@@ -81,6 +81,7 @@
     <orderEntry type="library" scope="PROVIDED" name="ruby-debug-base (v0.10.4, ruby-1.8.7-p357) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubyzip (v0.9.9, ruby-1.8.7-p357) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sass (v3.2.1, ruby-1.8.7-p357) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="sass-rails (v3.1.4, ruby-1.8.7-p357) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="selenium-webdriver (v2.25.0, ruby-1.8.7-p357) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets (v2.0.4, ruby-1.8.7-p357) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="systemu (v2.5.2, ruby-1.8.7-p357) [gem]" level="application" />
@@ -90,6 +91,7 @@
     <orderEntry type="library" scope="PROVIDED" name="treetop (v1.4.10, ruby-1.8.7-p357) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tzinfo (v0.3.33, ruby-1.8.7-p357) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="uglifier (v1.3.0, ruby-1.8.7-p357) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="underscore-rails (v1.3.1, ruby-1.8.7-p357) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="uuid (v2.3.5, ruby-1.8.7-p357) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="xpath (v0.1.4, ruby-1.8.7-p357) [gem]" level="application" />
   </component>

@@ -6,12 +6,15 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require jquery-ui
+//= require_tree
 //= require bootstrap
+//= require underscore
 
 console.info("application load");
 
-var to_identifier_regexp = new RegExp("[\\s(){}\"_'\-]", "g");
+//var to_identifier_regexp = new RegExp("[\\s(){}\"_'\-]", "g");
+var to_identifier_regexp = new RegExp("[^a-zA-Z0-9]", "g");
 String.prototype.toIdentifier = function() {
   return this.replace(to_identifier_regexp, '').toLowerCase();
 };

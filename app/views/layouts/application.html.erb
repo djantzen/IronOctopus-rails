@@ -11,7 +11,9 @@
     <![endif]-->
   </head>
   <body>
-    <%= render :partial => "feedback/new" %>
+    <% unless current_user.nil? %>
+      <%= render :partial => "feedback/new" %>
+    <% end %>
     <div id="header" class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">

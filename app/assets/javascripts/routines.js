@@ -18,11 +18,13 @@ $(document).ready(function() {
       var join_pattern = is_superkey ? "" : "\\w*?";
       var facets = [];
       facet_nodes.each(function() {
-        var stuff = $(this).text() || $(this).val();
-        facets.push(stuff.trim());
-      });
+        var text = $(this).text() || $(this).val();
 
-      var facet_key = facets.sort().join(join_pattern).toIdentifier();
+        text.trim().split(/\s+/).forEach(function(term) {
+          facets.push(term.trim().toIdentifier());
+        });
+      });
+      var facet_key = _.uniq(facets).sort().join(join_pattern);
       return facet_key;
     }
 
@@ -71,11 +73,11 @@ $(document).ready(function() {
             var facet_target_superkey = activity.find("span.facet-target-superkey").text();
 
             if (facet_target_superkey.match(facet_key)) {
-                console.info("MATCH for " + facet_key + " facet superkey " + facet_target_superkey);
+//                console.info("MATCH for " + facet_key + " facet superkey " + facet_target_superkey);
                 activity.removeClass("facet-excluded-activity");
                 activity.addClass("facet-included-activity");
             } else {
-                console.info("no match for " + facet_key + " facet superkey " + facet_target_superkey);
+//                console.info("no match for " + facet_key + " facet superkey " + facet_target_superkey);
                 activity.removeClass("facet-included-activity");
                 activity.addClass("facet-excluded-activity");
             }
@@ -98,11 +100,11 @@ $(document).ready(function() {
         var facet_target_superkey = activity.find("span.facet-target-superkey").text();
         
         if (facet_target_superkey.match(facet_key)) {
-          console.info("MATCH for " + facet_key + " facet superkey " + facet_target_superkey);
+//          console.info("MATCH for " + facet_key + " facet superkey " + facet_target_superkey);
           activity.removeClass("facet-excluded-activity");
           activity.addClass("facet-included-activity");
         } else {
-          console.info("no match for " + facet_key + " facet superkey " + facet_target_superkey);
+//          console.info("no match for " + facet_key + " facet superkey " + facet_target_superkey);
           activity.removeClass("facet-included-activity");
           activity.addClass("facet-excluded-activity");
         }

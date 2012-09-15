@@ -71,6 +71,7 @@ IronOctopus::Application.routes.draw do
   # Sample of named route:
   get "/trainers/:user_id/clients" => "users#clients", :as => :clients
   get "/trainers/:user_id/routines" => "routines#by_trainer", :as => :routines_by_trainer
+  get "/tour/show" => "tour#show"
 
 #  match "/trainers/:user_id/invitations" => "users#invitations", :as => :invitations
 

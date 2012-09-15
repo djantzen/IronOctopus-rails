@@ -249,3 +249,7 @@ ActivityAttribute.create([
                            { :name => 'Pushing Force' },
                            { :name => 'Weight Bearing' }
                           ])
+
+#Activity.create([
+#                  { :name => '', :activity_type => ActivityType.find_by_name('') },
+#                ])

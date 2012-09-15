@@ -50,6 +50,7 @@ div.activity-set-form {
   width: 100%;
   border: 1px solid;
   height: 20px;
+  cursor: pointer;
 }
 
 .activity-display-name {
@@ -97,11 +98,11 @@ div.activity-set-form {
   border: 1px solid;
 }
 
-.ui-selecting { background: #FECA40; }
-.ui-selected { background: #F39814; color: red; }
-
-.ui-selecting .handle { background: #ddd; }
-.ui-selected .handle { background: #cde; }
+//.ui-selecting { background: #FECA40; }
+//.ui-selected { background: #F39814; color: red; }
+//
+//.ui-selecting .handle { background: #ddd; }
+//.ui-selected .handle { background: #cde; }
 
 input.measure {
   max-width: 35px;

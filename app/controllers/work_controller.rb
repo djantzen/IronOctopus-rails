@@ -31,6 +31,7 @@ class WorkController < ApplicationController
       begin
         activity = Activity.find_by_name(activity_set_hash[:activity])
 
+        cadence_unit = Unit.lookup(activity_set_hash[:distance_unit])
         distance_unit = Unit.lookup(activity_set_hash[:distance_unit])
         duration_unit = Unit.lookup(activity_set_hash[:duration_unit])
         speed_unit = Unit.lookup(activity_set_hash[:speed_unit])
@@ -54,10 +55,16 @@ class WorkController < ApplicationController
         measurement = Measurement.find_or_create(measurement_hash)
         day = Day.find_or_create(activity_set_hash[:start_time])
 
+
         work = Work.new(:user => user,
                         :activity => activity,
                         :measurement => measurement,
                         :routine => routine,
+                        :cadence_unit => cadence_unit,
+                        :distance_unit => distance_unit,
+                        :duration_unit => duration_unit,
+                        :speed_unit => speed_unit,
+                        :resistance_unit => resistance_unit,
                         :start_time => activity_set_hash[:start_time],
                         :end_time => activity_set_hash[:end_time],
                         :start_day => day)
