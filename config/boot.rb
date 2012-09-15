@@ -1,6 +1,4 @@
 require 'rubygems'
-require 'lib/string_utils'
-require 'lib/log_utils'
 require 'lib/string'
 
 # Set up gems listed in the Gemfile.

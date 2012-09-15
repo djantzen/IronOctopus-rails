@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
-  include LogUtils
-  include StringUtils
+
   protect_from_forgery
 
   private
