@@ -251,5 +251,6 @@ ActivityAttribute.create([
                           ])
 
 #Activity.create([
-#                  { :name => '', :activity_type => ActivityType.find_by_name('') },
+#                  { :name => 'Bench Press', :activity_type => ActivityType.find_by_name('Resistance') },
+#                  { :name => 'Bench Press', :activity_type => ActivityType.find_by_name('Resistance') },
 #                ])

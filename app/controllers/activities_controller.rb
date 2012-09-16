@@ -20,11 +20,10 @@ class ActivitiesController < ApplicationController
   end
 
   def new
-    #TODO why do we need all these?
     @activity = Activity.new
     @body_parts = BodyPart.all
     @implements = Implement.all
-    @metrics = Metric.all
+    @metrics = Metric.all(:conditions => "name != 'None'")
     @activity_types = ActivityType.all(:order => :name)
     @activity_attributes = ActivityAttribute.all(:order => :name)
   end

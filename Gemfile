@@ -13,6 +13,7 @@ gem 'therubyracer' # necessary on Ubuntu
 gem 'bootstrap-sass', '2.0.4.0'
 gem 'capistrano'
 gem 'underscore-rails', '1.3.1'
+gem 'kramdown'
 
 # Gems used only for assets and not required
 # in production environments by default.

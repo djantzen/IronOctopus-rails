@@ -1,11 +1,12 @@
 <div class="container">
   <%= form_for @activity do |form| %>
     <div class="row">
-      <%= form.label :name, 'Name' %>:
+      <%= form.label :name, 'Name' %>
       <%= form.text_field :name %><br />
-      <%= form.label :instructions, "Instructions" %>:
-      <%= form.text_field :instructions %><br />
-      <%= form.label :activity_type, "Activity Type" %>:
+      <%= link_to "You can use Markdown syntax here", "http://kramdown.rubyforge.org/quickref.html", :target => '_blank' %>
+      <%= form.label :instructions, "Instructions" %>
+      <%= form.text_area :instructions %><br />
+      <%= form.label :activity_type, "Activity Type" %>
       <%= form.select :activity_type,
                       @activity_types.map { |activity_type | [activity_type.name, activity_type.activity_type_id] },
                       :selected => @activity.activity_type.nil? ? nil : @activity.activity_type.activity_type_id %><br />

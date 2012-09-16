@@ -3,7 +3,7 @@
     <h2><%= @activity.name %></h2>
     <div><%= @activity.activity_type.name %></div>
 
-    <div><%= @activity.instructions %></div>
+    <div><%= kramdown(@activity.instructions) %></div>
   </div>
 
   <div class="row">
