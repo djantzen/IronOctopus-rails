@@ -7,11 +7,7 @@ class CreateActivitySets < ActiveRecord::Migration
         position integer not null default 1,
         activity_id integer not null references application.activities deferrable,
         measurement_id integer not null references application.measurements deferrable,
-        cadence_unit_id integer not null references application.units deferrable,
-        distance_unit_id integer not null references application.units deferrable,
-        duration_unit_id integer not null references application.units deferrable,
-        resistance_unit_id integer not null references application.units deferrable,
-        speed_unit_id integer not null references application.units deferrable,
+        unit_set_id integer not null references application.unit_sets deferrable,
         optional boolean not null default false,
         comments text not null default '',
         primary key (routine_id, position)

@@ -1,4 +1,4 @@
-class CreateUnits < ActiveRecord::Migration
+class CreateUnitSets < ActiveRecord::Migration
 
   def self.up
     execute <<-OES
@@ -9,6 +9,7 @@ class CreateUnits < ActiveRecord::Migration
         duration_unit_id integer not null references application.units deferrable,
         resistance_unit_id integer not null references application.units deferrable,
         speed_unit_id integer not null references application.units deferrable,
+        created_at timestamptz not null default now()
       );
 
       create unique index on application.unit_sets (cadence_unit_id, distance_unit_id,

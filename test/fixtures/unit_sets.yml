@@ -1,0 +1,13 @@
+resistance_in_pounds:
+  cadence_unit: none
+  distance_unit: none
+  resistance_unit: pound
+  duration_unit: none
+  speed_unit: none
+
+distance_in_miles:
+  cadence_unit: none
+  distance_unit: mile
+  resistance_unit: none
+  duration_unit: none
+  speed_unit: none

@@ -22,13 +22,17 @@ module RoutinesHelper
     raw_value = activity_set.nil? ? 1 : (eval("activity_set.measurement.#{metric_name}"))
     case unit_column_name
       when 'distance_unit'
-        [ Unit.convert_from_meters(raw_value, activity_set.distance_unit.name).round(1), activity_set.distance_unit.name ]
+        unit_name = activity_set.unit_set.distance_unit.name
+        [ Unit.convert_from_meters(raw_value, unit_name).round(1), unit_name ]
       when 'duration_unit'
-        [ Unit.convert_from_seconds(raw_value, activity_set.duration_unit.name).round(1), activity_set.duration_unit.name ]
+        unit_name = activity_set.unit_set.duration_unit.name
+        [ Unit.convert_from_seconds(raw_value, unit_name).round(1), unit_name ]
       when 'resistance_unit'
-        [ Unit.convert_from_kilograms(raw_value, activity_set.resistance_unit.name).round(1), activity_set.resistance_unit.name ]
+        unit_name = activity_set.unit_set.resistance_unit.name
+        [ Unit.convert_from_kilograms(raw_value, unit_name).round(1), unit_name ]
       when 'speed_unit'
-        [ Unit.convert_from_kilometers_per_hour(raw_value, activity_set.speed_unit.name).round(1), activity_set.speed_unit.name ]
+        unit_name = activity_set.unit_set.speed_unit.name
+        [ Unit.convert_from_kilometers_per_hour(raw_value, unit_name).round(1), unit_name ]
       else
         [ raw_value, 'None' ]
     end

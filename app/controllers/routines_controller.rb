@@ -133,34 +133,39 @@ class RoutinesController < ApplicationController
       position += 1
       activity = Activity.find_by_name(activity_set_hash[:activity])
 
-      cadence_unit = Unit.lookup(activity_set_hash[:cadence_unit])
-      distance_unit = Unit.lookup(activity_set_hash[:distance_unit])
-      duration_unit = Unit.lookup(activity_set_hash[:duration_unit])
-      speed_unit = Unit.lookup(activity_set_hash[:speed_unit])
-      resistance_unit = Unit.lookup(activity_set_hash[:resistance_unit])
+      unit_hash = {
+        :cadence_unit => Unit.lookup(activity_set_hash[:cadence_unit]),
+        :distance_unit => Unit.lookup(activity_set_hash[:distance_unit]),
+        :duration_unit => Unit.lookup(activity_set_hash[:duration_unit]),
+        :speed_unit => Unit.lookup(activity_set_hash[:speed_unit]),
+        :resistance_unit => Unit.lookup(activity_set_hash[:resistance_unit])
+      }
 
       measurement_hash = {
         :calories => activity_set_hash[:calories].to_i,
         :cadence => activity_set_hash[:cadence].to_f,
-        :distance => Unit.convert_to_meters(activity_set_hash[:distance].to_f, distance_unit.name),
-        :duration => Unit.convert_to_seconds(activity_set_hash[:duration].to_f, duration_unit.name),
+        :distance => Unit.convert_to_meters(activity_set_hash[:distance].to_f, unit_hash[:distance_unit].name),
+        :duration => Unit.convert_to_seconds(activity_set_hash[:duration].to_f, unit_hash[:duration_unit].name),
         :incline => activity_set_hash[:incline].to_f,
         :level => activity_set_hash[:level].to_i,
         :repetitions => activity_set_hash[:repetitions].to_i,
-        :resistance => Unit.convert_to_kilograms(activity_set_hash[:resistance].to_f, resistance_unit.name),
-        :speed => Unit.convert_to_kilometers_per_hour(activity_set_hash[:speed].to_f, speed_unit.name),
+        :resistance => Unit.convert_to_kilograms(activity_set_hash[:resistance].to_f, unit_hash[:resistance_unit].name),
+        :speed => Unit.convert_to_kilometers_per_hour(activity_set_hash[:speed].to_f, unit_hash[:speed_unit].name),
       }
 
       measurement = Measurement.find_or_create(measurement_hash)
+      unit_set = UnitSet.find_or_create(unit_hash)
+
       activity_set = ActivitySet.new
       activity_set.routine = routine
       activity_set.activity = activity
       activity_set.position = position
-      activity_set.cadence_unit = cadence_unit
-      activity_set.distance_unit = distance_unit
-      activity_set.duration_unit = duration_unit
-      activity_set.speed_unit = speed_unit
-      activity_set.resistance_unit = resistance_unit
+      activity_set.unit_set = unit_set
+      #activity_set.cadence_unit = cadence_unit
+      #activity_set.distance_unit = distance_unit
+      #activity_set.duration_unit = duration_unit
+      #activity_set.speed_unit = speed_unit
+      #activity_set.resistance_unit = resistance_unit
       activity_set.measurement = measurement
 
       routine.activity_sets << activity_set

@@ -3,42 +3,25 @@ push_pull_upper_bench_press:
   activity: bench_press
   position: 1.0
   measurement: resistance_one
-  cadence_unit: none
-  distance_unit: none
-  duration_unit: none
-  resistance_unit: pound
-  speed_unit: none
+  unit_set: resistance_in_pounds
 
 push_pull_upper_curl_and_press:
   routine: sallys_push_pull_upper
   activity: curl_and_press
   position: 2.0
   measurement: resistance_one
-  cadence_unit: none
-  distance_unit: none
-  duration_unit: none
-  resistance_unit: pound
-  speed_unit: none
+  unit_set: resistance_in_pounds
 
 sallys_whole_body_mix_squat:
   routine: sallys_whole_body_mix
   activity: squat
   position: 1.0
   measurement: resistance_one
-  cadence_unit: none
-  distance_unit: none
-  duration_unit: none
-  resistance_unit: pound
-  speed_unit: none
+  unit_set: resistance_in_pounds
 
 sallys_whole_body_mix_treadmill_run:
   routine: sallys_whole_body_mix
   activity: treadmill_run
   position: 2.0
   measurement: cardio_one
-  cadence_unit: none
-  distance_unit: mile
-  duration_unit: none
-  resistance_unit: none
-  speed_unit: none
-
+  unit_set: distance_in_miles

@@ -26,7 +26,7 @@
 
       <% work.activity.metrics.each do |metric| %>
         <div class="span2">
-          <% value, unit = get_recorded_value(work, metric) %>
+          <% value, unit = get_initial_value(work, metric) %>
           <%= render :partial => "routines/measure_display", :locals => { :measure => metric.name, :value => value, :unit => (unit.pluralize unless unit.eql?('None')) } %>
         </div>
       <% end %>
