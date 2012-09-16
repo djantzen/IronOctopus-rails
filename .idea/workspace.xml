@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46f8a447-b9ed-44ae-be1c-95fe4e4f3fab" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/IronOctopus-rails.iml" afterPath="$PROJECT_DIR$/.idea/IronOctopus-rails.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/activities.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/activities.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/activities_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/activities_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/application_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/application_helper.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/activities/_create_or_update.html.erb" afterPath="$PROJECT_DIR$/app/views/activities/_create_or_update.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/activities/show.html.erb" afterPath="$PROJECT_DIR$/app/views/activities/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/seeds.rb" afterPath="$PROJECT_DIR$/db/seeds.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/sessions/_login.html.erb" afterPath="$PROJECT_DIR$/app/views/sessions/_login.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/new.html.erb" afterPath="$PROJECT_DIR$/app/views/users/new.html.erb" />
     </list>
     <ignored path="IronOctopus-rails.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -59,7 +52,9 @@
         <entry file="file://$PROJECT_DIR$/app/models/unit_set.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state line="11" column="1" selection-start="797" selection-end="797" vertical-scroll-proportion="0.0">
-              <folding />
+              <folding>
+                <marker date="1347754402000" expanded="true" signature="841:1524" placeholder=" ... end" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -76,25 +71,16 @@
       <file leaf-file-name="_create_or_update.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/activities/_create_or_update.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="52" selection-start="339" selection-end="339" vertical-scroll-proportion="-3.125">
+            <state line="18" column="35" selection-start="878" selection-end="878" vertical-scroll-proportion="-3.5416667">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="seeds.rb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/db/seeds.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="255" column="19" selection-start="16709" selection-end="16958" vertical-scroll-proportion="0.8655462">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="show.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/activities/show.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="17" selection-start="148" selection-end="148" vertical-scroll-proportion="-3.125">
+            <state line="55" column="47" selection-start="1242" selection-end="1242" vertical-scroll-proportion="0.8777174">
               <folding />
             </state>
           </provider>
@@ -134,8 +120,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/test/fixtures/activity_sets.yml" />
-        <option value="$PROJECT_DIR$/test/fixtures/work.yml" />
         <option value="$PROJECT_DIR$/db/migrate/20120122034545_create_work.rb" />
         <option value="$PROJECT_DIR$/app/controllers/routines_controller.rb" />
         <option value="$PROJECT_DIR$/app/models/activity_set.rb" />
@@ -145,11 +129,13 @@
         <option value="$PROJECT_DIR$/app/views/work/index.html.erb" />
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/app/controllers/activities_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/activities/show.html.erb" />
         <option value="$PROJECT_DIR$/app/helpers/application_helper.rb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/activities.css.scss" />
         <option value="$PROJECT_DIR$/app/views/activities/_create_or_update.html.erb" />
         <option value="$PROJECT_DIR$/db/seeds.rb" />
+        <option value="$PROJECT_DIR$/app/views/activities/show.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/sessions/_login.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/users/new.html.erb" />
       </list>
     </option>
   </component>
@@ -858,20 +844,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/work/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="0" selection-start="972" selection-end="972" vertical-scroll-proportion="0.7057057">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/work_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="16" selection-start="2133" selection-end="2133" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/activity_sets/_form.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="0" selection-start="306" selection-end="306" vertical-scroll-proportion="-3.125">
@@ -889,7 +861,9 @@
     <entry file="file://$PROJECT_DIR$/app/models/unit_set.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="1" selection-start="797" selection-end="797" vertical-scroll-proportion="0.0">
-          <folding />
+          <folding>
+            <marker date="1347754402000" expanded="true" signature="841:1524" placeholder=" ... end" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -935,13 +909,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/activities/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="17" selection-start="148" selection-end="148" vertical-scroll-proportion="-3.125">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/activities.css.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="13" selection-start="377" selection-end="377" vertical-scroll-proportion="0.6081081">
@@ -956,16 +923,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/activities/_create_or_update.html.erb">
+    <entry file="file://$PROJECT_DIR$/db/seeds.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="52" selection-start="339" selection-end="339" vertical-scroll-proportion="-3.125">
+        <state line="246" column="61" selection-start="16506" selection-end="16506" vertical-scroll-proportion="0.48739496">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/seeds.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/activities/_create_or_update.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="255" column="19" selection-start="16709" selection-end="16958" vertical-scroll-proportion="0.8655462">
+        <state line="18" column="35" selection-start="878" selection-end="878" vertical-scroll-proportion="-3.5416667">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/sessions/_login.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="74" selection-start="346" selection-end="346" vertical-scroll-proportion="0.433526">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/users/new.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="32" selection-start="173" selection-end="173" vertical-scroll-proportion="0.0433526">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/activities/show.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="47" selection-start="1242" selection-end="1242" vertical-scroll-proportion="0.8777174">
           <folding />
         </state>
       </provider>
