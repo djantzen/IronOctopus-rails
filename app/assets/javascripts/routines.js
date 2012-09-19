@@ -3,6 +3,8 @@ $(document).ready(function() {
     $("#activity-sets").sortable({ handle: ".handle" })
       .disableSelection();
 
+    $("#routine-activity-set-list form").validate();
+
     $(".activity").click(function() {
       var new_activity_set = $(this).find(".activity-set-form-template").clone(true);
       new_activity_set.removeClass("activity-set-form-template");

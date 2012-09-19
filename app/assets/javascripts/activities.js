@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+  $("#create-update-activity-form form").validate();
+
   $("#available-body-part-list .activity-attribute").click(function() {
     if ($(this).hasClass("ui-state-active")) {
       $(this).removeClass("ui-state-active");

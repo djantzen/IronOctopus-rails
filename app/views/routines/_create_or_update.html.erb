@@ -158,7 +158,7 @@
             <div id="routine-basic-info">
               <div class="span2">
                 <%= form.label :name, "Name" %>
-                <%= form.text_field :name %>
+                <%= form.text_field :name, :class => "required", :minlength => "2" %>
               </div>
               <div class="span2">
                 <%= form.label :goal, "Goal" %>
