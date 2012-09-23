@@ -91,23 +91,23 @@ $(document).ready(function() {
     });
 
     var search_facet_filtered_activities = function(search_box) {
-        var facet_key = new RegExp(generate_facet_key($("#activity-search-box"), false));
-        var activities = $("#activity-list div.facet-included-activity");
+      var facet_key = new RegExp(generate_facet_key($("#activity-search-box"), false));
+      var activities = $("#activity-list .facet-included-activity");
 
-        activities.each(function() {
-            var activity = $(this);
-            var facet_target_superkey = activity.find("span.facet-target-superkey").text();
+      activities.each(function() {
+        var activity = $(this);
+        var facet_target_superkey = activity.find("span.facet-target-superkey").text();
 
-            if (facet_target_superkey.match(facet_key)) {
-//                console.info("MATCH for " + facet_key + " facet superkey " + facet_target_superkey);
-                activity.removeClass("facet-excluded-activity");
-                activity.addClass("facet-included-activity");
-            } else {
-//                console.info("no match for " + facet_key + " facet superkey " + facet_target_superkey);
-                activity.removeClass("facet-included-activity");
-                activity.addClass("facet-excluded-activity");
-            }
-        });
+        if (facet_target_superkey.match(facet_key)) {
+//          console.info("MATCH for " + facet_key + " facet superkey " + facet_target_superkey);
+          activity.removeClass("facet-excluded-activity");
+          activity.addClass("facet-included-activity");
+        } else {
+//          console.info("no match for " + facet_key + " facet superkey " + facet_target_superkey);
+          activity.removeClass("facet-included-activity");
+          activity.addClass("facet-excluded-activity");
+        }
+      });
     }
 
     /*

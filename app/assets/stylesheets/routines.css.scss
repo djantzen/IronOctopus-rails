@@ -2,24 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-label{display: block; float: left;}
+//label{display: block; float: left;}
 
 #routine-builder-panel {
-}
-
-#activity-facets-panel ul {
-  //margin: 0;
-//  list-style-type: none;
-//  border: 1px solid;
-//  width: 30%;
- // float: left;
-}
-
-#facet-filtered-activities-panel {
-//  border: 1px solid;
-//  width: 19%;
- // float: left;
-
 }
 
 #activity-list {
@@ -27,25 +12,11 @@ label{display: block; float: left;}
 }
 
 #routine-activity-set-list {
-//  border: 1px solid;
-//  width: 50%;
-//  float: left;
 }
 
-#activity-sets {
-//  border: 1px solid;
-//  padding: 25px;
-}
 
 .activity-set-form-template {
   display: none;
-}
-
-div.activity-set-form {
-//  display: block;
-//  border: 1px solid;
-//  height: 100px;
-//  padding: 5px;
 }
 
 .activity-set-form .handle {
@@ -58,27 +29,9 @@ div.activity-set-form {
   font-weight: bold; 
 }
 
-//div.new-activity-set-form .activity-set-attributes {
-//  float: left;
-//}
-
-
-//.delete-activity-set-button {
-//  float: left;
-//  border: 1px solid;
-//}
-//
-//.clone-activity-set-button {
-//  float: left;
-//  border: 1px solid;
-//}
-
-.facet {
-//  border: 1px solid;
-}
-
 .ui-state-active {
   font-weight: bold;
+  background-color: #d3d3d3;
 }
 
 .facet-included-activity {
@@ -95,17 +48,10 @@ div.activity-set-form {
 
 
 .activity {
-//  border: 1px solid;
 }
 
-//.ui-selecting { background: #FECA40; }
-//.ui-selected { background: #F39814; color: red; }
-//
-//.ui-selecting .handle { background: #ddd; }
-//.ui-selected .handle { background: #cde; }
-
 input.measure {
-  max-width: 35px;
+  max-width: 40px;
 }
 
 .unit-selector {

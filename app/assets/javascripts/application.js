@@ -10,6 +10,7 @@
 //= require_tree
 //= require bootstrap
 //= require underscore
+//= require modernizr
 
 console.info("application load");
 
@@ -19,12 +20,14 @@ String.prototype.toIdentifier = function() {
   return this.replace(to_identifier_regexp, '').toLowerCase();
 };
 
-$(document).ready(function() {
-   if ($("#messages").text().trim() != '') {
-       $("#messages").fadeIn("slow");
-       setTimeout(function() {
-           $("#messages").fadeOut("slow")
-       }, 3000);
 
-   }
+$(document).ready(function() {
+//  yepnope({
+//    test: Modernizr.inputtypes.email && Modernizr.input.required && Modernizr.input.placeholder && Modernizr.input.pattern,
+//    test: Modernizr.inputtypes.number,
+//    nope: 'h5f.js',
+//    callback: function(url, result, key) {
+//      H5F.setup(document.getElementById('edit_routine_154786800'));
+//    }
+//  });
 });

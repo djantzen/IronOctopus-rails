@@ -147,9 +147,9 @@
 
     </div>
 
-    <div id="facet-filtered-activities-panel" class="span4">
+    <div id="facet-filtered-activities-panel" class="span3">
       <div id="activity-search-widget" class="well">
-        <input type="text" id="activity-search-box" tabindex="1"/>
+        <input type="text" id="activity-search-box" tabindex="1" class="input-medium"/>
         <i class="icon-search"></i>
       </div>
 
@@ -202,7 +202,7 @@
       </ul>
     </div>
 
-    <div class="span8">
+    <div class="span9">
       <%= form_for [@client, @routine] do |form| %>
         <%= hidden_field_tag "routine[trainer]", @trainer.login %>
           <div class="well">
@@ -226,11 +226,11 @@
             <div id="routine-basic-info">
               <div class="span2">
                 <%= form.label :name, "Name" %>
-                <%= form.text_field :name, :class => "required", :minlength => "3", :maxlength => "256" %>
+                <%= form.text_field :name, :class => "required", :minlength => "4", :maxlength => "64" %>
               </div>
               <div class="span2">
                 <%= form.label :goal, "Goal" %>
-                <%= form.text_field :goal %>
+                <%= form.text_field :goal, :minlength => "16", :maxlength => "256" %>
               </div>
             </div>
           </div>

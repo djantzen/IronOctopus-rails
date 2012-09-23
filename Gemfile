@@ -14,6 +14,7 @@ gem 'bootstrap-sass', '2.0.4.0'
 gem 'capistrano'
 gem 'underscore-rails', '1.3.1'
 gem 'kramdown'
+gem 'modernizr-rails', '~> 2.0.6'
 
 # Gems used only for assets and not required
 # in production environments by default.

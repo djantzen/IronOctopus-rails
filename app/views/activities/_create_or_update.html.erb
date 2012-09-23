@@ -18,23 +18,17 @@
 
           <div class="span3">
             <h3>Anatomy Involved</h3>
-            <ul id="available-body-part-list" class="available-activity-facet-list">
+            <ul id="available-body-part-list" class="unstyled">
               <% group_body_parts_by_region(@body_parts).each_pair do |region, body_parts| %>
                 <li>
                   <%= region %>
                 </li>
-                <ul>
+                <ul class="unstyled">
                   <% body_parts.each do |body_part| %>
-                    <% if @activity.body_parts.include?(body_part) %>
-                      <li id="<%= body_part.name %>" class="activity-attribute ui-state-active">
-                        <%= body_part.name %>
-                        <%= hidden_field_tag "activity[body_parts][]", body_part.name, :class => "activity-attribute-control" %>
-                      </li>
-                    <% else %>
-                      <li id="<%= body_part.name %>" class="activity-attribute">
-                        <%= body_part.name %>
-                      </li>
-                    <% end %>
+                    <li>
+                      <%= check_box_tag "activity[body_parts][]", body_part.name, @activity.body_parts.include?(body_part) ? true : false %>
+                      <%= h body_part.name %>
+                    </li>
                   <% end %>
                 </ul>
               <% end %>
@@ -43,23 +37,17 @@
 
           <div class="span3">
             <h3>Implements Utilized</h3>
-            <ul id="available-implement-list" class="available-activity-facet-list">
+            <ul id="available-implement-list" class="unstyled">
               <% group_implements_by_category(@implements).each_pair do |category, implements| %>
                 <li>
                   <%= category %>
                 </li>
-                <ul>
+                <ul class="unstyled">
                   <% implements.each do |implement| %>
-                    <% if @activity.implements.include?(implement) %>
-                      <li id="<%= implement.name %>" class="activity-attribute ui-state-active">
-                        <%= implement.name %>
-                        <%= hidden_field_tag "activity[implements][]", implement.name, :class => "activity-attribute-control" %>
-                      </li>
-                    <% else %>
-                      <li id="<%= implement.name %>" class="activity-attribute">
-                        <%= implement.name %>
-                      </li>
-                    <% end %>
+                    <li>
+                      <%= check_box_tag "activity[implements][]", implement.name, @activity.implements.include?(implement) ? true : false %>
+                      <%= h implement.name %>
+                    </li>
                   <% end %>
                 </ul>
               <% end %>
@@ -68,38 +56,26 @@
 
           <div class="span3">
             <h3>Metrics</h3>
-            <div id="available-metric-list" class="available-activity-facet-list">
+            <ul id="available-metric-list" class="unstyled">
               <% @metrics.each do |metric| %>
-                <% if @activity.metrics.include?(metric) %>
-                  <div id="<%= metric.name %>" class="activity-attribute ui-state-active">
-                    <%= metric.name %>
-                    <%= hidden_field_tag "activity[metrics][]", metric.name, :class => "activity-attribute-control" %>
-                  </div>
-                <% else %>
-                  <div id="<%= metric.name %>" class="activity-attribute">
-                    <%= metric.name %>
-                  </div>
-                <% end %>
+                <li>
+                  <%= check_box_tag "activity[metrics][]", metric.name, @activity.metrics.include?(metric) ? true : false %>
+                  <%= h metric.name %>
+                </li>
               <% end %>
-            </div>
+            </ul>
           </div>
 
           <div class="span3">
             <h3>Attributes</h3>
-            <div id="available-activity-attribute-list" class="available-activity-facet-list">
+            <ul id="available-activity-attribute-list" class="unstyled">
               <% @activity_attributes.each do |attribute| %>
-                <% if @activity.activity_attributes.include?(attribute) %>
-                  <div id="<%= attribute.name %>" class="activity-attribute ui-state-active">
-                    <%= attribute.name %>
-                    <%= hidden_field_tag "activity[activity_attributes][]", attribute.name, :class => "activity-attribute-control" %>
-                  </div>
-                <% else %>
-                  <div id="<%= attribute.name %>" class="activity-attribute">
-                    <%= attribute.name %>
-                  </div>
-                <% end %>
+                <li>
+                  <%= check_box_tag "activity[activity_attributes][]", attribute.name, @activity.activity_attributes.include?(attribute) ? true : false %>
+                  <%= h attribute.name %>
+                </li>
               <% end %>
-            </div>
+            </ul>
           </div>
 
         </div>
