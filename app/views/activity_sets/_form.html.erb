@@ -1,7 +1,7 @@
 <div class="accordion-group <%= defined?(template) && template ? 'activity-set-form-template' : 'activity-set-form' %> ">
   <div class="container-fluid">
     <div class="accordion-heading activity-display-name row">
-      <div class="span4">
+      <div class="span6">
         <a class="accordion-toggle" data-toggle="collapse" data-parent="routine-activity-set-list" href="#<%= template ? nil : activity_set.position %>">
           <%= activity.name %>
         </a>
@@ -13,10 +13,9 @@
 
   </div>
 
-  <div id="<%= template ? nil : activity_set.position %>" class="activity-set-attributes container accordion-body collapse in">
-    <div class="accordion-inner">
+  <div id="<%= template ? nil : activity_set.position %>" class="activity-set-attributes accordion-body collapse in">
+    <div class="accordion-inner container-fluid ">
       <%= hidden_field_tag "routine[activity_sets][][activity]", activity.name %>
-
       <% activity.metrics.each do |metric| %>
         <div class="row">
           <% initial_value, unit = activity_set.nil? ? [0, nil] : get_initial_value(activity_set, metric) %>
@@ -26,19 +25,22 @@
                                                                            :unit => unit } %>
         </div>
       <% end %>
-      <% if defined?(performance) && performance %>
-        <%= submit_tag "Done", :class => "perform-activity-set-button btn btn-primary"%>
-      <% else %>
-        <%= render :partial => 'shared/button', :locals => { :button_class => 'delete-activity-set-button',
-                                                             :message => 'Delete',
-                                                             :icon => 'icon-remove-sign' } %>
-        <%= render :partial => 'shared/button', :locals => { :button_class => 'clone-activity-set-button',
-                                                             :message => 'Repeat',
-                                                             :icon => 'icon-repeat' } %>
-        <%= render :partial => 'shared/button', :locals => { :button_class => 'btn-primary okay-activity-set-button',
-                                                             :message => 'Okay',
-                                                             :icon => 'icon-ok' } %>
-      <% end %>
+      <div class="btn-group">
+        <% if defined?(performance) && performance %>
+          <%= submit_tag "Done", :class => "perform-activity-set-button btn btn-primary"%>
+        <% else %>
+          <%= render :partial => 'shared/button', :locals => { :button_class => 'btn-primary okay-activity-set-button',
+                                                               :message => 'Ok',
+                                                               :icon => 'icon-ok' } %>
+          <%= render :partial => 'shared/button', :locals => { :button_class => 'delete-activity-set-button',
+                                                               :message => 'Delete',
+                                                               :icon => 'icon-remove-sign' } %>
+          <%= render :partial => 'shared/button', :locals => { :button_class => 'clone-activity-set-button',
+                                                               :message => 'Repeat',
+                                                               :icon => 'icon-repeat' } %>
+
+        <% end %>
+      </div>
     </div>
 
   </div>

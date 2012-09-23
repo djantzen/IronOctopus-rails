@@ -7,7 +7,9 @@ label{display: block; float: left;}
 #routine-builder-panel {
 }
 
-#activity-facets-panel {
+#activity-facets-panel ul {
+  //margin: 0;
+//  list-style-type: none;
 //  border: 1px solid;
 //  width: 30%;
  // float: left;
@@ -72,7 +74,7 @@ div.activity-set-form {
 //}
 
 .facet {
-  border: 1px solid;
+//  border: 1px solid;
 }
 
 .ui-state-active {
@@ -93,7 +95,7 @@ div.activity-set-form {
 
 
 .activity {
-  border: 1px solid;
+//  border: 1px solid;
 }
 
 //.ui-selecting { background: #FECA40; }

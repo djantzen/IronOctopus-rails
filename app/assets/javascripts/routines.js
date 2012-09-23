@@ -140,7 +140,7 @@ $(document).ready(function() {
     /*
      * When a facet is added or removed, apply CSS
      */
-    $("#activity-facets-panel div.facet").click(function() {
+    $("#activity-facets-panel .facet").click(function() {
       var facet_name = $(this).find(".faceting-control").text().trim();
       var restrict_results = true;
       if ($(this).hasClass("ui-state-active")) {

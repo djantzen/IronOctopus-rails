@@ -1,102 +1,169 @@
 <div id="routine-builder-panel" class="container-fluid">
+
+
   <div class="row">
-    <div id="activity-facets-panel" class="span3">
+    <div id="activity-facets-panel" class="span3 well">
+      <div class="well">
+        <span class="label label-important">
+          Search or browse to find activities, <br/> then add them to your routine
+        </span>
+      </div>
       <div class="clear-selections ui-state-default btn btn-primary">Clear Selections</div>
-      <div id="activity-type-list">
-        <h4 class="facet-header">Type of Activity</h4>
-        <div class="btn-group" data-toggle="buttons-radio">
-          <% @activity_types.each do |activity_type| %>
-            <!--<div class="ui-state-default facet faceting-control">-->
-              <button type="button" class="btn facet">
-                <%= activity_type.name %>
-                <span class="facet faceting-control">
-                  <%= activity_type.name %>
-                </span>
-              </button>
-            <!--</div>-->
-          <% end %>
+
+      <div class="accordion" id="activity-type-list">
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#activity-type-list" href="#collapse-type">
+              Type of Activity
+            </a>
+          </div>
+          <div id="collapse-type" class="accordion-body collapse in">
+            <div class="accordion-inner">
+              <% @activity_types.each do |activity_type| %>
+                <div class="facet">
+                  <a>
+                    <%= activity_type.name %>
+                  </a>
+                  <span class="faceting-control">
+                    <%= activity_type.name %>
+                  </span>
+                </div>
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
 
-      <h4 class="facet-header">Anatomy Involved</h4>
-      <ul id="body-part-list">
-        <% group_body_parts_by_region(@body_parts).each_pair do |region, body_parts| %>
-          <li class="ui-state-default">
-            <div class="facet">
-              <%= region %>
-              <span class="faceting-control">
-                <%= region %>
-              </span>
-            </div>
-          </li>
-          <ul>
-            <% body_parts.each do |body_part| %>
-              <li class="ui-state-default">
-                <div class="facet">
-                  <%= body_part.name %>
-                  <span class="faceting-control">
-                    <%= body_part.name %>
-                  </span>
-                </div>
-              </li>
-            <% end %>
-          </ul>
-        <% end %>
-      </ul>
 
-      <div id="activity-attribute-list">
-        <h4 class="facet-header">Activity Attributes</h4>
-        <ul>
-          <% @activity_attributes.each do |attribute| %>
-            <li class="ui-state-default">
-              <div class="facet">
-                <%= attribute.name %>
-                <span class="faceting-control">
-                  <%= attribute.name %>
-                </span>
-              </div>
-            </li>
-          <% end %>
-        </ul>
+      <div class="accordion" id="body-part-list">
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="body-part-list" href="#collapse-body-part-list">
+              Anatomy Involved
+            </a>
+          </div>
+          <div id="collapse-body-part-list" class="accordion-body collapse in">
+            <div class="accordion-inner">
+              <ul class="unstyled">
+                <% group_body_parts_by_region(@body_parts).each_pair do |region, body_parts| %>
+                  <li>
+                  <div class="facet">
+                    <a>
+                      <%= region %>
+                    </a>
+                    <span class="faceting-control">
+                      <%= region %>
+                    </span>
+                  </div>
+                  <ul>
+                    <% body_parts.each do |body_part| %>
+                      <li class="ui-state-default">
+                        <div class="facet">
+                          <a>
+                            <%= body_part.name %>
+                          </a>
+                          <span class="faceting-control">
+                           <%= body_part.name %>
+                          </span>
+                        </div>
+                      </li>
+                    <% end %>
+                  </ul>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <h4 class="facet-header">Implements</h4>
-      <ul id="implement-list">
-        <% group_implements_by_category(@implements).each_pair do |category, implements| %>
-          <li class="ui-state-default">
-            <div class="facet">
-              <%= category %>
-              <span class="faceting-control">
-                <%= category %>
-              </span>
+
+      <div class="accordion" id="activity-attribute-list">
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#activity-attribute-list" href="#collapse-activity-attributes">
+              Activity Attributes
+            </a>
+          </div>
+          <div id="collapse-activity-attributes" class="accordion-body collapse in">
+            <div class="accordion-inner">
+              <% @activity_attributes.each do |attribute| %>
+                  <div class="facet">
+                    <a>
+                      <%= attribute.name %>
+                    </a>
+                    <span class="faceting-control">
+                      <%= attribute.name %>
+                    </span>
+                  </div>
+              <% end %>
             </div>
-          </li>
-          <ul>
-            <% implements.each do |implement| %>
-              <li class="ui-state-default">
-                <div class="facet">
-                  <%= implement.name %>
-                  <span class="faceting-control">
-                    <%= implement.name %>
-                  </span>
-                </div>
-              </li>
-            <% end %>
-          </ul>
-        <% end %>
-      </ul>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="accordion" id="implement-list">
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="implement-list" href="#collapse-implement-list">
+              Implements Involved
+            </a>
+          </div>
+          <div id="collapse-implement-list" class="accordion-body collapse in">
+            <div class="accordion-inner">
+              <ul class="unstyled">
+                <% group_implements_by_category(@implements).each_pair do |category, implements| %>
+                  <li>
+                    <div class="facet">
+                      <a class="ui-state-default">
+                        <%= category %>
+                      </a>
+                      <span class="faceting-control">
+                        <%= category %>
+                      </span>
+                    </div>
+                    <ul>
+                      <% implements.each do |implement| %>
+                        <li class="ui-state-default">
+                          <div class="facet">
+                            <a>
+                              <%= implement.name %>
+                            </a>
+                            <span class="faceting-control">
+                             <%= implement.name %>
+                            </span>
+                          </div>
+                        </li>
+                      <% end %>
+                    </ul>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
 
     </div>
 
-    <div id="facet-filtered-activities-panel" class="span3">
-      <h3>Activities</h3>
-      <input type="text" id="activity-search-box"/>
-      <div id="activity-list">
+    <div id="facet-filtered-activities-panel" class="span4">
+      <div id="activity-search-widget" class="well">
+        <input type="text" id="activity-search-box" tabindex="1"/>
+        <i class="icon-search"></i>
+      </div>
+
+      <ul id="activity-list" class="nav nav-tabs nav-stacked">
+        <li class="disabled">
+          <a>Click to Add Activity</a>
+        </li>
         <% @activities.each do |activity| %>
-          <div id="<%= activity.name.to_identifier %>" class="activity facet-included-activity">
-            <%= activity.name %>
-            <%= render :partial => 'activity_sets/form', :locals => { :activity => activity,
-                                                                                :activity_set => nil, :template => true } %>
+          <li id="<%= activity.name.to_identifier %>" class="activity facet-included-activity">
+            <a>
+              <%= activity.name %>
+            </a>
+            <%= render :partial => "activity_sets/form", :locals => { :activity => activity,
+                                                                      :activity_set => nil, :template => true } %>
 
             <span class="faceting-control">
               <%= activity.name %>
@@ -130,15 +197,16 @@
                 <%= attribute.name %>
               </span>
             <% end %>
-          </div>
+          </li>
         <% end %>
-      </div>
+      </ul>
     </div>
 
-    <div class="span6">
+    <div class="span8">
       <%= form_for [@client, @routine] do |form| %>
         <%= hidden_field_tag "routine[trainer]", @trainer.login %>
-          <div class="row">
+          <div class="well">
+          <div class="row ">
             <div class="span2">
               <%= form.label "routine[client]", "Client" %>
             </div>
@@ -158,7 +226,7 @@
             <div id="routine-basic-info">
               <div class="span2">
                 <%= form.label :name, "Name" %>
-                <%= form.text_field :name, :class => "required", :minlength => "2" %>
+                <%= form.text_field :name, :class => "required", :minlength => "3", :maxlength => "256" %>
               </div>
               <div class="span2">
                 <%= form.label :goal, "Goal" %>
@@ -166,13 +234,6 @@
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="span2">
-              <%= submit_tag "Save", :class => "btn-large btn-primary"%>
-            </div>
-            <div class="span2">
-              <%= link_to "Cancel", "/site" %>
-            </div>
           </div>
           <div class="row">
             <ul id="routine-activity-set-list" class="accordion">
@@ -181,6 +242,14 @@
                                                                           :activity_set => activity_set, :template => false } %>
               <% end %>
             </ul>
+          </div>
+          <div class="row">
+            <div class="span2 offset1">
+              <%= submit_tag "Save", :class => "btn-large btn-primary"%>
+            </div>
+            <div class="span2">
+              <%= link_to "Cancel", user_routines_path(current_user) %>
+            </div>
           </div>
         <% end %>
       </div>
