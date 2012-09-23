@@ -3,11 +3,18 @@ $(document).ready(function() {
   $("#routine-activity-set-list").sortable({ handle: ".handle" })
     .disableSelection();
 
-  $("#routine-activity-set-list form").validate();
+  var reset_activity_type_list = function() {
+    $("#activity-type-list a.accordion-toggle").html("Type of Activity");
+    $("#activity-type-list a.accordion-toggle").removeClass("ui-state-active");
+    $("#activity-type-list a.accordion-toggle").parents(".accordion-group").find(".facet").removeClass("ui-state-active");
+  }
 
-  $("#collapse-activity-set-button").click(function() {
-    $(".collapse").collapse("toggle");
+  $("#activity-type-list a.accordion-toggle").click(function() {
+    reset_activity_type_list();
+    update_facet_filtered_activities(false);
   });
+
+  $("#routine-activity-set-list form").validate();
 
   $(".okay-activity-set-button").click(function() {
     $(this).parents(".collapse").collapse("hide");
@@ -70,14 +77,21 @@ $(document).ready(function() {
   });
 
   var clear_selections = function() {
-      $("#activity-facets-panel").find(".ui-state-active").each(function() {
-          $(this).removeClass("ui-state-active");
-      });
-      update_facet_filtered_activities(false);
+    $("#activity-facets-panel").find(".ui-state-active").each(function() {
+        $(this).removeClass("ui-state-active");
+    });
+    reset_activity_type_list();
+    //TODO make resets for each one since this is duplicate
+    update_facet_filtered_activities(false);
+    $("#activity-type-list .collapse").collapse("show");
+    $("#body-part-list .collapse").collapse("hide");
+    $("#implement-list .collapse").collapse("hide");
+    $("#activity-attribute-list .collapse").collapse("hide");
+    $("#clear-selections").hide();
   };
 
-  $(".clear-selections").click(function() {
-      clear_selections();
+  $("#clear-selections").click(function() {
+    clear_selections();
   });
 
   $('.nav-tabs').button();
@@ -147,11 +161,17 @@ $(document).ready(function() {
     });
   }
 
+  $("#activity-type-list .facet").click(function() {
+    $(this).parents(".collapse").collapse("hide");
+    var facet = $(this).find("a").text();
+    $(this).parents(".accordion-group").find("a.accordion-toggle").html(facet);
+    $(this).parents(".accordion-group").find("a.accordion-toggle").addClass("ui-state-active");
+  });
+
   /*
    * When a facet is added or removed, apply CSS
    */
   $("#activity-facets-panel .facet").click(function() {
-    var facet_name = $(this).find(".faceting-control").text().trim();
     var restrict_results = true;
     if ($(this).hasClass("ui-state-active")) {
       $(this).removeClass("ui-state-active");
@@ -160,6 +180,7 @@ $(document).ready(function() {
       $(this).addClass("ui-state-active");
     }
     update_facet_filtered_activities(restrict_results);
+    $("#clear-selections").show();
   });
 
   $("#activity-search-box").keyup(function() {
@@ -192,4 +213,6 @@ $(document).ready(function() {
     form.remove();
     return false;
   });
+
+  clear_selections();
 });

@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46f8a447-b9ed-44ae-be1c-95fe4e4f3fab" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/sheet.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/sheet.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/routines.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/routines.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/routines/_create_or_update.html.erb" afterPath="$PROJECT_DIR$/app/views/routines/_create_or_update.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/routines/index.html.erb" afterPath="$PROJECT_DIR$/app/views/routines/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/site/index.html.erb" afterPath="$PROJECT_DIR$/app/views/site/index.html.erb" />
     </list>
     <ignored path="IronOctopus-rails.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,16 +32,7 @@
       <file leaf-file-name="_create_or_update.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/routines/_create_or_update.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="155" column="72" selection-start="6047" selection-end="6047" vertical-scroll-proportion="-4.375">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/routines/index.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="6" selection-start="30" selection-end="30" vertical-scroll-proportion="-0.625">
+            <state line="45" column="0" selection-start="1867" selection-end="1867" vertical-scroll-proportion="-3.75">
               <folding />
             </state>
           </provider>
@@ -69,28 +56,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routines.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="routines.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/routines.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="154" column="5" selection-start="5914" selection-end="5914" vertical-scroll-proportion="0.0">
+            <state line="8" column="0" selection-start="324" selection-end="324" vertical-scroll-proportion="0.1910828">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/users/show.html.erb">
+      <file leaf-file-name="routines.css.scss" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/routines.css.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="0" selection-start="340" selection-end="340" vertical-scroll-proportion="-8.75">
+            <state line="31" column="0" selection-start="515" selection-end="531" vertical-scroll-proportion="-5.6923075">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sheet.css.scss" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="sheet.css.scss" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/sheet.css.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="38" selection-start="54" selection-end="54" vertical-scroll-proportion="0.0477707">
+            <state line="2" column="38" selection-start="54" selection-end="54" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -149,12 +136,12 @@
         <option value="$PROJECT_DIR$/app/assets/stylesheets/routines.css.scss" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/routines.js" />
-        <option value="$PROJECT_DIR$/app/views/routines/_create_or_update.html.erb" />
         <option value="$PROJECT_DIR$/app/views/routines/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/site/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/sheet.css.scss" />
+        <option value="$PROJECT_DIR$/app/views/routines/_create_or_update.html.erb" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/routines.js" />
       </list>
     </option>
   </component>
@@ -933,13 +920,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/routines.css.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="0" selection-start="686" selection-end="686" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="18" selection-start="476" selection-end="476" vertical-scroll-proportion="0.0">
@@ -947,30 +927,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/routines/_create_or_update.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="155" column="72" selection-start="6047" selection-end="6047" vertical-scroll-proportion="-4.375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/users/clients.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="0" selection-start="170" selection-end="277" vertical-scroll-proportion="-4.375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/site/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="37" selection-start="631" selection-end="631" vertical-scroll-proportion="-13.125">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/routines/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="6" selection-start="30" selection-end="30" vertical-scroll-proportion="-0.625">
           <folding />
         </state>
       </provider>
@@ -988,13 +947,6 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/routines.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="154" column="5" selection-start="5914" selection-end="5914" vertical-scroll-proportion="0.0">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1021,7 +973,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/sheet.css.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="38" selection-start="54" selection-end="54" vertical-scroll-proportion="0.0477707">
+        <state line="2" column="38" selection-start="54" selection-end="54" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/routines/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="6" selection-start="30" selection-end="30" vertical-scroll-proportion="0.024834437">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/site/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="37" selection-start="631" selection-end="631" vertical-scroll-proportion="-13.125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/routines/_create_or_update.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="0" selection-start="1867" selection-end="1867" vertical-scroll-proportion="-3.75">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/routines.css.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="0" selection-start="515" selection-end="531" vertical-scroll-proportion="-5.6923075">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/routines.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="0" selection-start="324" selection-end="324" vertical-scroll-proportion="0.1910828">
           <folding />
         </state>
       </provider>
