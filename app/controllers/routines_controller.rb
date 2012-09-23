@@ -157,15 +157,11 @@ class RoutinesController < ApplicationController
       unit_set = UnitSet.find_or_create(unit_hash)
 
       activity_set = ActivitySet.new
+
       activity_set.routine = routine
       activity_set.activity = activity
       activity_set.position = position
       activity_set.unit_set = unit_set
-      #activity_set.cadence_unit = cadence_unit
-      #activity_set.distance_unit = distance_unit
-      #activity_set.duration_unit = duration_unit
-      #activity_set.speed_unit = speed_unit
-      #activity_set.resistance_unit = resistance_unit
       activity_set.measurement = measurement
 
       routine.activity_sets << activity_set

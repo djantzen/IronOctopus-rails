@@ -1,0 +1,12 @@
+<button id="<%= (defined? button_id) ? button_id : nil %>"
+        class="btn <%= (defined? button_class) ? button_class : nil %>"
+        rel="tooltip"
+        data-original-title="yo"
+        onclick="return false;" >
+  <% if defined? icon %>
+    <i class="<%= icon %>"></i>
+  <% end %>
+  <% if defined? message %>
+    <%= message %>
+  <% end %>
+</button>

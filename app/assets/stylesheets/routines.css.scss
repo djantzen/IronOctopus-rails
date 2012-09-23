@@ -40,16 +40,14 @@ label{display: block; float: left;}
 }
 
 div.activity-set-form {
-  display: block; 
+//  display: block;
 //  border: 1px solid;
 //  height: 100px;
-  padding: 5px;
+//  padding: 5px;
 }
 
 .activity-set-form .handle {
-  width: 100%;
-  border: 1px solid;
-  height: 20px;
+  border: solid 1px #E5E5E5;
   cursor: move;
 }
 

@@ -5,12 +5,14 @@
     </label>
   </div>
   <div class="span4">
-    <input type="button" class="decrement btn"/>
+    <%= render :partial => 'shared/button', :locals => { :button_class => 'decrement',
+                                                         :icon => 'icon-minus-sign' } %>
     <span class="measure_interval" style="display:none">
       <%= interval %>
     </span>
     <input value="<%= initial_value %>" name="routine[activity_sets][][<%= measure.downcase %>]" class="measure"/>
-    <input type="button" class="increment btn"/>
+    <%= render :partial => 'shared/button', :locals => { :button_class => 'increment',
+                                                         :icon => 'icon-plus-sign' } %>
     <% if defined? units and !units.empty? and !unit.eql?('None') %>
       <%= select_tag("routine[activity_sets][][#{measure.downcase}_unit]", options_for_select(units, (unit.nil? ? nil : unit.pluralize)), :class => "unit-selector") %>
     <% end %>

@@ -2,21 +2,20 @@
   <div class="row">
     <div id="activity-facets-panel" class="span3">
       <div class="clear-selections ui-state-default btn btn-primary">Clear Selections</div>
-
       <div id="activity-type-list">
         <h4 class="facet-header">Type of Activity</h4>
-        <ul>
+        <div class="btn-group" data-toggle="buttons-radio">
           <% @activity_types.each do |activity_type| %>
-            <li class="ui-state-default">
-              <div class="facet">
+            <!--<div class="ui-state-default facet faceting-control">-->
+              <button type="button" class="btn facet">
                 <%= activity_type.name %>
-                <span class="faceting-control">
+                <span class="facet faceting-control">
                   <%= activity_type.name %>
                 </span>
-              </div>
-            </li>
+              </button>
+            <!--</div>-->
           <% end %>
-        </ul>
+        </div>
       </div>
 
       <h4 class="facet-header">Anatomy Involved</h4>
@@ -96,7 +95,8 @@
         <% @activities.each do |activity| %>
           <div id="<%= activity.name.to_identifier %>" class="activity facet-included-activity">
             <%= activity.name %>
-            <%= render :partial => "activity_sets/form", :locals => { :activity => activity, :activity_set => nil, :template => true } %>
+            <%= render :partial => 'activity_sets/form', :locals => { :activity => activity,
+                                                                                :activity_set => nil, :template => true } %>
 
             <span class="faceting-control">
               <%= activity.name %>
@@ -135,7 +135,7 @@
       </div>
     </div>
 
-    <div id="routine-activity-set-list" class="span6">
+    <div class="span6">
       <%= form_for [@client, @routine] do |form| %>
         <%= hidden_field_tag "routine[trainer]", @trainer.login %>
           <div class="row">
@@ -175,7 +175,7 @@
             </div>
           </div>
           <div class="row">
-            <ul id="activity-sets">
+            <ul id="routine-activity-set-list" class="accordion">
               <% @routine.activity_sets.each do |activity_set| %>
                 <%= render :partial => 'activity_sets/form', :locals => { :activity => activity_set.activity,
                                                                           :activity_set => activity_set, :template => false } %>
