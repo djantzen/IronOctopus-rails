@@ -1,6 +1,7 @@
 <div id="routine-builder-panel" class="container-fluid">
 
 
+
   <div class="row">
     <div id="activity-facets-panel" class="span3 well">
       <div class="well">
@@ -10,7 +11,7 @@
       </div>
       <div class="clear-selections ui-state-default btn btn-primary">Clear Selections</div>
 
-      <div class="accordion" id="activity-type-list">
+      <div class="accordion has-tooltip-right" rel="tooltip" title="Filter activities by type" id="activity-type-list">
         <div class="accordion-group">
           <div class="accordion-heading">
             <a class="accordion-toggle" data-toggle="collapse" data-parent="#activity-type-list" href="#collapse-type">
@@ -35,7 +36,7 @@
       </div>
 
 
-      <div class="accordion" id="body-part-list">
+      <div class="accordion has-tooltip-right" rel="tooltip" title="Filter activities by anatomy" id="body-part-list">
         <div class="accordion-group">
           <div class="accordion-heading">
             <a class="accordion-toggle" data-toggle="collapse" data-parent="body-part-list" href="#collapse-body-part-list">
@@ -78,7 +79,7 @@
       </div>
 
 
-      <div class="accordion" id="activity-attribute-list">
+      <div class="accordion has-tooltip-right" rel="tooltip" title="Filter activities by attributes" id="activity-attribute-list">
         <div class="accordion-group">
           <div class="accordion-heading">
             <a class="accordion-toggle" data-toggle="collapse" data-parent="#activity-attribute-list" href="#collapse-activity-attributes">
@@ -102,8 +103,7 @@
         </div>
       </div>
 
-
-      <div class="accordion" id="implement-list">
+      <div class="accordion has-tooltip-right" rel="tooltip" title="Filter activities by implements" id="implement-list">
         <div class="accordion-group">
           <div class="accordion-heading">
             <a class="accordion-toggle" data-toggle="collapse" data-parent="implement-list" href="#collapse-implement-list">
@@ -148,15 +148,12 @@
     </div>
 
     <div id="facet-filtered-activities-panel" class="span3">
-      <div id="activity-search-widget" class="well">
+      <div id="activity-search-widget" class="well has-tooltip-bottom" rel="tooltip" title="Search activities by name, type, anatomy, attributes, or implements">
         <input type="text" id="activity-search-box" tabindex="1" class="input-medium"/>
         <i class="icon-search"></i>
       </div>
 
-      <ul id="activity-list" class="nav nav-tabs nav-stacked">
-        <li class="disabled">
-          <a>Click to Add Activity</a>
-        </li>
+      <ul id="activity-list" class="nav nav-tabs nav-stacked has-tooltip-right" rel="tooltip" title="Select activities to add them to your routine">
         <% @activities.each do |activity| %>
           <li id="<%= activity.name.to_identifier %>" class="activity facet-included-activity">
             <a>
