@@ -19,8 +19,11 @@
     </div>
     <div id="header" class="navbar navbar-fixed-top">
       <div class="navbar-inner">
-        <div class="container">
+        <div class="container-fluid">
           <% unless current_user.nil? %>
+            <div class="nav pull-left">
+              <%= link_to("Create New Routine", new_user_routine_path(current_user), :class => "btn btn-primary") %>
+            </div>
             <ul class="nav pull-left">
               <li><%= link_to("My Clients", clients_path(current_user)) %></li>
               <li><%= link_to("My Routines", user_routines_path(current_user)) %></li>
@@ -30,6 +33,7 @@
               <li><%= link_to("Implements", implements_url) %></li>
             </ul>
             <ul class="nav pull-right">
+              <li><%= link_to("Home", site_path) %></li>
               <li><%= link_to("Log out #{User.find(session[:user_id]).login}", log_out_url) %></li>
             </ul>
             <div class="nav pull-right">

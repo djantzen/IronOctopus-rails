@@ -7,6 +7,7 @@
           <%= link_to client.last_name + ", " + client.first_name, client %>
         </li>
       <% end %>
+      <%= link_to("Invite New Client", new_user_invitation_path(current_user), :class => 'btn btn-primary') %>
     </ul>
   </div>
 
@@ -18,7 +19,7 @@
         <%= link_to(routine.name, edit_user_routine_path(routine.client, routine)) %>
         </li>
       <% end %>
-      <%= link_to("Create New", new_user_routine_path(current_user), :class => 'btn btn-primary') %>
+      <%= link_to("Create New Routine", new_user_routine_path(current_user), :class => 'btn btn-primary') %>
     </ul>
   </div>
 
