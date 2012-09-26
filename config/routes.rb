@@ -55,6 +55,8 @@ IronOctopus::Application.routes.draw do
   match "site" => "site#index"
   # See how all your routes lay out with "rake routes"
 
+  get "/users/:user_id/routines/is_name_unique/:routine_id" => "routines#is_name_unique", :as => "is_routine_name_unique"
+
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'

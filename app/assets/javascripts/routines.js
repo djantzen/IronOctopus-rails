@@ -14,7 +14,28 @@ $(document).ready(function() {
     update_facet_filtered_activities(false);
   });
 
-  $("#routine-activity-set-list form").validate();
+  var routine_name_validator = function(routine_name, routine_name_elem) {
+    console.info("validating" + routine_name + " " + routine_name_elem);
+    if (routine_name == routine_name_elem.defaultValue)
+      return true;
+    var url = "/users/" + $("#routine_client").val() + "/routines/is_name_unique/" + routine_name.toIdentifier();
+    var unique = false;
+    $.ajax({
+      type: "GET",
+      url: url,
+      async: false,
+      dataType:"json",
+      success: function(msg)
+      {
+        unique = msg;
+      }
+    })
+    return unique;
+  }
+
+  $.validator.addMethod("is_routine_name_unique", routine_name_validator, "Routine name is already taken");
+
+  $("#routine-form-panel form").validate();
 
   $(".okay-activity-set-button").click(function() {
     $(this).parents(".collapse").collapse("hide");

@@ -30,6 +30,15 @@ class RoutinesController < ApplicationController
 
   end
 
+  def is_name_unique
+    user = User.find_by_login(params[:user_id])
+    routine_id = params[:routine_id]
+    routine = Routine.first(:conditions => { :client_id => user.user_id, :permalink => routine_id.to_identifier })
+    respond_with do |format|
+      format.json { render :json => routine.nil? }
+    end
+  end
+
   def new
     @routine = Routine.new
     @trainer = current_user
@@ -44,8 +53,11 @@ class RoutinesController < ApplicationController
 
   def create
     routine = normalize_routine(Routine.new, params[:routine])
-    routine.save
-    redirect_to user_routine_path(routine.client, routine)
+    if routine.save
+      redirect_to user_routine_path(routine.client, routine)
+    else
+      redirect_to user_routines_path(routine.client)
+    end
   end
 
   def show

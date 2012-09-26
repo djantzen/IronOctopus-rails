@@ -23,7 +23,7 @@ String.prototype.toIdentifier = function() {
 
 
 $(document).ready(function() {
-  $(".has-tooltip").tooltip({ delay: 500 });
+  $(".has-tooltip").tooltip({ delay: { show: 500, hide: 100 }});
   $(".has-tooltip-bottom").tooltip({ delay: 500, placement: "bottom" });
   $(".has-tooltip-left").tooltip({ delay: 500, placement: "left" });
   $(".has-tooltip-right").tooltip({ delay: 500, placement: "right" });

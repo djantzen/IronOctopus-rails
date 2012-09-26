@@ -7,9 +7,9 @@ class Routine < ActiveRecord::Base
   has_many :measurements, :through => :activity_sets
   has_many :activity_sets, :order => :position
 
-  validates_presence_of :name, :on => [:create, :update]
-  validates_presence_of :goal, :on => [:create, :update]
-#  validates_uniqueness_of :name, :scope => :client
+  validates_presence_of :name
+  validates_presence_of :goal
+  validates_uniqueness_of :name, :scope => :client_id
 
   before_save { self.permalink = name.to_identifier}
 

@@ -11,7 +11,7 @@ class Activity < ActiveRecord::Base
   has_and_belongs_to_many :body_parts
   has_and_belongs_to_many :implements
 
-  validates_presence_of :name, :on => [:create, :update]
+  validates_presence_of :name
   validates_uniqueness_of :name
 
   before_save { self.permalink = name.to_identifier }
