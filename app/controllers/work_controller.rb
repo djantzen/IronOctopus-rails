@@ -1,5 +1,7 @@
 class WorkController < ApplicationController
-  
+
+  before_filter :authenticate_user
+
   respond_to :json, :html
   include WorkHelper
 

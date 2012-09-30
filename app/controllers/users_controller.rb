@@ -1,21 +1,11 @@
 class UsersController < ApplicationController
 
   respond_to :html
-#  before_filter :authenticate_user
+  before_filter :authenticate_user, :except => [:new, :create]
 
   def new 
     @user = User.new
   end
-
-  ActionMailer::Base.smtp_settings = {
-    :address              => "smtp.gmail.com",
-    :port                 => 587,
-    :domain               => 'ironoctop.us',
-    :user_name            => 'david@ironoctop.us',
-    :password             => '',
-    :authentication       => 'plain',
-    :enable_starttls_auto => true
-  }
 
   def create
     @user = User.new(params[:user])
@@ -54,6 +44,7 @@ class UsersController < ApplicationController
   end
 
   def clients
+
     @clients = current_user.clients
   end
 

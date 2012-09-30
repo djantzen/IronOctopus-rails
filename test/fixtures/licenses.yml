@@ -4,4 +4,24 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-#one: {}
+bobs_license_for_sally:
+  trainer: bob_the_trainer
+  client: sally_the_client
+  status: assigned
+  license_uuid: dd8fc450-ecc5-012f-45a1-3c075417c95c
+
+bobs_unused_license_one:
+  trainer: bob_the_trainer
+  client: bob_the_trainer
+  license_uuid: dd8fc450-ecc5-012f-45a2-3c075417c95c
+
+bobs_unused_license_two:
+  trainer: bob_the_trainer
+  client: bob_the_trainer
+  license_uuid: dd8fc450-ecc5-012f-45a3-3c075417c95c
+
+marys_license_for_jim:
+  trainer: mary_the_trainer
+  client: jim_the_client
+  status: assigned
+  license_uuid: dd8fc450-ecc5-012f-45a4-3c075417c95c

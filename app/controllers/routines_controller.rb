@@ -1,5 +1,6 @@
 class RoutinesController < ApplicationController
 
+  before_filter :authenticate_user
   include RoutinesHelper
   respond_to :json, :html
 

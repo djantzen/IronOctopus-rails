@@ -1,5 +1,7 @@
 class SiteController < ApplicationController
 
+  before_filter :authenticate_user
+
   def index
     @clients = current_user.clients.order(:last_name, :first_name)
     @routines = current_user.routines_created
