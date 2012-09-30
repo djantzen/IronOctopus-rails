@@ -66,6 +66,7 @@ IronOctopus::Application.routes.draw do
   get "log_in" => "sessions#new", :as => "log_in"
   get "confirm" => "sessions#confirm", :as => "confirm"
   get "accept" => "invitations#accept", :as => "accept"
+  get "review_feedback" => "feedback#index", :as => "review_feedback"
 
   get "/users/:user_id/routines/:routine_id/sheet" => "routines#sheet", :as => "routine_sheet"
   get "/users/:user_id/routines/:routine_id/perform" => "routines#perform", :as => "perform_routine"

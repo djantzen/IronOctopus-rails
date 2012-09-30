@@ -1,2 +1,15 @@
-<h1>Feedback#index</h1>
-<p>Find me in app/views/feedback/index.html.erb</p>
+<div class="container">
+
+  <% @feedback.each do |feedback| %>
+    <div class="row">
+      <div class="span2">
+        <%= feedback.user.login %>
+      </div>
+      <div class="span4">
+        <%= feedback.remarks %>
+      </div>
+
+    </div>
+  <% end %>
+
+</div>

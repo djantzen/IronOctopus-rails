@@ -7,6 +7,7 @@ class FeedbackController < ApplicationController
   end
 
   def index
+    @feedback = Feedback.all(:order => 'created_at desc')
   end
 
   def show

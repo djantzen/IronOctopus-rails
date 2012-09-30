@@ -2,27 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46f8a447-b9ed-44ae-be1c-95fe4e4f3fab" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/features/invitation.feature" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/features/step_definitions/common_steps.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/features/step_definitions/invitation_steps.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/features/support/fixtures.rb" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/features/register_client.feature" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/invitations_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/invitations_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/routines_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/routines_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/site_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/site_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/work_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/work_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/invitations/new.html.erb" afterPath="$PROJECT_DIR$/app/views/invitations/new.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/sessions/_login.html.erb" afterPath="$PROJECT_DIR$/app/views/sessions/_login.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/application.rb" afterPath="$PROJECT_DIR$/config/application.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/email.yml" afterPath="$PROJECT_DIR$/config/email.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20120122034510_create_activity_types.rb" afterPath="$PROJECT_DIR$/db/migrate/20120122034510_create_activity_types.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/features/sign_up.feature" afterPath="$PROJECT_DIR$/features/sign_up.feature" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/features/step_definitions/sign_up_steps.rb" afterPath="$PROJECT_DIR$/features/step_definitions/sign_up_steps.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/licenses.yml" afterPath="$PROJECT_DIR$/test/fixtures/licenses.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/routines_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/routines_controller_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/test_helper.rb" afterPath="$PROJECT_DIR$/test/test_helper.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/feedback_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/feedback_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/feedback/index.html.erb" afterPath="$PROJECT_DIR$/app/views/feedback/index.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
     </list>
     <ignored path="IronOctopus-rails.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -86,10 +68,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sign_up.feature" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="sign_up.feature" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/features/sign_up.feature">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="57" selection-start="612" selection-end="612" vertical-scroll-proportion="0.5597015">
+            <state line="15" column="57" selection-start="612" selection-end="612" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="feedback_controller.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/controllers/feedback_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="48" selection-start="320" selection-end="320" vertical-scroll-proportion="0.33582088">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/feedback/index.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="23" selection-start="181" selection-end="181" vertical-scroll-proportion="-4.375">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routes.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/routes.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="68" column="53" selection-start="2315" selection-end="2315" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -129,9 +138,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/controllers/routines_controller.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/site_controller.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/work_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/sessions/_login.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
         <option value="$PROJECT_DIR$/config/application.rb" />
@@ -145,6 +151,9 @@
         <option value="$PROJECT_DIR$/test/test_helper.rb" />
         <option value="$PROJECT_DIR$/test/functional/routines_controller_test.rb" />
         <option value="$PROJECT_DIR$/config/email.yml" />
+        <option value="$PROJECT_DIR$/app/views/feedback/index.html.erb" />
+        <option value="$PROJECT_DIR$/config/routes.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/feedback_controller.rb" />
       </list>
     </option>
   </component>
@@ -886,27 +895,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/invitations/accept.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="41" selection-start="100" selection-end="115" vertical-scroll-proportion="-1.875">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Ruby/Gems/1.8/gems/cucumber-1.2.1/lib/cucumber/core_ext/instance_exec.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="0" selection-start="2018" selection-end="2018" vertical-scroll-proportion="0.33246753">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Ruby/Gems/1.8/gems/capybara-1.1.2/lib/capybara/dsl.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="0" selection-start="2273" selection-end="2273" vertical-scroll-proportion="0.33246753">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/fixtures/users.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="34" column="0" selection-start="1051" selection-end="1051" vertical-scroll-proportion="0.93630576">
@@ -995,7 +983,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/features/sign_up.feature">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="57" selection-start="612" selection-end="612" vertical-scroll-proportion="0.5597015">
+        <state line="15" column="57" selection-start="612" selection-end="612" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="53" selection-start="2315" selection-end="2315" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/feedback/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="23" selection-start="181" selection-end="181" vertical-scroll-proportion="-4.375">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/feedback_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="48" selection-start="320" selection-end="320" vertical-scroll-proportion="0.33582088">
           <folding />
         </state>
       </provider>
