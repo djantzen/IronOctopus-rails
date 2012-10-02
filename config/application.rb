@@ -52,6 +52,8 @@ end
 
 email_file = File.open('config/email.yml')
 email_config = YAML.load(email_file)
-env_email = email_config[ENV['RAILS_ENV']].symbolize_keys # ActionMailer assumes symbols
-
-ActionMailer::Base.smtp_settings = env_email
+env = ENV['RAILS_ENV'] || ENV['RACK_ENV'] || 'development'
+if email_config[env]
+  env_email = email_config[env].symbolize_keys # ActionMailer assumes symbols
+  ActionMailer::Base.smtp_settings = env_email
+end

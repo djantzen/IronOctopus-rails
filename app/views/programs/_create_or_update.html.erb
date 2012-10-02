@@ -1,0 +1,77 @@
+<div id="program-builder-panel" class="container">
+  <%= form_for [@client, @program] do |form| %>
+    <%= hidden_field_tag "program[trainer]", @trainer.login %>
+
+    <div class="well">
+      <div class="row">
+        <div class="span3">
+          <%= form.label "program[client]", "Client" %>
+        </div>
+        <div class="span3">
+          <% if @client == current_user %>
+            <%= select_tag "program[client]", options_for_select(@clients, :selected => current_user.login) %>
+          <% else %>
+            <%= hidden_field_tag "program[client]", @client.login %>
+            <span>
+              <%= @client.first_name %>
+              <%= @client.last_name %>
+            </span>
+          <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <div id="routine-basic-info">
+          <div class="span3">
+            <%= form.label :name, "Name" %>
+            <!-- is_routine_name_unique -->
+            <%= form.text_field :name, :class => "required", :minlength => "4", :maxlength => "64" %>
+          </div>
+          <div class="span3">
+            <%= form.label :goal, "Goal" %>
+            <%= form.text_field :goal, :minlength => "8", :maxlength => "256" %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <%= submit_tag "Save", :class => "btn-large btn-primary"%>
+        </div>
+        <div class="span2">
+          <%= link_to "Cancel", user_programs_path(@client) %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div id="available-routines-list" class="span3 well">
+        <ul class="nav nav-tabs nav-stacked">
+          <% @routines.each do |routine| %>
+            <li>
+              <a>
+                <%= routine.name %>
+              </a>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div id="weekly-schedule" class="span6 well">
+        <ul class="nav nav-stacked">
+          <% ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"].each do |weekday| %>
+            <li class="well">
+              <div class="weekday">
+                <%= weekday %>
+              </div>
+              <div id="<%= weekday %>" class="weekday-bucket">
+
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+    </div>
+
+  <% end %>
+
+</div>

@@ -15,6 +15,7 @@ gem 'capistrano'
 gem 'underscore-rails', '1.3.1'
 gem 'kramdown'
 gem 'modernizr-rails', '~> 2.0.6'
+gem 'composite_primary_keys', '4.1.2'
 
 # Gems used only for assets and not required
 # in production environments by default.

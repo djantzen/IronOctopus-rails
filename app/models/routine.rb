@@ -7,6 +7,9 @@ class Routine < ActiveRecord::Base
   has_many :measurements, :through => :activity_sets
   has_many :activity_sets, :order => :position
 
+#  has_many :routines_programs, :class_name => 'RoutineProgram', :foreign_key => :routine_id
+#  has_many :programs, :through => :routines_programs, :class_name => 'Program'
+
   validates_presence_of :name
   validates_presence_of :goal
   validates_uniqueness_of :name, :scope => :client_id

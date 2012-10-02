@@ -1,0 +1,7 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+sallys_one_week_blitz:
+  name: Sally's One Week Blitz
+  goal: Overall fitness in 4 days
+  client: sally_the_client
+  trainer: bob_the_trainer
+  permalink: sallysoneweekblitz

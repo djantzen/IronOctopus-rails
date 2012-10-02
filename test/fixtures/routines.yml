@@ -15,7 +15,7 @@ jims_olympic_lift_training:
 sallys_whole_body_mix:
   name: Whole Body Mix
   goal: Balanced overall workout
-  trainer: mary_the_trainer
+  trainer: bob_the_trainer
   client: sally_the_client
   permalink: wholebodymix
 
