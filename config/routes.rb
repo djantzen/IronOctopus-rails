@@ -55,6 +55,7 @@ IronOctopus::Application.routes.draw do
   resources :implements
   resources :body_parts
   resources :devices
+  resources :sessions
 
 #  match "trainers/:trainer_id/routines/:routine_key" => "routines#index"
 # (.:format)  optional
@@ -79,7 +80,6 @@ IronOctopus::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
-  resources :sessions
 
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "log_in" => "sessions#new", :as => "log_in"
@@ -93,6 +93,7 @@ IronOctopus::Application.routes.draw do
   # Sample of named route:
   get "/trainers/:user_id/clients" => "users#clients", :as => :clients
   get "/trainers/:user_id/routines" => "routines#by_trainer", :as => :routines_by_trainer
+  get "/trainers/:user_id/programs" => "programs#by_trainer", :as => :programs_by_trainer
   get "/tour/show" => "tour#show"
 
 #  match "/trainers/:user_id/invitations" => "users#invitations", :as => :invitations

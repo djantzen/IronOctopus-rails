@@ -20,4 +20,7 @@ class Routine < ActiveRecord::Base
     permalink
   end
 
+  def to_s
+    name
+  end
 end

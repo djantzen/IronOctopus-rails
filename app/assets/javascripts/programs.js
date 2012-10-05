@@ -4,11 +4,15 @@ $(document).ready(function() {
     helper: 'clone'
   });
 
+  $("#program-builder-panel form").validate();
 
 
-  $('#weekly-schedule li').droppable({
+  $('#weekly-schedule .weekday-bucket').droppable({
     drop: function(event, ui) {
-      $(this).append($(ui.draggable).clone());
+      var routine = $(ui.draggable).clone();
+//        <%= hidden_field_tag "program[weekday][program]", routine.permalink %>
+//debugger;
+        $(this).html(routine);
     }
   });
 

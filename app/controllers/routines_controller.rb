@@ -5,9 +5,7 @@ class RoutinesController < ApplicationController
   respond_to :json, :html
 
   def index
-
     user = User.find_by_login(params[:user_id])
-
     @routines = Routine.all(:conditions => "client_id = #{user.user_id}", :order => :name)
 
     denorm_routines = @routines.map do |routine|
@@ -43,7 +41,7 @@ class RoutinesController < ApplicationController
   def new
     @routine = Routine.new
     @trainer = current_user
-    @clients = current_user.clients.map { |u| ["#{u.first_name} #{u.last_name}", u.login] }
+    @client_logins = current_user.clients.map { |u| ["#{u.first_name} #{u.last_name}", u.login] }
     @client = params[:user_id].nil? ? nil : User.find_by_login(params[:user_id])
     @activity_types = ActivityType.all
     @activities = Activity.all(:include => [:body_parts, :implements, :activity_type], :order => :name)
@@ -89,7 +87,7 @@ class RoutinesController < ApplicationController
     @client = User.find_by_login(params[:user_id])
     @routine = Routine.first(:conditions => { :client_id => @client.user_id, :permalink => params[:id] })
     @trainer = current_user
-    @clients = current_user.clients.map { |u| u.login }
+    @client_logins = current_user.clients.map { |u| u.login }
     @activity_types = ActivityType.all
     @activities = Activity.all(:include => [:body_parts, :implements, :activity_type], :order => :name)
     @implements = Implement.all

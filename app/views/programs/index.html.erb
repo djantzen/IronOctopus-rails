@@ -1,0 +1,14 @@
+<div class="container">
+  <h4>Programs</h4>
+  <% @programs.each do |program| %>
+    <div class="btn-group">
+      <%= link_to(program.name, user_program_path(program.client, program), :class => "btn") %>
+      <%= link_to("Edit", edit_user_program_path(program.client, program), :class => "btn") %>
+      <% if program.client == current_user %>
+        <!-- Link to next routine? -->
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= link_to("Create New Program", new_user_program_path(current_user), :class => "btn btn-primary") %>
+</div>

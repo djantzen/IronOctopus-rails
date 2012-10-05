@@ -4,7 +4,7 @@
 
     <div class="well">
       <div class="row">
-        <div class="span3">
+        <div class="span3 offset1">
           <%= form.label "program[client]", "Client" %>
         </div>
         <div class="span3">
@@ -20,8 +20,8 @@
         </div>
       </div>
       <div class="row">
-        <div id="routine-basic-info">
-          <div class="span3">
+        <div id="program-basic-info">
+          <div class="span3 offset1">
             <%= form.label :name, "Name" %>
             <!-- is_routine_name_unique -->
             <%= form.text_field :name, :class => "required", :minlength => "4", :maxlength => "64" %>
@@ -31,19 +31,15 @@
             <%= form.text_field :goal, :minlength => "8", :maxlength => "256" %>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="span2">
-          <%= submit_tag "Save", :class => "btn-large btn-primary"%>
-        </div>
-        <div class="span2">
-          <%= link_to "Cancel", user_programs_path(@client) %>
+        <div class="span3 btn-group offset1">
+          <%= submit_tag "Save", :class => "btn btn-large btn-primary"%>
+          <%= link_to "Cancel", user_programs_path(@client), :class => "btn btn-large" %>
         </div>
       </div>
     </div>
 
     <div class="row">
-      <div id="available-routines-list" class="span3 well">
+      <div id="available-routines-list" class="span4 well">
         <ul class="nav nav-tabs nav-stacked">
           <% @routines.each do |routine| %>
             <li>
@@ -55,15 +51,19 @@
         </ul>
       </div>
 
-      <div id="weekly-schedule" class="span6 well">
+      <div id="weekly-schedule" class="span7 well">
         <ul class="nav nav-stacked">
-          <% ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"].each do |weekday| %>
-            <li class="well">
-              <div class="weekday">
-                <%= weekday %>
-              </div>
-              <div id="<%= weekday %>" class="weekday-bucket">
-
+          <% ProgramsController::WEEKDAYS.each do |weekday| %>
+            <li class="">
+              <div class="row">
+                <div id="<%= weekday %>-bucket" class="span4 weekday-bucket well">
+                  <%= select_tag "program[#{weekday}]", options_for_select(@routine_select, :selected => nil), :prompt => "" %>
+                </div>
+                <div class="span2 weekday well">
+                  <h4>
+                    <%= weekday %>
+                  </h4>
+                </div>
               </div>
             </li>
           <% end %>

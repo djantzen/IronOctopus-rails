@@ -34,6 +34,7 @@
     <orderEntry type="library" scope="PROVIDED" name="coffee-script (v2.2.0, ruby-1.8.7-p357) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="coffee-script-source (v1.3.3, ruby-1.8.7-p357) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="columnize (v0.3.6, ruby-1.8.7-p357) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="composite_primary_keys (v4.1.2, ruby-1.8.7-p357) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="cucumber (v1.2.1, ruby-1.8.7-p357) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="cucumber-rails (v1.3.0, ruby-1.8.7-p357) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="database_cleaner (v0.8.0, ruby-1.8.7-p357) [gem]" level="application" />
