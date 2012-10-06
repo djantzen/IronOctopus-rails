@@ -14,7 +14,7 @@ class Activity < ActiveRecord::Base
   validates_presence_of :name
   validates_uniqueness_of :name
 
-  before_save { self.permalink = name.to_identifier }
+  before_validation { self.permalink = name.to_identifier }
 
   def to_param
     permalink

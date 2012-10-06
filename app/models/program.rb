@@ -5,6 +5,7 @@ class Program < ActiveRecord::Base
 
   has_many :routines_programs, :class_name => 'RoutineProgram', :foreign_key => :program_id
   has_many :routines, :through => :routines_programs, :class_name => 'Routine'
+  has_many :program_weekdays, :through => :routines_programs, :foreign_key => [:routine_id, :program_id]
 
   before_validation { self.permalink = self.name.to_identifier }
 
