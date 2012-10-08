@@ -2,6 +2,29 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#available-routines-list li {
-  cursor: move;
+//#available-routines-list li {
+//  cursor: move;
+//}
+
+#date-picker td, th {
+  width: 100px;
+}
+#modal-routine-builder {
+  left: 21%;
+  top: 40%;
+  width: 105%;
+  height: 100%;
+}
+
+#modal-routine-builder .modal-body {
+  overflow-y: scroll;
+  max-height: 100%;
+}
+
+#routine-type-selector {
+
+}
+
+#scheduled-program {
+  display: none;
 }

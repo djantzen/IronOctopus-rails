@@ -1,0 +1,12 @@
+push_pull_upper_on_monday_of_sallys_one_week_blitz:
+  routine: sallys_push_pull_upper
+  program: sallys_one_week_blitz
+  day_of_week: Monday
+whole_body_mix_on_friday_of_sallys_one_week_blitz:
+  routine: sallys_whole_body_mix
+  program: sallys_one_week_blitz
+  day_of_week: Wednesday
+push_pull_upper_on_friday_of_sallys_one_week_blitz:
+  routine: sallys_push_pull_upper
+  program: sallys_one_week_blitz
+  day_of_week: Friday

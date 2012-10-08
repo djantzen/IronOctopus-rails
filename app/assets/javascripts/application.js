@@ -20,13 +20,17 @@ String.prototype.toIdentifier = function() {
   return this.replace(to_identifier_regexp, '').toLowerCase();
 };
 
-
+var Flasher = function() {
+  var f = function() { alert("flash") };
+  flash: f
+}
 
 $(document).ready(function() {
   $(".has-tooltip").tooltip({ delay: { show: 500, hide: 100 }});
   $(".has-tooltip-bottom").tooltip({ delay: 500, placement: "bottom" });
   $(".has-tooltip-left").tooltip({ delay: 500, placement: "left" });
   $(".has-tooltip-right").tooltip({ delay: 500, placement: "right" });
+
 
 //  yepnope({
 //    test: Modernizr.inputtypes.email && Modernizr.input.required && Modernizr.input.placeholder && Modernizr.input.pattern,

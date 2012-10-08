@@ -1,8 +1,11 @@
-<button id="<%= (defined? button_id) ? button_id : nil %>"
+<button id="<%= (defined? button_id) ? button_id : '' %>"
+        type="<%= (defined? type) ? type : 'submit' %>"
         class="btn <%= (defined? button_class) ? button_class : nil %>"
         rel="tooltip"
         data-original-title="yo"
-        onclick="return false;" >
+        onclick="return <%= (defined? return_false && return_false == false) ? true : false %>;"
+        name="program[type]"
+>
   <% if defined? icon %>
     <i class="<%= icon %>"></i>
   <% end %>

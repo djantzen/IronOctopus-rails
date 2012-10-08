@@ -17,34 +17,49 @@ class ProgramsController < ApplicationController
 
   def new
     @program = Program.new
+    @weekday_programs = @program.weekday_programs
     @client = User.find_by_login(params[:user_id])
     @trainer = current_user
     @routines = @client.routines
     @routine_select =  @routines.map { |r| [r.name, r.permalink] }
     @clients = current_user.clients
+    _routine_builder_attributes
+  end
+
+  def _routine_builder_attributes
+    @routine = Routine.new
+    @client_logins = current_user.clients.map { |u| ["#{u.first_name} #{u.last_name}", u.login] }
+    @activity_types = ActivityType.all
+    @activities = Activity.all(:include => [:body_parts, :implements, :activity_type], :order => :name)
+    @implements = Implement.all
+    @body_parts = BodyPart.all
+    @activity_attributes = ActivityAttribute.all(:order => :name)
   end
 
   def create
-    _create_or_update(Program.new)
+    program = _create_or_update(Program.new)
+    redirect_to(user_programs_path(program.client))
   end
 
   def edit
     @program = Program.find_by_permalink(params[:id].to_identifier)
+    @weekday_programs = @program.weekday_programs
     @client = User.find_by_login(params[:user_id])
     @trainer = current_user
     @routines = @client.routines
     @routine_select =  @routines.map { |r| [r.name, r.permalink] }
     @clients = current_user.clients
+    _routine_builder_attributes
   end
 
   def update
     program = _create_or_update(Program.find_by_permalink(params[:program][:name].to_identifier))
-    redirect_to(user_program_path(program.client, program))
+    redirect_to(user_programs_path(program.client))
   end
 
   def index
-    user = User.find_by_login(params[:user_id])
-    @programs = Program.all(:conditions => "client_id = #{user.user_id}", :order => :name)
+    @client = User.find_by_login(params[:user_id])
+    @programs = Program.all(:conditions => "client_id = #{@client.user_id}", :order => :name)
 
     respond_with do |format|
       format.html { render :html => @programs }
@@ -71,11 +86,15 @@ class ProgramsController < ApplicationController
       program.trainer = trainer
       program.client = client
 
-      program.routines.clear
-
+      # Will need to differentiate between weekly and scheduled
+      program.weekday_programs.each do |wp|
+        wp.delete
+      end
       WEEKDAYS.each do |weekday|
         routine = Routine.find_by_permalink(program_hash[weekday])
-        program.routines << routine if routine #unless program.routines.include?(routine)
+        next if routine.nil?
+        weekday_program = WeekdayProgram.new(:routine => routine, :program => program, :day_of_week => weekday)
+        program.weekday_programs << weekday_program  #unless program.routines.include?(routine)
       end
 
       program.save

@@ -33,7 +33,6 @@
         </div>
       </div>
 
-
       <div class="accordion has-tooltip-right" rel="tooltip" title="Filter activities by anatomy" id="body-part-list">
         <div class="accordion-group">
           <div class="accordion-heading">
@@ -198,7 +197,7 @@
     </div>
 
     <div id="routine-form-panel" class="span9">
-      <%= form_for [@client, @routine] do |form| %>
+      <%= form_for [@client, @routine], :remote => via_ajax do |form| %>
         <%= hidden_field_tag "routine[trainer]", @trainer.login %>
           <div class="well">
             <div class="row ">
@@ -229,13 +228,15 @@
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="span2 offset1">
-                <%= submit_tag "Save", :class => "btn-large btn-primary"%>
-              </div>
-              <div class="span2">
-                <%= link_to "Cancel", user_routines_path(current_user) %>
-              </div>
+            <div class="btn-group">
+              <%= render :partial => 'shared/button', :locals => { :button_class => 'btn-primary',
+                                                                   :message => 'Save', :return_false => false} %>
+              <% if via_ajax %>
+                <%= render :partial => 'shared/button', :locals => { :button_id => 'cancel-routine-builder-button',
+                                                                     :message => 'Cancel' } %>
+              <% else %>
+                <%= link_to "Cancel", user_routines_path(current_user), :class => 'btn' %>
+              <% end %>
             </div>
           </div>
           <div class="row">
@@ -246,16 +247,7 @@
               <% end %>
             </ul>
           </div>
-          <div class="row">
-            <div class="span2 offset1">
-              <%= submit_tag "Save", :class => "btn-large btn-primary"%>
-            </div>
-            <div class="span2">
-              <%= link_to "Cancel", user_routines_path(current_user) %>
-            </div>
-          </div>
         <% end %>
       </div>
-    </div>
   </div>
 </div>

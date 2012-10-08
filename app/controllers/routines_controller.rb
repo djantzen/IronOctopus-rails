@@ -5,8 +5,8 @@ class RoutinesController < ApplicationController
   respond_to :json, :html
 
   def index
-    user = User.find_by_login(params[:user_id])
-    @routines = Routine.all(:conditions => "client_id = #{user.user_id}", :order => :name)
+    @client = User.find_by_login(params[:user_id])
+    @routines = Routine.all(:conditions => "client_id = #{@client.user_id}", :order => :name)
 
     denorm_routines = @routines.map do |routine|
       denormalize_routine(routine)

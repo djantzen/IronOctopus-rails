@@ -1,63 +1,90 @@
-<div id="program-builder-panel" class="container">
+<div id="program-builder-panel" class="container-fluid">
+
+  <div id="modal-routine-builder" class="modal hide fade">
+    <div class="modal-body">
+      <%= render :partial => "routines/create_or_update", :locals => { :via_ajax => true } %>
+    </div>
+  </div>
+
   <%= form_for [@client, @program] do |form| %>
     <%= hidden_field_tag "program[trainer]", @trainer.login %>
-
-    <div class="well">
-      <div class="row">
-        <div class="span3 offset1">
-          <%= form.label "program[client]", "Client" %>
-        </div>
-        <div class="span3">
-          <% if @client == current_user %>
-            <%= select_tag "program[client]", options_for_select(@clients, :selected => current_user.login) %>
-          <% else %>
-            <%= hidden_field_tag "program[client]", @client.login %>
-            <span>
-              <%= @client.first_name %>
-              <%= @client.last_name %>
-            </span>
-          <% end %>
+    <div id="routine-type-selector" class="row">
+      <div class="span7 offset3 well">
+        <div class="btn-group offset1" data-toggle="buttons-radio">
+          <%=  %>
         </div>
       </div>
-      <div class="row">
-        <div id="program-basic-info">
-          <div class="span3 offset1">
-            <%= form.label :name, "Name" %>
-            <!-- is_routine_name_unique -->
-            <%= form.text_field :name, :class => "required", :minlength => "4", :maxlength => "64" %>
-          </div>
-          <div class="span3">
-            <%= form.label :goal, "Goal" %>
-            <%= form.text_field :goal, :minlength => "8", :maxlength => "256" %>
-          </div>
-        </div>
-        <div class="span3 btn-group offset1">
-          <%= submit_tag "Save", :class => "btn btn-large btn-primary"%>
-          <%= link_to "Cancel", user_programs_path(@client), :class => "btn btn-large" %>
+        <div class="btn-group offset1" data-toggle="buttons-radio">
+          <%= render :partial => 'shared/button', :locals => { :button_id => 'weekday-program-button', :button_class => 'active btn-large btn-primary',
+                                                               :message => 'Weekday Program', :type => 'input'} %>
+          <%= render :partial => 'shared/button', :locals => { :button_id => 'scheduled-program-button', :button_class => 'btn-large btn-primary',
+                                                               :message => 'Scheduled Program', :type => 'input'} %>
         </div>
       </div>
     </div>
-
     <div class="row">
-      <div id="available-routines-list" class="span4 well">
-        <ul class="nav nav-tabs nav-stacked">
-          <% @routines.each do |routine| %>
-            <li>
-              <a>
-                <%= routine.name %>
-              </a>
-            </li>
-          <% end %>
-        </ul>
+      <div class="span3 well">
+        <div class="row">
+          <div class="span3">
+            <%= form.label "program[client]", "Client" %>
+          </div>
+          <div class="span3">
+            <% if @client == current_user %>
+              <%= select_tag "program[client]", options_for_select(@clients, :selected => current_user.login) %>
+            <% else %>
+              <%= hidden_field_tag "program[client]", @client.login %>
+              <span>
+                <%= @client.first_name %>
+                <%= @client.last_name %>
+              </span>
+            <% end %>
+          </div>
+        </div>
+        <div class="row">
+          <div id="program-basic-info">
+            <div class="span3">
+              <%= form.label :name, "Program Name" %>
+              <!-- is_routine_name_unique -->
+              <%= form.text_field :name, :class => "required", :minlength => "4", :maxlength => "64" %>
+            </div>
+            <div class="span3">
+              <%= form.label :goal, "Program Goal" %>
+              <%= form.text_area :goal, :minlength => "8", :maxlength => "256" %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span3 btn-group">
+            <%= submit_tag "Save", :class => "btn btn-large btn-primary"%>
+            <%= link_to "Cancel", user_programs_path(@client), :class => "btn btn-large" %>
+          </div>
+        </div>
       </div>
 
-      <div id="weekly-schedule" class="span7 well">
+      <div id="scheduled-program" class="span9">
+        <div class="well">
+          <div id="date-picker">
+
+          </div>
+        </div>
+      </div>
+
+      <div id="weekday-program" class="span9">
         <ul class="nav nav-stacked">
           <% ProgramsController::WEEKDAYS.each do |weekday| %>
             <li class="">
               <div class="row">
-                <div id="<%= weekday %>-bucket" class="span4 weekday-bucket well">
-                  <%= select_tag "program[#{weekday}]", options_for_select(@routine_select, :selected => nil), :prompt => "" %>
+                <div id="<%= weekday %>-bucket" class="span6 weekday-bucket well">
+                  <% weekday_program = @weekday_programs.select { |wp| wp.day_of_week.eql? weekday }.first %>
+                  <div class="span3">
+                    <%= select_tag "program[#{weekday}]",
+                                   options_for_select(@routine_select, :selected => weekday_program ? weekday_program.routine.permalink : nil),
+                                   :prompt => "-- Select a Routine --" %>
+                  </div>
+                  <div class="span2 btn-group">
+                    <%= render :partial => 'shared/button', :locals => { :button_class => 'new-routine-button',
+                                                                         :message => 'New Routine'} %>
+                  </div>
                 </div>
                 <div class="span2 weekday well">
                   <h4>
