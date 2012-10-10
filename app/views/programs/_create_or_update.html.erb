@@ -11,10 +11,6 @@
     <div id="routine-type-selector" class="row">
       <div class="span7 offset3 well">
         <div class="btn-group offset1" data-toggle="buttons-radio">
-          <%=  %>
-        </div>
-      </div>
-        <div class="btn-group offset1" data-toggle="buttons-radio">
           <%= render :partial => 'shared/button', :locals => { :button_id => 'weekday-program-button', :button_class => 'active btn-large btn-primary',
                                                                :message => 'Weekday Program', :type => 'input'} %>
           <%= render :partial => 'shared/button', :locals => { :button_id => 'scheduled-program-button', :button_class => 'btn-large btn-primary',
@@ -61,7 +57,7 @@
         </div>
       </div>
 
-      <div id="scheduled-program" class="span9">
+      <div id="scheduled-program" class="span11">
         <div class="well">
           <div id="date-picker">
 
@@ -69,7 +65,7 @@
         </div>
       </div>
 
-      <div id="weekday-program" class="span9">
+      <div id="weekday-program" class="span11">
         <ul class="nav nav-stacked">
           <% ProgramsController::WEEKDAYS.each do |weekday| %>
             <li class="">

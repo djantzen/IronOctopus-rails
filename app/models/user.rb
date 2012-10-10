@@ -12,14 +12,29 @@ class User < ActiveRecord::Base
 
   has_many :routines, :class_name => 'Routine', :foreign_key => :client_id
   has_many :routines_created, :class_name => 'Routine', :foreign_key => :trainer_id
+
+  has_many :weekday_programs, :through => :routines
+  has_many :weekday_programs_created, :through => :routines_created, :source => :weekday_programs
+  has_many :scheduled_programs, :through => :routines
+  has_many :scheduled_programs_created, :through => :routines_created, :source => :scheduled_programs
+
   has_many :work, :class_name => 'Work', :foreign_key => :user_id
   has_many :feedback, :class_name => 'Feedback', :foreign_key => :user_id
   has_many :licenses, :foreign_key => :trainer_id
   has_many :unused_licenses, :class_name => 'License', :foreign_key => :trainer_id, :conditions => "status = 'new'"
   has_many :invitations, :foreign_key => :trainer_id
   has_one :confirmation
-  has_and_belongs_to_many :clients, :class_name => 'User', :foreign_key => :client_id, :association_foreign_key => :trainer_id, :join_table => 'user_relationships', :order => 'last_name, first_name'
-  has_and_belongs_to_many :trainers, :class_name => 'User', :foreign_key => :trainer_id, :association_foreign_key => :client_id, :join_table => 'user_relationships'
+  has_and_belongs_to_many :clients, :class_name => 'User', :foreign_key => :client_id, :association_foreign_key => :trainer_id,
+                          :join_table => 'user_relationships', :order => 'last_name, first_name'#, :conditions => [ "trainer_id != client_id" ]
+  has_and_belongs_to_many :trainers, :class_name => 'User', :foreign_key => :trainer_id, :association_foreign_key => :client_id,
+                          :join_table => 'user_relationships'#, :conditions => [ "trainer_id != client_id" ]
+
+  def programs
+    programs = (weekday_programs + scheduled_programs).inject([]) do |array, n_program|
+      array << n_program.program
+    end
+    programs.uniq
+  end
 
   def to_param
     login

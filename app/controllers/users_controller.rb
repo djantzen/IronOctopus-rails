@@ -44,7 +44,6 @@ class UsersController < ApplicationController
   end
 
   def clients
-
     @clients = current_user.clients
   end
 
@@ -56,9 +55,11 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find_by_login(params['id'])
-    @user.password_digest = nil
     @routines = @user.routines
-    
+#    @weekday_programs = @user.weekday_programs
+#    @scheduled_programs = @user.weekday_programs
+    @programs = @user.programs
+
     respond_with do |format|
       format.html { render :html => @user }
     end
