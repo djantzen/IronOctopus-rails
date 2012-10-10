@@ -73,7 +73,6 @@ IronOctopus::Application.routes.draw do
   root :to => "welcome#index"
   get "post_signup" => "welcome#post_signup"
   match "login" => "sessions#new"
-#  match "site" => "site#index"
 
   get "/users/:user_id/routines/is_name_unique/:routine_id" => "routines#is_name_unique", :as => "is_routine_name_unique"
 
