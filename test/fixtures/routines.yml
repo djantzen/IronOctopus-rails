@@ -24,4 +24,4 @@ bobs_self_kick_butt:
   goal: Prove self-referential routines work
   trainer: bob_the_trainer
   client: bob_the_trainer
-  permalink: bobsselfkickbutt
+  permalink: kickingmyownbutt

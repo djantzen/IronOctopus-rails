@@ -4,9 +4,9 @@ class CreateScheduledPrograms < ActiveRecord::Migration
       create table application.scheduled_programs (
         routine_id integer not null references application.routines deferrable,
         program_id integer not null references application.programs deferrable,
-        scheduled_at timestamptz not null,
+        scheduled_on date not null,
         created_at timestamptz not null default now(),
-        primary key(routine_id, program_id, scheduled_at)
+        primary key(routine_id, program_id, scheduled_on)
       );
 
       grant select on application.scheduled_programs to reader;

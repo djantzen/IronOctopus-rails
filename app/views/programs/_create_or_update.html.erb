@@ -9,7 +9,8 @@
   <%= form_for [@client, @program] do |form| %>
     <%= hidden_field_tag "program[trainer]", @trainer.login %>
     <div id="routine-type-selector" class="row">
-      <div class="span7 offset3 well">
+      <div class="span7 offset4 well">
+        <%= hidden_field_tag "program[type]", 'weekday' %>
         <div class="btn-group offset1" data-toggle="buttons-radio">
           <%= render :partial => 'shared/button', :locals => { :button_id => 'weekday-program-button', :button_class => 'active btn-large btn-primary',
                                                                :message => 'Weekday Program', :type => 'input'} %>
@@ -57,11 +58,21 @@
         </div>
       </div>
 
-      <div id="scheduled-program" class="span11">
-        <div class="well">
-          <div id="date-picker">
-
+      <div id="scheduled-program" class="span11 well">
+        <div id="calendar" class="carousel slide">
+          <% today = Date.today %>
+          <% months = [today, today + 1.month, today + 2.months]%>
+          <div class="carousel-inner">
+            <% months.each_with_index do |month, idx| %>
+              <div class="<%= (idx == 0 ? 'item active' : 'item') %>" >
+                <%= calendar_for(month.year, month.month, :yield_surrounding_days => true) do |day|
+                  [ render(:partial => 'programs/calendar_day', :locals => { :date => day }), { :class => '' } ]
+                end %>
+              </div>
+            <% end %>
           </div>
+          <a class="carousel-control left" href="#calendar" data-slide="prev">&lsaquo;</a>
+          <a class="carousel-control right" href="#calendar" data-slide="next">&rsaquo;</a>
         </div>
       </div>
 
@@ -75,7 +86,7 @@
                   <div class="span3">
                     <%= select_tag "program[#{weekday}]",
                                    options_for_select(@routine_select, :selected => weekday_program ? weekday_program.routine.permalink : nil),
-                                   :prompt => "-- Select a Routine --" %>
+                                   :prompt => "-- Select a Routine --", :class => 'routine-select' %>
                   </div>
                   <div class="span2 btn-group">
                     <%= render :partial => 'shared/button', :locals => { :button_class => 'new-routine-button',

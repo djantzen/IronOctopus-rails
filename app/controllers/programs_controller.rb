@@ -2,6 +2,7 @@ class ProgramsController < ApplicationController
 
   before_filter :authenticate_user
   include ProgramsHelper
+  helper LaterDude::CalendarHelper
   respond_to :json, :html
 
   WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
@@ -18,6 +19,7 @@ class ProgramsController < ApplicationController
   def new
     @program = Program.new
     @weekday_programs = @program.weekday_programs
+    @scheduled_programs = @program.scheduled_programs
     @client = User.find_by_login(params[:user_id])
     @trainer = current_user
     @routines = @client.routines
@@ -28,6 +30,7 @@ class ProgramsController < ApplicationController
 
   def _routine_builder_attributes
     @routine = Routine.new
+    @calendars = [ LaterDude::Calendar.new(2012, 10), LaterDude::Calendar.new(2012, 11) ]
     @client_logins = current_user.clients.map { |u| ["#{u.first_name} #{u.last_name}", u.login] }
     @activity_types = ActivityType.all
     @activities = Activity.all(:include => [:body_parts, :implements, :activity_type], :order => :name)
@@ -44,6 +47,7 @@ class ProgramsController < ApplicationController
   def edit
     @program = Program.find_by_permalink(params[:id].to_identifier)
     @weekday_programs = @program.weekday_programs
+    @scheduled_programs = @program.scheduled_programs
     @client = User.find_by_login(params[:user_id])
     @trainer = current_user
     @routines = @client.routines
@@ -78,6 +82,7 @@ class ProgramsController < ApplicationController
 
   def _create_or_update(program)
     program_hash = params[:program]
+    program_type = program_hash[:type]
     client = User.find_by_login(program_hash[:client])
     trainer = User.find_by_login(program_hash[:trainer])
     Program.transaction do
@@ -86,19 +91,32 @@ class ProgramsController < ApplicationController
       program.trainer = trainer
       program.client = client
 
-      # Will need to differentiate between weekly and scheduled
-      program.weekday_programs.each do |wp|
-        wp.delete
+      if program_type.eql? 'weekly'
+        program.weekday_programs.each do |wp|
+          wp.delete
+        end
+        WEEKDAYS.each do |weekday|
+          routine = Routine.find_by_permalink(program_hash[weekday])
+          next if routine.nil?
+          weekday_program = WeekdayProgram.new(:routine => routine, :program => program, :day_of_week => weekday)
+          program.weekday_programs << weekday_program  #unless program.routines.include?(routine)
+        end
+      elsif program_type.eql? 'scheduled'
+        program.scheduled_programs.each do |sp|
+          sp.delete
+        end
+        dates_and_routines = program_hash[:dates]
+        dates_and_routines.each do |date, routine_permalink|
+          next if routine_permalink.nil?
+          routine = Routine.find_by_permalink(routine_permalink)
+          next if routine.nil?
+          scheduled_program = ScheduledProgram.new(:routine => routine, :program => program, :scheduled_on => date)
+          program.scheduled_programs << scheduled_program
+        end
+      else
+        raise ArgumentError.new("Unknown program type #{type}")
       end
-      WEEKDAYS.each do |weekday|
-        routine = Routine.find_by_permalink(program_hash[weekday])
-        next if routine.nil?
-        weekday_program = WeekdayProgram.new(:routine => routine, :program => program, :day_of_week => weekday)
-        program.weekday_programs << weekday_program  #unless program.routines.include?(routine)
-      end
-
       program.save
-
     end
     program
   end

@@ -47,6 +47,7 @@
                   <li>
                     <%= link_to("New Implement", new_implement_path) %>
                   </li>
+                  <li class="divider"></li>
                   <li>
                     <%= link_to("View All Activities", activities_path) %>
                   </li>
@@ -61,10 +62,14 @@
                   <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu" role="menu">
-                  <div class="nav">
-                    <%= link_to("Invite New Client", new_user_invitation_path(current_user), :class => 'btn btn-primary') %>
-                  </div>
+                  <li>
+                  <!--<div class="nav">-->
+                    <%= link_to("Invite New Client", new_user_invitation_path(current_user)) %>
+                  <!--</div>-->
+                  </li>
+                  <li class="divider"></li>
                   <% current_user.clients.each do |client| %>
+                    <% next if current_user.eql?(client) %>
                     <li>
                       <%= link_to(client.full_name, user_path(client)) %>
                     </li>

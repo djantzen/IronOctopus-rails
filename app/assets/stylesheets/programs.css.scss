@@ -6,9 +6,24 @@
 //  cursor: move;
 //}
 
-#date-picker td, th {
+#calendar td {
   width: 160px;
   height: 100px;
+  border: 1px solid #d3d3d3;
+//  @include well;
+}
+
+#calendar .carousel-control.right {
+  top: 2px;
+  right: -2px;
+}
+#calendar .carousel-control.left {
+  top: 2px;
+  left: -2px;
+}
+
+.modal-routine-select {
+  display: none;
 }
 
 #modal-routine-builder {
