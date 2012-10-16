@@ -10,11 +10,11 @@
     <%= hidden_field_tag "program[trainer]", @trainer.login %>
     <div id="routine-type-selector" class="row">
       <div class="span7 offset4 well">
-        <%= hidden_field_tag "program[type]", 'weekday' %>
+        <%= hidden_field_tag "program[type]", @program_type %>
         <div class="btn-group offset1" data-toggle="buttons-radio">
-          <%= render :partial => 'shared/button', :locals => { :button_id => 'weekday-program-button', :button_class => 'active btn-large btn-primary',
+          <%= render :partial => 'shared/button', :locals => { :button_id => 'weekday-program-button', :button_class => "btn-large btn-primary #{ 'active' if @program_type.eql? 'Weekday' }",
                                                                :message => 'Weekday Program', :type => 'input'} %>
-          <%= render :partial => 'shared/button', :locals => { :button_id => 'scheduled-program-button', :button_class => 'btn-large btn-primary',
+          <%= render :partial => 'shared/button', :locals => { :button_id => 'scheduled-program-button', :button_class => "btn-large btn-primary #{ 'active' if @program_type.eql? 'Scheduled' }",
                                                                :message => 'Scheduled Program', :type => 'input'} %>
         </div>
       </div>
@@ -64,8 +64,9 @@
           <div class="carousel-inner">
             <% months.each_with_index do |month, idx| %>
               <div class="<%= (idx == 0 ? 'item active' : 'item') %>" >
-                <%= calendar_for(month.year, month.month, :yield_surrounding_days => false, :use_full_day_names => true, :current_month => lambda { |date| date.strftime("%B %Y") } ) do |day|
-                  [ render(:partial => 'programs/calendar_day', :locals => { :date => day }), { :class => '' } ]
+                <%= calendar_for(month.year, month.month, :yield_surrounding_days => true, :use_full_day_names => true,
+                                 :current_month => lambda { |date| date.strftime("%B %Y") } ) do |day|
+                  [ render(:partial => 'programs/calendar_day', :locals => { :date => day, :month => month.month }), { :class => '' } ]
                 end %>
               </div>
             <% end %>

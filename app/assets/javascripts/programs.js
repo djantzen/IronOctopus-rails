@@ -7,8 +7,10 @@ $(document).ready(function() {
   $(".okay-selected-routine-button").click(function() {
     var container = $(this).parents(".calendar-day");
     var modal = container.find(".modal-routine-select");
-    var selected = container.find("option:selected").html();
-    container.find(".display-name").html(selected);
+    if (container.find("select").val() != "") {
+      var selected = container.find("option:selected").html();
+      container.find(".display-name").html(selected);
+    }
     modal.modal("hide");
   });
 
@@ -39,13 +41,13 @@ $(document).ready(function() {
   $("#weekday-program-button").click(function() {
     $("#scheduled-program").hide();
     $("#weekday-program").show();
-    $("#program_type").val("weekday");
+    $("#program_type").val("Weekday");
   });
 
   $("#scheduled-program-button").click(function() {
     $("#weekday-program").hide();
     $("#scheduled-program").show();
-    $("#program_type").val("scheduled");
+    $("#program_type").val("Scheduled");
   });
 
   var program_name_validator = function(program_name,routine_name_elem) {
@@ -69,5 +71,13 @@ $(document).ready(function() {
 
   $.validator.addMethod("is_program_name_unique", program_name_validator, "Program name is already taken");
   $("#new_program").validate();
+
+  if ($("#program_type").val() == "Weekday") {
+    $("#scheduled-program").hide();
+    $("#weekday-program").show();
+  } else if ($("#program_type").val() == "Scheduled") {
+    $("#weekday-program").hide();
+    $("#scheduled-program").show();
+  }
 
 });

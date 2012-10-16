@@ -1,13 +1,15 @@
 <div id="<%= date.iso8601 %>" class="calendar-day">
   <% scheduled_program = @scheduled_programs.select { |sp| sp.scheduled_on.eql? date }.first %>
-  <span class="day">
+  <div class="day-box">
     <%= date.day %>
-  </span>
-  <span class="display-name">
+  </div>
+  <div class="display-name">
     <%= scheduled_program.nil? ? nil : scheduled_program.routine.name %>
-  </span>
-  <%= render :partial => 'shared/button', :locals => { :button_class => 'edit-selected-routine-button',
+  </div>
+  <% if date >= Date.today && date.month == month %>
+    <%= render :partial => 'shared/button', :locals => { :button_class => 'edit-selected-routine-button',
                                                        :icon => 'icon-edit'} %>
+  <% end %>
 
   <div class="modal modal-routine-select hide fade">
     <div class="modal-body">

@@ -18,6 +18,7 @@ class ProgramsController < ApplicationController
     @program = Program.new
     @weekday_programs = @program.weekday_programs
     @scheduled_programs = @program.scheduled_programs
+    @program_type = 'Weekday'
     @client = User.find_by_login(params[:user_id])
     @trainer = current_user
     @routines = @client.routines
@@ -46,6 +47,7 @@ class ProgramsController < ApplicationController
     @program = Program.find_by_permalink(params[:id].to_identifier)
     @weekday_programs = @program.weekday_programs
     @scheduled_programs = @program.scheduled_programs
+    @program_type = @scheduled_programs.size > 0 ? 'Scheduled' : 'Weekday'
     @client = User.find_by_login(params[:user_id])
     @trainer = current_user
     @routines = @client.routines
@@ -96,14 +98,14 @@ class ProgramsController < ApplicationController
         sp.delete
       end
 
-      if program_type.eql? 'weekday'
+      if program_type.eql? 'Weekday'
         Weekday::WEEK.each do |weekday|
           routine = Routine.find_by_permalink(program_hash[weekday.name])
           next if routine.nil?
           weekday_program = WeekdayProgram.new(:routine => routine, :program => program, :day_of_week => weekday.name)
           program.weekday_programs << weekday_program  #unless program.routines.include?(routine)
         end
-      elsif program_type.eql? 'scheduled'
+      elsif program_type.eql? 'Scheduled'
         dates_and_routines = program_hash[:dates]
         dates_and_routines.each do |date, routine_permalink|
           next if routine_permalink.nil?
