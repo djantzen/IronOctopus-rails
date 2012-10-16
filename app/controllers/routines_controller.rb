@@ -1,6 +1,6 @@
 class RoutinesController < ApplicationController
 
-  before_filter :authenticate_user
+  before_filter :authenticate_user, :except => [:is_name_unique]
   include RoutinesHelper
   respond_to :json, :html
 

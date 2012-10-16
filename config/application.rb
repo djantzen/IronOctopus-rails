@@ -50,10 +50,12 @@ module IronOctopus
   end
 end
 
+env = ENV['RAILS_ENV'] || ENV['RACK_ENV'] || 'development'
+
 email_file = File.open('config/email.yml')
 email_config = YAML.load(email_file)
-env = ENV['RAILS_ENV'] || ENV['RACK_ENV'] || 'development'
 if email_config[env]
   env_email = email_config[env].symbolize_keys # ActionMailer assumes symbols
   ActionMailer::Base.smtp_settings = env_email
 end
+

@@ -9,17 +9,16 @@
   <%= render :partial => 'shared/button', :locals => { :button_class => 'edit-selected-routine-button',
                                                        :icon => 'icon-edit'} %>
 
-
   <div class="modal modal-routine-select hide fade">
     <div class="modal-body">
       <%= select_tag "program[dates][#{date.iso8601}]",
                      options_for_select(@routine_select, :selected => scheduled_program.nil? ? nil : scheduled_program.program.permalink),
                      :prompt => "-- Select a Routine --", :class => 'routine-select' %>
       <div class="btn-group">
-        <%= render :partial => 'shared/button', :locals => { :button_class => 'new-routine-button',
-                                                             :message => 'New Routine'} %>
         <%= render :partial => 'shared/button', :locals => { :button_class => 'btn-primary okay-selected-routine-button',
                                                              :icon => 'icon-ok'} %>
+        <%= render :partial => 'shared/button', :locals => { :button_class => 'new-routine-button',
+                                                             :message => 'New Routine'} %>
       </div>
 
     </div>

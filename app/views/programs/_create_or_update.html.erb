@@ -41,8 +41,7 @@
           <div id="program-basic-info">
             <div class="span3">
               <%= form.label :name, "Program Name" %>
-              <!-- is_routine_name_unique -->
-              <%= form.text_field :name, :class => "required", :minlength => "4", :maxlength => "64" %>
+              <%= form.text_field :name, :class => "required is_program_name_unique", :minlength => "4", :maxlength => "64" %>
             </div>
             <div class="span3">
               <%= form.label :goal, "Program Goal" %>
@@ -61,11 +60,11 @@
       <div id="scheduled-program" class="span11 well">
         <div id="calendar" class="carousel slide">
           <% today = Date.today %>
-          <% months = [today, today + 1.month, today + 2.months]%>
+          <% months = (0 .. Configuration.instance.application[:max_calendar_months]).map { |i| today + i.months } %>
           <div class="carousel-inner">
             <% months.each_with_index do |month, idx| %>
               <div class="<%= (idx == 0 ? 'item active' : 'item') %>" >
-                <%= calendar_for(month.year, month.month, :yield_surrounding_days => true) do |day|
+                <%= calendar_for(month.year, month.month, :yield_surrounding_days => false, :use_full_day_names => true, :current_month => lambda { |date| date.strftime("%B %Y") } ) do |day|
                   [ render(:partial => 'programs/calendar_day', :locals => { :date => day }), { :class => '' } ]
                 end %>
               </div>
@@ -78,13 +77,13 @@
 
       <div id="weekday-program" class="span11">
         <ul class="nav nav-stacked">
-          <% ProgramsController::WEEKDAYS.each do |weekday| %>
+          <% Weekday::WEEK.each do |weekday| %>
             <li class="">
               <div class="row">
                 <div id="<%= weekday %>-bucket" class="span6 weekday-bucket well">
-                  <% weekday_program = @weekday_programs.select { |wp| wp.day_of_week.eql? weekday }.first %>
+                  <% weekday_program = @weekday_programs.select { |wp| wp.day_of_week.eql? weekday.name }.first %>
                   <div class="span3">
-                    <%= select_tag "program[#{weekday}]",
+                    <%= select_tag "program[#{weekday.name}]",
                                    options_for_select(@routine_select, :selected => weekday_program ? weekday_program.routine.permalink : nil),
                                    :prompt => "-- Select a Routine --", :class => 'routine-select' %>
                   </div>
@@ -95,7 +94,7 @@
                 </div>
                 <div class="span2 weekday well">
                   <h4>
-                    <%= weekday %>
+                    <%= weekday.name %>
                   </h4>
                 </div>
               </div>

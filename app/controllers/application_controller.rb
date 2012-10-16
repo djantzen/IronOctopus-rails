@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
 
+  require 'lib/configuration'
+
   protect_from_forgery
 
   private

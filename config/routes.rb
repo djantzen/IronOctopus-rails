@@ -75,6 +75,9 @@ IronOctopus::Application.routes.draw do
   match "login" => "sessions#new"
 
   get "/users/:user_id/routines/is_name_unique/:routine_id" => "routines#is_name_unique", :as => "is_routine_name_unique"
+  get "/users/:user_id/programs/is_name_unique/:program_id" => "programs#is_name_unique", :as => "is_program_name_unique"
+  get "/activities/is_name_unique/:activity_id" => "activities#is_name_unique", :as => "is_activity_name_unique"
+  get "/implements/is_name_unique/:implement_id" => "implements#is_name_unique", :as => "is_implement_name_unique"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.

@@ -1,11 +1,9 @@
 class ProgramsController < ApplicationController
 
-  before_filter :authenticate_user
+  before_filter :authenticate_user, :except => [:is_name_unique]
   include ProgramsHelper
   helper LaterDude::CalendarHelper
   respond_to :json, :html
-
-  WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
   def show
     @program = Program.find_by_permalink(params[:id].to_identifier)
@@ -91,20 +89,21 @@ class ProgramsController < ApplicationController
       program.trainer = trainer
       program.client = client
 
-      if program_type.eql? 'weekly'
-        program.weekday_programs.each do |wp|
-          wp.delete
-        end
-        WEEKDAYS.each do |weekday|
-          routine = Routine.find_by_permalink(program_hash[weekday])
+      program.weekday_programs.each do |wp|
+        wp.delete
+      end
+      program.scheduled_programs.each do |sp|
+        sp.delete
+      end
+
+      if program_type.eql? 'weekday'
+        Weekday::WEEK.each do |weekday|
+          routine = Routine.find_by_permalink(program_hash[weekday.name])
           next if routine.nil?
-          weekday_program = WeekdayProgram.new(:routine => routine, :program => program, :day_of_week => weekday)
+          weekday_program = WeekdayProgram.new(:routine => routine, :program => program, :day_of_week => weekday.name)
           program.weekday_programs << weekday_program  #unless program.routines.include?(routine)
         end
       elsif program_type.eql? 'scheduled'
-        program.scheduled_programs.each do |sp|
-          sp.delete
-        end
         dates_and_routines = program_hash[:dates]
         dates_and_routines.each do |date, routine_permalink|
           next if routine_permalink.nil?
@@ -114,11 +113,20 @@ class ProgramsController < ApplicationController
           program.scheduled_programs << scheduled_program
         end
       else
-        raise ArgumentError.new("Unknown program type #{type}")
+        raise ArgumentError.new("Unknown program type #{program_type}")
       end
       program.save
     end
     program
+  end
+
+  def is_name_unique
+    user = User.find_by_login(params[:user_id])
+    program_id = params[:program_id]
+    program = Program.first(:conditions => { :client_id => user.user_id, :permalink => program_id.to_identifier })
+    respond_with do |format|
+      format.json { render :json => program.nil? }
+    end
   end
 
 end

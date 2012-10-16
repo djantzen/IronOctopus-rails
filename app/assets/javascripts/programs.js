@@ -1,17 +1,5 @@
 $(document).ready(function() {
 
-//  $('#available-routines-list li').draggable({
-//    helper: 'clone'
-//  });
-//  $('#weekly-schedule .weekday-bucket').droppable({
-//    drop: function(event, ui) {
-//      var routine = $(ui.draggable).clone();
-//        $(this).html(routine);
-//    }
-//  });
-
-  $("#program-builder-panel form").validate();
-
   $(".edit-selected-routine-button").click(function() {
     $(this).parents(".calendar-day").find(".modal-routine-select").modal();
   });
@@ -60,16 +48,26 @@ $(document).ready(function() {
     $("#program_type").val("scheduled");
   });
 
-  $("#date-picker").datepicker({
-    showOtherMonths: true,
-    selectOtherMonths: true,
-    showWeek: true,
-    firstDay: 1,
-    onSelect: function(dateText, inst) {
+  var program_name_validator = function(program_name,routine_name_elem) {
+    console.info("validating " + program_name + " " + routine_name_elem);
+    if (program_name == routine_name_elem.defaultValue)
+      return true;
+    var url = "/users/" + $("#program_client").val() + "/programs/is_name_unique/" + program_name.toIdentifier();
+    var unique = false;
+    $.ajax({
+      type: "GET",
+      url: url,
+      async: false,
+      dataType:"json",
+      success: function(msg)
+      {
+        unique = msg;
+      }
+    })
+    return unique;
+  }
 
-      console.info(inst);
-      // pop up a dialog with available routines and time.
-    }
-  });
+  $.validator.addMethod("is_program_name_unique", program_name_validator, "Program name is already taken");
+  $("#new_program").validate();
 
 });

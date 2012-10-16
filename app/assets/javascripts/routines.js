@@ -15,7 +15,7 @@ $(document).ready(function() {
   });
 
   var routine_name_validator = function(routine_name, routine_name_elem) {
-    console.info("validating" + routine_name + " " + routine_name_elem);
+    console.info("validating " + routine_name + " " + routine_name_elem);
     if (routine_name == routine_name_elem.defaultValue)
       return true;
     var url = "/users/" + $("#routine_client").val() + "/routines/is_name_unique/" + routine_name.toIdentifier();

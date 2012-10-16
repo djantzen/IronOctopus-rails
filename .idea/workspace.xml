@@ -2,18 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46f8a447-b9ed-44ae-be1c-95fe4e4f3fab" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/programs/_calendar_day.html.erb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/application.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/configuration.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/activities.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/activities.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/implements.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/implements.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/programs.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/programs.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/routines.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/routines.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/programs.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/programs.css.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/activities_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/activities_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/implements_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/implements_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/programs_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/programs_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/routines_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/routines_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/activities/_create_or_update.html.erb" afterPath="$PROJECT_DIR$/app/views/activities/_create_or_update.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/implements/_create_or_update.html.erb" afterPath="$PROJECT_DIR$/app/views/implements/_create_or_update.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/programs/_calendar_day.html.erb" afterPath="$PROJECT_DIR$/app/views/programs/_calendar_day.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/programs/_create_or_update.html.erb" afterPath="$PROJECT_DIR$/app/views/programs/_create_or_update.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/show.html.erb" afterPath="$PROJECT_DIR$/app/views/users/show.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20121001200430_create_scheduled_programs.rb" afterPath="$PROJECT_DIR$/db/migrate/20121001200430_create_scheduled_programs.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/routines.yml" afterPath="$PROJECT_DIR$/test/fixtures/routines.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/application.rb" afterPath="$PROJECT_DIR$/config/application.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/boot.rb" afterPath="$PROJECT_DIR$/config/boot.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
     </list>
     <ignored path="IronOctopus-rails.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,16 +50,7 @@
       <file leaf-file-name="_create_or_update.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/programs/_create_or_update.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="48" selection-start="2725" selection-end="2725" vertical-scroll-proportion="-4.25">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_calendar_day.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/programs/_calendar_day.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="57" selection-start="286" selection-end="286" vertical-scroll-proportion="-3.75">
+            <state line="43" column="85" selection-start="2040" selection-end="2040" vertical-scroll-proportion="-6.2083335">
               <folding />
             </state>
           </provider>
@@ -60,34 +59,25 @@
       <file leaf-file-name="programs_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/programs_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="104" column="0" selection-start="3712" selection-end="3712" vertical-scroll-proportion="0.0">
+            <state line="6" column="0" selection-start="175" selection-end="201" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routines_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/routines_controller.rb">
+      <file leaf-file-name="routines.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/routines.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="9" selection-start="1210" selection-end="1210" vertical-scroll-proportion="0.0">
+            <state line="17" column="29" selection-start="705" selection-end="705" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="programs.css.scss" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/programs.css.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="13" selection-start="459" selection-end="459" vertical-scroll-proportion="0.7258065">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="programs.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="programs.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/programs.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="59" column="37" selection-start="1968" selection-end="1968" vertical-scroll-proportion="0.0">
+            <state line="2" column="0" selection-start="32" selection-end="32" vertical-scroll-proportion="0.065789476">
               <folding />
             </state>
           </provider>
@@ -109,22 +99,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/shared/_button.html.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/sessions_controller.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/site_controller.rb" />
-        <option value="$PROJECT_DIR$/config/routes.rb" />
-        <option value="$PROJECT_DIR$/app/models/user.rb" />
-        <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/users/show.html.erb" />
-        <option value="$PROJECT_DIR$/Gemfile" />
-        <option value="$PROJECT_DIR$/db/migrate/20121001200430_create_scheduled_programs.rb" />
-        <option value="$PROJECT_DIR$/test/fixtures/routines.yml" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/programs.js" />
-        <option value="$PROJECT_DIR$/app/views/programs/_calendar_day.html.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/programs_controller.rb" />
+        <option value="$PROJECT_DIR$/config/application.rb" />
+        <option value="$PROJECT_DIR$/config/boot.rb" />
+        <option value="$PROJECT_DIR$/lib/configuration.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/routines_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/programs/_create_or_update.html.erb" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/programs.css.scss" />
+        <option value="$PROJECT_DIR$/config/routes.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/programs_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/implements_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/activities_controller.rb" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/routines.js" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/activities.js" />
+        <option value="$PROJECT_DIR$/app/views/activities/_create_or_update.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/implements/_create_or_update.html.erb" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/implements.js" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/programs.js" />
       </list>
     </option>
   </component>
@@ -227,6 +217,34 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IronOctopus-rails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IronOctopus-rails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IronOctopus-rails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IronOctopus-rails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -266,11 +284,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/config" />
       <recent name="$PROJECT_DIR$/app/models" />
       <recent name="$PROJECT_DIR$/app/views/programs" />
       <recent name="$PROJECT_DIR$/db/migrate" />
       <recent name="$PROJECT_DIR$/features/step_definitions" />
-      <recent name="$PROJECT_DIR$/features" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/assets/javascripts/plugins" />
@@ -829,114 +847,114 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/users/show.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/routines/_create_or_update.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="10" selection-start="350" selection-end="350" vertical-scroll-proportion="-5.875">
+        <state line="222" column="54" selection-start="8942" selection-end="8942" vertical-scroll-proportion="-10.26">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile">
+    <entry file="file://$PROJECT_DIR$/lib/configuration.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="28" selection-start="458" selection-end="458" vertical-scroll-proportion="0.41538462">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="290" selection-end="290" vertical-scroll-proportion="0.33333334">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20121001200430_create_scheduled_programs.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="56" selection-start="448" selection-end="448" vertical-scroll-proportion="0.2764977">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/feedback/_new.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="40" selection-start="40" selection-end="50" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="0" selection-start="524" selection-end="524" vertical-scroll-proportion="0.42993632">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/feedback.css.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="251" selection-end="251" vertical-scroll-proportion="0.21496816">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/fixtures/routines.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="29" selection-start="681" selection-end="681" vertical-scroll-proportion="0.8986175">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Ruby/Gems/1.8/gems/actionpack-3.1.3/lib/action_view/helpers/form_tag_helper.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="202" column="10" selection-start="10722" selection-end="10722" vertical-scroll-proportion="0.58194774">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/programs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="37" selection-start="1968" selection-end="1968" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Library/Ruby/Gems/1.8/gems/actionpack-3.1.3/lib/action_controller/metal/rescue.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="0" selection-start="494" selection-end="494" vertical-scroll-proportion="0.62211984">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/programs/_calendar_day.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="57" selection-start="286" selection-end="286" vertical-scroll-proportion="-3.75">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/programs_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="0" selection-start="3712" selection-end="3712" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/routines_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="9" selection-start="1210" selection-end="1210" vertical-scroll-proportion="0.0">
+        <state line="3" column="0" selection-start="50" selection-end="115" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="80" column="0" selection-start="2580" selection-end="2580" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="28" selection-start="82" selection-end="82" vertical-scroll-proportion="0.06912442">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/programs_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="0" selection-start="175" selection-end="201" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/implements_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="151" selection-end="151" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/activities_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="5" selection-start="1463" selection-end="1463" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/activities/create.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/programs/_create_or_update.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="48" selection-start="2725" selection-end="2725" vertical-scroll-proportion="-4.25">
+        <state line="43" column="85" selection-start="2040" selection-end="2040" vertical-scroll-proportion="-6.2083335">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/programs.css.scss">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/activities.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="13" selection-start="459" selection-end="459" vertical-scroll-proportion="0.7258065">
+        <state line="22" column="0" selection-start="32" selection-end="662" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/implements.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="80" selection-start="639" selection-end="639" vertical-scroll-proportion="0.7258065">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/implements/_create_or_update.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="80" selection-start="225" selection-end="225" vertical-scroll-proportion="0.14634146">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/activities/_create_or_update.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="55" selection-start="224" selection-end="224" vertical-scroll-proportion="0.18891688">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/routines.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="29" selection-start="705" selection-end="705" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/programs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="32" selection-end="32" vertical-scroll-proportion="0.065789476">
           <folding />
         </state>
       </provider>

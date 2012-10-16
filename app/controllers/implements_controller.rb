@@ -1,5 +1,8 @@
 class ImplementsController < ApplicationController
-  
+
+  before_filter :authenticate_user, :except => [:is_name_unique, :index]
+  respond_to :json, :html
+
   def index
     @implements = Implement.find(:all)
   end
@@ -28,7 +31,15 @@ class ImplementsController < ApplicationController
   def show
     @implement = Implement.find_by_permalink(params[:id])
   end
-  
+
+  def is_name_unique
+    implement_id = params[:implement_id]
+    implement = Implement.first(:conditions => { :permalink => implement_id.to_identifier })
+    respond_with do |format|
+      format.json { render :json => implement.nil? }
+    end
+  end
+
   private
   def create_or_update(params)
     implement = params[:id] ? Implement.find(params[:id]) : Implement.new

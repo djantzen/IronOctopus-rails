@@ -3,7 +3,7 @@
     <%= form_for @activity do |form| %>
       <div class="row">
         <%= form.label :name, 'Name' %>
-        <%= form.text_field :name, :class => 'required' %><br />
+        <%= form.text_field :name, :class => 'required is_activity_name_unique', :minlength => "4", :maxlength => "64" %><br />
         <%= link_to "You can use Markdown syntax here", "http://kramdown.rubyforge.org/quickref.html", :target => '_blank' %>
         <%= form.label :instructions, "Instructions" %>
         <%= form.text_area :instructions %><br />
