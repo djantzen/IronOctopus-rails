@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :login
   validates_uniqueness_of :email
 
-  has_many :routines, :class_name => 'Routine', :foreign_key => :client_id
+  has_many :routines, :foreign_key => :client_id
   has_many :routines_created, :class_name => 'Routine', :foreign_key => :trainer_id
 
   has_many :weekday_programs, :through => :routines
@@ -18,12 +18,15 @@ class User < ActiveRecord::Base
   has_many :scheduled_programs, :through => :routines
   has_many :scheduled_programs_created, :through => :routines_created, :source => :scheduled_programs
 
-  has_many :work, :class_name => 'Work', :foreign_key => :user_id
-  has_many :feedback, :class_name => 'Feedback', :foreign_key => :user_id
+  has_and_belongs_to_many :todays_routines, :class_name => 'Routine', :foreign_key => :client_id, :join_table => 'todays_routines'
+
+  has_many :work, :foreign_key => :user_id
+  has_many :feedback, :foreign_key => :user_id
   has_many :licenses, :foreign_key => :trainer_id
   has_many :unused_licenses, :class_name => 'License', :foreign_key => :trainer_id, :conditions => "status = 'new'"
   has_many :invitations, :foreign_key => :trainer_id
   has_one :confirmation
+
   has_and_belongs_to_many :clients, :class_name => 'User', :foreign_key => :client_id, :association_foreign_key => :trainer_id,
                           :join_table => 'user_relationships', :order => 'last_name, first_name'#, :conditions => [ "trainer_id != client_id" ]
   has_and_belongs_to_many :trainers, :class_name => 'User', :foreign_key => :trainer_id, :association_foreign_key => :client_id,
@@ -35,6 +38,8 @@ class User < ActiveRecord::Base
     end
     programs.uniq
   end
+
+
 
   def to_param
     login

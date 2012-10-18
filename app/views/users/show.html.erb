@@ -6,23 +6,31 @@
       <div class="row well">
         <div class="span3">
           <h3>
-            <%= @user.first_name %> <%= @user.last_name %>
+            <%= @client.first_name %> <%= @client.last_name %>
           </h3>
         </div>
       </div>
-      <div class="row well">
-        Birthdate, contact info
-      </div>
+      <%= form_for @client do |form| %>
+        <div class="row well">
+          Birthdate, contact info
+        </div>
+        <div class="row">
+          <div class="span3 btn-group">
+            <%= submit_tag "Save", :class => "btn btn-large btn-primary"%>
+            <%= link_to "Cancel", user_path(@client), :class => "btn btn-large" %>
+          </div>
+        </div>
+      <% end %>
     </div>
 
     <div class="span3">
       <h3 class="well">Programs</h3>
-      <%= link_to_if (@user.trainers.include?(current_user) || @user.eql?(current_user)), "Create new program for #{@user.first_name}",
-                     new_user_program_path(@user), :class => "btn btn-primary" %>
+      <%= link_to_if (@client.trainers.include?(current_user) || @client.eql?(current_user)), "Create new program for #{@client.first_name}",
+                     new_user_program_path(@client), :class => "btn btn-primary" %>
       <ul class="nav nav-tabs nav-stacked">
-        <% @user.programs.each do |program| %>
+        <% @client.programs.each do |program| %>
           <li>
-            <%= link_to(program.name, edit_user_program_path(@user, program)) %>
+            <%= link_to(program.name, edit_user_program_path(@client, program)) %>
           </li>
         <% end %>
       </ul>
@@ -30,26 +38,35 @@
 
     <div class="span3">
       <h3 class="well">Routines</h3>
-      <%= link_to_if (@user.trainers.include?(current_user) || @user.eql?(current_user)), "Create new routine for #{@user.first_name}",
-                     new_user_routine_path(@user), :class => "btn btn-primary" %>
+      <%= link_to_if (@client.trainers.include?(current_user) || @client.eql?(current_user)), "Create new routine for #{@client.first_name}",
+                     new_user_routine_path(@client), :class => "btn btn-primary" %>
       <ul class="nav nav-tabs nav-stacked">
         <% @routines.each do |routine| %>
           <li>
-            <%= link_to(routine.name, edit_user_routine_path(@user, routine)) %>
+            <%= link_to(routine.name, edit_user_routine_path(@client, routine)) %>
           </li>
         <% end %>
       </ul>
     </div>
 
     <div class="span3">
+      <h3 class="well">Todays Routines</h3>
+      <ul class="nav nav-tabs nav-stacked">
+        <% @todays_routines.each do |routine| %>
+          <li>
+            <%= link_to(routine.name, perform_routine_path(routine.client, routine)) %>
+          </li>
+        <% end %>
+      </ul>
+
       <h3 class="well">Performance</h3>
-      <%= link_to_if (@user.trainers.include?(current_user) || @user.eql?(current_user)), "Record Work for #{@user.first_name}",
-                     new_user_work_path(@user), :class => "btn btn-primary" %>
       <ul class="nav nav-tabs nav-stacked">
         <li>
-          <%= link_to "Work Log", user_work_index_path(@user) %>
+          <%= link_to "Work Log", user_work_index_path(@client) %>
         </li>
       </ul>
+
+
     </div>
 
   </div>

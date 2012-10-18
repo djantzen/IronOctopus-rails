@@ -43,6 +43,15 @@ class UsersController < ApplicationController
 
   end
 
+  def update
+    user_hash = params[:user]
+    @client = User.find_by_login(params[:id])
+    #active_program = Program.find_by_permalink(user_hash[:active_program])
+    #@client.active_program = active_program
+    #@client.save
+    redirect_to user_path(@client)
+  end
+
   def clients
     @clients = current_user.clients
   end
@@ -54,11 +63,14 @@ class UsersController < ApplicationController
 
   # GET /users/1.json
   def show
-    @user = User.find_by_login(params['id'])
-    @routines = @user.routines
-#    @weekday_programs = @user.weekday_programs
+    @client = User.find_by_login(params['id'])
+    @routines = @client.routines
+    @todays_routines = @client.todays_routines
+    #    @weekday_programs = @user.weekday_programs
 #    @scheduled_programs = @user.weekday_programs
-    @programs = @user.programs
+    @programs = @client.programs
+    @program_select =  @programs.map { |p| [p.name, p.permalink] }
+#    @active_program = current_user.active_program || @programs.first
 
     respond_with do |format|
       format.html { render :html => @user }

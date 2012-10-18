@@ -66,6 +66,7 @@
               <div class="<%= (idx == 0 ? 'item active' : 'item') %>" >
                 <%= calendar_for(month.year, month.month, :yield_surrounding_days => true, :use_full_day_names => true,
                                  :current_month => lambda { |date| date.strftime("%B %Y") } ) do |day|
+                  # This is slow, perhaps we should build this on demand via JavaScript
                   [ render(:partial => 'programs/calendar_day', :locals => { :date => day, :month => month.month }), { :class => '' } ]
                 end %>
               </div>

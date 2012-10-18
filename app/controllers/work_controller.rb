@@ -6,7 +6,8 @@ class WorkController < ApplicationController
   include WorkHelper
 
   def index
-    @work = Work.all(:conditions => "user_id = #{current_user.user_id}",
+    client = User.find_by_login(params[:user_id])
+    @work = Work.all(:conditions => "user_id = #{client.user_id}",
                      :order => "start_time desc",
                      :include => [:activity, :measurement, :routine, :start_day])
   end

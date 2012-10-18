@@ -1,6 +1,28 @@
-#sallys_push_pull_upper_is_part_of_her_one_week_blitz:
-#  routine: sallys_push_pull_upper
-#  program: sallys_one_week_blitz
-#sallys_whole_body_mix_is_part_of_her_one_week_blitz:
-#  routine: sallys_whole_body_mix
-#  program: sallys_one_week_blitz
+sallys_push_pull_upper_is_today:
+  routine: sallys_push_pull_upper
+  program: sallys_scheduled_program
+  scheduled_on: <%= Date.today %>
+sallys_whole_body_mix_is_tomorrow:
+  routine: sallys_whole_body_mix
+  program: sallys_scheduled_program
+  scheduled_on: <%= Date.today + 1.day %>
+sallys_push_pull_upper_is_two_days_from_now:
+  routine: sallys_push_pull_upper
+  program: sallys_scheduled_program
+  scheduled_on: <%= Date.today + 2.days %>
+sallys_whole_body_mix_is_three_days_from_now:
+  routine: sallys_whole_body_mix
+  program: sallys_scheduled_program
+  scheduled_on: <%= Date.today + 3.days %>
+sallys_push_pull_upper_is_four_days_from_now:
+  routine: sallys_push_pull_upper
+  program: sallys_scheduled_program
+  scheduled_on: <%= Date.today + 4.days %>
+sallys_whole_body_mix_is_five_days_from_now:
+  routine: sallys_whole_body_mix
+  program: sallys_scheduled_program
+  scheduled_on: <%= Date.today + 5.days %>
+sallys_push_pull_upper_is_six_days_from_now:
+  routine: sallys_push_pull_upper
+  program: sallys_scheduled_program
+  scheduled_on: <%= Date.today + 6.days %>

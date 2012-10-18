@@ -7,9 +7,11 @@ $(document).ready(function() {
   $(".okay-selected-routine-button").click(function() {
     var container = $(this).parents(".calendar-day");
     var modal = container.find(".modal-routine-select");
-    if (container.find("select").val() != "") {
+    if (container.find("select").val()) {
       var selected = container.find("option:selected").html();
       container.find(".display-name").html(selected);
+    } else {
+      container.find(".display-name").html(null);
     }
     modal.modal("hide");
   });

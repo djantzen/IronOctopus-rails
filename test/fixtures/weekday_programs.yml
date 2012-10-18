@@ -1,12 +1,28 @@
+whole_body_mix_on_sunday_of_sallys_one_week_blitz:
+  routine: sallys_whole_body_mix
+  program: sallys_one_week_blitz
+  day_of_week: Sunday
 push_pull_upper_on_monday_of_sallys_one_week_blitz:
   routine: sallys_push_pull_upper
   program: sallys_one_week_blitz
   day_of_week: Monday
-whole_body_mix_on_friday_of_sallys_one_week_blitz:
+whole_body_mix_on_tuesday_of_sallys_one_week_blitz:
   routine: sallys_whole_body_mix
   program: sallys_one_week_blitz
+  day_of_week: Tuesday
+push_pull_upper_on_wednesday_of_sallys_one_week_blitz:
+  routine: sallys_push_pull_upper
+  program: sallys_one_week_blitz
   day_of_week: Wednesday
+whole_body_mix_on_thursday_of_sallys_one_week_blitz:
+  routine: sallys_whole_body_mix
+  program: sallys_one_week_blitz
+  day_of_week: Thursday
 push_pull_upper_on_friday_of_sallys_one_week_blitz:
   routine: sallys_push_pull_upper
   program: sallys_one_week_blitz
   day_of_week: Friday
+whole_body_mix_on_saturday_of_sallys_one_week_blitz:
+  routine: sallys_whole_body_mix
+  program: sallys_one_week_blitz
+  day_of_week: Saturday
