@@ -28,8 +28,8 @@ class WorkController < ApplicationController
 
   def create_html(params)
     activity_sets = params[:routine][:activity_sets]
-    user = User.find_by_login(params[:user_id])
-    routine = user.routines.find_by_name(params[:routine][:routine])
+    client = User.find_by_login(params[:user_id])
+    routine = client.routines.find_by_name(params[:routine][:routine])
     activity_sets.each do |activity_set_hash|
       begin
         activity = Activity.find_by_name(activity_set_hash[:activity])
@@ -54,7 +54,7 @@ class WorkController < ApplicationController
           :speed => Unit.convert_to_kilometers_per_hour(activity_set_hash[:speed].to_f, unit_hash[:speed_unit].name),
         }
 
-        activity_set_hash[:start_time] ||= Time.new
+        activity_set_hash[:start_time] ||= client.local_time
         activity_set_hash[:end_time] ||= activity_set_hash[:start_time]
 
         Work.transaction do
@@ -62,7 +62,7 @@ class WorkController < ApplicationController
           unit_set = UnitSet.find_or_create(unit_hash)
           day = Day.find_or_create(activity_set_hash[:start_time])
 
-          work = Work.new(:user => user,
+          work = Work.new(:user => client,
                           :activity => activity,
                           :measurement => measurement,
                           :routine => routine,

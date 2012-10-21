@@ -12,6 +12,13 @@
       </div>
       <%= form_for @client do |form| %>
         <div class="row well">
+          <%= form.select :time_zone,
+                          UsersController::TIME_ZONES.map { |time_zone| [time_zone, time_zone] },
+                          :selected => @client.time_zone %>
+          <br/>
+          <h2>
+            <%= Time.current %>
+          </h2>
           Birthdate, contact info
         </div>
         <div class="row">
@@ -25,8 +32,9 @@
 
     <div class="span3">
       <h3 class="well">Programs</h3>
-      <%= link_to_if (@client.trainers.include?(current_user) || @client.eql?(current_user)), "Create new program for #{@client.first_name}",
-                     new_user_program_path(@client), :class => "btn btn-primary" %>
+      <% if @client.trainers.include?(current_user) || @client.eql?(current_user) %>
+        <%= link_to "Create new program for #{@client.first_name}", new_user_program_path(@client), :class => "btn btn-primary" %>
+      <% end %>
       <ul class="nav nav-tabs nav-stacked">
         <% @client.programs.each do |program| %>
           <li>
@@ -38,8 +46,9 @@
 
     <div class="span3">
       <h3 class="well">Routines</h3>
-      <%= link_to_if (@client.trainers.include?(current_user) || @client.eql?(current_user)), "Create new routine for #{@client.first_name}",
-                     new_user_routine_path(@client), :class => "btn btn-primary" %>
+      <% if @client.trainers.include?(current_user) || @client.eql?(current_user) %>
+        <%= link_to "Create new routine for #{@client.first_name}", new_user_routine_path(@client), :class => "btn btn-primary" %>
+        <% end %>
       <ul class="nav nav-tabs nav-stacked">
         <% @routines.each do |routine| %>
           <li>

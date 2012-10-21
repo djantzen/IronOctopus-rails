@@ -5,8 +5,9 @@ class CreateScheduledPrograms < ActiveRecord::Migration
         routine_id integer not null references application.routines deferrable,
         program_id integer not null references application.programs deferrable,
         scheduled_on date not null,
+        meridian text not null default 'AM' check(meridian in ('AM', 'PM')),
         created_at timestamptz not null default now(),
-        primary key(routine_id, program_id, scheduled_on)
+        primary key(routine_id, program_id, scheduled_on, meridian)
       );
 
       grant select on application.scheduled_programs to reader;

@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   respond_to :html
   before_filter :authenticate_user, :except => [:new, :create]
 
+  TIME_ZONES = ['America/Los_Angeles', 'America/New_York', 'America/Anchorage', 'America/Denver', 'America/Chicago', 'Pacific/Honolulu']
+
   def new 
     @user = User.new
   end

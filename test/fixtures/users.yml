@@ -8,6 +8,7 @@ bob_the_trainer:
   first_name: Bob
   last_name: Trainer
   identity_confirmed: true
+  time_zone: Pacific/Honolulu
 
 sally_the_client:
   login: sally_the_client
@@ -17,6 +18,7 @@ sally_the_client:
   first_name: Sally
   last_name: Client
   identity_confirmed: true
+  time_zone: Pacific/Honolulu
 
 mary_the_trainer:
   login: mary_the_trainer
@@ -26,6 +28,7 @@ mary_the_trainer:
   last_name: Trainer
   trainers: mary_the_trainer
   identity_confirmed: true
+  time_zone: America/Chicago
 
 jim_the_client:
   login: jim_the_client
@@ -35,3 +38,4 @@ jim_the_client:
   last_name: Client
   trainers: mary_the_trainer, jim_the_client
   identity_confirmed: true
+  time_zone: America/Chicago

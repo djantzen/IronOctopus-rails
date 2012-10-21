@@ -39,7 +39,9 @@ class User < ActiveRecord::Base
     programs.uniq
   end
 
-
+  def local_time
+    Time.now.utc.in_time_zone(time_zone)
+  end
 
   def to_param
     login
