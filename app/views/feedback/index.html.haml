@@ -1,0 +1,7 @@
+.container
+  - @feedback.each do |feedback|
+    .row
+      .span2
+        = feedback.user.login
+      .span4
+        = feedback.remarks

@@ -1,9 +1,0 @@
-<div class="container">
-  <ul>
-    <% @clients.each do |client| %>
-      <li><%= link_to "#{client.first_name} #{client.last_name}", client %></li>
-    <% end %>
-  </ul>
-  <%= link_to("Invite New Client", new_user_invitation_path(current_user), :class => 'btn btn-primary') %>
-
-</div>

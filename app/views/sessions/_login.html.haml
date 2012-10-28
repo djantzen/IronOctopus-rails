@@ -1,0 +1,10 @@
+.container
+  = form_tag sessions_path do
+    .notice
+    .field
+      = label_tag :login
+      = text_field_tag :login, params[:login]
+    .field
+      = label_tag :password
+      = password_field_tag :password
+    .actions= submit_tag "Log in", :class => "btn btn-primary"

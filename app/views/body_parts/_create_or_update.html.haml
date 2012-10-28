@@ -1,0 +1,9 @@
+.container
+  = form_for @body_part do |form|
+    = form.label :name, 'Name'
+    \:
+    \#{form.text_field :name}
+    %br/
+    = form.label :region, 'Region'
+    = form.select :region, BodyPart.all_regions, :selected => @body_part.region
+    = submit_tag "Save"

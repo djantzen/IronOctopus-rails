@@ -1,0 +1,14 @@
+.container
+  .row
+    .span3.offset3
+      = form_for [current_user, @invitation] do |form|
+        .row
+          = form.label :email_to, 'Client Email'
+          = form.text_field :email_to
+          %br/
+        .row
+          = submit_tag "Send Invitation", :class => 'btn btn-primary'
+          = link_to("Cancel", clients_path(current_user))
+    .span3
+      = @licenses_remaining
+      licenses remaining

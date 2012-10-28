@@ -17,10 +17,14 @@ gem 'kramdown'
 gem 'modernizr-rails', '~> 2.0.6'
 gem 'composite_primary_keys', '4.1.2'
 gem 'later_dude', '>= 0.3.1'
+gem 'haml'
+gem 'hpricot'
+gem 'ruby_parser'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
+  gem 'haml-rails'
   gem 'sass-rails',   '~> 3.1.4'
 #  gem 'sass-rails',   '~> 3.2.5'
   gem 'coffee-rails', '~> 3.1.1'

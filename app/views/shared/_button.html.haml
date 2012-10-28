@@ -1,0 +1,5 @@
+%button{:class => "btn #{(defined? button_class) ? button_class : nil}", "data-original-title" => "yo", :id => (defined? button_id) ? button_id : '', :name => "program[type]", :onclick => "return #{(defined? return_false && return_false == false) ? true : false};", :rel => "tooltip"}
+  - if defined? icon
+    %i{:class => icon}
+  - if defined? message
+    = message

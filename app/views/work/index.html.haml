@@ -1,0 +1,25 @@
+#work-list.container
+  - current_routine = nil
+  - current_start_day = nil
+  - @work.each do |work|
+    - if current_start_day.nil? || current_start_day != work.start_day
+    - current_start_day = work.start_day and current_routine = nil
+      .row
+        .span10{:style => "border: 1px solid;"}
+          = current_start_day.full_date
+    - if current_routine.nil? || current_routine != work.routine
+    - current_routine = work.routine
+      .row
+        .span10{:style => "border: 1px solid;"}
+          = current_routine.name
+    .row
+      .span2
+        = link_to work.activity.name, work.activity
+      - work.activity.metrics.each do |metric|
+        .span2
+          - value, unit = get_initial_value(work, metric)
+          = render :partial => "routines/measure_display", :locals => { :measure => metric.name, :value => value, :unit => (unit.pluralize unless unit.eql?('None')) }
+      .span1
+        = work.start_time
+      .span1
+        = work.end_time

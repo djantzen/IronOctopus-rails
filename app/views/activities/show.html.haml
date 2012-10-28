@@ -1,0 +1,33 @@
+.container
+  .row
+    %h2= @activity.name
+    %div= @activity.activity_type.name
+    %div= kramdown(@activity.instructions)
+  .row
+    .span3
+      %h2 Anatomy
+      %ul
+        - @activity.body_parts.each do |body_part|
+          %li
+            = body_part.name
+    .span3
+      %h2 Implements
+      %ul
+        - @activity.implements.each do |implement|
+          %li
+            = implement.name
+    .span3
+      %h2 Metrics
+      %ul
+        - @activity.metrics.each do |metric|
+          %li
+            = metric.name
+    .span3
+      %h2 Attributes
+      %ul
+        - @activity.activity_attributes.each do |attribute|
+          %li
+            = attribute.name
+  = link_to("Edit", edit_activity_path(@activity), :class => "btn btn-primary")
+  = link_to("New Activity", new_activity_path, :class => "btn btn-primary")
+  = link_to("Activity List", activities_path)

@@ -1,0 +1,26 @@
+:javascript
+  $(document).ready(function() {
+    window.print();
+//    window.close();
+  });
+#sheet-header
+  %div
+    Routine: #{@routine.name}
+  %div
+    Created by #{@routine.trainer.full_name} for #{@routine.client.full_name}
+  %div
+    Goal: #{@routine.goal}
+%table#sheet-activity-set-form
+  %thead
+    %td Activity
+    %td{:colspan => "9"} Goals and Work Completed
+  - @routine.activity_sets.each do |activity_set|
+    %tr
+      %td.field-label
+        = activity_set.activity.name
+      - activity_set.activity.metrics.each do |metric|
+        %td
+          - value, unit = activity_set.nil? ? 1 : get_initial_value(activity_set, metric)
+          = render :partial => "routines/measure_display", :locals => { :measure => metric.name, :value => value, :unit => (unit.pluralize unless unit.eql?('None')) }
+        %td.target-field
+      %td{:colspan => Metric.count - activity_set.activity.metrics.size}

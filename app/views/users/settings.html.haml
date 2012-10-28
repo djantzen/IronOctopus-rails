@@ -1,0 +1,18 @@
+.container
+  = form_for @client do |form|
+    .row.well
+      %div
+        = form.label :time_zone, "My Timezone"
+        = form.select :time_zone,                                                 |
+          UsersController::TIME_ZONES.map { |time_zone| [time_zone, time_zone] }, |
+          :selected => @client.time_zone                                          |
+      .field
+        = form.label :new_password, "New Password"
+        = form.password_field :new_password
+      .field
+        = form.label :confirm_password, "Confirm Password"
+        = form.password_field :confirm_password
+    .row
+      .span3.btn-group
+        = submit_tag "Save", :class => "btn btn-large btn-primary"
+        = link_to "Cancel", user_path(@client), :class => "btn btn-large"

@@ -1,0 +1,11 @@
+.container-fluid
+  .row-fluid
+    .span6
+      %ul#activity-sets
+        - @routine.activity_sets.each do |activity_set|
+          = form_for [@routine.client, Work.new], :remote => true do |form|
+            = hidden_field_tag("routine[routine]", @routine.name)
+            = render :partial => 'activity_sets/form', :locals => { :activity => activity_set.activity, |
+              :activity_set => activity_set,                                                            |
+              :template => false,                                                                       |
+              :performance => true }                                                                    |

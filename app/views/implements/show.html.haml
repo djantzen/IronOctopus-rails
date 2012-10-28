@@ -1,0 +1,11 @@
+%h2= @implement.name
+.container
+  .row
+    .span2.table-column-header
+      Category
+  .row
+    .span2
+      = @implement.category
+    .span2
+      = link_to("Edit", edit_implement_path(@implement), :class => "btn")
+  = link_to("All Implements", implements_path)

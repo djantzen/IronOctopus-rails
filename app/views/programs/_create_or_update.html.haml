@@ -1,0 +1,70 @@
+#program-builder-panel.container-fluid
+  #modal-routine-builder.modal.hide.fade
+    .modal-body
+      = render :partial => "routines/create_or_update", :locals => { :via_ajax => true }
+  = form_for [@client, @program] do |form|
+    = hidden_field_tag "program[trainer]", @trainer.login
+    #routine-type-selector.row
+      .span7.offset4.well
+        = hidden_field_tag "program[type]", @program_type
+        .btn-group.offset1{"data-toggle" => "buttons-radio"}
+          = render :partial => 'shared/button', :locals => { :button_id => 'weekday-program-button', :button_class => "btn-large btn-primary #{ 'active' if @program_type.eql? 'Weekday' }", |
+            :message => 'Weekday Program', :type => 'input'}                                                                                                                                 |
+          -#
+          = render :partial => 'shared/button', :locals => { :button_id => 'scheduled-program-button', :button_class => "btn-large btn-primary #{ 'active' if @program_type.eql? 'Scheduled' }", |
+            :message => 'Scheduled Program', :type => 'input'}                                                                                                                                   |
+    .row
+      .span3.well
+        .row
+          .span3
+            = form.label "program[client]", "Client"
+          .span3
+            - if @client == current_user
+              = select_tag "program[client]", options_for_select(@clients, :selected => current_user.login)
+            - else
+              = hidden_field_tag "program[client]", @client.login
+              %span
+                = @client.first_name
+                = @client.last_name
+        .row
+          #program-basic-info
+            .span3
+              = form.label :name, "Program Name"
+              = form.text_field :name, :class => "required is_program_name_unique", :minlength => "4", :maxlength => "64"
+            .span3
+              = form.label :goal, "Program Goal"
+              = form.text_area :goal, :class => "required", :minlength => "8", :maxlength => "256"
+        .row
+          .span3.btn-group
+            = submit_tag "Save", :class => "btn btn-large btn-primary"
+            = link_to "Cancel", user_programs_path(@client), :class => "btn btn-large"
+      #scheduled-program.span11.well
+        #calendar.carousel.slide
+          - today = Date.today
+          - months = (0 .. Configuration.instance.application[:max_calendar_months]).map { |i| today + i.months }
+          .carousel-inner
+            - months.each_with_index do |month, idx|
+              %div{:class => (idx == 0 ? 'item active' : 'item')}
+                = calendar_for(month.year, month.month, :yield_surrounding_days => true, :use_full_day_names => true,                     |
+                                   :current_month => lambda { |date| date.strftime("%B %Y") } ) do |day|                                  |
+                    [ render(:partial => 'programs/calendar_day', :locals => { :date => day, :month => month.month }), { :class => '' } ] |
+                  end                                          |
+          %a.carousel-control.left{"data-slide" => "prev", :href => "#calendar"} &lsaquo;
+          %a.carousel-control.right{"data-slide" => "next", :href => "#calendar"} &rsaquo;
+      #weekday-program.span11
+        %ul.nav.nav-stacked
+          - Weekday::WEEK.each do |weekday|
+            %li
+              .row
+                .span6.weekday-bucket.well{:id => "#{weekday}-bucket"}
+                  - weekday_program = @weekday_programs.select { |wp| wp.day_of_week.eql? weekday.name }.first
+                  .span3
+                    = select_tag "program[#{weekday.name}]",                                                                       |
+                      options_for_select(@routine_select, :selected => weekday_program ? weekday_program.routine.permalink : nil), |
+                      :prompt => "-- Select a Routine --", :class => 'routine-select'                                              |
+                  .span2.btn-group
+                    = render :partial => 'shared/button', :locals => { :button_class => 'new-routine-button', |
+                      :message => 'New Routine'}                                                              |
+                .span2.weekday.well
+                  %h4
+                    = weekday.name

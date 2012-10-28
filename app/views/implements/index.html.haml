@@ -1,0 +1,4 @@
+.container
+  = link_to("Create New Implement", new_implement_path, :class => "btn btn-primary")
+  - @implements.each do |implement|
+    %div= link_to(implement.name, implement)
