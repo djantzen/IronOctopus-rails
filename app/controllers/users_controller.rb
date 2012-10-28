@@ -46,11 +46,16 @@ class UsersController < ApplicationController
   end
 
   def update
-    user_hash = params[:user]
     @client = User.find_by_login(params[:id])
-    #active_program = Program.find_by_permalink(user_hash[:active_program])
-    #@client.active_program = active_program
-    #@client.save
+    if @client.eql? current_user
+      User.transaction do
+        if !params[:user][:new_password].blank? && params[:user][:new_password].eql?(params[:user][:confirm_password])
+          @client.password = params[:user][:new_password]
+        end
+        @client.time_zone = params[:user][:time_zone]
+        @client.save
+      end
+    end
     redirect_to user_path(@client)
   end
 
@@ -73,6 +78,7 @@ class UsersController < ApplicationController
     @programs = @client.programs
     @program_select =  @programs.map { |p| [p.name, p.permalink] }
 #    @active_program = current_user.active_program || @programs.first
+    @mode = current_user.eql? @client ? 'SelfView' : 'OtherView'
 
     respond_with do |format|
       format.html { render :html => @user }
@@ -80,5 +86,8 @@ class UsersController < ApplicationController
      
   end
 
+  def settings
+    @client = User.find_by_login(params[:user_id])
+  end
   
 end

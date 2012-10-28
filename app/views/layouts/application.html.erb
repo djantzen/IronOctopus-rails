@@ -25,7 +25,10 @@
           <% unless current_user.nil? %>
 
             <div class="nav pull-left">
-              <%= link_to("Home", user_path(current_user), :class => "btn btn-primary") %>
+              <%= link_to(user_path(current_user), :class => "btn btn-primary") do %>
+                Home
+                <i class="icon-home"></i>
+              <% end %>
             </div>
 
             <ul class="nav pull-left">
@@ -75,12 +78,17 @@
                 </ul>
               </li>
             </ul>
-            <ul class="nav pull-right">
-              <li><%= link_to("Log out #{current_user.login}", log_out_url) %></li>
-            </ul>
+
             <div class="nav pull-right">
-              <%= link_to("Feedback", "#", :class => "btn btn-primary", :id => "new-feedback-button") %>
+              <%= link_to("#", :class => "btn btn-primary", :id => "new-feedback-button") do %>
+                Feedback
+                <i class="icon-comment"></i>
+              <% end %>
             </div>
+            <ul class="nav pull-right">
+              <li><%= link_to("Settings", user_settings_path(current_user)) %></li>
+              <li><%= link_to("Log Out", log_out_url) %></li>
+            </ul>
           <% end %>
         </div>
       </div>

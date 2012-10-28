@@ -149,6 +149,7 @@
         <input type="text" id="activity-search-box" tabindex="1" class="input-medium"/>
         <i class="icon-search"></i>
       </div>
+      <%= link_to("Create New Activity", new_activity_path, :id => 'nested-new-activity-button', :class => "btn btn-primary inline-button") %>
 
       <ul id="activity-list" class="nav nav-tabs nav-stacked has-tooltip" rel="tooltip" title="Select activities to add them to your routine">
         <% @activities.each do |activity| %>
@@ -158,7 +159,6 @@
             </a>
             <%= render :partial => "activity_sets/form", :locals => { :activity => activity,
                                                                       :activity_set => nil, :template => true } %>
-
             <span class="faceting-control">
               <%= activity.name %>
             </span>
