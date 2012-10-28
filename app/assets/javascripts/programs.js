@@ -24,13 +24,13 @@ $(document).ready(function() {
   });
 
   var clear_routine_form = function() {
-    var routine_name = $("#routine_name").val();
-    $("select.routine-select").append("<option value=" + routine_name.toIdentifier() + ">" + routine_name + "</option>");
-    $("#modal-routine-builder form input").val(null);
-    $("#modal-routine-builder .activity-set-form").remove();
+    $("#modal-routine-builder form")[0].reset();
+//    $("#modal-routine-builder .activity-set-form").remove();
   }
 
   $("#modal-routine-builder form").bind('ajax:complete', function() {
+    var routine_name = $("#routine_name").val();
+    $("select.routine-select").append("<option value=" + routine_name.toIdentifier() + ">" + routine_name + "</option>");
     $("#modal-routine-builder").modal('hide');
     clear_routine_form();
   });

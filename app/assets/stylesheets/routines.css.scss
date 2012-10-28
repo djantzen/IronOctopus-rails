@@ -4,16 +4,9 @@
 
 //label{display: block; float: left;}
 
-#routine-builder-panel {
-}
-
 #activity-list {
   list-style: none;
 }
-
-#routine-activity-set-list {
-}
-
 
 .activity-set-form-template {
   display: none;
@@ -62,4 +55,20 @@ input.measure {
   padding: 5px;
   font-weight: bold;
   float: none;
+}
+
+.new-activity-button {
+  width: 100%;
+}
+
+#modal-activity-builder {
+  left: 21%;
+  top: 40%;
+  width: 105%;
+  height: 100%;
+}
+
+#modal-activity-builder .modal-body {
+  overflow-y: scroll;
+  max-height: 100%;
 }

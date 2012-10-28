@@ -1,0 +1,2 @@
+!= "$('#activity-list').prepend('#{escape_javascript(render :partial => 'routines/activity_list_item', :locals => { :activity => @activity })}')"
+!= "$('#activity-list li[id=#{@activity.name.to_identifier}]').click(activity_behavior);"

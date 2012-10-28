@@ -1,4 +1,7 @@
 #routine-builder-panel.container-fluid
+  #modal-activity-builder.modal.hide.fade
+    .modal-body
+      = render :partial => "activities/create_or_update", :locals => { :via_ajax => true }
   .row
     #activity-facets-panel.span3.well
       .well
@@ -82,33 +85,11 @@
       #activity-search-widget.well.has-tooltip-bottom{:rel => "tooltip", :title => "Search activities by name, type, anatomy, attributes, or implements"}
         %input#activity-search-box.input-medium{:tabindex => "1", :type => "text"}/
         %i.icon-search
-      = link_to("Create New Activity", new_activity_path, :id => 'nested-new-activity-button', :class => "btn btn-primary inline-button")
+      = render :partial => 'shared/button', :locals => { :button_class => 'new-activity-button btn-primary', |
+               :message => 'New Activity'}                                                        |
       %ul#activity-list.nav.nav-tabs.nav-stacked.has-tooltip{:rel => "tooltip", :title => "Select activities to add them to your routine"}
         - @activities.each do |activity|
-          %li.activity.facet-included-activity{:id => activity.name.to_identifier}
-            %a
-              = activity.name
-            = render :partial => "activity_sets/form", :locals => { :activity => activity, |
-              :activity_set => nil, :template => true }                                    |
-            %span.faceting-control
-              = activity.name
-            %span.faceting-control
-              = activity.activity_type.name
-            - group_body_parts_by_region(activity.body_parts).each_pair do |region, body_parts|
-              %span.faceting-control
-                = region
-              - body_parts.each do |body_part|
-                %span.faceting-control
-                  = body_part.name
-            - group_implements_by_category(activity.implements).each_pair do |category, implements|
-              %span.faceting-control
-                = category
-              - implements.each do |implement|
-                %span.faceting-control
-                  = implement.name
-            - activity.activity_attributes.each do |attribute|
-              %span.faceting-control
-                = attribute.name
+          = render :partial => "routines/activity_list_item", :locals => { :activity => activity }
     #routine-form-panel.span9
       = form_for [@client, @routine], :remote => via_ajax do |form|
         = hidden_field_tag "routine[trainer]", @trainer.login
@@ -134,7 +115,7 @@
                 = form.text_field :goal, :minlength => "8", :maxlength => "256"
           .btn-group
             = render :partial => 'shared/button', :locals => { :button_class => 'btn-primary', |
-              :message => 'Save', :return_false => false}                                      |
+                     :message => 'Save', :return_false => false}                                      |
             - if via_ajax
               = render :partial => 'shared/button', :locals => { :button_id => 'cancel-routine-builder-button', |
                 :message => 'Cancel' }                                                                          |

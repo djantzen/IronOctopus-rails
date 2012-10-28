@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
   
-  respond_to :json, :html
+  respond_to :json, :html, :js
   before_filter :authenticate_user, :except => [:is_name_unique, :index]
 
   def index
@@ -30,10 +30,13 @@ class ActivitiesController < ApplicationController
   end
 
   def create
-    activity = create_or_update(params)
-    activity.creator = current_user
-    activity.save
-    redirect_to(activity)
+    @activity = create_or_update(params)
+    @activity.creator = current_user
+    @activity.save
+    respond_with do |format|
+      format.js
+      format.html { render :html => @activity }
+    end
   end
 
   def show
@@ -50,9 +53,12 @@ class ActivitiesController < ApplicationController
   end
   
   def update
-    activity = create_or_update(params)
-    activity.save
-    redirect_to(activity)
+    @activity = create_or_update(params)
+    @activity.save
+    respond_with do |format|
+      format.html { render :html => @activity, :template => "activities/show" }
+      format.json { render :json => @activity }
+    end
   end
 
   def is_name_unique

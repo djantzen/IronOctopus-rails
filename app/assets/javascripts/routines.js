@@ -55,7 +55,7 @@ $(document).ready(function() {
     return Math.round(Math.random()*10000);
   }
 
-  $(".activity").click(function() {
+  window.activity_behavior = function() {
     var new_activity_set = $(this).find(".activity-set-form-template").clone(true);
     show_flash("Added " + $(this).find("a:first").text() + " to the routine");
     new_activity_set.hide();
@@ -66,7 +66,9 @@ $(document).ready(function() {
     new_activity_set.find("div.accordion-body").attr("id", id);
     $("#routine-activity-set-list").append(new_activity_set);
     new_activity_set.show("slow");
-  });
+  }
+
+  $(".activity").click(activity_behavior);
 
   /*
    * Function for generating the key for a facet based on facet nodes. Will look for text within.
@@ -90,11 +92,11 @@ $(document).ready(function() {
    * On page load generate a superkey for each activity and bind actions to activity set templates
    */
   $("#activity-list .activity").each(function() {
-      var facet_target_superkey = generate_facet_key($(this).find(".faceting-control"), true);
-      var facet_target_superkey_node = $(document.createElement("span"));
-      facet_target_superkey_node.append(facet_target_superkey);
-      facet_target_superkey_node.addClass("faceting-control facet-target-superkey");
-      $(this).append(facet_target_superkey_node);
+    var facet_target_superkey = generate_facet_key($(this).find(".faceting-control"), true);
+    var facet_target_superkey_node = $(document.createElement("span"));
+    facet_target_superkey_node.append(facet_target_superkey);
+    facet_target_superkey_node.addClass("faceting-control facet-target-superkey");
+    $(this).append(facet_target_superkey_node);
   });
 
   var clear_selections = function() {
@@ -233,6 +235,29 @@ $(document).ready(function() {
     form.submit();
     form.remove();
     return false;
+  });
+
+  $(".new-activity-button").click(function() {
+    var container = $(this).parents("#routine-builder-panel");
+    var modal = container.find(".modal-activity-select");
+    modal.modal("hide");
+    $("#modal-activity-builder").modal();
+  });
+
+  var clear_activity_form = function() {
+    var activity_name = $("#activity_name").val();
+    $("#modal-activity-builder form")[0].reset();
+  }
+
+  $("#modal-activity-builder form").bind('ajax:complete', function() {
+
+    $("#modal-activity-builder").modal('hide');
+    clear_activity_form();
+  });
+
+  $("#cancel-activity-builder-button").click(function() {
+    $("#modal-activity-builder").modal('hide');
+    clear_activity_form();
   });
 
   clear_selections();

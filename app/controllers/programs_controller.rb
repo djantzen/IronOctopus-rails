@@ -36,6 +36,8 @@ class ProgramsController < ApplicationController
     @implements = Implement.all
     @body_parts = BodyPart.all
     @activity_attributes = ActivityAttribute.all(:order => :name)
+    @metrics = Metric.all(:conditions => "name != 'None'")
+    @activity = Activity.new
   end
 
   def create

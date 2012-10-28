@@ -1,6 +1,7 @@
+- via_ajax = (defined?(via_ajax) ? via_ajax : false)
 .container
   #create-update-activity-form
-    = form_for @activity do |form|
+    = form_for @activity, :remote => via_ajax do |form|
       .row
         = form.label :name, 'Name'
         = form.text_field :name, :class => 'required is_activity_name_unique', :minlength => "4", :maxlength => "64"
@@ -54,4 +55,8 @@
                   = h attribute.name
       .row
         = submit_tag "Save", :class => 'btn btn-primary'
-        = link_to("Cancel", activities_path)
+        - if via_ajax
+          = render :partial => 'shared/button', :locals => { :button_id => 'cancel-activity-builder-button', |
+            :message => 'Cancel' }                                                                          |
+        - else
+          = link_to "Cancel", activities_path, :class => 'btn'

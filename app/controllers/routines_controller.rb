@@ -47,7 +47,9 @@ class RoutinesController < ApplicationController
     @activities = Activity.all(:include => [:body_parts, :implements, :activity_type], :order => :name)
     @implements = Implement.all
     @body_parts = BodyPart.all
+    @activity = Activity.new
     @activity_attributes = ActivityAttribute.all(:order => :name)
+    @metrics = Metric.all(:conditions => "name != 'None'")
   end
 
   def create
@@ -92,6 +94,8 @@ class RoutinesController < ApplicationController
     @activities = Activity.all(:include => [:body_parts, :implements, :activity_type], :order => :name)
     @implements = Implement.all
     @body_parts = BodyPart.all
+    @activity = Activity.new
+    @metrics = Metric.all(:conditions => "name != 'None'")
     @activity_attributes = ActivityAttribute.all(:order => :name)
   end
   
