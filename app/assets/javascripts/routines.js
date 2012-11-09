@@ -37,38 +37,9 @@ $(document).ready(function() {
 
   $("#routine-form-panel form").validate();
 
-  $(".okay-activity-set-button").click(function() {
-    $(this).parents(".collapse").collapse("hide");
+  $(".activity").each(function() {
+    new ActivityListItem($(this));
   });
-
-  var show_flash = function(message) {
-    $("#flash").html(message);
-    $("#flash").show();
-    setTimeout(function() { close_flash(); }, 1500);
-  };
-  var close_flash = function() {
-    $("#flash").html("");
-    $("#flash").hide("slow");
-  };
-
-  var generate_random_id = function() {
-    return Math.round(Math.random()*10000);
-  }
-
-  window.activity_behavior = function() {
-    var new_activity_set = $(this).find(".activity-set-form-template").clone(true);
-    show_flash("Added " + $(this).find("a:first").text() + " to the routine");
-    new_activity_set.hide();
-    new_activity_set.removeClass("activity-set-form-template");
-    new_activity_set.addClass("activity-set-form");
-    var id = generate_random_id();
-    new_activity_set.find("a.accordion-toggle").attr("href", "#" + id);
-    new_activity_set.find("div.accordion-body").attr("id", id);
-    $("#routine-activity-set-list").append(new_activity_set);
-    new_activity_set.show("slow");
-  }
-
-  $(".activity").click(activity_behavior);
 
   /*
    * Function for generating the key for a facet based on facet nodes. Will look for text within.
@@ -118,24 +89,6 @@ $(document).ready(function() {
   });
 
   $('.nav-tabs').button();
-
-  // wire up the delete button
-  $(".delete-activity-set-button").click(function() {
-    var activity_set_form = $(this).parents("div.activity-set-form");
-    activity_set_form.remove();
-  });
-  // wire up the clone button
-  $(".clone-activity-set-button").click(function() {
-    var original = $(this).parents("div.activity-set-form");
-    var clone = original.clone(true);
-    var id = generate_random_id();
-    clone.find("a.accordion-toggle").attr("href", "#" + id);
-    clone.find("div.accordion-body").attr("id", id);
-    original.find("select").each(function() { // copy over selected attributes since clone() doesn't
-      clone.find("select[name='" + $(this).attr("name") + "']").val($(this).attr("value"));
-    });
-    clone.insertAfter(original);
-  });
 
   var search_facet_filtered_activities = function(search_box) {
     var facet_key = new RegExp(generate_facet_key($("#activity-search-box"), false));

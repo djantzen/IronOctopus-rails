@@ -1,7 +1,7 @@
+#modal-routine-builder.modal.hide.fade
+  .modal-body
+    = render :partial => "routines/create_or_update", :locals => { :via_ajax => true }
 #program-builder-panel.container-fluid
-  #modal-routine-builder.modal.hide.fade
-    .modal-body
-      = render :partial => "routines/create_or_update", :locals => { :via_ajax => true }
   = form_for [@client, @program] do |form|
     = hidden_field_tag "program[trainer]", @trainer.login
     #routine-type-selector.row
@@ -10,7 +10,7 @@
         .btn-group.offset1{"data-toggle" => "buttons-radio"}
           = render :partial => 'shared/button', :locals => { :button_id => 'weekday-program-button', :button_class => "btn-large btn-primary #{ 'active' if @program_type.eql? 'Weekday' }", |
             :message => 'Weekday Program', :type => 'input'}                                                                                                                                 |
-          -#
+          -
           = render :partial => 'shared/button', :locals => { :button_id => 'scheduled-program-button', :button_class => "btn-large btn-primary #{ 'active' if @program_type.eql? 'Scheduled' }", |
             :message => 'Scheduled Program', :type => 'input'}                                                                                                                                   |
     .row

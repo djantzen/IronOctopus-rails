@@ -1,8 +1,9 @@
 require 'test_helper'
 
 class WorkControllerTest < ActionController::TestCase
-  include LogUtils
+
   test "post_a_valid_work_record_via_html" do
+    login_as(User.find_by_login('sally_the_client'))
     assert_difference('Work.count') do
       post(:create, {
             "user_id" => "sally_the_client",
@@ -20,12 +21,11 @@ class WorkControllerTest < ActionController::TestCase
           })
     end
     assert_response :success
-    wtf? response.body
-
   end
 
   test "post_a_valid_work_record_via_json" do
     assert_difference('Work.count') do
+      login_as(User.find_by_login('sally_the_client'))
       post(:create, {
               :format => "json", :user_id => "sally_the_client",
               :_json => [{:start_time => "2012-06-30 14:39:14 -0700",
@@ -37,8 +37,6 @@ class WorkControllerTest < ActionController::TestCase
                           "resistance" => "135.0"}] })
     end
     assert_response :success
-    wtf? response.body
-
   end
 
   test "invalid_work_records_generate_error_response" do

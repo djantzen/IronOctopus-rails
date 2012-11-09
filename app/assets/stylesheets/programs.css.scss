@@ -35,6 +35,7 @@
 
 .modal-routine-select {
   display: none;
+  z-index: 1500;
 }
 
 #modal-routine-builder {
@@ -42,6 +43,7 @@
   top: 40%;
   width: 105%;
   height: 100%;
+  z-index: 2500;
 }
 
 #modal-routine-builder .modal-body {

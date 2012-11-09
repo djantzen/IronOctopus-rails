@@ -33,4 +33,4 @@ Feature: Sign up
 
   Scenario: I have registered and can now log in
     Given I log in as "bob_the_trainer" with "password"
-    Then I should see "Log out bob_the_trainer"
+    Then I should see "Log Out"

@@ -17,18 +17,15 @@ $(document).ready(function() {
   });
 
   $(".new-routine-button").click(function() {
-    var container = $(this).parents(".calendar-day");
-    var modal = container.find(".modal-routine-select");
-    modal.modal("hide");
     $("#modal-routine-builder").modal();
   });
 
   var clear_routine_form = function() {
     $("#modal-routine-builder form")[0].reset();
-//    $("#modal-routine-builder .activity-set-form").remove();
+    $("#modal-routine-builder .activity-set-form").remove();
   }
 
-  $("#modal-routine-builder form").bind('ajax:complete', function() {
+  $("#routine-builder-panel form").bind('ajax:complete', function() {
     var routine_name = $("#routine_name").val();
     $("select.routine-select").append("<option value=" + routine_name.toIdentifier() + ">" + routine_name + "</option>");
     $("#modal-routine-builder").modal('hide');
