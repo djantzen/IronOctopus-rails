@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46f8a447-b9ed-44ae-be1c-95fe4e4f3fab" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/activity_list_item.js.coffee" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/utilities.js.coffee" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/routines/create.js.haml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/test/functional/site_controller_test.rb" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/programs.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/programs.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/routines.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/routines.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/test.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/test.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/activities.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/activities.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/programs.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/programs.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/work_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/work_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/activities/create.js.haml" afterPath="$PROJECT_DIR$/app/views/activities/create.js.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/programs/_create_or_update.html.haml" afterPath="$PROJECT_DIR$/app/views/programs/_create_or_update.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/routines/_create_or_update.html.haml" afterPath="$PROJECT_DIR$/app/views/routines/_create_or_update.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/features/sign_up.feature" afterPath="$PROJECT_DIR$/features/sign_up.feature" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/feedback_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/feedback_controller_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/functional/work_controller_test.rb" afterPath="$PROJECT_DIR$/test/functional/work_controller_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Capfile" afterPath="$PROJECT_DIR$/Capfile" />
     </list>
     <ignored path="IronOctopus-rails.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -71,10 +55,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sign_up.feature" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="sign_up.feature" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/features/sign_up.feature">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="28" selection-start="1508" selection-end="1508" vertical-scroll-proportion="0.7265625">
+            <state line="35" column="28" selection-start="1508" selection-end="1508" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Capfile" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Capfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="0" selection-start="86" selection-end="86" vertical-scroll-proportion="0.1171875">
               <folding />
             </state>
           </provider>
@@ -116,15 +109,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_activity_list_item.html.haml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/routines/_activity_list_item.html.haml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="35" selection-start="133" selection-end="133" vertical-scroll-proportion="-1.875">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="_form.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/activity_sets/_form.html.haml">
           <provider selected="true" editor-type-id="text-editor">
@@ -150,7 +134,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/routines/_activity_list_item.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/programs.css.scss" />
         <option value="$PROJECT_DIR$/app/views/routines/_create_or_update.html.haml" />
         <option value="$PROJECT_DIR$/app/views/routines/create.js.haml" />
@@ -166,6 +149,7 @@
         <option value="$PROJECT_DIR$/test/functional/work_controller_test.rb" />
         <option value="$PROJECT_DIR$/app/controllers/work_controller.rb" />
         <option value="$PROJECT_DIR$/features/sign_up.feature" />
+        <option value="$PROJECT_DIR$/Capfile" />
       </list>
     </option>
   </component>
@@ -792,7 +776,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1280" height="774" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -803,7 +787,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28655836" sideWeight="0.99694" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32843652" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36041358" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36041358" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3293944" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -875,20 +859,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/test.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="108" selection-end="219" vertical-scroll-proportion="0.2388535">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/activities/create.js.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/utilities.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="18" selection-start="274" selection-end="274" vertical-scroll-proportion="0.0">
@@ -982,7 +952,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/features/sign_up.feature">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="28" selection-start="1508" selection-end="1508" vertical-scroll-proportion="0.7265625">
+        <state line="35" column="28" selection-start="1508" selection-end="1508" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/routines/_activity_list_item.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="35" selection-start="133" selection-end="133" vertical-scroll-proportion="-1.875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Capfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="86" selection-end="86" vertical-scroll-proportion="0.1171875">
           <folding />
         </state>
       </provider>
