@@ -27,6 +27,7 @@ class ActivitiesController < ApplicationController
     @metrics = Metric.all(:conditions => "name != 'None'")
     @activity_types = ActivityType.all(:order => :name)
     @activity_attributes = ActivityAttribute.all(:order => :name)
+    allowed_to_create?
   end
 
   def create
@@ -50,6 +51,7 @@ class ActivitiesController < ApplicationController
     @activity_types = ActivityType.all(:order => :name)
     @metrics = Metric.all(:conditions => "name != 'None'", :order => :name)
     @activity_attributes = ActivityAttribute.all(:order => :name)
+    allowed_to_update?
   end
   
   def update
@@ -99,6 +101,14 @@ class ActivitiesController < ApplicationController
       activity.activity_type = ActivityType.find(params[:activity][:activity_type])
     end
     activity
+  end
+
+  def allowed_to_update?
+    current_user.eql? @activity.creator
+  end
+
+  def allowed_to_create?
+    !current_user.nil?
   end
 
 end

@@ -47,6 +47,7 @@ class UsersController < ApplicationController
 
   def update
     @client = User.find_by_login(params[:id])
+    allowed_to_update?
     if @client.eql? current_user
       User.transaction do
         if !params[:user][:new_password].blank? && params[:user][:new_password].eql?(params[:user][:confirm_password])
@@ -79,7 +80,7 @@ class UsersController < ApplicationController
     @program_select =  @programs.map { |p| [p.name, p.permalink] }
 #    @active_program = current_user.active_program || @programs.first
     @mode = current_user.eql? @client ? 'SelfView' : 'OtherView'
-
+    allowed_to_read?
     respond_with do |format|
       format.html { render :html => @user }
     end
@@ -88,6 +89,16 @@ class UsersController < ApplicationController
 
   def settings
     @client = User.find_by_login(params[:user_id])
+    allowed_to_update?
   end
-  
+
+  private
+  def allowed_to_read?
+    current_user.eql?(@client) || @client.trainers.include?(current_user)
+  end
+
+  def allowed_to_update?
+    current_user.eql?(@client)
+  end
+
 end

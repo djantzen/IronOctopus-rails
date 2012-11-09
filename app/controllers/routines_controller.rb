@@ -50,6 +50,7 @@ class RoutinesController < ApplicationController
     @activity = Activity.new
     @activity_attributes = ActivityAttribute.all(:order => :name)
     @metrics = Metric.all(:conditions => "name != 'None'")
+    allowed_to_create?
   end
 
   def create
@@ -64,6 +65,7 @@ class RoutinesController < ApplicationController
   def show
     client = User.find_by_login(params[:user_id])
     @routine = Routine.first(:conditions => { :client_id => client.user_id, :permalink => params[:id] })
+    allowed_to_read?
     respond_with do |format|
       format.html { render :html => @routine }
     end
@@ -97,6 +99,7 @@ class RoutinesController < ApplicationController
     @activity = Activity.new
     @metrics = Metric.all(:conditions => "name != 'None'")
     @activity_attributes = ActivityAttribute.all(:order => :name)
+    allowed_to_update?
   end
   
   def update
@@ -183,6 +186,19 @@ class RoutinesController < ApplicationController
     end
     
     routine
+  end
+
+  private
+  def allowed_to_create?
+    redirect_to user_path(current_user) unless @client.trainers.include? @trainer
+  end
+
+  def allowed_to_update?
+    redirect_to user_path(current_user) unless current_user.eql? @routine.trainer
+  end
+
+  def allowed_to_read?
+    redirect_to user_path(current_user) unless current_user.eql?(@routine.trainer) || current_user.eql?(@routine.client)
   end
 
 end

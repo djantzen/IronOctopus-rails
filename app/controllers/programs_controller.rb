@@ -12,6 +12,7 @@ class ProgramsController < ApplicationController
     @routines = @client.routines
     @routine_select =  @routines.map { |r| [r.name, r.permalink] }
     @clients = current_user.clients
+    allowed_to_read?
   end
 
   def new
@@ -25,6 +26,7 @@ class ProgramsController < ApplicationController
     @routine_select =  @routines.map { |r| [r.name, r.permalink] }
     @clients = current_user.clients
     _routine_builder_attributes
+    allowed_to_create?
   end
 
   def _routine_builder_attributes
@@ -46,21 +48,24 @@ class ProgramsController < ApplicationController
   end
 
   def edit
-    @program = Program.find_by_permalink(params[:id].to_identifier)
+    @client = User.find_by_login(params[:user_id])
+    @program = Program.first(:conditions => { :client_id => @client.user_id, :permalink => params[:id] })
+    @trainer = current_user
     @weekday_programs = @program.weekday_programs
     @scheduled_programs = @program.scheduled_programs
     @program_type = @scheduled_programs.size > 0 ? 'Scheduled' : 'Weekday'
-    @client = User.find_by_login(params[:user_id])
-    @trainer = current_user
     @routines = @client.routines
     @routine_select =  @routines.map { |r| [r.name, r.permalink] }
     @clients = current_user.clients
     _routine_builder_attributes
+    allowed_to_update?
   end
 
   def update
-    program = _create_or_update(Program.find_by_permalink(params[:program][:name].to_identifier))
-    redirect_to(user_programs_path(program.client))
+    @client = User.find_by_login(params[:user_id])
+    @program = Program.first(:conditions => { :client_id => @client.user_id, :permalink => params[:program][:name].to_identifier })
+    @program = _create_or_update(@program)
+    redirect_to(user_programs_path(@program.client))
   end
 
   def index
@@ -131,6 +136,19 @@ class ProgramsController < ApplicationController
     respond_with do |format|
       format.json { render :json => program.nil? }
     end
+  end
+
+  private
+  def allowed_to_create?
+    redirect_to user_path(current_user) unless @client.trainers.include? @trainer
+  end
+
+  def allowed_to_update?
+    redirect_to user_path(current_user) unless current_user.eql? @program.trainer
+  end
+
+  def allowed_to_read?
+    redirect_to user_path(current_user) unless current_user.eql?(@program.trainer) || current_user.eql?(@program.client)
   end
 
 end
