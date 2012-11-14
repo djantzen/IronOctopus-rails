@@ -40,6 +40,10 @@ $(document).ready(function() {
   $(".activity").each(function() {
     new ActivityListItem($(this));
   });
+  $(".activity-set-form").each(function() {
+    new ActivitySetListItem($(this));
+  });
+
 
   /*
    * Function for generating the key for a facet based on facet nodes. Will look for text within.
@@ -164,24 +168,6 @@ $(document).ready(function() {
       search_facet_filtered_activities($("#activity-search-box"));
   });
 
-  $(".increment").click(function() {
-    var measure_selector_node = $(this).parents("div.measure_selector");
-    var measure_node = measure_selector_node.find(".measure");
-    var measure = parseFloat(measure_node.val());
-    var interval = parseFloat(measure_selector_node.find("span.measure_interval").text());
-    console.info(measure + interval);
-    measure_node.val(measure + interval);
-  });
-
-  $(".decrement").click(function() {
-    var measure_selector_node = $(this).parents("div.measure_selector");
-    var measure_node = measure_selector_node.find(".measure");
-    var measure = parseFloat(measure_node.val());
-    var interval = parseFloat(measure_selector_node.find("span.measure_interval").text());
-    console.info(measure - interval);
-    measure_node.val(measure - interval);
-  });
-
   $(".perform-activity-set-button").click(function() {
     var form = $(this).parents("form");
     form.hide(1000);
@@ -204,7 +190,7 @@ $(document).ready(function() {
 
   $("#modal-activity-builder form").bind('ajax:complete', function() {
 
-    $("#modal-activity-builder").modal('hide');
+  $("#modal-activity-builder").modal('hide');
     clear_activity_form();
   });
 

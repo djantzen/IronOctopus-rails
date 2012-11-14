@@ -15,7 +15,7 @@ class this.ActivityListItem
     new_activity_set.find("a.accordion-toggle").attr("href", "#" + id)
     new_activity_set.find("div.accordion-body").attr("id", id)
     $("#routine-activity-set-list").append(new_activity_set)
-    new_activity_set.show("slow")
+    new_activity_set.show("puff")
     new ActivitySetListItem(new_activity_set)
     return new_activity_set
 
@@ -28,7 +28,8 @@ class this.ActivitySetListItem
 
     delete_button.click =>
       activity_set_form = delete_button.parents("div.activity-set-form")
-      activity_set_form.remove();
+      activity_set_form.hide("explode")
+      activity_set_form.remove()
 
     okay_button.click =>
       okay_button.parents(".collapse").collapse("hide");
@@ -41,6 +42,7 @@ class this.ActivitySetListItem
       clone.find("div.accordion-body").attr("id", id)
       original.find("select").each -> # copy over selected attributes since clone() doesn't
         clone.find("select[name='" + $(this).attr("name") + "']").val($(this).attr("value"))
+      clone.hide();
       clone.insertAfter(original)
-
+      clone.show("puff");
     return @activity_set_form

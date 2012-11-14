@@ -3,7 +3,7 @@ class this.Util
   @show_flash = (message) ->
     $("#flash").html(message)
     $("#flash").show()
-    setTimeout ( -> Util.close_flash()), 1500
+    setTimeout ( -> Util.close_flash()), 1300
 
   @close_flash = ->
     $("#flash").html("")

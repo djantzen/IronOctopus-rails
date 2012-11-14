@@ -90,7 +90,7 @@
       %ul#activity-list.nav.nav-tabs.nav-stacked.has-tooltip{:rel => "tooltip", :title => "Select activities to add them to your routine"}
         - @activities.each do |activity|
           = render :partial => "routines/activity_list_item", :locals => { :activity => activity }
-    #routine-form-panel.span9
+    #routine-form-panel.span6
       = form_for [@client, @routine], :remote => via_ajax do |form|
         = hidden_field_tag "routine[trainer]", @trainer.login
         .well

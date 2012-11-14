@@ -99,7 +99,7 @@ IronOctopus::Application.routes.draw do
   get "/trainers/:user_id/clients" => "users#clients", :as => :clients
   get "/trainers/:user_id/routines" => "routines#by_trainer", :as => :routines_by_trainer
   get "/trainers/:user_id/programs" => "programs#by_trainer", :as => :programs_by_trainer
-  get "/tour/show" => "tour#show"
+  get "/tour/show" => "tour#show", :as => :tour
 
 #  match "/trainers/:user_id/invitations" => "users#invitations", :as => :invitations
 
