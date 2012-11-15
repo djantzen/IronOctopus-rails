@@ -82,7 +82,7 @@ class UsersController < ApplicationController
     @mode = current_user.eql? @client ? 'SelfView' : 'OtherView'
     allowed_to_read?
     respond_with do |format|
-      format.html { render :html => @user }
+      format.html { render :html => @user, :template => mobile_device? ? "users/mobile_show" : "users/show" }
     end
      
   end

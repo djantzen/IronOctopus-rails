@@ -71,18 +71,18 @@ IronOctopus::Application.routes.draw do
     resources :password_resets
   end
 
+  # This is a legacy wild controller route that's not recommended for RESTful applications.
+  # Note: This route will make all actions in every controller accessible via GET requests.
+  # match ':controller(/:action(/:id(.:format)))'
+
   root :to => "welcome#index"
   get "post_signup" => "welcome#post_signup"
-  match "login" => "sessions#new"
+  get "login" => "sessions#new"
 
   get "/users/:user_id/routines/is_name_unique/:routine_id" => "routines#is_name_unique", :as => "is_routine_name_unique"
   get "/users/:user_id/programs/is_name_unique/:program_id" => "programs#is_name_unique", :as => "is_program_name_unique"
   get "/activities/is_name_unique/:activity_id" => "activities#is_name_unique", :as => "is_activity_name_unique"
   get "/implements/is_name_unique/:implement_id" => "implements#is_name_unique", :as => "is_implement_name_unique"
-
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id(.:format)))'
 
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "log_in" => "sessions#new", :as => "log_in"
@@ -93,15 +93,14 @@ IronOctopus::Application.routes.draw do
 
   get "/users/:user_id/routines/:routine_id/sheet" => "routines#sheet", :as => "routine_sheet"
   get "/users/:user_id/routines/:routine_id/perform" => "routines#perform", :as => "perform_routine"
-  match "/users/:user_id/settings" => "users#settings", :as => "user_settings"
+  get "/users/:user_id/settings" => "users#settings", :as => "user_settings"
 
-  # Sample of named route:
   get "/trainers/:user_id/clients" => "users#clients", :as => :clients
   get "/trainers/:user_id/routines" => "routines#by_trainer", :as => :routines_by_trainer
   get "/trainers/:user_id/programs" => "programs#by_trainer", :as => :programs_by_trainer
   get "/tour/show" => "tour#show", :as => :tour
 
-#  match "/trainers/:user_id/invitations" => "users#invitations", :as => :invitations
+  #  match "/trainers/:user_id/invitations" => "users#invitations", :as => :invitations
 
   # This route can be invoked with purchase_url(:id => product.id)
   #  match '/users/:user_id/routines/:role' => 'routines#index', :as => :routines

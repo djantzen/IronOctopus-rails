@@ -1,0 +1,19 @@
+.container
+  .row
+    .span3.well
+      %h3
+        Today's Routines
+      - @todays_routines.each do |routine|
+        %div
+          = link_to(perform_routine_path(routine.client, routine), :class => 'btn btn-primary') do
+            Perform
+            %i= routine.name
+  .row
+    .span3.well
+      %h3
+        All Routines
+      - @routines.each do |routine|
+        %div
+          = link_to(perform_routine_path(routine.client, routine), :class => 'btn btn-primary') do
+            Perform
+            %i= routine.name
