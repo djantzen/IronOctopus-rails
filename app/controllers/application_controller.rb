@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   def current_user
     begin
       @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    rescue RecordNotFound => rnf
+    rescue Exception => rnf
       session[:user_id] = nil
     end
   end
