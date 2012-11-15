@@ -169,10 +169,10 @@ $(document).ready(function() {
   });
 
   $(".perform-activity-set-button").click(function() {
+    $(this).hide();
+    $(this).parents(".collapse").collapse("hide");
     var form = $(this).parents("form");
-    form.hide(1000);
     form.submit();
-    form.remove();
     return false;
   });
 

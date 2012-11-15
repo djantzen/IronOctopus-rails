@@ -1,11 +1,11 @@
 %div{:class => "accordion-group #{defined?(template) && template ? 'activity-set-form-template' : 'activity-set-form'} "}
   .container
     .accordion-heading.activity-display-name.row
-      .span3
+      .span4
         %a.accordion-toggle{"data-parent" => "routine-activity-set-list", "data-toggle" => "collapse", :href => "##{template ? nil : activity_set.position}"}
           = activity.name
       - if !defined?(performance) || !performance
-        .span1.handle.pull-right.label
+        .span1.handle.label
           %i.icon-resize-vertical
   .activity-set-attributes.accordion-body.collapse.in{:id => template ? nil : activity_set.position}
     .accordion-inner.container
