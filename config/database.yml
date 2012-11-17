@@ -78,7 +78,7 @@ migrate_production:
   database: iron_octopus
   pool: 1
   username: administrator
-  password: administrator
+  password: ADMIN_PASSWORD
   host: localhost
   port: 5432
 
@@ -88,7 +88,7 @@ production:
   database: iron_octopus
   pool: 5
   username: application
-  password: application
+  password: APPLICATION_PASSWORD
   host: localhost
   port: 5432
 
