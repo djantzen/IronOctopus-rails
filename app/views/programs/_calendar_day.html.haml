@@ -6,7 +6,7 @@
     = scheduled_program.nil? ? nil : scheduled_program.routine.name
   - if date >= Date.today && date.month == month
     = render :partial => 'shared/button', :locals => { :button_class => 'edit-selected-routine-button', |
-      :icon => 'icon-edit'}                                                                             |
+             :icon => 'icon-edit'}                                                                             |
   .modal.modal-routine-select.hide.fade
     .modal-body
       = select_tag "program[dates][#{date.iso8601}]",                                                       |

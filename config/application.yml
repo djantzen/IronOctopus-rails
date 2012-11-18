@@ -1,6 +1,6 @@
 development:
   max_calendar_months: 2
 production:
-  max_calendar_months: 12
+  max_calendar_months: 3
 test:
   max_calendar_months: 2
