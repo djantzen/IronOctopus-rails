@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
   has_many :unused_licenses, :class_name => 'License', :foreign_key => :trainer_id, :conditions => "status = 'new'"
   has_many :invitations, :foreign_key => :trainer_id
   has_one :confirmation
+  has_many :password_reset_requests
 
   has_and_belongs_to_many :clients, :class_name => 'User', :foreign_key => :client_id, :association_foreign_key => :trainer_id,
                           :join_table => 'user_relationships', :order => 'last_name, first_name'#, :conditions => [ "trainer_id != client_id" ]

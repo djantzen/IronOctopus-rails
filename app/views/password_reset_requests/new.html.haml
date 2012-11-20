@@ -1,0 +1,9 @@
+.container
+  = form_for @password_reset_request do |form|
+    .row.well
+      .field
+        = form.label :email_to, "Email Address"
+        = form.text_field :email_to
+    .row
+      .span3.btn-group
+        = submit_tag "Reset Password", :class => "btn btn-large btn-primary"

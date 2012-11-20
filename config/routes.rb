@@ -56,6 +56,7 @@ IronOctopus::Application.routes.draw do
   resources :body_parts
   resources :devices
   resources :sessions
+  resources :password_reset_requests
 
 #  match "trainers/:trainer_id/routines/:routine_key" => "routines#index"
 # (.:format)  optional
@@ -68,7 +69,6 @@ IronOctopus::Application.routes.draw do
     resources :programs
     resources :licenses
     resources :invitations
-    resources :password_resets
   end
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
@@ -88,7 +88,6 @@ IronOctopus::Application.routes.draw do
   get "log_in" => "sessions#new", :as => "log_in"
   get "confirm" => "sessions#confirm", :as => "confirm"
   get "accept" => "invitations#accept", :as => "accept"
-  get "reset" => "password_resets#reset", :as => "reset"
   get "review_feedback" => "feedback#index", :as => "review_feedback"
 
   get "/users/:user_id/routines/:routine_id/sheet" => "routines#sheet", :as => "routine_sheet"

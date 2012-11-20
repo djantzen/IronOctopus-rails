@@ -1,0 +1,11 @@
+.container
+  = form_for @password_reset_request, :html => { :id => @password_reset_request.password_reset_request_uuid } do |form|
+    .row.well
+      .field
+        = form.label :new_password, "New Password"
+        = form.password_field :new_password
+      .field
+        = form.label :confirm_password, "Confirm Password"
+        = form.password_field :confirm_password
+      .span1
+        = submit_tag "Save", :class => "btn btn-large btn-primary"

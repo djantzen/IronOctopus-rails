@@ -6,7 +6,6 @@ class UserMailer < ActionMailer::Base
     @trainer = trainer
     @invitation = Invitation.new(:trainer => @trainer,
                                  :email_to => email_to,
-                                 :invitation_uuid => UUID.new.generate,
                                  :license => license)
     @invitation.save
 
@@ -14,6 +13,14 @@ class UserMailer < ActionMailer::Base
     mail(:to => email_to, :subject => "#{@trainer.first_name} has invited you to Iron Octopus!")
   end
 
+  def password_reset_request_email(user, request)
+    @user = user
+    @password_reset_request = PasswordResetRequest.new(:user => @user, :email_to => @user.email)
+    @password_reset_request.save
+    token = @password_reset_request.password_reset_request_uuid
+    @url  = "http://#{request.host_with_port}#{password_reset_requests_path}/#{token}/edit"
+    mail(:to => @user.email, :subject => "Password reset link for Iron Octopus")
+  end
 
   def welcome_email(user, request)
     @user = user

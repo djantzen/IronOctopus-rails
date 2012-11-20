@@ -12,8 +12,7 @@ Feature: Sign up
     And I fill in "Password" with "Password"
     And I fill in "Password confirmation" with "Password"
     And I press "Sign Up"
-    Then I should be on the post_signup page
-    And george_the_trainer@gmail.com should be registered
+    Then george_the_trainer@gmail.com should be registered
     And george_the_trainer@gmail.com should not be confirmed
     And I should receive a registration email
     Then george_the_trainer@gmail.com should be confirmed
@@ -27,8 +26,7 @@ Feature: Sign up
     And I fill in "Password" with "Secret"
     And I fill in "Password confirmation" with "Password"
     And I press "Sign Up"
-    Then I should be on the users/new page
-    And I should see "Password doesn't match confirmation"
+    Then I should see "Password doesn't match confirmation"
     And george_the_trainer@gmail.com should not be registered
 
   Scenario: I have registered and can now log in

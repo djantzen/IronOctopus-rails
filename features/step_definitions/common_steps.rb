@@ -6,6 +6,10 @@ When /^I press "(.*?)"$/ do |arg1|
   click_button arg1
 end
 
+When /^I click "(.*?)"$/ do |link|
+  click_link link
+end
+
 Then /^I should see "(.*?)"$/ do |arg1|
   page.should have_content(arg1)
 end
@@ -14,9 +18,9 @@ And /^I am on the (.*?) page$/ do |arg1|
   visit arg1
 end
 
-Then /^I should be on the (.*?) page$/ do |arg1|
-  get arg1
-end
+#Then /^I should be on the (.*?) page$/ do |arg1|
+#  get arg1
+#end
 
 Given %{I log in as "$login" with "$password"} do |login, password|
   step %{I am on the login page}
