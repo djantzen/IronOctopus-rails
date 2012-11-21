@@ -18,10 +18,6 @@ And /^I am on the (.*?) page$/ do |arg1|
   visit arg1
 end
 
-#Then /^I should be on the (.*?) page$/ do |arg1|
-#  get arg1
-#end
-
 Given %{I log in as "$login" with "$password"} do |login, password|
   step %{I am on the login page}
   step %{I fill in "Login" with "#{login}"}

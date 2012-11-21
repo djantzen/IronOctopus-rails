@@ -18,4 +18,5 @@ Feature: Reset a password
     And I press "Save"
     Then I should see "Login"
     And the PasswordResetRequest for jim_the_client@gmail.com should be used
+    And the password for jim_the_client@gmail.com is updated_password
 

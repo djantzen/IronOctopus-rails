@@ -19,3 +19,8 @@ Then /^the PasswordResetRequest for (.*?) should be used$/ do |email|
   reset_request = PasswordResetRequest.find_by_email_to(email)
   assert reset_request.password_reset
 end
+
+When /^the password for (.*?) is (.*?)$/ do |email, password|
+  user = User.find_by_email(email)
+  assert user.authenticate(password)
+end

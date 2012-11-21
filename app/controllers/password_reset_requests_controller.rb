@@ -29,7 +29,7 @@ class PasswordResetRequestsController < ApplicationController
       if !reset_request[:new_password].blank? && reset_request[:new_password].eql?(reset_request[:confirm_password])
         @password_reset_request.password_reset = true
         @password_reset_request.save
-        @user.password = params[:new_password]
+        @user.password = reset_request[:new_password]
         @user.save
       end
     end
