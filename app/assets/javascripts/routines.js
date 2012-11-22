@@ -184,20 +184,18 @@ $(document).ready(function() {
   });
 
   var clear_activity_form = function() {
-    var activity_name = $("#activity_name").val();
-    $("#modal-activity-builder form")[0].reset();
+    $("#create-update-activity-form form")[0].reset();
   }
 
   $("#modal-activity-builder form").bind('ajax:complete', function() {
-
-  $("#modal-activity-builder").modal('hide');
-    clear_activity_form();
-  });
-
-  $("#cancel-activity-builder-button").click(function() {
     $("#modal-activity-builder").modal('hide');
     clear_activity_form();
   });
+
+//  $("#cancel-activity-builder-button").click(function() {
+//    $("#modal-activity-builder").modal('hide');
+//    clear_activity_form();
+//  });
 
   clear_selections();
 });

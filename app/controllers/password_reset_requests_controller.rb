@@ -19,6 +19,10 @@ class PasswordResetRequestsController < ApplicationController
 
   def edit
     @password_reset_request = PasswordResetRequest.find_by_password_reset_request_uuid(params[:id])
+    if @password_reset_request.password_reset
+      redirect_to :root
+      return
+    end
   end
 
   def update

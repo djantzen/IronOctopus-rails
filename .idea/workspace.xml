@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46f8a447-b9ed-44ae-be1c-95fe4e4f3fab" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/programs.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/programs.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/routines.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/routines.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/password_reset_requests_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/password_reset_requests_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/features/reset_password.feature" afterPath="$PROJECT_DIR$/features/reset_password.feature" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/features/step_definitions/common_steps.rb" afterPath="$PROJECT_DIR$/features/step_definitions/common_steps.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/features/step_definitions/reset_password_steps.rb" afterPath="$PROJECT_DIR$/features/step_definitions/reset_password_steps.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/activities/create.html.haml" afterPath="$PROJECT_DIR$/app/views/activities/create.html.haml" />
     </list>
     <ignored path="IronOctopus-rails.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,55 +32,73 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="password_reset_requests_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="password_reset_requests_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/password_reset_requests_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="5" selection-start="448" selection-end="448" vertical-scroll-proportion="0.18987341">
+            <state line="24" column="7" selection-start="651" selection-end="651" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reset_password_steps.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/features/step_definitions/reset_password_steps.rb">
+      <file leaf-file-name="programs.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/programs.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="27" selection-start="907" selection-end="907" vertical-scroll-proportion="0.0">
+            <state line="36" column="0" selection-start="1236" selection-end="1236" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sessions_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/sessions_controller.rb">
+      <file leaf-file-name="routines.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/routines.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="0" selection-start="653" selection-end="653" vertical-scroll-proportion="0.0">
+            <state line="186" column="0" selection-start="6822" selection-end="6822" vertical-scroll-proportion="0.49597856">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="edit.html.haml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/password_reset_requests/edit.html.haml">
+      <file leaf-file-name="_create_or_update.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/activities/_create_or_update.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="0" selection-start="11" selection-end="11" vertical-scroll-proportion="-0.625">
+            <state line="51" column="0" selection-start="2443" selection-end="2443" vertical-scroll-proportion="-3.9166667">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reset_password.feature" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/features/reset_password.feature">
+      <file leaf-file-name="activities_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/activities_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="34" selection-start="937" selection-end="937" vertical-scroll-proportion="0.0">
+            <state line="28" column="0" selection-start="760" selection-end="760" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user_mailer.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/mailers/user_mailer.rb">
+      <file leaf-file-name="_create_or_update.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/programs/_create_or_update.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="6" selection-start="1010" selection-end="1010" vertical-scroll-proportion="0.0">
+            <state line="2" column="43" selection-start="96" selection-end="96" vertical-scroll-proportion="-1.25">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_create_or_update.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/routines/_create_or_update.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="119" column="44" selection-start="6002" selection-end="6002" vertical-scroll-proportion="-6.7083335">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_button.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/shared/_button.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="55" selection-start="190" selection-end="202" vertical-scroll-proportion="-1.25">
               <folding />
             </state>
           </provider>
@@ -101,10 +120,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/password_reset_requests/new.html.haml" />
-        <option value="$PROJECT_DIR$/app/models/password_reset_request.rb" />
-        <option value="$PROJECT_DIR$/app/models/user.rb" />
-        <option value="$PROJECT_DIR$/app/views/password_reset_requests/create.html.haml" />
         <option value="$PROJECT_DIR$/app/views/user_mailer/password_reset_request_email.html.erb" />
         <option value="$PROJECT_DIR$/app/views/user_mailer/password_reset_request_email.html.haml" />
         <option value="$PROJECT_DIR$/app/mailers/user_mailer.rb" />
@@ -117,6 +132,10 @@
         <option value="$PROJECT_DIR$/features/reset_password.feature" />
         <option value="$PROJECT_DIR$/features/step_definitions/reset_password_steps.rb" />
         <option value="$PROJECT_DIR$/app/controllers/password_reset_requests_controller.rb" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/programs.js" />
+        <option value="$PROJECT_DIR$/app/views/shared/_button.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/activities/create.html.haml" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/routines.js" />
       </list>
     </option>
   </component>
@@ -215,7 +234,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="features" />
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -229,11 +252,91 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="features" />
+              <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="step_definitions" />
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="routines" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IronOctopus-rails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IronOctopus-rails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="programs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IronOctopus-rails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IronOctopus-rails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="activities" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IronOctopus-rails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IronOctopus-rails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IronOctopus-rails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IronOctopus-rails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -785,7 +888,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.49039882" sideWeight="0.99694" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32843652" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32496306" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32496306" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5745938" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -856,16 +959,16 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/db/migrate/20121119224536_create_password_reset_requests.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/password_reset_requests_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="0" selection-start="814" selection-end="814" vertical-scroll-proportion="0.72386056">
+        <state line="24" column="7" selection-start="651" selection-end="651" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file:///Library/Ruby/Gems/1.8/gems/cucumber-1.2.1/lib/cucumber/core_ext/instance_exec.rb">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/activities.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="0" selection-start="2018" selection-end="2018" vertical-scroll-proportion="0.33333334">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -877,16 +980,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///Library/Ruby/Gems/1.8/gems/activerecord-3.1.3/lib/active_record/base.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/programs/_create_or_update.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1548" column="10" selection-start="66922" selection-end="66922" vertical-scroll-proportion="0.3324397">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="369" selection-end="369" vertical-scroll-proportion="0.2782462">
+        <state line="2" column="43" selection-start="96" selection-end="96" vertical-scroll-proportion="-1.25">
           <folding />
         </state>
       </provider>
@@ -898,37 +994,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/email.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="20" selection-start="126" selection-end="126" vertical-scroll-proportion="0.27372262">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/features/sign_up.feature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="57" selection-start="733" selection-end="733" vertical-scroll-proportion="0.6217617">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="29" selection-start="396" selection-end="396" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/features/step_definitions/sign_up_steps.rb">
+    <entry file="file://$USER_HOME$/Desktop/archive/CultureMob/lib/tasks/geography.rake">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/features/step_definitions/common_steps.rb">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/test.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="0" selection-start="347" selection-end="347" vertical-scroll-proportion="0.507772">
+        <state line="9" column="21" selection-start="218" selection-end="218" vertical-scroll-proportion="0.34974092">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/programs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="0" selection-start="1236" selection-end="1236" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/routines/_create_or_update.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="119" column="44" selection-start="6002" selection-end="6002" vertical-scroll-proportion="-6.7083335">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/shared/_button.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="55" selection-start="190" selection-end="202" vertical-scroll-proportion="-1.25">
           <folding />
         </state>
       </provider>
@@ -940,30 +1036,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/features/reset_password.feature">
+    <entry file="file://$PROJECT_DIR$/app/views/activities/_create_or_update.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="34" selection-start="937" selection-end="937" vertical-scroll-proportion="0.0">
+        <state line="51" column="0" selection-start="2443" selection-end="2443" vertical-scroll-proportion="-3.9166667">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/features/step_definitions/reset_password_steps.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/activities/show.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="27" selection-start="907" selection-end="907" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/activities/create.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="12" selection-start="319" selection-end="319" vertical-scroll-proportion="-0.15189873">
+        <state line="0" column="38" selection-start="38" selection-end="38" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/password_reset_requests_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/activities_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="5" selection-start="448" selection-end="448" vertical-scroll-proportion="0.18987341">
+        <state line="28" column="0" selection-start="760" selection-end="760" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/routines.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="186" column="0" selection-start="6822" selection-end="6822" vertical-scroll-proportion="0.49597856">
           <folding />
         </state>
       </provider>
