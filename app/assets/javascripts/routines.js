@@ -192,10 +192,9 @@ $(document).ready(function() {
     clear_activity_form();
   });
 
-//  $("#cancel-activity-builder-button").click(function() {
-//    $("#modal-activity-builder").modal('hide');
-//    clear_activity_form();
-//  });
-
+  $("#cancel-activity-builder-button").click(function() {
+    $("#modal-activity-builder").modal('hide');
+    clear_activity_form();
+  });
   clear_selections();
 });

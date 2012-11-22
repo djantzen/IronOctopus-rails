@@ -21,7 +21,6 @@ $(document).ready(function() {
   });
 
   var clear_routine_form = function() {
-    debugger;
     $("#routine-form-panel form")[0].reset();
     $("#modal-routine-builder .activity-set-form").remove();
   }
