@@ -20,3 +20,13 @@ Feature: Reset a password
     And the PasswordResetRequest for jim_the_client@gmail.com should be used
     And the password for jim_the_client@gmail.com is updated_password
 
+  Scenario: Password reset doesn't match confirmation
+    Given I am on the / page
+    When I click "Forgot Password?"
+    And I fill in "Email" with "jim_the_client@gmail.com"
+    And I press "Reset Password"
+    Then I should receive a reset email
+    When I fill in "New Password" with "password"
+    And I fill in "Confirm Password" with "updated_password"
+    And I press "Save"
+    Then I should see "Password does not match confirmation"

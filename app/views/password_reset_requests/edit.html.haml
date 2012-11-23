@@ -1,5 +1,11 @@
 .container
   = form_for @password_reset_request, :html => { :id => @password_reset_request.password_reset_request_uuid } do |form|
+    - if @user.errors.any?
+      .error_messages
+        %h2 Form is invalid
+        %ul
+          - for message in @user.errors.full_messages
+            %li= message
     .row.well
       .field
         = form.label :new_password, "New Password"

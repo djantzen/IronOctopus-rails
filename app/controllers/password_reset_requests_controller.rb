@@ -19,6 +19,7 @@ class PasswordResetRequestsController < ApplicationController
 
   def edit
     @password_reset_request = PasswordResetRequest.find_by_password_reset_request_uuid(params[:id])
+    @user = @password_reset_request.user
     if @password_reset_request.password_reset
       redirect_to :root
       return
@@ -35,9 +36,12 @@ class PasswordResetRequestsController < ApplicationController
         @password_reset_request.save
         @user.password = reset_request[:new_password]
         @user.save
+        redirect_to :root
+      else
+        @user.errors.add(:password, "Password does not match confirmation")
+        render :action => :edit
       end
     end
-    redirect_to :root
   end
 
 end
