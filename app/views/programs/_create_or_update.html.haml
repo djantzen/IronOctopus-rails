@@ -14,30 +14,25 @@
           = render :partial => 'shared/button', :locals => { :button_id => 'scheduled-program-button', :button_class => "btn-large btn-primary #{ 'active' if @program_type.eql? 'Scheduled' }", |
             :message => 'Scheduled Program', :type => 'input'}                                                                                                                                   |
     .row-fluid
-      .span3.well
+      #program-basic-info.span3.well
         .row-fluid
-          .span12
-            = form.label "program[client]", "Client"
-          .span12
-            - if @client == current_user
-              = select_tag "program[client]", options_for_select(@clients, :selected => current_user.login)
-            - else
-              = hidden_field_tag "program[client]", @client.login
-              %span
-                = @client.first_name
-                = @client.last_name
+          = form.label "program[client]", "Client"
+          - if @client == current_user
+            = select_tag "program[client]", options_for_select(@clients, :selected => current_user.login)
+          - else
+            = hidden_field_tag "program[client]", @client.login
+            %span
+              = @client.first_name
+              = @client.last_name
         .row-fluid
-          #program-basic-info
-            .span12
-              = form.label :name, "Program Name"
-              = form.text_field :name, :class => "required is_program_name_unique", :minlength => "4", :maxlength => "64"
-            .span12
-              = form.label :goal, "Program Goal"
-              = form.text_area :goal, :class => "required", :minlength => "8", :maxlength => "256"
+          = form.label :name, "Program Name"
+          = form.text_field :name, :class => "required is_program_name_unique", :minlength => "4", :maxlength => "64"
+          = form.label :goal, "Program Goal"
+          = form.text_area :goal, :class => "required", :minlength => "8", :maxlength => "256"
         .row-fluid
-          .span12.btn-group
-            = submit_tag "Save", :class => "btn btn-large btn-primary"
+          .btn-group
             = link_to "Cancel", user_programs_path(@client), :class => "btn btn-large"
+            = submit_tag "Save", :class => "btn btn-large btn-primary"
       #scheduled-program.span8.well
         #calendar.carousel.slide
           - today = Date.today

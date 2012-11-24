@@ -1,62 +1,58 @@
 - via_ajax = (defined?(via_ajax) ? via_ajax : false)
-.container
-  #create-update-activity-form
-    = form_for @activity, :remote => via_ajax do |form|
-      .row
+.container-fluid
+  = form_for @activity, :remote => via_ajax do |form|
+    #create-update-activity-form.row-fluid
+      #activity-basic-info.span3.well
         = form.label :name, 'Name'
         = form.text_field :name, :class => 'required is_activity_name_unique', :minlength => "4", :maxlength => "64"
-        %br/
-        = link_to "You can use Markdown syntax here", "http://kramdown.rubyforge.org/quickref.html", :target => '_blank'
-        = form.label :instructions, "Instructions"
-        = form.text_area :instructions
-        %br/
         = form.label :activity_type, "Activity Type"
         = form.select :activity_type,                                                                    |
           @activity_types.map { |activity_type | [activity_type.name, activity_type.activity_type_id] }, |
           :selected => @activity.activity_type.nil? ? nil : @activity.activity_type.activity_type_id     |
-        %br/
-      .row
-        #attribute-panel.ui-state-default
-          .span3
-            %h3 Anatomy Involved
-            %ul#available-body-part-list.unstyled
-              - group_body_parts_by_region(@body_parts).each_pair do |region, body_parts|
-                %li
-                  = region
-                %ul.unstyled
-                  - body_parts.each do |body_part|
-                    %li
-                      = check_box_tag "activity[body_parts][]", body_part.name, @activity.body_parts.include?(body_part) ? true : false
-                      = h body_part.name
-          .span3
-            %h3 Implements Utilized
-            %ul#available-implement-list.unstyled
-              - group_implements_by_category(@implements).each_pair do |category, implements|
-                %li
-                  = category
-                %ul.unstyled
-                  - implements.each do |implement|
-                    %li
-                      = check_box_tag "activity[implements][]", implement.name, @activity.implements.include?(implement) ? true : false
-                      = h implement.name
-          .span3
-            %h3 Metrics
-            %ul#available-metric-list.unstyled
-              - @metrics.each do |metric|
-                %li
-                  = check_box_tag "activity[metrics][]", metric.name, @activity.metrics.include?(metric) ? true : false
-                  = h metric.name
-          .span3
-            %h3 Attributes
-            %ul#available-activity-attribute-list.unstyled
-              - @activity_attributes.each do |attribute|
-                %li
-                  = check_box_tag "activity[activity_attributes][]", attribute.name, @activity.activity_attributes.include?(attribute) ? true : false
-                  = h attribute.name
-      .row
-        = submit_tag "Save", :class => 'btn btn-primary'
-        - if via_ajax
-          = render :partial => 'shared/button', :locals => { :button_id => 'cancel-activity-builder-button', |
-            :message => 'Cancel' }                                                                          |
-        - else
-          = link_to "Cancel", activities_path, :class => 'btn'
+        = link_to "You can use Markdown syntax here", "http://kramdown.rubyforge.org/quickref.html", :target => '_blank'
+        = form.label :instructions, "Instructions"
+        = form.text_area :instructions, :minlength => "16", :maxlength => "512", :value => 'None'
+        .btn-group
+          - if via_ajax
+            = render :partial => 'shared/button', :locals => { :button_id => 'cancel-activity-builder-button', |
+              :message => 'Cancel' }                                                                           |
+          - else
+            = link_to "Cancel", activities_path, :class => 'btn'
+          = submit_tag "Save", :class => 'btn btn-primary'
+      .span9.well
+        .span3
+          %h3 Anatomy Involved
+          %ul#available-body-part-list.unstyled
+            - group_body_parts_by_region(@body_parts).each_pair do |region, body_parts|
+              %li
+                = region
+              %ul.unstyled
+                - body_parts.each do |body_part|
+                  %li
+                    = check_box_tag "activity[body_parts][]", body_part.name, @activity.body_parts.include?(body_part) ? true : false
+                    = h body_part.name
+        .span3
+          %h3 Implements Utilized
+          %ul#available-implement-list.unstyled
+            - group_implements_by_category(@implements).each_pair do |category, implements|
+              %li
+                = category
+              %ul.unstyled
+                - implements.each do |implement|
+                  %li
+                    = check_box_tag "activity[implements][]", implement.name, @activity.implements.include?(implement) ? true : false
+                    = h implement.name
+        .span3
+          %h3 Metrics
+          %ul#available-metric-list.unstyled
+            - @metrics.each do |metric|
+              %li
+                = check_box_tag "activity[metrics][]", metric.name, @activity.metrics.include?(metric) ? true : false
+                = h metric.name
+        .span3
+          %h3 Attributes
+          %ul#available-activity-attribute-list.unstyled
+            - @activity_attributes.each do |attribute|
+              %li
+                = check_box_tag "activity[activity_attributes][]", attribute.name, @activity.activity_attributes.include?(attribute) ? true : false
+                = h attribute.name

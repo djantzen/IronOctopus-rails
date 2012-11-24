@@ -91,13 +91,13 @@
         - @activities.each do |activity|
           = render :partial => "routines/activity_list_item", :locals => { :activity => activity }
     #routine-form-panel.span6
-      = form_for [@client, @routine], :remote => via_ajax do |form|
-        = hidden_field_tag "routine[trainer]", @trainer.login
-        .well
+      .well
+        = form_for [@client, @routine], :remote => via_ajax do |form|
+          = hidden_field_tag "routine[trainer]", @trainer.login
           .row
-            .span3
+            .span2
               = form.label "routine[client]", "Client"
-            .span3
+            .span2
               - if @client == current_user
                 = select_tag "routine[client]", options_for_select(@client_logins, :selected => current_user.login)
               - else
@@ -106,23 +106,28 @@
                   = @client.first_name
                   = @client.last_name
           .row
-            #routine-basic-info
-              .span3
-                = form.label :name, "Name"
-                = form.text_field :name, :class => "required is_routine_name_unique", :minlength => "4", :maxlength => "64"
-              .span3
-                = form.label :goal, "Goal"
-                = form.text_field :goal, :minlength => "8", :maxlength => "256"
-          .btn-group
-            = render :partial => 'shared/button', :locals => { :button_class => 'btn-primary', |
-                     :message => 'Save', :return_false => false}                                      |
-            - if via_ajax
-              = render :partial => 'shared/button', :locals => { :button_id => 'cancel-routine-builder-button', |
-                :message => 'Cancel' }                                                                          |
-            - else
-              = link_to "Cancel", user_routines_path(current_user), :class => 'btn'
-        .row
-          %ul#routine-activity-set-list.accordion
-            - @routine.activity_sets.each do |activity_set|
-              = render :partial => 'activity_sets/form', :locals => { :activity => activity_set.activity, |
-                :activity_set => activity_set, :template => false }                                       |
+            .span2
+              = form.label :name, "Routine Name"
+            .span2
+              = form.text_field :name, :class => "required is_routine_name_unique", :minlength => "4", |
+                                :maxlength => "64", :class => "input-xlarge" |
+          .row
+            .span2
+              = form.label :goal, "Routine Goal"
+            .span3
+              = form.text_field :goal, :minlength => "8", :maxlength => "128", :class => "input-xlarge"
+          .row
+            %ul#routine-activity-set-list.accordion
+              - @routine.activity_sets.each do |activity_set|
+                = render :partial => 'activity_sets/form', :locals => { :activity => activity_set.activity, |
+                  :activity_set => activity_set, :template => false }                                       |
+          .row
+            .span2
+              .btn-group
+                = render :partial => 'shared/button', :locals => { :button_class => 'btn-primary', |
+                         :message => 'Save', :return_false => false}                                      |
+                - if via_ajax
+                  = render :partial => 'shared/button', :locals => { :button_id => 'cancel-routine-builder-button', |
+                    :message => 'Cancel' }                                                                          |
+                - else
+                  = link_to "Cancel", user_routines_path(current_user), :class => 'btn'
