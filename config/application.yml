@@ -1,6 +1,12 @@
+defaults: &defaults
 development:
+  <<: *defaults
   max_calendar_months: 2
 production:
+  <<: *defaults
+  <<: *all
   max_calendar_months: 3
 test:
+  <<: *defaults
+  <<: *all
   max_calendar_months: 2

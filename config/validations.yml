@@ -1,0 +1,25 @@
+routine:
+  name:
+    minlength: 4
+    maxlength: 64
+  goal:
+    minlength: 8
+    maxlength: 128
+activity:
+  name:
+    minlength: 4
+    maxlength: 64
+  instructions:
+    minlength: 16
+    maxlength: 512
+implement:
+  name:
+    minlength: 2
+    maxlength: 64
+program:
+  name:
+    minlength: 4
+    maxlength: 64
+  goal:
+    minlength: 8
+    maxlength: 256

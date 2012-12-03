@@ -6,12 +6,17 @@ class Program < ActiveRecord::Base
   has_many :weekday_programs
   has_many :scheduled_programs
 
-#  has_one :client, :through => :active_programs
+  VALIDATIONS = IronOctopus::Configuration.instance.validations[:program]
+  validates :name, :length => {
+    :minimum => VALIDATIONS[:name][:minlength].to_i,
+    :maximum => VALIDATIONS[:name][:maxlength].to_i
+  }
+  validates :goal, :length => {
+    :minimum => VALIDATIONS[:goal][:minlength].to_i,
+    :maximum => VALIDATIONS[:goal][:maxlength].to_i
+  }
 
   before_validation { self.permalink = self.name.to_identifier }
-
-  validates_presence_of :name
-  validates_presence_of :goal
   validates_uniqueness_of :permalink
 
   def is_weekday_program?

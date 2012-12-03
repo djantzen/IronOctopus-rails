@@ -3,6 +3,12 @@ class Implement < ActiveRecord::Base
   belongs_to :creator, :class_name => 'User', :foreign_key => 'creator_id'
   before_save { self.permalink = name.to_identifier}
 
+  VALIDATIONS = IronOctopus::Configuration.instance.validations[:implement]
+  validates :name, :length => {
+    :minimum => VALIDATIONS[:name][:minlength].to_i,
+    :maximum => VALIDATIONS[:name][:maxlength].to_i
+  }
+
   def self.all_categories
     Implement.all.map { |i| i.category }.uniq
   end

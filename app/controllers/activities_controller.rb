@@ -33,10 +33,16 @@ class ActivitiesController < ApplicationController
   def create
     @activity = create_or_update(params)
     @activity.creator = current_user
-    @activity.save
-    respond_with do |format|
-      format.js
-      format.html { render :html => @activity }
+
+    if @activity.save
+      respond_with do |format|
+        format.html { render :html => @activity }
+      end
+    else
+      @entity = @activity
+      respond_with do |format|
+        format.html { render :html => @entity, :template => "shared/entity_errors" }
+      end
     end
   end
 
@@ -56,10 +62,17 @@ class ActivitiesController < ApplicationController
   
   def update
     @activity = create_or_update(params)
-    @activity.save
-    respond_with do |format|
-      format.html { render :html => @activity, :template => "activities/show" }
-      format.json { render :json => @activity }
+
+    if @activity.save
+      respond_with do |format|
+        format.html { render :html => @activity }
+        format.json { render :json => @activity }
+      end
+    else
+      @entity = @activity
+      respond_with do |format|
+        format.html { render :html => @entity, :template => "shared/entity_errors" }
+      end
     end
   end
 

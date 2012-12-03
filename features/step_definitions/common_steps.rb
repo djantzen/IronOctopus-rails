@@ -2,8 +2,8 @@ When /^I fill in "(.*?)" with "(.*?)"$/ do |arg1, arg2|
   fill_in(arg1, :with => arg2)
 end
 
-When /^I press "(.*?)"$/ do |arg1|
-  click_button arg1
+When /^I press "(.*?)"$/ do |locator|
+  click_button locator
 end
 
 When /^I click "(.*?)"$/ do |link|
@@ -45,4 +45,7 @@ Then /^(.*?) should be a client of (.*?)$/ do |client_email, trainer_email|
   client = User.find_by_email(client_email)
   trainer = User.find_by_email(trainer_email)
   client.trainers.include?(trainer).should eq(true)
+end
+When /^I select "([^"]*)" from "([^"]*)"$/ do |arg1, arg2|
+  select(arg1, :from => arg2)
 end

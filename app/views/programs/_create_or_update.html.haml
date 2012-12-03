@@ -26,17 +26,21 @@
               = @client.last_name
         .row-fluid
           = form.label :name, "Program Name"
-          = form.text_field :name, :class => "required is_program_name_unique", :minlength => "4", :maxlength => "64"
+          = form.text_field :name, :class => "required is_program_name_unique", |
+                            :minlength => @validations[:program][:name][:minlength], |
+                            :maxlength => @validations[:program][:name][:maxlength] |
           = form.label :goal, "Program Goal"
-          = form.text_area :goal, :class => "required", :minlength => "8", :maxlength => "256"
+          = form.text_area :goal, :class => "required", :value => 'No Goal Specified', |
+                           :minlength => @validations[:program][:goal][:minlength], |
+                           :maxlength => @validations[:program][:goal][:maxlength] |
         .row-fluid
           .btn-group
             = link_to "Cancel", user_programs_path(@client), :class => "btn btn-large"
-            = submit_tag "Save", :class => "btn btn-large btn-primary"
+            = submit_tag "Save", :id => "save-program", :class => "btn btn-large btn-primary"
       #scheduled-program.span8.well
         #calendar.carousel.slide
           - today = Date.today
-          - months = (0 .. Configuration.instance.application[:max_calendar_months]).map { |i| today + i.months }
+          - months = (0 .. @application[:max_calendar_months]).map { |i| today + i.months }
           .carousel-inner
             - months.each_with_index do |month, idx|
               %div{:class => (idx == 0 ? 'item active' : 'item')}

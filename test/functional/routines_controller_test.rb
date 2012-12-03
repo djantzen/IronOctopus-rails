@@ -27,7 +27,7 @@ class RoutinesControllerTest < ActionController::TestCase
         :activity_sets => [
           {
             :count => 2,
-            :activity => 'Back Squat',
+            :activity => 'Squat',
             :repetitions => 12,
             :resistance => 90
           },

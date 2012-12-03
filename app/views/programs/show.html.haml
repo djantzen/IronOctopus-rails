@@ -1,1 +1,13 @@
 .container
+  .row
+    .span2.offset6
+      = @program.name
+    .span2
+      = @program.goal
+  .row
+    .span2.offset6
+      Created by #{@program.trainer.full_name}
+    .span2
+      for #{@program.client.full_name}
+  
+  = link_to("Edit", edit_user_program_path(@program.client, @program), :class => "btn")

@@ -109,13 +109,15 @@
             .span2
               = form.label :name, "Routine Name"
             .span2
-              = form.text_field :name, :class => "required is_routine_name_unique", :minlength => "4", |
-                                :maxlength => "64", :class => "input-xlarge" |
+              = form.text_field :name, :class => "required is_routine_name_unique", |
+                                :minlength => @validations[:routine][:name][:minlength], |
+                                :maxlength => @validations[:routine][:name][:maxlength], :class => "input-xlarge" |
           .row
             .span2
               = form.label :goal, "Routine Goal"
             .span3
-              = form.text_field :goal, :minlength => "8", :maxlength => "128", :class => "input-xlarge"
+              = form.text_field :goal, :minlength => @validations[:routine][:goal][:minlength], |
+                                :maxlength => @validations[:routine][:goal][:maxlength], :class => "input-xlarge" |
           .row
             %ul#routine-activity-set-list.accordion
               - @routine.activity_sets.each do |activity_set|
@@ -124,8 +126,8 @@
           .row
             .span2
               .btn-group
-                = render :partial => 'shared/button', :locals => { :button_class => 'btn-primary', |
-                         :message => 'Save', :return_false => false}                                      |
+                = render :partial => 'shared/button', :locals => { :button_id => 'save-routine', |
+                         :button_class => 'btn-primary', :message => 'Save', :return_false => false }  |
                 - if via_ajax
                   = render :partial => 'shared/button', :locals => { :button_id => 'cancel-routine-builder-button', |
                     :message => 'Cancel' }                                                                          |

@@ -1,17 +1,20 @@
 - via_ajax = (defined?(via_ajax) ? via_ajax : false)
 .container-fluid
-  = form_for @activity, :remote => via_ajax do |form|
-    #create-update-activity-form.row-fluid
+  #create-update-activity-form.row-fluid
+    = form_for @activity, :remote => via_ajax do |form|
       #activity-basic-info.span3.well
         = form.label :name, 'Name'
-        = form.text_field :name, :class => 'required is_activity_name_unique', :minlength => "4", :maxlength => "64"
+        = form.text_field :name, :class => 'required is_activity_name_unique', |
+                          :minlength => @validations[:activity][:name][:minlength], |
+                          :maxlength => @validations[:activity][:name][:maxlength] |
         = form.label :activity_type, "Activity Type"
         = form.select :activity_type,                                                                    |
           @activity_types.map { |activity_type | [activity_type.name, activity_type.activity_type_id] }, |
           :selected => @activity.activity_type.nil? ? nil : @activity.activity_type.activity_type_id     |
         = link_to "You can use Markdown syntax here", "http://kramdown.rubyforge.org/quickref.html", :target => '_blank'
         = form.label :instructions, "Instructions"
-        = form.text_area :instructions, :minlength => "16", :maxlength => "512", :value => 'None'
+        = form.text_area :instructions, :minlength => @validations[:activity][:instructions][:minlength], |
+                         :maxlength => @validations[:activity][:instructions][:maxlength], :value => 'None' |
         .btn-group
           - if via_ajax
             = render :partial => 'shared/button', :locals => { :button_id => 'cancel-activity-builder-button', |

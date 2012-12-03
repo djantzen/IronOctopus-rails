@@ -4,7 +4,7 @@ class ImplementsController < ApplicationController
   respond_to :json, :html
 
   def index
-    @implements = Implement.find(:all)
+    @implements = Implement.all
   end
   
   def new
@@ -12,10 +12,16 @@ class ImplementsController < ApplicationController
   end
   
   def create
-    implement = create_or_update(params)
-    implement.creator = current_user
-    implement.save
-    redirect_to(implement)
+    @implement = create_or_update(params)
+    @implement.creator = current_user
+    if @implement.save
+      respond_with :html => @implement
+    else
+      @entity = @implement
+      respond_with do |format|
+        format.html { render :html => @entity, :template => "shared/entity_errors" }
+      end
+    end
   end
 
   def edit
@@ -23,9 +29,15 @@ class ImplementsController < ApplicationController
   end
   
   def update
-    implement = create_or_update(params)
-    implement.save
-    redirect_to(implement)
+    @implement = create_or_update(params)
+    if @implement.save
+      respond_with :html => @implement
+    else
+      @entity = @implement
+      respond_with do |format|
+        format.html { render :html => @entity, :template => "shared/entity_errors" }
+      end
+    end
   end
   
   def show
@@ -42,10 +54,7 @@ class ImplementsController < ApplicationController
 
   private
   def create_or_update(params)
-    implement = params[:id] ? Implement.find(params[:id]) : Implement.new
-
-    implement.name = params[:implement][:name]
-    implement.category = params[:implement][:category]
+    implement = params[:id] ? Implement.find(params[:id]) : Implement.new(params[:implement])
     implement
   end
 

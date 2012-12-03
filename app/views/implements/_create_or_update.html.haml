@@ -3,7 +3,9 @@
     #implement-basic-info.span3.well
       = form_for @implement do |form|
         = form.label :name, 'Name'
-        = form.text_field :name, :class => 'required is_implement_name_unique', :minlength => "4", :maxlength => "64"
+        = form.text_field :name, :class => 'required is_implement_name_unique', |
+                          :minlength => @validations[:implement][:name][:minlength],   |
+                          :maxlength => @validations[:implement][:name][:maxlength] |
         = form.label :category, 'Category'
         = form.select :category, Implement.all_categories, :selected => @implement.category
         .btn-group

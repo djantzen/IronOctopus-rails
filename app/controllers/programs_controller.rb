@@ -43,8 +43,17 @@ class ProgramsController < ApplicationController
   end
 
   def create
-    program = _create_or_update(Program.new)
-    redirect_to(user_programs_path(program.client))
+    @program = _create_or_update(Program.new)
+    if @program.errors.empty?
+      respond_with do |format|
+        format.html { render :html => @program }
+      end
+    else
+      @entity = @program
+      respond_with do |format|
+        format.html { render :html => @entity, :template => "shared/entity_errors" }
+      end
+    end
   end
 
   def edit
@@ -65,7 +74,16 @@ class ProgramsController < ApplicationController
     @client = User.find_by_login(params[:user_id])
     @program = Program.first(:conditions => { :client_id => @client.user_id, :permalink => params[:program][:name].to_identifier })
     @program = _create_or_update(@program)
-    redirect_to(user_programs_path(@program.client))
+    if @program.errors.empty?
+      respond_with do |format|
+        format.html { render :html => @program }
+      end
+    else
+      @entity = @program
+      respond_with do |format|
+        format.html { render :html => @entity, :template => "shared/entity_errors" }
+      end
+    end
   end
 
   def index

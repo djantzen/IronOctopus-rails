@@ -11,10 +11,18 @@ class Activity < ActiveRecord::Base
   has_and_belongs_to_many :body_parts
   has_and_belongs_to_many :implements
 
-  validates_presence_of :name
-  validates_uniqueness_of :name
-
   before_validation { self.permalink = name.to_identifier }
+  validates_uniqueness_of :permalink
+
+  VALIDATIONS = IronOctopus::Configuration.instance.validations[:activity]
+  validates :name, :length => {
+    :minimum => VALIDATIONS[:name][:minlength].to_i,
+    :maximum => VALIDATIONS[:name][:maxlength].to_i
+  }
+  validates :instructions, :length => {
+    :minimum => VALIDATIONS[:instructions][:minlength].to_i,
+    :maximum => VALIDATIONS[:instructions][:maxlength].to_i
+  }
 
   def to_param
     permalink

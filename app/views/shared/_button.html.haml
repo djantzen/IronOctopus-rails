@@ -1,5 +1,5 @@
 %button{:class => "btn #{(defined? button_class) ? button_class : nil}",
-  :id => (defined? button_id) ? button_id : '', :name => "program[type]",
+  :id => (defined? button_id) ? button_id : '', :name => (defined? button_name) ? button_name : '',
   :onclick => "#{(defined? return_false && return_false == false) ? true : 'event.preventDefault(); return false;'}",
   :rel => "tooltip"}
   - if defined? icon

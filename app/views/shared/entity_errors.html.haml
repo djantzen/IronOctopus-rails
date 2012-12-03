@@ -1,0 +1,10 @@
+.container
+  .row
+    - if @entity.errors.any?
+      .error_messages
+        %h2
+          Unable to create/update
+          = @entity.class.name
+        %ul
+          - for message in @entity.errors.full_messages
+            %li= message
