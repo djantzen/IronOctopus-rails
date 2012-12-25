@@ -1,0 +1,35 @@
+GIS Workflow
+
+Definitions:
+  Area: A metro area (or anything else we wish to define, could be a region like Central Washington).  
+  Neighborhood: A portion of a metro area, defined by Zillow.
+  Borough: A collection of neighborhoods unioned into a single entity like North Seattle or Manhattan. 
+
+Tools: 
+  Cyclone is the official GIS workstation
+  QuantumGis
+  SVN
+  Yaml + text editor
+  Rake
+
+Modifying Areas:
+  1) Load the shared Quantum Gis project file checked into SVN called CultureMob/db/data/culturemob_areas.gqs. This project:
+    a) loads the areas shapefile (CultureMob/db/data/areas.shp)
+    b) connects to the database on localhost to load layers for states, population_centers, cities, venues, neighborhoods and users.
+  2) Edit the areas layer to remove, modify or add objects.
+    Note: "token" should be lowercase and unique, like "los_angeles"; 
+    "name" should be the proper display name like "Nashville, TN"; leave event_sourc and is_active blank or set is_active 
+    to "T" or "F" (if you don't want it displayed)
+  3) Save and check the file into SVN.
+  4) Check out the updated file onto a staging machine.
+  5) Run rake db:init_areas
+  6) Reindex events and venues
+  
+Modifying Boroughs:
+  1) Open the file CultureMob/db/data/boroughs.yml file in a text editor.  This file is a simple mapping of borough name, city and state to a list of neighborhoods as defined by Zillow.
+  2) Open the culturemob_areas.qgs file and activate the neighborhoods layer.
+  3) Modify the yaml file by adding the neighborhood names that constitute a borough from the Zillow neighborhoods.
+  4) Save and check the file into SVN.
+  5) Check out the updated file onto a staging machine.
+  6) Run rake db:init_boroughs
+  7) Reindex events and venues

@@ -1,0 +1,101 @@
+brooklyn:
+  name: "Brooklyn"
+  city: "New York"
+  state: "New York"
+  neighborhoods: ["Bay Ridge", "Bedford-Stuyvesant", "Bensonhurst", "Boerum Hill", "Borough Park", "Brownsville", "Bushwick", 
+                  "Canarsie", "Carroll Gardens", "Cobble Hill", "Coney Island", "Downtown", "Dyker Heights", "East Brooklyn", 
+                  "Flatbush", "Fort Green", "Gravesend-Sheepshead Bay", "Greenwood", "Mapleton-Flatlands", "Park Slope", 
+                  "Red Hook", "Sunset Park", "Williamsburg"]
+
+manhattan:
+  name: "Manhattan"
+  city: "New York"
+  state: "New York"
+  neighborhoods: [ "Battery Park", "Carnegie Hill", "Central Park", "Chelsea", "Chinatown", "Clinton", "East Harlem", "East Village",
+                   "Financial District", "Garment District", "Gramercy", "Greenwich Village", "Hamilton Heights", "Harlem", "Inwood",
+                   "Little Italy", "Lower East Side", "Midtown", "Morningside Heights", "Murray Hill", "North Sutton Area", "Soho",
+                   "Tribeca", "Upper East Side", "Upper West Side", "Washington Heights", "West Village", "Yorkville"]
+
+queens:
+  name: "Queens"
+  city: "New York"
+  state: "New York"
+  neighborhoods: [ "Astoria-Long Island City", "Auburndale", "Bayside", "Clearview", "College Point", "Corona", 
+                   "Douglastown-Little Neck", "Flushing", "Forest Hills", "Glendale", "Howard Beach", "Jackson Heights", "Jamaica", 
+                   "Laurelton", "Maspeth", "Middle Village", "Nkew Gardens", "Queensboro Hill", "Queens Village", "Ridgewood", 
+                   "Rosedale", "Saintalbans", "Springfield Gardens", "Steinway", "Sunny Side", "The Rockaways", "Utopia", 
+                   "Whitestone", "Woodhaven-Richmond Hill", "Woodside"]
+  
+staten_island:
+  name: "Staten Island"
+  city: "New York"
+  state: "New York"
+  neighborhoods: ["Annandale", "Ardon Heights", "Bloomfield-Chelsea-Travis", "Charlestown-Richmond Valley",
+                  "Clifton" , "Ettingville", "Fresh Kills", "Great Kills", "Howland Hook", "Huguenot", "Mariners Harbor",
+                  "Midland Beach", "New Brighton", "Oakwood", "Port Richmond", "Prince's Bay", "Richmondtown", "Rosebank",
+                  "Rossville", "South Beach", "Todt Hill", "Tottensville", "Westerleigh-Castleton", "Woodrow"]
+
+the_bronx:
+  name: "The Bronx"
+  city: "New York"
+  state: "New York"
+  neighborhoods: ["Baychester", "Bedford Park", "City Island", "Country Club", "Eastchester", "Fordham", "High Bridge", 
+                  "Hunts Point", "Kings Bridge", "Morris Heights", "Morris Park", "Mott Haven", "Parkchester", "Riverdale", 
+                  "Soundview", "South Bronx", "Spuyten Duyvil", "Throggs Neck", "Tremont", "Union Port", "University Heights", 
+                  "Wakefield-Williamsbridge", "Williams Bridge", "Woodlawn-Nordwood"]
+
+
+north_portland:
+  name: "North Portland"
+  city: "Portland"
+  state: "Oregon"
+  neighborhoods: []
+
+northwest_portland:
+  name: "Northwest Portland"
+  city: "Portland"
+  state: "Oregon"
+  neighborhoods: []
+
+northeast_portland:
+  name: "Northeast Portland"
+  city: "Portland"
+  state: "Oregon"
+  neighborhoods: []
+
+southwest_portland:
+  name: "Southwest Portland"
+  city: "Portland"
+  state: "Oregon"
+  neighborhoods: []
+
+southeast_portland:
+  name: "Southeast Portland"
+  city: "Portland"
+  state: "Oregon"
+  neighborhoods: []
+
+north_seattle:
+  name: "North Seattle"
+  city: "Seattle"
+  state: "Washington"
+  neighborhoods: ["Broadview", "Bitter Lake", "Haller Lake", "Pinehurst", "Olympic Hills", "Cedar Park", "Blue Ridge", "Greenwood", "North College Park", "Northgate", "Victory Heights", "Meadowbrook", "Matthews Beach", "North Beach", "Olympic Manor", "Crown Hill", "Maple Leaf", "Wedgwood", "View Ridge", "Sand Point", "Sunset Hill", "Loyal Heights", "Whittier Heights", "Phinney Ridge", "Green Lake", "Roosevelt", "Ravenna", "Bryant", "Hawthorne Hills", "Windermere", "Laurelhurst", "University District", "Wallingford", "Fremont", "Ballard"] 
+
+west_seattle:
+  name: "West Seattle"
+  city: "Seattle"
+  state: "Washington"
+  neighborhoods: ["Admiral", "Alki", "Arbor Heights", "Fauntleroy", "High Point", "Highland Park", "Industrial District", 
+                  "North Delridge", "Riverview", "Roxhill", "South Delridge", "South Park", "West Seattle"] 
+
+sherman_oaks:
+  name: "Sherman Oaks"
+  city: "Los Angeles"
+  state: "California"
+  neighborhoods: ["Bel Air", "Beverly Glen", "Encino", "Studio City", "Van Nuys"]
+  
+coconut_grove:
+  name: "Coconut Grove"
+  city: "Miami"
+  state: "Florida"
+  neighborhoods: ["North Coconut Grove", "South Coconut Grove"]

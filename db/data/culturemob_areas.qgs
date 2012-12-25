@@ -1,0 +1,595 @@
+<!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
+<qgis projectname="" version="1.0.0-Kore" >
+    <title></title>
+    <mapcanvas>
+        <units>degrees</units>
+        <extent>
+            <xmin>-91.672605</xmin>
+            <ymin>29.421318</ymin>
+            <xmax>-81.502666</xmax>
+            <ymax>35.484443</ymax>
+        </extent>
+        <projections>0</projections>
+        <destinationsrs>
+            <spatialrefsys>
+                <proj4>+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs </proj4>
+                <srsid>3344</srsid>
+                <srid>4326</srid>
+                <epsg>4326</epsg>
+                <description>WGS 84</description>
+                <projectionacronym>longlat</projectionacronym>
+                <ellipsoidacronym>WGS84</ellipsoidacronym>
+                <geographicflag>true</geographicflag>
+            </spatialrefsys>
+        </destinationsrs>
+    </mapcanvas>
+    <legend>
+        <legendlayer open="true" checked="Qt::Checked" name="areas" >
+            <filegroup open="true" hidden="false" >
+                <legendlayerfile isInOverview="0" layerid="areas20081006170200805" visible="1" />
+            </filegroup>
+        </legendlayer>
+        <legendlayer open="true" checked="Qt::Checked" name="cities" >
+            <filegroup open="true" hidden="false" >
+                <legendlayerfile isInOverview="0" layerid="_public___cities___the_geom__sql_20081006160815632" visible="1" />
+            </filegroup>
+        </legendlayer>
+        <legendlayer open="false" checked="Qt::Unchecked" name="venues" >
+            <filegroup open="false" hidden="false" >
+                <legendlayerfile isInOverview="0" layerid="_public___venues___the_geom__sql_20081006160818345" visible="0" />
+            </filegroup>
+        </legendlayer>
+        <legendlayer open="false" checked="Qt::Unchecked" name="users" >
+            <filegroup open="false" hidden="false" >
+                <legendlayerfile isInOverview="0" layerid="_public___users___the_geom__sql_20081006160818040" visible="0" />
+            </filegroup>
+        </legendlayer>
+        <legendlayer open="false" checked="Qt::Unchecked" name="neighborhoods" >
+            <filegroup open="false" hidden="false" >
+                <legendlayerfile isInOverview="0" layerid="_public___neighborhoods___the_geom__sql_20081006160816639" visible="0" />
+            </filegroup>
+        </legendlayer>
+        <legendlayer open="false" checked="Qt::Checked" name="population_centers" >
+            <filegroup open="false" hidden="false" >
+                <legendlayerfile isInOverview="0" layerid="_public___population_centers___the_geom__sql_20081006160817553" visible="1" />
+            </filegroup>
+        </legendlayer>
+        <legendlayer open="false" checked="Qt::Checked" name="states" >
+            <filegroup open="false" hidden="false" >
+                <legendlayerfile isInOverview="0" layerid="_public___states___the_geom__sql_20081006160817728" visible="1" />
+            </filegroup>
+        </legendlayer>
+    </legend>
+    <Composer>
+        <Composition paperWidth="297" paperHeight="210" />
+    </Composer>
+    <projectlayers layercount="7" >
+        <maplayer minimumScale="1" maximumScale="1" minLabelScale="1" maxLabelScale="1e+08" geometry="Point" type="vector" hasScaleBasedVisibilityFlag="0" scaleBasedLabelVisibilityFlag="0" >
+            <id>_public___cities___the_geom__sql_20081006160815632</id>
+            <datasource>dbname='EventDB' host=localhost port=5432 user='webapp' password='burdocken' table="cities" (the_geom) sql=</datasource>
+            <layername>cities</layername>
+            <srs>
+                <spatialrefsys>
+                    <proj4>+proj=longlat +ellps=GRS80 +datum=NAD83 +no_defs </proj4>
+                    <srsid>3293</srsid>
+                    <srid>4269</srid>
+                    <epsg>4269</epsg>
+                    <description>NAD83</description>
+                    <projectionacronym>longlat</projectionacronym>
+                    <ellipsoidacronym>GRS80</ellipsoidacronym>
+                    <geographicflag>false</geographicflag>
+                </spatialrefsys>
+            </srs>
+            <transparencyLevelInt>255</transparencyLevelInt>
+            <provider>postgres</provider>
+            <edittypes>
+                <edittype type="0" name="has_landing_page" />
+                <edittype type="0" name="id" />
+                <edittype type="0" name="name" />
+                <edittype type="0" name="population" />
+                <edittype type="0" name="size" />
+                <edittype type="0" name="state_id" />
+                <edittype type="0" name="token" />
+            </edittypes>
+            <displayfield>name</displayfield>
+            <label>1</label>
+            <attributeactions/>
+            <singlesymbol>
+                <symbol>
+                    <lowervalue></lowervalue>
+                    <uppervalue></uppervalue>
+                    <label></label>
+                    <pointsymbol>hard:pentagon</pointsymbol>
+                    <pointsize>3</pointsize>
+                    <rotationclassificationfieldname></rotationclassificationfieldname>
+                    <scaleclassificationfieldname></scaleclassificationfieldname>
+                    <outlinecolor red="0" blue="0" green="0" />
+                    <outlinestyle>SolidLine</outlinestyle>
+                    <outlinewidth>0.4</outlinewidth>
+                    <fillcolor red="218" blue="53" green="32" />
+                    <fillpattern>SolidPattern</fillpattern>
+                    <texturepath></texturepath>
+                </symbol>
+            </singlesymbol>
+            <labelfield>name</labelfield>
+            <labelattributes>
+                <label fieldname="name" text="Label" />
+                <family fieldname="" name="Sans Serif" />
+                <size fieldname="" units="pt" value="8" />
+                <bold fieldname="" on="0" />
+                <italic fieldname="" on="0" />
+                <underline fieldname="" on="0" />
+                <color fieldname="" red="0" blue="0" green="0" />
+                <x fieldname="" />
+                <y fieldname="" />
+                <offset x="0" y="0" units="pt" yfieldname="" xfieldname="" />
+                <angle fieldname="" value="0" auto="0" />
+                <alignment fieldname="" value="center" />
+                <buffercolor fieldname="" red="255" blue="255" green="255" />
+                <buffersize fieldname="" units="pt" value="1" />
+                <bufferenabled fieldname="" on="" />
+                <multilineenabled fieldname="" on="" />
+            </labelattributes>
+        </maplayer>
+        <maplayer minimumScale="0" maximumScale="0" minLabelScale="1" maxLabelScale="1e+08" geometry="Point" type="vector" hasScaleBasedVisibilityFlag="0" scaleBasedLabelVisibilityFlag="0" >
+            <id>_public___neighborhoods___the_geom__sql_20081006160816639</id>
+            <datasource>dbname='EventDB' host=localhost port=5432 user='webapp' password='burdocken' table="neighborhoods" (the_geom) sql=</datasource>
+            <layername>neighborhoods</layername>
+            <srs>
+                <spatialrefsys>
+                    <proj4>+proj=longlat +ellps=GRS80 +datum=NAD83 +no_defs </proj4>
+                    <srsid>3293</srsid>
+                    <srid>4269</srid>
+                    <epsg>4269</epsg>
+                    <description>NAD83</description>
+                    <projectionacronym>longlat</projectionacronym>
+                    <ellipsoidacronym>GRS80</ellipsoidacronym>
+                    <geographicflag>false</geographicflag>
+                </spatialrefsys>
+            </srs>
+            <transparencyLevelInt>186</transparencyLevelInt>
+            <provider>postgres</provider>
+            <displayfield>name</displayfield>
+            <label>0</label>
+            <attributeactions/>
+            <singlesymbol>
+                <symbol>
+                    <lowervalue></lowervalue>
+                    <uppervalue></uppervalue>
+                    <label></label>
+                    <pointsymbol>hard:circle</pointsymbol>
+                    <pointsize>3</pointsize>
+                    <rotationclassificationfieldname></rotationclassificationfieldname>
+                    <scaleclassificationfieldname></scaleclassificationfieldname>
+                    <outlinecolor red="0" blue="0" green="0" />
+                    <outlinestyle>SolidLine</outlinestyle>
+                    <outlinewidth>0.4</outlinewidth>
+                    <fillcolor red="3" blue="113" green="10" />
+                    <fillpattern>SolidPattern</fillpattern>
+                    <texturepath></texturepath>
+                </symbol>
+            </singlesymbol>
+            <labelattributes>
+                <label fieldname="" text="Label" />
+                <family fieldname="" name="Sans Serif" />
+                <size fieldname="" units="pt" value="12" />
+                <bold fieldname="" on="0" />
+                <italic fieldname="" on="0" />
+                <underline fieldname="" on="0" />
+                <color fieldname="" red="0" blue="0" green="0" />
+                <x fieldname="" />
+                <y fieldname="" />
+                <offset x="0" y="0" units="pt" yfieldname="" xfieldname="" />
+                <angle fieldname="" value="0" auto="0" />
+                <alignment fieldname="" value="center" />
+                <buffercolor fieldname="" red="255" blue="255" green="255" />
+                <buffersize fieldname="" units="pt" value="1" />
+                <bufferenabled fieldname="" on="" />
+                <multilineenabled fieldname="" on="" />
+            </labelattributes>
+        </maplayer>
+        <maplayer minimumScale="0" maximumScale="0" minLabelScale="1" maxLabelScale="1e+08" geometry="Point" type="vector" hasScaleBasedVisibilityFlag="0" scaleBasedLabelVisibilityFlag="0" >
+            <id>_public___population_centers___the_geom__sql_20081006160817553</id>
+            <datasource>dbname='EventDB' host=localhost port=5432 user='webapp' password='burdocken' table="population_centers" (the_geom) sql=</datasource>
+            <layername>population_centers</layername>
+            <srs>
+                <spatialrefsys>
+                    <proj4>+proj=longlat +ellps=GRS80 +datum=NAD83 +no_defs </proj4>
+                    <srsid>3293</srsid>
+                    <srid>4269</srid>
+                    <epsg>4269</epsg>
+                    <description>NAD83</description>
+                    <projectionacronym>longlat</projectionacronym>
+                    <ellipsoidacronym>GRS80</ellipsoidacronym>
+                    <geographicflag>false</geographicflag>
+                </spatialrefsys>
+            </srs>
+            <transparencyLevelInt>255</transparencyLevelInt>
+            <provider>postgres</provider>
+            <displayfield>name</displayfield>
+            <label>0</label>
+            <attributeactions/>
+            <singlesymbol>
+                <symbol>
+                    <lowervalue></lowervalue>
+                    <uppervalue></uppervalue>
+                    <label></label>
+                    <pointsymbol>hard:circle</pointsymbol>
+                    <pointsize>3</pointsize>
+                    <rotationclassificationfieldname></rotationclassificationfieldname>
+                    <scaleclassificationfieldname></scaleclassificationfieldname>
+                    <outlinecolor red="0" blue="0" green="0" />
+                    <outlinestyle>SolidLine</outlinestyle>
+                    <outlinewidth>0.4</outlinewidth>
+                    <fillcolor red="199" blue="4" green="20" />
+                    <fillpattern>SolidPattern</fillpattern>
+                    <texturepath></texturepath>
+                </symbol>
+            </singlesymbol>
+            <labelfield>name</labelfield>
+            <labelattributes>
+                <label fieldname="name" text="Label" />
+                <family fieldname="" name="Lucida Grande" />
+                <size fieldname="" units="pt" value="10" />
+                <bold fieldname="" on="0" />
+                <italic fieldname="" on="0" />
+                <underline fieldname="" on="0" />
+                <color fieldname="" red="0" blue="0" green="0" />
+                <x fieldname="" />
+                <y fieldname="" />
+                <offset x="0" y="0" units="pt" yfieldname="" xfieldname="" />
+                <angle fieldname="" value="0" auto="0" />
+                <alignment fieldname="" value="center" />
+                <buffercolor fieldname="" red="255" blue="255" green="255" />
+                <buffersize fieldname="" units="pt" value="1" />
+                <bufferenabled fieldname="" on="" />
+                <multilineenabled fieldname="" on="" />
+            </labelattributes>
+        </maplayer>
+        <maplayer minimumScale="0" maximumScale="0" minLabelScale="1" maxLabelScale="1e+08" geometry="Point" type="vector" hasScaleBasedVisibilityFlag="0" scaleBasedLabelVisibilityFlag="0" >
+            <id>_public___states___the_geom__sql_20081006160817728</id>
+            <datasource>dbname='EventDB' host=localhost port=5432 user='webapp' password='burdocken' table="states" (the_geom) sql=</datasource>
+            <layername>states</layername>
+            <srs>
+                <spatialrefsys>
+                    <proj4>+proj=longlat +ellps=GRS80 +datum=NAD83 +no_defs </proj4>
+                    <srsid>3293</srsid>
+                    <srid>4269</srid>
+                    <epsg>4269</epsg>
+                    <description>NAD83</description>
+                    <projectionacronym>longlat</projectionacronym>
+                    <ellipsoidacronym>GRS80</ellipsoidacronym>
+                    <geographicflag>false</geographicflag>
+                </spatialrefsys>
+            </srs>
+            <transparencyLevelInt>255</transparencyLevelInt>
+            <provider>postgres</provider>
+            <displayfield>name</displayfield>
+            <label>0</label>
+            <attributeactions/>
+            <singlesymbol>
+                <symbol>
+                    <lowervalue></lowervalue>
+                    <uppervalue></uppervalue>
+                    <label></label>
+                    <pointsymbol>hard:circle</pointsymbol>
+                    <pointsize>3</pointsize>
+                    <rotationclassificationfieldname></rotationclassificationfieldname>
+                    <scaleclassificationfieldname></scaleclassificationfieldname>
+                    <outlinecolor red="0" blue="0" green="0" />
+                    <outlinestyle>SolidLine</outlinestyle>
+                    <outlinewidth>0.4</outlinewidth>
+                    <fillcolor red="254" blue="255" green="255" />
+                    <fillpattern>SolidPattern</fillpattern>
+                    <texturepath></texturepath>
+                </symbol>
+            </singlesymbol>
+            <labelattributes>
+                <label fieldname="" text="Label" />
+                <family fieldname="" name="Sans Serif" />
+                <size fieldname="" units="pt" value="12" />
+                <bold fieldname="" on="0" />
+                <italic fieldname="" on="0" />
+                <underline fieldname="" on="0" />
+                <color fieldname="" red="0" blue="0" green="0" />
+                <x fieldname="" />
+                <y fieldname="" />
+                <offset x="0" y="0" units="pt" yfieldname="" xfieldname="" />
+                <angle fieldname="" value="0" auto="0" />
+                <alignment fieldname="" value="center" />
+                <buffercolor fieldname="" red="255" blue="255" green="255" />
+                <buffersize fieldname="" units="pt" value="1" />
+                <bufferenabled fieldname="" on="" />
+                <multilineenabled fieldname="" on="" />
+            </labelattributes>
+        </maplayer>
+        <maplayer minimumScale="1" maximumScale="1" minLabelScale="1" maxLabelScale="1e+08" geometry="Point" type="vector" hasScaleBasedVisibilityFlag="0" scaleBasedLabelVisibilityFlag="0" >
+            <id>_public___users___the_geom__sql_20081006160818040</id>
+            <datasource>dbname='EventDB' host=localhost port=5432 user='webapp' password='burdocken' table="users" (the_geom) sql=</datasource>
+            <layername>users</layername>
+            <srs>
+                <spatialrefsys>
+                    <proj4>+proj=longlat +ellps=GRS80 +datum=NAD83 +no_defs </proj4>
+                    <srsid>3293</srsid>
+                    <srid>4269</srid>
+                    <epsg>4269</epsg>
+                    <description>NAD83</description>
+                    <projectionacronym>longlat</projectionacronym>
+                    <ellipsoidacronym>GRS80</ellipsoidacronym>
+                    <geographicflag>false</geographicflag>
+                </spatialrefsys>
+            </srs>
+            <transparencyLevelInt>255</transparencyLevelInt>
+            <provider>postgres</provider>
+            <edittypes>
+                <edittype type="0" name="birthdate" />
+                <edittype type="0" name="confirmation_code" />
+                <edittype type="0" name="created_at" />
+                <edittype type="0" name="email" />
+                <edittype type="0" name="first_name" />
+                <edittype type="0" name="has_fresh_context_data" />
+                <edittype type="0" name="id" />
+                <edittype type="0" name="is_admin" />
+                <edittype type="0" name="is_database" />
+                <edittype type="0" name="is_familial" />
+                <edittype type="0" name="is_suspended" />
+                <edittype type="0" name="itunes_last_finished_at" />
+                <edittype type="0" name="itunes_last_started_at" />
+                <edittype type="0" name="last_name" />
+                <edittype type="0" name="last_recommendation_email" />
+                <edittype type="0" name="latitude" />
+                <edittype type="0" name="longitude" />
+                <edittype type="0" name="modified_at" />
+                <edittype type="0" name="netflix_last_finished_at" />
+                <edittype type="0" name="netflix_last_started_at" />
+                <edittype type="0" name="netflix_rss_id" />
+                <edittype type="0" name="password_hash" />
+                <edittype type="0" name="recommendation_email_error" />
+                <edittype type="0" name="trust" />
+                <edittype type="0" name="username" />
+                <edittype type="0" name="uuid" />
+                <edittype type="0" name="wants_news" />
+                <edittype type="0" name="wants_offers" />
+                <edittype type="0" name="wants_recommendations" />
+                <edittype type="0" name="zipcode" />
+            </edittypes>
+            <displayfield>username</displayfield>
+            <label>1</label>
+            <attributeactions/>
+            <singlesymbol>
+                <symbol>
+                    <lowervalue></lowervalue>
+                    <uppervalue></uppervalue>
+                    <label></label>
+                    <pointsymbol>svg:/Applications/qgis-1.0.0/qgis1.0.0.app/Contents/MacOS/share/qgis/svg/gpsicons/dollar.svg</pointsymbol>
+                    <pointsize>1.4</pointsize>
+                    <rotationclassificationfieldname></rotationclassificationfieldname>
+                    <scaleclassificationfieldname></scaleclassificationfieldname>
+                    <outlinecolor red="0" blue="0" green="0" />
+                    <outlinestyle>SolidLine</outlinestyle>
+                    <outlinewidth>0.4</outlinewidth>
+                    <fillcolor red="175" blue="118" green="30" />
+                    <fillpattern>SolidPattern</fillpattern>
+                    <texturepath></texturepath>
+                </symbol>
+            </singlesymbol>
+            <labelfield>username</labelfield>
+            <labelattributes>
+                <label fieldname="username" text="Label" />
+                <family fieldname="" name="Lucida Grande" />
+                <size fieldname="" units="pt" value="8" />
+                <bold fieldname="" on="0" />
+                <italic fieldname="" on="0" />
+                <underline fieldname="" on="0" />
+                <color fieldname="" red="0" blue="0" green="0" />
+                <x fieldname="" />
+                <y fieldname="" />
+                <offset x="0" y="0" units="pt" yfieldname="" xfieldname="" />
+                <angle fieldname="" value="0" auto="0" />
+                <alignment fieldname="" value="center" />
+                <buffercolor fieldname="" red="255" blue="255" green="255" />
+                <buffersize fieldname="" units="pt" value="1" />
+                <bufferenabled fieldname="" on="" />
+                <multilineenabled fieldname="" on="" />
+            </labelattributes>
+        </maplayer>
+        <maplayer minimumScale="1" maximumScale="1" minLabelScale="1" maxLabelScale="1e+08" geometry="Point" type="vector" hasScaleBasedVisibilityFlag="0" scaleBasedLabelVisibilityFlag="0" >
+            <id>_public___venues___the_geom__sql_20081006160818345</id>
+            <datasource>dbname='EventDB' host=localhost port=5432 user='webapp' password='burdocken' table="venues" (the_geom) sql=</datasource>
+            <layername>venues</layername>
+            <srs>
+                <spatialrefsys>
+                    <proj4>+proj=longlat +ellps=GRS80 +datum=NAD83 +no_defs </proj4>
+                    <srsid>3293</srsid>
+                    <srid>4269</srid>
+                    <epsg>4269</epsg>
+                    <description>NAD83</description>
+                    <projectionacronym>longlat</projectionacronym>
+                    <ellipsoidacronym>GRS80</ellipsoidacronym>
+                    <geographicflag>false</geographicflag>
+                </spatialrefsys>
+            </srs>
+            <transparencyLevelInt>255</transparencyLevelInt>
+            <provider>postgres</provider>
+            <edittypes>
+                <edittype type="0" name="adult_bargain_ticket_price" />
+                <edittype type="0" name="adult_ticket_price" />
+                <edittype type="0" name="age_restriction_description" />
+                <edittype type="0" name="alcohol" />
+                <edittype type="0" name="alcohol_description" />
+                <edittype type="0" name="child_ticket_price" />
+                <edittype type="0" name="city_id" />
+                <edittype type="0" name="closed_reason" />
+                <edittype type="0" name="county" />
+                <edittype type="0" name="created_at" />
+                <edittype type="0" name="description" />
+                <edittype type="0" name="dupe_geocode_verified" />
+                <edittype type="0" name="email_address" />
+                <edittype type="0" name="geocode_precision" />
+                <edittype type="0" name="hours" />
+                <edittype type="0" name="id" />
+                <edittype type="0" name="is_pauli_exclusive" />
+                <edittype type="0" name="latitude" />
+                <edittype type="0" name="longitude" />
+                <edittype type="0" name="market" />
+                <edittype type="0" name="modified_at" />
+                <edittype type="0" name="name" />
+                <edittype type="0" name="notes" />
+                <edittype type="0" name="num_screens" />
+                <edittype type="0" name="operating_hours" />
+                <edittype type="0" name="parking" />
+                <edittype type="0" name="parking_description" />
+                <edittype type="0" name="phone_number" />
+                <edittype type="0" name="popularity" />
+                <edittype type="0" name="price_comment" />
+                <edittype type="0" name="seating" />
+                <edittype type="0" name="seating_capacity" />
+                <edittype type="0" name="senior_ticket_price" />
+                <edittype type="0" name="sound" />
+                <edittype type="0" name="street_address" />
+                <edittype type="0" name="ticket_url" />
+                <edittype type="0" name="ticketing" />
+                <edittype type="0" name="website" />
+                <edittype type="0" name="zipcode" />
+            </edittypes>
+            <displayfield>name</displayfield>
+            <label>1</label>
+            <attributeactions/>
+            <singlesymbol>
+                <symbol>
+                    <lowervalue></lowervalue>
+                    <uppervalue></uppervalue>
+                    <label></label>
+                    <pointsymbol>hard:circle</pointsymbol>
+                    <pointsize>1</pointsize>
+                    <rotationclassificationfieldname></rotationclassificationfieldname>
+                    <scaleclassificationfieldname></scaleclassificationfieldname>
+                    <outlinecolor red="0" blue="0" green="0" />
+                    <outlinestyle>SolidLine</outlinestyle>
+                    <outlinewidth>0.4</outlinewidth>
+                    <fillcolor red="138" blue="204" green="24" />
+                    <fillpattern>SolidPattern</fillpattern>
+                    <texturepath></texturepath>
+                </symbol>
+            </singlesymbol>
+            <labelfield>name</labelfield>
+            <labelattributes>
+                <label fieldname="name" text="Label" />
+                <family fieldname="" name="Lucida Grande" />
+                <size fieldname="" units="pt" value="8" />
+                <bold fieldname="" on="0" />
+                <italic fieldname="" on="0" />
+                <underline fieldname="" on="0" />
+                <color fieldname="" red="0" blue="0" green="0" />
+                <x fieldname="" />
+                <y fieldname="" />
+                <offset x="0" y="0" units="pt" yfieldname="" xfieldname="" />
+                <angle fieldname="" value="0" auto="0" />
+                <alignment fieldname="" value="center" />
+                <buffercolor fieldname="" red="255" blue="255" green="255" />
+                <buffersize fieldname="" units="pt" value="1" />
+                <bufferenabled fieldname="" on="" />
+                <multilineenabled fieldname="" on="" />
+            </labelattributes>
+        </maplayer>
+        <maplayer minimumScale="0" maximumScale="0" minLabelScale="1" maxLabelScale="1e+08" geometry="Point" type="vector" hasScaleBasedVisibilityFlag="0" scaleBasedLabelVisibilityFlag="0" >
+            <id>areas20081006170200805</id>
+            <datasource>/Users/tibor/trunk/CultureMob/db/data/areas.shp</datasource>
+            <layername>areas</layername>
+            <srs>
+                <spatialrefsys>
+                    <proj4>+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs </proj4>
+                    <srsid>3344</srsid>
+                    <srid>4326</srid>
+                    <epsg>4326</epsg>
+                    <description>WGS 84</description>
+                    <projectionacronym>longlat</projectionacronym>
+                    <ellipsoidacronym>WGS84</ellipsoidacronym>
+                    <geographicflag>false</geographicflag>
+                </spatialrefsys>
+            </srs>
+            <transparencyLevelInt>98</transparencyLevelInt>
+            <provider>ogr</provider>
+            <displayfield>name</displayfield>
+            <label>1</label>
+            <attributeactions/>
+            <singlesymbol>
+                <symbol>
+                    <lowervalue></lowervalue>
+                    <uppervalue></uppervalue>
+                    <label></label>
+                    <pointsymbol>hard:circle</pointsymbol>
+                    <pointsize>3</pointsize>
+                    <rotationclassificationfieldname></rotationclassificationfieldname>
+                    <scaleclassificationfieldname></scaleclassificationfieldname>
+                    <outlinecolor red="0" blue="0" green="0" />
+                    <outlinestyle>SolidLine</outlinestyle>
+                    <outlinewidth>0.4</outlinewidth>
+                    <fillcolor red="198" blue="247" green="191" />
+                    <fillpattern>SolidPattern</fillpattern>
+                    <texturepath></texturepath>
+                </symbol>
+            </singlesymbol>
+            <labelfield>name</labelfield>
+            <labelattributes>
+                <label fieldname="name" text="Label" />
+                <family fieldname="" name="Sans Serif" />
+                <size fieldname="" units="pt" value="10" />
+                <bold fieldname="" on="0" />
+                <italic fieldname="" on="0" />
+                <underline fieldname="" on="0" />
+                <color fieldname="" red="0" blue="0" green="0" />
+                <x fieldname="" />
+                <y fieldname="" />
+                <offset x="0" y="0" units="pt" yfieldname="" xfieldname="" />
+                <angle fieldname="" value="0" auto="0" />
+                <alignment fieldname="" value="center" />
+                <buffercolor fieldname="" red="255" blue="255" green="255" />
+                <buffersize fieldname="" units="pt" value="1" />
+                <bufferenabled fieldname="" on="" />
+                <multilineenabled fieldname="" on="" />
+            </labelattributes>
+        </maplayer>
+    </projectlayers>
+    <properties>
+        <SpatialRefSys>
+            <ProjectSRSProj4String type="QString" >+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs</ProjectSRSProj4String>
+        </SpatialRefSys>
+        <Gui>
+            <SelectionColorBluePart type="int" >0</SelectionColorBluePart>
+            <CanvasColorGreenPart type="int" >255</CanvasColorGreenPart>
+            <CanvasColorRedPart type="int" >255</CanvasColorRedPart>
+            <SelectionColorRedPart type="int" >255</SelectionColorRedPart>
+            <SelectionColorGreenPart type="int" >255</SelectionColorGreenPart>
+            <CanvasColorBluePart type="int" >255</CanvasColorBluePart>
+        </Gui>
+        <Digitizing>
+            <LayerSnappingList type="QStringList" >
+                <value>_public___population_centers___the_geom__sql_20081006160817553</value>
+                <value>_public___states___the_geom__sql_20081006160817728</value>
+                <value>areas20081006170200805</value>
+            </LayerSnappingList>
+            <LayerSnappingEnabledList type="QStringList" >
+                <value>disabled</value>
+                <value>disabled</value>
+                <value>disabled</value>
+            </LayerSnappingEnabledList>
+            <LayerSnapToList type="QStringList" >
+                <value>to_vertex</value>
+                <value>to_vertex</value>
+                <value>to_vertex</value>
+            </LayerSnapToList>
+            <AvoidPolygonIntersections type="int" >0</AvoidPolygonIntersections>
+            <TopologicalEditing type="int" >0</TopologicalEditing>
+            <LayerSnappingToleranceList type="QStringList" >
+                <value>0.000000</value>
+                <value>0.000000</value>
+                <value>0.000000</value>
+            </LayerSnappingToleranceList>
+        </Digitizing>
+        <PositionPrecision>
+            <DecimalPlaces type="int" >2</DecimalPlaces>
+            <Automatic type="bool" >true</Automatic>
+        </PositionPrecision>
+    </properties>
+</qgis>
