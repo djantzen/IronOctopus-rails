@@ -7,7 +7,7 @@ class LoadStates < ActiveRecord::Migration
 
   def down
     execute <<-OES
-      delete from application.states;
+      truncate application.states;
       select pg_catalog.setval('states_state_id_seq', 1, true);
     OES
   end

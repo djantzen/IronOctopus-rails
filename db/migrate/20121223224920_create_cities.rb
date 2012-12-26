@@ -10,6 +10,9 @@ class CreateCities < ActiveRecord::Migration
         created_at timestamptz not null default now()
       );
 
+      create index on application.cities using gist (the_geom);
+      create index on application.cities (name, state_id);
+
       grant select on application.cities to reader;
       grant delete, insert, update on application.cities to writer;
       grant select, update, usage on application.cities_city_id_seq to writer;

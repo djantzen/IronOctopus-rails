@@ -7,7 +7,7 @@ class LoadCities < ActiveRecord::Migration
 
   def down
     execute <<-OES
-      delete from application.cities
+      truncate application.cities;
       select pg_catalog.setval('cities_city_id_seq', 1, true);
     OES
   end

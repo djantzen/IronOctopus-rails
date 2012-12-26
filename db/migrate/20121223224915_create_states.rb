@@ -9,6 +9,10 @@ class CreateStates < ActiveRecord::Migration
         created_at timestamptz not null default now()
       );
 
+      create index on application.states using gist (the_geom);
+      create index on application.states (name);
+      create index on application.states (abbr);
+
       grant select on application.states to reader;
       grant delete, insert, update on application.states to writer;
       grant select, update, usage on application.states_state_id_seq to writer;

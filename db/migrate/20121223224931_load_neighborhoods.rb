@@ -7,7 +7,7 @@ class LoadNeighborhoods < ActiveRecord::Migration
 
   def down
     execute <<-OES
-      delete from application.neighborhoods
+      truncate application.neighborhoods;
       select pg_catalog.setval('neighborhoods_neighborhood_id_seq', 1, true);
     OES
   end
