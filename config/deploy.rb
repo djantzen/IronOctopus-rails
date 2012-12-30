@@ -59,9 +59,9 @@ namespace :bundle do
 end
 
 after "deploy:update_code", "bundle:install"
+after "deploy:update_code", "deploy:set_email_password"
 after "deploy:update_code", "deploy:set_database_passwords"
 after "deploy:set_database_passwords", "deploy:migrate_production"
-after "deploy:update_code", "deploy:set_email_password"
 
 # Uncomment if you are using Rails' asset pipeline
 load 'deploy/assets'

@@ -1,8 +1,8 @@
 class LoadTimezones < ActiveRecord::Migration
   def up
-    data_source = File.open(Rails.root.to_s + "/db/scripts/init_timezones.sql")
-    data = data_source.read
-    execute data
+    #data_source = File.open(Rails.root.to_s + "/db/scripts/init_timezones.sql")
+    #data = data_source.read
+    #execute data
   end
 
   def down
