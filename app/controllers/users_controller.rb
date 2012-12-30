@@ -7,11 +7,16 @@ class UsersController < ApplicationController
 
   def new 
     @user = User.new
+    @states = State.order(:name)
   end
 
   def create
     @user = User.new(params[:user])
     invitation_uuid = params[:invitation_uuid]
+    city_name, state_name = params[:city].split(/,/)
+    city = City.find_by_name_and_state(city_name, state_name)
+    @user.city = city
+
     User.transaction do
 
       if @user.save

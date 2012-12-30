@@ -11,7 +11,7 @@ class CreateNeighborhoods < ActiveRecord::Migration
       );
 
       create index on application.neighborhoods using gist (the_geom);
-      create index on application.neighborhoods (name, city_id, state_id);
+      create unique index on application.neighborhoods (name, city_id, state_id);
 
       grant select on application.neighborhoods to reader;
       grant delete, insert, update on application.neighborhoods to writer;

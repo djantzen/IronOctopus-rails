@@ -2,13 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46f8a447-b9ed-44ae-be1c-95fe4e4f3fab" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20121223224916_load_states.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20121223224920_create_cities.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20121223224921_load_cities.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20121223224930_create_neighborhoods.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20121223224931_load_neighborhoods.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/stylesheets/users.css.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/cities_controller.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20121229041139_todays_routines_updated.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/activities/_create_or_update.html.haml" afterPath="$PROJECT_DIR$/app/views/activities/_create_or_update.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/users.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/users.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/city.rb" afterPath="$PROJECT_DIR$/app/models/city.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/state.rb" afterPath="$PROJECT_DIR$/app/models/state.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/timezone.rb" afterPath="$PROJECT_DIR$/app/models/timezone.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/user.rb" afterPath="$PROJECT_DIR$/app/models/user.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/new.html.haml" afterPath="$PROJECT_DIR$/app/views/users/new.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20121223224915_create_states.rb" afterPath="$PROJECT_DIR$/db/migrate/20121223224915_create_states.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20121223224930_create_neighborhoods.rb" afterPath="$PROJECT_DIR$/db/migrate/20121223224930_create_neighborhoods.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20121223224940_create_timezones.rb" afterPath="$PROJECT_DIR$/db/migrate/20121223224940_create_timezones.rb" />
     </list>
     <ignored path="IronOctopus-rails.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,19 +42,98 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="gis_workflow.txt" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/data/gis_workflow.txt">
+      <file leaf-file-name="users_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="0" selection-start="395" selection-end="395" vertical-scroll-proportion="0.0">
+            <state line="16" column="0" selection-start="489" selection-end="489" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="__20120122034570_create_action_log.rb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/db/migrate/__20120122034570_create_action_log.rb">
+      <file leaf-file-name="20121001200430_create_scheduled_programs.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20121001200430_create_scheduled_programs.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="2" selection-start="711" selection-end="711" vertical-scroll-proportion="0.3923077">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="20121018041139_todays_routines.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20121018041139_todays_routines.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="0" selection-start="81" selection-end="738" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="20121229041139_todays_routines_updated.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20121229041139_todays_routines_updated.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="25" column="16" selection-start="1048" selection-end="1048" vertical-scroll-proportion="0.6188119">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="new.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/users/new.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="26" selection-start="328" selection-end="328" vertical-scroll-proportion="-6.875">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="users.css.scss" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/users.css.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="10" selection-start="190" selection-end="190" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="city.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/city.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="21" selection-start="549" selection-end="549" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cities_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/cities_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="7" selection-start="340" selection-end="340" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="users.js.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/users.js.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="0" selection-start="415" selection-end="415" vertical-scroll-proportion="0.0">
+              <folding>
+                <marker date="1356817189000" expanded="true" signature="26:774" placeholder="{...}" />
+                <marker date="1356817189000" expanded="true" signature="57:770" placeholder="{&quot;minLength&quot;: 3...}" />
+                <marker date="1356817189000" expanded="true" signature="123:764" placeholder="{...}" />
+                <marker date="1356817189000" expanded="true" signature="130:763" placeholder="{&quot;type&quot;: &quot;GET&quot;...}" />
+                <marker date="1356817189000" expanded="true" signature="357:478" placeholder="{...}" />
+                <marker date="1356817189000" expanded="true" signature="364:478" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/user.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="0" selection-start="349" selection-end="349" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -68,22 +155,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/features/programs.feature" />
-        <option value="$PROJECT_DIR$/app/controllers/routines_controller.rb" />
-        <option value="$PROJECT_DIR$/test/functional/routines_controller_test.rb" />
-        <option value="$PROJECT_DIR$/app/views/activities/_create_or_update.html.haml" />
-        <option value="$PROJECT_DIR$/db/migrate/20121208232253_load_postgis.rb" />
-        <option value="$PROJECT_DIR$/db/scripts/postgis-small.sql" />
+        <option value="$PROJECT_DIR$/app/models/timezone.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20121223224940_create_timezones.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20121223224915_create_states.rb" />
-        <option value="$PROJECT_DIR$/db/scripts/init_states.sql-small" />
-        <option value="$PROJECT_DIR$/db/migrate/20121223224916_load_states.rb" />
-        <option value="$PROJECT_DIR$/db/scripts/init_states.sql" />
-        <option value="$PROJECT_DIR$/db/migrate/20121223224920_create_cities.rb" />
-        <option value="$PROJECT_DIR$/db/migrate/20121223224921_load_cities.rb" />
-        <option value="$PROJECT_DIR$/db/scripts/init_cities.sql" />
         <option value="$PROJECT_DIR$/db/migrate/20121223224930_create_neighborhoods.rb" />
-        <option value="$PROJECT_DIR$/db/scripts/init_neighborhoods.sql" />
-        <option value="$PROJECT_DIR$/db/migrate/20121223224931_load_neighborhoods.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20121223224920_create_cities.rb" />
+        <option value="$PROJECT_DIR$/app/models/state.rb" />
+        <option value="$PROJECT_DIR$/config/routes.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/cities_controller.rb" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/users.js.coffee" />
+        <option value="$PROJECT_DIR$/app/views/users/new.html.haml" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/users.css.scss" />
+        <option value="$PROJECT_DIR$/app/models/city.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20121230053731_add_city_to_users.rb" />
+        <option value="$PROJECT_DIR$/app/models/user.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20121229041139_todays_routines_updated.rb" />
       </list>
     </option>
   </component>
@@ -95,7 +182,6 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1" />
     <option name="y" value="22" />
     <option name="width" value="1280" />
     <option name="height" value="774" />
@@ -145,6 +231,17 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="RailsProjectView" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -191,7 +288,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
+              <option name="myItemId" value="migrate" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -205,27 +302,52 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="db" />
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IronOctopus-rails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IronOctopus-rails" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="migrate" />
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stylesheets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IronOctopus-rails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IronOctopus-rails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="RailsProjectView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -261,10 +383,10 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/db/migrate" />
+      <recent name="$PROJECT_DIR$/app/controllers" />
+      <recent name="$PROJECT_DIR$/app/models" />
       <recent name="$PROJECT_DIR$/features" />
       <recent name="$PROJECT_DIR$/app/views/users" />
-      <recent name="$PROJECT_DIR$/config" />
-      <recent name="$PROJECT_DIR$/app/models" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/db/scripts" />
@@ -747,14 +869,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="22" width="1280" height="774" extended-state="6" />
+    <frame x="0" y="22" width="1280" height="774" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26256078" sideWeight="0.6750369" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28200972" sideWeight="0.6750369" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36484492" sideWeight="0.99694" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32843652" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
@@ -831,105 +953,121 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/routines/_measure_selector.html.haml">
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="2" selection-start="141" selection-end="141" vertical-scroll-proportion="0.0">
+        <state line="85" column="27" selection-start="2877" selection-end="2877" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile">
+    <entry file="file://$PROJECT_DIR$/app/controllers/activities_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="0" selection-start="658" selection-end="658" vertical-scroll-proportion="-0.48883376" />
+        <state line="9" column="7" selection-start="300" selection-end="300" vertical-scroll-proportion="0.3668478">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20121119224536_create_password_reset_requests.rb">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/activities.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="76" selection-end="938" vertical-scroll-proportion="0.77205884" />
+        <state line="13" column="24" selection-start="477" selection-end="477" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20121223224915_create_states.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/cities_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="68" selection-start="494" selection-end="494" vertical-scroll-proportion="0.0">
+        <state line="10" column="7" selection-start="340" selection-end="340" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/users.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="0" selection-start="415" selection-end="415" vertical-scroll-proportion="0.0">
           <folding>
-            <marker date="1356468067000" expanded="true" signature="-1:-1" placeholder="heredoc ..." />
+            <marker date="1356817189000" expanded="true" signature="26:774" placeholder="{...}" />
+            <marker date="1356817189000" expanded="true" signature="57:770" placeholder="{&quot;minLength&quot;: 3...}" />
+            <marker date="1356817189000" expanded="true" signature="123:764" placeholder="{...}" />
+            <marker date="1356817189000" expanded="true" signature="130:763" placeholder="{&quot;type&quot;: &quot;GET&quot;...}" />
+            <marker date="1356817189000" expanded="true" signature="357:478" placeholder="{...}" />
+            <marker date="1356817189000" expanded="true" signature="364:478" placeholder="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20121223224916_load_states.rb">
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/users.css.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="74" selection-start="126" selection-end="126" vertical-scroll-proportion="0.0">
+        <state line="7" column="10" selection-start="190" selection-end="190" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/scripts/init_states.sql">
+    <entry file="file://$PROJECT_DIR$/app/models/city.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="50" selection-start="258" selection-end="258" vertical-scroll-proportion="0.0">
+        <state line="16" column="21" selection-start="549" selection-end="549" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20121223224921_load_cities.rb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20121017000611_add_time_zone_to_users.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="16" selection-start="16" selection-end="16" vertical-scroll-proportion="0.0">
+        <state line="12" column="0" selection-start="51" selection-end="309" vertical-scroll-proportion="0.46632123">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20121223224920_create_cities.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="177" selection-end="177" vertical-scroll-proportion="0.0">
+        <state line="28" column="0" selection-start="45" selection-end="906" vertical-scroll-proportion="0.8897059">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/scripts/init_cities.sql">
+    <entry file="file://$PROJECT_DIR$/app/views/users/new.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="259" selection-end="259" vertical-scroll-proportion="-828.252">
+        <state line="13" column="26" selection-start="328" selection-end="328" vertical-scroll-proportion="-6.875">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
+    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="16" selection-start="460" selection-end="460" vertical-scroll-proportion="0.0">
+        <state line="10" column="0" selection-start="349" selection-end="349" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/scripts/init_neighborhoods.sql">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20121230053731_add_city_to_users.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="37" selection-start="245" selection-end="245" vertical-scroll-proportion="0.22765599">
+        <state line="3" column="85" selection-start="165" selection-end="165" vertical-scroll-proportion="0.07317073">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20121223224931_load_neighborhoods.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="5" selection-start="193" selection-end="193" vertical-scroll-proportion="0.11942675">
+        <state line="16" column="0" selection-start="489" selection-end="489" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20121223224930_create_neighborhoods.rb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20121001200430_create_scheduled_programs.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="18" selection-start="79" selection-end="79" vertical-scroll-proportion="0.046153847">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/data/gis_workflow.txt">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20121018041139_todays_routines.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="395" selection-end="395" vertical-scroll-proportion="0.0">
+        <state line="16" column="0" selection-start="81" selection-end="738" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/__20120122034570_create_action_log.rb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20121229041139_todays_routines_updated.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="2" selection-start="711" selection-end="711" vertical-scroll-proportion="0.3923077">
+        <state line="25" column="16" selection-start="1048" selection-end="1048" vertical-scroll-proportion="0.6188119">
           <folding />
         </state>
       </provider>

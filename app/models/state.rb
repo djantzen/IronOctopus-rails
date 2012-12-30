@@ -1,5 +1,6 @@
-class City < ActiveRecord::Base
+class State < ActiveRecord::Base
 
-  belongs_to :state
+  default_scope select((column_names - ['the_geom']).map { |column_name| "#{table_name}.#{column_name}"})
 
+  has_many :cities
 end

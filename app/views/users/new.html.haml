@@ -20,6 +20,10 @@
       = f.label :email
       = f.text_field :email
     .field
+      .ui-widget
+        = f.label :city
+        = text_field_tag :city, "", :id => 'city-select', :class => 'ui-autocomplete-input'
+    .field
       = f.label :password
       = f.password_field :password
     .field

@@ -83,6 +83,7 @@ IronOctopus::Application.routes.draw do
   get "/users/:user_id/programs/is_name_unique/:program_id" => "programs#is_name_unique", :as => "is_program_name_unique"
   get "/activities/is_name_unique/:activity_id" => "activities#is_name_unique", :as => "is_activity_name_unique"
   get "/implements/is_name_unique/:implement_id" => "implements#is_name_unique", :as => "is_implement_name_unique"
+  get "/cities/search/:name" => "cities#search", :as => "search_cities"
 
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "log_in" => "sessions#new", :as => "log_in"

@@ -9,6 +9,7 @@ class CreateTimezones < ActiveRecord::Migration
       );
 
       create index on application.timezones using gist (the_geom);
+      create unique index on application.timezones (tzid);
 
       grant select on application.timezones to reader;
       grant delete, insert, update on application.timezones to writer;

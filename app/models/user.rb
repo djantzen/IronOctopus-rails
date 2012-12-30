@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   validates_presence_of :last_name, :on => :create
   validates_presence_of :login, :on => :create
   validates_presence_of :email, :on => :create
+  validates_presence_of :city, :on => :create
   validates_presence_of :password, :on => :create
   validates_uniqueness_of :login
   validates_uniqueness_of :email
@@ -26,6 +27,7 @@ class User < ActiveRecord::Base
   has_many :unused_licenses, :class_name => 'License', :foreign_key => :trainer_id, :conditions => "status = 'new'"
   has_many :invitations, :foreign_key => :trainer_id
   has_one :confirmation
+  belongs_to :city
   has_many :password_reset_requests
 
   has_and_belongs_to_many :clients, :class_name => 'User', :foreign_key => :client_id, :association_foreign_key => :trainer_id,

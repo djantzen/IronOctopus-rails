@@ -10,8 +10,8 @@ class CreateStates < ActiveRecord::Migration
       );
 
       create index on application.states using gist (the_geom);
-      create index on application.states (name);
-      create index on application.states (abbr);
+      create unique index on application.states (name);
+      create unique index on application.states (abbr);
 
       grant select on application.states to reader;
       grant delete, insert, update on application.states to writer;
