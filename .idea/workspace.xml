@@ -2,21 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46f8a447-b9ed-44ae-be1c-95fe4e4f3fab" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/stylesheets/users.css.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/cities_controller.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20121229041139_todays_routines_updated.rb" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/db/migrate/20121229041139_todays_routines_updated.rb" afterPath="$PROJECT_DIR$/db/migrate/20121229041139_todays_routines_updated_for_timezone.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/users.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/users.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/city.rb" afterPath="$PROJECT_DIR$/app/models/city.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/state.rb" afterPath="$PROJECT_DIR$/app/models/state.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/timezone.rb" afterPath="$PROJECT_DIR$/app/models/timezone.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/user.rb" afterPath="$PROJECT_DIR$/app/models/user.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/new.html.haml" afterPath="$PROJECT_DIR$/app/views/users/new.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20121223224915_create_states.rb" afterPath="$PROJECT_DIR$/db/migrate/20121223224915_create_states.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20121223224930_create_neighborhoods.rb" afterPath="$PROJECT_DIR$/db/migrate/20121223224930_create_neighborhoods.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20121223224940_create_timezones.rb" afterPath="$PROJECT_DIR$/db/migrate/20121223224940_create_timezones.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/settings.html.haml" afterPath="$PROJECT_DIR$/app/views/users/settings.html.haml" />
     </list>
     <ignored path="IronOctopus-rails.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,34 +37,25 @@
       <file leaf-file-name="users_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="0" selection-start="489" selection-end="489" vertical-scroll-proportion="0.0">
+            <state line="96" column="0" selection-start="2828" selection-end="2828" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="20121001200430_create_scheduled_programs.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/migrate/20121001200430_create_scheduled_programs.rb">
+      <file leaf-file-name="application_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="5" column="0" selection-start="108" selection-end="108" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="20121018041139_todays_routines.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/migrate/20121018041139_todays_routines.rb">
+      <file leaf-file-name="settings.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/users/settings.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="0" selection-start="81" selection-end="738" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="20121229041139_todays_routines_updated.rb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/db/migrate/20121229041139_todays_routines_updated.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="16" selection-start="1048" selection-end="1048" vertical-scroll-proportion="0.6188119">
+            <state line="12" column="49" selection-start="394" selection-end="394" vertical-scroll-proportion="-7.5">
               <folding />
             </state>
           </provider>
@@ -81,7 +64,7 @@
       <file leaf-file-name="new.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/users/new.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="26" selection-start="328" selection-end="328" vertical-scroll-proportion="-6.875">
+            <state line="25" column="0" selection-start="485" selection-end="629" vertical-scroll-proportion="-15.625">
               <folding />
             </state>
           </provider>
@@ -96,19 +79,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="city.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="city.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/models/city.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="21" selection-start="549" selection-end="549" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cities_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/cities_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="7" selection-start="340" selection-end="340" vertical-scroll-proportion="0.0">
+            <state line="22" column="16" selection-start="760" selection-end="760" vertical-scroll-proportion="0.5365854">
               <folding />
             </state>
           </provider>
@@ -133,7 +107,7 @@
       <file leaf-file-name="user.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/user.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="0" selection-start="349" selection-end="349" vertical-scroll-proportion="0.0">
+            <state line="59" column="0" selection-start="2226" selection-end="2226" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -155,9 +129,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/models/timezone.rb" />
-        <option value="$PROJECT_DIR$/db/migrate/20121223224940_create_timezones.rb" />
-        <option value="$PROJECT_DIR$/db/migrate/20121223224915_create_states.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20121223224930_create_neighborhoods.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20121223224920_create_cities.rb" />
         <option value="$PROJECT_DIR$/app/models/state.rb" />
@@ -166,11 +137,14 @@
         <option value="$PROJECT_DIR$/app/assets/javascripts/users.js.coffee" />
         <option value="$PROJECT_DIR$/app/views/users/new.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/users.css.scss" />
-        <option value="$PROJECT_DIR$/app/models/city.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20121230053731_add_city_to_users.rb" />
-        <option value="$PROJECT_DIR$/app/models/user.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20121229041139_todays_routines_updated.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20121230171517_drop_timezone_from_users.rb" />
+        <option value="$PROJECT_DIR$/app/models/user.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/users/settings.html.haml" />
+        <option value="$PROJECT_DIR$/app/models/city.rb" />
       </list>
     </option>
   </component>
@@ -289,6 +263,46 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="migrate" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IronOctopus-rails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IronOctopus-rails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IronOctopus-rails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IronOctopus-rails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="users" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -953,27 +967,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="27" selection-start="2877" selection-end="2877" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/activities_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="7" selection-start="300" selection-end="300" vertical-scroll-proportion="0.3668478">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/activities.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="24" selection-start="477" selection-end="477" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/cities_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="7" selection-start="340" selection-end="340" vertical-scroll-proportion="0.0">
@@ -1002,37 +995,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/city.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="21" selection-start="549" selection-end="549" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20121017000611_add_time_zone_to_users.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="51" selection-end="309" vertical-scroll-proportion="0.46632123">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20121223224920_create_cities.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="28" column="0" selection-start="45" selection-end="906" vertical-scroll-proportion="0.8897059">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/users/new.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="26" selection-start="328" selection-end="328" vertical-scroll-proportion="-6.875">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="349" selection-end="349" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1044,30 +1009,79 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20121229041139_todays_routines_updated_for_timezone.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="489" selection-end="489" vertical-scroll-proportion="0.0">
+        <state line="0" column="38" selection-start="38" selection-end="38" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20121001200430_create_scheduled_programs.rb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20121017000611_add_time_zone_to_users.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="5" column="0" selection-start="65" selection-end="194" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20121230171517_drop_timezone_from_users.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="82" selection-end="82" vertical-scroll-proportion="0.11658031">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20121018041139_todays_routines.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="81" selection-end="738" vertical-scroll-proportion="0.0">
+        <state line="4" column="48" selection-start="129" selection-end="129" vertical-scroll-proportion="0.16085792">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20121229041139_todays_routines_updated.rb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20121001200430_create_scheduled_programs.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="16" selection-start="1048" selection-end="1048" vertical-scroll-proportion="0.6188119">
+        <state line="6" column="35" selection-start="336" selection-end="336" vertical-scroll-proportion="0.22058824">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="108" selection-end="108" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/users/new.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="0" selection-start="485" selection-end="629" vertical-scroll-proportion="-15.625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="96" column="0" selection-start="2828" selection-end="2828" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="59" column="0" selection-start="2226" selection-end="2226" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/users/settings.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="49" selection-start="394" selection-end="394" vertical-scroll-proportion="-7.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/city.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="16" selection-start="760" selection-end="760" vertical-scroll-proportion="0.5365854">
           <folding />
         </state>
       </provider>

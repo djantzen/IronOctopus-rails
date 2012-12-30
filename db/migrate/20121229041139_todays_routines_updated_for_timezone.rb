@@ -1,4 +1,4 @@
-class TodaysRoutinesUpdated < ActiveRecord::Migration
+class TodaysRoutinesUpdatedForTimezone < ActiveRecord::Migration
 
   def self.up
     execute <<-OES

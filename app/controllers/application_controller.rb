@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_time_zone
-    Time.zone = current_user.time_zone if current_user
+    Time.zone = current_user.timezone.tzid if current_user
   end
 
   private

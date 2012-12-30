@@ -42,8 +42,12 @@ class User < ActiveRecord::Base
     programs.uniq
   end
 
+  def timezone
+    city.timezone
+  end
+
   def local_time
-    Time.now.utc.in_time_zone(time_zone)
+    Time.now.utc.in_time_zone(timezone.tzid)
   end
 
   def to_param

@@ -58,7 +58,9 @@ class UsersController < ApplicationController
         if !params[:user][:new_password].blank? && params[:user][:new_password].eql?(params[:user][:confirm_password])
           @client.password = params[:user][:new_password]
         end
-        @client.time_zone = params[:user][:time_zone]
+        city_name, state_name = params[:city].split(/,/)
+        city = City.find_by_name_and_state(city_name, state_name)
+        @client.city = city
         @client.save
       end
     end

@@ -5,10 +5,7 @@ class City < ActiveRecord::Base
   belongs_to :state
 
   def timezone
-    sql = "select timezones.* from cities join " +
-          "timezones on (st_within(cities.the_geom, timezones.the_geom)) " +
-          "where cities.city_id = #{self.city_id}"
-    Timezone.find_by_sql(sql).first
+    Timezone.joins("inner join cities on st_within(cities.the_geom, timezones.the_geom)").where("city_id = ?", city_id).first
   end
 
   def self.find_by_name_and_state(city_name, state_name)
@@ -20,6 +17,10 @@ class City < ActiveRecord::Base
     #city = City.where("cities.name ='#{name}' and states.name='#{state}'") \
     #           .joins("inner join states using(state_id)").first
     cities.first
+  end
+
+  def display
+    "#{name}, #{state.name}"
   end
 
 end
