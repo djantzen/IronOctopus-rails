@@ -13,9 +13,6 @@ class City < ActiveRecord::Base
     city_name.strip!
     state_name.strip!
     cities = City.joins(:state).where("cities.name = ? and states.name = ?", city_name, state_name)
-
-    #city = City.where("cities.name ='#{name}' and states.name='#{state}'") \
-    #           .joins("inner join states using(state_id)").first
     cities.first
   end
 
