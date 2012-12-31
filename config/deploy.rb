@@ -49,6 +49,17 @@ namespace :deploy do
   end
 end
 
+namespace :database do
+  desc "backup the database and pull it down"
+  task :backup do
+    today = "#{Date.today.year}#{Date.today.month}#{Date.today.day}"
+    filename = "iron_octopus_#{today}.sql"
+    run "sudo su postgres -c 'pg_dump iron_octopus > /tmp/iron_octopus_#{today}.sql'"
+    run "tar czf /tmp/#{filename}.tgz /tmp/#{filename}"
+    download "/tmp/#{filename}.tgz", "/tmp/#{filename}.tgz"
+  end
+end
+
 namespace :bundle do
 
   desc "run bundle install and ensure all gem requirements are met"
