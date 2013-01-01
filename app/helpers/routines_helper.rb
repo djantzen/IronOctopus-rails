@@ -17,7 +17,7 @@ module RoutinesHelper
   end
 
   def get_initial_value(activity_set, metric)
-    metric_name = metric.name.downcase
+    metric_name = metric.name.downcase.gsub(/\s/, '_')
     unit_column_name = "#{metric_name}_unit" # distance_unit, duration_unit, resistance_unit, speed_unit
     raw_value = activity_set.nil? ? 1 : (eval("activity_set.measurement.#{metric_name}"))
     case unit_column_name

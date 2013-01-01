@@ -7,7 +7,8 @@ And /^Jill should receive an invitation email/ do
   post '/users', {
       :invitation_uuid => invitation_uuid,
       :user => { :first_name => 'Jill', :last_name => 'Client', :login => 'jill_the_client',
-                 :password => 'password', :password_confirmation => 'password', :email => 'jill_the_client@gmail.com' }
+                 :password => 'password', :password_confirmation => 'password', :email => 'jill_the_client@gmail.com' },
+      :city => 'Seattle, Washington'
   }
 
 end

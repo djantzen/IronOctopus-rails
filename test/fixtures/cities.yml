@@ -1,0 +1,12 @@
+chicago:
+  name: Chicago
+  state: illinois
+  the_geom: 0101000020AD100000000000809AE955C0000000E0CDEC4440
+honolulu:
+  name: Honolulu
+  state: hawaii
+  the_geom: 0101000020AD100000000000C060BB63C000000040C44D3540
+seattle:
+  name: Seattle
+  state: washington
+  the_geom: 0101000020AD100000000000A040955EC00000006098CD4740

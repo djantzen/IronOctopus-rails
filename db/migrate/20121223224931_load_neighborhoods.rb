@@ -1,5 +1,6 @@
 class LoadNeighborhoods < ActiveRecord::Migration
   def up
+    return if Rails.env.eql? 'migrate_test'
     data_source = File.open(Rails.root.to_s + "/db/scripts/init_neighborhoods.sql")
     data = data_source.read
     execute data

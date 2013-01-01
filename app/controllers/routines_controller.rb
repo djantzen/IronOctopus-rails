@@ -49,7 +49,7 @@ class RoutinesController < ApplicationController
     @body_parts = BodyPart.all
     @activity = Activity.new
     @activity_attributes = ActivityAttribute.all(:order => :name)
-    @metrics = Metric.all(:conditions => "name != 'None'")
+    @metrics = Metric.list
     allowed_to_create?
   end
 
@@ -144,6 +144,7 @@ class RoutinesController < ApplicationController
           :calories => set.measurement.calories,
           :distance => set.measurement.distance,
           :duration => set.measurement.duration,
+          :heart_rate => set.measurement.heart_rate,
           :incline => set.measurement.incline,
           :level => set.measurement.level,
           :resistance => set.measurement.resistance,
@@ -181,6 +182,7 @@ class RoutinesController < ApplicationController
           :cadence => activity_set_hash[:cadence].to_f,
           :distance => Unit.convert_to_meters(activity_set_hash[:distance].to_f, unit_hash[:distance_unit].name),
           :duration => Unit.convert_to_seconds(activity_set_hash[:duration].to_f, unit_hash[:duration_unit].name),
+          :heart_rate => activity_set_hash[:heart_rate].to_i,
           :incline => activity_set_hash[:incline].to_f,
           :level => activity_set_hash[:level].to_i,
           :repetitions => activity_set_hash[:repetitions].to_i,

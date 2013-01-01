@@ -7,4 +7,8 @@ class Metric < ActiveRecord::Base
     name
   end
 
+  def self.list
+    Metric.where("name != 'None'").order(:name).all
+  end
+
 end

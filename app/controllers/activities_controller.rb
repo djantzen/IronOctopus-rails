@@ -24,7 +24,7 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new
     @body_parts = BodyPart.all
     @implements = Implement.all
-    @metrics = Metric.all(:conditions => "name != 'None'")
+    @metrics = Metric.list
     @activity_types = ActivityType.all(:order => :name)
     @activity_attributes = ActivityAttribute.all(:order => :name)
     allowed_to_create?
