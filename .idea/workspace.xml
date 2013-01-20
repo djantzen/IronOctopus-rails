@@ -2,24 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46f8a447-b9ed-44ae-be1c-95fe4e4f3fab" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/fixtures/cities.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/fixtures/states.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/fixtures/timezones.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/area.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/neighborhood.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20130113234200_create_locations_areas_view.rb" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/db/migrate/__20120122034570_create_action_log.rb" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.generators" afterPath="$PROJECT_DIR$/.idea/.generators" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/IronOctopus-rails.iml" afterPath="$PROJECT_DIR$/.idea/IronOctopus-rails.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/activities_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/activities_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/routines_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/routines_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/routines_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/routines_helper.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/measurement.rb" afterPath="$PROJECT_DIR$/app/models/measurement.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/metric.rb" afterPath="$PROJECT_DIR$/app/models/metric.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/activity_list_item.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/activity_list_item.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/user.rb" afterPath="$PROJECT_DIR$/app/models/user.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/routines/_measure_selector.html.haml" afterPath="$PROJECT_DIR$/app/views/routines/_measure_selector.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20121223224916_load_states.rb" afterPath="$PROJECT_DIR$/db/migrate/20121223224916_load_states.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20121223224921_load_cities.rb" afterPath="$PROJECT_DIR$/db/migrate/20121223224921_load_cities.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20121223224931_load_neighborhoods.rb" afterPath="$PROJECT_DIR$/db/migrate/20121223224931_load_neighborhoods.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20121223224941_load_timezones.rb" afterPath="$PROJECT_DIR$/db/migrate/20121223224941_load_timezones.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/features/step_definitions/invitation_steps.rb" afterPath="$PROJECT_DIR$/features/step_definitions/invitation_steps.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/users.yml" afterPath="$PROJECT_DIR$/test/fixtures/users.yml" />
     </list>
     <ignored path="IronOctopus-rails.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,73 +39,64 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="routines_helper.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/helpers/routines_helper.rb">
+      <file leaf-file-name="location.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/location.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="0" selection-start="422" selection-end="422" vertical-scroll-proportion="0.0">
+            <state line="9" column="101" selection-start="360" selection-end="360" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_form.html.haml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/activity_sets/_form.html.haml">
+      <file leaf-file-name="20130111062353_create_locations.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20130111062353_create_locations.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="49" selection-start="911" selection-end="911" vertical-scroll-proportion="-5.625">
+            <state line="11" column="35" selection-start="452" selection-end="452" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_measure_selector.html.haml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/routines/_measure_selector.html.haml">
+      <file leaf-file-name="20130113234107_create_locations_neighborhoods_view.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20130113234107_create_locations_neighborhoods_view.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="85" selection-start="117" selection-end="117" vertical-scroll-proportion="-1.25">
+            <state line="9" column="36" selection-start="479" selection-end="479" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routines_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/routines_controller.rb">
+      <file leaf-file-name="20130113234200_create_locations_areas_view.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20130113234200_create_locations_areas_view.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="81" column="0" selection-start="2677" selection-end="2677" vertical-scroll-proportion="0.0">
+            <state line="6" column="60" selection-start="287" selection-end="287" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
+      <file leaf-file-name="20130113001434_create_areas.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20130113001434_create_areas.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="0" selection-start="320" selection-end="320" vertical-scroll-proportion="0.0">
+            <state line="20" column="97" selection-start="805" selection-end="805" vertical-scroll-proportion="0.6691176">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activities_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/activities_controller.rb">
+      <file leaf-file-name="neighborhood.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/neighborhood.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="18" selection-start="663" selection-end="663" vertical-scroll-proportion="0.0">
+            <state line="1" column="0" selection-start="40" selection-end="40" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="metric.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/metric.rb">
+      <file leaf-file-name="user.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/user.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="11" selection-start="130" selection-end="130" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="users_controller.rb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="0" selection-start="130" selection-end="130" vertical-scroll-proportion="0.07594936">
+            <state line="26" column="108" selection-start="1237" selection-end="1237" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -130,25 +115,28 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Rails console: IronOctopus-rails" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/db/migrate/20130101000524_add_heart_rate_to_measures.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/activities_controller.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/routines_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/activity_sets/_form.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/routines/_measure_selector.html.haml" />
-        <option value="$PROJECT_DIR$/test/fixtures/states.yml" />
-        <option value="$PROJECT_DIR$/test/fixtures/users.yml" />
-        <option value="$PROJECT_DIR$/db/migrate/20121223224916_load_states.rb" />
-        <option value="$PROJECT_DIR$/db/migrate/20121223224921_load_cities.rb" />
-        <option value="$PROJECT_DIR$/db/migrate/20121223224931_load_neighborhoods.rb" />
-        <option value="$PROJECT_DIR$/db/migrate/20121223224941_load_timezones.rb" />
-        <option value="$PROJECT_DIR$/test/fixtures/cities.yml" />
-        <option value="$PROJECT_DIR$/test/fixtures/timezones.yml" />
-        <option value="$PROJECT_DIR$/app/models/metric.rb" />
-        <option value="$PROJECT_DIR$/features/step_definitions/invitation_steps.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
+        <option value="$PROJECT_DIR$/lib/geocoder.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20130111054828_create_profiles.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20130112194056_my_spatial_table.rb" />
+        <option value="$PROJECT_DIR$/config/application.rb" />
+        <option value="$PROJECT_DIR$/Gemfile" />
+        <option value="$PROJECT_DIR$/db/migrate/20130112234107_create_locations_areas_view.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20130113234200_create_areas_locations_view.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/neighborhood.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20130113234200_create_locations_areas_view.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20130113234107_create_locations_neighborhoods_view.rb" />
+        <option value="$PROJECT_DIR$/app/models/neighborhood.rb" />
+        <option value="$PROJECT_DIR$/app/models/area.rb" />
+        <option value="$PROJECT_DIR$/app/models/location.rb" />
+        <option value="$PROJECT_DIR$/app/models/user.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20130111062353_create_locations.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20130113001434_create_areas.rb" />
       </list>
     </option>
   </component>
@@ -219,6 +207,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="RailsProjectView" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -261,27 +250,72 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IronOctopus-rails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IronOctopus-rails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IronOctopus-rails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IronOctopus-rails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="migrate" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IronOctopus-rails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IronOctopus-rails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="RailsProjectView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="111" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="151" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="recentsLimit" value="5" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="149" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="recentsLimit" value="5" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/archive/CultureMob/db/schema.rb" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="108" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="740" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="821" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="740" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="152" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="150" />
     <property name="GoToClass.includeJavaFiles" value="false" />
@@ -296,27 +330,27 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="options.lastSelected" value="Errors" />
-    <property name="restartRequiresConfirmation" value="true" />
-    <property name="options.searchVisible" value="true" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="Ruby.ViewRefParam.DefaultExtension" value="html.haml" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/test/fixtures" />
       <recent name="$PROJECT_DIR$/db/migrate" />
+      <recent name="$PROJECT_DIR$/test/fixtures" />
       <recent name="$PROJECT_DIR$/app/controllers" />
       <recent name="$PROJECT_DIR$/app/models" />
       <recent name="$PROJECT_DIR$/features" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/models" />
       <recent name="$PROJECT_DIR$/db/scripts" />
       <recent name="$PROJECT_DIR$/app/views/password_reset_requests" />
       <recent name="$PROJECT_DIR$/app/assets/javascripts/plugins" />
       <recent name="$PROJECT_DIR$/public" />
-      <recent name="$PROJECT_DIR$/doc" />
     </key>
   </component>
-  <component name="RunManager" selected="Test::Unit/Shoulda/Minitest.All tests in: functional">
+  <component name="RunManager" selected="IRB console.Rails console: IronOctopus-rails">
     <configuration default="false" name="All features in: features" type="CucumberRunConfigurationType" factoryName="Cucumber" temporary="true">
       <predefined_log_file id="RUBY_CUCUMBER" enabled="true" />
       <module name="IronOctopus-rails" />
@@ -349,35 +383,6 @@
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_RUNNER_PATH" VALUE="" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_RUNNER" VALUE="false" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SETTINGS_VERSION" VALUE="2" />
-      <RunnerSettings RunnerId="RubyRunner" />
-      <ConfigurationWrapper RunnerId="RubyRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="All tests in: test" type="TestUnitRunConfigurationType" factoryName="Test::Unit/Shoulda/Minitest" temporary="true">
-      <predefined_log_file id="RUBY_TESTUNIT" enabled="true" />
-      <module name="IronOctopus-rails" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift) -Itest" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$PROJECT_DIR$" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
-      <envs>
-        <env name="RAILS_ENV" value="test" />
-        <env name="JRUBY_OPTS" value="-X+O" />
-      </envs>
-      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="true" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
-        <COVERAGE_PATTERN ENABLED="true">
-          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
-        </COVERAGE_PATTERN>
-      </EXTENSION>
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="$PROJECT_DIR$/test" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/{*_test,test_*}.rb" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_METHOD_NAME" VALUE="" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="ALL_IN_FOLDER" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_OPTIONS" VALUE="" />
       <RunnerSettings RunnerId="RubyRunner" />
       <ConfigurationWrapper RunnerId="RubyRunner" />
       <method />
@@ -473,6 +478,29 @@
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_RUNNER" VALUE="false" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SETTINGS_VERSION" VALUE="2" />
       <RunnerSettings RunnerId="RubyRunner" />
+      <ConfigurationWrapper RunnerId="RubyRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Rails console: IronOctopus-rails" type="IrbRunConfigurationType" factoryName="IRB console" temporary="true">
+      <module name="IronOctopus-rails" />
+      <IRB_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
+      <IRB_RUN_CONFIG NAME="WORK DIR" VALUE="$PROJECT_DIR$" />
+      <IRB_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
+      <IRB_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
+      <IRB_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
+      <envs />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
+      <IRB_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$PROJECT_DIR$/script/rails" />
+      <IRB_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="console development" />
+      <IRB_RUN_CONFIG NAME="IS_RAILS_CONSOLE" VALUE="true" />
+      <RunnerSettings RunnerId="RubyDebugRunner" />
+      <RunnerSettings RunnerId="RubyRunner" />
+      <ConfigurationWrapper RunnerId="RubyDebugRunner" />
       <ConfigurationWrapper RunnerId="RubyRunner" />
       <method />
     </configuration>
@@ -592,6 +620,32 @@
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_OPTIONS" VALUE="" />
       <method />
     </configuration>
+    <configuration default="true" type="IrbRunConfigurationType" factoryName="IRB console">
+      <module name="" />
+      <IRB_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
+      <IRB_RUN_CONFIG NAME="WORK DIR" VALUE="" />
+      <IRB_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
+      <IRB_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
+      <IRB_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
+      <envs />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
+      <IRB_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="" />
+      <IRB_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="" />
+      <IRB_RUN_CONFIG NAME="IS_RAILS_CONSOLE" VALUE="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote">
+      <JSRemoteDebuggerConfigurationSettings>
+        <option name="engineId" value="embedded" />
+        <option name="fileUrl" />
+      </JSRemoteDebuggerConfigurationSettings>
+      <method />
+    </configuration>
     <configuration default="true" type="CucumberRunConfigurationType" factoryName="Cucumber">
       <predefined_log_file id="RUBY_CUCUMBER" enabled="true" />
       <module name="" />
@@ -623,13 +677,6 @@
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_RUNNER_PATH" VALUE="" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_RUNNER" VALUE="false" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SETTINGS_VERSION" VALUE="2" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote">
-      <JSRemoteDebuggerConfigurationSettings>
-        <option name="engineId" value="embedded" />
-        <option name="fileUrl" />
-      </JSRemoteDebuggerConfigurationSettings>
       <method />
     </configuration>
     <configuration default="false" name="Production: IronOctopus-rails" type="RailsRunConfigurationType" factoryName="Rails">
@@ -738,18 +785,18 @@
       <item index="2" class="java.lang.String" itemvalue="Rake.test" />
       <item index="3" class="java.lang.String" itemvalue="Rake.spec" />
       <item index="4" class="java.lang.String" itemvalue="Cucumber.All features in: features" />
-      <item index="5" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.All tests in: test" />
-      <item index="6" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.RoutinesControllerTest" />
-      <item index="7" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.All tests in: functional" />
-      <item index="8" class="java.lang.String" itemvalue="Cucumber.invitation" />
+      <item index="5" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.RoutinesControllerTest" />
+      <item index="6" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.All tests in: functional" />
+      <item index="7" class="java.lang.String" itemvalue="Cucumber.invitation" />
+      <item index="8" class="java.lang.String" itemvalue="IRB console.Rails console: IronOctopus-rails" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.All tests in: functional" />
-        <item index="1" class="java.lang.String" itemvalue="Cucumber.invitation" />
-        <item index="2" class="java.lang.String" itemvalue="Cucumber.All features in: features" />
-        <item index="3" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.RoutinesControllerTest" />
-        <item index="4" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.All tests in: test" />
+        <item index="0" class="java.lang.String" itemvalue="IRB console.Rails console: IronOctopus-rails" />
+        <item index="1" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.All tests in: functional" />
+        <item index="2" class="java.lang.String" itemvalue="Cucumber.invitation" />
+        <item index="3" class="java.lang.String" itemvalue="Cucumber.All features in: features" />
+        <item index="4" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.RoutinesControllerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -787,10 +834,9 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28803545" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298217" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29659644" sideWeight="0.6750369" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28038898" sideWeight="0.22895126" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22933549" sideWeight="0.6750369" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36484492" sideWeight="0.99694" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32843652" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
@@ -800,6 +846,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28803545" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
@@ -866,114 +913,102 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/db/migrate/20121223224931_load_neighborhoods.rb">
+    <entry file="file:///Library/Ruby/Gems/1.8/gems/activesupport-3.1.3/lib/active_support/callbacks.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="42" selection-start="101" selection-end="101" vertical-scroll-proportion="0.07772021">
+        <state line="395" column="0" selection-start="13060" selection-end="13060" vertical-scroll-proportion="0.33236995" />
+      </provider>
+    </entry>
+    <entry file="file:///Library/Ruby/Gems/1.8/gems/activerecord-3.1.3/lib/active_record/associations/association.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="158" column="13" selection-start="4956" selection-end="4956" vertical-scroll-proportion="0.028901733" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20130113234200_create_locations_areas_view.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="60" selection-start="287" selection-end="287" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20121223224941_load_timezones.rb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20130111054828_create_profiles.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="42" selection-start="97" selection-end="97" vertical-scroll-proportion="0.07772021">
-          <folding />
-        </state>
+        <state line="9" column="0" selection-start="375" selection-end="375" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20121223224940_create_timezones.rb">
+    <entry file="file://$PROJECT_DIR$/Gemfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="39" column="0" selection-start="929" selection-end="929" vertical-scroll-proportion="0.8902077" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20121223224920_create_cities.rb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20130111063405_create_locations_users.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/city.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="33" selection-end="33" vertical-scroll-proportion="0.07594936">
-          <folding />
-        </state>
+        <state line="2" column="18" selection-start="85" selection-end="85" vertical-scroll-proportion="0.08356546" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/routines_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="0" selection-start="2677" selection-end="2677" vertical-scroll-proportion="0.0">
+        <state line="81" column="1" selection-start="2678" selection-end="2678" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20130113234107_create_locations_neighborhoods_view.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="36" selection-start="479" selection-end="479" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/fixtures/cities.yml">
+    <entry file="file://$PROJECT_DIR$/app/models/area.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="8" selection-start="114" selection-end="114" vertical-scroll-proportion="0.0">
+        <state line="3" column="0" selection-start="139" selection-end="139" vertical-scroll-proportion="0.11658031">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/scripts/init_timezones.sql">
+    <entry file="file://$PROJECT_DIR$/app/models/state.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="242" column="77" selection-start="42075216" selection-end="42122028" vertical-scroll-proportion="0.33333334">
+        <state line="2" column="71" selection-start="105" selection-end="105" vertical-scroll-proportion="0.073529415">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/fixtures/timezones.yml">
+    <entry file="file://$PROJECT_DIR$/app/models/neighborhood.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="6" selection-start="1068186" selection-end="1068186" vertical-scroll-proportion="0.2658228">
+        <state line="1" column="0" selection-start="40" selection-end="40" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
+    <entry file="file:///Library/Ruby/Gems/1.8/gems/activerecord-3.1.3/lib/active_record/associations/builder/collection_association.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="320" selection-end="320" vertical-scroll-proportion="0.0">
+        <state line="22" column="0" selection-start="679" selection-end="679" vertical-scroll-proportion="0.3316062">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/activities_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/models/location.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="18" selection-start="663" selection-end="663" vertical-scroll-proportion="0.0">
+        <state line="9" column="101" selection-start="360" selection-end="360" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/metric.rb">
+    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="11" selection-start="130" selection-end="130" vertical-scroll-proportion="0.0">
+        <state line="26" column="108" selection-start="1237" selection-end="1237" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/fixtures/users.yml">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20130111062353_create_locations.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="11" column="35" selection-start="452" selection-end="452" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/features/invitation.feature">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20130113001434_create_areas.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="795" selection-end="795" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/features/step_definitions/invitation_steps.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="517" selection-end="517" vertical-scroll-proportion="0.37974682">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="130" selection-end="130" vertical-scroll-proportion="0.07594936">
+        <state line="20" column="97" selection-start="805" selection-end="805" vertical-scroll-proportion="0.6691176">
           <folding />
         </state>
       </provider>

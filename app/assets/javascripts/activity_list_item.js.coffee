@@ -25,6 +25,11 @@ class this.ActivitySetListItem
     delete_button = @activity_set_form.find(".delete-activity-set-button")
     okay_button = @activity_set_form.find(".okay-activity-set-button")
     clone_button = @activity_set_form.find(".clone-activity-set-button")
+    try
+      @activity_set_form.find("input.measure").spinner("destroy");
+    catch error
+
+    @activity_set_form.find("input.measure").spinner();
 
     delete_button.click =>
       activity_set_form = delete_button.parents("div.activity-set-form")
@@ -36,6 +41,8 @@ class this.ActivitySetListItem
 
     clone_button.click =>
       original = clone_button.parents("div.activity-set-form")
+      original.find("input.measure").spinner("destroy");
+
       clone = new ActivitySetListItem(original.clone())
       id = Util.generate_random_id()
       clone.find("a.accordion-toggle").attr("href", "#" + id)
@@ -45,4 +52,6 @@ class this.ActivitySetListItem
       clone.hide();
       clone.insertAfter(original)
       clone.show("puff");
+
+
     return @activity_set_form

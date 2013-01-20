@@ -76,12 +76,19 @@ GEM
     ffi (1.1.5)
     gherkin (2.11.2)
       json (>= 1.4.6)
+    graticule (2.2.0)
+      activesupport
+      happymapper (>= 0.3.0)
+      i18n
+      json
     haml (3.1.7)
     haml-rails (0.3.5)
       actionpack (>= 3.1, < 4.1)
       activesupport (>= 3.1, < 4.1)
       haml (~> 3.1)
       railties (>= 3.1, < 4.1)
+    happymapper (0.4.0)
+      libxml-ruby (~> 2.0)
     highline (1.6.14)
     hike (1.2.1)
     hpricot (0.8.6)
@@ -98,6 +105,7 @@ GEM
     libv8 (3.3.10.4)
     libwebsocket (0.1.5)
       addressable
+    libxml-ruby (2.4.0)
     linecache (0.46)
       rbx-require-relative (> 0.0.4)
     macaddr (1.6.1)
@@ -218,6 +226,7 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   execjs
+  graticule (~> 2.2.0)
   haml
   haml-rails
   hpricot

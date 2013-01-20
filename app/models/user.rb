@@ -29,6 +29,9 @@ class User < ActiveRecord::Base
   has_one :confirmation
   belongs_to :city
   has_many :password_reset_requests
+  has_and_belongs_to_many :locations
+  has_many :areas, :through => :locations
+  has_many :neighborhoods, :through => :locations
 
   has_and_belongs_to_many :clients, :class_name => 'User', :foreign_key => :client_id, :association_foreign_key => :trainer_id,
                           :join_table => 'user_relationships', :order => 'last_name, first_name'#, :conditions => [ "trainer_id != client_id" ]
