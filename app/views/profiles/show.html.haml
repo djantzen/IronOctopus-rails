@@ -1,0 +1,22 @@
+%h1
+  = @user.first_name
+  = @user.last_name
+
+%h2
+  Areas
+  - @user.areas.each do |area|
+    = area.name
+%h3
+  Neighborhoods
+%ul
+  - @user.neighborhoods.uniq.each do |neighborhood|
+    %li
+      = neighborhood.name
+%h4
+  About
+  = @user.first_name
+= @profile.creative
+= @profile.gender
+%h4 Trains at:
+- @user.locations.each do |location|
+  = location.name

@@ -1,0 +1,23 @@
+.container
+  #profile-create-update-form
+    = form_for [@user, @profile], :url => user_profile_path(@user, @profile) do |f|
+      - if @profile.errors.any?
+        .error_messages
+          %h2 Form is invalid
+          %ul
+            - for message in @profile.errors.full_messages
+              %li= message
+      .field
+        = f.label :creative
+        = f.text_area :creative, :class => 'required'
+      .field
+        = f.label :gender
+        = f.select :gender, options_for_select(['Male', 'Female'])
+      .field
+        = f.label :phone
+        = f.text_field :phone, :class => 'required'
+      .field
+        = f.label :email
+        = f.text_field :email, :class => 'required'
+      .actions
+        = f.submit "Save", :class => 'btn btn-primary btn-large'

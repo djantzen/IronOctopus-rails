@@ -14,7 +14,7 @@
         = link_to "You can use Markdown syntax here", "http://kramdown.rubyforge.org/quickref.html", :target => '_blank'
         = form.label :instructions, "Instructions"
         = form.text_area :instructions, :minlength => @validations[:activity][:instructions][:minlength], |
-                         :maxlength => @validations[:activity][:instructions][:maxlength], :value => 'None' |
+                         :maxlength => @validations[:activity][:instructions][:maxlength] |
         .btn-group
           - if via_ajax
             = render :partial => 'shared/button', :locals => { :button_id => 'cancel-activity-builder-button', |
@@ -28,7 +28,7 @@
           %ul#available-body-part-list.unstyled
             - group_body_parts_by_region(@body_parts).each_pair do |region, body_parts|
               %li
-                = region
+                %h5= region
               %ul.unstyled
                 - body_parts.each do |body_part|
                   %li
@@ -39,7 +39,7 @@
           %ul#available-implement-list.unstyled
             - group_implements_by_category(@implements).each_pair do |category, implements|
               %li
-                = category
+                %h5= category
               %ul.unstyled
                 - implements.each do |implement|
                   %li

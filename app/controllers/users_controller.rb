@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  respond_to :html
-  before_filter :authenticate_user, :except => [:new, :create]
+  respond_to :html, :json
+  before_filter :authenticate_user, :except => [:new, :create, :is_login_unique]
 
   def new
     @user = User.new
@@ -95,6 +95,14 @@ class UsersController < ApplicationController
   def settings
     @client = User.find_by_login(params[:user_id])
     allowed_to_update?
+  end
+
+  def is_login_unique
+    user = User.find_by_login(params[:login])
+    respond_with do |format|
+      format.json { render :json => user.nil? }
+    end
+
   end
 
   private

@@ -4,7 +4,7 @@ class CreateLocationsUsers < ActiveRecord::Migration
       create table application.locations_users (
         location_id integer not null references application.locations deferrable,
         user_id integer not null references application.users deferrable,
-        primary key (user_id, location_id)
+        primary key (location_id, user_id)
       );
 
       grant select on application.locations_users to reader;

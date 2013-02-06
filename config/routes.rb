@@ -56,11 +56,14 @@ IronOctopus::Application.routes.draw do
   resources :body_parts
   resources :devices
   resources :sessions
+  resources :locations
   resources :password_reset_requests
 
 #  match "trainers/:trainer_id/routines/:routine_key" => "routines#index"
 # (.:format)  optional
 # match => "/:year(/:month(/:day))" => info#about, :constraints => { :year => /\d{4}/ }
+ # get "/profiles/:user_id/new" => "profiles#new"
+#  get "/profiles/:user_id/new" => "profiles#new"
 
   resources :users do
     resources :work
@@ -69,6 +72,7 @@ IronOctopus::Application.routes.draw do
     resources :programs
     resources :licenses
     resources :invitations
+    resource :profile
   end
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
@@ -79,6 +83,7 @@ IronOctopus::Application.routes.draw do
   get "post_signup" => "welcome#post_signup"
   get "login" => "sessions#new"
 
+  get "/users/is_login_unique/:login" => "users#is_login_unique", :as => "is_login_unique"
   get "/users/:user_id/routines/is_name_unique/:routine_id" => "routines#is_name_unique", :as => "is_routine_name_unique"
   get "/users/:user_id/programs/is_name_unique/:program_id" => "programs#is_name_unique", :as => "is_program_name_unique"
   get "/activities/is_name_unique/:activity_id" => "activities#is_name_unique", :as => "is_activity_name_unique"

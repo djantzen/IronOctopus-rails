@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by_login(params[:login])
+    user = User.find_by_login(params[:login].downcase)
     if user && user.authenticate(params[:password]) && user.identity_confirmed
       session[:user_id] = user.user_id
       redirect_to user_path(user), :notice => "Logged in!"

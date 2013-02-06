@@ -1,33 +1,34 @@
 .container
   %h2 Sign Up
-  = form_for @user do |f|
-    - if @user.errors.any?
-      .error_messages
-        %h2 Form is invalid
-        %ul
-          - for message in @user.errors.full_messages
-            %li= message
-    .field
-      = f.label :first_name
-      = f.text_field :first_name
-    .field
-      = f.label :last_name
-      = f.text_field :last_name
-    .field
-      = f.label :login
-      = f.text_field :login
-    .field
-      = f.label :email
-      = f.text_field :email
-    .field
-      .ui-widget
-        = f.label :city
-        = text_field_tag :city, "", :id => 'city-select', :class => 'ui-autocomplete-input'
-    .field
-      = f.label :password
-      = f.password_field :password
-    .field
-      = f.label :password_confirmation
-      = f.password_field :password_confirmation
-    .actions
-      = f.submit "Sign Up", :class => 'btn btn-primary btn-large'
+  #new-user-form
+    = form_for @user do |f|
+      - if @user.errors.any?
+        .error_messages
+          %h2 Form is invalid
+          %ul
+            - for message in @user.errors.full_messages
+              %li= message
+      .field
+        = f.label :first_name
+        = f.text_field :first_name, :class => 'required'
+      .field.required
+        = f.label :last_name
+        = f.text_field :last_name, :class => 'required'
+      .field.required
+        = f.label :login
+        = f.text_field :login, :class => 'required is_login_acceptable is_login_unique'
+      .field.required
+        = f.label :email
+        = f.text_field :email, :class => 'required is_email_acceptable'
+      .field.required
+        .ui-widget
+          = f.label :city
+          = text_field_tag :city, "", :id => 'city-select', :class => 'ui-autocomplete-input required'
+      .field.required
+        = f.label :password
+        = f.password_field :password, :class => 'required is_password_acceptable'
+      .field.required
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation, :class => 'required is_password_acceptable'
+      .actions
+        = f.submit "Sign Up", :class => 'btn btn-primary btn-large'

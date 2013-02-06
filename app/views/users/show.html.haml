@@ -4,6 +4,12 @@
       %h3
         = @client.first_name
         = @client.last_name
+        - if @client.is_trainer?
+          .profile-link
+            - if @client.profile.nil?
+              = link_to("Create a Trainer Profile", new_user_profile_path(@client))
+            - else
+              = link_to("Manage Trainer Profile", edit_user_profile_path(@client, @client.profile))
     .span3.well
       %h3
         Today's Routines

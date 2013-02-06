@@ -26,6 +26,8 @@ class this.ActivitySetListItem
     okay_button = @activity_set_form.find(".okay-activity-set-button")
     clone_button = @activity_set_form.find(".clone-activity-set-button")
     try
+      # the spinner icons persist through a clone but can't be easily removed.
+      # try/catch this because on the first load there won't be a spnner to destroy.
       @activity_set_form.find("input.measure").spinner("destroy");
     catch error
 
@@ -41,9 +43,14 @@ class this.ActivitySetListItem
 
     clone_button.click =>
       original = clone_button.parents("div.activity-set-form")
-      original.find("input.measure").spinner("destroy");
+      try
+        # the spinner icons persist through a clone but can't be easily removed
+        # try/catch this because on the first load there won't be a spnner to destroy.
+        original.find("input.measure").spinner("destroy");
+      catch error
 
       clone = new ActivitySetListItem(original.clone())
+      original.find("input.measure").spinner();
       id = Util.generate_random_id()
       clone.find("a.accordion-toggle").attr("href", "#" + id)
       clone.find("div.accordion-body").attr("id", id)

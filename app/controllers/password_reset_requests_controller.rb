@@ -36,7 +36,8 @@ class PasswordResetRequestsController < ApplicationController
         @password_reset_request.save
         @user.password = reset_request[:new_password]
         @user.save
-        redirect_to :root
+        session[:user_id] = @user.user_id
+        redirect_to :root, :notice => "Logged in!"
       else
         @user.errors.add(:password, "Password does not match confirmation")
         render :action => :edit

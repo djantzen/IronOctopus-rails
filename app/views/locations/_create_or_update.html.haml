@@ -1,0 +1,27 @@
+.container
+  #location-create-update-form
+    = form_for @location do |form|
+      - if @location.errors.any?
+        .error_messages
+          %h2 Form is invalid
+          %ul
+            - for message in @location.errors.full_messages
+              %li= message
+      .field
+        = form.label :name
+        = form.text_field :name, :class => 'required'
+      .field
+        = form.label :street_address
+        = form.text_field :street_address, :class => 'required'
+      .field
+        .ui-widget
+          = form.label :city
+          = text_field_tag :city, @location.city.display, :id => 'city-select', :class => 'ui-autocomplete-input required'
+      .field
+        = form.label :postal_code
+        = form.text_field :postal_code, :class => 'required'
+      .field
+        = form.label :category
+        = form.select :category, options_for_select(Location::CATEGORIES)
+      .actions
+        = form.submit "Save", :class => 'btn btn-primary btn-large'
