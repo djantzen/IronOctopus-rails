@@ -4,9 +4,8 @@
       .span4
         %a.accordion-toggle{"data-parent" => "routine-activity-set-list", "data-toggle" => "collapse", :href => "##{template ? nil : activity_set.position}"}
           = activity.name
-      - if !defined?(performance) || !performance
-        .span1.handle.label
-          %i.icon-resize-vertical
+      .span1.handle.label
+        %i.icon-resize-vertical
   .activity-set-attributes.accordion-body.collapse.in{:id => template ? nil : activity_set.position}
     .accordion-inner.container
       = hidden_field_tag "routine[activity_sets][][activity]", activity.name
@@ -14,21 +13,17 @@
         .row
           - initial_value, unit = activity_set.nil? ? [0, nil] : get_initial_value(activity_set, metric)
           = render :partial => "routines/measure_selector", :locals => { :measure => metric.name, :interval => 1,            |
-            :initial_value => initial_value,                                                                                 |
-            :units => (defined?(performance) && performance) ? [unit.pluralize] : metric.units.map { |u| u.name.pluralize }, |
-            :unit => unit }                                                                                                  |
+                   :initial_value => initial_value, :units => metric.units.map { |u| u.name.pluralize }, |
+                   :unit => unit }                                                                                                  |
       .btn-group
-        - if defined?(performance) && performance
-          = submit_tag "Done", :class => "perform-activity-set-button btn btn-primary"
-        - else
-          = render :partial => 'shared/button', :locals => { :button_class => 'btn-primary okay-activity-set-button', |
-            :message => 'Ok',                                                                                         |
-            :icon => 'icon-ok' }                                                                                      |
-          -#
-          = render :partial => 'shared/button', :locals => { :button_class => 'delete-activity-set-button', |
-            :message => 'Delete',                                                                           |
-            :icon => 'icon-remove-sign' }                                                                   |
-          -#
-          = render :partial => 'shared/button', :locals => { :button_class => 'clone-activity-set-button', |
-            :message => 'Repeat',                                                                          |
-            :icon => 'icon-repeat' }                                                                       |
+        = render :partial => 'shared/button', :locals => { :button_class => 'btn-primary okay-activity-set-button', |
+          :message => 'Ok',                                                                                         |
+          :icon => 'icon-ok' }                                                                                      |
+        -#
+        = render :partial => 'shared/button', :locals => { :button_class => 'delete-activity-set-button', |
+          :message => 'Delete',                                                                           |
+          :icon => 'icon-remove-sign' }                                                                   |
+        -#
+        = render :partial => 'shared/button', :locals => { :button_class => 'clone-activity-set-button', |
+          :message => 'Repeat',                                                                          |
+          :icon => 'icon-repeat' }                                                                       |

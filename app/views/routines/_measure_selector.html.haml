@@ -1,8 +1,16 @@
-.measure_selector
-  %span.span1
+.measure-selector
+  .span1
     %label.measure_label{:for => "routine[activity_sets][][#{measure.downcase.gsub(/\s/, '_')}]"}
       = measure
   .span3
     %input.measure.required{:max => "10000", :min => "0", :name => "routine[activity_sets][][#{measure.downcase.gsub(/\s/, '_')}]", :value => initial_value}/
     - if defined? units and !units.empty? and !unit.eql?('None')
       = select_tag("routine[activity_sets][][#{measure.downcase}_unit]", options_for_select(units, (unit.nil? ? nil : unit.pluralize)), :class => "unit-selector")
+  - if defined?(performance) && performance
+    - if measure.eql? 'Duration'
+      Stopwatch
+  - else
+    .span2
+      .btn.remove-measure-selector-button
+        %i.icon-minus-sign
+        Remove

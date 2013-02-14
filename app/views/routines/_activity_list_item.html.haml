@@ -1,5 +1,5 @@
 %li.activity.facet-included-activity{:id => activity.name.to_identifier}
-  %a
+  %a.has-tooltip-right{:rel => "tooltip", :title => markup(activity.instructions)}
     = activity.name
   = render :partial => "activity_sets/form", :locals => { :activity => activity, |
            :activity_set => nil, :template => true }                             |

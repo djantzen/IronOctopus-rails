@@ -176,6 +176,11 @@ $(document).ready(function() {
     return false;
   });
 
+  $(".skip-activity-set-button").click(function() {
+    $(this).parents("form").remove();
+    return false;
+  })
+
   $(".new-activity-button").click(function() {
     var container = $(this).parents("#routine-builder-panel");
     var modal = container.find(".modal-activity-select");

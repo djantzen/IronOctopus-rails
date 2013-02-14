@@ -52,6 +52,5 @@ $(document).ready () ->
 
   $.validator.addMethod("is_password_acceptable", is_password_acceptable, "Your password must be at least 8 characters long");
 
-
   $("#new-user-form form").validate()
 

@@ -1,6 +1,6 @@
 module ApplicationHelper
 
-  def kramdown(text)
+  def markup(text)
     html = Kramdown::Document.new(text).to_html
     return raw(html)
   end

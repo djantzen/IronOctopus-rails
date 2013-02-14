@@ -1,0 +1,18 @@
+%div{:class => "accordion-group activity-set-form"}
+  .container
+    .accordion-heading.activity-display-name.row
+      .span4
+        %a.has-tooltip-bottom.accordion-toggle{:rel => "tooltip", :title => markup(activity.instructions), "data-parent" => "routine-activity-set-list", "data-toggle" => "collapse", :href => activity_set.position}
+          = activity.name
+    .activity-set-attributes.accordion-body.collapse.in{:id => activity_set.position }
+      .accordion-inner.container
+        = hidden_field_tag "routine[activity_sets][][activity]", activity.name
+        - activity.metrics.each do |metric|
+          .row
+            - initial_value, unit = activity_set.nil? ? [0, nil] : get_initial_value(activity_set, metric)
+            - if initial_value > 0
+              = render :partial => "routines/measure_selector", :locals => { :measure => metric.name, :interval => 1,       |
+                       :initial_value => initial_value, :units => [unit.pluralize], :unit => unit, :performance => true }                   |
+        .btn-group
+          = submit_tag "Done", :class => "perform-activity-set-button btn btn-primary"
+          = render :partial => "shared/button", :locals => { :button_class=> 'skip-activity-set-button', :message => 'Skip'}

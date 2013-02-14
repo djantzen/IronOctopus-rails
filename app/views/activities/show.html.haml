@@ -2,7 +2,7 @@
   .row
     %h2= @activity.name
     %div= @activity.activity_type.name
-    %div= kramdown(@activity.instructions)
+    %div= markup(@activity.instructions)
   .row
     .span3
       %h2 Anatomy

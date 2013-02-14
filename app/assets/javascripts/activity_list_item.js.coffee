@@ -22,6 +22,12 @@ class this.ActivityListItem
 
 class this.ActivitySetListItem
   constructor: (@activity_set_form) ->
+
+
+    @activity_set_form.find(".remove-measure-selector-button").click ->
+#      debugger
+      $(this).parents(".measure-selector").remove()
+
     delete_button = @activity_set_form.find(".delete-activity-set-button")
     okay_button = @activity_set_form.find(".okay-activity-set-button")
     clone_button = @activity_set_form.find(".clone-activity-set-button")
