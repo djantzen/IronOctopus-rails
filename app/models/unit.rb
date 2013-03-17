@@ -73,6 +73,26 @@ class Unit < ActiveRecord::Base
     seconds / 60.0
   end
 
+  def self.seconds_to_digital(seconds)
+    format = "%d:%02d"
+    digital = if seconds <= 60
+                sprintf(format, 0, seconds)
+              else
+                minutes = seconds / 60
+                remaining_seconds = seconds % 60
+                sprintf(format, minutes, remaining_seconds)
+              end
+    digital
+  end
+
+  def self.digital_to_seconds(digital)
+    return digital unless digital =~ /^\d{1,2}:\d{1,2}$/
+    minutes, seconds = digital.split(':').map do |s|
+      int = s.to_i
+    end
+    (minutes * 60) + seconds
+  end
+
   def self.convert_to_kilograms(resistance, from_unit)
     return resistance.to_f if resistance.nil? || from_unit.nil? || from_unit.eql?('None')
     case from_unit
@@ -162,27 +182,30 @@ class Unit < ActiveRecord::Base
   end
 
   def self.convert_to_seconds(duration, from_unit)
-    return duration.to_f if duration.nil? || from_unit.nil? || from_unit.eql?('None')
+#    return duration.to_f if duration.nil? || from_unit.nil? || from_unit.eql?('None')
     case from_unit
       when 'Second'
         duration
       when 'Minute'
         minutes_to_seconds(duration)
       else
-        raise ArgumentError.new("Cannot convert #{from_unit} to seconds")
+        digital_to_seconds(duration)
+#        raise ArgumentError.new("Cannot convert #{from_unit} to seconds")
     end
   end
 
   def self.convert_from_seconds(duration, to_unit)
-    return duration.to_f if duration.nil? || to_unit.nil? || to_unit.eql?('None')
-    case to_unit
-      when 'Second'
-        duration.to_f
-      when 'Minute'
-        seconds_to_minutes(duration)
-      else
-        raise ArgumentError.new("Cannot convert #{to_unit} from seconds")
-    end
+    return duration.to_f if duration.nil? || to_unit.nil?
+    #case to_unit
+    #  when 'None'
+        seconds_to_digital(duration)
+    #  when 'Second'
+    #    duration.to_f
+    #  when 'Minute'
+    #    seconds_to_minutes(duration)
+    #  else
+    #    raise ArgumentError.new("Cannot convert #{to_unit} from seconds")
+    #end
   end
 
   def to_s

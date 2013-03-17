@@ -179,7 +179,9 @@ $(document).ready(function() {
   $(".skip-activity-set-button").click(function() {
     $(this).parents("form").remove();
     return false;
-  })
+  });
+
+  $('.stopwatch').stopwatch().stopwatch('start')
 
   $(".new-activity-button").click(function() {
     var container = $(this).parents("#routine-builder-panel");

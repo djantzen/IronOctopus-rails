@@ -18,7 +18,9 @@
       - work.activity.metrics.each do |metric|
         .span2
           - value, unit = get_initial_value(work, metric)
-          = render :partial => "routines/measure_display", :locals => { :measure => metric.name, :value => value, :unit => (unit.pluralize unless unit.eql?('None')) }
+          = render :partial => "routines/measure_display",
+                    :locals => { :measure => metric.name, :measure_value => value,
+                                 :unit => (unit.pluralize unless unit.eql?('None')) }
       .span1
         = work.start_time
       .span1

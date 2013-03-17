@@ -18,6 +18,7 @@ gem "haml"
 gem "hpricot"
 gem "ruby_parser"
 gem "graticule", "~> 2.2.0"
+gem "globalize3", "~> 0.3.0"
 #gem "rgeo", "~> 0.3.20"
 #gem "rgeo-activerecord", "~> 0.4.6"
 #gem "activerecord-postgis-adapter", "~> 0.5.0"
@@ -34,8 +35,10 @@ group :assets do
 #  gem "uglifier", ">= 1.3.0"
 end
 
-gem "jquery-rails", "2.1.4"
-gem "jquery-ui-rails", "3.0.0"
+#gem "jquery-rails", "2.1.4"
+#gem "jquery-ui-rails", "3.0.0"
+gem "jquery-rails", "2.2.1"
+gem "jquery-ui-rails", "4.0.1"
 
 # To use ActiveModel has_secure_password
 # gem "bcrypt-ruby", "~> 3.0.0"

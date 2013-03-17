@@ -181,7 +181,7 @@ class RoutinesController < ApplicationController
           :calories => activity_set_hash[:calories].to_i,
           :cadence => activity_set_hash[:cadence].to_f,
           :distance => Unit.convert_to_meters(activity_set_hash[:distance].to_f, unit_hash[:distance_unit].name),
-          :duration => Unit.convert_to_seconds(activity_set_hash[:duration].to_f, unit_hash[:duration_unit].name),
+          :duration => Unit.convert_to_seconds(activity_set_hash[:duration], unit_hash[:duration_unit].name),
           :heart_rate => activity_set_hash[:heart_rate].to_i,
           :incline => activity_set_hash[:incline].to_f,
           :level => activity_set_hash[:level].to_i,

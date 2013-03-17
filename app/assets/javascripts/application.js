@@ -20,6 +20,31 @@ String.prototype.toIdentifier = function() {
   return this.replace(to_identifier_regexp, '').toLowerCase();
 };
 
+var seconds_to_digital = function(seconds) {
+  var format = "%d:%02d"
+  var digital = null;
+
+  if (seconds <= 60) {
+    digital = sprintf(format, 0, seconds);
+  } else {
+    var minutes = seconds / 60;
+    var remaining_seconds = seconds % 60;
+    digital = sprintf(format, minutes, remaining_seconds);
+  }
+  return digital;
+}
+
+var digital_to_seconds = function(digital) {
+  var p = new RegExp(/^\d{1,3}:\d{1,2}$/);
+  if (!digital.match(p)) {
+    return 0
+  }
+  var minutes = parseInt(digital.split(':')[0])
+  var seconds = parseInt(digital.split(':')[1])
+  var in_seconds = (minutes * 60) + seconds;
+  return in_seconds;
+}
+
 var Flasher = function() {
   var f = function() { alert("flash") };
   flash: f
@@ -30,6 +55,7 @@ $(document).ready(function() {
   $(".has-tooltip-bottom").tooltip({ delay: 500, placement: "bottom" });
   $(".has-tooltip-left").tooltip({ delay: 500, placement: "left" });
   $(".has-tooltip-right").tooltip({ delay: 500, placement: "right" });
+
 
 
 //  yepnope({

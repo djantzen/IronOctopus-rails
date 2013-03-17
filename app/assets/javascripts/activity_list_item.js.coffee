@@ -23,9 +23,7 @@ class this.ActivityListItem
 class this.ActivitySetListItem
   constructor: (@activity_set_form) ->
 
-
     @activity_set_form.find(".remove-measure-selector-button").click ->
-#      debugger
       $(this).parents(".measure-selector").remove()
 
     delete_button = @activity_set_form.find(".delete-activity-set-button")
@@ -33,11 +31,13 @@ class this.ActivitySetListItem
     clone_button = @activity_set_form.find(".clone-activity-set-button")
     try
       # the spinner icons persist through a clone but can't be easily removed.
-      # try/catch this because on the first load there won't be a spnner to destroy.
-      @activity_set_form.find("input.measure").spinner("destroy");
+      # try/catch this because on the first load there won't be a spinner to destroy.
+      @activity_set_form.find("input.spinner").spinner("destroy");
+      @activity_set_form.find("input.timespinner").timespinner("destroy");
     catch error
 
-    @activity_set_form.find("input.measure").spinner();
+    @activity_set_form.find("input.spinner").spinner({ min: 0 })
+    @activity_set_form.find("input.timespinner").timespinner();
 
     delete_button.click =>
       activity_set_form = delete_button.parents("div.activity-set-form")
@@ -51,8 +51,9 @@ class this.ActivitySetListItem
       original = clone_button.parents("div.activity-set-form")
       try
         # the spinner icons persist through a clone but can't be easily removed
-        # try/catch this because on the first load there won't be a spnner to destroy.
-        original.find("input.measure").spinner("destroy");
+        # try/catch this because on the first load there won't be a spinner to destroy.
+        original.find("input.spinner").spinner("destroy");
+        original.find("input.timespinner").timespinner("destroy");
       catch error
 
       clone = new ActivitySetListItem(original.clone())
