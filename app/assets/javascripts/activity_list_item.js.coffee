@@ -19,25 +19,37 @@ class this.ActivityListItem
     new ActivitySetListItem(new_activity_set)
     return new_activity_set
 
-
 class this.ActivitySetListItem
-  constructor: (@activity_set_form) ->
 
+  destroy_spinners: (activity_set_form) ->
+    activity_set_form.find("input.spinner").spinner("destroy")
+    activity_set_form.find("input.timespinner").timespinner("destroy")
+
+  init_spinners: (activity_set_form) ->
+    activity_set_form.find("input.spinner").spinner({ min: 0 })
+    activity_set_form.find("input.timespinner").timespinner()
+
+  init_stopwatch: (activity_set_form) ->
+    input = activity_set_form.find("input.timespinner")
+    input.stopwatch({format: "{MMM}:{ss}"})
+    toggle = activity_set_form.find(".toggle-stopwatch-button")
+
+    toggle.click ->
+      input.stopwatch("toggle")
+      toggle.toggleClass("btn-primary")
+      toggle.find("i").toggleClass("icon-start")
+      toggle.find("i").toggleClass("icon-stop")
+
+  constructor: (@activity_set_form) ->
     @activity_set_form.find(".remove-measure-selector-button").click ->
       $(this).parents(".measure-selector").remove()
 
     delete_button = @activity_set_form.find(".delete-activity-set-button")
     okay_button = @activity_set_form.find(".okay-activity-set-button")
     clone_button = @activity_set_form.find(".clone-activity-set-button")
-    try
-      # the spinner icons persist through a clone but can't be easily removed.
-      # try/catch this because on the first load there won't be a spinner to destroy.
-      @activity_set_form.find("input.spinner").spinner("destroy");
-      @activity_set_form.find("input.timespinner").timespinner("destroy");
-    catch error
 
-    @activity_set_form.find("input.spinner").spinner({ min: 0 })
-    @activity_set_form.find("input.timespinner").timespinner();
+    this.init_spinners(@activity_set_form)
+    this.init_stopwatch(@activity_set_form)
 
     delete_button.click =>
       activity_set_form = delete_button.parents("div.activity-set-form")
@@ -49,15 +61,10 @@ class this.ActivitySetListItem
 
     clone_button.click =>
       original = clone_button.parents("div.activity-set-form")
-      try
-        # the spinner icons persist through a clone but can't be easily removed
-        # try/catch this because on the first load there won't be a spinner to destroy.
-        original.find("input.spinner").spinner("destroy");
-        original.find("input.timespinner").timespinner("destroy");
-      catch error
-
+      # the spinner icons persist through a clone but are not functional and can't be removed after
+      this.destroy_spinners(original)
       clone = new ActivitySetListItem(original.clone())
-      original.find("input.measure").spinner();
+      this.init_spinners(original)
       id = Util.generate_random_id()
       clone.find("a.accordion-toggle").attr("href", "#" + id)
       clone.find("div.accordion-body").attr("id", id)

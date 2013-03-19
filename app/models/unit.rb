@@ -86,7 +86,7 @@ class Unit < ActiveRecord::Base
   end
 
   def self.digital_to_seconds(digital)
-    return digital unless digital =~ /^\d{1,2}:\d{1,2}$/
+    return digital unless digital =~ /^\d{1,3}:\d{1,2}$/
     minutes, seconds = digital.split(':').map do |s|
       int = s.to_i
     end

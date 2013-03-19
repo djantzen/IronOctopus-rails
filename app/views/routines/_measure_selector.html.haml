@@ -2,12 +2,15 @@
   .span1
     %label.measure_label{:for => "routine[activity_sets][][#{measure.downcase.gsub(/\s/, '_')}]"}
       = measure
-  .span3
+  .span3.input-controls
     - if measure.eql? "Duration"
-      %input.measure.timespinner.required{:name => "routine[activity_sets][][#{measure.downcase.gsub(/\s/, '_')}]", :value => initial_value}
-      (mm:ss)
+      %input.measure.timespinner.number.required{:name => "routine[activity_sets][][#{measure.downcase.gsub(/\s/, '_')}]", :value => initial_value}
+      - if defined?(performance) && performance
+        = render "work/stopwatch"
+      - else
+        (mmm:ss)
     - else
-      %input.measure.spinner.required{:name => "routine[activity_sets][][#{measure.downcase.gsub(/\s/, '_')}]", :value => initial_value}
+      %input.measure.spinner.number.required{:name => "routine[activity_sets][][#{measure.downcase.gsub(/\s/, '_')}]", :value => initial_value}
       - if defined? units and !units.empty? and !unit.eql?('None')
         = select_tag("routine[activity_sets][][#{measure.downcase}_unit]", options_for_select(units, (unit.nil? ? nil : unit.pluralize)), :class => "unit-selector")
   - if defined?(performance) && performance

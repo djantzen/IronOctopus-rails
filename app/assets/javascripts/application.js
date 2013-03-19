@@ -21,7 +21,7 @@ String.prototype.toIdentifier = function() {
 };
 
 var seconds_to_digital = function(seconds) {
-  var format = "%d:%02d"
+  var format = "%03d:%02d"
   var digital = null;
 
   if (seconds <= 60) {
