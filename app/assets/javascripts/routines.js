@@ -33,7 +33,12 @@ $(document).ready(function() {
     return unique;
   }
 
+  var duration_validator = function(digital_time) {
+    return (digital_time.match(DIGITAL_FORMAT) || digital_time.match(/^\d+$/)) ? true : false;
+  }
+
   $.validator.addMethod("is_routine_name_unique", routine_name_validator, "Routine name is already taken");
+  $.validator.addMethod("is_duration_valid", duration_validator, "MMM:SS or integer")
 
   $("#routine-form-panel form").validate();
 
@@ -168,20 +173,18 @@ $(document).ready(function() {
       search_facet_filtered_activities($("#activity-search-box"));
   });
 
-  $(".perform-activity-set-button").click(function() {
-    $(this).hide();
-    $(this).parents(".collapse").collapse("hide");
-    var form = $(this).parents("form");
-    form.submit();
-    return false;
-  });
+//  $(".perform-activity-set-button").click(function() {
+////    $(this).remove();
+////    $(this).parents(".collapse").collapse("hide");
+//    var form = $(this).parents("form");
+//    form.submit();
+//    return false;
+//  });
 
   $(".skip-activity-set-button").click(function() {
     $(this).parents("form").remove();
     return false;
   });
-
-  $('.stopwatch').stopwatch().stopwatch('start')
 
   $(".new-activity-button").click(function() {
     var container = $(this).parents("#routine-builder-panel");

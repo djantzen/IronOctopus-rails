@@ -110,22 +110,19 @@ class RoutinesController < ApplicationController
   def update
     @client = User.find_by_login(params[:user_id])
     @routine = Routine.first(:conditions => { :client_id => @client.user_id, :permalink => params[:id] })
-#    Routine.transaction do
-#      @routine.activity_sets.each do |activity_set|
-#        activity_set.delete
-#      end
-      @routine = normalize_routine(@routine, params[:routine])
-      if @routine.errors.empty?
-        respond_with do |format|
-          format.html { render :html => @routine }
-        end
-      else
-        @entity = @routine
-        respond_with do |format|
-          format.html { render :html => @entity, :template => "shared/entity_errors" }
-        end
+
+    @routine = normalize_routine(@routine, params[:routine])
+    if @routine.errors.empty?
+      respond_with do |format|
+        format.html { render :html => @routine }
       end
-#    end
+    else
+      @entity = @routine
+      respond_with do |format|
+        format.html { render :html => @entity, :template => "shared/entity_errors" }
+      end
+    end
+
   end
 
   def denormalize_routine(routine)
@@ -163,6 +160,7 @@ class RoutinesController < ApplicationController
       routine.activity_sets.each do |activity_set|
         activity_set.delete
       end
+      routine.activity_sets.clear
 
       position = 0
       (params[:activity_sets] || []).each do |activity_set_hash|

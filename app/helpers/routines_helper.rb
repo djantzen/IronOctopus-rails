@@ -42,7 +42,7 @@ module RoutinesHelper
     case unit_column_name
       when 'distance_unit'
         unit_name = activity_set.unit_set.distance_unit.name
-        value = Unit.convert_from_meters(raw_value, unit_name).round
+        value = Unit.convert_from_meters(raw_value, unit_name).round(1)
         [ MeasureValue.new(value) , unit_name ]
       when 'duration_unit'
         unit_name = activity_set.unit_set.duration_unit.name
@@ -50,11 +50,11 @@ module RoutinesHelper
         [ DurationMeasureValue.new(value), unit_name ]
       when 'resistance_unit'
         unit_name = activity_set.unit_set.resistance_unit.name
-        value = Unit.convert_from_kilograms(raw_value, unit_name).round
+        value = Unit.convert_from_kilograms(raw_value, unit_name).round(1)
         [ MeasureValue.new(value), unit_name ]
       when 'speed_unit'
         unit_name = activity_set.unit_set.speed_unit.name
-        value = Unit.convert_from_kilometers_per_hour(raw_value, unit_name).round
+        value = Unit.convert_from_kilometers_per_hour(raw_value, unit_name).round(1)
         [ MeasureValue.new(value), unit_name ]
       else
         [ MeasureValue.new(raw_value), 'None' ]

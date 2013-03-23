@@ -33,12 +33,16 @@ class this.ActivitySetListItem
     input = activity_set_form.find("input.timespinner")
     input.stopwatch({format: "{MMM}:{ss}"})
     toggle = activity_set_form.find(".toggle-stopwatch-button")
+    reset = activity_set_form.find(".reset-stopwatch-button")
 
     toggle.click ->
       input.stopwatch("toggle")
       toggle.toggleClass("btn-primary")
       toggle.find("i").toggleClass("icon-start")
       toggle.find("i").toggleClass("icon-stop")
+    reset.click ->
+      input.val("000:00")
+      input.stopwatch("reset")
 
   constructor: (@activity_set_form) ->
     @activity_set_form.find(".remove-measure-selector-button").click ->

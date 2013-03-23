@@ -5,4 +5,7 @@ class ActivitySet < ActiveRecord::Base
   belongs_to :routine
   belongs_to :unit_set
 
+  def to_s
+    "#{activity.name} in #{routine}"
+  end
 end

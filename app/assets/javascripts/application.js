@@ -34,9 +34,10 @@ var seconds_to_digital = function(seconds) {
   return digital;
 }
 
+var DIGITAL_FORMAT = new RegExp(/^\d{1,3}:\d{1,2}$/);
+
 var digital_to_seconds = function(digital) {
-  var p = new RegExp(/^\d{1,3}:\d{1,2}$/);
-  if (!digital.match(p)) {
+  if (!digital.match(DIGITAL_FORMAT)) {
     return 0
   }
   var minutes = parseInt(digital.split(':')[0])

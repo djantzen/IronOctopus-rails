@@ -20,3 +20,12 @@
 %h4 Trains at:
 - @user.locations.each do |location|
   = location.name
+
+%h2
+  Contact
+  %h4
+    Phone
+    = @profile.phone
+  %h4
+    Email
+    = @profile.email

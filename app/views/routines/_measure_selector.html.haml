@@ -4,7 +4,7 @@
       = measure
   .span3.input-controls
     - if measure.eql? "Duration"
-      %input.measure.timespinner.number.required{:name => "routine[activity_sets][][#{measure.downcase.gsub(/\s/, '_')}]", :value => initial_value}
+      %input.measure.timespinner.is_duration_valid.required{:name => "routine[activity_sets][][#{measure.downcase.gsub(/\s/, '_')}]", :value => initial_value}
       - if defined?(performance) && performance
         = render "work/stopwatch"
       - else
