@@ -1,3 +1,6 @@
+#modal-import-routine.modal.hide.fade
+  .modal-body
+    = render :partial => "routines/import_routine", :locals => { :via_ajax => true }
 #modal-activity-builder.modal.hide.fade
   .modal-body
     = render :partial => "activities/create_or_update", :locals => { :via_ajax => true }
@@ -118,6 +121,10 @@
             .span3
               = form.text_field :goal, :minlength => @validations[:routine][:goal][:minlength], |
                                 :maxlength => @validations[:routine][:goal][:maxlength], :class => "input-xlarge" |
+          .row
+            .span4
+              = render :partial => "shared/button", :locals => { :button_id => "import-routine-button",
+                                                                 :message => "Import another routine" }
           .row
             %ul#routine-activity-set-list.accordion
               - @routine.activity_sets.each do |activity_set|

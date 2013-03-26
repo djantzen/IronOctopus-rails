@@ -173,14 +173,6 @@ $(document).ready(function() {
       search_facet_filtered_activities($("#activity-search-box"));
   });
 
-//  $(".perform-activity-set-button").click(function() {
-////    $(this).remove();
-////    $(this).parents(".collapse").collapse("hide");
-//    var form = $(this).parents("form");
-//    form.submit();
-//    return false;
-//  });
-
   $(".skip-activity-set-button").click(function() {
     $(this).parents("form").remove();
     return false;
@@ -192,6 +184,48 @@ $(document).ready(function() {
     modal.modal("hide");
     $("#modal-activity-builder").modal();
   });
+
+  $("#import-routine-button").click(function() {
+    $("#modal-import-routine").modal();
+  });
+
+  $("#import-routine-submit-button").click(function() {
+    var url = "/users/" + $("#client-for-routines-dropdown").val() +
+              "/routines/" + $("#routines-for-client-dropdown").val().toIdentifier() + "/activity_sets.js";
+    $.ajax({
+      type: "GET",
+      url: url,
+      async: false,
+      dataType: "text",
+      error: function(msg) {
+        console.log("error parsing %o", msg);
+      },
+      success: function(msg)
+      {
+        eval(msg);
+      }
+    })
+    $("#modal-import-routine").modal('hide');
+  });
+
+  $("#client-for-routines-dropdown").change(function() {
+    var login = $(this).val();
+    var url = "/users/" + login + "/routines.js";
+    $.ajax({
+      type: "GET",
+      url: url,
+      async: false,
+      dataType: "text",
+      success: function(msg) {
+        eval(msg);
+      },
+      error: function(msg) {
+        console.log("error parsing %o", msg);
+      }
+    })
+  });
+
+  $("#client-for-routines-dropdown").change();
 
   var clear_activity_form = function() {
     $("#create-update-activity-form form")[0].reset();

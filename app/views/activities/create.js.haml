@@ -1,4 +1,3 @@
--#!= "activity_list_item = '#{escape_javascript(render :partial => 'routines/activity_list_item', :locals => { :activity => @activity, :template => true })}')"
--#!= "$('#activity-list').prepend(activity_list_item)"
-!= "$('#activity-list').prepend('#{escape_javascript(render :partial => 'routines/activity_list_item', :locals => { :activity => @activity, :template => true })}')"
+!= "$('#activity-list').prepend('#{escape_javascript(render :partial => 'routines/activity_list_item',
+                                                            :locals => { :activity => @activity, :template => true })}')"
 != "new ActivityListItem($('#activity-list li[id=#{@activity.name.to_identifier}]'));"

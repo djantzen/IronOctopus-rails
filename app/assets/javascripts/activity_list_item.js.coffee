@@ -15,7 +15,7 @@ class this.ActivityListItem
     new_activity_set.find("a.accordion-toggle").attr("href", "#" + id)
     new_activity_set.find("div.accordion-body").attr("id", id)
     $("#routine-activity-set-list").append(new_activity_set)
-    new_activity_set.show("puff")
+    new_activity_set.fadeIn();
     new ActivitySetListItem(new_activity_set)
     return new_activity_set
 
@@ -76,7 +76,7 @@ class this.ActivitySetListItem
         clone.find("select[name='" + $(this).attr("name") + "']").val($(this).attr("value"))
       clone.hide();
       clone.insertAfter(original)
-      clone.show("puff");
+      clone.fadeIn();
 
 
     return @activity_set_form
