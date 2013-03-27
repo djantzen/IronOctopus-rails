@@ -189,8 +189,9 @@ $(document).ready(function() {
   });
 
   $("#import-routine-submit-button").click(function() {
+    var routine = $("#routines-for-client-dropdown").val();
     var url = "/users/" + $("#client-for-routines-dropdown").val() +
-              "/routines/" + $("#routines-for-client-dropdown").val().toIdentifier() + "/activity_sets.js";
+              "/routines/" + routine.toIdentifier() + "/activity_sets.js";
     $.ajax({
       type: "GET",
       url: url,
@@ -198,10 +199,12 @@ $(document).ready(function() {
       dataType: "text",
       error: function(msg) {
         console.log("error parsing %o", msg);
+        Util.show_flash("Unable to import activity sets from " + routine, 3000);
       },
       success: function(msg)
       {
         eval(msg);
+        Util.show_flash("Imported activity sets from " + routine, 3000);
       }
     })
     $("#modal-import-routine").modal('hide');

@@ -1,2 +1,2 @@
-- routine_options = options_for_select(@routines.map { |routine| routine.name })
-!= "$('#routines-for-client-dropdown').html('#{ escape_javascript(select_tag(routine_options)) }');"
+- routine_options = options_for_select(@routines.map { |routine| [routine.name, routine.permalink] })
+!= "$('#routines-for-client-dropdown-container').html('#{ escape_javascript(select_tag("routines-for-client-dropdown", routine_options)) }');"
