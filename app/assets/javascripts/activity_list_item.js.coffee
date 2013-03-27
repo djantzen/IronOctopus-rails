@@ -31,9 +31,14 @@ class this.ActivitySetListItem
 
   init_stopwatch: (activity_set_form) ->
     input = activity_set_form.find("input.timespinner")
+    target = input.val()
     input.stopwatch({format: "{MMM}:{ss}"})
     toggle = activity_set_form.find(".toggle-stopwatch-button")
     reset = activity_set_form.find(".reset-stopwatch-button")
+    input.stopwatch().bind('tick.stopwatch', (e, elapsed) ->
+      if (elapsed == digital_to_seconds(target) * 1000)
+        $.playSound('http://ironoctop.us/beep-1.mp3'))
+
 
     toggle.click ->
       input.stopwatch("toggle")
