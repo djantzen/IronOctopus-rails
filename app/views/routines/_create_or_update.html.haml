@@ -96,35 +96,37 @@
     #routine-form-panel.span6
       .well
         = form_for [@client, @routine], :remote => via_ajax do |form|
-          = hidden_field_tag "routine[trainer]", @trainer.login
-          .row
-            .span2
-              = form.label "routine[client]", "Client"
-            .span2
-              - if @client == current_user
-                = select_tag "routine[client]", options_for_select(@client_logins, :selected => current_user.login)
-              - else
-                = hidden_field_tag "routine[client]", @client.login
-                %span
-                  = @client.first_name
-                  = @client.last_name
-          .row
-            .span2
-              = form.label :name, "Routine Name"
-            .span2
-              = form.text_field :name, :class => "required is_routine_name_unique", |
-                                :minlength => @validations[:routine][:name][:minlength], |
-                                :maxlength => @validations[:routine][:name][:maxlength], :class => "input-xlarge" |
-          .row
-            .span2
-              = form.label :goal, "Routine Goal"
-            .span3
-              = form.text_field :goal, :minlength => @validations[:routine][:goal][:minlength], |
-                                :maxlength => @validations[:routine][:goal][:maxlength], :class => "input-xlarge" |
-          .row
-            .span4
-              = render :partial => "shared/button", :locals => { :button_id => "import-routine-button",
-                                                                 :message => "Import another routine" }
+          #basic-routine-info
+            = hidden_field_tag "routine[trainer]", @trainer.login
+            .row
+              .span2
+                = form.label "routine[client]", "Client"
+              .span2
+                - if @client == current_user
+                  = select_tag "routine[client]", options_for_select(@client_logins, :selected => current_user.login)
+                - else
+                  = hidden_field_tag "routine[client]", @client.login
+                  %span
+                    = @client.first_name
+                    = @client.last_name
+            .row
+              .span2
+                = form.label :name, "Routine Name"
+              .span2
+                = form.text_field :name, :class => "input-xlarge required is_routine_name_unique", |
+                                  :minlength => @validations[:routine][:name][:minlength], |
+                                  :maxlength => @validations[:routine][:name][:maxlength] |
+            .row
+              .span2
+                = form.label :goal, "Routine Goal"
+              .span3
+                = form.text_field :goal, :class => "required input-xlarge", :minlength => @validations[:routine][:goal][:minlength], |
+                                  :maxlength => @validations[:routine][:goal][:maxlength] |
+            .row
+              .span4
+                = render :partial => "shared/button", :locals => { :button_id => "import-routine-button",
+                                                                   :button_class => "btn-primary",
+                                                                   :message => "Import Activity Sets from Another Routine" }
           .row
             %ul#routine-activity-set-list.accordion
               - @routine.activity_sets.each do |activity_set|

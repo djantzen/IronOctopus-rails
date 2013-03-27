@@ -60,7 +60,7 @@ class WorkController < ApplicationController
         Work.transaction do
           measurement = Measurement.find_or_create(measurement_hash)
           unit_set = UnitSet.find_or_create(unit_hash)
-          day = Day.find_or_create(activity_set_hash[:start_time])
+          day = Day.find_or_create(activity_set_hash[:start_time].utc)
 
           work = Work.new(:user => client,
                           :activity => activity,

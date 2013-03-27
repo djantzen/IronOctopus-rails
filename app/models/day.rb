@@ -1,4 +1,5 @@
 class Day < ActiveRecord::Base
+
   has_many :work, :class_name => 'Work', :foreign_key => 'start_day_id'
   
   def self.find_or_create(arg)
@@ -24,6 +25,10 @@ class Day < ActiveRecord::Base
   def self.as_smart_id(date)
     raise ArgumentError "Argument must a date or time" unless date.is_a? Date or date.is_a? Time
     date.strftime("%Y%m%d").to_i
+  end
+
+  def to_s
+    "Day #{day_id} is #{full_date}, #{year}, #{month}, #{day}"
   end
 
   private

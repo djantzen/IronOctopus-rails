@@ -49,7 +49,6 @@ $(document).ready(function() {
     new ActivitySetListItem($(this));
   });
 
-
   /*
    * Function for generating the key for a facet based on facet nodes. Will look for text within.
    * Join pattern defaults to the empty string but is regex string for facets (not facet-targets).
