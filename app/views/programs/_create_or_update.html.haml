@@ -18,7 +18,7 @@
         .row-fluid
           = form.label "program[client]", "Client"
           - if @client == current_user
-            = select_tag "program[client]", options_for_select(@clients, :selected => current_user.login)
+            = select_tag "program[client]", options_for_select(@client_logins, :selected => current_user.login)
           - else
             = hidden_field_tag "program[client]", @client.login
             %span

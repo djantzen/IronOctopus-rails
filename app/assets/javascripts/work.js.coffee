@@ -7,3 +7,5 @@ $(document).ready ->
           $(form).find(".collapse").collapse("hide")
         return false
     )
+  $(".show-instructions").click () ->
+    $(this).find(".instructions-modal").modal();

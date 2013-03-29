@@ -1,9 +1,14 @@
 %div{:class => "accordion-group activity-set-form"}
   .container
     .accordion-heading.activity-display-name.row
-      .span4
-        %a.has-tooltip-bottom.accordion-toggle{:rel => "tooltip", :title => markup(activity.instructions), "data-parent" => "routine-activity-set-list", "data-toggle" => "collapse", :href => activity_set.position}
+      .span2
+        %a.accordion-toggle{ "data-parent" => "routine-activity-set-list", "data-toggle" => "collapse", :href => activity_set.position}
           = activity.name
+      .span1
+        %i.icon-comment.show-instructions
+          .instructions-modal.modal.hide.fade
+            .modal-body
+              = markup(activity.instructions)
     .activity-set-attributes.accordion-body.collapse.in{:id => activity_set.position }
       .accordion-inner.container
         = hidden_field_tag "routine[activity_sets][][activity]", activity.name
