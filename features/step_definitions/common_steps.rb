@@ -3,6 +3,7 @@ When /^I fill in "(.*?)" with "(.*?)"$/ do |arg1, arg2|
 end
 
 When /^I press "(.*?)"$/ do |locator|
+  #page.execute_script("$('#{locator}').submit();")
   click_button locator
 end
 
@@ -19,7 +20,7 @@ And /^I am on the (.*?) page$/ do |arg1|
 end
 
 Given %{I log in as "$login" with "$password"} do |login, password|
-  step %{I am on the login page}
+  step %{I am on the /login page}
   step %{I fill in "Login" with "#{login}"}
   step %{I fill in "Password" with "#{password}"}
   step %{I press "Log in"}

@@ -8,8 +8,8 @@ module IronOctopus
 
     def initialize
       env = ENV['RAILS_ENV'] || ENV['RACK_ENV'] || 'development'
-      application_file = File.open('config/application.yml')
-      validations_file = File.open('config/validations.yml')
+      application_file = File.open(Rails.root.to_s + '/config/application.yml')
+      validations_file = File.open(Rails.root.to_s + '/config/validations.yml')
 
       application_config = YAML.load(application_file)
       validations_config = YAML.load(validations_file)

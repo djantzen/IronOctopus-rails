@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  require 'lib/configuration'
+  require Rails.root.to_s + '/lib/configuration'
 
   protect_from_forgery
 

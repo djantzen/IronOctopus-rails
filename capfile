@@ -2,8 +2,6 @@ load 'deploy'
 load 'config/deploy' # remove this line to skip loading any of the default tasks
 
 set :user, 'ubuntu'
-role :deploy, 'ironoctop.us'
-
 
 desc "Echo the server's hostname"
 task :echo_hostname, :roles => :deploy do

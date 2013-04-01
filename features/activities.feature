@@ -21,3 +21,12 @@ Feature: Create a new activity
     And I press "Save"
     Then I should see "Unable to create/update Activity"
     And I should see "Name is too short"
+
+  @javascript
+  Scenario: Creation of a new activity with too short a name triggers Javascript validation
+    Given I log in as "bob_the_trainer" with "password"
+    And I am on the /activities/new page
+    When I fill in "Name" with "N"
+    And I fill in "Instructions" with "Do New Activity this way not that way"
+    And I press "Save"
+    Then I should see "Please enter at least 4 characters"

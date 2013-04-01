@@ -3,7 +3,7 @@ class ActivityAttribute < ActiveRecord::Base
   has_and_belongs_to_many :activities
   has_many :activity_type, :through => :activity
 
-  validates_presence_of :name, :on => [:create, :update]
+  validates_presence_of :name, :on => :save
 
   before_save { self.permalink = name.to_identifier }
 

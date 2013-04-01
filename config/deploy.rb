@@ -3,9 +3,13 @@ set :repository,  "git@github.com:djantzen/IronOctopus-rails.git"
 set :deploy_to, "/var/www"
 set :scm, :git
 
-role :web, "ironoctop.us"                          # Your HTTP server, Apache/etc
-role :app, "ironoctop.us"                          # This may be the same as your `Web` server
-role :db,  "ironoctop.us", :primary => true # This is where Rails migrations will run
+set(:host_env, Capistrano::CLI.ui.ask("Host Environment (prod, qa): "))
+set(:host, host_env.eql?('qa') ? 'ec2-54-245-1-150.us-west-2.compute.amazonaws.com' : "ironoctop.us")
+
+role :deploy, host #'ironoctop.us'
+role :web, host # Your HTTP server, Apache/etc
+role :app, host  # This may be the same as your `Web` server
+role :db, host, :primary => true # This is where Rails migrations will run
 #role :db,  "your slave db-server here"
 
 # if you want to clean up old releases on each deploy uncomment this:

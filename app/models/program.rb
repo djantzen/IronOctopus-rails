@@ -19,6 +19,11 @@ class Program < ActiveRecord::Base
   before_validation { self.permalink = self.name.to_identifier }
   validates_uniqueness_of :permalink
 
+  def routines
+    programs = is_weekday_program? ? weekday_programs : scheduled_programs
+    programs.map { |program| program.routine }
+  end
+
   def is_weekday_program?
     weekday_programs.size > 0 && scheduled_programs.size == 0
   end

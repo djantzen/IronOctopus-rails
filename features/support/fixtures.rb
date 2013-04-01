@@ -1,4 +1,4 @@
-require 'lib/active_record_fkey_hack'
+require Rails.root.to_s + '/lib/active_record_fkey_hack'
 
 ActiveRecord::Base.establish_connection(ENV['RAILS_ENV'].to_sym)
 

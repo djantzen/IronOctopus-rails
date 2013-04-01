@@ -1,6 +1,6 @@
 .container
   .row
-    .span2.offset6
+    .span2
       = @program.name
     .span2
       = @program.goal
@@ -9,5 +9,10 @@
       Created by #{@program.trainer.full_name}
     .span2
       for #{@program.client.full_name}
-  
+  - @program.routines.each do |routine|
+    .row
+      .span2
+        = routine.name
+      .span4
+        = routine.goal
   = link_to("Edit", edit_user_program_path(@program.client, @program), :class => "btn")
