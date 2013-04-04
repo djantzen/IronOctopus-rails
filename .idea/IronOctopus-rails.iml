@@ -40,10 +40,12 @@
     <orderEntry type="library" scope="PROVIDED" name="composite_primary_keys (v4.1.2, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="cucumber (v1.2.3, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="cucumber-rails (v1.3.1, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="daemon_controller (v1.1.2, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="database_cleaner (v0.9.1, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="diff-lcs (v1.2.2, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erubis (v2.7.0, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="execjs (v1.4.0, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="fastthread (v1.0.7, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ffi (v1.6.0, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="gherkin (v2.11.6, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="graticule (v2.2.0, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
@@ -72,6 +74,7 @@
     <orderEntry type="library" scope="PROVIDED" name="net-ssh (v2.6.6, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-ssh-gateway (v1.2.0, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.5.9, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="passenger (v3.0.19, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="pg (v0.15.0, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="polyglot (v0.3.3, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack (v1.3.10, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
@@ -95,6 +98,7 @@
     <orderEntry type="library" scope="PROVIDED" name="ruby_core_source (v0.1.5, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ruby_parser (v3.1.2, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubyzip (v0.9.9, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rvm-capistrano (v1.2.7, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sass (v3.2.7, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sass-rails (v3.1.7, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="selenium-webdriver (v2.31.0, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />

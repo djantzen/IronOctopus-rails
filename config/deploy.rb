@@ -1,3 +1,13 @@
+#$:.unshift(File.expand_path("~/.rvm/lib"))
+require "rvm/capistrano"
+set :bundle_without, [:development, :test]
+require "bundler/capistrano"
+
+set :rvm_install_ruby_params, '--1.9'      # for jruby/rbx default to 1.9 mode
+set :rvm_ruby_string, "1.9.3"
+set :rvm_type, :system
+set :rvm_bin_path, "/usr/local/rvm/bin"
+
 set :application, "Iron Octopus"
 set :repository,  "git@github.com:djantzen/IronOctopus-rails.git"
 set :deploy_to, "/var/www"
@@ -14,11 +24,6 @@ role :db, host, :primary => true # This is where Rails migrations will run
 
 # if you want to clean up old releases on each deploy uncomment this:
 # after "deploy:restart", "deploy:cleanup"
-
-# if you're still using the script/reaper helper you will need
-# these http://github.com/rails/irs_process_scripts
-
-# If you are using Passenger mod_rails uncomment this:
 
 def sed(file, target, replacement)
   run "cd #{release_path} && sed -i 's|password: #{target}|password: #{replacement}|' #{file}"
@@ -68,12 +73,17 @@ namespace :bundle do
 
   desc "run bundle install and ensure all gem requirements are met"
   task :install do
-    run "cd #{release_path} && sudo bundle install"
+    #run "cd #{release_path} && sudo bundle install"
+    run "bundle install --gemfile #{release_path}/Gemfile --without development test"
   end
 
 end
 
-after "deploy:update_code", "bundle:install"
+before "deploy:setup", "rvm:install_rvm"   # install RVM
+before "deploy:setup", "rvm:install_ruby"  # install Ruby and create gemset, or:
+before "deploy:setup", "rvm:create_gemset" # only create gemset
+
+#after "deploy:update_code", "bundle:install"
 after "deploy:update_code", "deploy:set_email_password"
 after "deploy:update_code", "deploy:set_database_passwords"
 after "deploy:set_database_passwords", "deploy:migrate_production"
