@@ -1,6 +1,5 @@
 source "http://rubygems.org"
 
-gem "passenger", "~> 3.0.19"
 gem "rails", "3.1.12"
 gem "pg"
 gem "json"
