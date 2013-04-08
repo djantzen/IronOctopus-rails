@@ -5,7 +5,8 @@ $(document).ready ->
       submitHandler: (form) ->
         if ($(form).valid())
           $(form).find(".collapse").collapse("hide")
-        return false
+          $(form).ajaxSubmit()
+        return true
     )
   $(".show-instructions").click () ->
     $(this).find(".instructions-modal").modal();

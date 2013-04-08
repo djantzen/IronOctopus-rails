@@ -14,7 +14,7 @@ set :deploy_to, "/var/www"
 set :scm, :git
 
 set(:host_env, Capistrano::CLI.ui.ask("Host Environment (prod, qa): "))
-set(:host, host_env.eql?('qa') ? 'ec2-54-245-1-150.us-west-2.compute.amazonaws.com' : "ironoctop.us")
+set(:host, host_env.eql?('qa') ? '' : "ironoctop.us")
 
 role :deploy, host #'ironoctop.us'
 role :web, host # Your HTTP server, Apache/etc
