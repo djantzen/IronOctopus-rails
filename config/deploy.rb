@@ -4,6 +4,7 @@ set :bundle_without, [:development, :test]
 require "bundler/capistrano"
 
 set :rvm_install_ruby_params, '--1.9'      # for jruby/rbx default to 1.9 mode
+#set :rvm_ruby_string, "ruby-1.9.3-p392@IronOctopus" #"1.9.3"
 set :rvm_ruby_string, "1.9.3"
 set :rvm_type, :system
 set :rvm_bin_path, "/usr/local/rvm/bin"
@@ -74,7 +75,7 @@ namespace :bundle do
   desc "run bundle install and ensure all gem requirements are met"
   task :install do
     #run "cd #{release_path} && sudo bundle install"
-    run "bundle install --gemfile #{release_path}/Gemfile --without development test"
+    run "bundle install --gemfile #{release_path}/Gemfile --without development test --path shared/bundle --deployment"
   end
 
 end

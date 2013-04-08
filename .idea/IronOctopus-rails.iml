@@ -37,7 +37,6 @@
     <orderEntry type="library" scope="PROVIDED" name="coffee-script (v2.2.0, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="coffee-script-source (v1.6.2, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="columnize (v0.3.6, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="composite_primary_keys (v4.1.2, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="cucumber (v1.2.3, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="cucumber-rails (v1.3.1, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="database_cleaner (v0.9.1, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
