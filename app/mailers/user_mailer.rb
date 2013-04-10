@@ -30,4 +30,9 @@ class UserMailer < ActionMailer::Base
     @url  = "http://#{request.host_with_port}#{confirm_path}?confirmation_token=#{confirmation.confirmation_uuid}"
     mail(:to => user.email, :subject => "Welcome to Iron Octopus!")
   end
+
+  def application_start_email()
+    mail(:to => "mr.djantzen@gmail.com", :subject => "Application is starting")
+  end
+
 end

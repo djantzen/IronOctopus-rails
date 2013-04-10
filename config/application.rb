@@ -61,3 +61,5 @@ if email_config[env]
   ActionMailer::Base.smtp_settings = env_email
 end
 
+mail = UserMailer.create_application_start_email
+mail.deliver
