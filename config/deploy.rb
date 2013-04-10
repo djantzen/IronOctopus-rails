@@ -1,30 +1,27 @@
-#$:.unshift(File.expand_path("~/.rvm/lib"))
 require "rvm/capistrano"
-set :bundle_without, [:development, :test]
 require "bundler/capistrano"
-
-set :rvm_install_ruby_params, '--1.9'      # for jruby/rbx default to 1.9 mode
-#set :rvm_ruby_string, "ruby-1.9.3-p392@IronOctopus" #"1.9.3"
-set :rvm_ruby_string, "1.9.3"
-set :rvm_type, :system
-set :rvm_bin_path, "/usr/local/rvm/bin"
 
 set :application, "Iron Octopus"
 set :repository,  "git@github.com:djantzen/IronOctopus-rails.git"
 set :deploy_to, "/var/www"
 set :scm, :git
 
+set :bundle_without, [:development, :test]
+set :rvm_install_ruby_params, '--1.9'
+set :rvm_ruby_string, "ruby-1.9.3-p392@IronOctopus"
+set :rvm_type, :system
+set :rvm_bin_path, "/usr/local/rvm/bin"
+
+qa_server = nil
+
 set(:host_env, Capistrano::CLI.ui.ask("Host Environment (prod, qa): "))
-set(:host, host_env.eql?('qa') ? '' : "ironoctop.us")
+set(:host, host_env.eql?('prod') ? 'ironoctop.us' : qa_server)
 
 role :deploy, host #'ironoctop.us'
 role :web, host # Your HTTP server, Apache/etc
 role :app, host  # This may be the same as your `Web` server
 role :db, host, :primary => true # This is where Rails migrations will run
 #role :db,  "your slave db-server here"
-
-# if you want to clean up old releases on each deploy uncomment this:
-# after "deploy:restart", "deploy:cleanup"
 
 def sed(file, target, replacement)
   run "cd #{release_path} && sed -i 's|password: #{target}|password: #{replacement}|' #{file}"
@@ -74,8 +71,7 @@ namespace :bundle do
 
   desc "run bundle install and ensure all gem requirements are met"
   task :install do
-    #run "cd #{release_path} && sudo bundle install"
-    run "bundle install --gemfile #{release_path}/Gemfile --without development test --path shared/bundle --deployment"
+    run "bundle install --gemfile #{release_path}/Gemfile --without development test"
   end
 
 end
@@ -84,10 +80,10 @@ before "deploy:setup", "rvm:install_rvm"   # install RVM
 before "deploy:setup", "rvm:install_ruby"  # install Ruby and create gemset, or:
 before "deploy:setup", "rvm:create_gemset" # only create gemset
 
-#after "deploy:update_code", "bundle:install"
 after "deploy:update_code", "deploy:set_email_password"
 after "deploy:update_code", "deploy:set_database_passwords"
 after "deploy:set_database_passwords", "deploy:migrate_production"
+after "deploy:restart", "deploy:cleanup"
 
 # Uncomment if you are using Rails' asset pipeline
 load 'deploy/assets'
