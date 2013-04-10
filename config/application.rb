@@ -60,6 +60,3 @@ if email_config[env]
   env_email = email_config[env].symbolize_keys # ActionMailer assumes symbols
   ActionMailer::Base.smtp_settings = env_email
 end
-
-mail = UserMailer.create_application_start_email
-mail.deliver
