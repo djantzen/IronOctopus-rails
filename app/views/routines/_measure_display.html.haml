@@ -1,8 +1,7 @@
 %span.measure-field
-  = measure
-  \:
+  #{measure}:
 %span.value-field
   = measure_value.value
-- if defined? unit
+- if defined? unit and !measure.eql? 'Duration'
   %span.value-field
     = unit

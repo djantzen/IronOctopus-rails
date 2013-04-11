@@ -1,27 +1,32 @@
-.container
-  .row
-    .span2.offset6
-      = @routine.name
-    .span2
-      = @routine.goal
-  .row
-    .span2.offset6
-      Created by #{@routine.trainer.full_name}
-    .span2
-      for #{@routine.client.full_name}
-  %br/
-  %br/
-  - @routine.activity_sets.each do |activity_set|
-    .row
-      .span2
-        = link_to(activity_set.activity.name, activity_path(activity_set.activity))
-      - activity_set.activity.metrics.each do |metric|
-        .span2
-          - value, unit = activity_set.nil? ? 1 : get_initial_value(activity_set, metric)
-          = render :partial => "routines/measure_display", :locals => { :measure => metric.name,
-                   :measure_value => value, :unit => (unit.pluralize unless unit.eql?('None')) }
-  .row
-    = link_to("Edit", edit_user_routine_path(@routine.client, @routine), :class => "btn btn-primary")
-    - if current_user == @routine.client
-      = link_to("Perform", perform_routine_path(@routine.client, @routine), :class => "btn btn-primary")
-    = link_to("Print", routine_sheet_path(@routine.client, @routine), :class => "btn btn-primary", :target => "_blank")
+#routine-display-panel.container-fluid
+  .row-fluid
+    #program-display-basic-info.span4.well
+      .row-fluid
+        %h3= @routine.name
+      %br
+      .row-fluid
+        = @routine.goal
+      %br
+      .row-fluid
+        Created by #{@routine.trainer.full_name} for #{@routine.client.full_name} on #{@routine.created_at.to_date}
+      .row-fluid
+        Last updated on #{@routine.updated_at.to_date}
+      %br
+      .row-fluid.btn-group
+        = link_to("Edit", edit_user_routine_path(@routine.client, @routine), :class => "btn btn-primary")
+        - if current_user == @routine.client
+          = link_to("Perform", perform_routine_path(@routine.client, @routine), :class => "btn")
+        = link_to("Print", routine_sheet_path(@routine.client, @routine), :class => "btn", :target => "_blank")
+    .span7.well
+      - @routine.activity_sets.each do |activity_set|
+        .row-fluid
+          .span2
+            = link_to(activity_set.activity.name, activity_path(activity_set.activity))
+          .span10
+            .row-fluid
+              - activity_set.activity.metrics.each do |metric|
+                - measure_value, unit = activity_set.nil? ? 1 : get_initial_value(activity_set, metric)
+                - if measure_value.defined?
+                  = render :partial => "routines/measure_display", :locals => { :measure => metric.name,
+                           :measure_value => measure_value, :unit => (unit.pluralize unless unit.eql?('None')) }
+

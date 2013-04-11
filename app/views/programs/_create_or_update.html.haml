@@ -30,7 +30,7 @@
                             :minlength => @validations[:program][:name][:minlength], |
                             :maxlength => @validations[:program][:name][:maxlength] |
           = form.label :goal, "Program Goal"
-          = form.text_area :goal, :class => "required", :value => 'No Goal Specified', |
+          = form.text_area :goal, :class => "required", :value => @program.goal, |
                            :minlength => @validations[:program][:goal][:minlength], |
                            :maxlength => @validations[:program][:goal][:maxlength] |
         .row-fluid
@@ -53,7 +53,7 @@
       #weekday-program.span9
         - Weekday::WEEK.each do |weekday|
           .row-fluid
-            .span8.weekday-bucket.well{:id => "#{weekday}-bucket"}
+            .span8.weekday-bucket.well.well-small{:id => "#{weekday}-bucket"}
               .row-fluid
                 - weekday_program = @weekday_programs.select { |wp| wp.day_of_week.eql? weekday.name }.first
                 .span6
@@ -63,6 +63,6 @@
                 .span3.btn-group
                   = render :partial => 'shared/button', :locals => { :button_class => 'new-routine-button', |
                     :message => 'New Routine'}                                                              |
-            .span2.weekday.well
+            .span2.weekday.well.well-small
               %h3
                 = weekday.name

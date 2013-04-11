@@ -4,7 +4,7 @@ class Measurement < ActiveRecord::Base
   
   DEFAULTS = { :cadence => 0.0, :calories => 0, :distance => 0.0, :duration => 0, :heart_rate => 0,
                :incline => 0.0, :level => 0, :repetitions => 0.0, :resistance => 0.0, :speed => 0.0 }
-    
+
   def self.find_or_create(measurement_hash)
     # When we look up a measurement, be sure to get the one with the attributes we care about
     # AND the defaults, not just the first to match desired attributes.
@@ -23,7 +23,11 @@ class Measurement < ActiveRecord::Base
     end
     measurement
   end
-  
+
+  def defined_metrics
+    (Measurement.column_names - ["measurement_id", "created_at"]).select { |col| self[col] > 0 }
+  end
+
   # generates separate selects, do custom validation
 #  validates_uniqueness_of :activity_id, :duration, :resistance, :repetitions, :pace, :distance,
 #    :calories, :distance_unit_id, :resistance_unit_id, :pace_unit_id

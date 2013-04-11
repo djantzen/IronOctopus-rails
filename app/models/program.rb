@@ -20,8 +20,16 @@ class Program < ActiveRecord::Base
   validates_uniqueness_of :permalink
 
   def routines
-    programs = is_weekday_program? ? weekday_programs : scheduled_programs
-    programs.map { |program| program.routine }
+    programs_on_days.inject({}) do |hash, program|
+      # TODO what about meridian? nested hash?
+      hash[program.on] = program.routine
+      hash
+    end
+  end
+
+  def programs_on_days
+    return weekday_programs if is_weekday_program?
+    return scheduled_programs if is_scheduled_program?
   end
 
   def is_weekday_program?

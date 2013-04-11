@@ -1,18 +1,33 @@
-.container
-  .row
-    .span2
-      = @program.name
-    .span2
-      = @program.goal
-  .row
-    .span2.offset6
-      Created by #{@program.trainer.full_name}
-    .span2
-      for #{@program.client.full_name}
-  - @program.routines.each do |routine|
-    .row
-      .span2
-        = routine.name
-      .span4
-        = routine.goal
-  = link_to("Edit", edit_user_program_path(@program.client, @program), :class => "btn")
+#program-display-panel.container-fluid
+  .row-fluid
+    #program-display-basic-info.span4.well
+      .row-fluid
+        %h3= @program.name
+      %br
+        .row-fluid
+        = @program.goal
+      %br
+      .row-fluid
+        Created by #{@program.trainer.full_name} for #{@program.client.full_name} on #{@program.created_at.to_date}
+      .row-fluid
+        Last updated on #{@program.updated_at.to_date}
+      %br
+      .row-fluid.btn-group
+        = link_to("Edit", edit_user_program_path(@program.client, @program), :class => "btn btn-primary")
+        -#= link_to("Print", routine_sheet_path(@routine.client, @routine), :class => "btn btn", :target => "_blank")
+    .span7.well
+      .row-fluid
+        .span2
+          %h4 Day
+        .span2
+          %h4 Routine
+        .span4
+          %h4 Goal
+      - @program.routines.each_pair do |on_day, routine|
+        .row-fluid
+          .span2
+            = on_day
+          .span2
+            = link_to routine.name, user_routine_path(routine.client, routine)
+          .span4
+            = routine.goal

@@ -9,7 +9,8 @@ class ProgramsController < ApplicationController
     @program = Program.find_by_permalink(params[:id].to_identifier)
     @client = User.find_by_login(params[:user_id])
     @trainer = current_user
-    @routines = @client.routines
+    # TODO update when we support meridian
+    @routines = @program.routines.values
     @routine_select =  @routines.map { |r| [r.name, r.permalink] }
     @clients = current_user.clients
     allowed_to_read?
@@ -72,7 +73,7 @@ class ProgramsController < ApplicationController
 
   def update
     @client = User.find_by_login(params[:user_id])
-    @program = Program.first(:conditions => { :client_id => @client.user_id, :permalink => params[:program][:name].to_identifier })
+    @program = Program.first(:conditions => { :client_id => @client.user_id, :permalink => params[:id].to_identifier })
     @program = _create_or_update(@program)
     if @program.errors.empty?
       respond_with do |format|
@@ -119,9 +120,11 @@ class ProgramsController < ApplicationController
       program.weekday_programs.each do |wp|
         wp.delete
       end
+      program.weekday_programs.clear
       program.scheduled_programs.each do |sp|
         sp.delete
       end
+      program.scheduled_programs.clear
 
       if program_type.eql? 'Weekday'
         Weekday::WEEK.each do |weekday|
@@ -156,6 +159,7 @@ class ProgramsController < ApplicationController
     end
   end
 
+  # TODO make these public for use in views, move redirect out
   private
   def allowed_to_create?
     redirect_to user_path(current_user) unless @client.trainers.include? @trainer
