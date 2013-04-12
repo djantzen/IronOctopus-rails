@@ -13,7 +13,8 @@
         Last updated on #{@program.updated_at.to_date}
       %br
       .row-fluid.btn-group
-        = link_to("Edit", edit_user_program_path(@program.client, @program), :class => "btn btn-primary")
+        - if allowed_to_update?
+          = link_to("Edit", edit_user_program_path(@program.client, @program), :class => "btn btn-primary")
         -#= link_to("Print", routine_sheet_path(@routine.client, @routine), :class => "btn btn", :target => "_blank")
     .span7.well
       .row-fluid

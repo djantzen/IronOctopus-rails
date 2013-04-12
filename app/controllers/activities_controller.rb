@@ -3,6 +3,8 @@ class ActivitiesController < ApplicationController
   respond_to :json, :html, :js
   before_filter :authenticate_user, :except => [:is_name_unique, :index]
 
+  helper_method :allowed_to_update?
+
   def index
     @activities = Activity.all(:include => :activity_type, :order => :name)
 

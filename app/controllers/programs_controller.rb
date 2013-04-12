@@ -4,6 +4,7 @@ class ProgramsController < ApplicationController
   include ProgramsHelper
   helper LaterDude::CalendarHelper
   respond_to :json, :html
+  helper_method :allowed_to_update?
 
   def show
     @program = Program.find_by_permalink(params[:id].to_identifier)
@@ -13,7 +14,7 @@ class ProgramsController < ApplicationController
     @routines = @program.routines.values
     @routine_select =  @routines.map { |r| [r.name, r.permalink] }
     @clients = current_user.clients
-    allowed_to_read?
+    redirect_to user_path(current_user) unless allowed_to_read?
   end
 
   def new
@@ -27,7 +28,7 @@ class ProgramsController < ApplicationController
     @routine_select =  @routines.map { |r| [r.name, r.permalink] }
     @clients = current_user.clients
     _routine_builder_attributes
-    allowed_to_create?
+    redirect_to user_path(current_user) unless allowed_to_create?
   end
 
   def _routine_builder_attributes
@@ -68,7 +69,7 @@ class ProgramsController < ApplicationController
     @routine_select =  @routines.map { |r| [r.name, r.permalink] }
     @clients = current_user.clients
     _routine_builder_attributes
-    allowed_to_update?
+    redirect_to user_path(current_user) unless allowed_to_update?
   end
 
   def update
@@ -159,18 +160,17 @@ class ProgramsController < ApplicationController
     end
   end
 
-  # TODO make these public for use in views, move redirect out
   private
   def allowed_to_create?
-    redirect_to user_path(current_user) unless @client.trainers.include? @trainer
+    @client.trainers.include? @trainer
   end
 
   def allowed_to_update?
-    redirect_to user_path(current_user) unless current_user.eql? @program.trainer
+    current_user.eql? @program.trainer
   end
 
   def allowed_to_read?
-    redirect_to user_path(current_user) unless current_user.eql?(@program.trainer) || current_user.eql?(@program.client)
+    current_user.eql?(@program.trainer) || current_user.eql?(@program.client)
   end
 
 end

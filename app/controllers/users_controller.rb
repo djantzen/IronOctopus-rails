@@ -79,11 +79,8 @@ class UsersController < ApplicationController
     @client = User.find_by_login(params['id'])
     @routines = @client.routines
     @todays_routines = @client.todays_routines
-    #    @weekday_programs = @user.weekday_programs
-#    @scheduled_programs = @user.weekday_programs
     @programs = @client.programs
     @program_select =  @programs.map { |p| [p.name, p.permalink] }
-#    @active_program = current_user.active_program || @programs.first
     @mode = current_user.eql? @client ? 'SelfView' : 'OtherView'
     allowed_to_read?
     respond_with do |format|

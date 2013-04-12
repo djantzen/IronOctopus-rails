@@ -25,7 +25,10 @@ class Measurement < ActiveRecord::Base
   end
 
   def defined_metrics
-    (Measurement.column_names - ["measurement_id", "created_at"]).select { |col| self[col] > 0 }
+    metrics = Measurement.column_names - ["measurement_id", "created_at"]
+    metrics.select do |col|
+      self[col] > 0
+    end
   end
 
   # generates separate selects, do custom validation

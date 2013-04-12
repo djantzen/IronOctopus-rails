@@ -3,17 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="46f8a447-b9ed-44ae-be1c-95fe4e4f3fab" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/sheet.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/sheet.css.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/activities.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/activities.css.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/activities_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/activities_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/programs_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/programs_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/routines_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/routines_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/measurement.rb" afterPath="$PROJECT_DIR$/app/models/measurement.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/program.rb" afterPath="$PROJECT_DIR$/app/models/program.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/scheduled_program.rb" afterPath="$PROJECT_DIR$/app/models/scheduled_program.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/weekday_program.rb" afterPath="$PROJECT_DIR$/app/models/weekday_program.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/programs/_create_or_update.html.haml" afterPath="$PROJECT_DIR$/app/views/programs/_create_or_update.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/activities/show.html.haml" afterPath="$PROJECT_DIR$/app/views/activities/show.html.haml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/programs/show.html.haml" afterPath="$PROJECT_DIR$/app/views/programs/show.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/routines/_measure_display.html.haml" afterPath="$PROJECT_DIR$/app/views/routines/_measure_display.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/routines/sheet.html.haml" afterPath="$PROJECT_DIR$/app/views/routines/sheet.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/routines/index.html.haml" afterPath="$PROJECT_DIR$/app/views/routines/index.html.haml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/routines/show.html.haml" afterPath="$PROJECT_DIR$/app/views/routines/show.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/show.html.haml" afterPath="$PROJECT_DIR$/app/views/users/show.html.haml" />
     </list>
     <ignored path="IronOctopus-rails.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,7 +42,16 @@
       <file leaf-file-name="program.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/program.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="46" selection-start="590" selection-end="590" vertical-scroll-proportion="0.0">
+            <state line="26" column="7" selection-start="876" selection-end="876" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="programs_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/programs_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="0" selection-start="238" selection-end="238" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -51,7 +60,25 @@
       <file leaf-file-name="show.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/programs/show.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="9" selection-start="148" selection-end="148" vertical-scroll-proportion="-3.125">
+            <state line="8" column="9" selection-start="201" selection-end="201" vertical-scroll-proportion="-5.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="users_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="77" column="0" selection-start="2058" selection-end="2058" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show.html.haml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/users/show.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="68" column="0" selection-start="2498" selection-end="2498" vertical-scroll-proportion="0.9451554">
               <folding />
             </state>
           </provider>
@@ -60,53 +87,43 @@
       <file leaf-file-name="show.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/routines/show.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="9" selection-start="199" selection-end="199" vertical-scroll-proportion="-5.0">
-              <folding>
-                <marker date="1365712834000" expanded="true" signature="823:1467" placeholder=".container" />
-                <marker date="1365712834000" expanded="true" signature="824:1465" placeholder="- @routine.activity_sets.each do |activity_set|" />
-                <marker date="1365712834000" expanded="true" signature="880:1465" placeholder=".row" />
-                <marker date="1365712834000" expanded="true" signature="1051:1465" placeholder="- activity_set.activity.metrics.each do |metric|" />
-                <marker date="1365712834000" expanded="true" signature="1100:1465" placeholder=".span2" />
-                <marker date="1365712834000" expanded="true" signature="1266:1465" placeholder="= render :partial =&gt; &quot;routines/measure_display&quot;, :locals =&gt; { :measure =&gt; metric.name," />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sheet.html.haml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/routines/sheet.html.haml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="0" selection-start="898" selection-end="898" vertical-scroll-proportion="-16.25">
-              <folding>
-                <marker date="1365715034000" expanded="true" signature="71:224" placeholder="#sheet-header" />
-                <marker date="1365715034000" expanded="true" signature="139:146" placeholder="%div" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_set.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/activity_set.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="31" selection-start="177" selection-end="177" vertical-scroll-proportion="0.0">
+            <state line="21" column="0" selection-start="824" selection-end="840" vertical-scroll-proportion="-13.125">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="measurement.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/measurement.rb">
+      <file leaf-file-name="routines_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/routines_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="62" selection-start="1039" selection-end="1039" vertical-scroll-proportion="0.0">
+            <state line="6" column="35" selection-start="237" selection-end="237" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sheet.css.scss" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/sheet.css.scss">
+      <file leaf-file-name="index.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/routines/index.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="0" selection-start="138" selection-end="138" vertical-scroll-proportion="0.2866242">
+            <state line="6" column="2" selection-start="196" selection-end="196" vertical-scroll-proportion="-3.75">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/activities/show.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="16" selection-start="470" selection-end="470" vertical-scroll-proportion="-10.625">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_create_or_update.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/activities/_create_or_update.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="63" selection-start="608" selection-end="608" vertical-scroll-proportion="-6.25">
               <folding />
             </state>
           </provider>
@@ -134,22 +151,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/mailers/user_mailer.rb" />
-        <option value="$PROJECT_DIR$/config/application.rb" />
-        <option value="$PROJECT_DIR$/config/initializers/deploy_notice.rb" />
-        <option value="$PROJECT_DIR$/app/views/programs/_create_or_update.html.haml" />
-        <option value="$PROJECT_DIR$/app/models/weekday_program.rb" />
-        <option value="$PROJECT_DIR$/app/models/scheduled_program.rb" />
-        <option value="$PROJECT_DIR$/app/models/program.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/programs_controller.rb" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/routines.css.scss" />
-        <option value="$PROJECT_DIR$/app/views/programs/show.html.haml" />
         <option value="$PROJECT_DIR$/app/views/routines/_measure_display.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/routines/show.html.haml" />
-        <option value="$PROJECT_DIR$/app/models/measurement.rb" />
         <option value="$PROJECT_DIR$/app/models/activity_set.rb" />
         <option value="$PROJECT_DIR$/app/views/routines/sheet.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/sheet.css.scss" />
+        <option value="$PROJECT_DIR$/app/models/measurement.rb" />
+        <option value="$PROJECT_DIR$/app/views/activities/_create_or_update.html.haml" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/activities.css.scss" />
+        <option value="$PROJECT_DIR$/app/controllers/activities_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/activities/show.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/routines/index.html.haml" />
+        <option value="$PROJECT_DIR$/app/controllers/programs_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/programs/show.html.haml" />
+        <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/routines_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/routines/show.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/users/show.html.haml" />
       </list>
     </option>
   </component>
@@ -236,6 +253,10 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -251,11 +272,43 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="stylesheets" />
+              <option name="myItemId" value="activities" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IronOctopus-rails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IronOctopus-rails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IronOctopus-rails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IronOctopus-rails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="helpers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -910,134 +963,118 @@
           <url>file:///Library/Ruby/Gems/1.8/gems/capybara-webkit-0.14.2/lib/capybara/webkit/connection.rb</url>
           <line>45</line>
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$PROJECT_DIR$/app/controllers/routines_controller.rb</url>
-          <line>32</line>
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/users/mobile_show.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="69" selection-end="69" vertical-scroll-proportion="0.12886597">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="38" selection-start="2187" selection-end="2187" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/routines.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="0" selection-start="3521" selection-end="3521" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/routine.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="32" selection-start="649" selection-end="649" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/routines.css.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="1" selection-start="1140" selection-end="1140" vertical-scroll-proportion="0.94863015">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/routines/_measure_display.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="1" selection-start="35" selection-end="35" vertical-scroll-proportion="0.05154639">
-          <folding>
-            <marker date="1365712180000" expanded="true" signature="-1:-1" placeholder="= measure" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/routines/show.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="9" selection-start="199" selection-end="199" vertical-scroll-proportion="-5.0">
-          <folding>
-            <marker date="1365712834000" expanded="true" signature="823:1467" placeholder=".container" />
-            <marker date="1365712834000" expanded="true" signature="824:1465" placeholder="- @routine.activity_sets.each do |activity_set|" />
-            <marker date="1365712834000" expanded="true" signature="880:1465" placeholder=".row" />
-            <marker date="1365712834000" expanded="true" signature="1051:1465" placeholder="- activity_set.activity.metrics.each do |metric|" />
-            <marker date="1365712834000" expanded="true" signature="1100:1465" placeholder=".span2" />
-            <marker date="1365712834000" expanded="true" signature="1266:1465" placeholder="= render :partial =&gt; &quot;routines/measure_display&quot;, :locals =&gt; { :measure =&gt; metric.name," />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/activity_set.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="31" selection-start="177" selection-end="177" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392@IronOctopus/gems/activesupport-3.1.12/lib/active_support/core_ext/time/calculations.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="283" column="34" selection-start="10240" selection-end="10240" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/state.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="34" selection-end="140" vertical-scroll-proportion="0.15050167">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/measurement.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="62" selection-start="1039" selection-end="1039" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="130" selection-start="987" selection-end="987" vertical-scroll-proportion="0.7167832">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/program.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="46" selection-start="590" selection-end="590" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/programs/show.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="9" selection-start="148" selection-end="148" vertical-scroll-proportion="-3.125">
+        <state line="8" column="31" selection-start="177" selection-end="177" vertical-scroll-proportion="0.1910828">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/routines/sheet.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="0" selection-start="898" selection-end="898" vertical-scroll-proportion="-16.25">
-          <folding>
-            <marker date="1365715034000" expanded="true" signature="71:224" placeholder="#sheet-header" />
-            <marker date="1365715034000" expanded="true" signature="139:146" placeholder="%div" />
-          </folding>
+        <state line="5" column="6" selection-start="91" selection-end="91" vertical-scroll-proportion="-3.125">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/sheet.css.scss">
+    <entry file="file://$PROJECT_DIR$/app/models/activity.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="138" selection-end="138" vertical-scroll-proportion="0.2866242">
+        <state line="0" column="6" selection-start="6" selection-end="6" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/activities.css.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="183" selection-end="183" vertical-scroll-proportion="0.12376238">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/helpers/activities_helper.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="24" selection-end="24" vertical-scroll-proportion="0.024752475">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/activities_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="120" column="24" selection-start="3779" selection-end="3779" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/activities/_create_or_update.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="63" selection-start="608" selection-end="608" vertical-scroll-proportion="-6.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/activities/show.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="16" selection-start="470" selection-end="470" vertical-scroll-proportion="-10.625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/routines/index.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="2" selection-start="196" selection-end="196" vertical-scroll-proportion="-3.75">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/program.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="7" selection-start="876" selection-end="876" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/programs_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="0" selection-start="238" selection-end="238" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/programs/show.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="9" selection-start="201" selection-end="201" vertical-scroll-proportion="-5.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/routines_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="35" selection-start="237" selection-end="237" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="77" column="0" selection-start="2058" selection-end="2058" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/routines/show.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="0" selection-start="824" selection-end="840" vertical-scroll-proportion="-13.125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/users/show.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="0" selection-start="2498" selection-end="2498" vertical-scroll-proportion="0.9451554">
           <folding />
         </state>
       </provider>
