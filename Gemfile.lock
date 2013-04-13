@@ -103,6 +103,9 @@ GEM
       jquery-rails
       railties (>= 3.1.0)
     json (1.7.7)
+    kaminari (0.14.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     kramdown (1.0.1)
     later_dude (0.3.3)
     launchy (2.2.0)
@@ -246,6 +249,7 @@ DEPENDENCIES
   jquery-rails (= 2.2.1)
   jquery-ui-rails (= 4.0.1)
   json
+  kaminari
   kramdown
   later_dude (>= 0.3.1)
   launchy

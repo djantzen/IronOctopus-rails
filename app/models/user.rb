@@ -39,6 +39,12 @@ class User < ActiveRecord::Base
                           :join_table => 'user_relationships'#, :conditions => [ "trainer_id != client_id" ]
   has_one :profile
 
+  TIME_FORMAT = "%l:%m:%S %P"
+
+  def time(time)
+    time.in_time_zone(timezone.tzid).strftime(TIME_FORMAT)
+  end
+
   def programs
     programs = (weekday_programs + scheduled_programs).inject([]) do |array, n_program|
       array << n_program.program

@@ -17,11 +17,12 @@
         = link_to work.activity.name, work.activity
       - work.activity.metrics.each do |metric|
         .span2
-          - value, unit = get_initial_value(work, metric)
-          = render :partial => "routines/measure_display",
-                    :locals => { :measure => metric.name, :measure_value => value,
-                                 :unit => (unit.pluralize unless unit.eql?('None')) }
+          - measure_value, unit = get_initial_value(work, metric)
+          - if measure_value.defined?
+            = render :partial => "routines/measure_display",
+                      :locals => { :measure => metric.name, :measure_value => measure_value,
+                                   :unit => (unit.pluralize unless unit.eql?('None')) }
       .span1
-        = work.start_time
-      .span1
-        = work.end_time
+        = work.user.time(work.start_time)
+      -#.span1
+        -#= work.end_time.in_time_zone(work.user.timezone.tzid).strftime("%l:%m:%S %P")
