@@ -55,6 +55,7 @@
     <orderEntry type="library" scope="PROVIDED" name="jquery-rails (v2.2.1, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jquery-ui-rails (v4.0.1, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="json (v1.7.7, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="kaminari (v0.14.1, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="kramdown (v1.0.1, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="later_dude (v0.3.3, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="launchy (v2.2.0, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />

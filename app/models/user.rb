@@ -39,9 +39,9 @@ class User < ActiveRecord::Base
                           :join_table => 'user_relationships'#, :conditions => [ "trainer_id != client_id" ]
   has_one :profile
 
-  TIME_FORMAT = "%l:%m:%S %P"
+  TIME_FORMAT = "%l:%M:%S %P"
 
-  def time(time)
+  def local_time_from_utc(time)
     time.in_time_zone(timezone.tzid).strftime(TIME_FORMAT)
   end
 

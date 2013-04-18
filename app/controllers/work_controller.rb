@@ -7,9 +7,10 @@ class WorkController < ApplicationController
 
   def index
     client = User.find_by_login(params[:user_id])
-    @work = Work.all(:conditions => "user_id = #{client.user_id}",
-                     :order => "start_time desc",
-                     :include => [:activity, :measurement, :routine, :start_day])
+    @work = Work.where("user_id = #{client.user_id}")
+                .order("start_time desc")
+                .includes([:activity, :measurement, :routine, :start_day])
+                .page(params[:page])
   end
 
   def create
