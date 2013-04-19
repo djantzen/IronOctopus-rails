@@ -10,4 +10,7 @@ class Work < ActiveRecord::Base
   before_save { self.start_time = self.start_time.utc }
   before_save { self.end_time = self.end_time.utc }
 
+  def to_s
+    "#{activity.name} in routine #{routine.name} on #{start_day} "
+  end
 end

@@ -11,6 +11,68 @@ class WorkController < ApplicationController
                 .order("start_time desc")
                 .includes([:activity, :measurement, :routine, :start_day])
                 .page(params[:page])
+
+    @work_grouped_by_routine = Groupings.new
+    current_routine = nil
+    current_start_day = nil
+    @work.each do |work|
+      if current_start_day.nil? || current_start_day != work.start_day
+        current_start_day = work.start_day and current_routine = nil
+        @work_grouped_by_routine << RoutinesForDay.new(current_start_day)
+      end
+      if current_routine.nil? || current_routine != work.routine
+        current_routine = work.routine
+        @work_grouped_by_routine.current_grouping.add_routine(current_routine)
+      end
+      @work_grouped_by_routine.current_grouping.current_routine.add_work(work)
+    end
+    puts @work_grouped_by_routine
+  end
+
+  class Groupings < Array
+    def current_grouping
+      self[-1]
+    end
+
+    def to_s
+      "#{self.size} groupings"
+    end
+  end
+
+  class RoutinesForDay < Array
+    attr_accessor :start_day
+
+    def current_routine
+      self[-1]
+    end
+
+    def initialize(start_day)
+      @start_day = start_day
+    end
+
+    def add_routine(routine)
+      self << WorkGroup.new(routine)
+    end
+
+    def to_s
+      "#{self.size} routines performed on #{@start_day}"
+    end
+  end
+
+  class WorkGroup < Array
+    attr_accessor :routine
+
+    def initialize(routine)
+      @routine = routine
+    end
+
+    def add_work(work)
+      self.unshift work
+    end
+
+    def to_s
+      "#{self.size} activities performed on #{@start_day} from #{@routine.name}"
+    end
   end
 
   def create

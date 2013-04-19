@@ -1,28 +1,50 @@
-#work-list.container
+#work-list.container-fluid
   = paginate @work
-  - current_routine = nil
-  - current_start_day = nil
-  - @work.each do |work|
-    - if current_start_day.nil? || current_start_day != work.start_day
-      - current_start_day = work.start_day and current_routine = nil
-      .row
-        .span10.well.well-small
-          = current_start_day.full_date
-    - if current_routine.nil? || current_routine != work.routine
-      - current_routine = work.routine
-      .row
-        .span10.well.well-small
-          = link_to current_routine.name, user_routine_path(current_routine.client, current_routine)
-    .row
-      .span2
-        = link_to work.activity.name, work.activity
-      - work.activity.metrics.each do |metric|
-        .span2
-          - measure_value, unit = get_initial_value(work, metric)
-          - if measure_value.defined?
-            = render :partial => "routines/measure_display",
-                      :locals => { :measure => metric.name, :measure_value => measure_value,
-                                   :unit => (unit.pluralize unless unit.eql?('None')) }
-      .span1
-        = work.user.local_time_from_utc(work.start_time)
+
+  - @work_grouped_by_routine.each do |grouping|
+    .row-fluid
+      .span16.well.well-small
+        %h4
+          = grouping.start_day.full_date
+    - grouping.each do |routine_for_day|
+      - routine = routine_for_day.routine
+      .row-fluid
+        .span16.well.well-small
+          = link_to routine.name, user_routine_path(routine.client, routine)
+      .row-fluid
+        .span5.well
+          %h4
+            Activities Assigned
+          %br
+          - routine.activity_sets.each do |activity_set|
+            .row-fluid
+              .span4
+                = link_to(activity_set.activity.name, activity_path(activity_set.activity))
+              .span6
+                - activity_set.activity.metrics.each do |metric|
+                  - measure_value, unit = activity_set.nil? ? 1 : get_initial_value(activity_set, metric)
+                  - if measure_value.defined?
+                    = render :partial => "routines/measure_display", :locals => { :measure => metric.name,
+                             :measure_value => measure_value, :unit => (unit.pluralize unless unit.eql?('None')) }
+                    %br
+        .span7.well
+          %h4
+            Activities Performed
+          %br
+          - routine_for_day.each do |work|
+            .row_fluid
+              .span2
+                %h5
+                  = work.user.local_time_from_utc(work.start_time)
+              .span4
+                = link_to work.activity.name, work.activity
+              .span6
+                - work.activity.metrics.each do |metric|
+                  - measure_value, unit = get_initial_value(work, metric)
+                  - if measure_value.defined?
+                    = render :partial => "routines/measure_display",
+                              :locals => { :measure => metric.name, :measure_value => measure_value,
+                                           :unit => (unit.pluralize unless unit.eql?('None')) }
+                    %br
+
   = paginate @work
