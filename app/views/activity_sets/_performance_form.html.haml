@@ -15,9 +15,8 @@
         - activity.metrics.each do |metric|
           .row
             - initial_value, unit = get_initial_value(activity_set, metric)
-            - if initial_value.defined?
-              = render :partial => "routines/measure_selector", :locals => { :measure => metric.name, :interval => 1,       |
-                       :initial_value => initial_value.value, :units => [unit.pluralize], :unit => unit, :performance => true }                   |
+            = render :partial => "routines/measure_selector", :locals => { :measure => metric.name, :interval => 1,       |
+                     :initial_value => initial_value.value, :units => [unit.pluralize], :unit => unit, :performance => true }                   |
         .btn-group
           = submit_tag "Done", :class => "perform-activity-set-button btn btn-primary"
           = render :partial => "shared/button", :locals => { :button_class=> 'skip-activity-set-button', :message => 'Skip'}

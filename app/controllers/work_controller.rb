@@ -12,21 +12,21 @@ class WorkController < ApplicationController
                 .includes([:activity, :measurement, :routine, :start_day])
                 .page(params[:page])
 
-    @work_grouped_by_routine = Groupings.new
+    @work_grouped_by_day_and_routine = Groupings.new
     current_routine = nil
     current_start_day = nil
     @work.each do |work|
       if current_start_day.nil? || current_start_day != work.start_day
         current_start_day = work.start_day and current_routine = nil
-        @work_grouped_by_routine << RoutinesForDay.new(current_start_day)
+        @work_grouped_by_day_and_routine << RoutinesForDay.new(current_start_day)
       end
       if current_routine.nil? || current_routine != work.routine
         current_routine = work.routine
-        @work_grouped_by_routine.current_grouping.add_routine(current_routine)
+        @work_grouped_by_day_and_routine.current_grouping.add_routine(current_routine)
       end
-      @work_grouped_by_routine.current_grouping.current_routine.add_work(work)
+      @work_grouped_by_day_and_routine.current_grouping.current_routine.add_work(work)
     end
-    puts @work_grouped_by_routine
+    puts @work_grouped_by_day_and_routine
   end
 
   class Groupings < Array
