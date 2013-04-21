@@ -83,7 +83,7 @@ before "deploy:setup", "rvm:create_gemset" # only create gemset
 after "deploy:update_code", "deploy:set_email_password"
 after "deploy:update_code", "deploy:set_database_passwords"
 after "deploy:set_database_passwords", "deploy:migrate_production"
-#after "deploy:restart", "deploy:cleanup"
+after "deploy:restart", "deploy:cleanup"
 
 # Uncomment if you are using Rails' asset pipeline
 load 'deploy/assets'

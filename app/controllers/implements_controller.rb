@@ -1,6 +1,6 @@
 class ImplementsController < ApplicationController
 
-  before_filter :authenticate_user, :except => [:is_name_unique, :index]
+  before_filter :authenticate_user#, :except => [:is_name_unique, :index]
   respond_to :json, :html
 
   def index

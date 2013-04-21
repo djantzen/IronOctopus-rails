@@ -1,6 +1,6 @@
 class RoutinesController < ApplicationController
 
-  before_filter :authenticate_user, :except => [:is_name_unique, :index, :fetch_activity_sets]
+  before_filter :authenticate_user#, :except => [:is_name_unique, :index, :fetch_activity_sets]
   include RoutinesHelper
   respond_to :json, :html, :js
 

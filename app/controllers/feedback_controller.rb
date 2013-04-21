@@ -1,4 +1,5 @@
 class FeedbackController < ApplicationController
+  before_filter :authenticate_user
   respond_to :json, :html
   def create
     user = User.find_by_login(params[:user_id])

@@ -4,7 +4,6 @@ gem "rails", "3.1.12"
 gem "pg"
 gem "json"
 gem "execjs" # necessary on Ubuntu
-#gem "therubyracer" # necessary on Ubuntu
 gem "bootstrap-sass", "2.0.4.0"
 gem "capistrano"
 gem "underscore-rails", "1.3.1"

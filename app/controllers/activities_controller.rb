@@ -1,7 +1,7 @@
 class ActivitiesController < ApplicationController
   
   respond_to :json, :html, :js
-  before_filter :authenticate_user, :except => [:is_name_unique, :index]
+  before_filter :authenticate_user
 
   helper_method :allowed_to_update?
 
@@ -49,7 +49,8 @@ class ActivitiesController < ApplicationController
   end
 
   def show
-    @activity = Activity.find_by_permalink(params[:id], :include => [:activity_type, :body_parts, :implements, :metrics, :activity_attributes])
+    @activity = Activity.find_by_permalink(params[:id], :include => [:activity_type, :body_parts, :implements,
+                                                                     :metrics, :activity_attributes, :activity_videos])
   end
 
   def edit
@@ -91,6 +92,9 @@ class ActivitiesController < ApplicationController
     activity = params[:id] ? Activity.find_by_permalink(params[:id]) : Activity.new
 
     Activity.transaction do
+      activity.name = params[:activity][:name]
+      activity.instructions = params[:activity][:instructions]
+      activity.activity_type = ActivityType.find(params[:activity][:activity_type])
       activity.body_parts.clear
       (params[:activity][:body_parts] || []).each do |name|
         body_part = BodyPart.find_by_name(name)
@@ -111,9 +115,15 @@ class ActivitiesController < ApplicationController
         attribute = ActivityAttribute.find_by_name(name)
         activity.activity_attributes << attribute unless activity.activity_attributes.include?(attribute)
       end
-      activity.name = params[:activity][:name]
-      activity.instructions = params[:activity][:instructions]
-      activity.activity_type = ActivityType.find(params[:activity][:activity_type])
+      activity.activity_videos.each do |activity_video|
+        activity_video.delete
+      end
+      activity.activity_videos.clear
+      (params[:activity][:activity_videos] || []).each do |video_uri|
+        next unless valid_youtube_link?(video_uri)
+        activity_video = ActivityVideo.new({:video_uri => video_uri})
+        activity.activity_videos << activity_video unless activity.activity_videos.include?(activity_video)
+      end
     end
     activity
   end
@@ -124,6 +134,11 @@ class ActivitiesController < ApplicationController
 
   def allowed_to_create?
     !current_user.nil?
+  end
+
+  private
+  def valid_youtube_link?(link)
+    link.match(/^http:\/\/www\.youtube\.com\/watch\?v=\w+$/)
   end
 
 end

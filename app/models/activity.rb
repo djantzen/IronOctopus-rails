@@ -7,6 +7,7 @@ class Activity < ActiveRecord::Base
   has_many :measurements, :through => :activity_sets
   has_many :routines, :through => :activity_sets
   has_many :activity_sets
+  has_many :activity_videos
   has_and_belongs_to_many :activity_attributes
   has_and_belongs_to_many :body_parts
   has_and_belongs_to_many :implements
