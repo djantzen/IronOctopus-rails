@@ -28,13 +28,16 @@
             %h3 Anatomy Involved
             %ul#available-body-part-list.unstyled
               - group_body_parts_by_region(@body_parts).each_pair do |region, body_parts|
-                %li
-                  %h5= region
-                %ul.unstyled
-                  - body_parts.each do |body_part|
-                    %li
-                      = check_box_tag "activity[body_parts][]", body_part.name, @activity.body_parts.include?(body_part) ? true : false
-                      = h body_part.name
+                .region-container
+                  %li
+                    = check_box_tag region, nil, true, { :class => 'region' }
+                    = h region
+                  %ul
+                    - body_parts.each do |body_part|
+                      %li
+                        = check_box_tag "activity[body_parts][]", body_part.name, @activity.body_parts.include?(body_part) ? true : false,
+                                        { :class => 'body-part' }
+                        = h body_part.name
           .span3
             %h3 Implements Utilized
             %ul#available-implement-list.unstyled
@@ -60,12 +63,13 @@
                 %li
                   = check_box_tag "activity[activity_attributes][]", attribute.name, @activity.activity_attributes.include?(attribute) ? true : false
                   = h attribute.name
+        %br
         .row-fluid
           %h3
             Media
           - if @activity.activity_videos.empty?
             = form.label "activity[activity_videos][]", "YouTube Link"
-            = text_field_tag "activity[activity_videos][]", "Enter URL or video ID", :class => "input-xxlarge valid_activity_video_link"
+            = text_field_tag "activity[activity_videos][]", "", :class => "input-xxlarge valid_activity_video_link"
           - else
             - @activity.activity_videos.each do |video|
               = form.label "activity[activity_videos][]", "YouTube Link"

@@ -21,6 +21,7 @@ $(document).ready(function() {
   }
 
   var valid_activity_video_link = function(video_uri) {
+    if (video_uri == null || video_uri === "") return true;
     console.log("validating " +  video_uri);
     youtube = new RegExp(/^http:\/\/www\.youtube\.com\/watch\?v=\w+$/);
     return video_uri.match(youtube) ? true : false;
@@ -31,5 +32,11 @@ $(document).ready(function() {
 
   $("#create-update-activity-form form").validate();
 
+  $("input.body-part").each(function() {
+    if (!$(this).attr('checked')) {
+      $(this).parents(".region-container").find("input.region").attr('checked', false);
+    }
+
+  });
 
 });

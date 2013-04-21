@@ -3,7 +3,7 @@ class BodyPartsController < ApplicationController
   before_filter :authenticate_user
 
   def index
-    @body_parts = BodyPart.find(:all)
+    @body_parts = BodyPart.all
   end
   
   def new
@@ -33,10 +33,10 @@ class BodyPartsController < ApplicationController
   
   private
   def create_or_update(params)
-    body_part = params[:id] ? BodyPart.find(params[:id]) : BodyPart.new
+    body_part = params[:id] ? BodyPart.find_by_permalink(params[:id]) : BodyPart.new
 
     body_part.name = params[:body_part][:name]
-    body_part.region = params[:body_part][:region]
+    body_part.region = !params[:body_part][:newregion].empty? ? params[:body_part][:newregion] : params[:body_part][:region]
     body_part
   end
 
