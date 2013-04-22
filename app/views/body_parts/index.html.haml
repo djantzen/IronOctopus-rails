@@ -1,4 +1,4 @@
 .container
   - @body_parts.each do |body_part|
-    %div= link_to(body_part.name, body_part)
+    %div= link_to(body_part.name, edit_body_part_path(body_part))
   %div= link_to("Create New", new_body_part_path, :class => 'btn btn-primary')

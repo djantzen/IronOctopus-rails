@@ -32,9 +32,31 @@ $(document).ready(function() {
 
   $("#create-update-activity-form form").validate();
 
-  $("input.body-part").each(function() {
-    if (!$(this).attr('checked')) {
+  // Deselect regions on page load with body parts deselected
+  $("input.body-part:not(:checked)").each(function() {
       $(this).parents(".region-container").find("input.region").attr('checked', false);
+  });
+
+  // Body parts are selected if the region is deselected
+  $("input.region").click(function() {
+    var body_parts = $(this).parents(".region-container").find("input.body-part");
+    if ($(this).is(':checked')) {
+      body_parts.prop('checked', 'checked');
+      body_parts.attr('checked', 'checked');
+    } else {
+      body_parts.prop('checked', "false");
+      body_parts.removeAttr("checked");
+    }
+  });
+
+  // Region is selected if all the body parts are selected
+  $("input.body-part").click(function() {
+    var region = $(this).parents(".region-container").find("input.region")
+    if ($(this).is(":not(:checked)"))
+      region.attr('checked', false);
+    else if (region.find("input.body-part:not(:checked)").size() == 0) {
+      region.prop('checked', 'checked');
+      region.attr('checked', 'checked');
     }
 
   });

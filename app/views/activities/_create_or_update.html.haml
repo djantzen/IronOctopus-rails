@@ -26,13 +26,13 @@
         .row-fluid
           .span3
             %h3 Anatomy Involved
-            %ul#available-body-part-list.unstyled
+            %ul#available-body-part-list.tree
               - group_body_parts_by_region(@body_parts).each_pair do |region, body_parts|
                 .region-container
                   %li
                     = check_box_tag region, nil, true, { :class => 'region' }
                     = h region
-                  %ul
+                  %ul.tree
                     - body_parts.each do |body_part|
                       %li
                         = check_box_tag "activity[body_parts][]", body_part.name, @activity.body_parts.include?(body_part) ? true : false,
