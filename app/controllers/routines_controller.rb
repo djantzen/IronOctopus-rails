@@ -212,12 +212,12 @@ class RoutinesController < ApplicationController
     @trainer = current_user
     @client_logins = current_user.clients.order(:last_name, :first_name).map { |u| ["#{u.first_name} #{u.last_name}", u.login] }
     @activities = Activity.all(:include => [:body_parts, :implements, :activity_type], :order => :name)
-    @activity_types = ActivityType.all
-    @implements = Implement.all
-    @body_parts = BodyPart.all
+    @activity_types = ActivityType.order(:name)
+    @implements = Implement.order(:category, :name)
+    @body_parts = BodyPart.order(:region, :name)
     @activity = Activity.new
     @metrics = Metric.list
-    @activity_attributes = ActivityAttribute.all(:order => :name)
+    @activity_attributes = ActivityAttribute.order(:name)
   end
 
   def allowed_to_create?

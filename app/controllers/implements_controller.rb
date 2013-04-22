@@ -1,6 +1,6 @@
 class ImplementsController < ApplicationController
 
-  before_filter :authenticate_user#, :except => [:is_name_unique, :index]
+  before_filter :authenticate_user
   respond_to :json, :html
 
   def index
@@ -54,7 +54,7 @@ class ImplementsController < ApplicationController
 
   private
   def create_or_update(params)
-    implement = params[:id] ? Implement.find(params[:id]) : Implement.new(params[:implement])
+    implement = params[:id] ? Implement.find_by_permalink(params[:id]) : Implement.new(params[:implement])
     implement
   end
 

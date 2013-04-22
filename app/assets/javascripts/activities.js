@@ -51,10 +51,12 @@ $(document).ready(function() {
 
   // Region is selected if all the body parts are selected
   $("input.body-part").click(function() {
-    var region = $(this).parents(".region-container").find("input.region")
+    var region_container = $(this).parents(".region-container");
+    var region = region_container.find("input.region");
+
     if ($(this).is(":not(:checked)"))
       region.attr('checked', false);
-    else if (region.find("input.body-part:not(:checked)").size() == 0) {
+    else if (region_container.find("input.body-part:not(:checked)").size() == 0) {
       region.prop('checked', 'checked');
       region.attr('checked', 'checked');
     }
