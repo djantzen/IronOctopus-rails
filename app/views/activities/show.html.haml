@@ -51,6 +51,7 @@
         #video-id
           = video_ids[0]
         :javascript
+          var video_id = $("#video-id").text().trim();
           var tag = document.createElement('script');
 
           tag.src = "https://www.youtube.com/iframe_api";
@@ -58,7 +59,6 @@
           firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
           var player;
-          var video_id = $("#video-id").text().trim();
           function onYouTubeIframeAPIReady() {
             player = new YT.Player('player', {
               height: '390',

@@ -37,6 +37,15 @@ $(document).ready(function() {
       $(this).parents(".region-container").find("input.region").attr('checked', false);
   });
 
+//  $("li.body-part-entry").hide();
+
+//  var show_body_parts = function() {
+//    $(".region-container").each(function() {
+//      $(this).
+//    });
+//
+//  }
+
   // Body parts are selected if the region is deselected
   $("input.region").click(function() {
     var body_parts = $(this).parents(".region-container").find("input.body-part");

@@ -24,11 +24,7 @@ class ActivitiesController < ApplicationController
 
   def new
     @activity = Activity.new
-    @body_parts = BodyPart.all
-    @implements = Implement.all
-    @metrics = Metric.list
-    @activity_types = ActivityType.all(:order => :name)
-    @activity_attributes = ActivityAttribute.all(:order => :name)
+    new_or_edit
     allowed_to_create?
   end
 
@@ -55,11 +51,7 @@ class ActivitiesController < ApplicationController
 
   def edit
     @activity = Activity.find_by_permalink(params[:id])
-    @body_parts = BodyPart.all
-    @implements = Implement.all
-    @activity_types = ActivityType.all(:order => :name)
-    @metrics = Metric.all(:conditions => "name != 'None'", :order => :name)
-    @activity_attributes = ActivityAttribute.all(:order => :name)
+    new_or_edit
     allowed_to_update?
   end
   
@@ -139,6 +131,14 @@ class ActivitiesController < ApplicationController
   private
   def valid_youtube_link?(link)
     link.match(/^http:\/\/www\.youtube\.com\/watch\?v=\w+$/)
+  end
+
+  def new_or_edit()
+    @body_parts = BodyPart.order(:region, :name)
+    @implements = Implement.order(:category, :name)
+    @metrics = Metric.list
+    @activity_types = ActivityType.order(:name)
+    @activity_attributes = ActivityAttribute.order(:name)
   end
 
 end

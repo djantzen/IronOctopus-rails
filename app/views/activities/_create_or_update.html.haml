@@ -24,17 +24,25 @@
           = submit_tag "Save", :class => 'btn btn-primary'
       .span8.well
         .row-fluid
-          .span3
+          .span2
+            %h3 Metrics
+            %ul#available-metric-list.unstyled
+              - @metrics.each do |metric|
+                %li
+                  = check_box_tag "activity[metrics][]", metric.name, @activity.metrics.include?(metric) ? true : false
+                  = h metric.name
+          .span4
             %h3 Anatomy Involved
-            %ul#available-body-part-list.tree
+            %ul#available-body-part-list.unstyled
               - group_body_parts_by_region(@body_parts).each_pair do |region, body_parts|
                 .region-container
                   %li
-                    = check_box_tag region, nil, true, { :class => 'region' }
-                    = h region
-                  %ul.tree
+                    %h4
+                      = check_box_tag region, nil, true, { :class => 'region' }
+                      = h region
+                  %ul
                     - body_parts.each do |body_part|
-                      %li
+                      %li.body-part-entry
                         = check_box_tag "activity[body_parts][]", body_part.name, @activity.body_parts.include?(body_part) ? true : false,
                                         { :class => 'body-part' }
                         = h body_part.name
@@ -43,19 +51,12 @@
             %ul#available-implement-list.unstyled
               - group_implements_by_category(@implements).each_pair do |category, implements|
                 %li
-                  %h5= category
+                  %h4= category
                 %ul.unstyled
                   - implements.each do |implement|
                     %li
                       = check_box_tag "activity[implements][]", implement.name, @activity.implements.include?(implement) ? true : false
                       = h implement.name
-          .span3
-            %h3 Metrics
-            %ul#available-metric-list.unstyled
-              - @metrics.each do |metric|
-                %li
-                  = check_box_tag "activity[metrics][]", metric.name, @activity.metrics.include?(metric) ? true : false
-                  = h metric.name
           .span3
             %h3 Attributes
             %ul#available-activity-attribute-list.unstyled

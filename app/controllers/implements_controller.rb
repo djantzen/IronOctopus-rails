@@ -54,7 +54,9 @@ class ImplementsController < ApplicationController
 
   private
   def create_or_update(params)
-    implement = params[:id] ? Implement.find_by_permalink(params[:id]) : Implement.new(params[:implement])
+    implement = params[:id] ? Implement.find_by_permalink(params[:id]) : Implement.new
+    implement.name = params[:implement][:name]
+    implement.category = params[:implement][:category]
     implement
   end
 
