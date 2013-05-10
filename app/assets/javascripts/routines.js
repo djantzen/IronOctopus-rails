@@ -45,8 +45,14 @@ $(document).ready(function() {
   $(".activity").each(function() {
     new ActivityListItem($(this));
   });
-  $(".activity-set-form").each(function() {
+  $(".work-activity").each(function() {
+    new WorkActivityListItem($(this));
+  });
+  $(".activity-set-form.assigned-work").each(function() {
     new ActivitySetListItem($(this));
+  });
+  $(".activity-set-form.work").each(function() {
+    new WorkActivitySetListItem($(this));
   });
 
   /*
@@ -170,11 +176,6 @@ $(document).ready(function() {
   $("#activity-search-box").keyup(function() {
       clear_selections();
       search_facet_filtered_activities($("#activity-search-box"));
-  });
-
-  $(".skip-activity-set-button").click(function() {
-    $(this).parents("form").remove();
-    return false;
   });
 
   $(".new-activity-button").click(function() {

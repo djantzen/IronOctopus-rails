@@ -90,7 +90,7 @@
         %i.icon-search
       = render :partial => 'shared/button', :locals => { :button_class => 'new-activity-button btn-primary', |
                :message => 'New Activity'}                                                        |
-      %ul#activity-list.nav.nav-tabs.nav-stacked.has-tooltip{:rel => "tooltip", :title => "Select activities to add them to your routine"}
+      %ul#activity-list.affix.nav.nav-tabs.nav-stacked.has-tooltip{"data-offset-top"=>"200", "data-spy"=>"affix", :rel => "tooltip", :title => "Select activities to add them to your routine"}
         - @activities.each do |activity|
           = render :partial => "routines/activity_list_item", :locals => { :activity => activity }
     #routine-form-panel.span6
@@ -128,10 +128,11 @@
                                                                    :button_class => "btn-primary",
                                                                    :message => "Import Activity Sets from Another Routine" }
           .row
-            %ul#routine-activity-set-list.accordion
+            %ul#routine-activity-set-list.accordion.unstyled
               - @routine.activity_sets.each do |activity_set|
-                = render :partial => 'activity_sets/form', :locals => { :activity => activity_set.activity, |
-                  :activity_set => activity_set, :template => false }                                       |
+                %li.activity-set-form.assigned-work
+                  = render :partial => 'activity_sets/form', :locals => { :activity => activity_set.activity, |
+                    :activity_set => activity_set, :template => false }                                       |
           .row
             .span2
               .btn-group

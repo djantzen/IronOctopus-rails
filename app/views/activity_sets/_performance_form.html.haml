@@ -1,22 +1,26 @@
-%div{:class => "accordion-group activity-set-form"}
-  .container
+.container-fluid{:class => "accordion-group #{defined?(template) && template ? 'activity-set-form-template' : ''}"}
+  = form_for [@routine.client, Work.new], :remote => true do |form|
+    = hidden_field_tag("routine[routine]", @routine.name)
     .accordion-heading.activity-display-name.row
       .span2
-        %a.accordion-toggle{ "data-parent" => "routine-activity-set-list", "data-toggle" => "collapse", :href => activity_set.position}
+        %a.accordion-toggle{ "data-parent" => "routine-activity-set-list", "data-toggle" => "collapse", :href => "##{template ? nil : activity_set.position}"}
           = activity.name
       .span1
         %i.icon-comment.show-instructions
           .instructions-modal.modal.hide.fade
             .modal-body
               = markup(activity.instructions)
-    .activity-set-attributes.accordion-body.collapse.in{:id => activity_set.position }
+    .activity-set-attributes.accordion-body.collapse.in{:id => template ? nil : activity_set.position}
       .accordion-inner.container
         = hidden_field_tag "routine[activity_sets][][activity]", activity.name
         - activity.metrics.each do |metric|
           .row
             - initial_value, unit = get_initial_value(activity_set, metric)
+            - unit_options = unit ? [unit.pluralize] : metric.units.map { |u| u.name.pluralize }
             = render :partial => "routines/measure_selector", :locals => { :measure => metric.name, :interval => 1,       |
-                     :initial_value => initial_value.value, :units => [unit.pluralize], :unit => unit, :performance => true }                   |
+                     :initial_value => initial_value.value, :units => unit_options, :unit => unit, :performance => true }                   |
         .btn-group
           = submit_tag "Done", :class => "perform-activity-set-button btn btn-primary"
-          = render :partial => "shared/button", :locals => { :button_class=> 'skip-activity-set-button', :message => 'Skip'}
+          = render :partial => "shared/button", :locals => { :button_class=> 'delete-activity-set-button', :message => 'Skip'}
+          = render :partial => 'shared/button', :locals => { :button_class => 'clone-activity-set-button', |
+                   :message => 'Repeat', :icon => 'icon-repeat' }                                                                       |

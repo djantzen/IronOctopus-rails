@@ -6,7 +6,7 @@ class ActivitiesController < ApplicationController
   helper_method :allowed_to_update?
 
   def index
-    @activities = Activity.all(:include => :activity_type, :order => :name)
+    @activities = Activity.order(:name).includes([:activity_type])
 
     json_activities = @activities.map do |a|
       {

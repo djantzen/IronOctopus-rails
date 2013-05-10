@@ -1,11 +1,37 @@
-.container
-  %ul#activity-sets
-    - @routine.activity_sets.each do |activity_set|
-      .container
-      = form_for [@routine.client, Work.new], :remote => true do |form|
-        = hidden_field_tag("routine[routine]", @routine.name)
-        = render :partial => 'activity_sets/performance_form', :locals => { :activity => activity_set.activity, |
-                 :activity_set => activity_set }                                                                |
+.container-fluid
+  .tabbable
+    %ul.nav.nav-tabs.nav-pills
+      %li.active
+        %a{:href => "#routine", "data-toggle" => "tab"}
+          Routine
+      %li
+        %a{:href => "#activity-list", "data-toggle" => "tab"}
+          Add an Activity
+    .tab-content
+      #routine.tab-pane.active
+        %ul#routine-activity-set-list.unstyled
+          - @routine.activity_sets.each do |activity_set|
+            %li.activity-set-form.work
+              = render :partial => "activity_sets/performance_form", :locals => { :activity => activity_set.activity, |
+                       :activity_set => activity_set, :template => false }                                                                |
+      #activity-list.tab-pane
+        #activity-search-widget.well.well-small
+          %input#activity-search-box.input-medium{:tabindex => "1", :type => "text"}
+          %i.icon-search
+        %ul.nav.nav-tabs.nav-stacked
+          - @activities.each do |activity|
+            %li.work-activity
+              %a
+                = activity.name
+              = render :partial => "activity_sets/performance_form", :locals => { :template =>  true, :activity => activity,
+                                                                                  :activity_set => nil }
+    %ul.nav.nav-tabs.nav-pills
+      %li.active
+        %a{:href => "#routine", "data-toggle" => "tab"}
+          Routine
+      %li
+        %a{:href => "#activity-list", "data-toggle" => "tab"}
+          Add an Activity
   = link_to(user_path(@client), :class => "btn btn-primary") do
     %i.icon-home
     Home

@@ -65,6 +65,7 @@ class RoutinesController < ApplicationController
   def perform
     @client = User.find_by_login(params[:user_id])
     @routine = Routine.first(:conditions => { :client_id => @client.user_id, :permalink => params[:routine_id] })
+    @activities = Activity.order(:name).includes(:activity_type)
     respond_with do |format|
       format.html { render :html => @routine }
     end
