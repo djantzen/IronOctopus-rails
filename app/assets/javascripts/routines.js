@@ -43,11 +43,9 @@ $(document).ready(function() {
   $("#routine-form-panel form").validate();
 
   $(".activity.assigned").each(function() {
-    console.log("bind activity")
     new ActivityListItem($(this));
   });
   $(".activity.work").each(function() {
-    console.log("bind work activity")
     new WorkActivityListItem($(this));
   });
   $(".activity-set-form.assigned-work").each(function() {
@@ -80,7 +78,6 @@ $(document).ready(function() {
    */
   $("#activity-list .activity").each(function() {
     var facet_target_superkey = generate_facet_key($(this).find(".faceting-control"), true);
-    console.log("superkey " + facet_target_superkey);
     var facet_target_superkey_node = $(document.createElement("span"));
     facet_target_superkey_node.append(facet_target_superkey);
     facet_target_superkey_node.addClass("faceting-control facet-target-superkey");
@@ -98,7 +95,8 @@ $(document).ready(function() {
     $("#body-part-list .collapse").collapse("hide");
     $("#implement-list .collapse").collapse("hide");
     $("#activity-attribute-list .collapse").collapse("hide");
-    $("#clear-selections").hide();
+    $("#activity-search-box").val("");
+//    $("#clear-selections").hide();
   };
 
   $("#clear-selections").click(function() {
@@ -177,7 +175,7 @@ $(document).ready(function() {
   });
 
   $("#activity-search-box").keyup(function() {
-      clear_selections();
+//      clear_selections();
       search_facet_filtered_activities($("#activity-search-box"));
   });
 

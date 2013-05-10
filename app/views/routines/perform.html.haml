@@ -12,10 +12,14 @@
         %ul#routine-activity-set-list.unstyled
           - @routine.activity_sets.each do |activity_set|
             %li.activity-set-form.work
-              = render :partial => "activity_sets/performance_form", :locals => { :activity => activity_set.activity, |
-                       :activity_set => activity_set, :template => false }                                                                |
+              = render :partial => "activity_sets/performance_form",
+                       :locals => { :activity => activity_set.activity,
+                                    :activity_set => activity_set, :template => false }
       #activity-list-pane.tab-pane
         #activity-search-widget.well.well-small
+          #clear-selections.btn.btn-primary
+            Clear
+            %i.icon-remove
           %input#activity-search-box.input-medium{:tabindex => "1", :type => "text"}
           %i.icon-search
         %ul#activity-list.nav.nav-tabs.nav-stacked

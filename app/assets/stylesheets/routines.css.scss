@@ -12,6 +12,10 @@
   display: none;
 }
 
+#routine-activity-set-list {
+  margin-left: 20px;
+}
+
 .activity-set-form .handle {
   border: solid 1px #E5E5E5;
   cursor: move;
@@ -76,3 +80,4 @@ input.measure {
 #basic-routine-info {
   padding-bottom: 10px;
 }
+
