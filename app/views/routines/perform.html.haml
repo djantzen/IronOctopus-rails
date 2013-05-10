@@ -2,36 +2,32 @@
   .tabbable
     %ul.nav.nav-tabs.nav-pills
       %li.active
-        %a{:href => "#routine", "data-toggle" => "tab"}
+        %a{:href => "#routine-pane", "data-toggle" => "tab"}
           Routine
       %li
-        %a{:href => "#activity-list", "data-toggle" => "tab"}
+        %a{:href => "#activity-list-pane", "data-toggle" => "tab"}
           Add an Activity
     .tab-content
-      #routine.tab-pane.active
+      #routine-pane.tab-pane.active
         %ul#routine-activity-set-list.unstyled
           - @routine.activity_sets.each do |activity_set|
             %li.activity-set-form.work
               = render :partial => "activity_sets/performance_form", :locals => { :activity => activity_set.activity, |
                        :activity_set => activity_set, :template => false }                                                                |
-      #activity-list.tab-pane
+      #activity-list-pane.tab-pane
         #activity-search-widget.well.well-small
           %input#activity-search-box.input-medium{:tabindex => "1", :type => "text"}
           %i.icon-search
-        %ul.nav.nav-tabs.nav-stacked
+        %ul#activity-list.nav.nav-tabs.nav-stacked
           - @activities.each do |activity|
-            %li.work-activity
-              %a
-                = activity.name
-              = render :partial => "activity_sets/performance_form", :locals => { :template =>  true, :activity => activity,
-                                                                                  :activity_set => nil }
-    %ul.nav.nav-tabs.nav-pills
-      %li.active
-        %a{:href => "#routine", "data-toggle" => "tab"}
-          Routine
-      %li
-        %a{:href => "#activity-list", "data-toggle" => "tab"}
-          Add an Activity
+            = render :partial => "routines/activity_list_item", :locals => { :activity => activity, :performance => true }
+    -#%ul.nav.nav-tabs.nav-pills
+    -#  %li.active
+    -#    %a{:href => "#routine-pane", "data-toggle" => "tab"}
+    -#      Routine
+    -#  %li
+    -#    %a{:href => "#activity-list-pane", "data-toggle" => "tab"}
+    -#      Add an Activity
   = link_to(user_path(@client), :class => "btn btn-primary") do
     %i.icon-home
     Home

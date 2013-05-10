@@ -92,7 +92,7 @@
                :message => 'New Activity'}                                                        |
       %ul#activity-list.affix.nav.nav-tabs.nav-stacked.has-tooltip{"data-offset-top"=>"200", "data-spy"=>"affix", :rel => "tooltip", :title => "Select activities to add them to your routine"}
         - @activities.each do |activity|
-          = render :partial => "routines/activity_list_item", :locals => { :activity => activity }
+          = render :partial => "routines/activity_list_item", :locals => { :activity => activity, :performance => false }
     #routine-form-panel.span6
       .well
         = form_for [@client, @routine], :remote => via_ajax do |form|

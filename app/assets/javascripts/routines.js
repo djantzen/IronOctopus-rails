@@ -42,10 +42,12 @@ $(document).ready(function() {
 
   $("#routine-form-panel form").validate();
 
-  $(".activity").each(function() {
+  $(".activity.assigned").each(function() {
+    console.log("bind activity")
     new ActivityListItem($(this));
   });
-  $(".work-activity").each(function() {
+  $(".activity.work").each(function() {
+    console.log("bind work activity")
     new WorkActivityListItem($(this));
   });
   $(".activity-set-form.assigned-work").each(function() {
@@ -78,6 +80,7 @@ $(document).ready(function() {
    */
   $("#activity-list .activity").each(function() {
     var facet_target_superkey = generate_facet_key($(this).find(".faceting-control"), true);
+    console.log("superkey " + facet_target_superkey);
     var facet_target_superkey_node = $(document.createElement("span"));
     facet_target_superkey_node.append(facet_target_superkey);
     facet_target_superkey_node.addClass("faceting-control facet-target-superkey");

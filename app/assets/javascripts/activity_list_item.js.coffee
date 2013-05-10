@@ -134,6 +134,7 @@ class this.WorkActivitySetListItem extends ActivitySetListItem
     new WorkActivitySetListItem(activity_set_form)
 
   constructor: (@activity_set_form) ->
+    console.log("work")
     super
     this.init_validator(@activity_set_form)
     this.init_instructions(@activity_set_form)
