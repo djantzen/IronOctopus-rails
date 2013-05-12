@@ -35,6 +35,9 @@ var seconds_to_digital = function(seconds) {
 }
 
 var DIGITAL_FORMAT = new RegExp(/^\d{1,3}:\d{1,2}$/);
+var BACKSPACE_KEY = 8;
+var ENTER_KEY = 13;
+var ESC_KEY = 27;
 
 var digital_to_seconds = function(digital) {
   if (!digital.match(DIGITAL_FORMAT)) {

@@ -1,7 +1,7 @@
 - @activity_sets.each do |activity_set|
-  != "var imported = '#{escape_javascript(render :partial => 'activity_sets/form',
+  != "var imported = '<div class=\"activity-set-form\"> #{escape_javascript(render :partial => 'activity_sets/form',
                                                  :locals => { :activity => activity_set.activity,
                                                               :activity_set => activity_set,
-                                                              :template => false })}';"
+                                                              :template => false })}<div>';"
   != "$('#routine-activity-set-list').append(imported);"
 != "$('#routine-activity-set-list .activity-set-form').each(function(index, item) { new ActivitySetListItem($(item)) });"

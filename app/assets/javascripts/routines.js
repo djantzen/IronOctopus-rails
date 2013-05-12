@@ -11,7 +11,7 @@ $(document).ready(function() {
 
   $("#activity-type-list a.accordion-toggle").click(function() {
     reset_activity_type_list();
-    update_facet_filtered_activities(false);
+    apply_selected_facets_to_activities(false);
   });
 
   var routine_name_validator = function(routine_name, routine_name_elem) {
@@ -95,43 +95,29 @@ $(document).ready(function() {
     $("#body-part-list .collapse").collapse("hide");
     $("#implement-list .collapse").collapse("hide");
     $("#activity-attribute-list .collapse").collapse("hide");
-    $("#activity-search-box").val("");
-//    $("#clear-selections").hide();
+    //    $("#activity-search-box").val("");
+//   $("#clear-selections").hide();
   };
 
   $("#clear-selections").click(function() {
     clear_selections();
   });
 
-  $('.nav-tabs').button();
-
-  var search_facet_filtered_activities = function(search_box) {
-    var facet_key = new RegExp(generate_facet_key($("#activity-search-box"), false));
-    var activities = $("#activity-list .facet-included-activity");
-
-    activities.each(function() {
-      var activity = $(this);
-      var facet_target_superkey = activity.find("span.facet-target-superkey").text();
-
-      if (facet_target_superkey.match(facet_key)) {
-//          console.info("MATCH for " + facet_key + " facet superkey " + facet_target_superkey);
-        activity.removeClass("facet-excluded-activity");
-        activity.addClass("facet-included-activity");
-      } else {
-//          console.info("no match for " + facet_key + " facet superkey " + facet_target_superkey);
-        activity.removeClass("facet-included-activity");
-        activity.addClass("facet-excluded-activity");
-      }
-    });
+  var reset_search = function() {
+    $("#activity-search-box").val("");
+    update_facet_filtered_activities("", false);
+    $("#activity-search-box").focus();
   }
 
-  /*
-   * Updates the list of activities after a facet has been added or removed
-   */
-  var update_facet_filtered_activities = function(restrict_results) {
+  $('.nav-tabs').button();
 
-    // Get the key describing currently selected facets
-    var facet_key = new RegExp(generate_facet_key($("#activity-facets-panel div.ui-state-active .faceting-control"), false));
+  $("#activity-search-box").keyup(function(e) {
+//    clear_selections();
+    var facet_key = new RegExp(generate_facet_key($("#activity-search-box"), false));
+    update_facet_filtered_activities(facet_key, (e.which == BACKSPACE_KEY ? false : true));
+  });
+
+  var update_facet_filtered_activities = function(facet_key, restrict_results) {
     // Only examine activities that might change as a result of the facet addition or removal.
     var activities = restrict_results ? $("#activity-list .facet-included-activity"):
       $("#activity-list .facet-excluded-activity");
@@ -152,6 +138,15 @@ $(document).ready(function() {
     });
   }
 
+  /*
+   * Updates the list of activities after a facet has been added or removed
+   */
+  var apply_selected_facets_to_activities = function(restrict_results) {
+    // Get the key describing currently selected facets
+    var facet_key = new RegExp(generate_facet_key($("#activity-facets-panel div.ui-state-active .faceting-control"), false));
+    update_facet_filtered_activities(facet_key, restrict_results);
+  }
+
   $("#activity-type-list .facet").click(function() {
     $(this).parents(".collapse").collapse("hide");
     var facet = $(this).find("a").text();
@@ -170,13 +165,8 @@ $(document).ready(function() {
     } else {
       $(this).addClass("ui-state-active");
     }
-    update_facet_filtered_activities(restrict_results);
+    apply_selected_facets_to_activities(restrict_results);
     $("#clear-selections").show();
-  });
-
-  $("#activity-search-box").keyup(function() {
-//      clear_selections();
-      search_facet_filtered_activities($("#activity-search-box"));
   });
 
   $(".new-activity-button").click(function() {
@@ -244,5 +234,13 @@ $(document).ready(function() {
     $("#modal-activity-builder").modal('hide');
     clear_activity_form();
   });
+
+//  $(document).on('propertychange keyup input paste', '#activity-search-box', function(){
+//    var io = $(this).val().length ? 1 : 0 ;
+//    $(this).next('.icon_clear').stop().fadeTo(300,io);
+//  }).on('click', '.icon_clear', function() {
+//      $(this).delay(300).fadeTo(300,0).prev('input').val('');
+//    });
+
   clear_selections();
 });

@@ -3,6 +3,10 @@ class this.ActivityListItem
   constructor: (@activity_set_form_template) ->
     @activity_set_form_template.click =>
       this.add_to_list()
+    @activity_set_form_template.keyup (e) =>
+#      console.log("KEY " + e.which)
+      if (e.which == ENTER_KEY)
+        this.add_to_list()
     return @activity_set_form_template
 
   add_to_list: () =>

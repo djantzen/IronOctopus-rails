@@ -113,14 +113,14 @@
               .span2
                 = form.label :name, "Routine Name"
               .span2
-                = form.text_field :name, :class => "input-xlarge required is_routine_name_unique", |
+                = form.text_field :name, :tabindex => "3", :class => "input-xlarge required is_routine_name_unique", |
                                   :minlength => @validations[:routine][:name][:minlength], |
                                   :maxlength => @validations[:routine][:name][:maxlength] |
             .row
               .span2
                 = form.label :goal, "Routine Goal"
               .span3
-                = form.text_field :goal, :class => "required input-xlarge", :minlength => @validations[:routine][:goal][:minlength], |
+                = form.text_field :goal, :tabindex => "4", :class => "required input-xlarge", :minlength => @validations[:routine][:goal][:minlength], |
                                   :maxlength => @validations[:routine][:goal][:maxlength] |
             .row
               .span4

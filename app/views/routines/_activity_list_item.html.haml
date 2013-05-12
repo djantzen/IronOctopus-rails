@@ -1,5 +1,5 @@
 - if performance
-  %li.activity.work.facet-included-activity{:id => activity.name.to_identifier}
+  %li.activity.work.facet-included-activity{:tabindex => "2", :id => activity.name.to_identifier}
     %a.has-tooltip-right{:rel => "tooltip", :title => markup(activity.instructions)}
       = activity.name
     = render :partial => "activity_sets/performance_form",
@@ -24,7 +24,7 @@
       %span.faceting-control
         = attribute.name
 - else
-  %li.activity.assigned.facet-included-activity{:id => activity.name.to_identifier}
+  %li.activity.assigned.facet-included-activity{:tabindex => "2", :id => activity.name.to_identifier}
     %a.has-tooltip-right{:rel => "tooltip", :title => markup(activity.instructions)}
       = activity.name
     = render :partial => "activity_sets/form",

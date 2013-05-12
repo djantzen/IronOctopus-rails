@@ -17,10 +17,11 @@
                                     :activity_set => activity_set, :template => false }
       #activity-list-pane.tab-pane
         #activity-search-widget.well.well-small
+          %span.icon_clear
+          %i.icon-remove
           #clear-selections.btn.btn-primary
             Clear
-            %i.icon-remove
-          %input#activity-search-box.input-medium{:tabindex => "1", :type => "text"}
+          %input#activity-search-box.input-medium.clearable{:tabindex => "1", :type => "text"}
           %i.icon-search
         %ul#activity-list.nav.nav-tabs.nav-stacked
           - @activities.each do |activity|
