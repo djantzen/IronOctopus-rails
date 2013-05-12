@@ -1,0 +1,19 @@
+%span.faceting-control
+  = activity.name
+%span.faceting-control
+  = activity.activity_type.name
+- group_body_parts_by_region(activity.body_parts).each_pair do |region, body_parts|
+  %span.faceting-control
+    = region
+  - body_parts.each do |body_part|
+    %span.faceting-control
+      = body_part.name
+- group_implements_by_category(activity.implements).each_pair do |category, implements|
+  %span.faceting-control
+    = category
+  - implements.each do |implement|
+    %span.faceting-control
+      = implement.name
+- activity.activity_attributes.each do |attribute|
+  %span.faceting-control
+    = attribute.name

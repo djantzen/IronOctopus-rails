@@ -103,23 +103,22 @@ $(document).ready(function() {
     clear_selections();
   });
 
-  var reset_search = function() {
-    $("#activity-search-box").val("");
-    update_facet_filtered_activities("", false);
-    $("#activity-search-box").focus();
-  }
-
   $('.nav-tabs').button();
 
   $("#activity-search-box").keyup(function(e) {
 //    clear_selections();
-    var facet_key = new RegExp(generate_facet_key($("#activity-search-box"), false));
-    update_facet_filtered_activities(facet_key, (e.which == BACKSPACE_KEY ? false : true));
+    if (e.which == DOWN_ARROW_KEY)
+      $(".activity.facet-included-activity:first").focus();
+    else {
+      var facet_key = new RegExp(generate_facet_key($("#activity-search-box"), false));
+      var narrowing_results = ((e.which == BACKSPACE_KEY || e.which == DELETE_KEY)? false : true);
+      update_facet_filtered_activities(facet_key, narrowing_results);
+    }
   });
 
-  var update_facet_filtered_activities = function(facet_key, restrict_results) {
+  var update_facet_filtered_activities = function(facet_key, narrowing_results) {
     // Only examine activities that might change as a result of the facet addition or removal.
-    var activities = restrict_results ? $("#activity-list .facet-included-activity"):
+    var activities = narrowing_results ? $("#activity-list .facet-included-activity"):
       $("#activity-list .facet-excluded-activity");
 
     activities.each(function() {
@@ -141,10 +140,10 @@ $(document).ready(function() {
   /*
    * Updates the list of activities after a facet has been added or removed
    */
-  var apply_selected_facets_to_activities = function(restrict_results) {
+  var apply_selected_facets_to_activities = function(narrowing_results) {
     // Get the key describing currently selected facets
     var facet_key = new RegExp(generate_facet_key($("#activity-facets-panel div.ui-state-active .faceting-control"), false));
-    update_facet_filtered_activities(facet_key, restrict_results);
+    update_facet_filtered_activities(facet_key, narrowing_results);
   }
 
   $("#activity-type-list .facet").click(function() {
@@ -158,14 +157,14 @@ $(document).ready(function() {
    * When a facet is added or removed, apply CSS
    */
   $("#activity-facets-panel .facet").click(function() {
-    var restrict_results = true;
+    var narrowing_results = true;
     if ($(this).hasClass("ui-state-active")) {
       $(this).removeClass("ui-state-active");
-      restrict_results = false;
+      narrowing_results = false;
     } else {
       $(this).addClass("ui-state-active");
     }
-    apply_selected_facets_to_activities(restrict_results);
+    apply_selected_facets_to_activities(narrowing_results);
     $("#clear-selections").show();
   });
 

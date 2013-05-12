@@ -3,10 +3,25 @@ class this.ActivityListItem
   constructor: (@activity_set_form_template) ->
     @activity_set_form_template.click =>
       this.add_to_list()
+
     @activity_set_form_template.keyup (e) =>
-#      console.log("KEY " + e.which)
-      if (e.which == ENTER_KEY)
+      key = e.which
+      activities = $(".activity.facet-included-activity")
+      index = activities.index(@activity_set_form_template) # jquery prev/next don't work with dynamic filtered list
+      if (key == ENTER_KEY)
         this.add_to_list()
+        $("#activity-search-box").focus()
+      else if (key == UP_ARROW_KEY)
+        if index == 0
+          $("#activity-search-box").focus()
+        else
+          activities.get(index - 1).focus()
+      else if (key == DOWN_ARROW_KEY)
+        if index == activities.length - 1
+          activities.get(0).focus()
+        else
+          activities.get(index + 1).focus()
+
     return @activity_set_form_template
 
   add_to_list: () =>
