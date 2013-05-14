@@ -16,6 +16,13 @@ implement:
   name:
     minlength: 2
     maxlength: 64
+body_part:
+  name:
+    minlength: 4
+    maxlength: 64
+  region:
+    minlength: 2
+    maxlength: 64
 program:
   name:
     minlength: 4

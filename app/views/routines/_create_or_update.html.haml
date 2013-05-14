@@ -130,7 +130,7 @@
           .row
             %ul#routine-activity-set-list.accordion.unstyled
               - @routine.activity_sets.each do |activity_set|
-                %li.activity-set-form.assigned-work
+                %li.activity-set-form.assigned
                   = render :partial => 'activity_sets/form', :locals => { :activity => activity_set.activity, |
                     :activity_set => activity_set, :template => false }                                       |
           .row

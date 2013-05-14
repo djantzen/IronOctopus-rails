@@ -10,15 +10,15 @@ class Routine < ActiveRecord::Base
   has_many :weekday_programs
   has_many :scheduled_programs
 
-  #VALIDATIONS = IronOctopus::Configuration.instance.validations[:routine]
-  #validates :name, :length => {
-  #  :minimum => VALIDATIONS[:name][:minlength].to_i,
-  #  :maximum => VALIDATIONS[:name][:maxlength].to_i
-  #}
-  #validates :goal, :length => {
-  #  :minimum => VALIDATIONS[:goal][:minlength].to_i,
-  #  :maximum => VALIDATIONS[:goal][:maxlength].to_i
-  #}
+  VALIDATIONS = IronOctopus::Configuration.instance.validations[:routine]
+  validates :name, :length => {
+    :minimum => VALIDATIONS[:name][:minlength].to_i,
+    :maximum => VALIDATIONS[:name][:maxlength].to_i
+  }
+  validates :goal, :length => {
+    :minimum => VALIDATIONS[:goal][:minlength].to_i,
+    :maximum => VALIDATIONS[:goal][:maxlength].to_i
+  }
 
   validates_uniqueness_of :name, :scope => :client_id
 

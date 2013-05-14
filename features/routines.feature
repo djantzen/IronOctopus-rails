@@ -21,3 +21,30 @@ Feature: Create a new routine
     And I press "save-routine"
     Then I should see "Unable to create/update Routine"
     And I should see "Name is too short"
+
+  @javascript
+  Scenario: Clicking on an activity adds it to the routine
+    Given I log in as "bob_the_trainer" with "password"
+    And I am on the /users/sally_the_client/routines/new page
+    When I click "#benchpress"
+    Then I should see "Added Bench Press to the routine"
+    And there should be 1 activity sets
+    When I click "#routine-activity-set-list .activity-set-form:nth(1) .clone-activity-set-button"
+    Then there should be 2 activity sets
+    When I click "#routine-activity-set-list .activity-set-form:nth(2) .delete-activity-set-button"
+    Then there should be 1 activity sets
+
+  @javascript
+  Scenario: Importing activity sets and behavior from another routine
+    Given I log in as "bob_the_trainer" with "password"
+    And I am on the /users/sally_the_client/routines/new page
+    And I click "#import-routine-button"
+    Then I should see "Select a routine to import"
+    When I select "Sally Client" from "client-for-routines-dropdown"
+    When I select "Whole Body Mix" from "routines-for-client-dropdown"
+    When I click "#import-routine-submit-button"
+    Then there should be 2 activity sets
+    When I click "#routine-activity-set-list .activity-set-form:nth(1) .clone-activity-set-button"
+    Then there should be 3 activity sets
+    When I click "#routine-activity-set-list .activity-set-form:nth(2) .delete-activity-set-button"
+    Then there should be 2 activity sets

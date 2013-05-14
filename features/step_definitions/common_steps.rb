@@ -3,12 +3,16 @@ When /^I fill in "(.*?)" with "(.*?)"$/ do |arg1, arg2|
 end
 
 When /^I press "(.*?)"$/ do |locator|
-  #page.execute_script("$('#{locator}').submit();")
   click_button locator
 end
 
 When /^I click "(.*?)"$/ do |link|
-  click_link link
+  thingy = page.first(link)
+  if (thingy)
+    thingy.click
+  else
+    click_link link
+  end
 end
 
 Then /^I should see "(.*?)"$/ do |arg1|

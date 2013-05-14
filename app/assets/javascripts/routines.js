@@ -48,7 +48,7 @@ $(document).ready(function() {
   $(".activity.work").each(function() {
     new WorkActivityListItem($(this));
   });
-  $(".activity-set-form.assigned-work").each(function() {
+  $(".activity-set-form.assigned").each(function() {
     new ActivitySetListItem($(this));
   });
   $(".activity-set-form.work").each(function() {
