@@ -1,6 +1,9 @@
 development:
   max_calendar_months: 2
+  default_email_from: david@ironoctop.us
 production:
   max_calendar_months: 3
+  default_email_from: david@ironoctop.us
 test:
   max_calendar_months: 2
+  default_email_from: david@ironoctop.us

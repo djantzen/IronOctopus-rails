@@ -1,6 +1,6 @@
 class UserMailer < ActionMailer::Base
 
-  default :from => "david@ironoctop.us"
+  default :from => IronOctopus::Configuration.instance.application[:default_email_from]
 
   def invitation_email(trainer, email_to, license, request)
     @trainer = trainer
