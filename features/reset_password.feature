@@ -16,7 +16,7 @@ Feature: Reset a password
     And I fill in "New Password" with "updated_password"
     And I fill in "Confirm Password" with "updated_password"
     And I press "Save"
-    Then I should see "Login"
+    Then I should see "Log Out"
     And the PasswordResetRequest for jim_the_client@gmail.com should be used
     And the password for jim_the_client@gmail.com is updated_password
 

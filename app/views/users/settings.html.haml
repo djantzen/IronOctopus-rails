@@ -10,7 +10,7 @@
       .field
         .ui-widget
           = form.label :city
-          = text_field_tag :city, @client.city.display, :id => 'city-select', :class => 'ui-autocomplete-input'
+          = text_field_tag :city, @client.city.display, :id => 'city-select', :class => 'ui-autocomplete-input required'
     .row
       .span3.btn-group
         = submit_tag "Save", :class => "btn btn-large btn-primary"

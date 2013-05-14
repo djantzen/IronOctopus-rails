@@ -9,8 +9,9 @@ Feature: Sign up
     And I fill in "First name" with "George"
     And I fill in "Last name" with "Trainer"
     And I fill in "Login" with "george_the_trainer"
-    And I fill in "Password" with "Password"
-    And I fill in "Password confirmation" with "Password"
+    And I fill in "user_password" with "Password"
+    And I fill in "user_password_confirmation" with "Password"
+    And I fill in "city" with "Seattle, Washington"
     And I press "Sign Up"
     Then george_the_trainer@gmail.com should be registered
     And george_the_trainer@gmail.com should not be confirmed
@@ -23,8 +24,9 @@ Feature: Sign up
     And I fill in "First name" with "George"
     And I fill in "Last name" with "Trainer"
     And I fill in "Login" with "george_the_trainer"
-    And I fill in "Password" with "Secret"
-    And I fill in "Password confirmation" with "Password"
+    And I fill in "user_password" with "Secret"
+    And I fill in "user_password_confirmation" with "Password"
+    And I fill in "city" with "Seattle, Washington"
     And I press "Sign Up"
     Then I should see "Password doesn't match confirmation"
     And george_the_trainer@gmail.com should not be registered

@@ -7,10 +7,10 @@ When /^I press "(.*?)"$/ do |locator|
 end
 
 When /^I click "(.*?)"$/ do |link|
-  thingy = page.first(link)
-  if (thingy)
-    thingy.click
-  else
+  begin
+    thingy = page.first(link)
+    thingy.click if (thingy)
+  rescue
     click_link link
   end
 end

@@ -1,4 +1,5 @@
 $(document).ready () ->
+
   $("#city-select").autocomplete({
     minLength: 3,
     source: (request, response)->

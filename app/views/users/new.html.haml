@@ -1,7 +1,7 @@
 .container
   %h2 Sign Up
   #new-user-form
-    = form_for @user do |f|
+    = form_for @user do |form|
       - if @user.errors.any?
         .error_messages
           %h2 Form is invalid
@@ -9,26 +9,25 @@
             - for message in @user.errors.full_messages
               %li= message
       .field
-        = f.label :first_name
-        = f.text_field :first_name, :class => 'required'
+        = form.label :first_name
+        = form.text_field :first_name, :class => 'required'
       .field.required
-        = f.label :last_name
-        = f.text_field :last_name, :class => 'required'
+        = form.label :last_name
+        = form.text_field :last_name, :class => 'required'
       .field.required
-        = f.label :login
-        = f.text_field :login, :class => 'required is_login_acceptable is_login_unique'
+        = form.label :login
+        = form.text_field :login, :class => 'required is_login_acceptable is_login_unique'
       .field.required
-        = f.label :email
-        = f.text_field :email, :class => 'required is_email_acceptable'
+        = form.label :email
+        = form.text_field :email, :class => 'required is_email_acceptable'
       .field.required
-        .ui-widget
-          = f.label :city
-          = text_field_tag :city, "", :id => 'city-select', :class => 'ui-autocomplete-input required'
+        = form.label :city
+        = text_field_tag :city, "", :id => 'city-select', :class => 'ui-autocomplete-input'
       .field.required
-        = f.label :password
-        = f.password_field :password, :class => 'required is_password_acceptable'
+        = form.label :password
+        = form.password_field :password, :class => 'required is_password_acceptable'
       .field.required
-        = f.label :password_confirmation
-        = f.password_field :password_confirmation, :class => 'required is_password_acceptable'
+        = form.label :password_confirmation
+        = form.password_field :password_confirmation, :class => 'required is_password_acceptable'
       .actions
-        = f.submit "Sign Up", :class => 'btn btn-primary btn-large'
+        = form.submit "Sign Up", :class => 'btn btn-primary btn-large'
