@@ -87,6 +87,7 @@ class this.ActivitySetListItem
     delete_button = @activity_set_form.find(".delete-activity-set-button")
     okay_button = @activity_set_form.find(".okay-activity-set-button")
     clone_button = @activity_set_form.find(".clone-activity-set-button")
+    measure_max_toggle_boxes = @activity_set_form.find(".measure-to-range-box")
 
     this.init_spinners(@activity_set_form)
     this.init_stopwatch(@activity_set_form)
@@ -98,6 +99,26 @@ class this.ActivitySetListItem
       $(this).click =>
         selector = $(this).parents(".measure-selector")
         selector.remove()
+
+    measure_max_toggle_boxes.each ->
+      input_controls = $(this).parents(".input-controls")
+      measure_min = input_controls.find(".measure-min");
+      measure_max = input_controls.find(".measure-max");
+      $(this).change =>
+        range_toggle_text = input_controls.find(".range-toggle-text")
+        if $(this).is(':checked')
+          range_toggle_text.hide()
+          measure_max.show()
+        else
+          range_toggle_text.show()
+          measure_max.hide()
+          measure_max.find("input").val(measure_min.find("input").val())
+      if measure_max.find("input").val() > measure_min.find("input").val()
+        $(this).prop("checked", true)
+        $(this).change()
+      else
+        $(this).prop("checked", false)
+        $(this).change()
 
     delete_button.click =>
       activity_set_form = delete_button.parents(".activity-set-form")

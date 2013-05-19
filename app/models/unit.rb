@@ -86,7 +86,7 @@ class Unit < ActiveRecord::Base
   end
 
   def self.digital_to_seconds(digital)
-    return digital unless digital =~ /^\d{1,3}:\d{1,2}$/
+    return digital.to_i unless digital =~ /^\d{1,3}:\d{1,2}$/
     minutes, seconds = digital.split(':').map do |s|
       int = s.to_i
     end
@@ -182,20 +182,21 @@ class Unit < ActiveRecord::Base
   end
 
   def self.convert_to_seconds(duration, from_unit)
-#    return duration.to_f if duration.nil? || from_unit.nil? || from_unit.eql?('None')
+    return duration.to_i if duration.nil?
     case from_unit
       when 'Second'
         duration
       when 'Minute'
         minutes_to_seconds(duration)
-      else
+      when 'None'
         digital_to_seconds(duration)
-#        raise ArgumentError.new("Cannot convert #{from_unit} to seconds")
+      else
+        raise ArgumentError.new("Cannot convert #{from_unit} to seconds")
     end
   end
 
   def self.convert_from_seconds(duration, to_unit)
-    return duration.to_f if duration.nil? || to_unit.nil?
+    return duration.to_i if duration.nil? || to_unit.nil?
     #case to_unit
     #  when 'None'
         seconds_to_digital(duration)

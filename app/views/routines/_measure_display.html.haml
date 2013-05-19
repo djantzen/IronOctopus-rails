@@ -2,7 +2,13 @@
   %span.measure-field
     #{measure}:
   %span.value-field
-    = measure_value.value
+    = measure_value.min
+  - if measure_value.range?
+    .measure-max
+      %span.range-separator
+        to
+      %span.value-field
+        = measure_value.max
   - if defined? unit and !measure.eql? 'Duration'
     %span.value-field
       = unit

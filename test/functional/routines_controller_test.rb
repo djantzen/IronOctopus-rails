@@ -39,7 +39,7 @@ class RoutinesControllerTest < ActionController::TestCase
           }
         ]
       }
-      routine = controller.normalize_routine(Routine.new, params)
+      routine = controller.create_or_update(Routine.new, params)
       assert_equal 'Leg Blaster', routine.name
       assert_equal 2, routine.activity_sets.length
     end

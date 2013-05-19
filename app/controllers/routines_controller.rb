@@ -15,12 +15,6 @@ class RoutinesController < ApplicationController
     respond_with do |format|
       format.js { render :html => @routines, :template => "routines/by_client" }
       format.html { render :html => @routines }
-      format.json {
-        denorm_routines = @routines.map do |routine|
-          denormalize_routine(routine)
-        end
-        render :json => denorm_routines.to_json
-      }
     end
   end
 
@@ -40,7 +34,7 @@ class RoutinesController < ApplicationController
   end
 
   def create
-    @routine = normalize_routine(Routine.new, params[:routine])
+    @routine = create_or_update(Routine.new, params[:routine])
     if @routine.errors.empty? #@routine.save
       respond_with do |format|
         format.html { render :html => @routine }
@@ -89,7 +83,7 @@ class RoutinesController < ApplicationController
     @client = User.find_by_login(params[:user_id])
     @routine = Routine.first(:conditions => { :client_id => @client.user_id, :permalink => params[:id] })
 
-    @routine = normalize_routine(@routine, params[:routine])
+    @routine = create_or_update(@routine, params[:routine])
     if @routine.errors.empty?
       respond_with do |format|
         format.html { render :html => @routine }
@@ -125,33 +119,9 @@ class RoutinesController < ApplicationController
 
   end
 
-  def denormalize_routine(routine)
-    {
-      :routine_key => routine.name.to_identifier,
-      :name => routine.name,
-      :goal => routine.goal,
-      :trainer => routine.trainer.login,
-      :client => routine.client.login,
-      :activity_sets => routine.activity_sets.map do |set|
-        {
-          :activity => set.activity.name,
-          :position => set.position,
-          :repetitions => set.measurement.repetitions,
-          :cadence => set.measurement.cadence,
-          :calories => set.measurement.calories,
-          :distance => set.measurement.distance,
-          :duration => set.measurement.duration,
-          :heart_rate => set.measurement.heart_rate,
-          :incline => set.measurement.incline,
-          :level => set.measurement.level,
-          :resistance => set.measurement.resistance,
-          :speed => set.measurement.speed
-        }
-      end
-    }
-  end
+  private
 
-  def normalize_routine(routine, params)
+  def create_or_update(routine, params)
     Routine.transaction do
       routine.trainer = User.find_by_login(params[:trainer]) if routine.trainer.nil?
       routine.name = params[:name]
@@ -175,20 +145,41 @@ class RoutinesController < ApplicationController
           :resistance_unit => Unit.lookup(activity_set_hash[:resistance_unit])
         }
 
-        measurement_hash = {
-          :calories => activity_set_hash[:calories].to_i,
-          :cadence => activity_set_hash[:cadence].to_f,
-          :distance => Unit.convert_to_meters(activity_set_hash[:distance].to_f, unit_hash[:distance_unit].name),
-          :duration => Unit.convert_to_seconds(activity_set_hash[:duration], unit_hash[:duration_unit].name),
-          :heart_rate => activity_set_hash[:heart_rate].to_i,
-          :incline => activity_set_hash[:incline].to_f,
-          :level => activity_set_hash[:level].to_i,
-          :repetitions => activity_set_hash[:repetitions].to_i,
-          :resistance => Unit.convert_to_kilograms(activity_set_hash[:resistance].to_f, unit_hash[:resistance_unit].name),
-          :speed => Unit.convert_to_kilometers_per_hour(activity_set_hash[:speed].to_f, unit_hash[:speed_unit].name),
+        calories_min = activity_set_hash[:calories_min].to_i
+        calories_max = activity_set_hash[:calories_max].to_i
+        cadence_min = activity_set_hash[:cadence_min].to_f
+        cadence_max = activity_set_hash[:cadence_max].to_f
+        distance_min = Unit.convert_to_meters(activity_set_hash[:distance_min].to_f, unit_hash[:distance_unit].name)
+        distance_max = Unit.convert_to_meters(activity_set_hash[:distance_max].to_f, unit_hash[:distance_unit].name)
+        duration_min = Unit.convert_to_seconds(activity_set_hash[:duration_min], unit_hash[:duration_unit].name)
+        duration_max = Unit.convert_to_seconds(activity_set_hash[:duration_max], unit_hash[:duration_unit].name)
+        heart_rate_min = activity_set_hash[:heart_rate_min].to_i
+        heart_rate_max = activity_set_hash[:heart_rate_max].to_i
+        incline_min = activity_set_hash[:incline_min].to_f
+        incline_max = activity_set_hash[:incline_max].to_f
+        level_min = activity_set_hash[:level_min].to_i
+        level_max = activity_set_hash[:level_max].to_i
+        repetitions_min = activity_set_hash[:repetitions_min].to_i
+        repetitions_max = activity_set_hash[:repetitions_max].to_i
+        resistance_min = Unit.convert_to_kilograms(activity_set_hash[:resistance_min].to_f, unit_hash[:resistance_unit].name)
+        resistance_max = Unit.convert_to_kilograms(activity_set_hash[:resistance_max].to_f, unit_hash[:resistance_unit].name)
+        speed_min = Unit.convert_to_kilometers_per_hour(activity_set_hash[:speed_min].to_f, unit_hash[:speed_unit].name)
+        speed_max = Unit.convert_to_kilometers_per_hour(activity_set_hash[:speed_max].to_f, unit_hash[:speed_unit].name)
+
+        metric_map = {
+          :calories => calories_min .. (calories_max > calories_min ? calories_max : calories_min),
+          :cadence => cadence_min .. (cadence_max > cadence_min ? cadence_max : cadence_min),
+          :distance => distance_min .. (distance_max > distance_min ? distance_max : distance_min),
+          :duration => duration_min .. (duration_max > duration_min ? duration_max : duration_min),
+          :heart_rate => heart_rate_min .. (heart_rate_max > heart_rate_min ? heart_rate_max : heart_rate_min),
+          :incline => incline_min .. (incline_max > incline_min ? incline_max : incline_min),
+          :level => level_min .. (level_max > level_min ? level_max : level_min),
+          :repetitions => repetitions_min .. (repetitions_max > repetitions_min ? repetitions_max : repetitions_min),
+          :resistance => resistance_min .. (resistance_max > resistance_min ? resistance_max : resistance_min),
+          :speed => speed_min .. (speed_max > speed_min ? speed_max : speed_min)
         }
 
-        measurement = Measurement.find_or_create(measurement_hash)
+        measurement = Measurement.find_or_create(metric_map)
         unit_set = UnitSet.find_or_create(unit_hash)
 
         activity_set = ActivitySet.new
@@ -207,7 +198,6 @@ class RoutinesController < ApplicationController
     routine
   end
 
-  private
   def new_or_edit
     @client = params[:user_id].nil? ? nil : User.find_by_login(params[:user_id])
     @trainer = current_user

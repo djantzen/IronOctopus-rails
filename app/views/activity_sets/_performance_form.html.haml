@@ -19,7 +19,7 @@
             - unit_options = unit ? [unit.pluralize] : metric.units.map { |u| u.name.pluralize }
             - if initial_value.defined? || template
               = render :partial => "routines/measure_selector", :locals => { :measure => metric.name, :interval => 1,       |
-                       :initial_value => initial_value.value, :units => unit_options, :unit => unit, :performance => true }                   |
+                       :initial_value => initial_value, :units => unit_options, :unit => unit, :performance => true }                   |
         .btn-group
           = submit_tag "Done", :class => "perform-activity-set-button btn btn-primary"
           = render :partial => "shared/button", :locals => { :button_class=> 'delete-activity-set-button', :message => 'Skip'}
