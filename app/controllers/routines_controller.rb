@@ -133,54 +133,13 @@ class RoutinesController < ApplicationController
       routine.activity_sets.clear
 
       position = 0
-      (params[:activity_sets] || []).each do |activity_set_hash|
+      (params[:activity_sets] || []).each do |activity_set_map|
         position += 1
-        activity = Activity.find_by_name(activity_set_hash[:activity])
-
-        unit_hash = {
-          :cadence_unit => Unit.lookup(activity_set_hash[:cadence_unit]),
-          :distance_unit => Unit.lookup(activity_set_hash[:distance_unit]),
-          :duration_unit => Unit.lookup(activity_set_hash[:duration_unit]),
-          :speed_unit => Unit.lookup(activity_set_hash[:speed_unit]),
-          :resistance_unit => Unit.lookup(activity_set_hash[:resistance_unit])
-        }
-
-        calories_min = activity_set_hash[:calories_min].to_i
-        calories_max = activity_set_hash[:calories_max].to_i
-        cadence_min = activity_set_hash[:cadence_min].to_f
-        cadence_max = activity_set_hash[:cadence_max].to_f
-        distance_min = Unit.convert_to_meters(activity_set_hash[:distance_min].to_f, unit_hash[:distance_unit].name)
-        distance_max = Unit.convert_to_meters(activity_set_hash[:distance_max].to_f, unit_hash[:distance_unit].name)
-        duration_min = Unit.convert_to_seconds(activity_set_hash[:duration_min], unit_hash[:duration_unit].name)
-        duration_max = Unit.convert_to_seconds(activity_set_hash[:duration_max], unit_hash[:duration_unit].name)
-        heart_rate_min = activity_set_hash[:heart_rate_min].to_i
-        heart_rate_max = activity_set_hash[:heart_rate_max].to_i
-        incline_min = activity_set_hash[:incline_min].to_f
-        incline_max = activity_set_hash[:incline_max].to_f
-        level_min = activity_set_hash[:level_min].to_i
-        level_max = activity_set_hash[:level_max].to_i
-        repetitions_min = activity_set_hash[:repetitions_min].to_i
-        repetitions_max = activity_set_hash[:repetitions_max].to_i
-        resistance_min = Unit.convert_to_kilograms(activity_set_hash[:resistance_min].to_f, unit_hash[:resistance_unit].name)
-        resistance_max = Unit.convert_to_kilograms(activity_set_hash[:resistance_max].to_f, unit_hash[:resistance_unit].name)
-        speed_min = Unit.convert_to_kilometers_per_hour(activity_set_hash[:speed_min].to_f, unit_hash[:speed_unit].name)
-        speed_max = Unit.convert_to_kilometers_per_hour(activity_set_hash[:speed_max].to_f, unit_hash[:speed_unit].name)
-
-        metric_map = {
-          :calories => calories_min .. (calories_max > calories_min ? calories_max : calories_min),
-          :cadence => cadence_min .. (cadence_max > cadence_min ? cadence_max : cadence_min),
-          :distance => distance_min .. (distance_max > distance_min ? distance_max : distance_min),
-          :duration => duration_min .. (duration_max > duration_min ? duration_max : duration_min),
-          :heart_rate => heart_rate_min .. (heart_rate_max > heart_rate_min ? heart_rate_max : heart_rate_min),
-          :incline => incline_min .. (incline_max > incline_min ? incline_max : incline_min),
-          :level => level_min .. (level_max > level_min ? level_max : level_min),
-          :repetitions => repetitions_min .. (repetitions_max > repetitions_min ? repetitions_max : repetitions_min),
-          :resistance => resistance_min .. (resistance_max > resistance_min ? resistance_max : resistance_min),
-          :speed => speed_min .. (speed_max > speed_min ? speed_max : speed_min)
-        }
-
+        activity = Activity.find_by_name(activity_set_map[:activity])
+        unit_map = Unit.activity_set_to_unit_map(activity_set_map)
+        metric_map = Measurement.activity_set_to_metric_map(activity_set_map, unit_map)
         measurement = Measurement.find_or_create(metric_map)
-        unit_set = UnitSet.find_or_create(unit_hash)
+        unit_set = UnitSet.find_or_create(unit_map)
 
         activity_set = ActivitySet.new
 

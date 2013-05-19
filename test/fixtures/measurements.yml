@@ -1,6 +1,7 @@
+# The range syntax here is for Postgres, not Ruby
 cardio_one:
-  incline: 6.0
-  distance: 1000
+  incline: "[6,6]"
+  distance: "[1000,1000]"
 resistance_one:
-  resistance: 135
-  repetitions: 10
+  resistance: "[135,135]"
+  repetitions: "[10,10]"

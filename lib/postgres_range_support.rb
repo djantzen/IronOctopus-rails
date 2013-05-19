@@ -1,6 +1,5 @@
 module ActiveRecord
   module ConnectionAdapters
-  puts "load postgres"
     # PostgreSQL-specific extensions to column definitions in a table.
     class PostgreSQLColumn < Column #:nodoc:
 

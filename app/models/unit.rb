@@ -213,4 +213,14 @@ class Unit < ActiveRecord::Base
     name
   end
 
+  def self.activity_set_to_unit_map(activity_set_map)
+    {
+      :cadence_unit => Unit.lookup(activity_set_map[:cadence_unit]),
+      :distance_unit => Unit.lookup(activity_set_map[:distance_unit]),
+      :duration_unit => Unit.lookup(activity_set_map[:duration_unit]),
+      :speed_unit => Unit.lookup(activity_set_map[:speed_unit]),
+      :resistance_unit => Unit.lookup(activity_set_map[:resistance_unit])
+    }
+  end
+
 end

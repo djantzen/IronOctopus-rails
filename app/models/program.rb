@@ -30,6 +30,7 @@ class Program < ActiveRecord::Base
   def programs_on_days
     return weekday_programs if is_weekday_program?
     return scheduled_programs if is_scheduled_program?
+    []
   end
 
   def is_weekday_program?
