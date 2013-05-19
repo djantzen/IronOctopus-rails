@@ -53,12 +53,24 @@ input.measure {
   margin: 0;
 }
 
-.measure_label {
-  //margin-top: 10px;
+.measure-selector .span1 {
+  width: 50px;
+}
+
+.measure-selector .span3 {
+  margin-left: 10px;
+}
+
+.measure-label {
 //  text-align: right;
+  margin-left: -20px;
   padding: 5px;
   font-weight: bold;
   float: left;
+}
+
+.input-controls {
+  width: 360px;
 }
 
 .new-activity-button {

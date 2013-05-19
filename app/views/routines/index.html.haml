@@ -3,8 +3,6 @@
   - @routines.each do |routine|
     .btn-group
       = link_to(routine.name, user_routine_path(routine.client, routine), :class => "btn")
-      - if allowed_to_update?
-        = link_to("Edit", edit_user_routine_path(routine.client, routine), :class => "btn")
-      - if routine.client == current_user
-        = link_to("Perform", perform_routine_path(routine.client, routine), :class => "btn")
+      = link_to("Edit", edit_user_routine_path(routine.client, routine), :class => "btn")
+      = link_to("Perform", perform_routine_path(routine.client, routine), :class => "btn")
   = link_to("Create New Routine", new_user_routine_path(@client), :class => "btn btn-primary")

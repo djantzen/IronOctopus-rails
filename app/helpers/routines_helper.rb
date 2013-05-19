@@ -35,7 +35,7 @@ module RoutinesHelper
 
   class DurationMeasureValue < MeasureValue
     def defined?
-      return max != ":00"
+      return max != "0:00"
     end
   end
 

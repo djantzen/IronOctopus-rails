@@ -102,23 +102,35 @@ class this.ActivitySetListItem
 
     measure_max_toggle_boxes.each ->
       input_controls = $(this).parents(".input-controls")
-      measure_min = input_controls.find(".measure-min");
-      measure_max = input_controls.find(".measure-max");
+      measure_min_container = input_controls.find(".measure-min");
+      measure_max_container = input_controls.find(".measure-max");
+
+      max_greater = (input_controls) ->
+        measure_min_container = input_controls.find(".measure-min");
+        measure_max_container = input_controls.find(".measure-max");
+        measure_min_val = measure_min_container.find("input").val()
+        measure_max_val = measure_max_container.find("input").val()
+        measure_min = if measure_min_val.match(DIGITAL_FORMAT) then digital_to_seconds(measure_min_val) else parseInt(measure_min_val)
+        measure_max = if measure_max_val.match(DIGITAL_FORMAT) then digital_to_seconds(measure_max_val) else parseInt(measure_max_val)
+        measure_max > measure_min
+
       $(this).change =>
         range_toggle_text = input_controls.find(".range-toggle-text")
         if $(this).is(':checked')
           range_toggle_text.hide()
-          measure_max.show()
+          measure_max_container.show()
+          unless max_greater(input_controls)
+            measure_max_container.find("input").val(measure_min_container.find("input").val())
         else
           range_toggle_text.show()
-          measure_max.hide()
-          measure_max.find("input").val(measure_min.find("input").val())
-      if measure_max.find("input").val() > measure_min.find("input").val()
+          measure_max_container.hide()
+          measure_max_container.find("input").val(measure_min_container.find("input").val())
+
+      if max_greater(input_controls)
         $(this).prop("checked", true)
-        $(this).change()
       else
         $(this).prop("checked", false)
-        $(this).change()
+      $(this).change()
 
     delete_button.click =>
       activity_set_form = delete_button.parents(".activity-set-form")

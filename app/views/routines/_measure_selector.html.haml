@@ -1,6 +1,6 @@
 .measure-selector
   .span1
-    %label.measure_label{:for => "routine[activity_sets][][#{measure.downcase.gsub(/\s/, '_')}]"}
+    %label.measure-label{:for => "routine[activity_sets][][#{measure.downcase.gsub(/\s/, '_')}]"}
       = measure
   .span3.input-controls
     - if measure.eql? "Duration"
@@ -10,14 +10,12 @@
         %span.range-separator
           to
         %input.measure.timespinner.is_duration_valid.required{:name => "routine[activity_sets][][#{measure.downcase.gsub(/\s/, '_')}_max]", :value => initial_value.max}
+      %span.range-toggle
+        %span.range-toggle-text.range-separator
+          to?
+        = check_box_tag "measure-to-range-box", "measure-to-range-box", false, :class => "measure-to-range-box"
       - if performance
         = render "work/stopwatch"
-      - else
-        (mmm:ss)
-        %span.range-toggle
-          %span.range-toggle-text.range-separator
-            to
-          = check_box_tag "measure-to-range-box", "measure-to-range-box", false, :class => "measure-to-range-box"
     - else
       .measure-min
         %input.measure.spinner.number.required{:name => "routine[activity_sets][][#{measure.downcase.gsub(/\s/, '_')}_min]", :value => initial_value.min}
@@ -25,13 +23,13 @@
         %span.range-separator
           to
         %input.measure.spinner.number.required{:name => "routine[activity_sets][][#{measure.downcase.gsub(/\s/, '_')}_max]", :value => initial_value.max}
-      .units
-        - if defined? units and !units.empty? and !unit.eql?('None')
-          = select_tag("routine[activity_sets][][#{measure.downcase}_unit]", options_for_select(units, (unit.nil? ? nil : unit.pluralize)), :class => "unit-selector")
       %span.range-toggle
         %span.range-toggle-text.range-separator
-          to
+          to?
         = check_box_tag "measure-to-range-box", "measure-to-range-box", false, :class => "measure-to-range-box"
+      %span.units
+        - if defined? units and !units.empty? and !unit.eql?('None')
+          = select_tag("routine[activity_sets][][#{measure.downcase}_unit]", options_for_select(units, (unit.nil? ? nil : unit.pluralize)), :class => "unit-selector")
   - if defined?(performance) && performance
   - else
     .span1
