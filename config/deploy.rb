@@ -12,7 +12,7 @@ set :rvm_ruby_string, "ruby-1.9.3-p392@IronOctopus"
 set :rvm_type, :system
 set :rvm_bin_path, "/usr/local/rvm/bin"
 
-qa_server = nil
+qa_server = "ec2-54-214-179-20.us-west-2.compute.amazonaws.com"
 
 set(:host_env, Capistrano::CLI.ui.ask("Host Environment (prod, qa): "))
 set(:host, host_env.eql?('prod') ? 'ironoctop.us' : qa_server)

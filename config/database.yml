@@ -25,6 +25,7 @@ migrate_development:
   # domain sockets, so uncomment these lines.
   host: localhost
   port: 5432
+  schema_search_path: application,reporting,public
 
 development:
   adapter: postgresql
@@ -39,9 +40,7 @@ development:
   # domain sockets, so uncomment these lines.
   host: localhost
   port: 5432
-
-  # Schema search path. The server defaults to $user,public
-  #schema_search_path: myapp,sharedapp,public
+  schema_search_path: application,reporting,public
 
   # Minimum log levels, in increasing order:
   #   debug5, debug4, debug3, debug2, debug1,
@@ -61,6 +60,7 @@ migrate_test:
   password: administrator
   host: localhost
   port: 5432
+  schema_search_path: application,reporting,public
 
 test: &test
   adapter: postgresql
@@ -71,6 +71,7 @@ test: &test
   password: application
   host: localhost
   port: 5432
+  schema_search_path: application,reporting,public
 
 migrate_production:
   adapter: postgresql
@@ -81,6 +82,7 @@ migrate_production:
   password: ADMIN_PASSWORD
   host: localhost
   port: 5432
+  schema_search_path: application,reporting,public
 
 production:
   adapter: postgresql
@@ -91,6 +93,7 @@ production:
   password: APPLICATION_PASSWORD
   host: localhost
   port: 5432
+  schema_search_path: application,reporting,public
 
 cucumber:
   <<: *test
