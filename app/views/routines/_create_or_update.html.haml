@@ -21,7 +21,7 @@
             .accordion-inner
               - @activity_types.each do |activity_type|
                 .facet
-                  %a
+                  %a{:id => activity_type.name.to_identifier}
                     = activity_type.name
                   %span.faceting-control
                     = activity_type.name
@@ -88,8 +88,8 @@
       #activity-search-widget.well.has-tooltip-bottom{:rel => "tooltip", :title => "Search activities by name, type, anatomy, attributes, or implements"}
         %input#activity-search-box.input-medium{:tabindex => "1", :type => "text"}/
         %i.icon-search
-      = render :partial => 'shared/button', :locals => { :button_class => 'new-activity-button btn-primary', |
-               :message => 'New Activity'}                                                        |
+      = render :partial => 'shared/button', :locals => { :button_id => 'new-activity-button', :button_class => 'btn-primary', |
+                                            :message => 'New Activity'}                                                        |
       %ul#activity-list.affix.nav.nav-tabs.nav-stacked.has-tooltip{"data-offset-top"=>"200", "data-spy"=>"affix", :rel => "tooltip", :title => "Select activities to add them to your routine"}
         - @activities.each do |activity|
           = render :partial => "routines/activity_list_item", :locals => { :activity => activity, :performance => false }

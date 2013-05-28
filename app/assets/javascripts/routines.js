@@ -90,7 +90,7 @@ $(document).ready(function() {
     });
     reset_activity_type_list();
     //TODO make resets for each one since this is duplicate
-    update_facet_filtered_activities(false);
+    update_facet_filtered_activities("", false);
     $("#activity-type-list .collapse").collapse("show");
     $("#body-part-list .collapse").collapse("hide");
     $("#implement-list .collapse").collapse("hide");
@@ -168,7 +168,7 @@ $(document).ready(function() {
     $("#clear-selections").show();
   });
 
-  $(".new-activity-button").click(function() {
+  $("#new-activity-button").click(function() {
     var container = $(this).parents("#routine-builder-panel");
     var modal = container.find(".modal-activity-select");
     modal.modal("hide");
@@ -222,6 +222,8 @@ $(document).ready(function() {
 
   var clear_activity_form = function() {
     $("#create-update-activity-form form")[0].reset();
+    // reset doesn't clear nested checkboxes...
+    $("#create-update-activity-form form:nth(0)").find("input:checkbox").removeAttr("checked");
   }
 
   $("#modal-activity-builder form").bind('ajax:complete', function() {

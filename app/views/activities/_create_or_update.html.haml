@@ -3,7 +3,7 @@
   #create-update-activity-form.row-fluid
     = form_for @activity, :remote => via_ajax do |form|
       #activity-basic-info.span3.well
-        = form.label :name, 'Name'
+        = form.label :name, 'Activity Name'
         = form.text_field :name, :class => 'required is_activity_name_unique', |
                           :minlength => @validations[:activity][:name][:minlength], |
                           :maxlength => @validations[:activity][:name][:maxlength] |
@@ -21,7 +21,7 @@
               :message => 'Cancel' }                                                                           |
           - else
             = link_to "Cancel", activities_path, :class => 'btn'
-          = submit_tag "Save", :class => 'btn btn-primary'
+          = submit_tag "Save", :id => 'save-activity-button', :class => 'btn btn-primary'
       .span8.well
         .row-fluid
           .span2
@@ -44,7 +44,7 @@
                     - body_parts.each do |body_part|
                       %li.body-part-entry
                         = check_box_tag "activity[body_parts][]", body_part.name, @activity.body_parts.include?(body_part) ? true : false,
-                                        { :class => 'body-part' }
+                                        { :class => 'body-part', :id => body_part.name.to_identifier }
                         = h body_part.name
           .span3
             %h3 Implements Utilized

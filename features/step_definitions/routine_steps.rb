@@ -26,3 +26,27 @@ When /^I make (\w+) a ranged measure$/ do |measure|
     check "measure-to-range-box"
   end
 end
+
+When /^"([^"]*)" should be clear$/ do |form|
+  within form do
+    all('input[type=checkbox]').each do |checkbox|
+      checkbox.should_not be_checked
+    end
+  end
+end
+
+When /^"([^"]*)" should not be clear$/ do |form|
+  checked = false
+  within form do
+    all('input[type=checkbox]').each do |checkbox|
+      checked = true if checkbox.checked?
+    end
+  end
+  checked
+end
+
+Then /^there should be (\d+) activities in the list$/ do |num|
+  within page.find("#activity-list") do
+    all(".activity", :visible => true).count.should == num.to_i
+  end
+end

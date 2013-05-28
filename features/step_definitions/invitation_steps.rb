@@ -24,4 +24,8 @@ Then /^Client should be on the registration page/ do
   get new_activity_path
 end
 
-
+Then /^(.*?) should be a client of (.*?)$/ do |client_email, trainer_email|
+  client = User.find_by_email(client_email)
+  trainer = User.find_by_email(trainer_email)
+  client.trainers.include?(trainer).should eq(true)
+end

@@ -63,3 +63,30 @@ Feature: Create a new routine
     And I fill in "Routine Goal" with "Perform a range of repetitions"
     And I press "save-routine"
     Then I should see "Bench Press Repetitions 13 to 15"
+
+  @javascript
+  Scenario: I can create a new activity on the routine builder screen
+    Given I log in as "bob_the_trainer" with "password"
+    And I am on the /users/sally_the_client/routines/new page
+    Then "#modal-activity-builder" should not be visible
+    When I click "#new-activity-button"
+    And "#modal-activity-builder" should be visible
+    And I click "#trapezius"
+    And "#modal-activity-builder" should not be clear
+    And I fill in "Activity Name" with "Triple Ab Blaster"
+    And I fill in "Instructions" with "Blast yer abs three times!"
+    And I press "save-activity-button"
+    Then within "#activity-list" I should see "Triple Ab Blaster"
+    And "#modal-activity-builder" should not be visible
+    And "#modal-activity-builder" should be clear
+
+  @javascript
+  Scenario: Clearing facets restores list to full
+    Given I log in as "bob_the_trainer" with "password"
+    And I am on the /users/sally_the_client/routines/new page
+    When I click "#new-activity-button"
+    Then there should be 10 activities in the list
+    And I click "#plyometric"
+    Then there should be 1 activities in the list
+    When I click "#clear-selections"
+    Then there should be 10 activities in the list
