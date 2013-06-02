@@ -2,14 +2,22 @@
   = form_for [@routine.client, Work.new], :remote => true do |form|
     = hidden_field_tag("routine[routine]", @routine.name)
     .accordion-heading.activity-display-name.row
+      .span1
+        - unless template or activity_set.comments.eql? ""
+          = render :partial => 'shared/button', :locals => { :button_class => 'activity-set-comments-button',
+                   :icon => 'icon-comment' }
       .span2
         %a.accordion-toggle{ "data-parent" => "routine-activity-set-list", "data-toggle" => "collapse", :href => "##{template ? nil : activity_set.position}"}
           = activity.name
       .span1
-        %i.icon-comment.show-instructions
-          .instructions-modal.modal.hide.fade
-            .modal-body
-              = markup(activity.instructions)
+        = render :partial => 'shared/button', :locals => { :button_class => 'show-instructions',
+                 :icon => 'icon-info-sign' }
+        .instructions-modal.modal.hide.fade
+          .modal-body
+            = markup(activity.instructions)
+      .row-fluid.activity-set-comments
+        = render :partial => "activity_sets/create_or_edit_comment",
+                 :locals => { :comments => template ? "" : activity_set.comments, :disabled => true }
     .activity-set-attributes.accordion-body.collapse.in{:id => template ? nil : activity_set.position}
       .accordion-inner.container
         = hidden_field_tag "routine[activity_sets][][activity]", activity.name

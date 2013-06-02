@@ -19,9 +19,7 @@ class UsersController < ApplicationController
 
       if @user.save
         @user.trainers << @user # Every user can self-train
-        (1..5).each do
-          @user.licenses << License.new(:trainer => @user, :client => @user)
-        end
+        @user.licenses << License.new(:trainer => @user, :client => @user) # free license
 
         if invitation_uuid # they are legit, don't send confirmation email
           invitation = Invitation.find_by_invitation_uuid(invitation_uuid)

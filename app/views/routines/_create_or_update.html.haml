@@ -90,7 +90,7 @@
         %i.icon-search
       = render :partial => 'shared/button', :locals => { :button_id => 'new-activity-button', :button_class => 'btn-primary', |
                                             :message => 'New Activity'}                                                        |
-      %ul#activity-list.affix.nav.nav-tabs.nav-stacked.has-tooltip{"data-offset-top"=>"200", "data-spy"=>"affix", :rel => "tooltip", :title => "Select activities to add them to your routine"}
+      %ul#activity-list.nav.nav-tabs.nav-stacked.has-tooltip{"data-offset-top"=>"200", :rel => "tooltip", :title => "Select activities to add them to your routine"}
         - @activities.each do |activity|
           = render :partial => "routines/activity_list_item", :locals => { :activity => activity, :performance => false }
     #routine-form-panel.span6

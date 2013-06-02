@@ -108,9 +108,6 @@ class this.ActivitySetListItem
     this.init_stopwatch(@activity_set_form)
     this.init_comments(@activity_set_form)
 
-    #  @activity_set_form.find(".remove-measure-selector-button").click ->
-    #  $(this).parents(".measure-selector").remove()
-    # why do we have to iterate on this one?
     remove_measure_buttons.each ->
       $(this).click =>
         selector = $(this).parents(".measure-selector")
@@ -206,9 +203,14 @@ class this.WorkActivitySetListItem extends ActivitySetListItem
         return false
     )
 
+#  init_spinners: (activity_set_form) ->
+#    # do nothing
+#  destroy_spinners: (activity_set_form) ->
+#    # do nothing
+
   init_instructions: (activity_set_form) ->
     activity_set_form.find(".show-instructions").click () ->
-      $(this).find(".instructions-modal").modal();
+      activity_set_form.find(".instructions-modal").modal();
 
   wrap_item: (activity_set_form) ->
     new WorkActivitySetListItem(activity_set_form)
