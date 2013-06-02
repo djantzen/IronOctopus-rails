@@ -57,12 +57,31 @@ var Flasher = function() {
   flash: f
 }
 
+jQuery.fn.isVisible = function() {
+  return this.css('display') != 'none';
+}
+
+jQuery.fn.visible = function() {
+  return this.css('visibility', 'visible');
+}
+
+jQuery.fn.invisible = function() {
+  return this.css('visibility', 'hidden');
+}
+
+
+
+jQuery.fn.visibilityToggle = function() {
+  return this.css('visibility', function(i, visibility) {
+    return (visibility == 'visible') ? 'hidden' : 'visible';
+  });
+}
+
 $(document).ready(function() {
   $(".has-tooltip").tooltip({ delay: { show: 500, hide: 100 }});
   $(".has-tooltip-bottom").tooltip({ delay: 500, placement: "bottom" });
   $(".has-tooltip-left").tooltip({ delay: 500, placement: "left" });
   $(".has-tooltip-right").tooltip({ delay: 500, placement: "right" });
-
 
 
 //  yepnope({

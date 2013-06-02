@@ -65,6 +65,17 @@ Feature: Create a new routine
     Then I should see "Bench Press Repetitions 13 to 15"
 
   @javascript
+  Scenario: Clearing facets restores list to full
+    Given I log in as "bob_the_trainer" with "password"
+    And I am on the /users/sally_the_client/routines/new page
+    When I click "#new-activity-button"
+    Then there should be 10 activities in the list
+    And I click "#plyometric"
+    Then there should be 1 activities in the list
+    When I click "#clear-selections"
+    Then there should be 10 activities in the list
+
+  @javascript
   Scenario: I can create a new activity on the routine builder screen
     Given I log in as "bob_the_trainer" with "password"
     And I am on the /users/sally_the_client/routines/new page
@@ -80,13 +91,3 @@ Feature: Create a new routine
     And "#modal-activity-builder" should not be visible
     And "#modal-activity-builder" should be clear
 
-  @javascript
-  Scenario: Clearing facets restores list to full
-    Given I log in as "bob_the_trainer" with "password"
-    And I am on the /users/sally_the_client/routines/new page
-    When I click "#new-activity-button"
-    Then there should be 10 activities in the list
-    And I click "#plyometric"
-    Then there should be 1 activities in the list
-    When I click "#clear-selections"
-    Then there should be 10 activities in the list

@@ -3,15 +3,13 @@
     #basic-info.span4.well
       .row-fluid
         %h3
-          = @client.full_name
-        User since #{@client.created_at.to_date}
-      %br
-        - if @client.is_trainer?
-          %h4
-            - if @client.profile.nil?
-              = link_to("Create a Trainer Profile", new_user_profile_path(@client))
-            - else
-              = link_to("Manage Trainer Profile", edit_user_profile_path(@client, @client.profile))
+          = @user.full_name
+        User since #{@user.created_at.to_date}
+        - if @user.is_trainer? and @user.eql? current_user
+          - if @user.profile.nil?
+            = link_to("Create a Trainer Profile", new_user_profile_path(@user))
+          - else
+            = link_to("Manage Trainer Profile", edit_user_profile_path(@user, @user.profile))
       .row-fluid
         - unless @todays_routines.empty?
           %h3
@@ -23,24 +21,24 @@
                 %i= routine.name
       %br
       .row-fluid
-        = link_to "Training Log", user_work_index_path(@client)
+        = link_to "Training Log", user_work_index_path(@user)
     .span7.well
       .row-fluid
         .span5
           %h3
             Programs
         .span4
-          - if @client.trainers.include?(current_user) || @client.eql?(current_user)
-            = link_to "Create new program for #{@client.first_name}", new_user_program_path(@client), :class => "btn btn-primary"
+          - if @user.trainers.include?(current_user) || @user.eql?(current_user)
+            = link_to "Create new program for #{@user.first_name}", new_user_program_path(@user), :class => "btn btn-primary"
       %br
       .row-fluid
-        - @client.programs.each do |program|
+        - @user.programs.each do |program|
           .row-fluid
             .span4
-              = link_to(program.name, user_program_path(@client, program))
+              = link_to(program.name, user_program_path(@user, program))
             .span2
               - if current_user.eql? program.trainer
-                = link_to(edit_user_program_path(@client, program), :class => 'btn') do
+                = link_to(edit_user_program_path(@user, program), :class => 'btn') do
                   Edit
                   %i.icon-edit
       %br
@@ -49,20 +47,20 @@
           %h3
             Routines
         .span4
-          - if @client.trainers.include?(current_user) || @client.eql?(current_user)
-            = link_to "Create new routine for #{@client.first_name}", new_user_routine_path(@client), :class => "btn btn-primary"
+          - if @user.trainers.include?(current_user) || @user.eql?(current_user)
+            = link_to "Create new routine for #{@user.first_name}", new_user_routine_path(@user), :class => "btn btn-primary"
       %br
       .row-fluid
         - @routines.each do |routine|
           .row-fluid
             .span4
-              = link_to(routine.name, user_routine_path(@client, routine))
+              = link_to(routine.name, user_routine_path(@user, routine))
             .span2
               - if current_user.eql? routine.trainer
-                = link_to(edit_user_routine_path(@client, routine), :class => 'btn') do
+                = link_to(edit_user_routine_path(@user, routine), :class => 'btn') do
                   Edit
                   %i.icon-edit
             .span3
-              = link_to(perform_routine_path(@client, routine), :class => 'btn btn-primary') do
-                Record Work
+              = link_to(perform_routine_path(@user, routine), :class => 'btn btn-primary') do
+                Perform Routine
                 %i.icon-fire

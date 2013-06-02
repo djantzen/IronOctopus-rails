@@ -4,7 +4,7 @@ gem "rails", "3.1.12"
 gem "pg"
 gem "json"
 gem "execjs" # necessary on Ubuntu
-gem "bootstrap-sass", "2.0.4.0"
+gem "bootstrap-sass", "~> 2.3.1.2"
 gem "capistrano"
 gem "underscore-rails", "1.3.1"
 gem "kramdown"
@@ -37,11 +37,12 @@ group :development do
 end
 
 group :test do
+  gem "capybara", "2.0.3"
   gem "rspec"
   gem "rspec-rails"
-  gem "cucumber-rails", :require => false
-  gem "capybara", "~> 2.0"
+  gem "cucumber", "1.2.3"
+  gem "cucumber-rails", "1.3.1"
   gem "database_cleaner"
-  gem "capybara-webkit", ">= 0.14"
+  gem "capybara-webkit", "0.14"
   gem "launchy"
 end

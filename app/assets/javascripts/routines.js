@@ -243,5 +243,12 @@ $(document).ready(function() {
 //      $(this).delay(300).fadeTo(300,0).prev('input').val('');
 //    });
 
+//  $(".activity-set-comments-form").dialog({
+//    autoOpen: false,
+//    height: 300,
+//    width: 350,
+//    modal: true
+//  });
+//
   clear_selections();
 });

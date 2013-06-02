@@ -54,7 +54,7 @@ input.measure {
 }
 
 .measure-selector .span1 {
-  width: 50px;
+  width: 60px;
 }
 
 .measure-selector .span3 {
@@ -70,7 +70,7 @@ input.measure {
 }
 
 .input-controls {
-  width: 360px;
+  width: 340px;
 }
 
 #new-activity-button {
@@ -103,6 +103,12 @@ input.measure {
 .measure-max {
 //  display: none;
 }
+
+.activity-set-comments-form textarea {
+  width: 92%;
+  margin-left: 30px;
+}
+
 
 //span.icon_clear{
 //  position:absolute;

@@ -1,10 +1,16 @@
 .container-fluid{:class => "accordion-group #{defined?(template) && template ? 'activity-set-form-template' : ''} "}
   .accordion-heading.activity-display-name.row
-    .span4
+    .span1
+      %a{:href => "#", :class => "activity-set-comments-button btn btn-small"}
+        %i.icon-comment
+    .span3
       %a.accordion-toggle{"data-parent" => "routine-activity-set-list", "data-toggle" => "collapse", :href => "##{template ? nil : activity_set.position}"}
         = activity.name
     .span1.handle.label
       %i.icon-resize-vertical
+  .row.activity-set-comments
+    = render :partial => "activity_sets/create_or_edit_comment",
+             :locals => { :comments => template ? "" : activity_set.comments }
   .activity-set-attributes.accordion-body.collapse.in{:id => template ? nil : activity_set.position}
     .accordion-inner.container
       = hidden_field_tag "routine[activity_sets][][activity]", activity.name

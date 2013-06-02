@@ -27,3 +27,7 @@
 .inline-button {
   width: 90%;
 }
+
+.hidden {
+  display: none;
+}

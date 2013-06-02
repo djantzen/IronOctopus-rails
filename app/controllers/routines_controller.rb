@@ -143,6 +143,7 @@ class RoutinesController < ApplicationController
 
         activity_set = ActivitySet.new
 
+        activity_set.comments = activity_set_map[:comments]
         activity_set.routine = routine
         activity_set.activity = activity
         activity_set.position = position

@@ -76,13 +76,11 @@ class UsersController < ApplicationController
 
   # GET /users/1.json
   def show
-    @client = User.find_by_login(params['id'])
-    @routines = @client.routines
-    @todays_routines = @client.todays_routines
-    @programs = @client.programs
+    @user = User.find_by_login(params['id'])
+    @routines = @user.routines
+    @todays_routines = @user.todays_routines
+    @programs = @user.programs
     @program_select =  @programs.map { |p| [p.name, p.permalink] }
-    @mode = current_user.eql? @client ? 'SelfView' : 'OtherView'
-    allowed_to_read?
     respond_with do |format|
       format.html { render :html => @user, :template => mobile_device? ? "users/mobile_show" : "users/show" }
     end

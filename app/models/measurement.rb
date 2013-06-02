@@ -32,6 +32,10 @@ class Measurement < ActiveRecord::Base
       where += "#{tuple[0]} = '#{Measurement.range_to_string(tuple[1])}'"
       where += ' and ' unless idx == measurement_key.length - 1
     end
+    #"{:cadence=>0.0..0.0, :calories=>0..0, :distance=>0.0..0.0, :duration=>0..0,
+    #:heart_rate=>0..0, :incline=>0.0..0.0, :level=>0..0, :repetitions=>8..8,
+    #:resistance=>31.297848..31.297848, :speed=>0.0..0.0}"
+
     measurement = Measurement.where(where).first
     if measurement.nil?
       measurement = Measurement.new(measurement_key)

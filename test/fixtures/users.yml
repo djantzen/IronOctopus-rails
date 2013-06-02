@@ -4,7 +4,7 @@ bob_the_trainer:
   login: bob_the_trainer
   password_digest: "$2a$10$4z5sSjDtOHRM3c/fcU2UAu89oEjPx6W9E6MbAxMYobidSovwPlX0W"
   email: bob_the_trainer@gmail.com
-  trainers: bob_the_trainer
+  trainers: bob_the_trainer, mary_the_trainer
   first_name: Bob
   last_name: Trainer
   identity_confirmed: true

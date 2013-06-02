@@ -60,6 +60,20 @@ class this.ActivitySetListItem
     activity_set_form.find("input.spinner").spinner({ min: 0 })
     activity_set_form.find("input.timespinner").timespinner()
 
+  init_comments: (activity_set_form) ->
+    form = activity_set_form.find(".activity-set-comments-form")
+    form.hide()
+    this.toggle_comment_button(activity_set_form)
+
+  toggle_comment_button: (activity_set_form) ->
+    form = activity_set_form.find(".activity-set-comments-form")
+    button = activity_set_form.find(".activity-set-comments-button")
+    if form.find("textarea").val() == ''
+      button.removeClass("btn-primary")
+    else
+      button.addClass("btn-primary")
+
+
   init_stopwatch: (activity_set_form) ->
     input = activity_set_form.find("input.timespinner")
     target = input.val()
@@ -88,9 +102,11 @@ class this.ActivitySetListItem
     okay_button = @activity_set_form.find(".okay-activity-set-button")
     clone_button = @activity_set_form.find(".clone-activity-set-button")
     measure_max_toggle_boxes = @activity_set_form.find(".measure-to-range-box")
+    comments_button = @activity_set_form.find(".activity-set-comments-button")
 
     this.init_spinners(@activity_set_form)
     this.init_stopwatch(@activity_set_form)
+    this.init_comments(@activity_set_form)
 
     #  @activity_set_form.find(".remove-measure-selector-button").click ->
     #  $(this).parents(".measure-selector").remove()
@@ -99,6 +115,19 @@ class this.ActivitySetListItem
       $(this).click =>
         selector = $(this).parents(".measure-selector")
         selector.remove()
+
+    comments_button.click ->
+      activity_set_form = $(this).parents(".activity-set-form")
+      comments_form = activity_set_form.find(".activity-set-comments-form")
+      if comments_form.isVisible()
+        comments_form.hide("slow")
+      else
+        comments_form.show("slow")
+      if comments_form.find("textarea").val() == ''
+        $(this).removeClass("btn-primary")
+      else
+        $(this).addClass("btn-primary")
+
 
     measure_max_toggle_boxes.each ->
       input_controls = $(this).parents(".input-controls")

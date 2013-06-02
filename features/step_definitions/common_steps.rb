@@ -8,15 +8,24 @@ end
 
 When /^I click "(.*?)"$/ do |link|
   begin
+#    link = '#' + link unless link =~ /^#/
     thingy = page.first(link)
-    thingy.click if (thingy)
-  rescue
+    if thingy
+      thingy.click
+    else
+      click_link link
+    end
+  rescue # catch errors when locating nodes using bad syntax (e.g. '?' marks)
     click_link link
   end
 end
 
-Then /^I should see "(.*?)"$/ do |arg1|
-  page.should have_content(arg1)
+Then /^I should see "(.*?)"$/ do |content|
+  page.should have_content(content)
+end
+
+Then /^I should not see "([^"]*)"$/ do |content|
+  page.should_not have_content(content)
 end
 
 Then /^within "(.*?)" I should see "(.*?)"$/ do |section, content|
@@ -45,3 +54,8 @@ end
 Then /^"([^"]*)" should be visible$/ do |node|
   find(node).visible?
 end
+
+When /^I am on (.*?)'s homepage$/ do |username|
+  visit "/users/#{username}"
+end
+

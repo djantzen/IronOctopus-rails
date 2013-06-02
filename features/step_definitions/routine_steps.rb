@@ -50,3 +50,8 @@ Then /^there should be (\d+) activities in the list$/ do |num|
     all(".activity", :visible => true).count.should == num.to_i
   end
 end
+
+Then /^there should be (\d+) activities$/ do |num|
+  activities = all("#activity-list li.activity", :visible => true)
+  activities.size == num
+end
