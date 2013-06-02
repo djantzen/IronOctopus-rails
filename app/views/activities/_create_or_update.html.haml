@@ -24,7 +24,7 @@
           = submit_tag "Save", :id => 'save-activity-button', :class => 'btn btn-primary'
       .span8.well
         .row-fluid
-          %h3
+          %h4
             Media
           - if @activity.activity_videos.empty?
             = form.label "activity[activity_videos][]", "YouTube Link"
@@ -37,26 +37,26 @@
         .row-fluid
           .span3
             .row-fluid
-              %h3 Metrics
+              %h4 Metrics
               %ul#available-metric-list.unstyled
                 - @metrics.each do |metric|
                   %li
                     = check_box_tag "activity[metrics][]", metric.name, @activity.metrics.include?(metric) ? true : false
                     = h metric.name
             .row-fluid
-              %h3 Attributes
+              %h4 Attributes
               %ul#available-activity-attribute-list.unstyled
                 - @activity_attributes.each do |attribute|
                   %li
                     = check_box_tag "activity[activity_attributes][]", attribute.name, @activity.activity_attributes.include?(attribute) ? true : false
                     = h attribute.name
           .span4
-            %h3 Anatomy Involved
+            %h4 Anatomy Involved
             %ul#available-body-part-list.unstyled
               - group_body_parts_by_region(@body_parts).each_pair do |region, body_parts|
                 .region-container
                   %li
-                    %h4
+                    %h5
                       = check_box_tag region, nil, true, { :class => 'region' }
                       = h region
                   %ul
@@ -66,11 +66,11 @@
                                         { :class => 'body-part', :id => body_part.name.to_identifier }
                         = link_to body_part.name, body_part
           .span3
-            %h3 Implements Utilized
+            %h4 Implements Utilized
             %ul#available-implement-list.unstyled
               - group_implements_by_category(@implements).each_pair do |category, implements|
                 %li
-                  %h4= category
+                  %h5= category
                 %ul.unstyled
                   - implements.each do |implement|
                     %li

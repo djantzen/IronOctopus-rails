@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-gem "rails", "3.1.12"
+gem "rails", "3.2.13" #"3.1.12"
 gem "pg"
 gem "json"
 gem "execjs" # necessary on Ubuntu
@@ -21,14 +21,15 @@ gem "uuid"
 gem "rvm-capistrano", "~> 1.2.7"
 gem "kaminari"
 gem "jquery-fileupload-rails", "~> 0.4.1"
+gem "carrierwave", "~> 0.8.0"
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
   gem "therubyracer" # necessary on Ubuntu
-  gem "haml-rails"
-  gem "sass-rails",   "~> 3.1.7"
-  gem "coffee-rails", "~> 3.1.1"
+  gem "haml-rails", "0.4"
+  gem "sass-rails", "3.2.6" # "~> 3.1.7"
+  gem "coffee-rails", "3.2.2" # "~> 3.1.1"
   gem "uglifier", ">= 1.3.0"
 end
 
