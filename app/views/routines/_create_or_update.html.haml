@@ -44,7 +44,7 @@
                       - body_parts.each do |body_part|
                         %li.ui-state-default
                           .facet
-                            %a
+                            %a.has-tooltip-right{:rel => "tooltip", :title => image_tag(body_part.image_url(:thumb)), "data-delay" => 500}
                               = body_part.name
                             %span.faceting-control
                               = body_part.name
@@ -80,7 +80,7 @@
                       - implements.each do |implement|
                         %li.ui-state-default
                           .facet
-                            %a
+                            %a.has-tooltip-right{:rel => "tooltip", :title => image_tag(implement.image_url(:thumb)), "data-delay" => 500}
                               = implement.name
                             %span.faceting-control
                               = implement.name

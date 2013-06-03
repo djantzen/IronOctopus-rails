@@ -1,6 +1,6 @@
 .container
-  #profile-create-update-form
-    = form_for [@user, @profile], :url => user_profile_path(@user, @profile) do |f|
+  #profile-create-update-form.well
+    = form_for [@user, @profile], :url => user_profile_path(@user, @profile), :html => {:multipart => true} do |form|
       - if @profile.errors.any?
         .error_messages
           %h2 Form is invalid
@@ -8,16 +8,19 @@
             - for message in @profile.errors.full_messages
               %li= message
       .field
-        = f.label :creative
-        = f.text_area :creative, :class => 'required'
+        = form.label :creative
+        = form.text_area :creative, :class => 'required'
       .field
-        = f.label :gender
-        = f.select :gender, options_for_select(['Male', 'Female'])
+        = form.label :gender
+        = form.select :gender, options_for_select(['Male', 'Female'])
       .field
-        = f.label :phone
-        = f.text_field :phone, :class => 'required'
+        = form.label :phone
+        = form.text_field :phone, :class => 'required'
       .field
-        = f.label :email
-        = f.text_field :email, :class => 'required'
+        = form.label :email
+        = form.text_field :email, :class => 'required'
+      .field
+        = render :partial => 'shared/upload_image', :locals => { :form => form }
+        = image_tag @profile.image_url
       .actions
-        = f.submit "Save", :class => 'btn btn-primary btn-large'
+        = form.submit "Save", :class => 'btn btn-primary btn-large'

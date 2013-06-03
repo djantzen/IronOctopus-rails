@@ -39,13 +39,7 @@ class ProfilesController < ApplicationController
     login = params[:user_id]
     @user = User.find_by_login(login)
     @profile = @user.profile
-    @profile.creative = params[:profile][:creative]
-    @profile.phone = params[:profile][:phone]
-    @profile.email = params[:profile][:email]
-    @profile.save
-    #respond_with do |format|
-    #  format.html { render :html => @profile }
-    #end
+    @profile.update_attributes(params[:profile])
   end
 
 

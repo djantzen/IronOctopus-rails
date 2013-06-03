@@ -34,7 +34,7 @@
     <orderEntry type="library" scope="PROVIDED" name="capybara-webkit (v0.14.0, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="carrierwave (v0.8.0, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="childprocess (v0.3.9, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="coffee-rails (v3.1.1, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="coffee-rails (v3.2.2, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="coffee-script (v2.2.0, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="coffee-script-source (v1.6.2, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="columnize (v0.3.6, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
@@ -81,7 +81,7 @@
     <orderEntry type="library" scope="PROVIDED" name="rack-cache (v1.2, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack-ssl (v1.3.3, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack-test (v0.6.2, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rails (v3.1.12, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rails (v3.2.13, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="railties (v3.2.13, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rake (v10.0.4, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rdoc (v3.12.2, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
@@ -99,7 +99,7 @@
     <orderEntry type="library" scope="PROVIDED" name="rubyzip (v0.9.9, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rvm-capistrano (v1.2.7, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sass (v3.2.9, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="sass-rails (v3.1.7, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="sass-rails (v3.2.6, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="selenium-webdriver (v2.33.0, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sexp_processor (v4.2.1, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets (v2.2.2, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />

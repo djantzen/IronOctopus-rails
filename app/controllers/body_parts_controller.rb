@@ -34,9 +34,9 @@ class BodyPartsController < ApplicationController
   private
   def create_or_update(params)
     body_part = params[:id] ? BodyPart.find_by_permalink(params[:id]) : BodyPart.new
-
-    body_part.name = params[:body_part][:name]
-    body_part.region = !params[:body_part][:newregion].empty? ? params[:body_part][:newregion] : params[:body_part][:region]
+    params[:body_part][:region] = params[:body_part][:newregion] unless params[:body_part][:newregion].empty?
+    params[:body_part].delete(:newregion)
+    body_part.update_attributes(params[:body_part])
     body_part
   end
 

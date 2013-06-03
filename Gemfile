@@ -22,6 +22,7 @@ gem "rvm-capistrano", "~> 1.2.7"
 gem "kaminari"
 gem "jquery-fileupload-rails", "~> 0.4.1"
 gem "carrierwave", "~> 0.8.0"
+gem "rmagick", "2.13.2"
 
 # Gems used only for assets and not required
 # in production environments by default.

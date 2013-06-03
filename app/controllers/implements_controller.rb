@@ -13,8 +13,7 @@ class ImplementsController < ApplicationController
   
   def create
     @implement = create_or_update(params)
-    @implement.creator = current_user
-    if @implement.save
+    if @implement.errors.empty?
       respond_with :html => @implement
     else
       @entity = @implement
@@ -30,7 +29,7 @@ class ImplementsController < ApplicationController
   
   def update
     @implement = create_or_update(params)
-    if @implement.save
+    if @implement.errors.empty?
       respond_with :html => @implement
     else
       @entity = @implement
@@ -54,10 +53,13 @@ class ImplementsController < ApplicationController
 
   private
   def create_or_update(params)
-    implement = params[:id] ? Implement.find_by_permalink(params[:id]) : Implement.new
-    implement.name = params[:implement][:name]
-    implement.category = params[:implement][:category]
-    implement
+    Implement.transaction do
+      implement = params[:id] ? Implement.find_by_permalink(params[:id]) : Implement.new()
+      implement.update_attributes(params[:implement])
+      implement.creator ||= current_user
+      implement.save
+      implement
+    end
   end
 
 end

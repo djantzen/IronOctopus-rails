@@ -2,6 +2,7 @@ class BodyPart < ActiveRecord::Base
   has_and_belongs_to_many :activities
   belongs_to :creator, :class_name => 'User', :foreign_key => 'creator_id'
   before_save { self.permalink = name.to_identifier}
+  mount_uploader :image, ImageUploader
 
   VALIDATIONS = IronOctopus::Configuration.instance.validations[:body_part]
   validates :name, :length => {

@@ -2,14 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46f8a447-b9ed-44ae-be1c-95fe4e4f3fab" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/shared/_upload_image.haml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/IronOctopus-rails.iml" afterPath="$PROJECT_DIR$/.idea/IronOctopus-rails.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/programs.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/programs.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/routines.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/routines.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/activities/_create_or_update.html.haml" afterPath="$PROJECT_DIR$/app/views/activities/_create_or_update.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/programs/_create_or_update.html.haml" afterPath="$PROJECT_DIR$/app/views/programs/_create_or_update.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/body_parts_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/body_parts_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/implements_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/implements_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/profiles_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/profiles_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/body_part.rb" afterPath="$PROJECT_DIR$/app/models/body_part.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/implement.rb" afterPath="$PROJECT_DIR$/app/models/implement.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/profile.rb" afterPath="$PROJECT_DIR$/app/models/profile.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/uploaders/image_uploader.rb" afterPath="$PROJECT_DIR$/app/uploaders/image_uploader.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/body_parts/_create_or_update.html.haml" afterPath="$PROJECT_DIR$/app/views/body_parts/_create_or_update.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/body_parts/show.html.haml" afterPath="$PROJECT_DIR$/app/views/body_parts/show.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/implements/_create_or_update.html.haml" afterPath="$PROJECT_DIR$/app/views/implements/_create_or_update.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/implements/show.html.haml" afterPath="$PROJECT_DIR$/app/views/implements/show.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/profiles/_create_or_update.html.haml" afterPath="$PROJECT_DIR$/app/views/profiles/_create_or_update.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/profiles/show.html.haml" afterPath="$PROJECT_DIR$/app/views/profiles/show.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/routines/_create_or_update.html.haml" afterPath="$PROJECT_DIR$/app/views/routines/_create_or_update.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/structure.sql" afterPath="$PROJECT_DIR$/db/structure.sql" />
     </list>
     <ignored path="IronOctopus-rails.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,54 +49,90 @@
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="_create_or_update.html.haml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/profiles/_create_or_update.html.haml">
+        <entry file="file://$PROJECT_DIR$/app/views/routines/_create_or_update.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="0" selection-start="772" selection-end="772" vertical-scroll-proportion="-14.375">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="profiles.js.coffee" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/profiles.js.coffee">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="0" selection-start="76" selection-end="76" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Gemfile" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Gemfile">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="25" selection-start="734" selection-end="734" vertical-scroll-proportion="0.0">
+            <state line="46" column="97" selection-start="2248" selection-end="2248" vertical-scroll-proportion="-11.708333">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="_create_or_update.html.haml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/activities/_create_or_update.html.haml">
+        <entry file="file://$PROJECT_DIR$/app/views/implements/_create_or_update.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="16" selection-start="2316" selection-end="2316" vertical-scroll-proportion="-2.2916667">
+            <state line="11" column="0" selection-start="592" selection-end="673" vertical-scroll-proportion="-6.875">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_create_or_update.html.haml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/views/programs/_create_or_update.html.haml">
+      <file leaf-file-name="_upload_image.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/shared/_upload_image.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="139" selection-start="2996" selection-end="2996" vertical-scroll-proportion="0.3312102">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="programs.css.scss" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/programs.css.scss">
+      <file leaf-file-name="show.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/profiles/show.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="7" selection-start="706" selection-end="706" vertical-scroll-proportion="0.0">
+            <state line="7" column="0" selection-start="129" selection-end="129" vertical-scroll-proportion="-4.375">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_create_or_update.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/profiles/_create_or_update.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="56" selection-start="450" selection-end="450" vertical-scroll-proportion="-6.875">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_create_or_update.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/body_parts/_create_or_update.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="0" selection-start="348" selection-end="348" vertical-scroll-proportion="-5.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="body_parts_controller.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/controllers/body_parts_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="0" selection-start="86" selection-end="86" vertical-scroll-proportion="0.067669176">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="implements_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/implements_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="26" column="57" selection-start="588" selection-end="588" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="profiles_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/profiles_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="26" column="0" selection-start="580" selection-end="580" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/implements/show.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="36" selection-start="271" selection-end="271" vertical-scroll-proportion="-6.875">
               <folding />
             </state>
           </provider>
@@ -104,27 +153,29 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/app/views/programs/show.html.haml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Rails console: IronOctopus-rails" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Rails console: IronOctopus-rails" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/assets/stylesheets/sheet.css.scss" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/models/measurement.rb" />
-        <option value="$PROJECT_DIR$/app/views/routines/_create_or_update.html.haml" />
-        <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
-        <option value="$PROJECT_DIR$/app/views/activity_sets/_create_or_edit_comment.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/activity_sets/_form.html.haml" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/activity_list_item.js.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/performance.css.scss" />
-        <option value="$PROJECT_DIR$/app/views/activity_sets/_performance_form.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/profiles/_create_or_update.html.haml" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/profiles.js.coffee" />
-        <option value="$PROJECT_DIR$/Gemfile" />
-        <option value="$PROJECT_DIR$/app/views/activities/_create_or_update.html.haml" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/programs.css.scss" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/routines.css.scss" />
-        <option value="$PROJECT_DIR$/app/views/programs/_create_or_update.html.haml" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
+        <option value="$PROJECT_DIR$/app/views/shared/_image_upload.html.haml" />
+        <option value="$PROJECT_DIR$/db/migrate/20130602221432_create_images.rb" />
+        <option value="$PROJECT_DIR$/app/models/profile.rb" />
+        <option value="$PROJECT_DIR$/app/models/body_part.rb" />
+        <option value="$PROJECT_DIR$/app/views/body_parts/show.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/implements/show.html.haml" />
+        <option value="$PROJECT_DIR$/app/controllers/implements_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/profiles_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/profiles/show.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/routines/_create_or_update.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/implements/_create_or_update.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/body_parts/_create_or_update.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/profiles/_create_or_update.html.haml" />
+        <option value="$PROJECT_DIR$/app/controllers/body_parts_controller.rb" />
       </list>
     </option>
   </component>
@@ -218,7 +269,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
+              <option name="myItemId" value="db" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -258,7 +309,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="profiles" />
+              <option name="myItemId" value="implements" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -331,21 +382,21 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/models" />
       <recent name="$PROJECT_DIR$/app/views/user_mailer" />
       <recent name="$PROJECT_DIR$/app/views/activity_sets" />
       <recent name="$PROJECT_DIR$/db/migrate" />
       <recent name="$PROJECT_DIR$/test/fixtures" />
-      <recent name="$PROJECT_DIR$/app/controllers" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/views/shared" />
       <recent name="$PROJECT_DIR$/app/models" />
       <recent name="$PROJECT_DIR$/db/scripts" />
       <recent name="$PROJECT_DIR$/app/views/password_reset_requests" />
       <recent name="$PROJECT_DIR$/app/assets/javascripts/plugins" />
-      <recent name="$PROJECT_DIR$/public" />
     </key>
   </component>
-  <component name="RunManager" selected="Cucumber.All features in: features">
+  <component name="RunManager" selected="Rails.Development: IronOctopus-rails">
     <configuration default="false" name="All features in: features" type="CucumberRunConfigurationType" factoryName="Cucumber" temporary="true">
       <predefined_log_file id="RUBY_CUCUMBER" enabled="true" />
       <module name="IronOctopus-rails" />
@@ -379,44 +430,6 @@
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_RUNNER" VALUE="false" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SETTINGS_VERSION" VALUE="2" />
       <RunnerSettings RunnerId="RubyRunner" />
-      <ConfigurationWrapper RunnerId="RubyRunner" />
-      <method />
-    </configuration>
-    <configuration default="false" name="I am able to add an unplanned activity to the routine" type="CucumberRunConfigurationType" factoryName="Cucumber" temporary="true">
-      <predefined_log_file id="RUBY_CUCUMBER" enabled="true" />
-      <module name="IronOctopus-rails" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$PROJECT_DIR$" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
-      <envs>
-        <env name="ANSICON" value="" />
-        <env name="JRUBY_OPTS" value="-X+O" />
-      </envs>
-      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="true" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
-        <COVERAGE_PATTERN ENABLED="true">
-          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
-        </COVERAGE_PATTERN>
-      </EXTENSION>
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*.feature" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$PROJECT_DIR$/features/add_activity_during_work.feature" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_TAGS_FILTER" VALUE="" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_NAME_FILTER" VALUE="I am able to add an unplanned activity to the routine" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_ARGS" VALUE="--color -r features" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_VERSION" VALUE="" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="VERBOSE_OPTION" VALUE="false" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_RUNNER_PATH" VALUE="" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_RUNNER" VALUE="false" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SETTINGS_VERSION" VALUE="2" />
-      <RunnerSettings RunnerId="RubyDebugRunner" />
-      <RunnerSettings RunnerId="RubyRunner" />
-      <ConfigurationWrapper RunnerId="RubyDebugRunner" />
       <ConfigurationWrapper RunnerId="RubyRunner" />
       <method />
     </configuration>
@@ -525,6 +538,29 @@
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_RUNNER" VALUE="false" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SETTINGS_VERSION" VALUE="2" />
       <RunnerSettings RunnerId="RubyRunner" />
+      <ConfigurationWrapper RunnerId="RubyRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Rails console: IronOctopus-rails" type="IrbRunConfigurationType" factoryName="IRB console" temporary="true">
+      <module name="IronOctopus-rails" />
+      <IRB_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
+      <IRB_RUN_CONFIG NAME="WORK DIR" VALUE="$PROJECT_DIR$" />
+      <IRB_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
+      <IRB_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
+      <IRB_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
+      <envs />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
+      <IRB_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$PROJECT_DIR$/script/rails" />
+      <IRB_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="console" />
+      <IRB_RUN_CONFIG NAME="IS_RAILS_CONSOLE" VALUE="true" />
+      <RunnerSettings RunnerId="RubyDebugRunner" />
+      <RunnerSettings RunnerId="RubyRunner" />
+      <ConfigurationWrapper RunnerId="RubyDebugRunner" />
       <ConfigurationWrapper RunnerId="RubyRunner" />
       <method />
     </configuration>
@@ -809,18 +845,18 @@
       <item index="2" class="java.lang.String" itemvalue="Rake.test" />
       <item index="3" class="java.lang.String" itemvalue="Rake.spec" />
       <item index="4" class="java.lang.String" itemvalue="Cucumber.All features in: features" />
-      <item index="5" class="java.lang.String" itemvalue="Cucumber.I am able to add an unplanned activity to the routine" />
-      <item index="6" class="java.lang.String" itemvalue="Cucumber.add_activity_during_work" />
-      <item index="7" class="java.lang.String" itemvalue="Cucumber.Clearing facets restores list to full" />
-      <item index="8" class="java.lang.String" itemvalue="Cucumber.create_a_routine" />
+      <item index="5" class="java.lang.String" itemvalue="Cucumber.add_activity_during_work" />
+      <item index="6" class="java.lang.String" itemvalue="Cucumber.Clearing facets restores list to full" />
+      <item index="7" class="java.lang.String" itemvalue="Cucumber.create_a_routine" />
+      <item index="8" class="java.lang.String" itemvalue="IRB console.Rails console: IronOctopus-rails" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Cucumber.All features in: features" />
-        <item index="1" class="java.lang.String" itemvalue="Cucumber.create_a_routine" />
-        <item index="2" class="java.lang.String" itemvalue="Cucumber.Clearing facets restores list to full" />
-        <item index="3" class="java.lang.String" itemvalue="Cucumber.create_a_routine" />
-        <item index="4" class="java.lang.String" itemvalue="Cucumber.add_activity_during_work" />
+        <item index="0" class="java.lang.String" itemvalue="IRB console.Rails console: IronOctopus-rails" />
+        <item index="1" class="java.lang.String" itemvalue="Cucumber.All features in: features" />
+        <item index="2" class="java.lang.String" itemvalue="Cucumber.create_a_routine" />
+        <item index="3" class="java.lang.String" itemvalue="Cucumber.Clearing facets restores list to full" />
+        <item index="4" class="java.lang.String" itemvalue="Cucumber.create_a_routine" />
       </list>
     </recent_temporary>
   </component>
@@ -937,116 +973,114 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/work.js.coffee">
+    <entry file="file://$PROJECT_DIR$/app/models/profile.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="1" column="38" selection-start="73" selection-end="73" vertical-scroll-proportion="0.02255639">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/routines.js">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20130602221432_create_images.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="172" column="13" selection-start="6530" selection-end="6535" vertical-scroll-proportion="-8.192307">
+        <state line="13" column="38" selection-start="583" selection-end="583" vertical-scroll-proportion="0.2932331">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/activity_sets/_form.html.haml">
+    <entry file="file://$PROJECT_DIR$/app/models/body_part.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="10" selection-start="174" selection-end="174" vertical-scroll-proportion="-1.25">
+        <state line="5" column="0" selection-start="241" selection-end="241" vertical-scroll-proportion="0.11278196">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
+    <entry file="file://$PROJECT_DIR$/app/views/body_parts/show.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="35" selection-start="585" selection-end="585" vertical-scroll-proportion="0.2838428">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="18" selection-start="379" selection-end="379" vertical-scroll-proportion="0.19650654">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/activity_sets/_performance_form.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="14" selection-start="1464" selection-end="1464" vertical-scroll-proportion="-15.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/performance.css.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/routines/_measure_selector.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="23" selection-start="450" selection-end="450" vertical-scroll-proportion="0.20361991">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/activity_list_item.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="110" column="0" selection-start="4139" selection-end="4139" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/profiles/_create_or_update.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="772" selection-end="772" vertical-scroll-proportion="-14.375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/profiles.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="76" selection-end="76" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="25" selection-start="734" selection-end="734" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/programs.css.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="7" selection-start="706" selection-end="706" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/routines.css.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="14" selection-start="892" selection-end="892" vertical-scroll-proportion="0.2602118">
+        <state line="2" column="34" selection-start="58" selection-end="58" vertical-scroll-proportion="-1.25">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/activities/_create_or_update.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="16" selection-start="2316" selection-end="2316" vertical-scroll-proportion="-2.2916667">
+        <state line="4" column="37" selection-start="204" selection-end="204" vertical-scroll-proportion="0.093603745">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/programs/_create_or_update.html.haml">
+    <entry file="file://$PROJECT_DIR$/app/models/implement.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="139" selection-start="2996" selection-end="2996" vertical-scroll-proportion="0.3312102">
+        <state line="4" column="36" selection-start="341" selection-end="341" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/implements_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="57" selection-start="588" selection-end="588" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/profiles_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="0" selection-start="580" selection-end="580" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/implements/show.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="36" selection-start="271" selection-end="271" vertical-scroll-proportion="-6.875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/profiles/show.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="0" selection-start="129" selection-end="129" vertical-scroll-proportion="-4.375">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/routines/_create_or_update.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="97" selection-start="2248" selection-end="2248" vertical-scroll-proportion="-11.708333">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/shared/_upload_image.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/implements/_create_or_update.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="592" selection-end="673" vertical-scroll-proportion="-6.875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/profiles/_create_or_update.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="56" selection-start="450" selection-end="450" vertical-scroll-proportion="-6.875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/body_parts/_create_or_update.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="0" selection-start="348" selection-end="348" vertical-scroll-proportion="-5.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/body_parts_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="86" selection-end="86" vertical-scroll-proportion="0.067669176">
           <folding />
         </state>
       </provider>

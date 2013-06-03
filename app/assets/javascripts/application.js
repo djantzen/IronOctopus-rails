@@ -79,10 +79,10 @@ jQuery.fn.visibilityToggle = function() {
 }
 
 $(document).ready(function() {
-  $(".has-tooltip").tooltip({ delay: { show: 500, hide: 100 }});
-  $(".has-tooltip-bottom").tooltip({ delay: 500, placement: "bottom" });
-  $(".has-tooltip-left").tooltip({ delay: 500, placement: "left" });
-  $(".has-tooltip-right").tooltip({ delay: 500, placement: "right" });
+  $(".has-tooltip").tooltip({ html: true });
+  $(".has-tooltip-bottom").tooltip({ placement: "bottom", html: true });
+  $(".has-tooltip-left").tooltip({ placement: "left", html: true });
+  $(".has-tooltip-right").tooltip({placement: "right", html: true });
 
 
 //  yepnope({
