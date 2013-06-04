@@ -18,9 +18,9 @@
           %br
           - routine.activity_sets.each do |activity_set|
             .row-fluid
-              .span5
+              .span7
                 = link_to(activity_set.activity.name, activity_path(activity_set.activity))
-              .span6
+              .span5
                 - activity_set.activity.metrics.each do |metric|
                   - measure_value, unit = activity_set.nil? ? 1 : get_initial_value(activity_set, metric)
                   = render :partial => "routines/measure_display", :locals => { :measure => metric.name,
