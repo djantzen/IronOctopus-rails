@@ -54,6 +54,11 @@ namespace :deploy do
     migrate
     set(:rails_env, "production")
   end
+
+  desc "Symlink images directory from /var/www/share"
+  task :symlink_images, :roles => :app do
+    run "ln -s /var/www/shared/uploads /var/www/IronOctopus/public/uploads"
+  end
 end
 
 namespace :database do
@@ -83,6 +88,7 @@ before "deploy:setup", "rvm:create_gemset" # only create gemset
 after "deploy:update_code", "deploy:set_email_password"
 after "deploy:update_code", "deploy:set_database_passwords"
 after "deploy:set_database_passwords", "deploy:migrate_production"
+after "deploy:migrate_production", "deploy:symlink_images"
 after "deploy:restart", "deploy:cleanup"
 
 # Uncomment if you are using Rails' asset pipeline

@@ -3,7 +3,7 @@ class BodyPartsController < ApplicationController
   before_filter :authenticate_user
 
   def index
-    @body_parts = BodyPart.all
+    @body_parts = BodyPart.order(:name).all
   end
   
   def new

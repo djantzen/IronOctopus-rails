@@ -4,7 +4,7 @@ class ImplementsController < ApplicationController
   respond_to :json, :html
 
   def index
-    @implements = Implement.all
+    @implements = Implement.order(:name).all
   end
   
   def new

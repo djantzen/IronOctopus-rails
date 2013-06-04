@@ -1,41 +1,57 @@
 #tour-carousel.carousel.slide.container
-  / Carousel items
   .carousel-inner
     #invite-client.active.item.tour-item
-      Invite your client by email and they will register is your client.
-      %p
-        = link_to "Sign up", new_user_path, :class => 'btn btn-primary'
+      .well
+        Invite your client by email. When they accept your invitation they will appear in your client list.
+      = image_tag "/tour/client_list.png"
+      = link_to "Sign up", new_user_path, :class => 'btn btn-primary'
     #custom-routines.item.tour-item
-      %h2 Custom Routines
-      Customize routines for your client using the Routine Builder.
-      %b Search and browse
-      activities by type, anatomy, implements, or advanced concepts like impact, force and utility.
-      %p
-        = link_to "Sign up", new_user_path, :class => 'btn btn-primary'
+      %h4 Create Custom Routines
+      .well
+        Customize routines for your client using the Routine Builder. Search and browse activities by type, anatomy, implements, or
+        advanced concepts like impact, force and utility and quickly add them
+        to the routine.
+      = image_tag "/tour/activity_search.png"
+      .well
+        Each activity can be described using a variety of metrics like repetitions, resistance, duration, speed, heart rate and others.
+        Metric and English units are supported, as are ranges. You can include comments for special instruction as well.
+      = image_tag "/tour/routine_builder_sets.png"
+      .well
+        Reuse your work by importing activity sets from one routine to another
+      = link_to "Sign up", new_user_path, :class => 'btn btn-primary'
+    #custom-programs.item.tour-item
+      %h3 Custom Programs
+      .well
+        Standalone routines are only so useful. Using the Program Builder, you can schedule them to occur on a given day of week.
+      = image_tag "/tour/weekly_program.png"
+      .well
+        Or down to the calendar day
+      = image_tag "/tour/scheduled_program.png"
+      = link_to "Sign up", new_user_path, :class => 'btn btn-primary'
     #custom-activities.item.tour-item
-      %h2 Custom Activities
-      %p
-        Add new activities, described by anatomy, implements, and measures you choose.
-      %p
-        Does your client demand the
-        = succeed "." do
-          %b
-            %i Hans und Franz Synchronized Belly Button Blaster?
-        Well, feel free.
-      %p
-        = link_to "Sign up", new_user_path, :class => 'btn btn-primary'
+      %h3 Custom Activities
+      .well
+        Create new activities, described by anatomy, implements, and measures you choose. We will continually add new activities, but you can as well. The
+        attributes you assign to the activity can be used on the Routine Builder to find it again in the search or browse mode.
+      = image_tag "/tour/new_activity.png"
+      = link_to "Sign up", new_user_path, :class => 'btn btn-primary'
     #work-input.item.tour-item
-      %h2 Keep an Activity Log
-      %p
-        Your client can record the work she did using her cell phone or computer on the Iron Octopus site!
-      %p
-        = link_to "Sign up", new_user_path, :class => 'btn btn-primary'
+      %h3 Keep an Activity Log
+      .well
+        No more pencil and paper. Using her cell phone, your client can access the mobile site and see the day's scheduled routine.
+      = image_tag "/tour/mobile_home.png"
+      .well
+        She can record her activities right on the phone, and you can see the results on the website.
+      = image_tag "/tour/mobile_routine.png"
+      .well
+        No more asking clients what they did since the last meeting.
+      = image_tag "/tour/worklog.png"
+      = link_to "Sign up", new_user_path, :class => 'btn btn-primary'
     #pricing.item.tour-item
-      %h2 Pricing
+      %h3 Pricing
       %p
         You are charged a flat, one-time fee for each client you invite.
       %p
         = link_to "Sign up", new_user_path, :class => 'btn btn-primary'
-  / Carousel nav
   %a.carousel-control.left{"data-slide" => "prev", :href => "#tour-carousel"} &lsaquo;
   %a.carousel-control.right{"data-slide" => "next", :href => "#tour-carousel"} &rsaquo;

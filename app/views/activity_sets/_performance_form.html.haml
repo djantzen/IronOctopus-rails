@@ -16,7 +16,7 @@
           .modal-body
             = markup(activity.instructions)
       .row-fluid.activity-set-comments
-        = render :partial => "activity_sets/create_or_edit_comment",
+        = render :partial => "activity_sets/create_or_update_comment",
                  :locals => { :comments => template ? "" : activity_set.comments, :disabled => true }
     .activity-set-attributes.accordion-body.collapse.in{:id => template ? nil : activity_set.position}
       .accordion-inner.container

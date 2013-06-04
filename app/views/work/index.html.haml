@@ -18,7 +18,7 @@
           %br
           - routine.activity_sets.each do |activity_set|
             .row-fluid
-              .span4
+              .span5
                 = link_to(activity_set.activity.name, activity_path(activity_set.activity))
               .span6
                 - activity_set.activity.metrics.each do |metric|

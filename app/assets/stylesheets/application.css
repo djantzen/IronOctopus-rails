@@ -31,3 +31,7 @@
 .hidden {
   display: none;
 }
+
+.tooltip {
+  z-index: 500;
+}
