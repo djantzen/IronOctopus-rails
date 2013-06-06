@@ -1,8 +1,8 @@
-.container-fluid{:class => "accordion-group #{defined?(template) && template ? 'activity-set-form-template' : ''} "}
+.container-fluid{:class => "accordion-group #{defined?(template) && template ? "activity-set-form-template" : ""} "}
   .accordion-heading.activity-display-name.row
     .span1
-      = render :partial => 'shared/button', :locals => { :button_class => 'activity-set-comments-button',
-               :icon => 'icon-comment' }
+      = render :partial => "shared/button", :locals => { :button_class => "activity-set-comments-button",
+               :icon => "icon-comment" }
     .span3
       %a.accordion-toggle{"data-parent" => "routine-activity-set-list", "data-toggle" => "collapse", :href => "##{template ? nil : activity_set.position}"}
         = activity.name
@@ -22,12 +22,12 @@
                                                                          :units => metric.units.map { |u| u.name.pluralize },
                                                                          :unit => unit, :performance => false }
       .btn-group
-        = render :partial => 'shared/button', :locals => { :button_class => 'okay-activity-set-button',
-                 :message => 'Ok',
-                 :icon => 'icon-ok' }
-        = render :partial => 'shared/button', :locals => { :button_class => 'delete-activity-set-button',
-                 :message => 'Delete',
-                 :icon => 'icon-remove-sign' }
-        = render :partial => 'shared/button', :locals => { :button_class => 'clone-activity-set-button',
-                 :message => 'Repeat',
-                 :icon => 'icon-repeat' }
+        = render :partial => "shared/button", :locals => { :button_class => "delete-activity-set-button",
+                 :message => "Delete",
+                 :icon => "icon-remove-sign" }
+        = render :partial => "shared/button", :locals => { :button_class => "clone-activity-set-button",
+                 :message => "Repeat",
+                 :icon => "icon-repeat" }
+        -#= render :partial => "shared/button", :locals => { :button_class => "okay-activity-set-button",
+        -#         :message => "Ok",
+        -#         :icon => "icon-ok" }

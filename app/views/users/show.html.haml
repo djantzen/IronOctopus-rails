@@ -38,7 +38,7 @@
               = link_to(program.name, user_program_path(@user, program))
             .span2
               - if current_user.eql? program.trainer
-                = link_to(edit_user_program_path(@user, program), :class => 'btn') do
+                = link_to(edit_user_program_path(@user, program)) do
                   Edit
                   %i.icon-edit
       %br
@@ -57,10 +57,10 @@
               = link_to(routine.name, user_routine_path(@user, routine))
             .span2
               - if current_user.eql? routine.trainer
-                = link_to(edit_user_routine_path(@user, routine), :class => 'btn') do
+                = link_to(edit_user_routine_path(@user, routine)) do
                   Edit
                   %i.icon-edit
             .span3
-              = link_to(perform_routine_path(@user, routine), :class => 'btn btn-primary') do
+              = link_to(perform_routine_path(@user, routine)) do
                 Perform Routine
                 %i.icon-fire

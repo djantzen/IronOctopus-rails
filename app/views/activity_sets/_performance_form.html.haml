@@ -1,17 +1,17 @@
-.container-fluid{:class => "accordion-group #{defined?(template) && template ? 'activity-set-form-template' : ''}"}
+.container-fluid{:class => "accordion-group #{defined?(template) && template ? "activity-set-form-template" : ""}"}
   = form_for [@routine.client, Work.new], :remote => true do |form|
     = hidden_field_tag("routine[routine]", @routine.name)
     .accordion-heading.activity-display-name.row
       .span1
         - unless template or activity_set.comments.eql? ""
-          = render :partial => 'shared/button', :locals => { :button_class => 'activity-set-comments-button',
-                   :icon => 'icon-comment' }
+          = render :partial => "shared/button", :locals => { :button_class => "activity-set-comments-button",
+                   :icon => "icon-comment" }
       .span2
         %a.accordion-toggle{ "data-parent" => "routine-activity-set-list", "data-toggle" => "collapse", :href => "##{template ? nil : activity_set.position}"}
           = activity.name
       .span1
-        = render :partial => 'shared/button', :locals => { :button_class => 'show-instructions',
-                 :icon => 'icon-info-sign' }
+        = render :partial => "shared/button", :locals => { :button_class => "show-instructions",
+                 :icon => "icon-info-sign" }
         .instructions-modal.modal.hide.fade
           .modal-body
             = markup(activity.instructions)
@@ -30,6 +30,6 @@
                        :initial_value => initial_value, :units => unit_options, :unit => unit, :performance => true }                   |
         .btn-group
           = submit_tag "Done", :class => "perform-activity-set-button btn btn-primary"
-          = render :partial => "shared/button", :locals => { :button_class=> 'delete-activity-set-button', :message => 'Skip'}
-          = render :partial => 'shared/button', :locals => { :button_class => 'clone-activity-set-button', |
-                   :message => 'Repeat', :icon => 'icon-repeat' }                                                                       |
+          = render :partial => "shared/button", :locals => { :button_class=> "delete-activity-set-button", :message => "Skip"}
+          = render :partial => "shared/button", :locals => { :button_class => "clone-activity-set-button", |
+                   :message => "Repeat", :icon => "icon-repeat" }                                                                       |

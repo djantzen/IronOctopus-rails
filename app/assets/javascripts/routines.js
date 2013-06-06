@@ -33,6 +33,11 @@ $(document).ready(function() {
     return unique;
   }
 
+  $.validator.addMethod('positive_number',
+    function (value) {
+      return Number(value) > 0;
+    }, 'Enter a positive number.');
+
   var duration_validator = function(digital_time) {
     return (digital_time.match(DIGITAL_FORMAT) || digital_time.match(/^\d+$/)) ? true : false;
   }

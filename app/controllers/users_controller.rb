@@ -47,20 +47,19 @@ class UsersController < ApplicationController
   end
 
   def update
-    @client = User.find_by_login(params[:id])
-    allowed_to_update?
-    if @client.eql? current_user
+    @user = User.find_by_login(params[:id])
+    if allowed_to_update?
       User.transaction do
         if !params[:user][:new_password].blank? && params[:user][:new_password].eql?(params[:user][:confirm_password])
-          @client.password = params[:user][:new_password]
+          @user.password = params[:user][:new_password]
         end
         city_name, state_name = params[:city].split(/,/)
         city = City.find_by_name_and_state(city_name, state_name)
-        @client.city = city
-        @client.save
+        @user.city = city
+        @user.save
       end
     end
-    redirect_to user_path(@client)
+    redirect_to user_path(@user)
   end
 
   def clients

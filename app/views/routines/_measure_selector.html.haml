@@ -20,11 +20,11 @@
         = render "work/stopwatch"
     - else
       .measure-min
-        %input.measure.spinner.number.required{:name => min_input_name, :value => initial_value.min}
+        %input.measure.spinner.number.positive_number.required{:name => min_input_name, :value => initial_value.min}
       .measure-max
         %label.range-separator{:for => max_input_name}
           to
-        %input.measure.spinner.number.required{:name => max_input_name, :value => initial_value.max}
+        %input.measure.spinner.number.positive_number.required{:name => max_input_name, :value => initial_value.max}
       %span.range-toggle
         %label.range-toggle-text.range-separator{:for => max_input_name}
           to?

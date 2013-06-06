@@ -1,73 +1,69 @@
-#tour-carousel.carousel.slide.container
-  .carousel-inner
-    #invite-client.active.item.tour-item
-      .well.tour-text
-        Invite your client by email. When they accept your invitation they will appear in your client list.
-      = image_tag "/tour/client_list.png", :class => "tour-image"
-      = link_to "Sign up", new_user_path, :class => 'btn btn-primary'
-    #custom-routines.item.tour-item
-      %h4 Create Routines
-      .well.tour-text
-        Customize routines for your client using the Routine Builder. Search and browse activities by type, anatomy, implements, or
-        advanced concepts like impact, force and utility and quickly add them
-        to the routine.
-      = image_tag "/tour/activity_search.png", :class => "tour-image"
-      .well.tour-text
-        Each activity can be described using a variety of metrics like repetitions, resistance, duration, speed, heart rate and others.
-        Metric and English units are supported, as are ranges. You can include comments for special instruction as well.
-      = image_tag "/tour/routine_builder_sets.png", :class => "tour-image"
-      = link_to "Sign up", new_user_path, :class => 'btn btn-primary'
-    #import-routines.item.tour-item
-      %h4 Create a Library of Template Routines
-      .well.tour-text
-        Manage multiple clients efficiently by reusing template routines. Template routines can be mixed and matched to create novel combinations.
+#tour-page.container
+  .row
+    #tour-carousel.carousel.slide.span14
       .row
-        .span3
-          = image_tag "/tour/before_import.png", :class => "tour-image"
-        .span3
-          = image_tag "/tour/select_import.png", :class => "tour-image"
-      .row
-        .span6
-          = image_tag "/tour/after_import.png", :class => "tour-image"
-      = link_to "Sign up", new_user_path, :class => 'btn btn-primary'
-    #custom-programs.item.tour-item
-      %h4 Create Programs
-      .well.tour-text
-        Standalone routines are only so useful. Using the Program Builder, you can schedule them to occur on a given day of week ...
-      = image_tag "/tour/weekly_program.png", :class => "tour-image"
-      .well.tour-text
-        Or down to the calendar day.
-      = image_tag "/tour/scheduled_program.png", :class => "tour-image"
-      = link_to "Sign up", new_user_path, :class => 'btn btn-primary'
-    #custom-activities.item.tour-item
-      %h4 Custom Activities
-      .well.tour-text
-        Create new activities, described by anatomy, implements, and metrics as you choose. The
-        attributes you assign to the activity can be used on the Routine Builder to find it again in the search or browse mode.
-      = image_tag "/tour/new_activity.png", :class => "tour-image"
-      = link_to "Sign up", new_user_path, :class => 'btn btn-primary'
-    #work-input.item.tour-item
-      %h4 Keep an Activity Log
-      .well.tour-text
-        No more pencil and paper. Using her cell phone, your client can access the mobile site and see the day's scheduled routine.
-        She can record her activities right on the phone, and you can see the results on the website.
-      .row
-        .span3
-          = image_tag "/tour/mobile_home.png", :class => "tour-image"
-        .span3
-          = image_tag "/tour/mobile_routine.png", :class => "tour-image"
-      = link_to "Sign up", new_user_path, :class => 'btn btn-primary'
-    #work-review.item.tour-item
-      %h3
-        Review
-      .well.tour-text
-        No more asking clients what they did since the last meeting.
-      = image_tag "/tour/worklog.png", :class => "tour-image"
-      = link_to "Sign up", new_user_path, :class => 'btn btn-primary'
-    #pricing.item.tour-item
-      %h3 Pricing
-      .well.tour-text
-        You are charged a flat, one-time fee for each client you invite or a monthly subscription fee based upon your needs
-      = link_to "Sign up", new_user_path, :class => 'btn btn-primary'
-  %a.carousel-control.left{"data-slide" => "prev", :href => "#tour-carousel"} &lsaquo;
-  %a.carousel-control.right{"data-slide" => "next", :href => "#tour-carousel"} &rsaquo;
+        = link_to "Sign up!", new_user_path, :class => 'btn btn-primary btn-large pull-right'
+        .carousel-inner
+          #invite-client.active.item.tour-item
+            .well.tour-text
+              Invite your client by email. When they accept your invitation they will appear in your client list.
+            = image_tag "/tour/client_list.png", :class => "tour-image"
+          #custom-routines.item.tour-item
+            %h4 Create Routines
+            .well.tour-text
+              Customize routines for your client using the Routine Builder. Search and browse activities by type, anatomy, implements, or
+              advanced concepts like impact, force and utility and quickly add them
+              to the routine.
+            = image_tag "/tour/activity_search.png", :class => "tour-image"
+            .well.tour-text
+              Each activity can be described using a variety of metrics like repetitions, resistance, duration, speed, heart rate and others.
+              Metric and English units are supported, as are ranges. You can include comments for special instruction as well.
+            = image_tag "/tour/routine_builder_sets.png", :class => "tour-image"
+          #import-routines.item.tour-item
+            %h4 Create a Library of Template Routines
+            .well.tour-text
+              Manage multiple clients efficiently by reusing template routines. Template routines can be mixed and matched to create novel combinations.
+            .row
+              .span3
+                = image_tag "/tour/before_import.png", :class => "tour-image"
+              .span3
+                = image_tag "/tour/select_import.png", :class => "tour-image"
+            .row
+              .span6
+                = image_tag "/tour/after_import.png", :class => "tour-image"
+          #custom-programs.item.tour-item
+            %h4 Create Programs
+            .well.tour-text
+              Standalone routines are only so useful. Using the Program Builder, you can schedule them to occur on a given day of week ...
+            = image_tag "/tour/weekly_program.png", :class => "tour-image"
+            .well.tour-text
+              Or down to the calendar day.
+            = image_tag "/tour/scheduled_program.png", :class => "tour-image"
+          #custom-activities.item.tour-item
+            %h4 Custom Activities
+            .well.tour-text
+              Create new activities, described by anatomy, implements, and metrics as you choose. The
+              attributes you assign to the activity can be used on the Routine Builder to find it again in the search or browse mode.
+            = image_tag "/tour/new_activity.png", :class => "tour-image"
+          #work-input.item.tour-item
+            %h4 Keep an Activity Log
+            .well.tour-text
+              No more pencil and paper. Using her cell phone, your client can access the mobile site and see the day's scheduled routine.
+              She can record her activities right on the phone, and you can see the results on the website.
+            .row
+              .span3
+                = image_tag "/tour/mobile_home.png", :class => "tour-image"
+              .span3
+                = image_tag "/tour/mobile_routine.png", :class => "tour-image"
+          #work-review.item.tour-item
+            %h3
+              Review
+            .well.tour-text
+              No more asking clients what they did since the last meeting.
+            = image_tag "/tour/worklog.png", :class => "tour-image"
+          #pricing.item.tour-item
+            %h3 Pricing
+            .well.tour-text
+              You are charged a flat, one-time fee for each client you invite or a monthly subscription fee based upon your needs
+        %a.carousel-control.left{"data-slide" => "prev", :href => "#tour-carousel"} &lsaquo;
+        %a.carousel-control.right{"data-slide" => "next", :href => "#tour-carousel"} &rsaquo;

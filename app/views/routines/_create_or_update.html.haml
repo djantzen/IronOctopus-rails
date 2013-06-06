@@ -88,8 +88,8 @@
       #activity-search-widget.well.has-tooltip-bottom{:rel => "tooltip", :title => "Search activities by name, type, anatomy, attributes, or implements"}
         %input#activity-search-box.input-medium{:tabindex => "1", :type => "text"}/
         %i.icon-search
-      = render :partial => 'shared/button', :locals => { :button_id => 'new-activity-button', :button_class => 'btn-primary', |
-                                            :message => 'New Activity'}                                                        |
+      = render :partial => "shared/button", :locals => { :button_id => "new-activity-button", :button_class => "btn-primary", |
+                                            :message => "New Activity"}                                                        |
       %ul#activity-list.nav.nav-tabs.nav-stacked.has-tooltip{"data-offset-top"=>"200", :rel => "tooltip", :title => "Select activities to add them to your routine"}
         - @activities.each do |activity|
           = render :partial => "routines/activity_list_item", :locals => { :activity => activity, :performance => false }
@@ -131,15 +131,15 @@
             %ul#routine-activity-set-list.accordion.unstyled
               - @routine.activity_sets.each do |activity_set|
                 %li.activity-set-form.assigned
-                  = render :partial => 'activity_sets/form', :locals => { :activity => activity_set.activity, |
+                  = render :partial => "activity_sets/form", :locals => { :activity => activity_set.activity, |
                     :activity_set => activity_set, :template => false }                                       |
           .row
             .span2
               .btn-group
-                = render :partial => 'shared/button', :locals => { :button_id => 'save-routine', |
-                         :button_class => 'btn-primary', :message => 'Save', :return_false => false }  |
                 - if via_ajax
-                  = render :partial => 'shared/button', :locals => { :button_id => 'cancel-routine-builder-button', |
-                    :message => 'Cancel' }                                                                          |
+                  = render :partial => "shared/button", :locals => { :button_id => "cancel-routine-builder-button", |
+                    :message => "Cancel" }                                                                          |
                 - else
-                  = link_to "Cancel", user_routines_path(current_user), :class => 'btn'
+                  = link_to "Cancel", user_routines_path(current_user), :class => "btn"
+                = render :partial => "shared/button", :locals => { :button_id => "save-routine", |
+                         :button_class => "btn-primary", :message => "Save", :return_false => false }  |
