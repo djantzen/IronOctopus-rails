@@ -5,94 +5,98 @@
   .modal-body
     = render :partial => "activities/create_or_update", :locals => { :via_ajax => true }
 #routine-builder-panel.container-fluid
-  .row
-    #activity-facets-panel.span3.well
-      .well
-        #clear-selections.ui-state-default.btn.btn-primary Clear Selections
-        / <span class="label label-important">
-        / Search or browse to find activities, <br/> then add them to your routine
-        / </span>
-      #activity-type-list.accordion.has-tooltip-right{:rel => "tooltip", :title => "Filter activities by type"}
-        .accordion-group
-          .accordion-heading
-            %a.accordion-toggle{"data-parent" => "#activity-type-list", "data-toggle" => "collapse", :href => "#collapse-type"}
-              Type of Activity
-          #collapse-type.accordion-body.collapse.in
-            .accordion-inner
-              - @activity_types.each do |activity_type|
-                .facet
-                  %a{:id => activity_type.name.to_identifier}
-                    = activity_type.name
-                  %span.faceting-control
-                    = activity_type.name
-      #body-part-list.accordion.has-tooltip-right{:rel => "tooltip", :title => "Filter activities by anatomy"}
-        .accordion-group
-          .accordion-heading
-            %a.accordion-toggle{"data-parent" => "body-part-list", "data-toggle" => "collapse", :href => "#collapse-body-part-list"}
-              Anatomy Involved
-          #collapse-body-part-list.accordion-body.collapse.in
-            .accordion-inner
-              %ul.unstyled
-                - group_body_parts_by_region(@body_parts).each_pair do |region, body_parts|
-                  %li
+  #search-browse-choose-panel.row
+    .span6.well
+      #search-row.row
+        .span6
+          #activity-search-widget
+            %input#activity-search-box.input-medium{:tabindex => "1", :type => "text"}/
+            %i.icon-search
+          .label.label-important.pull-right
+            Search or browse activities by name, type, anatomy, equipment
+            %br
+            or attributes. Click on activities to add them to the routine.
+      #facets-and-activities-row.row
+        #activity-facets-panel.span2
+          #clear-selections.ui-state-default.btn.btn-primary Clear Selections
+          #activity-type-list.accordion.has-tooltip-right{:rel => "tooltip", :title => "Filter activities by type"}
+            .accordion-group
+              .accordion-heading
+                %a.accordion-toggle{"data-parent" => "#activity-type-list", "data-toggle" => "collapse", :href => "#collapse-type"}
+                  Type of Activity
+              #collapse-type.accordion-body.collapse.in
+                .accordion-inner
+                  - @activity_types.each do |activity_type|
+                    .facet
+                      %a{:id => activity_type.name.to_identifier}
+                        = activity_type.name
+                      %span.faceting-control
+                        = activity_type.name
+          #body-part-list.accordion.has-tooltip-right{:rel => "tooltip", :title => "Filter activities by anatomy"}
+            .accordion-group
+              .accordion-heading
+                %a.accordion-toggle{"data-parent" => "body-part-list", "data-toggle" => "collapse", :href => "#collapse-body-part-list"}
+                  Anatomy Involved
+              #collapse-body-part-list.accordion-body.collapse.in
+                .accordion-inner
+                  %ul.unstyled
+                    - group_body_parts_by_region(@body_parts).each_pair do |region, body_parts|
+                      %li
+                        .facet
+                          %a
+                            = region
+                          %span.faceting-control
+                            = region
+                        %ul
+                          - body_parts.each do |body_part|
+                            %li.ui-state-default
+                              .facet
+                                %a.has-tooltip-right{:rel => "tooltip", :title => image_tag(body_part.image_url(:thumb)), "data-delay" => 500}
+                                  = body_part.name
+                                %span.faceting-control
+                                  = body_part.name
+          #activity-attribute-list.accordion.has-tooltip-right{:rel => "tooltip", :title => "Filter activities by attributes"}
+            .accordion-group
+              .accordion-heading
+                %a.accordion-toggle{"data-parent" => "#activity-attribute-list", "data-toggle" => "collapse", :href => "#collapse-activity-attributes"}
+                  Activity Attributes
+              #collapse-activity-attributes.accordion-body.collapse.in
+                .accordion-inner
+                  - @activity_attributes.each do |attribute|
                     .facet
                       %a
-                        = region
+                        = attribute.name
                       %span.faceting-control
-                        = region
-                    %ul
-                      - body_parts.each do |body_part|
-                        %li.ui-state-default
-                          .facet
-                            %a.has-tooltip-right{:rel => "tooltip", :title => image_tag(body_part.image_url(:thumb)), "data-delay" => 500}
-                              = body_part.name
-                            %span.faceting-control
-                              = body_part.name
-      #activity-attribute-list.accordion.has-tooltip-right{:rel => "tooltip", :title => "Filter activities by attributes"}
-        .accordion-group
-          .accordion-heading
-            %a.accordion-toggle{"data-parent" => "#activity-attribute-list", "data-toggle" => "collapse", :href => "#collapse-activity-attributes"}
-              Activity Attributes
-          #collapse-activity-attributes.accordion-body.collapse.in
-            .accordion-inner
-              - @activity_attributes.each do |attribute|
-                .facet
-                  %a
-                    = attribute.name
-                  %span.faceting-control
-                    = attribute.name
-      #implement-list.accordion.has-tooltip-right{:rel => "tooltip", :title => "Filter activities by implements"}
-        .accordion-group
-          .accordion-heading
-            %a.accordion-toggle{"data-parent" => "implement-list", "data-toggle" => "collapse", :href => "#collapse-implement-list"}
-              Implements Involved
-          #collapse-implement-list.accordion-body.collapse.in
-            .accordion-inner
-              %ul.unstyled
-                - group_implements_by_category(@implements).each_pair do |category, implements|
-                  %li
-                    .facet
-                      %a.ui-state-default
-                        = category
-                      %span.faceting-control
-                        = category
-                    %ul
-                      - implements.each do |implement|
-                        %li.ui-state-default
-                          .facet
-                            %a.has-tooltip-right{:rel => "tooltip", :title => image_tag(implement.image_url(:thumb)), "data-delay" => 500}
-                              = implement.name
-                            %span.faceting-control
-                              = implement.name
-    #facet-filtered-activities-panel.span3
-      #activity-search-widget.well.has-tooltip-bottom{:rel => "tooltip", :title => "Search activities by name, type, anatomy, attributes, or implements"}
-        %input#activity-search-box.input-medium{:tabindex => "1", :type => "text"}/
-        %i.icon-search
-      = render :partial => "shared/button", :locals => { :button_id => "new-activity-button", :button_class => "btn-primary", |
-                                            :message => "New Activity"}                                                        |
-      %ul#activity-list.nav.nav-tabs.nav-stacked.has-tooltip{"data-offset-top"=>"200", :rel => "tooltip", :title => "Select activities to add them to your routine"}
-        - @activities.each do |activity|
-          = render :partial => "routines/activity_list_item", :locals => { :activity => activity, :performance => false }
+                        = attribute.name
+          #implement-list.accordion.has-tooltip-right{:rel => "tooltip", :title => "Filter activities by implements"}
+            .accordion-group
+              .accordion-heading
+                %a.accordion-toggle{"data-parent" => "implement-list", "data-toggle" => "collapse", :href => "#collapse-implement-list"}
+                  Equipment Used
+              #collapse-implement-list.accordion-body.collapse.in
+                .accordion-inner
+                  %ul.unstyled
+                    - group_implements_by_category(@implements).each_pair do |category, implements|
+                      %li
+                        .facet
+                          %a.ui-state-default
+                            = category
+                          %span.faceting-control
+                            = category
+                        %ul
+                          - implements.each do |implement|
+                            %li.ui-state-default
+                              .facet
+                                %a.has-tooltip-right{:rel => "tooltip", :title => image_tag(implement.image_url(:thumb)), "data-delay" => 500}
+                                  = implement.name
+                                %span.faceting-control
+                                  = implement.name
+        #facet-filtered-activities-panel.span4
+          = render :partial => "shared/button", :locals => { :button_id => "new-activity-button", :button_class => "btn-primary", |
+                                                :message => "New Activity"}                                                        |
+          %ul#activity-list.nav.nav-tabs.nav-stacked
+            - @activities.each do |activity|
+              = render :partial => "routines/activity_list_item", :locals => { :activity => activity, :performance => false }
     #routine-form-panel.span6
       .well
         = form_for [@client, @routine], :remote => via_ajax do |form|
@@ -126,7 +130,7 @@
               .span4
                 = render :partial => "shared/button", :locals => { :button_id => "import-routine-button",
                                                                    :button_class => "btn-primary",
-                                                                   :message => "Import Activity Sets from Another Routine" }
+                                                                   :message => "Include Activity Sets from Another Routine" }
           .row
             %ul#routine-activity-set-list.accordion.unstyled
               - @routine.activity_sets.each do |activity_set|

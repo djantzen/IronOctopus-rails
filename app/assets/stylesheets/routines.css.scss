@@ -1,9 +1,15 @@
 #activity-list {
   list-style: none;
+  max-height: 900px;
+  overflow: scroll;
 }
 
 .activity-set-form-template {
   display: none;
+}
+
+#activity-search-widget {
+  float: left;
 }
 
 #routine-activity-set-list {
@@ -23,6 +29,10 @@
 .ui-state-active {
   font-weight: bold;
   background-color: #d3d3d3;
+}
+
+#activity-facets-panel {
+  font-size: 85%;
 }
 
 .facet-included-activity {
@@ -61,6 +71,7 @@ input.measure {
   padding: 5px;
   font-weight: bold;
   float: left;
+  font-size: 80%;
 }
 
 .input-controls {
@@ -92,6 +103,7 @@ input.measure {
   font-weight: bold;
   padding-left: 5px;
   padding-right: 5px;
+  font-size: 80%;
 }
 
 .activity-set-comments-form textarea {
