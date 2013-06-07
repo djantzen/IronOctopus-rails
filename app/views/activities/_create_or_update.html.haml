@@ -15,13 +15,6 @@
         = form.label :instructions, "Instructions"
         = form.text_area :instructions, :minlength => @validations[:activity][:instructions][:minlength], |
                          :maxlength => @validations[:activity][:instructions][:maxlength] |
-        .btn-group
-          - if via_ajax
-            = render :partial => 'shared/button', :locals => { :button_id => 'cancel-activity-builder-button', |
-              :message => 'Cancel' }                                                                           |
-          - else
-            = link_to "Cancel", activities_path, :class => 'btn'
-          = submit_tag "Save", :id => 'save-activity-button', :class => 'btn btn-primary'
       .span8.well
         .row-fluid
           %h4
@@ -66,7 +59,7 @@
                                         { :class => 'body-part', :id => body_part.name.to_identifier }
                         = link_to body_part.name, body_part
           .span3
-            %h4 Implements Utilized
+            %h4 Equipment Used
             %ul#available-implement-list.unstyled
               - group_implements_by_category(@implements).each_pair do |category, implements|
                 %li
@@ -76,3 +69,11 @@
                     %li
                       = check_box_tag "activity[implements][]", implement.name, @activity.implements.include?(implement) ? true : false
                       = link_to implement.name, implement
+        .row-fluid
+          .span3.btn-group.pull-right
+            - if via_ajax
+              = render :partial => 'shared/button', :locals => { :button_id => 'cancel-activity-builder-button', |
+                :message => 'Cancel' }                                                                           |
+            - else
+              = link_to "Cancel", activities_path, :class => 'btn'
+            = submit_tag "Save", :id => 'save-activity-button', :class => 'btn btn-primary'

@@ -1,16 +1,16 @@
 routine:
   name:
-    minlength: 4
+    minlength: 2
     maxlength: 64
   goal:
-    minlength: 8
+    minlength: 0
     maxlength: 128
 activity:
   name:
     minlength: 4
     maxlength: 64
   instructions:
-    minlength: 16
+    minlength: 4
     maxlength: 512
 implement:
   name:
@@ -25,8 +25,8 @@ body_part:
     maxlength: 64
 program:
   name:
-    minlength: 4
+    minlength: 2
     maxlength: 64
   goal:
-    minlength: 8
+    minlength: 0
     maxlength: 256

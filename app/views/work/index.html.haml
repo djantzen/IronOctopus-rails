@@ -1,6 +1,8 @@
 #work-list.container-fluid
   = paginate @work
-
+  - if @work.empty?
+    %h3
+      Nothing to report yet
   - @work_grouped_by_day_and_routine.each do |grouping|
     .row-fluid
       .span16.well.well-small
