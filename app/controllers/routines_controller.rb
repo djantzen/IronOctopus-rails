@@ -134,23 +134,25 @@ class RoutinesController < ApplicationController
 
       position = 0
       (params[:activity_sets] || []).each do |activity_set_map|
-        position += 1
+        set_count = activity_set_map[:set_count].to_i
         activity = Activity.find_by_name(activity_set_map[:activity])
         unit_map = Unit.activity_set_to_unit_map(activity_set_map)
         metric_map = Measurement.activity_set_to_metric_map(activity_set_map, unit_map)
         measurement = Measurement.find_or_create(metric_map)
         unit_set = UnitSet.find_or_create(unit_map)
 
-        activity_set = ActivitySet.new
+        (1 .. set_count).each do |set_num|
+          position += 1
+          activity_set = ActivitySet.new
+          activity_set.comments = activity_set_map[:comments]
+          activity_set.routine = routine
+          activity_set.activity = activity
+          activity_set.position = position
+          activity_set.unit_set = unit_set
+          activity_set.measurement = measurement
+          routine.activity_sets << activity_set
+        end
 
-        activity_set.comments = activity_set_map[:comments]
-        activity_set.routine = routine
-        activity_set.activity = activity
-        activity_set.position = position
-        activity_set.unit_set = unit_set
-        activity_set.measurement = measurement
-
-        routine.activity_sets << activity_set
       end
       routine.save
     end

@@ -18,11 +18,21 @@
   overflow: auto;
 }
 
+.activity-set-control-bar {
+  margin-top: 5px;
+}
+
 .activity-set-controls {
+  @extend .activity-set-control-bar;
   float: left;
 }
 
+.activity-set-set-count {
+  @extend .activity-set-control-bar;
+}
+
 .activity-set-form .handle {
+  @extend .activity-set-control-bar;
   border: solid 1px #E5E5E5;
   cursor: move;
 }
@@ -63,6 +73,10 @@ input.measure {
   max-width: 45px;
 }
 
+input.measure-tiny {
+  max-width: 15px;
+}
+
 .unit-selector {
   width: auto;
   height: auto;
@@ -79,7 +93,6 @@ input.measure {
 }
 
 .measure-label {
-//  text-align: right;
   margin-left: -20px;
   padding: 5px;
   font-weight: bold;
@@ -88,7 +101,7 @@ input.measure {
 }
 
 .input-controls {
-  width: 325px;
+  width: 330px;
 }
 
 #new-activity-button {

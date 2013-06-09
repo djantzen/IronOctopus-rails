@@ -7,13 +7,13 @@
                                                          :icon => "icon-repeat", :tooltip => "Copy" }
       = render :partial => "shared/button", :locals => { :button_class => "activity-set-comments-button btn-small has-tooltip-right",
                                                          :icon => "icon-comment", :tooltip => "Special Instructions" }
-    .span3
+    .span5
       %a.accordion-toggle.activity-set-name{"data-parent" => "routine-activity-set-list", "data-toggle" => "collapse", :href => "##{template ? nil : activity_set.position}"}
         = activity.name
-      -#= render :partial => "routines/measure_selector", :locals => { :measure => "sets", :interval => 1,
-      -#                                                               :initial_value => MeasureValue.new(1,1),
-      -#                                                               :units => nil,
-      -#                                                               :unit => nil, :performance => false }
+    .span2.activity-set-set-count
+      %label.measure-label
+        Sets
+      %input.measure-tiny.spinner.number.positive_number.required{:value => 1, :min => 1, :name => "routine[activity_sets][][set_count]"}
     .span2.handle.pull-right
       %i.icon-resize-vertical
   .row.activity-set-comments

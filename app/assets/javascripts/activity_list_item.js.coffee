@@ -103,6 +103,10 @@ class this.ActivitySetListItem
     clone_button = @activity_set_form.find(".clone-activity-set-button")
     measure_max_toggle_boxes = @activity_set_form.find(".measure-to-range-box")
     comments_button = @activity_set_form.find(".activity-set-comments-button")
+    @activity_set_form.find(".has-tooltip-top").tooltip({ placement: "top", html: true });
+    @activity_set_form.find(".has-tooltip-bottom").tooltip({ placement: "bottom", html: true });
+    @activity_set_form.find(".has-tooltip-left").tooltip({ placement: "left", html: true });
+    @activity_set_form.find(".has-tooltip-right").tooltip({placement: "right", html: true });
 
     this.init_spinners(@activity_set_form)
     this.init_stopwatch(@activity_set_form)
@@ -159,6 +163,7 @@ class this.ActivitySetListItem
       $(this).change()
 
     delete_button.click =>
+      delete_button.tooltip("destroy") # tooltips hang around...
       activity_set_form = delete_button.parents(".activity-set-form")
       activity_set_form.hide("explode")
       activity_set_form.remove()

@@ -10,7 +10,7 @@
       #search-row.row
         .span6
           #activity-search-widget
-            %input#activity-search-box.input-medium{:tabindex => "1", :type => "text"}/
+            %input#activity-search-box.input-medium{:tabindex => "1", :type => "text"}
             %i.icon-search
           .label.label-important.pull-right
             Search or browse activities by name, type, anatomy, equipment
@@ -111,7 +111,7 @@
             = hidden_field_tag "routine[trainer]", @trainer.login
             .row
               .span2
-                = form.label "routine[client]", "Client"
+                = form.label "routine[client]", "For Client"
               .span2
                 - if @client == current_user
                   = select_tag "routine[client]", options_for_select(@client_logins, :selected => current_user.login)
