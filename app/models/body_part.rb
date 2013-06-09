@@ -15,10 +15,10 @@ class BodyPart < ActiveRecord::Base
   }
 
   def self.facets
-    BodyPart.select("body_parts.region, body_parts.name, body_parts.permalink, count(activities.activity_id)")
+    BodyPart.select("body_parts.body_part_id, body_parts.region, body_parts.name, body_parts.permalink, body_parts.image, count(activities.activity_id)")
             .joins("left join activities_body_parts using(body_part_id)")
             .joins("left join activities using(activity_id)")
-            .group("body_parts.region, body_parts.name, body_parts.permalink")
+            .group("body_parts.body_part_id, body_parts.region, body_parts.name, body_parts.permalink, body_parts.image")
             .order("body_parts.region, body_parts.name")
   end
 

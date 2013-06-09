@@ -11,10 +11,10 @@ class Implement < ActiveRecord::Base
   }
 
   def self.facets
-    Implement.select("implements.category, implements.name, implements.permalink, count(activities.activity_id)")
+    Implement.select("implements.implement_id, implements.category, implements.name, implements.permalink, implements.image, count(activities.activity_id)")
             .joins("left join activities_implements using(implement_id)")
             .joins("left join activities using(activity_id)")
-            .group("implements.category, implements.name, implements.permalink")
+            .group("implements.implement_id, implements.category, implements.name, implements.permalink, implements.image")
             .order("implements.category", "implements.name")
   end
 
