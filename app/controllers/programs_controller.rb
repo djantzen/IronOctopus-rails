@@ -35,11 +35,11 @@ class ProgramsController < ApplicationController
     @routine = Routine.new
     @calendars = [ LaterDude::Calendar.new(2012, 10), LaterDude::Calendar.new(2012, 11) ]
     @client_logins = current_user.clients.map { |u| ["#{u.first_name} #{u.last_name}", u.login] }
-    @activity_types = ActivityType.all
     @activities = Activity.all(:include => [:body_parts, :implements, :activity_type], :order => :name)
-    @implements = Implement.all
-    @body_parts = BodyPart.all
-    @activity_attributes = ActivityAttribute.all(:order => :name)
+    @activity_types = ActivityType.facets
+    @implements = Implement.facets
+    @body_parts = BodyPart.facets
+    @activity_attributes = ActivityAttribute.facets
     @metrics = Metric.all(:conditions => "name != 'None'")
     @activity = Activity.new
   end

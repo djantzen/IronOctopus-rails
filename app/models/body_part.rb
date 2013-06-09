@@ -14,6 +14,14 @@ class BodyPart < ActiveRecord::Base
     :maximum => VALIDATIONS[:region][:maxlength].to_i
   }
 
+  def self.facets
+    BodyPart.select("body_parts.region, body_parts.name, body_parts.permalink, count(activities.activity_id)")
+            .joins("left join activities_body_parts using(body_part_id)")
+            .joins("left join activities using(activity_id)")
+            .group("body_parts.region, body_parts.name, body_parts.permalink")
+            .order("body_parts.region, body_parts.name")
+  end
+
   def self.all_regions
     BodyPart.all.map { |b| b.region }.uniq
   end

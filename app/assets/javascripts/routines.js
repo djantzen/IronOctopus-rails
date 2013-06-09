@@ -5,8 +5,8 @@ $(document).ready(function() {
 
   var reset_activity_type_list = function() {
     $("#activity-type-list a.accordion-toggle").html("Type of Activity");
-    $("#activity-type-list a.accordion-toggle").removeClass("ui-state-active");
-    $("#activity-type-list a.accordion-toggle").parents(".accordion-group").find(".facet").removeClass("ui-state-active");
+    $("#activity-type-list a.accordion-toggle").removeClass("facet-selected");
+    $("#activity-type-list a.accordion-toggle").parents(".accordion-group").find(".facet").removeClass("facet-selected");
   }
 
   $("#activity-type-list a.accordion-toggle").click(function() {
@@ -35,7 +35,7 @@ $(document).ready(function() {
 
   $.validator.addMethod('positive_number',
     function (value) {
-      return Number(value) > 0;
+      return Number(value) >= 0;
     }, 'Enter a positive number.');
 
   var duration_validator = function(digital_time) {
@@ -122,6 +122,10 @@ $(document).ready(function() {
   });
 
   var update_facet_filtered_activities = function(facet_key, narrowing_results) {
+
+    facet_nodes = $("#activity-search-box").add($("#activity-facets-panel div.facet-selected .faceting-control"));
+    facet_key = new RegExp(generate_facet_key(facet_nodes, false));
+
     // Only examine activities that might change as a result of the facet addition or removal.
     var activities = narrowing_results ? $("#activity-list .facet-included-activity"):
       $("#activity-list .facet-excluded-activity");
@@ -147,7 +151,7 @@ $(document).ready(function() {
    */
   var apply_selected_facets_to_activities = function(narrowing_results) {
     // Get the key describing currently selected facets
-    var facet_key = new RegExp(generate_facet_key($("#activity-facets-panel div.ui-state-active .faceting-control"), false));
+    var facet_key = new RegExp(generate_facet_key($("#activity-facets-panel div.facet-selected .faceting-control"), false));
     update_facet_filtered_activities(facet_key, narrowing_results);
   }
 
@@ -155,7 +159,7 @@ $(document).ready(function() {
     $(this).parents(".collapse").collapse("hide");
     var facet = $(this).find("a").text();
     $(this).parents(".accordion-group").find("a.accordion-toggle").html(facet);
-    $(this).parents(".accordion-group").find("a.accordion-toggle").addClass("ui-state-active");
+    $(this).parents(".accordion-group").find("a.accordion-toggle").addClass("facet-selected");
   });
 
   /*
@@ -163,15 +167,35 @@ $(document).ready(function() {
    */
   $("#activity-facets-panel .facet").click(function() {
     var narrowing_results = true;
-    if ($(this).hasClass("ui-state-active")) {
-      $(this).removeClass("ui-state-active");
+    if ($(this).hasClass("facet-selected")) {
+      var id = $(this).find("a").attr("id");
+      $("#selected-facet-list").find("#facet-selected-" + id).parents(".facet-selected").remove();
+      $(this).removeClass("facet-selected");
       narrowing_results = false;
     } else {
-      $(this).addClass("ui-state-active");
+      $(this).addClass("facet-selected");
+      if (!$(this).hasClass("activity-type")) {
+        var clone = $(this).clone();
+        var id = $(this).find("a").attr("id");
+        clone.find("a").attr("id", "facet-selected-" + id);
+
+        $("#selected-facet-list").append(clone);
+        $("#selected-facet-list").find("#facet-selected-" + id).click(function() {
+          $(this).parents(".facet-selected").remove();
+          var elem = $("#activity-facets-panel .facet").find("#" + id);
+          elem.click();
+        });
+      }
     }
+    if ($("#selected-facet-list div").length > 0) {
+      $("#applied-filters-label").show("slow");
+    } else {
+      $("#applied-filters-label").hide("slow");
+    }
+
     apply_selected_facets_to_activities(narrowing_results);
-    $("#clear-selections").show();
   });
+  $("#applied-filters-label").hide();
 
   $("#new-activity-button").click(function() {
     var container = $(this).parents("#routine-builder-panel");

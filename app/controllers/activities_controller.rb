@@ -86,7 +86,7 @@ class ActivitiesController < ApplicationController
     Activity.transaction do
       activity.name = params[:activity][:name]
       activity.instructions = params[:activity][:instructions]
-      activity.activity_type = ActivityType.find(params[:activity][:activity_type])
+      activity.activity_type = ActivityType.find_by_name(params[:activity][:activity_type])
       activity.body_parts.clear
       (params[:activity][:body_parts] || []).each do |name|
         body_part = BodyPart.find_by_name(name)

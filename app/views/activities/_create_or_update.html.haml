@@ -8,9 +8,8 @@
                           :minlength => @validations[:activity][:name][:minlength], |
                           :maxlength => @validations[:activity][:name][:maxlength] |
         = form.label :activity_type, "Activity Type"
-        = form.select :activity_type,                                                                    |
-          @activity_types.map { |activity_type | [activity_type.name, activity_type.activity_type_id] }, |
-          :selected => @activity.activity_type.nil? ? nil : @activity.activity_type.activity_type_id     |
+        = form.select :activity_type, @activity_types.map { |activity_type | [activity_type.name, activity_type.name] },
+                      :selected => @activity.activity_type.nil? ? nil : @activity.activity_type.activity_type_id
         = link_to "You can use Markdown syntax here", "http://kramdown.rubyforge.org/quickref.html", :target => '_blank'
         = form.label :instructions, "Instructions"
         = form.text_area :instructions, :minlength => @validations[:activity][:instructions][:minlength], |
@@ -56,7 +55,7 @@
                     - body_parts.each do |body_part|
                       %li.body-part-entry
                         = check_box_tag "activity[body_parts][]", body_part.name, @activity.body_parts.include?(body_part) ? true : false,
-                                        { :class => 'body-part', :id => body_part.name.to_identifier }
+                                        { :class => 'body-part', :id => "activity-builder-#{body_part.name.to_identifier}" }
                         = link_to body_part.name, body_part
           .span3
             %h4 Equipment Used
@@ -76,4 +75,4 @@
                 :message => 'Cancel' }                                                                           |
             - else
               = link_to "Cancel", activities_path, :class => 'btn'
-            = submit_tag "Save", :id => 'save-activity-button', :class => 'btn btn-primary'
+            = submit_tag "Save Activity", :id => 'save-activity-button', :class => 'btn btn-primary'

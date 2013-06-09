@@ -10,6 +10,14 @@ class Implement < ActiveRecord::Base
     :maximum => VALIDATIONS[:name][:maxlength].to_i
   }
 
+  def self.facets
+    Implement.select("implements.category, implements.name, implements.permalink, count(activities.activity_id)")
+            .joins("left join activities_implements using(implement_id)")
+            .joins("left join activities using(activity_id)")
+            .group("implements.category, implements.name, implements.permalink")
+            .order("implements.category", "implements.name")
+  end
+
   def self.all_categories
     Implement.all.map { |i| i.category }.uniq
   end

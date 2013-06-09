@@ -31,6 +31,10 @@
   background-color: #d3d3d3;
 }
 
+.facet-selected {
+  @extend .ui-state-active
+}
+
 #activity-facets-panel {
   font-size: 85%;
 }

@@ -7,6 +7,14 @@ class ActivityAttribute < ActiveRecord::Base
 
   before_save { self.permalink = name.to_identifier }
 
+  def self.facets
+    ActivityAttribute.select("activity_attributes.name, count(activities.activity_id)")
+                     .joins("left join activities_activity_attributes using(activity_attribute_id)")
+                     .joins("left join activities using(activity_id)")
+                     .group("activity_attributes.name")
+                     .order("activity_attributes.name")
+  end
+
   def to_param
     permalink
   end

@@ -5,9 +5,17 @@
   = form_for [@client, @program] do |form|
     = hidden_field_tag "program[trainer]", @trainer.login
     #routine-type-selector.row
-      .span7.offset3.well
+      .span4.well
+        .label.label-important
+          Choose which type of program you
+          wish to build.
+          %br
+          A Weekday program spans the seven days of the week.
+          %br
+          A Scheduled program pins routines to calendar days.
+      .span5.well
         = hidden_field_tag "program[type]", @program_type
-        .btn-group.offset1{"data-toggle" => "buttons-radio"}
+        .btn-group{"data-toggle" => "buttons-radio"}
           = render :partial => 'shared/button', :locals => { :button_id => 'weekday-program-button', :button_class => "btn-large btn-primary #{ 'active' if @program_type.eql? 'Weekday' }", |
             :message => 'Weekday Program', :type => 'input'}                                                                                                                                 |
           -
@@ -33,10 +41,6 @@
           = form.text_area :goal, :class => "required", :value => @program.goal, |
                            :minlength => @validations[:program][:goal][:minlength], |
                            :maxlength => @validations[:program][:goal][:maxlength] |
-        .row-fluid
-          .btn-group
-            = link_to "Cancel", user_programs_path(@client), :class => "btn btn-large"
-            = submit_tag "Save", :id => "save-program", :class => "btn btn-large btn-primary"
       #scheduled-program.span8.well
         #calendar.carousel.slide
           - today = Date.today
@@ -66,3 +70,7 @@
             .span2.weekday.well.well-small
               %h4
                 = weekday.name
+    .row-fluid
+      .btn-group.span3.pull-right
+        = link_to "Cancel", user_programs_path(@client), :class => "btn"
+        = submit_tag "Save", :id => "save-program", :class => "btn btn-primary"

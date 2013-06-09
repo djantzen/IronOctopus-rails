@@ -61,18 +61,17 @@ Feature: Create a new routine
     When I fill in maximum Repetitions with "15"
     And I fill in "Routine Name" with "New Test Routine"
     And I fill in "Routine Goal" with "Perform a range of repetitions"
-    And I press "save-routine"
+    And I press "Save Routine"
     Then I should see "Bench Press Repetitions 13 to 15"
 
   @javascript
   Scenario: Clearing facets restores list to full
     Given I log in as "bob_the_trainer" with "password"
     And I am on the /users/sally_the_client/routines/new page
-    When I click "#new-activity-button"
     Then there should be 10 activities in the list
-    And I click "#plyometric"
+    And I click "#facet-plyometric"
     Then there should be 1 activities in the list
-    When I click "#clear-selections"
+    When I click "#facet-plyometric"
     Then there should be 10 activities in the list
 
   @javascript
@@ -82,11 +81,11 @@ Feature: Create a new routine
     Then "#modal-activity-builder" should not be visible
     When I click "#new-activity-button"
     And "#modal-activity-builder" should be visible
-    And I click "#trapezius"
+    And I click "#activity-builder-trapezius"
     And "#modal-activity-builder" should not be clear
     And I fill in "Activity Name" with "Triple Ab Blaster"
     And I fill in "Instructions" with "Blast yer abs three times!"
-    And I press "save-activity-button"
+    And I press "Save Activity"
     Then within "#activity-list" I should see "Triple Ab Blaster"
     And "#modal-activity-builder" should not be visible
     And "#modal-activity-builder" should be clear
