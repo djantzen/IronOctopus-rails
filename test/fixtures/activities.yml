@@ -4,10 +4,11 @@ bench_press:
   name: Bench Press
   activity_type: resistance
   creator: bob_the_trainer
+  body_parts: triceps_brachii
   implements: barbell, bench
   permalink: benchpress
   metrics: repetitions, resistance
-  activity_attributes: push
+  activity_attributes: push, compound
   
 box_jump:
   name: Box Jump
@@ -16,15 +17,17 @@ box_jump:
   implements: box
   permalink: boxjump
   metrics: repetitions
+  activity_attributes: push, compound
 
 dumbbell_bench_press:
   name: Dumbbell Bench Press
   activity_type: resistance
   creator: bob_the_trainer
+  body_parts: triceps_brachii
   implements: dumbbell, bench
-  permalink: dumbellbenchpress
+  permalink: dumbbellbenchpress
   metrics: repetitions, resistance
-  activity_attributes: push
+  activity_attributes: push, compound
 
 curl_and_press:
   name: Curl and Press
@@ -34,7 +37,7 @@ curl_and_press:
   body_parts: biceps_brachii, triceps_brachii
   permalink: curlandpress
   metrics: repetitions, resistance
-  activity_attributes: pull, push
+  activity_attributes: pull, push, compound
 
 squat:
   name: Squat
@@ -44,7 +47,7 @@ squat:
   body_parts: quadriceps, gluteus_maximus, hamstring
   permalink: squat
   metrics: repetitions, resistance
-  activity_attributes: push
+  activity_attributes: push, compound
 
 hamstring_curl:
   name: Hamstring Curl

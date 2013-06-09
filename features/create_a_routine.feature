@@ -75,6 +75,32 @@ Feature: Create a new routine
     Then there should be 10 activities in the list
 
   @javascript
+  Scenario: I can filter activities by clicking facets and searching together
+    Given I log in as "bob_the_trainer" with "password"
+    And I am on the /users/sally_the_client/routines/new page
+    When I click "#facet-push"
+    Then there should be 6 activities in the list
+    When I click "#facet-resistance"
+    Then there should be 5 activities in the list
+    When I click "#facet-compound"
+    Then there should be 5 activities in the list
+    When I click "#facet-tricepsbrachii"
+    Then there should be 3 activities in the list
+    When I click "#facet-bench"
+    Then there should be 2 activities in the list
+    When I click "#facet-bench"
+    Then there should be 3 activities in the list
+    When I click "#facet-tricepsbrachii"
+    Then there should be 5 activities in the list
+    When I click "#facet-compound"
+    Then there should be 5 activities in the list
+    When I click "#facet-resistance"
+    Then there should be 6 activities in the list
+    When I fill in "activity-search-box" with "Dumbbell"
+    Then there should be 2 activities in the list
+
+  # This runs last because it adds an activity and fixtures aren't reloaded between scenarios apparently
+  @javascript
   Scenario: I can create a new activity on the routine builder screen
     Given I log in as "bob_the_trainer" with "password"
     And I am on the /users/sally_the_client/routines/new page

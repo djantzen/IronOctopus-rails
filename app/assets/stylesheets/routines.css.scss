@@ -1,6 +1,6 @@
 #activity-list {
   list-style: none;
-  max-height: 900px;
+  max-height: 100%;
   overflow: scroll;
 }
 
@@ -14,6 +14,8 @@
 
 #routine-activity-set-list {
   margin-left: 20px;
+  max-height: 900px;
+  overflow: auto;
 }
 
 .activity-set-form .handle {
