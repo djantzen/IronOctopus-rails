@@ -11,34 +11,33 @@
     - grouping.each do |routine_for_day|
       - routine = routine_for_day.routine
       .row-fluid
-        .span16.well.well-small
+        .span12.well.well-small
           = link_to routine.name, user_routine_path(routine.client, routine)
       .row-fluid
-        .span5.well
+        .span6.well
           %h4
             Activities Assigned
           %br
           - routine.activity_sets.each do |activity_set|
-            .row-fluid
-              .span7
+            .row-fluid.assigned-set-row
+              .span3
                 = link_to(activity_set.activity.name, activity_path(activity_set.activity))
-              .span5
+              .span8
                 - activity_set.activity.metrics.each do |metric|
                   - measure_value, unit = activity_set.nil? ? 1 : get_initial_value(activity_set, metric)
                   = render :partial => "routines/measure_display", :locals => { :measure => metric.name,
                            :measure_value => measure_value, :unit => (unit.pluralize unless unit.eql?('None')) }
-        .span7.well
+        .span6.well
           %h4
             Activities Performed
           %br
           - routine_for_day.each do |work|
-            .row_fluid
-              .span2
-                %h5
-                  = work.user.local_time_from_utc(work.start_time)
-              .span4
+            .row-fluid.activity-performed-row
+              .span2.work-start-time
+                = work.user.local_time_from_utc(work.start_time)
+              .span3
                 = link_to work.activity.name, work.activity
-              .span6
+              .span7
                 - work.activity.metrics.each do |metric|
                   - measure_value, unit = get_initial_value(work, metric)
                   = render :partial => "routines/measure_display",
