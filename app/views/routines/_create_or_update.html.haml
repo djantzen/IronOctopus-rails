@@ -83,7 +83,7 @@
                   %ul.unstyled
                     - group_implements_by_category(@implements).each_pair do |category, implements|
                       %li
-                        .facet
+                        .facet.implement_category
                           %a.ui-state-default{:id => "facet-#{category.to_identifier}"}
                             - category_count = implements.inject(0) { |sum, implement| implement.count.to_i + sum  }
                             = "#{category} (#{category_count})"
@@ -92,7 +92,7 @@
                         %ul
                           - implements.each do |implement|
                             %li.ui-state-default
-                              .facet
+                              .facet.implement
                                 %a.has-tooltip-right{:id => "facet-#{implement.name.to_identifier}", :rel => "tooltip",
                                                      :title => image_tag(implement.image_url(:thumb)), "data-delay" => 500, "data-container"=>"body"}
                                   = "#{implement.name} (#{implement.count})"
