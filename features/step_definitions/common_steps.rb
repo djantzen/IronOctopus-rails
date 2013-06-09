@@ -43,8 +43,14 @@ Given %{I log in as "$login" with "$password"} do |login, password|
   step %{I press "Log in"}
 end
 
-When /^I select "([^"]*)" from "([^"]*)"$/ do |arg1, arg2|
-  select(arg1, :from => arg2)
+When /^I select "([^"]*)" from "([^"]*)"$/ do |selector, menu|
+  if @current_node
+    within @current_node do
+      select(selector, :from => menu)
+    end
+  else
+    select(selector, :from => menu)
+  end
 end
 
 Then /^"([^"]*)" should not be visible$/ do |node|

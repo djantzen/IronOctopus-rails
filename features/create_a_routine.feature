@@ -99,6 +99,23 @@ Feature: Create a new routine
     When I fill in "activity-search-box" with "Dumbbell"
     Then there should be 2 activities in the list
 
+  @javascript
+  Scenario: When I copy activity sets the metrics and units are copied to the new set
+    Given I log in as "bob_the_trainer" with "password"
+    And I am on the /users/sally_the_client/routines/new page
+    When I click "#benchpress"
+    Then I should see "Added Bench Press to the routine"
+    And there should be 1 activity sets
+    Given I find the 1st activity set
+    When I fill in minimum Resistance with "100"
+    And I select "Kilograms" from "routine_activity_sets__resistance_unit"
+    When I click "#routine-activity-set-list .activity-set-form:nth(1) .clone-activity-set-button"
+    Then there should be 2 activity sets
+    Given I find the 2nd activity set
+    Then minimum Resistance should be "100"
+    And Resistance units should be "Kilograms"
+
+    
   # This runs last because it adds an activity and fixtures aren't reloaded between scenarios apparently
   @javascript
   Scenario: I can create a new activity on the routine builder screen

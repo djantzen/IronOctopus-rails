@@ -55,3 +55,17 @@ Then /^there should be (\d+) activities$/ do |num|
   activities = all("#activity-list li.activity", :visible => true)
   activities.size == num
 end
+
+Then /^minimum ([^"]*) should be "([^"]*)"$/ do |measure, value|
+  within @current_node do
+    val = first(".#{measure.downcase}").first(".measure-min input").value()
+    expect(val).to eq(value)
+  end
+end
+
+Then /^([^"]*) units should be "([^"]*)"$/ do |measure, value|
+  within @current_node do
+    val = first(".#{measure.downcase}").first(".unit-selector").value()
+    expect(val).to eq(value)
+  end
+end

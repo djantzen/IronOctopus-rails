@@ -181,8 +181,9 @@ class this.ActivitySetListItem
       id = Util.generate_random_id()
       clone.find("a.accordion-toggle").attr("href", "#" + id)
       clone.find("div.accordion-body").attr("id", id)
+
       original.find("select").each -> # copy over selected attributes since clone() doesn't
-        clone.find("select[name='" + $(this).attr("name") + "']").val($(this).attr("value"))
+        clone.find("select[name='" + $(this).attr("name") + "']").val($(this).val())
       clone.hide();
       clone.insertAfter(original)
       clone.fadeIn();
