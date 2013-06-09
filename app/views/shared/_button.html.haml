@@ -1,7 +1,9 @@
 %button{:class => "btn #{(defined? button_class) ? button_class : nil}",
-  :id => (defined? button_id) ? button_id : '', :name => (defined? button_name) ? button_name : '',
-  :onclick => (defined?(return_false) && return_false == false) ? "true" : "event.preventDefault(); return false;",
-  :rel => "tooltip"}
+        :id => (defined? button_id) ? button_id : '',
+        :name => (defined? button_name) ? button_name : '',
+        :onclick => (defined?(return_false) && return_false == false) ? "true" : "event.preventDefault(); return false;",
+        :rel => "tooltip", "data-container" => "body",
+        :title => defined?(tooltip) ? tooltip : ""}
   - if defined? icon
     %i{:class => icon}
   - if defined? message

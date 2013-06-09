@@ -77,7 +77,7 @@ jQuery.fn.visibilityToggle = function() {
 }
 
 $(document).ready(function() {
-  $(".has-tooltip").tooltip({ html: true });
+  $(".has-tooltip-top").tooltip({ placement: "top", html: true });
   $(".has-tooltip-bottom").tooltip({ placement: "bottom", html: true });
   $(".has-tooltip-left").tooltip({ placement: "left", html: true });
   $(".has-tooltip-right").tooltip({placement: "right", html: true });

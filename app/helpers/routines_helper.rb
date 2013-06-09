@@ -39,6 +39,8 @@ module RoutinesHelper
     end
   end
 
+  #def get_initial_sets
+
   def get_initial_value(activity_set, metric)
     return [ MeasureValue.new(0, 0), nil] if activity_set.nil?
 

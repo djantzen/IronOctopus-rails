@@ -11,7 +11,8 @@ $(document).ready(function() {
 
   $("#activity-type-list a.accordion-toggle").click(function() {
     reset_activity_type_list();
-    apply_selected_facets_to_activities(false);
+    var narrowing_activities = false;
+    update_facet_filtered_activities(narrowing_activities);
   });
 
   var routine_name_validator = function(routine_name, routine_name_elem) {
@@ -89,39 +90,21 @@ $(document).ready(function() {
     $(this).append(facet_target_superkey_node);
   });
 
-  var clear_selections = function() {
-    $("#activity-facets-panel").find(".ui-state-active").each(function() {
-        $(this).removeClass("ui-state-active");
-    });
-    reset_activity_type_list();
-    //TODO make resets for each one since this is duplicate
-    update_facet_filtered_activities("", false);
-    $("#activity-type-list .collapse").collapse("show");
-    $("#body-part-list .collapse").collapse("hide");
-    $("#implement-list .collapse").collapse("hide");
-    $("#activity-attribute-list .collapse").collapse("hide");
-    //    $("#activity-search-box").val("");
-//   $("#clear-selections").hide();
-  };
-
-  $("#clear-selections").click(function() {
-    clear_selections();
-  });
-
   $('.nav-tabs').button();
 
   $("#activity-search-box").keyup(function(e) {
-//    clear_selections();
     if (e.which == DOWN_ARROW_KEY)
       $(".activity.facet-included-activity:first").focus();
     else {
-      var facet_key = new RegExp(generate_facet_key($("#activity-search-box"), false));
       var narrowing_results = ((e.which == BACKSPACE_KEY || e.which == DELETE_KEY)? false : true);
-      update_facet_filtered_activities(facet_key, narrowing_results);
+      update_facet_filtered_activities(narrowing_results);
     }
   });
 
-  var update_facet_filtered_activities = function(facet_key, narrowing_results) {
+  /*
+   * Updates the list of activities after a facet has been added or removed
+   */
+  var update_facet_filtered_activities = function(narrowing_results) {
 
     facet_nodes = $("#activity-search-box").add($("#activity-facets-panel div.facet-selected .faceting-control"));
     facet_key = new RegExp(generate_facet_key(facet_nodes, false));
@@ -144,15 +127,6 @@ $(document).ready(function() {
         activity.addClass("facet-excluded-activity");
       }
     });
-  }
-
-  /*
-   * Updates the list of activities after a facet has been added or removed
-   */
-  var apply_selected_facets_to_activities = function(narrowing_results) {
-    // Get the key describing currently selected facets
-    var facet_key = new RegExp(generate_facet_key($("#activity-facets-panel div.facet-selected .faceting-control"), false));
-    update_facet_filtered_activities(facet_key, narrowing_results);
   }
 
   $("#activity-type-list .facet").click(function() {
@@ -193,7 +167,7 @@ $(document).ready(function() {
       $("#applied-filters-label").hide("slow");
     }
 
-    apply_selected_facets_to_activities(narrowing_results);
+    update_facet_filtered_activities(narrowing_results);
   });
   $("#applied-filters-label").hide();
 
@@ -279,5 +253,25 @@ $(document).ready(function() {
 //    modal: true
 //  });
 //
+
+  var clear_selections = function() {
+    $("#activity-facets-panel").find(".ui-state-active").each(function() {
+      $(this).removeClass("ui-state-active");
+    });
+    reset_activity_type_list();
+    //TODO make resets for each one since this is duplicate
+    update_facet_filtered_activities(false);
+    $("#activity-type-list .collapse").collapse("show");
+    $("#body-part-list .collapse").collapse("hide");
+    $("#implement-list .collapse").collapse("hide");
+    $("#activity-attribute-list .collapse").collapse("hide");
+    //    $("#activity-search-box").val("");
+//   $("#clear-selections").hide();
+  };
+
+  $("#clear-selections").click(function() {
+    clear_selections();
+  });
+
   clear_selections();
 });

@@ -1,12 +1,20 @@
 .container-fluid{:class => "accordion-group #{defined?(template) && template ? "activity-set-form-template" : ""} "}
-  .accordion-heading.activity-display-name.row
-    .span1
-      = render :partial => "shared/button", :locals => { :button_class => "activity-set-comments-button",
-               :icon => "icon-comment" }
+  .accordion-heading.activity-display-name.row-fluid
+    .span3.btn-group.activity-set-controls
+      = render :partial => "shared/button", :locals => { :button_class => "delete-activity-set-button btn-small has-tooltip-left",
+                                                         :icon => "icon-remove-sign", :tooltip => "Delete" }
+      = render :partial => "shared/button", :locals => { :button_class => "clone-activity-set-button btn-small has-tooltip-bottom",
+                                                         :icon => "icon-repeat", :tooltip => "Copy" }
+      = render :partial => "shared/button", :locals => { :button_class => "activity-set-comments-button btn-small has-tooltip-right",
+                                                         :icon => "icon-comment", :tooltip => "Special Instructions" }
     .span3
-      %a.accordion-toggle{"data-parent" => "routine-activity-set-list", "data-toggle" => "collapse", :href => "##{template ? nil : activity_set.position}"}
+      %a.accordion-toggle.activity-set-name{"data-parent" => "routine-activity-set-list", "data-toggle" => "collapse", :href => "##{template ? nil : activity_set.position}"}
         = activity.name
-    .span1.handle.label
+      -#= render :partial => "routines/measure_selector", :locals => { :measure => "sets", :interval => 1,
+      -#                                                               :initial_value => MeasureValue.new(1,1),
+      -#                                                               :units => nil,
+      -#                                                               :unit => nil, :performance => false }
+    .span2.handle.pull-right
       %i.icon-resize-vertical
   .row.activity-set-comments
     = render :partial => "activity_sets/create_or_update_comment",
@@ -21,13 +29,3 @@
                                                                          :initial_value => initial_value,
                                                                          :units => metric.units.map { |u| u.name.pluralize },
                                                                          :unit => unit, :performance => false }
-      .btn-group
-        = render :partial => "shared/button", :locals => { :button_class => "delete-activity-set-button",
-                 :message => "Delete",
-                 :icon => "icon-remove-sign" }
-        = render :partial => "shared/button", :locals => { :button_class => "clone-activity-set-button",
-                 :message => "Repeat",
-                 :icon => "icon-repeat" }
-        -#= render :partial => "shared/button", :locals => { :button_class => "okay-activity-set-button",
-        -#         :message => "Ok",
-        -#         :icon => "icon-ok" }
