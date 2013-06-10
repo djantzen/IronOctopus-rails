@@ -57,6 +57,16 @@
   font-size: 85%;
 }
 
+#activity-facets-panel li.nested {
+  list-style-type: none;
+  margin-left: -15px;
+}
+
+#non-type-facets {
+  height: 800px;
+  overflow-y: auto;
+}
+
 .facet-included-activity {
   display: block;  
 }

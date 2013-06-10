@@ -36,72 +36,73 @@
                         %span.facet-count
                       %span.faceting-control
                         = activity_type.name
-          #body-part-list.accordion.has-tooltip-right{:rel => "tooltip", :title => "Filter activities by anatomy"}
-            .accordion-group
-              .accordion-heading
-                %a.accordion-toggle{"data-parent" => "body-part-list", "data-toggle" => "collapse", :href => "#collapse-body-part-list"}
-                  Anatomy Involved
-              #collapse-body-part-list.accordion-body.collapse.in
-                .accordion-inner
-                  %ul.unstyled
-                    - group_body_parts_by_region(@body_parts).each_pair do |region, body_parts|
-                      %li
-                        .facet.body_part_region
-                          %a{:id => "facet-#{region.to_identifier}"}
-                            = region
-                            %span.facet-count
-                          %span.faceting-control
-                            = region
-                        %ul
-                          - body_parts.each do |body_part|
-                            %li.ui-state-default
-                              .facet.body_part_name
-                                %a.has-tooltip-right{:id => "facet-#{body_part.name.to_identifier}", :rel => "tooltip", :title => image_tag(body_part.image_url(:thumb)),
-                                                     "data-delay" => 500, "data-container"=>"body"}
-                                  = body_part.name
-                                  %span.facet-count
-                                %span.faceting-control
-                                  = body_part.name
-          #activity-attribute-list.accordion.has-tooltip-right{:rel => "tooltip", :title => "Filter activities by attributes"}
-            .accordion-group
-              .accordion-heading
-                %a.accordion-toggle{"data-parent" => "#activity-attribute-list", "data-toggle" => "collapse", :href => "#collapse-activity-attributes"}
-                  Activity Attributes
-              #collapse-activity-attributes.accordion-body.collapse.in
-                .accordion-inner
-                  - @activity_attributes.each do |attribute|
-                    .facet
-                      %a{:id => "facet-#{attribute.name.to_identifier}"}
-                        = attribute.name
-                        %span.facet-count
-                      %span.faceting-control
-                        = attribute.name
-          #implement-list.accordion.has-tooltip-right{:rel => "tooltip", :title => "Filter activities by implements"}
-            .accordion-group
-              .accordion-heading
-                %a.accordion-toggle{"data-parent" => "implement-list", "data-toggle" => "collapse", :href => "#collapse-implement-list"}
-                  Equipment Used
-              #collapse-implement-list.accordion-body.collapse.in
-                .accordion-inner
-                  %ul.unstyled
-                    - group_implements_by_category(@implements).each_pair do |category, implements|
-                      %li
-                        .facet.implement_category
-                          %a.ui-state-default{:id => "facet-#{category.to_identifier}"}
-                            = category
-                            %span.facet-count
-                          %span.faceting-control
-                            = category
-                        %ul
-                          - implements.each do |implement|
-                            %li.ui-state-default
-                              .facet.implement
-                                %a.has-tooltip-right{:id => "facet-#{implement.name.to_identifier}", :rel => "tooltip",
-                                                     :title => image_tag(implement.image_url(:thumb)), "data-delay" => 500, "data-container"=>"body"}
-                                  = implement.name
-                                  %span.facet-count
-                                %span.faceting-control
-                                  = implement.name
+          #non-type-facets
+            #body-part-list.accordion.has-tooltip-right{:rel => "tooltip", :title => "Filter activities by anatomy"}
+              .accordion-group
+                .accordion-heading
+                  %a.accordion-toggle{"data-parent" => "body-part-list", "data-toggle" => "collapse", :href => "#collapse-body-part-list"}
+                    Anatomy Involved
+                #collapse-body-part-list.accordion-body.collapse.in
+                  .accordion-inner
+                    %ul.unstyled
+                      - group_body_parts_by_region(@body_parts).each_pair do |region, body_parts|
+                        %li
+                          .facet.body_part_region
+                            %a{:id => "facet-#{region.to_identifier}"}
+                              = region
+                              %span.facet-count
+                            %span.faceting-control
+                              = region
+                          %ul
+                            - body_parts.each do |body_part|
+                              %li.nested
+                                .facet.body_part_name
+                                  %a.has-tooltip-right{:id => "facet-#{body_part.name.to_identifier}", :rel => "tooltip", :title => image_tag(body_part.image_url(:thumb)),
+                                                       "data-delay" => 500, "data-container"=>"body"}
+                                    = body_part.name
+                                    %span.facet-count
+                                  %span.faceting-control
+                                    = body_part.name
+            #activity-attribute-list.accordion.has-tooltip-right{:rel => "tooltip", :title => "Filter activities by attributes"}
+              .accordion-group
+                .accordion-heading
+                  %a.accordion-toggle{"data-parent" => "#activity-attribute-list", "data-toggle" => "collapse", :href => "#collapse-activity-attributes"}
+                    Activity Attributes
+                #collapse-activity-attributes.accordion-body.collapse.in
+                  .accordion-inner
+                    - @activity_attributes.each do |attribute|
+                      .facet
+                        %a{:id => "facet-#{attribute.name.to_identifier}"}
+                          = attribute.name
+                          %span.facet-count
+                        %span.faceting-control
+                          = attribute.name
+            #implement-list.accordion.has-tooltip-right{:rel => "tooltip", :title => "Filter activities by implements"}
+              .accordion-group
+                .accordion-heading
+                  %a.accordion-toggle{"data-parent" => "implement-list", "data-toggle" => "collapse", :href => "#collapse-implement-list"}
+                    Equipment Used
+                #collapse-implement-list.accordion-body.collapse.in
+                  .accordion-inner
+                    %ul.unstyled
+                      - group_implements_by_category(@implements).each_pair do |category, implements|
+                        %li
+                          .facet.implement_category
+                            %a.ui-state-default{:id => "facet-#{category.to_identifier}"}
+                              = category
+                              %span.facet-count
+                            %span.faceting-control
+                              = category
+                          %ul
+                            - implements.each do |implement|
+                              %li.nested
+                                .facet.implement
+                                  %a.has-tooltip-right{:id => "facet-#{implement.name.to_identifier}", :rel => "tooltip",
+                                                       :title => image_tag(implement.image_url(:thumb)), "data-delay" => 500, "data-container"=>"body"}
+                                    = implement.name
+                                    %span.facet-count
+                                  %span.faceting-control
+                                    = implement.name
         #facet-filtered-activities-panel.span4
           = render :partial => "shared/button", :locals => { :button_id => "new-activity-button", :button_class => "btn-primary", |
                                                 :message => "New Activity"}                                                        |

@@ -158,8 +158,9 @@ $(document).ready(function() {
         if (facet_target_superkey.match(facet_key)) {
           facet_count++;
         }
-        facet_control.parents(".facet").find(".facet-count").html("(" + facet_count + ")");
       });
+      facet_control.parents(".facet").find(".facet-count").html("(" + facet_count + ")");
+
     });
 
 
