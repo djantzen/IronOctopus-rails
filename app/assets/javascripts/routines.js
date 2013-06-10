@@ -13,6 +13,7 @@ $(document).ready(function() {
     reset_activity_type_list();
     var narrowing_activities = false;
     update_facet_filtered_activities(narrowing_activities);
+    update_facet_counts();
   });
 
   var routine_name_validator = function(routine_name, routine_name_elem) {
@@ -139,6 +140,32 @@ $(document).ready(function() {
   $(".new_work").find(".collapse").collapse("hide");
 
   /*
+  When a facet is chosen, loop over all facets and for each loop over all activities and increment count
+   */
+  var update_facet_counts = function() {
+    var facet_included_activities = $("#activity-list .facet-included-activity");
+    var faceting_controls = $("#activity-facets-panel .faceting-control");
+
+    faceting_controls.each(function() {
+
+      facet_control = $(this);
+      facet_key = new RegExp(generate_facet_key($(this), false));
+      var facet_count = 0;
+
+      facet_included_activities.each(function() {
+        var activity = $(this);
+        var facet_target_superkey = activity.find("span.facet-target-superkey").text();
+        if (facet_target_superkey.match(facet_key)) {
+          facet_count++;
+        }
+        facet_control.parents(".facet").find(".facet-count").html("(" + facet_count + ")");
+      });
+    });
+
+
+  }
+
+  /*
    * When a facet is added or removed, apply CSS
    */
   $("#activity-facets-panel .facet").click(function() {
@@ -168,8 +195,8 @@ $(document).ready(function() {
     } else {
       $("#applied-filters-label").hide("slow");
     }
-
     update_facet_filtered_activities(narrowing_results);
+    update_facet_counts();
   });
   $("#applied-filters-label").hide();
 
@@ -261,4 +288,5 @@ $(document).ready(function() {
   });
 
   clear_selections();
+  update_facet_counts();
 });

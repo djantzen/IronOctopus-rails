@@ -27,21 +27,8 @@ class ProgramsController < ApplicationController
     @routines = @client.routines
     @routine_select =  @routines.map { |r| [r.name, r.permalink] }
     @clients = current_user.clients
-    _routine_builder_attributes
+    routine_builder_attributes
     redirect_to user_path(current_user) unless allowed_to_create?
-  end
-
-  def _routine_builder_attributes
-    @routine = Routine.new
-    @calendars = [ LaterDude::Calendar.new(2012, 10), LaterDude::Calendar.new(2012, 11) ]
-    @client_logins = current_user.clients.map { |u| ["#{u.first_name} #{u.last_name}", u.login] }
-    @activities = Activity.all(:include => [:body_parts, :implements, :activity_type], :order => :name)
-    @activity_types = ActivityType.facets
-    @implements = Implement.facets
-    @body_parts = BodyPart.facets
-    @activity_attributes = ActivityAttribute.facets
-    @metrics = Metric.all(:conditions => "name != 'None'")
-    @activity = Activity.new
   end
 
   def create
@@ -68,7 +55,7 @@ class ProgramsController < ApplicationController
     @routines = @client.routines
     @routine_select =  @routines.map { |r| [r.name, r.permalink] }
     @clients = current_user.clients
-    _routine_builder_attributes
+    routine_builder_attributes
     redirect_to user_path(current_user) unless allowed_to_update?
   end
 
@@ -161,6 +148,21 @@ class ProgramsController < ApplicationController
   end
 
   private
+
+  def routine_builder_attributes
+    @routine = Routine.new
+    @calendars = [ LaterDude::Calendar.new(2012, 10), LaterDude::Calendar.new(2012, 11) ]
+    @client_logins = current_user.clients.map { |u| ["#{u.first_name} #{u.last_name}", u.login] }
+    @activities = Activity.all(:include => [:body_parts, :implements, :activity_type], :order => :name)
+    @activity_types = ActivityType.order(:name)
+    @implements = Implement.order(:category, :name)
+    @body_parts = BodyPart.order(:region, :name)
+    @activity_attributes = ActivityAttribute.order(:name)
+    @metrics = Metric.all(:conditions => "name != 'None'")
+    @activity = Activity.new
+  end
+
+
   def allowed_to_create?
     @client.trainers.include? @trainer
   end

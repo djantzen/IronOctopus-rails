@@ -165,10 +165,10 @@ class RoutinesController < ApplicationController
     @trainer = current_user
     @client_logins = current_user.clients.order(:last_name, :first_name).map { |u| ["#{u.first_name} #{u.last_name}", u.login] }
     @activities = Activity.all(:include => [:body_parts, :implements, :activity_type], :order => :name)
-    @activity_types = ActivityType.facets
-    @implements = Implement.facets
-    @body_parts = BodyPart.facets
-    @activity_attributes = ActivityAttribute.facets
+    @activity_types = ActivityType.order(:name)
+    @implements = Implement.order(:category, :name)
+    @body_parts = BodyPart.order(:region, :name)
+    @activity_attributes = ActivityAttribute.order(:name)
     @activity = Activity.new
     @metrics = Metric.list
   end

@@ -32,7 +32,8 @@
                   - @activity_types.each do |activity_type|
                     .facet.activity-type
                       %a{:id => "facet-#{activity_type.name.to_identifier}"}
-                        = "#{activity_type.name} (#{activity_type.count})"
+                        = activity_type.name
+                        %span.facet-count
                       %span.faceting-control
                         = activity_type.name
           #body-part-list.accordion.has-tooltip-right{:rel => "tooltip", :title => "Filter activities by anatomy"}
@@ -47,8 +48,8 @@
                       %li
                         .facet.body_part_region
                           %a{:id => "facet-#{region.to_identifier}"}
-                            - region_count = body_parts.inject(0) { |sum, part| part.count.to_i + sum  }
-                            = "#{region} (#{region_count})"
+                            = region
+                            %span.facet-count
                           %span.faceting-control
                             = region
                         %ul
@@ -57,7 +58,8 @@
                               .facet.body_part_name
                                 %a.has-tooltip-right{:id => "facet-#{body_part.name.to_identifier}", :rel => "tooltip", :title => image_tag(body_part.image_url(:thumb)),
                                                      "data-delay" => 500, "data-container"=>"body"}
-                                  = "#{body_part.name} (#{body_part.count})"
+                                  = body_part.name
+                                  %span.facet-count
                                 %span.faceting-control
                                   = body_part.name
           #activity-attribute-list.accordion.has-tooltip-right{:rel => "tooltip", :title => "Filter activities by attributes"}
@@ -70,7 +72,8 @@
                   - @activity_attributes.each do |attribute|
                     .facet
                       %a{:id => "facet-#{attribute.name.to_identifier}"}
-                        = "#{attribute.name} (#{attribute.count})"
+                        = attribute.name
+                        %span.facet-count
                       %span.faceting-control
                         = attribute.name
           #implement-list.accordion.has-tooltip-right{:rel => "tooltip", :title => "Filter activities by implements"}
@@ -85,8 +88,8 @@
                       %li
                         .facet.implement_category
                           %a.ui-state-default{:id => "facet-#{category.to_identifier}"}
-                            - category_count = implements.inject(0) { |sum, implement| implement.count.to_i + sum  }
-                            = "#{category} (#{category_count})"
+                            = category
+                            %span.facet-count
                           %span.faceting-control
                             = category
                         %ul
@@ -95,7 +98,8 @@
                               .facet.implement
                                 %a.has-tooltip-right{:id => "facet-#{implement.name.to_identifier}", :rel => "tooltip",
                                                      :title => image_tag(implement.image_url(:thumb)), "data-delay" => 500, "data-container"=>"body"}
-                                  = "#{implement.name} (#{implement.count})"
+                                  = implement.name
+                                  %span.facet-count
                                 %span.faceting-control
                                   = implement.name
         #facet-filtered-activities-panel.span4
