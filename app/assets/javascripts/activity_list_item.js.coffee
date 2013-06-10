@@ -204,6 +204,7 @@ class this.WorkActivitySetListItem extends ActivitySetListItem
             data: form.serialize()
             success: () ->
               form.find(".collapse").collapse("hide")
+              form.find(".performance-control-buttons").remove()
           )
           return true
         return false

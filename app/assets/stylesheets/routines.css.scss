@@ -1,6 +1,6 @@
 #activity-list {
   list-style: none;
-  max-height: 600px;
+  max-height: 800px;
   overflow: auto;
 }
 
@@ -14,7 +14,7 @@
 
 #routine-activity-set-list {
   margin-left: 20px;
-  max-height: 600px;
+  max-height: 800px;
   overflow: auto;
 }
 
@@ -142,6 +142,9 @@ input.measure-tiny {
 //  zoom: 250%;
 //}
 
+  #activity-search-widget {
+    float: none;
+  }
   .span1, .span2 {
     float: left;
     width: 30%;

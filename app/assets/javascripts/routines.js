@@ -136,6 +136,8 @@ $(document).ready(function() {
     $(this).parents(".accordion-group").find("a.accordion-toggle").addClass("facet-selected");
   });
 
+  $(".new_work").find(".collapse").collapse("hide");
+
   /*
    * When a facet is added or removed, apply CSS
    */
@@ -238,21 +240,6 @@ $(document).ready(function() {
     $("#modal-activity-builder").modal('hide');
     clear_activity_form();
   });
-
-//  $(document).on('propertychange keyup input paste', '#activity-search-box', function(){
-//    var io = $(this).val().length ? 1 : 0 ;
-//    $(this).next('.icon_clear').stop().fadeTo(300,io);
-//  }).on('click', '.icon_clear', function() {
-//      $(this).delay(300).fadeTo(300,0).prev('input').val('');
-//    });
-
-//  $(".activity-set-comments-form").dialog({
-//    autoOpen: false,
-//    height: 300,
-//    width: 350,
-//    modal: true
-//  });
-//
 
   var clear_selections = function() {
     $("#activity-facets-panel").find(".ui-state-active").each(function() {
