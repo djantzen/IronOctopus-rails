@@ -1,5 +1,4 @@
 class CreateActivities < ActiveRecord::Migration
-#        activity_type text not null default 'Resistance',
 
 def self.up
     execute <<-OES

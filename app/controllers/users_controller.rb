@@ -85,7 +85,7 @@ class UsersController < ApplicationController
   end
 
   def settings
-    @client = User.find_by_login(params[:user_id])
+    @user = User.find_by_login(params[:user_id])
     allowed_to_update?
   end
 
@@ -99,11 +99,11 @@ class UsersController < ApplicationController
 
   private
   def allowed_to_read?
-    current_user.eql?(@client) || @client.trainers.include?(current_user)
+    current_user.eql?(@user) || @user.trainers.include?(current_user)
   end
 
   def allowed_to_update?
-    current_user.eql?(@client)
+    current_user.eql?(@user)
   end
 
 end

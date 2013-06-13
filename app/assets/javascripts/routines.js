@@ -81,7 +81,7 @@ $(document).ready(function() {
   }
 
   /*
-   * On page load generate a superkey for each activity and bind actions to activity set templates
+   * On page load generate a superkey for each activity
    */
   $("#activity-list .activity").each(function() {
     var facet_target_superkey = generate_facet_key($(this).find(".faceting-control"), true);
@@ -94,12 +94,16 @@ $(document).ready(function() {
   $('.nav-tabs').button();
 
   $("#activity-search-box").keyup(function(e) {
-    if (e.which == DOWN_ARROW_KEY)
+    var key = e.which;
+    if (key == DOWN_ARROW_KEY || key == RIGHT_ARROW_KEY)
       $(".activity.facet-included-activity:first").focus();
     else {
-      var narrowing_results = ((e.which == BACKSPACE_KEY || e.which == DELETE_KEY)? false : true);
+      var narrowing_results = ((key == BACKSPACE_KEY || key == DELETE_KEY)? false : true);
       update_facet_filtered_activities(narrowing_results);
+      if (key == SPACE_KEY || $("#activity-search-box").val() == "")
+        update_facet_counts();
     }
+
   });
 
   /*

@@ -1,5 +1,5 @@
 Feature: Create a new activity
-  As a logged in user
+  As a logged in trainer
   I want to create a new activity
   so that my client is trained properly
   

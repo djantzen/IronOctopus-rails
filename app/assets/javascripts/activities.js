@@ -7,7 +7,6 @@ $(document).ready(function() {
     var url = "/activities/is_name_unique/" + activity_name.toIdentifier();
     var unique = false;
     $.ajax({
-//      beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
       type: "GET",
       url: url,
       async: false,
@@ -37,16 +36,7 @@ $(document).ready(function() {
       $(this).parents(".region-container").find("input.region").attr('checked', false);
   });
 
-//  $("li.body-part-entry").hide();
-
-//  var show_body_parts = function() {
-//    $(".region-container").each(function() {
-//      $(this).
-//    });
-//
-//  }
-
-  // Body parts are selected if the region is deselected
+  // Body parts are selected if the region is selected
   $("input.region").click(function() {
     var body_parts = $(this).parents(".region-container").find("input.body-part");
     if ($(this).is(':checked')) {

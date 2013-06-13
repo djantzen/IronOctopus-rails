@@ -58,7 +58,7 @@
                                         { :class => 'body-part', :id => "activity-builder-#{body_part.name.to_identifier}" }
                         = link_to body_part.name, body_part, { :class=>"has-tooltip-right", :rel => "tooltip", :title => "#{image_tag(body_part.image_url(:thumb))}" } # image tag must be in quotes
 
-          .span3
+          .span5
             %h4 Equipment Used
             %ul#available-implement-list.unstyled
               - group_implements_by_category(@implements).each_pair do |category, implements|

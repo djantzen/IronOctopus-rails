@@ -37,12 +37,13 @@ var seconds_to_digital = function(seconds) {
 
 var DIGITAL_FORMAT = new RegExp(/^\d{1,3}:\d{1,2}$/);
 var UP_ARROW_KEY = 38;
+var RIGHT_ARROW_KEY = 39;
 var DOWN_ARROW_KEY = 40;
 var BACKSPACE_KEY = 8;
 var ENTER_KEY = 13;
 var ESC_KEY = 27;
 var DELETE_KEY = 46;
-
+var SPACE_KEY = 32;
 var digital_to_seconds = function(digital) {
   if (!digital.match(DIGITAL_FORMAT)) {
     return 0

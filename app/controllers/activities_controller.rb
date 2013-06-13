@@ -25,7 +25,6 @@ class ActivitiesController < ApplicationController
   def new
     @activity = Activity.new
     new_or_edit
-    allowed_to_create?
   end
 
   def create
@@ -52,7 +51,6 @@ class ActivitiesController < ApplicationController
   def edit
     @activity = Activity.find_by_permalink(params[:id])
     new_or_edit
-    allowed_to_update?
   end
   
   def update
@@ -133,7 +131,7 @@ class ActivitiesController < ApplicationController
     link.match(/^http:\/\/www\.youtube\.com\/watch\?v=\w+$/)
   end
 
-  def new_or_edit()
+  def new_or_edit
     @body_parts = BodyPart.order(:region, :name)
     @implements = Implement.order(:category, :name)
     @metrics = Metric.list

@@ -21,6 +21,8 @@
         = form.label :email
         = form.text_field :email, :class => 'required is_email_acceptable'
       .field.required
+        .label.label-info
+          Enter your city and state information. For example, "Seattle, Washington" or "Seattle, WA"
         = form.label :city
         = text_field_tag :city, "", :id => 'city-select', :class => 'ui-autocomplete-input'
       .field.required

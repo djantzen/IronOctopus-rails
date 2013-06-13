@@ -205,6 +205,7 @@ class this.WorkActivitySetListItem extends ActivitySetListItem
             success: () ->
               form.find(".collapse").collapse("hide")
               form.find(".performance-control-buttons").remove()
+              form.find(".activity-set-done-label").show()
           )
           return true
         return false
@@ -226,4 +227,4 @@ class this.WorkActivitySetListItem extends ActivitySetListItem
     super
     this.init_validator(@activity_set_form)
     this.init_instructions(@activity_set_form)
-
+    @activity_set_form.find(".activity-set-done-label").hide();

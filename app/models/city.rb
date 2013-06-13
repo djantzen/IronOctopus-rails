@@ -12,7 +12,8 @@ class City < ActiveRecord::Base
     return nil if city_name.nil? or state_name.nil?
     city_name.strip!
     state_name.strip!
-    cities = City.joins(:state).where("cities.name = ? and (states.name = ? or states.abbr = ?)", city_name, state_name, state_name)
+    cities = City.joins(:state).where("lower(cities.name) = lower(?) and (lower(states.name) = lower(?) or lower(states.abbr) = lower(?))",
+                                      city_name, state_name, state_name)
     cities.first
   end
 

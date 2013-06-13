@@ -1,5 +1,5 @@
 .container
-  = form_for @client do |form|
+  = form_for @user do |form|
     .row.well
       .field
         = form.label :new_password, "New Password"
@@ -10,8 +10,8 @@
       .field
         .ui-widget
           = form.label :city
-          = text_field_tag :city, @client.city.display, :id => 'city-select', :class => 'ui-autocomplete-input required'
+          = text_field_tag :city, @user.city.display, :id => 'city-select', :class => 'ui-autocomplete-input required'
     .row
       .span3.btn-group
-        = link_to "Cancel", user_path(@client), :class => "btn btn-large"
+        = link_to "Cancel", user_path(@user), :class => "btn btn-large"
         = submit_tag "Save", :class => "btn btn-large btn-primary"
