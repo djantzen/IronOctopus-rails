@@ -1,16 +1,15 @@
 source "http://rubygems.org"
 
-gem "rails", "3.2.13" #"3.1.12"
+gem "rails", "3.2.13"
 gem "pg"
 gem "json"
-gem "execjs" # necessary on Ubuntu
 gem "bootstrap-sass", "~> 2.3.1.2"
 gem "capistrano"
 gem "underscore-rails", "1.3.1"
 gem "kramdown"
 gem "modernizr-rails", "~> 2.0.6"
 gem "later_dude", ">= 0.3.1"
-gem "haml"
+gem "haml", "4.0.3"
 gem "ruby_parser"
 gem "graticule", "~> 2.2.0"
 gem "jquery-rails", "2.2.1"
@@ -19,18 +18,19 @@ gem "rest-client"
 gem "bcrypt-ruby"
 gem "uuid"
 gem "rvm-capistrano", "~> 1.2.7"
-gem "kaminari"
-gem "jquery-fileupload-rails", "~> 0.4.1"
+gem "kaminari", "0.14.1"
 gem "carrierwave", "~> 0.8.0"
 gem "rmagick", "2.13.2"
+gem "cancan", "1.6.10"
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
+  gem "execjs" # necessary on Ubuntu
   gem "therubyracer" # necessary on Ubuntu
   gem "haml-rails", "0.4"
-  gem "sass-rails", "3.2.6" # "~> 3.1.7"
-  gem "coffee-rails", "3.2.2" # "~> 3.1.1"
+  gem "sass-rails", "3.2.6"
+  gem "coffee-rails", "3.2.2"
   gem "uglifier", ">= 1.3.0"
 end
 
@@ -44,7 +44,7 @@ group :test do
   gem "rspec"
   gem "rspec-rails"
   gem "cucumber", "1.2.3"
-  gem "cucumber-rails", "1.3.1"
+  gem "cucumber-rails", "1.3.1", :require => false
   gem "database_cleaner"
   gem "capybara-webkit", "0.14"
   gem "launchy"

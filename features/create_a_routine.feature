@@ -115,7 +115,36 @@ Feature: Create a new routine
     Then minimum Resistance should be "100"
     And Resistance units should be "Kilograms"
 
-    
+  @javascript
+  Scenario: When I choose a distance in kilometers it is stored in meters and returned in kilometers
+    Given I log in as "bob_the_trainer" with "password"
+    And I am on the /users/sally_the_client/routines/new page
+    When I click "#treadmillrun"
+    Then there should be 1 activity sets
+    Given I find the 1st activity set
+    When I fill in minimum Distance with "8"
+    And I select "Kilometers" from "routine_activity_sets__distance_unit"
+    And I fill in "Routine Name" with "New Test Routine"
+    And I fill in "Routine Goal" with "Perform a distance in kilometers"
+    And I press "Save Routine"
+    Given I am on the /users/sally_the_client/routines/newtestroutine page
+    Then I should see "Treadmill Run Distance 8.0 Kilometers"
+
+  @javascript
+  Scenario: When I choose a distance in miles it is stored in meters and returned in miles
+    Given I log in as "bob_the_trainer" with "password"
+    And I am on the /users/sally_the_client/routines/new page
+    When I click "#treadmillrun"
+    Then there should be 1 activity sets
+    Given I find the 1st activity set
+    When I fill in minimum Distance with "8"
+    And I select "Miles" from "routine_activity_sets__distance_unit"
+    And I fill in "Routine Name" with "New Test Routine"
+    And I fill in "Routine Goal" with "Perform a distance in miles per hour"
+    And I press "Save Routine"
+    Given I am on the /users/sally_the_client/routines/newtestroutine page
+    Then I should see "Treadmill Run Distance 8.0 Miles"
+
   # This runs last because it adds an activity and fixtures aren't reloaded between scenarios apparently
   @javascript
   Scenario: I can create a new activity on the routine builder screen

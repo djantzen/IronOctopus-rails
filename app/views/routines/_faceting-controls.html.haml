@@ -1,19 +1,13 @@
 %span.faceting-control
   = activity.name
-%span.faceting-control
   = activity.activity_type.name
-- group_body_parts_by_region(activity.body_parts).each_pair do |region, body_parts|
-  %span.faceting-control
+  - group_body_parts_by_region(activity.body_parts).each_pair do |region, body_parts|
     = region
-  - body_parts.each do |body_part|
-    %span.faceting-control
+    - body_parts.each do |body_part|
       = body_part.name
-- group_implements_by_category(activity.implements).each_pair do |category, implements|
-  %span.faceting-control
+  - group_implements_by_category(activity.implements).each_pair do |category, implements|
     = category
-  - implements.each do |implement|
-    %span.faceting-control
+    - implements.each do |implement|
       = implement.name
-- activity.activity_attributes.each do |attribute|
-  %span.faceting-control
+  - activity.activity_attributes.each do |attribute|
     = attribute.name

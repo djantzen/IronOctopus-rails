@@ -14,11 +14,11 @@ class Unit < ActiveRecord::Base
   end
 
   def self.kilometers_to_meters(kilometers)
-    kilometers * 100.0
+    kilometers * 1000.0
   end
 
   def self.meters_to_kilometers(meters)
-    meters / 100
+    meters / 1000
   end
 
   def self.yards_to_meters(yards)
@@ -46,7 +46,7 @@ class Unit < ActiveRecord::Base
   end
 
   def self.miles_to_meters(miles)
-    miles * 1609.34
+    miles * 1609.344
   end
 
   def self.kilograms_to_pounds(kilograms)
@@ -143,15 +143,15 @@ class Unit < ActiveRecord::Base
       when 'Meter'
         distance.to_f
       when 'Kilometer'
-        meters_to_kilometers(distance)
+        meters_to_kilometers(distance).round(1)
       when 'Mile'
-        meters_to_miles(distance)
+        meters_to_miles(distance).round(1)
       when 'Yard'
-        meters_to_yards(distance)
+        meters_to_yards(distance).round(5)
       when 'Foot'
-        meters_to_feet(distance)
+        meters_to_feet(distance).round(1)
       when /(\d+) Meter Lap/
-        distance / $1.to_f
+        distance / $1.to_f.round(1)
       else
         raise ArgumentError.new("Cannot convert #{to_unit} to meters")
     end
