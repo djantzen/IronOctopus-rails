@@ -2,14 +2,42 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    user ||= User.new # guest user (not logged in)
+    if user.is_admin?
+      can :manage, :all
+      can :read, User
+      can :read, Feedback
+    else
+      #can :read, :all
+
+      # routines
+      can :update, Routine, :trainer_id => user.id
+      can :perform, Routine, :client_id => user.id
+      can :create, Routine do |routine, client|
+        client.trainers.include?(user) || user == client
+      end
+
+      # programs
+      can :update, Program, :trainer_id => user.id
+      can :create, Program do |program, client|
+        client.trainers.include?(user) || user == client
+      end
+
+      # activities
+      #can :read, Activity, :creator => user.id
+      #can :read, Activity, :visible_to_all => true
+      can :update, Activity, :creator_id => user.id
+
+      # implements
+      can :create, Implement if user.is_admin?
+      can :update, Implement if user.is_admin?
+
+      # body part
+      can :create, BodyPart if user.is_admin?
+      can :update, BodyPart if user.is_admin?
+    end
+
     # Define abilities for the passed in user here. For example:
-    #
-    #   user ||= User.new # guest user (not logged in)
-    #   if user.admin?
-    #     can :manage, :all
-    #   else
-    #     can :read, :all
-    #   end
     #
     # The first argument to `can` is the action you are giving the user 
     # permission to do.

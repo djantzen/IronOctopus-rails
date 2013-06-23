@@ -39,3 +39,13 @@ jim_the_client:
   trainers: mary_the_trainer, jim_the_client
   identity_confirmed: true
   city: chicago
+
+administrator:
+  login: administrator
+  password_digest: "$2a$10$LAY1h5ECJ6UzB8Pv3Zpw6OIh5rLLx13niKnOBF8PiS8CR33kg9ukS"
+  email: administrator@ironoctop.us
+  first_name: admin
+  last_name: istrator
+  identity_confirmed: true
+  city: seattle
+  is_admin: true

@@ -3,8 +3,6 @@ class ActivitiesController < ApplicationController
   respond_to :json, :html, :js
   before_filter :authenticate_user
 
-  helper_method :allowed_to_update?
-
   def index
     @activities = Activity.order(:name).includes([:activity_type])
 
@@ -118,17 +116,9 @@ class ActivitiesController < ApplicationController
     activity
   end
 
-  def allowed_to_update?
-    current_user.eql? @activity.creator
-  end
-
-  def allowed_to_create?
-    !current_user.nil?
-  end
-
   private
   def valid_youtube_link?(link)
-    link.match(/^http:\/\/www\.youtube\.com\/watch\?v=\w+$/)
+    link.match(/^http:\/\/www\.youtube\.com\/watch\?/)
   end
 
   def new_or_edit

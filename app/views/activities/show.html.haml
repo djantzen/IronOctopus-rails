@@ -16,7 +16,7 @@
         Last updated on #{@activity.updated_at.to_date}
       %br
       .row-fluid
-        - if allowed_to_update?
+        - if can? :update, @activity
           = link_to("Edit", edit_activity_path(@activity), :class => "btn btn-primary")
     .span8.well
       .row-fluid

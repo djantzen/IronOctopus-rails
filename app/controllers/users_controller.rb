@@ -67,8 +67,7 @@ class UsersController < ApplicationController
   end
 
   def index
-#    @users = User.all
-#    render :json => users
+    @users = User.all
   end
 
   # GET /users/1.json

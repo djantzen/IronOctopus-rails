@@ -8256,6 +8256,35 @@ ALTER SEQUENCE programs_program_id_seq OWNED BY programs.program_id;
 
 
 --
+-- Name: rangetest; Type: TABLE; Schema: application; Owner: -; Tablespace: 
+--
+
+CREATE TABLE rangetest (
+    id integer NOT NULL,
+    duration int4range
+);
+
+
+--
+-- Name: rangetest_id_seq; Type: SEQUENCE; Schema: application; Owner: -
+--
+
+CREATE SEQUENCE rangetest_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: rangetest_id_seq; Type: SEQUENCE OWNED BY; Schema: application; Owner: -
+--
+
+ALTER SEQUENCE rangetest_id_seq OWNED BY rangetest.id;
+
+
+--
 -- Name: routines; Type: TABLE; Schema: application; Owner: -; Tablespace: 
 --
 
@@ -8417,7 +8446,8 @@ CREATE TABLE users (
     identity_confirmed boolean DEFAULT false,
     created_at timestamp with time zone DEFAULT now() NOT NULL,
     updated_at timestamp with time zone DEFAULT now() NOT NULL,
-    city_id integer DEFAULT 685 NOT NULL
+    city_id integer DEFAULT 685 NOT NULL,
+    is_admin boolean DEFAULT false NOT NULL
 );
 
 
@@ -8456,6 +8486,13 @@ COMMENT ON TABLE weekday_programs IS 'A table mapping routines to programs and d
 
 CREATE VIEW todays_routines AS
     SELECT r.client_id, r.routine_id FROM ((((users u JOIN routines r ON ((u.user_id = r.client_id))) JOIN scheduled_programs sp ON ((r.routine_id = sp.routine_id))) JOIN cities c ON ((u.city_id = c.city_id))) JOIN timezones tz ON (public.st_within(c.the_geom, tz.the_geom))) WHERE (sp.scheduled_on = (timezone(tz.tzid, now()))::date) UNION SELECT r.client_id, r.routine_id FROM ((((users u JOIN routines r ON ((u.user_id = r.client_id))) JOIN weekday_programs wp ON ((r.routine_id = wp.routine_id))) JOIN cities c ON ((u.city_id = c.city_id))) JOIN timezones tz ON (public.st_within(c.the_geom, tz.the_geom))) WHERE (wp.day_of_week = btrim(to_char(timezone(tz.tzid, now()), 'Day'::text)));
+
+
+--
+-- Name: VIEW todays_routines; Type: COMMENT; Schema: application; Owner: -
+--
+
+COMMENT ON VIEW todays_routines IS 'A view describing the routines occurring today based on a program';
 
 
 --
@@ -8791,6 +8828,13 @@ ALTER TABLE ONLY programs ALTER COLUMN program_id SET DEFAULT nextval('programs_
 
 
 --
+-- Name: id; Type: DEFAULT; Schema: application; Owner: -
+--
+
+ALTER TABLE ONLY rangetest ALTER COLUMN id SET DEFAULT nextval('rangetest_id_seq'::regclass);
+
+
+--
 -- Name: routine_id; Type: DEFAULT; Schema: application; Owner: -
 --
 
@@ -8989,7 +9033,7 @@ ALTER TABLE ONLY locations
 --
 
 ALTER TABLE ONLY locations_users
-    ADD CONSTRAINT locations_users_pkey PRIMARY KEY (user_id, location_id);
+    ADD CONSTRAINT locations_users_pkey PRIMARY KEY (location_id, user_id);
 
 
 --
@@ -9038,6 +9082,14 @@ ALTER TABLE ONLY profiles
 
 ALTER TABLE ONLY programs
     ADD CONSTRAINT programs_pkey PRIMARY KEY (program_id);
+
+
+--
+-- Name: rangetest_pkey; Type: CONSTRAINT; Schema: application; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY rangetest
+    ADD CONSTRAINT rangetest_pkey PRIMARY KEY (id);
 
 
 --
@@ -9984,3 +10036,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130421010346');
 INSERT INTO schema_migrations (version) VALUES ('20130514042730');
 
 INSERT INTO schema_migrations (version) VALUES ('20130602221432');
+
+INSERT INTO schema_migrations (version) VALUES ('20130623041211');
