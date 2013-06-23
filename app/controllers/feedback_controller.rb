@@ -8,6 +8,7 @@ class FeedbackController < ApplicationController
   end
 
   def index
+    authorize! :read, Feedback.new, current_user
     @feedback = Feedback.all(:order => 'created_at desc')
   end
 

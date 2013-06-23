@@ -20,9 +20,8 @@ class Routine < ActiveRecord::Base
     :maximum => VALIDATIONS[:goal][:maxlength].to_i
   }
 
-  validates_uniqueness_of :name, :scope => :client_id
-
   before_validation { self.permalink = name.to_identifier }
+  validates_uniqueness_of :permalink, :scope => :client_id
 
   def to_param
     permalink

@@ -13,6 +13,7 @@
     - unless current_user.nil?
       = render :partial => "feedback/new"
     #flash.label.label-info
+      = @flash
     #header.navbar.navbar-fixed-top.hidden-phone
       .navbar-inner
         .container-fluid
@@ -54,8 +55,7 @@
               %li= link_to("Settings", user_settings_path(current_user))
               %li= link_to("Log Out", log_out_url)
     = yield
-    #messages
-      = @messages
+    = flash[:success]
     #footer.navbar.navbar-fixed-bottom.hidden-phone
       .navbar-inner
         .container

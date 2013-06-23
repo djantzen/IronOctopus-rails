@@ -16,9 +16,12 @@
             Today's Routines
           - @todays_routines.each do |routine|
             %div
-              = link_to(perform_routine_path(routine.client, routine), :class => 'btn btn-primary') do
-                Perform
-                %i= routine.name
+              - if can? :perform, routine
+                = link_to(perform_routine_path(routine.client, routine), :class => 'btn btn-primary') do
+                  Perform
+                  %i= routine.name
+              - else
+                = link_to(routine.name, user_routine_path(@user, routine))
       %br
       .row-fluid
         = link_to "Training Log", user_work_index_path(@user)

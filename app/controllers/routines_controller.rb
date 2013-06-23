@@ -4,10 +4,6 @@ class RoutinesController < ApplicationController
   include RoutinesHelper
   respond_to :json, :html, :js
 
-  helper_method :allowed_to_update?
-  helper_method :allowed_to_read?
-  helper_method :allowed_to_perform?
-
   def index
     @client = User.find_by_login(params[:user_id])
     @routines = Routine.all(:conditions => { :client_id => @client.user_id }, :order => :name)
@@ -30,7 +26,7 @@ class RoutinesController < ApplicationController
   def new
     new_or_edit
     @routine = Routine.new
-    redirect_to user_path(current_user) unless allowed_to_create?
+    authorize! :create, Routine.new, @client
   end
 
   def create
@@ -50,7 +46,8 @@ class RoutinesController < ApplicationController
   def show
     client = User.find_by_login(params[:user_id])
     @routine = Routine.first(:conditions => { :client_id => client.user_id, :permalink => params[:id] })
-    redirect_to user_path(current_user) unless allowed_to_read?
+
+    authorize! :read, @routine
     respond_with do |format|
       format.html { render :html => @routine }
     end
@@ -76,7 +73,7 @@ class RoutinesController < ApplicationController
   def edit
     new_or_edit
     @routine = Routine.first(:conditions => { :client_id => @client.user_id, :permalink => params[:id] })
-    redirect_to user_path(current_user) unless allowed_to_update?
+    authorize! :update, @routine
   end
 
   def update
@@ -171,22 +168,6 @@ class RoutinesController < ApplicationController
     @activity_attributes = ActivityAttribute.order(:name)
     @activity = Activity.new
     @metrics = Metric.list
-  end
-
-  def allowed_to_create?
-    @client.trainers.include? @trainer
-  end
-
-  def allowed_to_update?
-    current_user.eql? @routine.trainer
-  end
-
-  def allowed_to_read?
-    current_user.eql?(@routine.trainer) || current_user.eql?(@routine.client)
-  end
-
-  def allowed_to_perform?
-    current_user.eql?(@routine.trainer) || current_user.eql?(@routine.client)
   end
 
 end

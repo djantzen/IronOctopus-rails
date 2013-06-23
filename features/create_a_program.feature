@@ -21,3 +21,8 @@ Feature: Create a new program
     And I press "save-program"
     Then I should see "Unable to create/update Program"
     And I should see "Name is too short"
+
+  Scenario: I am not able to create a program for a non-client
+    Given I log in as "bob_the_trainer" with "password"
+    And I am on the /users/mary_the_trainer/programs/new page
+    Then I should see "Bob Trainer"

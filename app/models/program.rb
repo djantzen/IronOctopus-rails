@@ -17,7 +17,7 @@ class Program < ActiveRecord::Base
   }
 
   before_validation { self.permalink = self.name.to_identifier }
-  validates_uniqueness_of :permalink
+  validates_uniqueness_of :permalink, :scope => :client_id
 
   def routines
     programs_on_days.inject({}) do |hash, program|

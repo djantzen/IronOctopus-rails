@@ -4,17 +4,17 @@ class ProgramsController < ApplicationController
   include ProgramsHelper
   helper LaterDude::CalendarHelper
   respond_to :json, :html
-  helper_method :allowed_to_update?
 
   def show
     @program = Program.find_by_permalink(params[:id].to_identifier)
+    authorize! :read, @program
+
     @client = User.find_by_login(params[:user_id])
     @trainer = current_user
     # TODO update when we support meridian
     @routines = @program.routines.values
     @routine_select =  @routines.map { |r| [r.name, r.permalink] }
     @clients = current_user.clients
-    redirect_to user_path(current_user) unless allowed_to_read?
   end
 
   def new
@@ -28,7 +28,7 @@ class ProgramsController < ApplicationController
     @routine_select =  @routines.map { |r| [r.name, r.permalink] }
     @clients = current_user.clients
     routine_builder_attributes
-    redirect_to user_path(current_user) unless allowed_to_create?
+    authorize! :create, Program.new, @client
   end
 
   def create
@@ -48,6 +48,7 @@ class ProgramsController < ApplicationController
   def edit
     @client = User.find_by_login(params[:user_id])
     @program = Program.first(:conditions => { :client_id => @client.user_id, :permalink => params[:id] })
+    authorize! :update, @program
     @trainer = current_user
     @weekday_programs = @program.weekday_programs
     @scheduled_programs = @program.scheduled_programs
@@ -56,12 +57,12 @@ class ProgramsController < ApplicationController
     @routine_select =  @routines.map { |r| [r.name, r.permalink] }
     @clients = current_user.clients
     routine_builder_attributes
-    redirect_to user_path(current_user) unless allowed_to_update?
   end
 
   def update
     @client = User.find_by_login(params[:user_id])
     @program = Program.first(:conditions => { :client_id => @client.user_id, :permalink => params[:id].to_identifier })
+    authorize! :update, @program
     @program = _create_or_update(@program)
     if @program.errors.empty?
       respond_with do |format|
@@ -160,19 +161,6 @@ class ProgramsController < ApplicationController
     @activity_attributes = ActivityAttribute.order(:name)
     @metrics = Metric.all(:conditions => "name != 'None'")
     @activity = Activity.new
-  end
-
-
-  def allowed_to_create?
-    @client.trainers.include? @trainer
-  end
-
-  def allowed_to_update?
-    current_user.eql? @program.trainer
-  end
-
-  def allowed_to_read?
-    current_user.eql?(@program.trainer) || current_user.eql?(@program.client)
   end
 
 end

@@ -35,6 +35,7 @@ var seconds_to_digital = function(seconds) {
 }
 
 var DIGITAL_FORMAT = new RegExp(/^\d{1,3}:\d{1,2}$/);
+var LEFT_ARROW_KEY = 37;
 var UP_ARROW_KEY = 38;
 var RIGHT_ARROW_KEY = 39;
 var DOWN_ARROW_KEY = 40;
@@ -82,13 +83,9 @@ $(document).ready(function() {
   $(".has-tooltip-left").tooltip({ placement: "left", html: true });
   $(".has-tooltip-right").tooltip({placement: "right", html: true });
 
+  var flash_content = $("#flash").html().trim();
+  if (flash_content.length > 0) {
+    Util.show_flash(flash_content);
+  }
 
-//  yepnope({
-//    test: Modernizr.inputtypes.email && Modernizr.input.required && Modernizr.input.placeholder && Modernizr.input.pattern,
-//    test: Modernizr.inputtypes.number,
-//    nope: 'h5f.js',
-//    callback: function(url, result, key) {
-//      H5F.setup(document.getElementById('edit_routine_154786800'));
-//    }
-//  });
 });

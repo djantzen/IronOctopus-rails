@@ -1,5 +1,6 @@
 class this.Util
   SECOND = 1000
+
   @show_flash = (message, timeout) ->
     $("#flash").html(message)
     $("#flash").show()

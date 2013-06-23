@@ -11,7 +11,7 @@ class this.ActivityListItem
       if (key == ENTER_KEY)
         this.add_to_list()
         $("#activity-search-box").focus()
-      else if (key == UP_ARROW_KEY)
+      else if (key == UP_ARROW_KEY || key == LEFT_ARROW_KEY)
         if index == 0
           $("#activity-search-box").focus()
         else

@@ -13,9 +13,9 @@
         Last updated on #{@routine.updated_at.to_date}
       %br
       .row-fluid.btn-group
-        - if allowed_to_update?
+        - if can? :update, @routine
           = link_to("Edit", edit_user_routine_path(@routine.client, @routine), :class => "btn")
-        - if allowed_to_perform?
+        - if can? :perform, @routine
           = link_to("Perform", perform_routine_path(@routine.client, @routine), :class => "btn")
         = link_to("Print", routine_sheet_path(@routine.client, @routine), :class => "btn", :target => "_blank")
     .span8.well

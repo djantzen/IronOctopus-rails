@@ -9,12 +9,16 @@ Feature: Viewing my clients homepage
     Then I should see "Create new program for Sally"
     And I should see "Create new routine for Sally"
 
-# As bob, I can
-#  create routines and programs for myself
-#  perform routines
-#  visit sallys page
-#    create routines and programs
-#    not perform routines
-#  visit mary's page
-#    cannot create routines and programs
-#
+  Scenario: As a logged in trainer I cannot visit homepages of non clients
+    Given I log in as "bob_the_trainer" with "password"
+    And I am on the /users/mary_the_trainer page
+    Then I should not see "Create new program for Mary"
+    And I should not see "Create new routine for Mary"
+    And I should see "Create new routine for Bob"
+
+  Scenario: As a logged in user I cannot visit someone else's settings page
+    Given I log in as "bob_the_trainer" with "password"
+    And I am on the /users/mary_the_trainer/settings page
+    Then I should not see "New Password"
+    And I should see "Bob Trainer"
+

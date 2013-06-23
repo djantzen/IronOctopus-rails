@@ -49,9 +49,15 @@ $(document).ready () ->
 
   # Bare ass bones validation. Should be beefed up
   is_password_acceptable = (password) ->
-    password.length > 7
+    password.length == 0 || password.length > 7
 
   $.validator.addMethod("is_password_acceptable", is_password_acceptable, "Your password must be at least 8 characters long");
 
-  $("#new-user-form form").validate()
+  passwords_match = (confirmation) ->
+    password = $("#user_new_password").val();
+    confirmation == password
 
+  $.validator.addMethod("passwords_match", passwords_match, "Your passwords do not match")
+
+  $("#new-user-form form").validate()
+  $("#user-settings form").validate()

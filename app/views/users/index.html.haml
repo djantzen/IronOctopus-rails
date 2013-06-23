@@ -1,7 +1,8 @@
 .container
-  - if can? :read, User
-    %ul
-      - @users.each do |user|
-        %li
-          = user.first_name
-          = user.last_name
+  %ul
+    - @users.each do |user|
+      %li
+        = user.first_name
+        = user.last_name
+        = user.email
+        = user.created_at

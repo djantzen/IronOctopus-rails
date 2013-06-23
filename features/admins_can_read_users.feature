@@ -6,7 +6,9 @@ Feature: Only administrators may view the list of users
   Scenario: As a logged in non-admin I cannot see any users
     Given I log in as "sally_the_client" with "password"
     And I am on the /users page
-    Then I should not see "Sally Client"
+    Then I should not see "Jim Client"
+    And I should not see "Bob Trainer"
+    And I should not see "Mary Trainer"
 
   Scenario: As a logged in admin I can see all users
     Given I log in as "administrator" with "password"

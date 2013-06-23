@@ -48,18 +48,21 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find_by_login(params[:id])
-    if allowed_to_update?
-      User.transaction do
-        if !params[:user][:new_password].blank? && params[:user][:new_password].eql?(params[:user][:confirm_password])
-          @user.password = params[:user][:new_password]
-        end
-        city_name, state_name = params[:city].split(/,/)
-        city = City.find_by_name_and_state(city_name, state_name)
-        @user.city = city
-        @user.save
+    authorize! :update, @user
+    User.transaction do
+      if !params[:user][:new_password].blank? && params[:user][:new_password].eql?(params[:user][:confirm_password])
+        @user.password = params[:user][:new_password]
       end
+      city_name, state_name = params[:city].split(/,/)
+      city = City.find_by_name_and_state(city_name, state_name)
+      @user.city = city
+      @user.save
     end
-    redirect_to user_path(@user)
+    @flash = "Settings Updated"
+    @todays_routines = @user.todays_routines
+    @programs = @user.programs
+    @program_select =  @programs.map { |p| [p.name, p.permalink] }
+    @routines = @user.routines
   end
 
   def clients
@@ -67,12 +70,13 @@ class UsersController < ApplicationController
   end
 
   def index
+    authorize! :read, User.new, current_user
     @users = User.all
   end
 
-  # GET /users/1.json
   def show
     @user = User.find_by_login(params['id'])
+    authorize! :read, @user
     @routines = @user.routines
     @todays_routines = @user.todays_routines
     @programs = @user.programs
@@ -85,7 +89,7 @@ class UsersController < ApplicationController
 
   def settings
     @user = User.find_by_login(params[:user_id])
-    allowed_to_update?
+    authorize! :update, @user
   end
 
   def is_login_unique
@@ -94,15 +98,6 @@ class UsersController < ApplicationController
       format.json { render :json => user.nil? }
     end
 
-  end
-
-  private
-  def allowed_to_read?
-    current_user.eql?(@user) || @user.trainers.include?(current_user)
-  end
-
-  def allowed_to_update?
-    current_user.eql?(@user)
   end
 
 end

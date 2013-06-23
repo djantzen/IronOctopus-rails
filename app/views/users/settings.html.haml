@@ -1,12 +1,12 @@
-.container
+#user-settings.container
   = form_for @user do |form|
     .row.well
       .field
         = form.label :new_password, "New Password"
-        = form.password_field :new_password
+        = form.password_field :new_password, :class => "is_password_acceptable"
       .field
         = form.label :confirm_password, "Confirm Password"
-        = form.password_field :confirm_password
+        = form.password_field :confirm_password, :class => "is_password_acceptable passwords_match"
       .field
         .ui-widget
           = form.label :city

@@ -65,3 +65,6 @@ When /^I am on (.*?)'s homepage$/ do |username|
   visit "/users/#{username}"
 end
 
+When /^I log out$/ do
+  visit "/log_out"
+end

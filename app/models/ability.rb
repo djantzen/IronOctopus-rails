@@ -5,12 +5,28 @@ class Ability
     user ||= User.new # guest user (not logged in)
     if user.is_admin?
       can :manage, :all
+
       can :read, User
       can :read, Feedback
+
+      # implements
+      can :create, Implement
+      can :update, Implement
+
+      # body part
+      can :create, BodyPart
+      can :update, BodyPart
     else
-      #can :read, :all
+
+      # users
+      can :read, User do |client|
+        client.trainers.include?(user) || user == client
+      end
+      can :update, User, :user_id => user.id
 
       # routines
+      can :read, Routine, :trainer_id => user.id
+      can :read, Routine, :client_id => user.id
       can :update, Routine, :trainer_id => user.id
       can :perform, Routine, :client_id => user.id
       can :create, Routine do |routine, client|
@@ -18,6 +34,8 @@ class Ability
       end
 
       # programs
+      can :read, Program, :trainer_id => user.id
+      can :read, Program, :client_id => user.id
       can :update, Program, :trainer_id => user.id
       can :create, Program do |program, client|
         client.trainers.include?(user) || user == client
@@ -28,13 +46,6 @@ class Ability
       #can :read, Activity, :visible_to_all => true
       can :update, Activity, :creator_id => user.id
 
-      # implements
-      can :create, Implement if user.is_admin?
-      can :update, Implement if user.is_admin?
-
-      # body part
-      can :create, BodyPart if user.is_admin?
-      can :update, BodyPart if user.is_admin?
     end
 
     # Define abilities for the passed in user here. For example:

@@ -1,8 +1,7 @@
 .container
-  - if can? :read, Feedback
-    - @feedback.each do |feedback|
-      .row
-        .span2
-          = feedback.user.login
-        .span4
-          = feedback.remarks
+  - @feedback.each do |feedback|
+    .row
+      .span2
+        = feedback.user.login
+      .span4
+        = feedback.remarks
