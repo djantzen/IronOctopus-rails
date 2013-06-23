@@ -31,15 +31,15 @@
                 - if measure_value.range?
                   to
                   = measure_value.max
-                - if defined? unit and !unit.eql? 'Duration' and !unit.eql? 'None'
-                  = unit.pluralize
+                - if defined? unit and !unit.eql? 'Duration' and !unit.eql?(Unit::NONE)
+                  = unit.name.pluralize
     .activity-set-attributes.accordion-body.collapse.in{:id => template ? nil : activity_set.position}
       .accordion-inner.container
         = hidden_field_tag "routine[activity_sets][][activity]", activity.name
         - activity.metrics.each do |metric|
           .row
             - initial_value, unit = get_initial_value(activity_set, metric)
-            - unit_options = unit ? [unit.pluralize] : metric.units.map { |u| u.name.pluralize }
+            - unit_options = unit ? [unit.name.pluralize] : metric.units.map { |u| u.name.pluralize }
             - if initial_value.defined? || template
               = render :partial => "routines/measure_selector", :locals => { :measure => metric.name, :interval => 1,       |
                        :initial_value => initial_value, :units => unit_options, :unit => unit, :performance => true }                   |

@@ -4,8 +4,29 @@ class Unit < ActiveRecord::Base
   has_many :activity_sets
   belongs_to :metric
 
+  PRECISION = 3
+
+  DEGREE = Unit.find_by_name("Degree")
+  FIFTY_METER_LAP = Unit.find_by_name("50 Meter Lap")
+  FOUR_HUNDRED_METER_LAP = Unit.find_by_name("400 Meter Lap")
+  FOOT = Unit.find_by_name("Foot")
+  KILOGRAM = Unit.find_by_name("Kilogram")
+  KILOMETER = Unit.find_by_name("Kilometer")
+  KILOMETERS_PER_HOUR = Unit.find_by_name("Kilometer per Hour")
+  MILES_PER_HOUR = Unit.find_by_name("Mile per Hour")
+  POUND = Unit.find_by_name("Pound")
+  METER = Unit.find_by_name("Meter")
+  MILE = Unit.find_by_name("Mile")
+  MINUTE = Unit.find_by_name("Minute")
+  NONE = Unit.find_by_name("None")
+  REVOLUTIONS_PER_MINUTE = Unit.find_by_name("Revolution per Minute")
+  SECOND = Unit.find_by_name("Second")
+  TWENTY_FIVE_METER_LAP = Unit.find_by_name("25 Meter Lap")
+  TWO_HUNDRED_FIFTY_METER_LAP = Unit.find_by_name("250 Meter Lap")
+  YARD = Unit.find_by_name("Yard")
+
   def self.lookup(unit)
-    return Unit.find_by_name('None') if unit.nil?
+    return NONE if unit.nil?
     Unit.find_by_name(unit.singularize)
   end
 
@@ -94,11 +115,11 @@ class Unit < ActiveRecord::Base
   end
 
   def self.convert_to_kilograms(resistance, from_unit)
-    return resistance.to_f if resistance.nil? || from_unit.nil? || from_unit.eql?('None')
+    return resistance.to_f if resistance.nil? || from_unit.nil? || from_unit.eql?(NONE)
     case from_unit
-      when 'Kilogram'
+      when Unit::KILOGRAM
         resistance.to_f
-      when 'Pound'
+      when Unit::POUND
         pounds_to_kilograms(resistance)
       else
         raise ArgumentError.new("Cannot convert #{from_unit} to kilograms")
@@ -106,63 +127,79 @@ class Unit < ActiveRecord::Base
   end
 
   def self.convert_from_kilograms(resistance, to_unit)
-    return resistance.to_f if resistance.nil? || to_unit.nil? || to_unit.eql?('None')
+    return resistance.to_f if resistance.nil? || to_unit.nil? || to_unit.eql?(NONE)
     case to_unit
-      when 'Kilogram'
+      when KILOGRAM
         resistance.to_f
-      when 'Pound'
-        kilograms_to_pounds(resistance)
+      when POUND
+        round kilograms_to_pounds(resistance)
       else
         raise ArgumentError.new("Cannot convert #{to_unit} from kilograms")
     end
   end
 
   def self.convert_to_meters(distance, from_unit)
-    return distance.to_f if distance.nil? || from_unit.nil? || from_unit.eql?('None')
+    return distance.to_f if distance.nil? || from_unit.nil? || from_unit.eql?(NONE)
     case from_unit
-      when 'Meter'
+      when METER
         distance.to_f
-      when 'Kilometer'
+      when KILOMETER
         kilometers_to_meters(distance)
-      when 'Mile'
+      when MILE
         miles_to_meters(distance)
-      when 'Yard'
+      when YARD
         yards_to_meters(distance)
-      when 'Foot'
+      when FOOT
         feet_to_meters(distance)
-      when /(\d+) Meter Lap/
-        distance.to_f * $1.to_f
+      when TWENTY_FIVE_METER_LAP
+        distance.to_f * 25
+      when FIFTY_METER_LAP
+        distance.to_f * 50
+      when TWO_HUNDRED_FIFTY_METER_LAP
+        distance.to_f * 250
+      when FOUR_HUNDRED_METER_LAP
+        distance.to_f * 400
       else
         raise ArgumentError.new("Cannot convert #{from_unit} to meters")
     end
   end
 
   def self.convert_from_meters(distance, to_unit)
-    return distance.to_f if distance.nil? || to_unit.nil? || to_unit.eql?('None')
+    return distance.to_f if distance.nil? || to_unit.nil? || to_unit.eql?(NONE)
     case to_unit
-      when 'Meter'
+      when METER
         distance.to_f
-      when 'Kilometer'
-        meters_to_kilometers(distance).round(1)
-      when 'Mile'
-        meters_to_miles(distance).round(1)
-      when 'Yard'
-        meters_to_yards(distance).round(5)
-      when 'Foot'
-        meters_to_feet(distance).round(1)
-      when /(\d+) Meter Lap/
-        distance / $1.to_f.round(1)
+      when KILOMETER
+        meters_to_kilometers(distance)
+      when MILE
+        round meters_to_miles(distance)
+      when YARD
+        round meters_to_yards(distance)
+      when FOOT
+        round meters_to_feet(distance)
+      when TWENTY_FIVE_METER_LAP
+        distance / 25
+      when FIFTY_METER_LAP
+        distance / 50
+      when TWO_HUNDRED_FIFTY_METER_LAP
+        distance / 250
+      when FOUR_HUNDRED_METER_LAP
+        distance / 400
       else
         raise ArgumentError.new("Cannot convert #{to_unit} to meters")
     end
   end
 
+  def self.round(value)
+    value.round(PRECISION)
+  end
+
   def self.convert_to_kilometers_per_hour(speed, from_unit)
-    return speed.to_f if speed.nil? || from_unit.nil? || from_unit.eql?('None')
+    return speed.to_f if speed.nil? || from_unit.nil? || from_unit.eql?(NONE)
     case from_unit
-      when 'Kilometer per Hour'
+      when KILOMETERS_PER_HOUR
         speed.to_f
-      when 'Mile per Hour'
+      when MILES_PER_HOUR
         mph_to_kph(speed)
       else
         raise ArgumentError.new("Cannot convert #{from_unit} to kilometers per hour")
@@ -170,12 +207,12 @@ class Unit < ActiveRecord::Base
   end
 
   def self.convert_from_kilometers_per_hour(speed, to_unit)
-    return speed.to_f if speed.nil? || to_unit.nil? || to_unit.eql?('None')
+    return speed.to_f if speed.nil? || to_unit.nil? || to_unit.eql?(NONE)
     case to_unit
-      when 'Kilometer per Hour'
+      when KILOMETERS_PER_HOUR
         speed.to_f
-      when 'Mile per Hour'
-        kph_to_mph(speed)
+      when MILES_PER_HOUR
+        round kph_to_mph(speed)
       else
         raise ArgumentError.new("Cannot convert #{to_unit} from kilometers per hour")
     end
@@ -184,11 +221,11 @@ class Unit < ActiveRecord::Base
   def self.convert_to_seconds(duration, from_unit)
     return duration.to_i if duration.nil?
     case from_unit
-      when 'Second'
+      when SECOND
         duration
-      when 'Minute'
+      when MINUTE
         minutes_to_seconds(duration)
-      when 'None'
+      when NONE
         digital_to_seconds(duration)
       else
         raise ArgumentError.new("Cannot convert #{from_unit} to seconds")
@@ -198,7 +235,7 @@ class Unit < ActiveRecord::Base
   def self.convert_from_seconds(duration, to_unit)
     return duration.to_i if duration.nil? || to_unit.nil?
     #case to_unit
-    #  when 'None'
+    #  when NONE
         seconds_to_digital(duration)
     #  when 'Second'
     #    duration.to_f

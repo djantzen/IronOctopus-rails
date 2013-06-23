@@ -47,27 +47,27 @@ module RoutinesHelper
     raw_range_value = activity_set.measurement.send metric_name
     case unit_column_name
       when 'distance_unit'
-        unit_name = activity_set.unit_set.distance_unit.name
-        min = Unit.convert_from_meters(raw_range_value.min, unit_name).round(1)
-        max = Unit.convert_from_meters(raw_range_value.max, unit_name).round(1)
-        [ MeasureValue.new(min, max) , unit_name ]
+        unit = activity_set.unit_set.distance_unit
+        min = Unit.convert_from_meters(raw_range_value.min, unit).round(1)
+        max = Unit.convert_from_meters(raw_range_value.max, unit).round(1)
+        [ MeasureValue.new(min, max) , unit ]
       when 'duration_unit'
-        unit_name = activity_set.unit_set.duration_unit.name
-        min = Unit.convert_from_seconds(raw_range_value.min, unit_name)
-        max = Unit.convert_from_seconds(raw_range_value.max, unit_name)
-        [ DurationMeasureValue.new(min, max), unit_name ]
+        unit = activity_set.unit_set.duration_unit
+        min = Unit.convert_from_seconds(raw_range_value.min, unit)
+        max = Unit.convert_from_seconds(raw_range_value.max, unit)
+        [ DurationMeasureValue.new(min, max), unit ]
       when 'resistance_unit'
-        unit_name = activity_set.unit_set.resistance_unit.name
-        min = Unit.convert_from_kilograms(raw_range_value.min, unit_name).round(1)
-        max = Unit.convert_from_kilograms(raw_range_value.max, unit_name).round(1)
-        [ MeasureValue.new(min, max), unit_name ]
+        unit = activity_set.unit_set.resistance_unit
+        min = Unit.convert_from_kilograms(raw_range_value.min, unit).round(1)
+        max = Unit.convert_from_kilograms(raw_range_value.max, unit).round(1)
+        [ MeasureValue.new(min, max), unit ]
       when 'speed_unit'
-        unit_name = activity_set.unit_set.speed_unit.name
-        min = Unit.convert_from_kilometers_per_hour(raw_range_value.min, unit_name).round(1)
-        max = Unit.convert_from_kilometers_per_hour(raw_range_value.max, unit_name).round(1)
-        [ MeasureValue.new(min, max), unit_name ]
+        unit = activity_set.unit_set.speed_unit
+        min = Unit.convert_from_kilometers_per_hour(raw_range_value.min, unit).round(1)
+        max = Unit.convert_from_kilometers_per_hour(raw_range_value.max, unit).round(1)
+        [ MeasureValue.new(min, max), unit ]
       else
-        [ MeasureValue.new(raw_range_value.min, raw_range_value.max), 'None' ]
+        [ MeasureValue.new(raw_range_value.min, raw_range_value.max), Unit::NONE ]
     end
   end
 

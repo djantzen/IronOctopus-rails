@@ -23,6 +23,6 @@
           %td
             = render :partial => "routines/measure_display",
                      :locals => { :measure => metric.name, :measure_value => measure_value,
-                                  :unit => (unit.pluralize unless unit.eql?('None')) }
+                                  :unit => (unit.pluralize unless unit.eql?(Unit::NONE)) }
           %td.target-field
       %td{:colspan => Metric.count - activity_set.measurement.defined_metrics.count}

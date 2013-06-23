@@ -11,7 +11,6 @@
 //= require bootstrap
 //= require underscore
 //= require modernizr
-//= require jquery-fileupload/basic
 
 console.info("application load");
 

@@ -32,8 +32,8 @@
             to?
           = check_box_tag "measure-to-range-box", "measure-to-range-box", false, :class => "measure-to-range-box"
       %span.units
-        - if defined? units and !units.empty? and !unit.eql?('None')
-          = select_tag("routine[activity_sets][][#{measure.downcase}_unit]", options_for_select(units, (unit.nil? ? nil : unit.pluralize)), :class => "unit-selector")
+        - if defined? units and !units.empty? and !unit.eql?(Unit::NONE)
+          = select_tag("routine[activity_sets][][#{measure.downcase}_unit]", options_for_select(units, (unit.nil? ? nil : unit.name.pluralize)), :class => "unit-selector")
   - if defined?(performance) && performance
   - else
     .span1

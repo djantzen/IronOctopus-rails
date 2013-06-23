@@ -51,10 +51,10 @@ class Measurement < ActiveRecord::Base
     calories_max = activity_set_map[:calories_max].to_i
     cadence_min = activity_set_map[:cadence_min].to_f
     cadence_max = activity_set_map[:cadence_max].to_f
-    distance_min = Unit.convert_to_meters(activity_set_map[:distance_min].to_f, unit_map[:distance_unit].name)
-    distance_max = Unit.convert_to_meters(activity_set_map[:distance_max].to_f, unit_map[:distance_unit].name)
-    duration_min = Unit.convert_to_seconds(activity_set_map[:duration_min], unit_map[:duration_unit].name)
-    duration_max = Unit.convert_to_seconds(activity_set_map[:duration_max], unit_map[:duration_unit].name)
+    distance_min = Unit.convert_to_meters(activity_set_map[:distance_min].to_f, unit_map[:distance_unit])
+    distance_max = Unit.convert_to_meters(activity_set_map[:distance_max].to_f, unit_map[:distance_unit])
+    duration_min = Unit.convert_to_seconds(activity_set_map[:duration_min], unit_map[:duration_unit])
+    duration_max = Unit.convert_to_seconds(activity_set_map[:duration_max], unit_map[:duration_unit])
     heart_rate_min = activity_set_map[:heart_rate_min].to_i
     heart_rate_max = activity_set_map[:heart_rate_max].to_i
     incline_min = activity_set_map[:incline_min].to_f
@@ -63,10 +63,10 @@ class Measurement < ActiveRecord::Base
     level_max = activity_set_map[:level_max].to_i
     repetitions_min = activity_set_map[:repetitions_min].to_i
     repetitions_max = activity_set_map[:repetitions_max].to_i
-    resistance_min = Unit.convert_to_kilograms(activity_set_map[:resistance_min].to_f, unit_map[:resistance_unit].name)
-    resistance_max = Unit.convert_to_kilograms(activity_set_map[:resistance_max].to_f, unit_map[:resistance_unit].name)
-    speed_min = Unit.convert_to_kilometers_per_hour(activity_set_map[:speed_min].to_f, unit_map[:speed_unit].name)
-    speed_max = Unit.convert_to_kilometers_per_hour(activity_set_map[:speed_max].to_f, unit_map[:speed_unit].name)
+    resistance_min = Unit.convert_to_kilograms(activity_set_map[:resistance_min].to_f, unit_map[:resistance_unit])
+    resistance_max = Unit.convert_to_kilograms(activity_set_map[:resistance_max].to_f, unit_map[:resistance_unit])
+    speed_min = Unit.convert_to_kilometers_per_hour(activity_set_map[:speed_min].to_f, unit_map[:speed_unit])
+    speed_max = Unit.convert_to_kilometers_per_hour(activity_set_map[:speed_max].to_f, unit_map[:speed_unit])
 
     metric_map = {
       :calories => calories_min .. (calories_max > calories_min ? calories_max : calories_min),

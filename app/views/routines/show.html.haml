@@ -28,5 +28,5 @@
               - activity_set.activity.metrics.each do |metric|
                 - measure_value, unit = activity_set.nil? ? 1 : get_initial_value(activity_set, metric)
                 = render :partial => "routines/measure_display", :locals => { :measure => metric.name,
-                         :measure_value => measure_value, :unit => (unit.pluralize unless unit.eql?('None')) }
+                         :measure_value => measure_value, :unit => (unit.name.pluralize unless unit.eql?(Unit::NONE)) }
 
