@@ -8,4 +8,7 @@
     = text_field_tag "body_part[newregion]"
     = render :partial => 'shared/upload_image', :locals => { :form => form }
     = image_tag @body_part.image_url
-    = submit_tag "Save"
+    .row
+      .btn-group
+        = link_to "Cancel", body_parts_path, :class => "btn"
+        = submit_tag "Save", :class => "btn btn-primary"

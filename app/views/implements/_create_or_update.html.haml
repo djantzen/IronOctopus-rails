@@ -10,6 +10,7 @@
         = form.select :category, Implement.all_categories, :selected => @implement.category
         = render :partial => 'shared/upload_image', :locals => { :form => form }
         = image_tag @implement.image_url
-        .btn-group
-          = link_to "Cancel", user_path(current_user), :class => "btn btn-large"
-          = submit_tag "Save", :class => "btn btn-large btn-primary"
+        .row
+          .btn-group
+            = link_to "Cancel", user_path(current_user), :class => "btn"
+            = submit_tag "Save", :class => "btn btn-primary"

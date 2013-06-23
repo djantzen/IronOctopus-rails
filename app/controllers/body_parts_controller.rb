@@ -3,32 +3,36 @@ class BodyPartsController < ApplicationController
   before_filter :authenticate_user
 
   def index
+    authorize! :read, BodyPart.new, current_user
     @body_parts = BodyPart.order(:name).all
   end
   
   def new
+    authorize! :read, BodyPart.new, current_user
     @body_part = BodyPart.new
   end
   
   def create
-    body_part = create_or_update(params)
-    body_part.creator = current_user
-    body_part.save
-    redirect_to(BodyPart)
+    authorize! :create, BodyPart.new, current_user
+    @body_part = create_or_update(params)
+    @body_part.creator = current_user
+    @body_part.save
   end
 
   def edit
     @body_part = BodyPart.find_by_permalink(params[:id])
+    authorize! :update, @body_part
   end
   
   def update
-    body_part = create_or_update(params)
-    body_part.save
-    redirect_to(BodyPart)
+    @body_part = create_or_update(params)
+    authorize! :update, @body_part
+    @body_part.save
   end
   
   def show
     @body_part = BodyPart.find_by_permalink(params[:id])
+    authorize! :read, @body_part
   end
   
   private

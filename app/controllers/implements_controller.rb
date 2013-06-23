@@ -4,14 +4,17 @@ class ImplementsController < ApplicationController
   respond_to :json, :html
 
   def index
+    authorize! :create, Implement
     @implements = Implement.order(:name).all
   end
   
   def new
     @implement = Implement.new
+    authorize! :create, @implement
   end
   
   def create
+    authorize! :create, Implement.new, current_user
     @implement = create_or_update(params)
     if @implement.errors.empty?
       respond_with :html => @implement
@@ -25,10 +28,12 @@ class ImplementsController < ApplicationController
 
   def edit
     @implement = Implement.find_by_permalink(params[:id])
+    authorize! :update, @implement
   end
   
   def update
     @implement = create_or_update(params)
+    authorize! :update, @implement
     if @implement.errors.empty?
       respond_with :html => @implement
     else
@@ -41,6 +46,7 @@ class ImplementsController < ApplicationController
   
   def show
     @implement = Implement.find_by_permalink(params[:id])
+    authorize! :read, @implement
   end
 
   def is_name_unique

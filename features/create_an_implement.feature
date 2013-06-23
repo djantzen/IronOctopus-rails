@@ -3,15 +3,20 @@ Feature: Create a new implement
   I want to create a new implement
   so that my client is trained properly
 
-  Scenario: Creation of a new implement
+  Scenario: Non administrators cannot create new implements
     Given I log in as "bob_the_trainer" with "password"
+    And I am on the /implements/new page
+    Then I should see "Bob Trainer"
+
+  Scenario: Creation of a new implement
+    Given I log in as "administrator" with "password"
     And I am on the /implements/new page
     When I fill in "Name" with "New Test Implement"
     And I press "Save"
     Then I should see "New Test Implement"
 
   Scenario: Creation of a new implement with too short a name
-    Given I log in as "bob_the_trainer" with "password"
+    Given I log in as "administrator" with "password"
     And I am on the /implements/new page
     When I fill in "Name" with "N"
     And I press "Save"

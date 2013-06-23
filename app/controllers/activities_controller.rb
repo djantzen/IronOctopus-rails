@@ -48,11 +48,13 @@ class ActivitiesController < ApplicationController
 
   def edit
     @activity = Activity.find_by_permalink(params[:id])
+    authorize! :update, @activity
     new_or_edit
   end
   
   def update
     @activity = create_or_update(params)
+    authorize! :update, @activity
 
     if @activity.save
       respond_with do |format|

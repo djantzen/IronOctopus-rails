@@ -10,10 +10,12 @@ class Ability
       can :read, Feedback
 
       # implements
+      can :read, Implement
       can :create, Implement
       can :update, Implement
 
       # body part
+      can :read, BodyPart
       can :create, BodyPart
       can :update, BodyPart
     else
