@@ -2,13 +2,13 @@
   #create-update-implement-form.row-fluid
     #implement-basic-info.span3.well
       = form_for @implement, :html => {:multipart => true} do |form|
-        = form.label :name, 'Name'
-        = form.text_field :name, :class => 'required is_implement_name_unique', |
-                          :minlength => @validations[:implement][:name][:minlength],   |
-                          :maxlength => @validations[:implement][:name][:maxlength] |
-        = form.label :category, 'Category'
+        = form.label :name, "Name"
+        = form.text_field :name, :class => "required is_implement_name_unique",
+                          :minlength => @validations[:implement][:name][:minlength],
+                          :maxlength => @validations[:implement][:name][:maxlength]
+        = form.label :category, "Category"
         = form.select :category, Implement.all_categories, :selected => @implement.category
-        = render :partial => 'shared/upload_image', :locals => { :form => form }
+        = render :partial => "shared/upload_image", :locals => { :form => form }
         = image_tag @implement.image_url
         .row
           .btn-group
