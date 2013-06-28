@@ -20,6 +20,8 @@ class InvitationsController < ApplicationController
         license = @invitation.license
         license.status = 'assigned'
         license.save
+        @invitation.accepted = true
+        @invitation.save
       end
       redirect_to root_path
     end

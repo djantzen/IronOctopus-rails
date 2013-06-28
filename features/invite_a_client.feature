@@ -14,6 +14,7 @@ Feature: Invite a user
     And jill_the_client@gmail.com should be registered
     And jill_the_client@gmail.com should be confirmed
     And jill_the_client@gmail.com should be a client of bob_the_trainer@gmail.com
+    And the invitation should be accepted
     Given I am on the /users/bob_the_trainer/invitations/new page
     Then I should see "1 licenses"
 
@@ -28,5 +29,6 @@ Feature: Invite a user
     And jim_the_client@gmail.com should be registered
     And jim_the_client@gmail.com should be confirmed
     And jim_the_client@gmail.com should be a client of bob_the_trainer@gmail.com
+    And the invitation should be accepted
     Given I am on the /users/bob_the_trainer/invitations/new page
     Then I should see "1 licenses"

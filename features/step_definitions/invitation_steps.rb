@@ -1,7 +1,6 @@
 And /^Jill should receive an invitation email/ do
-  email = UserMailer.deliveries.pop
-  email.body.should have_content("You have been invited to Iron Octopus")
-  email.body.to_s =~ /accept\?invitation_token=([\w-]+)/
+  invitation_link = get_invitation_link
+  invitation_link =~ /accept\?invitation_token=([\w-]+)/
   invitation_uuid = $1
 
   post '/users', {
@@ -13,11 +12,17 @@ And /^Jill should receive an invitation email/ do
 
 end
 
+And /^the invitation should be accepted$/ do
+  invitation_link = get_invitation_link
+  invitation_link =~ /accept\?invitation_token=([\w-]+)/
+  invitation = Invitation.find_by_invitation_uuid($1);
+  invitation.accepted.should eq true
+end
+
 And /^Jim should receive an invitation email/ do
-  email = UserMailer.deliveries.pop
-  email.body.should have_content("You have been invited to Iron Octopus")
-  email.body.to_s =~ /(accept\?invitation_token=[\w-]+)/
-  get $1
+  invitation_link = get_invitation_link
+  invitation_link =~ /accept\?invitation_token=([\w-]+)/
+  get invitation_link
 end
 
 Then /^Client should be on the registration page/ do
@@ -28,4 +33,12 @@ Then /^(.*?) should be a client of (.*?)$/ do |client_email, trainer_email|
   client = User.find_by_email(client_email)
   trainer = User.find_by_email(trainer_email)
   client.trainers.include?(trainer).should eq(true)
+end
+
+private
+def get_invitation_link
+  email = UserMailer.deliveries.first
+  email.body.should have_content("You have been invited to Iron Octopus")
+  email.body.to_s =~ /(accept\?invitation_token=[\w-]+)/
+  return $1
 end

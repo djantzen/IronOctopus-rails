@@ -27,6 +27,8 @@ class UsersController < ApplicationController
           license.client = @user
           license.status = 'assigned'
           license.save
+          invitation.accepted = true
+          invitation.save
           @user.identity_confirmed = true
           @user.trainers << license.trainer
           @user.save
