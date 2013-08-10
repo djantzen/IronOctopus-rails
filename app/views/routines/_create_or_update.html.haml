@@ -5,6 +5,7 @@
   .modal-body
     = render :partial => "activities/create_or_update", :locals => { :via_ajax => true }
 #routine-builder-panel.container-fluid
+  = render :partial => "activity_sets/group", :locals => { :template => true }
   #search-browse-choose-panel.row
     .span6.well
       #search-row.row
@@ -129,33 +130,40 @@
               .span2
                 = form.label :name, "Routine Name"
               .span2
-                = form.text_field :name, :tabindex => "3", :class => "input-xlarge required is_routine_name_unique", |
-                                  :minlength => @validations[:routine][:name][:minlength], |
-                                  :maxlength => @validations[:routine][:name][:maxlength] |
+                = form.text_field :name, :tabindex => "3", :class => "input-xlarge required is_routine_name_unique",
+                                  :minlength => @validations[:routine][:name][:minlength],
+                                  :maxlength => @validations[:routine][:name][:maxlength]
             .row
               .span2
                 = form.label :goal, "Routine Goal"
               .span3
-                = form.text_field :goal, :tabindex => "4", :class => "required input-xlarge", :minlength => @validations[:routine][:goal][:minlength], |
-                                  :maxlength => @validations[:routine][:goal][:maxlength] |
-            .row
-              .span4
-                = render :partial => "shared/button", :locals => { :button_id => "import-routine-button",
-                                                                   :button_class => "btn-primary",
-                                                                   :message => "Include Activity Sets from Another Routine" }
+                = form.text_field :goal, :tabindex => "4", :class => "required input-xlarge", :minlength => @validations[:routine][:goal][:minlength],
+                                  :maxlength => @validations[:routine][:goal][:maxlength]
+            -#.row
+            -#  .span6
+            -#    = render :partial => "shared/button", :locals => { :button_id => "import-routine-button",
+            -#                                                       :button_class => "",
+            -#                                                       :message => "Include Activity Sets from Another Routine" }
+                -#= render :partial => "shared/button", :locals => { :button_id => "new-circuit-button",
+                -#                                                   :button_class => "",
+                -#                                                   :message => "New Circuit or Superset" }
           .row
             %ul#routine-activity-set-list.accordion.unstyled
-              - @routine.activity_sets.each do |activity_set|
-                %li.activity-set-form.assigned
-                  = render :partial => "activity_sets/form", :locals => { :activity => activity_set.activity, |
-                    :activity_set => activity_set, :template => false }                                       |
+              - group_activity_sets_by_group(@routine.activity_sets).each_pair do |group, activity_sets|
+                = render :partial => "activity_sets/group", :locals => { :group => group, :activity_sets => activity_sets,
+                                                                         :template => false }
+
+              -#- @routine.activity_sets.each do |activity_set|
+              -#  %li.activity-set-form.assigned
+                  -#= render :partial => "activity_sets/form", :locals => { :activity => activity_set.activity, |
+                  -#  :activity_set => activity_set, :template => false }                                       |
           .row
             .span2
               .btn-group
                 - if via_ajax
-                  = render :partial => "shared/button", :locals => { :button_id => "cancel-routine-builder-button", |
-                    :message => "Cancel" }                                                                          |
+                  = render :partial => "shared/button", :locals => { :button_id => "cancel-routine-builder-button",
+                    :message => "Cancel" }
                 - else
                   = link_to "Cancel", user_routines_path(current_user), :class => "btn"
-                = render :partial => "shared/button", :locals => { :button_id => "save-routine", |
-                         :button_class => "btn-primary", :message => "Save Routine", :return_false => false }  |
+                = render :partial => "shared/button", :locals => { :button_id => "save-routine",
+                         :button_class => "btn-primary", :message => "Save Routine", :return_false => false }

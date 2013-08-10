@@ -1,3 +1,4 @@
 .activity-set-comments-form
-  %textarea{:name => "routine[activity_sets][][comments]", :disabled => disabled}
+  - #TODO this is not working in firefox, always disabled: :disabled => disabled
+  %textarea{:name => "routine[activity_set_groups][][activity_sets][][comments]"}
     = comments

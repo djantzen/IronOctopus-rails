@@ -10,10 +10,6 @@
     .span5
       %a.accordion-toggle.activity-set-name{"data-parent" => "routine-activity-set-list", "data-toggle" => "collapse", :href => "##{template ? nil : activity_set.position}"}
         = activity.name
-    .span2.activity-set-set-count
-      %label.measure-label
-        Sets
-      %input.measure-tiny.spinner.number.positive_number.required{:value => 1, :min => 1, :name => "routine[activity_sets][][set_count]"}
     .span2.handle.pull-right
       %i.icon-resize-vertical
   .row.activity-set-comments
@@ -21,9 +17,9 @@
              :locals => { :comments => template ? "" : activity_set.comments, :disabled => false }
   .activity-set-attributes.accordion-body.collapse.in{:id => template ? nil : activity_set.position}
     .accordion-inner.container
-      = hidden_field_tag "routine[activity_sets][][activity]", activity.name
+      = hidden_field_tag "routine[activity_set_groups][][activity_sets][][activity]", activity.name
       - activity.metrics.each do |metric|
-        .row
+        .row-fluid
           - initial_value, unit = get_initial_value(activity_set, metric)
           = render :partial => "routines/measure_selector", :locals => { :measure => metric.name, :interval => 1,
                                                                          :initial_value => initial_value,

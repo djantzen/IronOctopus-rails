@@ -1,0 +1,33 @@
+- if template
+  .container-fluid.activity-set-group-template
+    .row.group-controls
+      .span3
+        %input{:name => "routine[activity_set_groups][][group_name]", :value => "Group name"}
+      .span1.activity-set-set-count
+        %label.measure-label{:for => "routine[activity_set_groups][][set_count]"}
+          Sets
+        %input.measure-tiny.spinner.number.positive_number.required{:value => 1, :min => 1, :name => "routine[activity_set_groups][][set_count]"}
+      .span1.handle.pull-right
+        %i.icon-resize-vertical
+    .row.grouped-activity-sets
+    .row.pull-right
+      = render :partial => "shared/button", :locals => { :button_class => "okay-activity-set-group-button btn-primary",
+                                                         :icon => "icon-ok", :message => "Group Complete" }
+- else
+  .container-fluid.activity-set-group
+    .row.group-controls
+      .span3
+        %input{:name => "routine[activity_set_groups][][group_name]", :value => group.name}
+      .span1.activity-set-set-count
+        %label.measure-label{:for => "routine[activity_set_groups][][set_count]"}
+          Sets
+        %input.measure-tiny.spinner.number.positive_number.required{:value => 1, :min => 1,
+                                                                    :name => "routine[activity_set_groups][][set_count]",
+                                                                    :value => group.sets }
+      .span1.handle.pull-right
+        %i.icon-resize-vertical
+    .row.grouped-activity-sets
+      - activity_sets.each do |activity_set|
+        .activity-set-form.assigned
+          = render :partial => "activity_sets/form", :locals => { :activity => activity_set.activity,
+                                                     :activity_set => activity_set, :template => false }

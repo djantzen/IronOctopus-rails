@@ -48,7 +48,9 @@ $(document).ready(function() {
   $.validator.addMethod("is_duration_valid", duration_validator, "MMM:SS or integer")
 
   $("#routine-form-panel form").validate();
-
+  $(".activity-set-group").each(function() {
+    new ActivitySetGroup($(this));
+  });
   $(".activity.assigned").each(function() {
     new ActivityListItem($(this));
   });
@@ -278,7 +280,6 @@ $(document).ready(function() {
       $(this).removeClass("ui-state-active");
     });
     reset_activity_type_list();
-    //TODO make resets for each one since this is duplicate
     update_facet_filtered_activities(false);
     $("#activity-type-list .collapse").collapse("show");
     $("#body-part-list .collapse").collapse("hide");
@@ -290,6 +291,32 @@ $(document).ready(function() {
 
   $("#clear-selections").click(function() {
     clear_selections();
+  });
+
+  $("#new-circuit-button").click(function() {
+
+    var new_activity_group = $(".activity-set-group-template").clone();
+    new_activity_group.hide();
+    new_activity_group.removeClass("activity-set-group-template");
+    new_activity_group.addClass("activity-set-group");
+    new_activity_group.attr("id", "open-activity-set-group");
+    id = Util.generate_random_id();
+//    new_activity_group.find("a.accordion-toggle").attr("href", "#" + id)
+//    new_activity_group.find("div.accordion-body").attr("id", id)
+    $("#routine-activity-set-list").append(new_activity_group);
+    new_activity_group.fadeIn();
+    new ActivitySetGroup(new_activity_group);
+
+
+//    if ($(this).hasClass("btn-primary")) {
+//      $(this).removeClass("btn-primary");
+//      $(this).text("New Circuit or Superset");
+//    } else {
+//      $(this).addClass("btn-primary");
+//      $(this).text("Finish Circuit or Superset");
+//
+//    }
+
   });
 
   clear_selections();

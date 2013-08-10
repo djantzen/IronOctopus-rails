@@ -4,6 +4,11 @@
   overflow: auto;
 }
 
+.activity-set-form {
+  margin-left: 15px;
+  margin-right: -15px;
+}
+
 .activity-set-form-template {
   display: none;
 }
@@ -28,16 +33,24 @@
 }
 
 .activity-set-set-count {
-  @extend .activity-set-control-bar;
+  //@extend .activity-set-control-bar;
 }
 
-.activity-set-form .handle {
+.handle {
   @extend .activity-set-control-bar;
   border: solid 1px #E5E5E5;
   cursor: move;
 }
 .activity-set-name {
   float: left;
+}
+
+.activity-set-group {
+  border: solid 1px;
+}
+
+.activity-set-group-template {
+  display: none;
 }
 
 .activity-display-name {

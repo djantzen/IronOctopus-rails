@@ -33,7 +33,19 @@ class this.ActivityListItem
     id = Util.generate_random_id()
     new_activity_set.find("a.accordion-toggle").attr("href", "#" + id)
     new_activity_set.find("div.accordion-body").attr("id", id)
-    $("#routine-activity-set-list").append(new_activity_set)
+
+    if ($("#open-activity-set-group").size() == 0)
+      new_activity_group = $(".activity-set-group-template").clone()
+      new_activity_group.hide()
+      new_activity_group.removeClass("activity-set-group-template")
+      new_activity_group.addClass("activity-set-group")
+      new_activity_group.attr("id", "open-activity-set-group")
+      $("#routine-activity-set-list").append(new_activity_group)
+      new_activity_group.fadeIn()
+      new ActivitySetGroup(new_activity_group)
+
+    $("#open-activity-set-group").find(".grouped-activity-sets").append(new_activity_set)
+
     new_activity_set.fadeIn()
     this.wrap_item(new_activity_set)
     return new_activity_set
@@ -49,6 +61,25 @@ class this.WorkActivityListItem extends ActivityListItem
   wrap_item: (new_activity_set) =>
     new WorkActivitySetListItem(new_activity_set)
 
+class this.ActivitySetGroup
+
+  init_spinners: (activity_set_group_form) ->
+    activity_set_group_form.find("input.spinner").spinner({ min: 0 })
+    activity_set_group_form.find("input.timespinner").timespinner()
+
+  init_finish_button: (activity_set_group_form) ->
+    finish_group_button = @activity_set_group_form_template.find(".okay-activity-set-group-button")
+    finish_group_button.click ->
+      activity_set_group_form.attr("id", null)
+      finish_group_button.remove()
+
+  init_sorting: (activity_set_group_form) ->
+    activity_set_group_form.find(".grouped-activity-sets").sortable({ handle: ".handle" }).disableSelection();
+
+  constructor: (@activity_set_group_form_template) ->
+    this.init_spinners(@activity_set_group_form_template)
+    this.init_finish_button(@activity_set_group_form_template)
+    this.init_sorting(@activity_set_group_form_template)
 
 class this.ActivitySetListItem
 
@@ -72,7 +103,6 @@ class this.ActivitySetListItem
       button.removeClass("btn-primary")
     else
       button.addClass("btn-primary")
-
 
   init_stopwatch: (activity_set_form) ->
     input = activity_set_form.find("input.timespinner")
@@ -103,6 +133,7 @@ class this.ActivitySetListItem
     clone_button = @activity_set_form.find(".clone-activity-set-button")
     measure_max_toggle_boxes = @activity_set_form.find(".measure-to-range-box")
     comments_button = @activity_set_form.find(".activity-set-comments-button")
+    activity_set_group = @activity_set_form.parents(".activity-set-group")
     @activity_set_form.find(".has-tooltip-top").tooltip({ placement: "top", html: true });
     @activity_set_form.find(".has-tooltip-bottom").tooltip({ placement: "bottom", html: true });
     @activity_set_form.find(".has-tooltip-left").tooltip({ placement: "left", html: true });
@@ -111,11 +142,6 @@ class this.ActivitySetListItem
     this.init_spinners(@activity_set_form)
     this.init_stopwatch(@activity_set_form)
     this.init_comments(@activity_set_form)
-
-    remove_measure_buttons.each ->
-      $(this).click =>
-        selector = $(this).parents(".measure-selector")
-        selector.remove()
 
     comments_button.click ->
       activity_set_form = $(this).parents(".activity-set-form")
@@ -129,15 +155,14 @@ class this.ActivitySetListItem
       else
         $(this).addClass("btn-primary")
 
-
     measure_max_toggle_boxes.each ->
       input_controls = $(this).parents(".input-controls")
-      measure_min_container = input_controls.find(".measure-min");
-      measure_max_container = input_controls.find(".measure-max");
+      measure_min_container = input_controls.find(".measure-min")
+      measure_max_container = input_controls.find(".measure-max")
 
       max_greater = (input_controls) ->
-        measure_min_container = input_controls.find(".measure-min");
-        measure_max_container = input_controls.find(".measure-max");
+        measure_min_container = input_controls.find(".measure-min")
+        measure_max_container = input_controls.find(".measure-max")
         measure_min_val = measure_min_container.find("input").val()
         measure_max_val = measure_max_container.find("input").val()
         measure_min = if measure_min_val.match(DIGITAL_FORMAT) then digital_to_seconds(measure_min_val) else parseInt(measure_min_val)
@@ -167,6 +192,8 @@ class this.ActivitySetListItem
       activity_set_form = delete_button.parents(".activity-set-form")
       activity_set_form.hide("explode")
       activity_set_form.remove()
+      unless activity_set_group.find(".grouped-activity-sets:has(*)").size() > 0
+        activity_set_group.remove()
 
     okay_button.click =>
       okay_button.parents(".collapse").collapse("hide");

@@ -1,4 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+noone:
+  login: None
+  first_name: None
+  last_name: None
+  password_digest: "$2a$10$4z5sSjDtOHRM3c/fcU2UAu89oEjPx6W9E6MbAxMYobidSovwPlX0W"
+  email: noone@ironoctop.us
 
 bob_the_trainer:
   login: bob_the_trainer

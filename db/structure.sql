@@ -7461,6 +7461,45 @@ ALTER SEQUENCE activity_attributes_activity_attribute_id_seq OWNED BY activity_a
 
 
 --
+-- Name: activity_set_groups; Type: TABLE; Schema: application; Owner: -; Tablespace: 
+--
+
+CREATE TABLE activity_set_groups (
+    activity_set_group_id integer NOT NULL,
+    name text DEFAULT 'Group of Sets'::text NOT NULL,
+    routine_id integer NOT NULL,
+    sets integer DEFAULT 1 NOT NULL,
+    created_at timestamp with time zone DEFAULT now() NOT NULL
+);
+
+
+--
+-- Name: TABLE activity_set_groups; Type: COMMENT; Schema: application; Owner: -
+--
+
+COMMENT ON TABLE activity_set_groups IS 'Groups activity sets into common notions like supersets and circuits';
+
+
+--
+-- Name: activity_set_groups_activity_set_group_id_seq; Type: SEQUENCE; Schema: application; Owner: -
+--
+
+CREATE SEQUENCE activity_set_groups_activity_set_group_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: activity_set_groups_activity_set_group_id_seq; Type: SEQUENCE OWNED BY; Schema: application; Owner: -
+--
+
+ALTER SEQUENCE activity_set_groups_activity_set_group_id_seq OWNED BY activity_set_groups.activity_set_group_id;
+
+
+--
 -- Name: activity_sets; Type: TABLE; Schema: application; Owner: -; Tablespace: 
 --
 
@@ -7471,7 +7510,9 @@ CREATE TABLE activity_sets (
     measurement_id integer NOT NULL,
     unit_set_id integer NOT NULL,
     optional boolean DEFAULT false NOT NULL,
-    comments text DEFAULT ''::text NOT NULL
+    comments text DEFAULT ''::text NOT NULL,
+    activity_set_group_id integer DEFAULT 0 NOT NULL,
+    created_at timestamp with time zone DEFAULT now() NOT NULL
 );
 
 
@@ -8256,35 +8297,6 @@ ALTER SEQUENCE programs_program_id_seq OWNED BY programs.program_id;
 
 
 --
--- Name: rangetest; Type: TABLE; Schema: application; Owner: -; Tablespace: 
---
-
-CREATE TABLE rangetest (
-    id integer NOT NULL,
-    duration int4range
-);
-
-
---
--- Name: rangetest_id_seq; Type: SEQUENCE; Schema: application; Owner: -
---
-
-CREATE SEQUENCE rangetest_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: rangetest_id_seq; Type: SEQUENCE OWNED BY; Schema: application; Owner: -
---
-
-ALTER SEQUENCE rangetest_id_seq OWNED BY rangetest.id;
-
-
---
 -- Name: routines; Type: TABLE; Schema: application; Owner: -; Tablespace: 
 --
 
@@ -8486,13 +8498,6 @@ COMMENT ON TABLE weekday_programs IS 'A table mapping routines to programs and d
 
 CREATE VIEW todays_routines AS
     SELECT r.client_id, r.routine_id FROM ((((users u JOIN routines r ON ((u.user_id = r.client_id))) JOIN scheduled_programs sp ON ((r.routine_id = sp.routine_id))) JOIN cities c ON ((u.city_id = c.city_id))) JOIN timezones tz ON (public.st_within(c.the_geom, tz.the_geom))) WHERE (sp.scheduled_on = (timezone(tz.tzid, now()))::date) UNION SELECT r.client_id, r.routine_id FROM ((((users u JOIN routines r ON ((u.user_id = r.client_id))) JOIN weekday_programs wp ON ((r.routine_id = wp.routine_id))) JOIN cities c ON ((u.city_id = c.city_id))) JOIN timezones tz ON (public.st_within(c.the_geom, tz.the_geom))) WHERE (wp.day_of_week = btrim(to_char(timezone(tz.tzid, now()), 'Day'::text)));
-
-
---
--- Name: VIEW todays_routines; Type: COMMENT; Schema: application; Owner: -
---
-
-COMMENT ON VIEW todays_routines IS 'A view describing the routines occurring today based on a program';
 
 
 --
@@ -8716,6 +8721,13 @@ ALTER TABLE ONLY activity_attributes ALTER COLUMN activity_attribute_id SET DEFA
 
 
 --
+-- Name: activity_set_group_id; Type: DEFAULT; Schema: application; Owner: -
+--
+
+ALTER TABLE ONLY activity_set_groups ALTER COLUMN activity_set_group_id SET DEFAULT nextval('activity_set_groups_activity_set_group_id_seq'::regclass);
+
+
+--
 -- Name: activity_type_id; Type: DEFAULT; Schema: application; Owner: -
 --
 
@@ -8828,13 +8840,6 @@ ALTER TABLE ONLY programs ALTER COLUMN program_id SET DEFAULT nextval('programs_
 
 
 --
--- Name: id; Type: DEFAULT; Schema: application; Owner: -
---
-
-ALTER TABLE ONLY rangetest ALTER COLUMN id SET DEFAULT nextval('rangetest_id_seq'::regclass);
-
-
---
 -- Name: routine_id; Type: DEFAULT; Schema: application; Owner: -
 --
 
@@ -8922,6 +8927,14 @@ ALTER TABLE ONLY activities
 
 ALTER TABLE ONLY activity_attributes
     ADD CONSTRAINT activity_attributes_pkey PRIMARY KEY (activity_attribute_id);
+
+
+--
+-- Name: activity_set_groups_pkey; Type: CONSTRAINT; Schema: application; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY activity_set_groups
+    ADD CONSTRAINT activity_set_groups_pkey PRIMARY KEY (activity_set_group_id);
 
 
 --
@@ -9033,7 +9046,7 @@ ALTER TABLE ONLY locations
 --
 
 ALTER TABLE ONLY locations_users
-    ADD CONSTRAINT locations_users_pkey PRIMARY KEY (location_id, user_id);
+    ADD CONSTRAINT locations_users_pkey PRIMARY KEY (user_id, location_id);
 
 
 --
@@ -9082,14 +9095,6 @@ ALTER TABLE ONLY profiles
 
 ALTER TABLE ONLY programs
     ADD CONSTRAINT programs_pkey PRIMARY KEY (program_id);
-
-
---
--- Name: rangetest_pkey; Type: CONSTRAINT; Schema: application; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY rangetest
-    ADD CONSTRAINT rangetest_pkey PRIMARY KEY (id);
 
 
 --
@@ -9391,6 +9396,13 @@ CREATE UNIQUE INDEX states_abbr_idx ON states USING btree (abbr);
 
 
 --
+-- Name: states_name_abbr_idx; Type: INDEX; Schema: application; Owner: -; Tablespace: 
+--
+
+CREATE INDEX states_name_abbr_idx ON states USING btree (name, abbr);
+
+
+--
 -- Name: states_name_idx; Type: INDEX; Schema: application; Owner: -; Tablespace: 
 --
 
@@ -9584,11 +9596,27 @@ ALTER TABLE ONLY activities_metrics
 
 
 --
+-- Name: activity_set_groups_routine_id_fkey; Type: FK CONSTRAINT; Schema: application; Owner: -
+--
+
+ALTER TABLE ONLY activity_set_groups
+    ADD CONSTRAINT activity_set_groups_routine_id_fkey FOREIGN KEY (routine_id) REFERENCES routines(routine_id) DEFERRABLE;
+
+
+--
 -- Name: activity_sets_activity_id_fkey; Type: FK CONSTRAINT; Schema: application; Owner: -
 --
 
 ALTER TABLE ONLY activity_sets
     ADD CONSTRAINT activity_sets_activity_id_fkey FOREIGN KEY (activity_id) REFERENCES activities(activity_id) DEFERRABLE;
+
+
+--
+-- Name: activity_sets_activity_set_group_id_fkey; Type: FK CONSTRAINT; Schema: application; Owner: -
+--
+
+ALTER TABLE ONLY activity_sets
+    ADD CONSTRAINT activity_sets_activity_set_group_id_fkey FOREIGN KEY (activity_set_group_id) REFERENCES activity_set_groups(activity_set_group_id) DEFERRABLE;
 
 
 --
@@ -10038,3 +10066,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130514042730');
 INSERT INTO schema_migrations (version) VALUES ('20130602221432');
 
 INSERT INTO schema_migrations (version) VALUES ('20130623041211');
+
+INSERT INTO schema_migrations (version) VALUES ('20130707021853');

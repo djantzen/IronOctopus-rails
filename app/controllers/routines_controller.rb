@@ -124,22 +124,28 @@ class RoutinesController < ApplicationController
       routine.name = params[:name]
       routine.goal = params[:goal]
       routine.client = User.find_by_login(params[:client]) if routine.client.nil?
-      routine.activity_sets.each do |activity_set|
-        activity_set.delete
-      end
+
+      # Delete all existing ActivitySetGroups and ActivitySets
       routine.activity_sets.clear
+      routine.activity_set_groups.clear
 
       position = 0
-      (params[:activity_sets] || []).each do |activity_set_map|
-        set_count = activity_set_map[:set_count].to_i
-        activity = Activity.find_by_name(activity_set_map[:activity])
-        unit_map = Unit.activity_set_to_unit_map(activity_set_map)
-        metric_map = Measurement.activity_set_to_metric_map(activity_set_map, unit_map)
-        measurement = Measurement.find_or_create(metric_map)
-        unit_set = UnitSet.find_or_create(unit_map)
+      (params[:activity_set_groups] || []).each do |activity_set_group_map|
+        activity_set_group = ActivitySetGroup.new
+        activity_set_group.sets = activity_set_group_map[:set_count]
+        activity_set_group.name = activity_set_group_map[:group_name] # change to name
 
-        (1 .. set_count).each do |set_num|
+        routine.activity_set_groups << activity_set_group
+
+        (activity_set_group_map[:activity_sets] || []).each do |activity_set_map|
           position += 1
+
+          activity = Activity.find_by_name(activity_set_map[:activity])
+          unit_map = Unit.activity_set_to_unit_map(activity_set_map)
+          metric_map = Measurement.activity_set_to_metric_map(activity_set_map, unit_map)
+          measurement = Measurement.find_or_create(metric_map)
+          unit_set = UnitSet.find_or_create(unit_map)
+
           activity_set = ActivitySet.new
           activity_set.comments = activity_set_map[:comments]
           activity_set.routine = routine
@@ -147,7 +153,9 @@ class RoutinesController < ApplicationController
           activity_set.position = position
           activity_set.unit_set = unit_set
           activity_set.measurement = measurement
+          activity_set_group.activity_sets << activity_set
           routine.activity_sets << activity_set
+
         end
 
       end

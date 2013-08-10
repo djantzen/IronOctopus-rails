@@ -1,5 +1,14 @@
 module RoutinesHelper
-  
+
+  def group_activity_sets_by_group(activity_sets)
+    activity_sets.inject(ActiveSupport::OrderedHash.new) do |hash, activity_set|
+      hash[activity_set.activity_set_group] ||= []
+      hash[activity_set.activity_set_group] << activity_set
+      hash
+    end
+
+  end
+
   def group_body_parts_by_region(body_parts)
     body_parts.inject({}) do |hash, body_part|
       hash[body_part.region] ||= []

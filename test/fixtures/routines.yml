@@ -1,3 +1,10 @@
+none:
+  name: None
+  goal: None
+  permalink: none
+  client: none
+  trainer: none
+
 sallys_push_pull_upper:
   name: Push Pull Upper
   goal: Balanced upper body weight training
