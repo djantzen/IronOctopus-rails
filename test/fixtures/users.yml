@@ -1,8 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-noone:
+none:
+  user_id: 0
   login: None
   first_name: None
   last_name: None
+  city_id: 0
   password_digest: "$2a$10$4z5sSjDtOHRM3c/fcU2UAu89oEjPx6W9E6MbAxMYobidSovwPlX0W"
   email: noone@ironoctop.us
 

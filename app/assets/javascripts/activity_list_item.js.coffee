@@ -47,19 +47,26 @@ class this.ActivityListItem
     $("#open-activity-set-group").find(".grouped-activity-sets").append(new_activity_set)
 
     new_activity_set.fadeIn()
-    this.wrap_item(new_activity_set)
-    return new_activity_set
-
-  wrap_item: (new_activity_set) =>
     new ActivitySetListItem(new_activity_set)
-
+    return new_activity_set
 
 class this.WorkActivityListItem extends ActivityListItem
   constructor: (@activity_set_form_template) ->
     super
 
-  wrap_item: (new_activity_set) =>
+  add_to_list: () =>
+    new_activity_set = @activity_set_form_template.find(".activity-set-form-template").clone()
+    Util.show_flash("Added " + @activity_set_form_template.find("a:first").text() + " to the routine")
+    new_activity_set.hide()
+    new_activity_set.removeClass("activity-set-form-template")
+    new_activity_set.addClass("activity-set-form")
+    id = Util.generate_random_id()
+    new_activity_set.find("a.accordion-toggle").attr("href", "#" + id)
+    new_activity_set.find("div.accordion-body").attr("id", id)
+    $("#routine-activity-set-list").append(new_activity_set)
+    new_activity_set.fadeIn()
     new WorkActivitySetListItem(new_activity_set)
+    return new_activity_set
 
 class this.ActivitySetGroup
 

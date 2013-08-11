@@ -1,9 +1,10 @@
 none:
+  routine_id: 0
   name: None
   goal: None
   permalink: none
-  client: none
-  trainer: none
+  client_id: 0
+  trainer_id: 0
 
 sallys_push_pull_upper:
   name: Push Pull Upper

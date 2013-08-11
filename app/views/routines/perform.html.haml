@@ -10,11 +10,13 @@
     .tab-content
       #routine-pane.tab-pane.active
         %ul#routine-activity-set-list.unstyled
-          - @routine.activity_sets.each do |activity_set|
-            %li.activity-set-form.work
-              = render :partial => "activity_sets/performance_form",
-                       :locals => { :activity => activity_set.activity,
-                                    :activity_set => activity_set, :template => false }
+          - @routine.activity_set_groups.each do |activity_set_group|
+            - (1 .. activity_set_group.sets).each do |set_number|
+              - activity_set_group.activity_sets.each do |activity_set|
+                %li.activity-set-form.work
+                  = render :partial => "activity_sets/performance_form",
+                           :locals => { :activity => activity_set.activity,
+                                        :activity_set => activity_set, :template => false }
       #activity-list-pane.tab-pane
         #activity-search-widget.well.well-small
           %span.icon_clear

@@ -1,3 +1,8 @@
+none:
+  state_id: 0
+  name: None
+  abbr: none
+  the_geom: "010100000000000000000000000000000000000000"
 hawaii:
   name: Hawaii
   abbr: HI

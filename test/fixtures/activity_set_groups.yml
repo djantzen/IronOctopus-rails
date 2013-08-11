@@ -1,4 +1,20 @@
 none:
+  activity_set_group_id: 0
   name: None
-  group_type: None
-  routine: none
+  routine_id: 0
+
+sallys_whole_body_mix_squat_set_of_three:
+  routine: sallys_whole_body_mix
+  sets: 3
+
+sallys_whole_body_mix_squat_treadmill_run:
+  routine: sallys_whole_body_mix
+  sets: 1
+
+sallys_push_pull_upper_bench_press_set_of_three:
+  routine: sallys_push_pull_upper
+  sets: 3
+
+sallys_push_pull_upper_curl_and_press_set_of_three:
+  routine: sallys_push_pull_upper
+  sets: 3

@@ -7,13 +7,14 @@ Feature: Perform work against a routine
   Scenario: I am able to add an unplanned activity to the routine
     Given I log in as "sally_the_client" with "password"
     And I am on the /users/sally_the_client/routines/wholebodymix/perform page
+    And there should be 4 activity sets
     When I click "#benchpress"
     Then I should see "Added Bench Press to the routine"
-    And there should be 3 activity sets
+    And there should be 5 activity sets
     When I click "#routine-activity-set-list .activity-set-form:nth(1) .clone-activity-set-button"
-    Then there should be 4 activity sets
+    Then there should be 6 activity sets
     When I click "#routine-activity-set-list .activity-set-form:nth(2) .delete-activity-set-button"
-    Then there should be 3 activity sets
+    Then there should be 5 activity sets
 
   @javascript
   Scenario: I can filter activities by searching and reset
