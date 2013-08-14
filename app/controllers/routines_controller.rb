@@ -126,14 +126,16 @@ class RoutinesController < ApplicationController
       routine.client = User.find_by_login(params[:client]) if routine.client.nil?
 
       # Delete all existing ActivitySetGroups and ActivitySets
-      routine.activity_sets.clear
+      routine.activity_set_groups.each do |group|
+        group.activity_sets.clear
+      end
       routine.activity_set_groups.clear
 
       position = 0
       (params[:activity_set_groups] || []).each do |activity_set_group_map|
         activity_set_group = ActivitySetGroup.new
         activity_set_group.sets = activity_set_group_map[:set_count]
-        activity_set_group.name = activity_set_group_map[:group_name] # change to name
+        activity_set_group.name = activity_set_group_map[:group_name]
 
         routine.activity_set_groups << activity_set_group
 
@@ -154,8 +156,6 @@ class RoutinesController < ApplicationController
           activity_set.unit_set = unit_set
           activity_set.measurement = measurement
           activity_set_group.activity_sets << activity_set
-          routine.activity_sets << activity_set
-
         end
 
       end

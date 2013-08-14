@@ -1,5 +1,4 @@
 sallys_push_pull_upper_bench_press:
-  routine: sallys_push_pull_upper
   activity: bench_press
   position: 1.0
   measurement: resistance_one
@@ -7,7 +6,6 @@ sallys_push_pull_upper_bench_press:
   activity_set_group: sallys_push_pull_upper_bench_press_set_of_three
 
 sallys_push_pull_upper_curl_and_press:
-  routine: sallys_push_pull_upper
   activity: curl_and_press
   position: 2.0
   measurement: resistance_one
@@ -15,7 +13,6 @@ sallys_push_pull_upper_curl_and_press:
   activity_set_group: sallys_push_pull_upper_curl_and_press_set_of_three
 
 sallys_whole_body_mix_squat:
-  routine: sallys_whole_body_mix
   activity: squat
   position: 1.0
   measurement: resistance_one
@@ -23,7 +20,6 @@ sallys_whole_body_mix_squat:
   activity_set_group: sallys_whole_body_mix_squat_set_of_three
 
 sallys_whole_body_mix_treadmill_run:
-  routine: sallys_whole_body_mix
   activity: treadmill_run
   position: 2.0
   measurement: cardio_one

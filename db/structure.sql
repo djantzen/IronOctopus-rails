@@ -740,7 +740,7 @@ DECLARE
   
 BEGIN
   
-  -- RAISE DEBUG '%,%', cur_path, ST_GeometryType(the_geom);
+  RAISE DEBUG '%,%', cur_path, ST_GeometryType(the_geom);
 
   -- Special case collections : iterate and return the DumpPoints of the geometries
 
@@ -1051,7 +1051,7 @@ BEGIN
 
 
 	-- Verify dimension
-	IF ( (new_dim >4) OR (new_dim <2) ) THEN
+	IF ( (new_dim >4) OR (new_dim <0) ) THEN
 		RAISE EXCEPTION 'invalid dimension';
 		RETURN 'fail';
 	END IF;
@@ -2708,7 +2708,7 @@ BEGIN
 	EXCEPTION
 		WHEN undefined_function THEN
 			rast_scr_ver := NULL;
-			RAISE NOTICE 'Function postgis_raster_scripts_installed() not found. Is raster support enabled and rtpostgis.sql installed?';
+			RAISE NOTICE 'Function postgis_raster_scripts_installed() not found. Is raster support enabled and topology.sql installed?';
 	END;
 
 	BEGIN
@@ -2716,7 +2716,7 @@ BEGIN
 	EXCEPTION
 		WHEN undefined_function THEN
 			rast_lib_ver := NULL;
-			RAISE NOTICE 'Function postgis_raster_lib_version() not found. Is raster support enabled and rtpostgis.sql installed?';
+			RAISE NOTICE 'Function postgis_raster_lib_version() not found. Is raster support enabled and topology.sql installed?';
 	END;
 
 	fullver = 'POSTGIS="' || libver;
@@ -2864,7 +2864,7 @@ CREATE FUNCTION postgis_proj_version() RETURNS text
 
 CREATE FUNCTION postgis_scripts_build_date() RETURNS text
     LANGUAGE sql IMMUTABLE
-    AS $$SELECT '2012-12-15 00:18:57'::text AS version$$;
+    AS $$SELECT '2012-06-02 03:54:23'::text AS version$$;
 
 
 --
@@ -2873,7 +2873,7 @@ CREATE FUNCTION postgis_scripts_build_date() RETURNS text
 
 CREATE FUNCTION postgis_scripts_installed() RETURNS text
     LANGUAGE sql IMMUTABLE
-    AS $$ SELECT '2.0.1'::text || ' r' || 9979::text AS version $$;
+    AS $$ SELECT '2.0.0'::text || ' r' || 9605::text AS version $$;
 
 
 --
@@ -7466,7 +7466,7 @@ ALTER SEQUENCE activity_attributes_activity_attribute_id_seq OWNED BY activity_a
 
 CREATE TABLE activity_set_groups (
     activity_set_group_id integer NOT NULL,
-    name text DEFAULT 'Group of Sets'::text NOT NULL,
+    name text DEFAULT ''::text NOT NULL,
     routine_id integer NOT NULL,
     sets integer DEFAULT 1 NOT NULL,
     created_at timestamp with time zone DEFAULT now() NOT NULL
@@ -7504,14 +7504,12 @@ ALTER SEQUENCE activity_set_groups_activity_set_group_id_seq OWNED BY activity_s
 --
 
 CREATE TABLE activity_sets (
-    routine_id integer NOT NULL,
     "position" integer DEFAULT 1 NOT NULL,
     activity_id integer NOT NULL,
     measurement_id integer NOT NULL,
     unit_set_id integer NOT NULL,
-    optional boolean DEFAULT false NOT NULL,
     comments text DEFAULT ''::text NOT NULL,
-    activity_set_group_id integer DEFAULT 0 NOT NULL,
+    activity_set_group_id integer NOT NULL,
     created_at timestamp with time zone DEFAULT now() NOT NULL
 );
 
@@ -8297,35 +8295,6 @@ ALTER SEQUENCE programs_program_id_seq OWNED BY programs.program_id;
 
 
 --
--- Name: rangetest; Type: TABLE; Schema: application; Owner: -; Tablespace: 
---
-
-CREATE TABLE rangetest (
-    id integer NOT NULL,
-    duration int4range
-);
-
-
---
--- Name: rangetest_id_seq; Type: SEQUENCE; Schema: application; Owner: -
---
-
-CREATE SEQUENCE rangetest_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: rangetest_id_seq; Type: SEQUENCE OWNED BY; Schema: application; Owner: -
---
-
-ALTER SEQUENCE rangetest_id_seq OWNED BY rangetest.id;
-
-
---
 -- Name: routines; Type: TABLE; Schema: application; Owner: -; Tablespace: 
 --
 
@@ -8487,7 +8456,7 @@ CREATE TABLE users (
     identity_confirmed boolean DEFAULT false,
     created_at timestamp with time zone DEFAULT now() NOT NULL,
     updated_at timestamp with time zone DEFAULT now() NOT NULL,
-    city_id integer DEFAULT 0 NOT NULL,
+    city_id integer DEFAULT 685 NOT NULL,
     is_admin boolean DEFAULT false NOT NULL
 );
 
@@ -8660,7 +8629,7 @@ SET search_path = public, pg_catalog;
 --
 
 CREATE VIEW geography_columns AS
-    SELECT current_database() AS f_table_catalog, n.nspname AS f_table_schema, c.relname AS f_table_name, a.attname AS f_geography_column, postgis_typmod_dims(a.atttypmod) AS coord_dimension, postgis_typmod_srid(a.atttypmod) AS srid, postgis_typmod_type(a.atttypmod) AS type FROM pg_class c, pg_attribute a, pg_type t, pg_namespace n WHERE (((((((t.typname = 'geography'::name) AND (a.attisdropped = false)) AND (a.atttypid = t.oid)) AND (a.attrelid = c.oid)) AND (c.relnamespace = n.oid)) AND (NOT pg_is_other_temp_schema(c.relnamespace))) AND has_table_privilege(c.oid, 'SELECT'::text));
+    SELECT current_database() AS f_table_catalog, n.nspname AS f_table_schema, c.relname AS f_table_name, a.attname AS f_geography_column, postgis_typmod_dims(a.atttypmod) AS coord_dimension, postgis_typmod_srid(a.atttypmod) AS srid, postgis_typmod_type(a.atttypmod) AS type FROM pg_class c, pg_attribute a, pg_type t, pg_namespace n WHERE ((((((t.typname = 'geography'::name) AND (a.attisdropped = false)) AND (a.atttypid = t.oid)) AND (a.attrelid = c.oid)) AND (c.relnamespace = n.oid)) AND (NOT pg_is_other_temp_schema(c.relnamespace)));
 
 
 --
@@ -8668,7 +8637,7 @@ CREATE VIEW geography_columns AS
 --
 
 CREATE VIEW geometry_columns AS
-    SELECT (current_database())::character varying(256) AS f_table_catalog, (n.nspname)::character varying(256) AS f_table_schema, (c.relname)::character varying(256) AS f_table_name, (a.attname)::character varying(256) AS f_geometry_column, COALESCE(NULLIF(postgis_typmod_dims(a.atttypmod), 2), postgis_constraint_dims((n.nspname)::text, (c.relname)::text, (a.attname)::text), 2) AS coord_dimension, COALESCE(NULLIF(postgis_typmod_srid(a.atttypmod), 0), postgis_constraint_srid((n.nspname)::text, (c.relname)::text, (a.attname)::text), 0) AS srid, (replace(replace(COALESCE(NULLIF(upper(postgis_typmod_type(a.atttypmod)), 'GEOMETRY'::text), (postgis_constraint_type((n.nspname)::text, (c.relname)::text, (a.attname)::text))::text, 'GEOMETRY'::text), 'ZM'::text, ''::text), 'Z'::text, ''::text))::character varying(30) AS type FROM pg_class c, pg_attribute a, pg_type t, pg_namespace n WHERE (((((((((t.typname = 'geometry'::name) AND (a.attisdropped = false)) AND (a.atttypid = t.oid)) AND (a.attrelid = c.oid)) AND (c.relnamespace = n.oid)) AND ((c.relkind = 'r'::"char") OR (c.relkind = 'v'::"char"))) AND (NOT pg_is_other_temp_schema(c.relnamespace))) AND (NOT ((n.nspname = 'public'::name) AND (c.relname = 'raster_columns'::name)))) AND has_table_privilege(c.oid, 'SELECT'::text));
+    SELECT (current_database())::character varying(256) AS f_table_catalog, (n.nspname)::character varying(256) AS f_table_schema, (c.relname)::character varying(256) AS f_table_name, (a.attname)::character varying(256) AS f_geometry_column, COALESCE(NULLIF(postgis_typmod_dims(a.atttypmod), 2), postgis_constraint_dims((n.nspname)::text, (c.relname)::text, (a.attname)::text), 2) AS coord_dimension, COALESCE(NULLIF(postgis_typmod_srid(a.atttypmod), 0), postgis_constraint_srid((n.nspname)::text, (c.relname)::text, (a.attname)::text), 0) AS srid, (replace(replace(COALESCE(NULLIF(upper(postgis_typmod_type(a.atttypmod)), 'GEOMETRY'::text), (postgis_constraint_type((n.nspname)::text, (c.relname)::text, (a.attname)::text))::text, 'GEOMETRY'::text), 'ZM'::text, ''::text), 'Z'::text, ''::text))::character varying(30) AS type FROM pg_class c, pg_attribute a, pg_type t, pg_namespace n WHERE ((((((((t.typname = 'geometry'::name) AND (a.attisdropped = false)) AND (a.atttypid = t.oid)) AND (a.attrelid = c.oid)) AND (c.relnamespace = n.oid)) AND ((c.relkind = 'r'::"char") OR (c.relkind = 'v'::"char"))) AND (NOT pg_is_other_temp_schema(c.relnamespace))) AND (NOT ((n.nspname = 'public'::name) AND (c.relname = 'raster_columns'::name))));
 
 
 --
@@ -8876,13 +8845,6 @@ ALTER TABLE ONLY programs ALTER COLUMN program_id SET DEFAULT nextval('programs_
 
 
 --
--- Name: id; Type: DEFAULT; Schema: application; Owner: -
---
-
-ALTER TABLE ONLY rangetest ALTER COLUMN id SET DEFAULT nextval('rangetest_id_seq'::regclass);
-
-
---
 -- Name: routine_id; Type: DEFAULT; Schema: application; Owner: -
 --
 
@@ -8985,7 +8947,7 @@ ALTER TABLE ONLY activity_set_groups
 --
 
 ALTER TABLE ONLY activity_sets
-    ADD CONSTRAINT activity_sets_pkey PRIMARY KEY (routine_id, "position");
+    ADD CONSTRAINT activity_sets_pkey PRIMARY KEY (activity_set_group_id, "position");
 
 
 --
@@ -9138,14 +9100,6 @@ ALTER TABLE ONLY profiles
 
 ALTER TABLE ONLY programs
     ADD CONSTRAINT programs_pkey PRIMARY KEY (program_id);
-
-
---
--- Name: rangetest_pkey; Type: CONSTRAINT; Schema: application; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY rangetest
-    ADD CONSTRAINT rangetest_pkey PRIMARY KEY (id);
 
 
 --
@@ -9672,14 +9626,6 @@ ALTER TABLE ONLY activity_sets
 
 
 --
--- Name: activity_sets_routine_id_fkey; Type: FK CONSTRAINT; Schema: application; Owner: -
---
-
-ALTER TABLE ONLY activity_sets
-    ADD CONSTRAINT activity_sets_routine_id_fkey FOREIGN KEY (routine_id) REFERENCES routines(routine_id) DEFERRABLE;
-
-
---
 -- Name: activity_sets_unit_set_id_fkey; Type: FK CONSTRAINT; Schema: application; Owner: -
 --
 
@@ -10112,7 +10058,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130602221432');
 INSERT INTO schema_migrations (version) VALUES ('20130623041211');
 
 INSERT INTO schema_migrations (version) VALUES ('20130707021853');
-
-INSERT INTO schema_migrations (version) VALUES ('20130707021858');
 
 INSERT INTO schema_migrations (version) VALUES ('20130707021863');

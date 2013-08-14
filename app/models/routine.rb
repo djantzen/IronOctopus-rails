@@ -5,8 +5,8 @@ class Routine < ActiveRecord::Base
  
   has_many :activities, :through => :activity_sets
   has_many :measurements, :through => :activity_sets
-  has_many :activity_sets, :dependent => :delete_all, :order => :position
   has_many :activity_set_groups, :dependent => :delete_all
+  has_many :activity_sets, :through => :activity_set_groups, :order => :position
 
   has_many :weekday_programs
   has_many :scheduled_programs

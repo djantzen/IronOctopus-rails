@@ -1,8 +1,3 @@
-none:
-  activity_set_group_id: 0
-  name: None
-  routine_id: 0
-
 sallys_whole_body_mix_squat_set_of_three:
   routine: sallys_whole_body_mix
   sets: 3

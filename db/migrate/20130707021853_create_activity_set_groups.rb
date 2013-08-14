@@ -3,7 +3,7 @@ class CreateActivitySetGroups < ActiveRecord::Migration
     execute <<-EOS
       create table application.activity_set_groups (
         activity_set_group_id serial primary key,
-        name text not null default 'Group of Sets',
+        name text not null default '',
         routine_id integer not null references application.routines(routine_id) deferrable,
         sets integer not null default 1,
         created_at timestamptz not null default now()
