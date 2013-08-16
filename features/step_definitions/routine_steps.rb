@@ -11,13 +11,13 @@ end
 
 When /^I fill in minimum (.*?) with "(.*?)"$/ do |measure, value|
   within @current_node do
-    fill_in("routine[activity_sets][][#{measure.downcase}_min]", :with => value)
+    fill_in("routine[activity_set_groups][][activity_sets][][#{measure.downcase}_min]", :with => value)
   end
 end
 
 When /^I fill in maximum (.*?) with "(.*?)"$/ do |measure, value|
   within @current_node do
-    fill_in("routine[activity_sets][][#{measure.downcase}_max]", :with => value)
+    fill_in("routine[activity_set_groups][][activity_sets][][#{measure.downcase}_max]", :with => value)
   end
 end
 
