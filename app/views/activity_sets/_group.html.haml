@@ -1,32 +1,21 @@
-- if template
-  .container-fluid.activity-set-group-template
-    .row.group-controls
-      .span3
-        %input.input-small{:name => "routine[activity_set_groups][][group_name]", :placeholder => "Group name"}
-      .span1.activity-set-set-count
-        %label.measure-label{:for => "routine[activity_set_groups][][set_count]"}
-          Sets
-        %input.measure-tiny.spinner.number.positive_number.required{:value => 1, :min => 1, :name => "routine[activity_set_groups][][set_count]"}
-      .span1.handle.pull-right
-        %i.icon-resize-vertical
-    .row.grouped-activity-sets
-    .row.pull-right
-      = render :partial => "shared/button", :locals => { :button_class => "okay-activity-set-group-button btn-primary",
-                                                         :icon => "icon-ok", :message => "Group Complete" }
-- else
-  .container-fluid.activity-set-group
-    .row.group-controls
-      .span3
-        %input.input-small{:name => "routine[activity_set_groups][][group_name]", :value => group.name, :placeholder => "Group name"}
-      .span1.activity-set-set-count
-        %label.measure-label{:for => "routine[activity_set_groups][][set_count]"}
-          Sets
-        %input.measure-tiny.spinner.number.positive_number.required{:value => 1, :min => 1,
-                                                                    :name => "routine[activity_set_groups][][set_count]",
-                                                                    :value => group.sets }
-      .span1.handle.pull-right
-        %i.icon-resize-vertical
-    .row.grouped-activity-sets
+.container-fluid{ :class => (template ? "activity-set-group-template" : "activity-set-group")}
+  .row.group-controls
+    .span3
+      %input.input-small{:name => "routine[activity_set_groups][][group_name]", :value => (template ? "" : group.name),
+                         :placeholder => "Group name"}
+    .span1.activity-set-set-count
+      %label.measure-label{:for => "routine[activity_set_groups][][set_count]"}
+        Sets
+      %input.measure-tiny.spinner.number.positive_number.required{:value => (template ? 1 : group.sets), :min => 1,
+                                                                  :name => "routine[activity_set_groups][][set_count]"}
+    .span1.handle.pull-right
+      %i.icon-resize-vertical
+  .row.grouped-activity-sets
+    - if template
+      .row.pull-right
+        = render :partial => "shared/button", :locals => { :button_class => "okay-activity-set-group-button btn-primary",
+                                                           :icon => "icon-ok", :message => "Group Complete" }
+    - else
       - activity_sets.each do |activity_set|
         .activity-set-form.assigned
           = render :partial => "activity_sets/form", :locals => { :activity => activity_set.activity,

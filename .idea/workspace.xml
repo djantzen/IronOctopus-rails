@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46f8a447-b9ed-44ae-be1c-95fe4e4f3fab" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/routines/sheet.html.haml" afterPath="$PROJECT_DIR$/app/views/routines/sheet.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/activity_sets/_group.html.haml" afterPath="$PROJECT_DIR$/app/views/activity_sets/_group.html.haml" />
     </list>
     <ignored path="IronOctopus-rails.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,10 +30,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="routines_controller.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="routines_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/routines_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="137" column="0" selection-start="4305" selection-end="4305" vertical-scroll-proportion="0.0">
+            <state line="159" column="0" selection-start="5284" selection-end="5284" vertical-scroll-proportion="0.890511">
               <folding />
             </state>
           </provider>
@@ -51,16 +51,7 @@
       <file leaf-file-name="perform.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/routines/perform.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="17" selection-start="155" selection-end="155" vertical-scroll-proportion="-0.625">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_set_group.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/activity_set_group.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="0" selection-start="153" selection-end="153" vertical-scroll-proportion="0.0">
+            <state line="5" column="17" selection-start="155" selection-end="155" vertical-scroll-proportion="-2.4583333">
               <folding />
             </state>
           </provider>
@@ -69,16 +60,7 @@
       <file leaf-file-name="_group.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/activity_sets/_group.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="31" selection-start="551" selection-end="551" vertical-scroll-proportion="-6.25">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sheet.html.haml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/views/routines/sheet.html.haml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="0" selection-start="1198" selection-end="1198" vertical-scroll-proportion="0.69018406">
+            <state line="5" column="33" selection-start="336" selection-end="336" vertical-scroll-proportion="-3.125">
               <folding />
             </state>
           </provider>
@@ -108,7 +90,6 @@
       <list>
         <option value="$PROJECT_DIR$/app/assets/javascripts/activity_list_item.js.coffee" />
         <option value="$PROJECT_DIR$/app/views/routines/_create_or_update.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/activity_sets/_group.html.haml" />
         <option value="/Rails IronOctopus-rails: development" />
         <option value="$PROJECT_DIR$/test/fixtures/activity_set_groups.yml" />
         <option value="$PROJECT_DIR$/test/fixtures/routines.yml" />
@@ -122,6 +103,7 @@
         <option value="$PROJECT_DIR$/db/migrate/20130707021863_alter_activity_sets_to_reference_groups.rb" />
         <option value="$PROJECT_DIR$/app/controllers/routines_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/routines/sheet.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/activity_sets/_group.html.haml" />
       </list>
     </option>
   </component>
@@ -961,20 +943,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/routines/perform.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="17" selection-start="155" selection-end="155" vertical-scroll-proportion="-0.625">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/activity_set_group.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="153" selection-end="153" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/routine.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="61" selection-start="408" selection-end="408" vertical-scroll-proportion="0.0">
@@ -1003,13 +971,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/routines_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="137" column="0" selection-start="4305" selection-end="4305" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20130707021863_alter_activity_sets_to_reference_groups.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="22" column="5" selection-start="957" selection-end="957" vertical-scroll-proportion="0.36290324">
@@ -1017,16 +978,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/activity_sets/_group.html.haml">
+    <entry file="file://$PROJECT_DIR$/app/views/routines/sheet.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="31" selection-start="551" selection-end="551" vertical-scroll-proportion="-6.25">
+        <state line="30" column="0" selection-start="1198" selection-end="1198" vertical-scroll-proportion="0.69018406">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/routines/sheet.html.haml">
+    <entry file="file://$PROJECT_DIR$/app/views/activity_sets/_group.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="0" selection-start="1198" selection-end="1198" vertical-scroll-proportion="0.69018406">
+        <state line="5" column="33" selection-start="336" selection-end="336" vertical-scroll-proportion="-3.125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/activity_set_group.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="153" selection-end="153" vertical-scroll-proportion="0.08595989">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/routines/perform.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="17" selection-start="155" selection-end="155" vertical-scroll-proportion="-2.4583333">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/routines_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="159" column="0" selection-start="5284" selection-end="5284" vertical-scroll-proportion="0.890511">
           <folding />
         </state>
       </provider>
