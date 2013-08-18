@@ -45,7 +45,7 @@ class RoutinesController < ApplicationController
 
   def show
     client = User.find_by_login(params[:user_id])
-    @routine = Routine.first(:conditions => { :client_id => client.user_id, :permalink => params[:id] })
+    @routine = Routine.where(:client_id => client.user_id, :permalink => params[:id]).first
 
     authorize! :read, @routine
     respond_with do |format|
@@ -55,7 +55,7 @@ class RoutinesController < ApplicationController
 
   def perform
     @client = User.find_by_login(params[:user_id])
-    @routine = Routine.first(:conditions => { :client_id => @client.user_id, :permalink => params[:routine_id] })
+    @routine = Routine.where(:client_id => @client.user_id, :permalink => params[:routine_id]).first
     @activities = Activity.order(:name).includes(:activity_type)
     respond_with do |format|
       format.html { render :html => @routine }
@@ -72,13 +72,13 @@ class RoutinesController < ApplicationController
 
   def edit
     new_or_edit
-    @routine = Routine.first(:conditions => { :client_id => @client.user_id, :permalink => params[:id] })
+    @routine = Routine.where(:client_id => @client.user_id, :permalink => params[:id]).first
     authorize! :update, @routine
   end
 
   def update
     @client = User.find_by_login(params[:user_id])
-    @routine = Routine.first(:conditions => { :client_id => @client.user_id, :permalink => params[:id] })
+    @routine = Routine.where(:client_id => @client.user_id, :permalink => params[:id]).first
 
     @routine = create_or_update(@routine, params[:routine])
     if @routine.errors.empty?
@@ -106,7 +106,7 @@ class RoutinesController < ApplicationController
 
   def fetch_activity_sets
     user = User.find_by_login(params[:user_id])
-    routine = Routine.first(:conditions => { :client_id => user.user_id, :permalink => params[:routine_id] })
+    routine = Routine.where(:client_id => user.user_id, :permalink => params[:routine_id]).first
 
     @activity_sets = routine.activity_sets
     respond_with do |format|
@@ -132,14 +132,11 @@ class RoutinesController < ApplicationController
       routine.activity_set_groups.clear
 
       position = 0
-      (params[:activity_set_groups] || []).each do |activity_set_group_map|
-        activity_set_group = ActivitySetGroup.new
-        activity_set_group.sets = activity_set_group_map[:set_count]
-        activity_set_group.name = activity_set_group_map[:group_name]
+      routine.activity_set_groups = (params[:activity_set_groups] || []).map do |activity_set_group_map|
+        activity_set_group = ActivitySetGroup.new(:sets => activity_set_group_map[:set_count],
+                                                  :name => activity_set_group_map[:group_name])
 
-        routine.activity_set_groups << activity_set_group
-
-        (activity_set_group_map[:activity_sets] || []).each do |activity_set_map|
+        activity_set_group.activity_sets = (activity_set_group_map[:activity_sets] || []).map do |activity_set_map|
           position += 1
 
           activity = Activity.find_by_name(activity_set_map[:activity])
@@ -148,16 +145,11 @@ class RoutinesController < ApplicationController
           measurement = Measurement.find_or_create(metric_map)
           unit_set = UnitSet.find_or_create(unit_map)
 
-          activity_set = ActivitySet.new
-          activity_set.comments = activity_set_map[:comments]
-          activity_set.routine = routine
-          activity_set.activity = activity
-          activity_set.position = position
-          activity_set.unit_set = unit_set
-          activity_set.measurement = measurement
-          activity_set_group.activity_sets << activity_set
+          ActivitySet.new(:activity => activity, :comments => activity_set_map[:comments],
+                          :position => position, :unit_set => unit_set, :measurement => measurement)
         end
 
+        activity_set_group
       end
       routine.save
     end

@@ -11,12 +11,12 @@
     .span1.handle.pull-right
       %i.icon-resize-vertical
   .row.grouped-activity-sets
+    - unless template
+      - activity_sets.each do |activity_set|
+        .activity-set-form.assigned
+          = render :partial => "activity_sets/form", :locals => { :activity => activity_set.activity,
+                                                     :activity_set => activity_set, :template => false }
   - if template
     .row.pull-right
       = render :partial => "shared/button", :locals => { :button_class => "okay-activity-set-group-button btn-primary",
                                                          :icon => "icon-ok", :message => "Group Complete" }
-  - else
-    - activity_sets.each do |activity_set|
-      .activity-set-form.assigned
-        = render :partial => "activity_sets/form", :locals => { :activity => activity_set.activity,
-                                                   :activity_set => activity_set, :template => false }
