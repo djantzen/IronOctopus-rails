@@ -41,8 +41,8 @@
             - initial_value, unit = get_initial_value(activity_set, metric)
             - unit_options = unit ? [unit.name.pluralize] : metric.units.map { |u| u.name.pluralize }
             - if initial_value.defined? || template
-              = render :partial => "routines/measure_selector", :locals => { :measure => metric.name, :interval => 1,       |
-                       :initial_value => initial_value, :units => unit_options, :unit => unit, :performance => true }                   |
+              = render :partial => "work/measure_selector", :locals => { :measure => metric.name, :interval => 1,       |
+                       :initial_value => initial_value, :units => unit_options, :unit => unit }                   |
         .btn-group.performance-control-buttons
           = render :partial => "shared/button", :locals => { :button_class=> "delete-activity-set-button btn-small", :message => "Skip"}
           = render :partial => "shared/button", :locals => { :button_class => "clone-activity-set-button btn-small", |

@@ -1,0 +1,22 @@
+.measure-selector{:class => measure.downcase}
+  - min_input_name = "routine[activity_sets][][#{measure.downcase.gsub(/\s/, '_')}_min]"
+  - min_prescribed_input_name = "routine[activity_sets][][prescribed][#{measure.downcase.gsub(/\s/, '_')}_min]"
+  - max_prescribed_input_name = "routine[activity_sets][][prescribed][#{measure.downcase.gsub(/\s/, '_')}_min]"
+  .span1
+    %label.measure-label{:for => min_input_name}
+      = measure
+  .span3.input-controls
+    = hidden_field_tag min_prescribed_input_name, initial_value.min
+    = hidden_field_tag max_prescribed_input_name, initial_value.max
+    - if measure.eql? "Duration"
+      .measure-min
+        %input.measure.timespinner.is_duration_valid.required{:name => min_input_name, :value => initial_value.min}
+        = render "work/stopwatch"
+    - else
+      .measure-min
+        %input.measure.spinner.number.positive_number.required{:name => min_input_name, :value => initial_value.min}
+      %span.units
+        - if defined? units and !units.empty? and !unit.eql?(Unit::NONE)
+          = select_tag("routine[activity_sets][][#{measure.downcase}_unit]",
+                       options_for_select(units, (unit.nil? ? nil : unit.name.pluralize)),
+                       :class => "unit-selector")

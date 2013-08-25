@@ -262,3 +262,6 @@ class this.WorkActivitySetListItem extends ActivitySetListItem
     this.init_validator(@activity_set_form)
     this.init_instructions(@activity_set_form)
     @activity_set_form.find(".activity-set-done-label").hide();
+    id = Util.generate_random_id()
+    @activity_set_form.find("a.accordion-toggle").attr("href", "#" + id)
+    @activity_set_form.find("div.accordion-body").attr("id", id)

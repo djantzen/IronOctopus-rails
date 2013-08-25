@@ -2,42 +2,33 @@
   - min_input_name = "routine[activity_set_groups][][activity_sets][][#{measure.downcase.gsub(/\s/, '_')}_min]"
   - max_input_name = "routine[activity_set_groups][][activity_sets][][#{measure.downcase.gsub(/\s/, '_')}_max]"
   .span1
-    %label.measure-label{:for => "routine[activity_set_groups][][activity_sets][][#{measure.downcase.gsub(/\s/, '_')}_min]"}
+    %label.measure-label{:for => min_input_name}
       = measure
   .span3.input-controls
     - if measure.eql? "Duration"
       .measure-min
         %input.measure.timespinner.is_duration_valid.required{:name => min_input_name, :value => initial_value.min}
-      - unless performance
-        .measure-max
-          %label.range-separator{:for => max_input_name}
-            to
-          %input.measure.timespinner.is_duration_valid.required{:name => max_input_name, :value => initial_value.max}
-        %span.range-toggle
-          %label.range-toggle-text.range-separator{:for => max_input_name}
-            to?
-          = check_box_tag "measure-to-range-box", "measure-to-range-box", false, :class => "measure-to-range-box"
-      - if performance
-        = render "work/stopwatch"
+      .measure-max
+        %label.range-separator{:for => max_input_name}
+          to
+        %input.measure.timespinner.is_duration_valid.required{:name => max_input_name, :value => initial_value.max}
+      %span.range-toggle
+        %label.range-toggle-text.range-separator{:for => max_input_name}
+          to?
+        = check_box_tag "measure-to-range-box", "measure-to-range-box", false, :class => "measure-to-range-box"
     - else
       .measure-min
         %input.measure.spinner.number.positive_number.required{:name => min_input_name, :value => initial_value.min}
-      - unless performance
-        .measure-max
-          %label.range-separator{:for => max_input_name}
-            to
-          %input.measure.spinner.number.positive_number.required{:name => max_input_name, :value => initial_value.max}
-        %span.range-toggle
-          %label.range-toggle-text.range-separator{:for => max_input_name}
-            to?
-          = check_box_tag "measure-to-range-box", "measure-to-range-box", false, :class => "measure-to-range-box"
+      .measure-max
+        %label.range-separator{:for => max_input_name}
+          to
+        %input.measure.spinner.number.positive_number.required{:name => max_input_name, :value => initial_value.max}
+      %span.range-toggle
+        %label.range-toggle-text.range-separator{:for => max_input_name}
+          to?
+        = check_box_tag "measure-to-range-box", "measure-to-range-box", false, :class => "measure-to-range-box"
       %span.units
         - if defined? units and !units.empty? and !unit.eql?(Unit::NONE)
           = select_tag("routine[activity_set_groups][][activity_sets][][#{measure.downcase}_unit]",
                        options_for_select(units, (unit.nil? ? nil : unit.name.pluralize)),
                        :class => "unit-selector")
-  -#- if defined?(performance) && performance
-  -#- else
-  -#  .span1
-  -#    .btn.btn-small.remove-measure-selector-button
-  -#      %i.icon-minus-sign

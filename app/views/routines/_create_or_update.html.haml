@@ -144,19 +144,11 @@
             -#    = render :partial => "shared/button", :locals => { :button_id => "import-routine-button",
             -#                                                       :button_class => "",
             -#                                                       :message => "Include Activity Sets from Another Routine" }
-                -#= render :partial => "shared/button", :locals => { :button_id => "new-circuit-button",
-                -#                                                   :button_class => "",
-                -#                                                   :message => "New Circuit or Superset" }
           .row
             %ul#routine-activity-set-list.accordion.unstyled
               - group_activity_sets_by_group(@routine.activity_sets).each_pair do |group, activity_sets|
                 = render :partial => "activity_sets/group", :locals => { :group => group, :activity_sets => activity_sets,
                                                                          :template => false }
-
-              -#- @routine.activity_sets.each do |activity_set|
-              -#  %li.activity-set-form.assigned
-                  -#= render :partial => "activity_sets/form", :locals => { :activity => activity_set.activity, |
-                  -#  :activity_set => activity_set, :template => false }                                       |
           .row
             .span2
               .btn-group

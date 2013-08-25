@@ -8698,7 +8698,8 @@ CREATE TABLE work (
     unit_set_id integer NOT NULL,
     start_time timestamp with time zone NOT NULL,
     end_time timestamp with time zone NOT NULL,
-    start_day_id integer NOT NULL
+    start_day_id integer NOT NULL,
+    prescribed_measurement_id integer DEFAULT 0 NOT NULL
 );
 
 
@@ -9916,6 +9917,14 @@ ALTER TABLE ONLY work
 
 
 --
+-- Name: work_prescribed_measurement_id_fkey; Type: FK CONSTRAINT; Schema: reporting; Owner: -
+--
+
+ALTER TABLE ONLY work
+    ADD CONSTRAINT work_prescribed_measurement_id_fkey FOREIGN KEY (prescribed_measurement_id) REFERENCES application.measurements(measurement_id) DEFERRABLE;
+
+
+--
 -- Name: work_routine_id_fkey; Type: FK CONSTRAINT; Schema: reporting; Owner: -
 --
 
@@ -10060,3 +10069,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130623041211');
 INSERT INTO schema_migrations (version) VALUES ('20130707021853');
 
 INSERT INTO schema_migrations (version) VALUES ('20130707021863');
+
+INSERT INTO schema_migrations (version) VALUES ('20130818225917');

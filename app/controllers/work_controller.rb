@@ -94,36 +94,33 @@ class WorkController < ApplicationController
     client = User.find_by_login(params[:user_id])
     routine = client.routines.find_by_name(params[:routine][:routine])
     activity_sets.each do |activity_set_map|
-      begin
-        activity = Activity.find_by_name(activity_set_map[:activity])
+      activity = Activity.find_by_name(activity_set_map[:activity])
 
-        unit_map = Unit.activity_set_to_unit_map(activity_set_map)
-        metric_map = Measurement.activity_set_to_metric_map(activity_set_map, unit_map)
+      unit_map = Unit.activity_set_to_unit_map(activity_set_map)
+      metric_map = Measurement.activity_set_to_metric_map(activity_set_map, unit_map)
+      prescribed_metric_map = Measurement.activity_set_to_metric_map(activity_set_map[:prescribed], unit_map)
 
-        activity_set_map[:start_time] ||= client.local_time
-        activity_set_map[:end_time] ||= activity_set_map[:start_time]
+      activity_set_map[:start_time] ||= client.local_time
+      activity_set_map[:end_time] ||= activity_set_map[:start_time]
 
-        Work.transaction do
-          measurement = Measurement.find_or_create(metric_map)
-          unit_set = UnitSet.find_or_create(unit_map)
-          day = Day.find_or_create(activity_set_map[:start_time].utc)
+      Work.transaction do
+        measurement = Measurement.find_or_create(metric_map)
+        prescribed_measurement = Measurement.find_or_create(prescribed_metric_map)
+        unit_set = UnitSet.find_or_create(unit_map)
+        day = Day.find_or_create(activity_set_map[:start_time].utc)
 
-          work = Work.new(:user => client,
-                          :activity => activity,
-                          :measurement => measurement,
-                          :routine => routine,
-                          :unit_set => unit_set,
-                          :start_time => activity_set_map[:start_time],
-                          :end_time => activity_set_map[:end_time],
-                          :start_day => day)
-          work.save
-        end
-
-      rescue Exception => e
-        puts e.inspect
+        work = Work.new(:user => client,
+                        :activity => activity,
+                        :measurement => measurement,
+                        :prescribed_measurement => prescribed_measurement,
+                        :routine => routine,
+                        :unit_set => unit_set,
+                        :start_time => activity_set_map[:start_time],
+                        :end_time => activity_set_map[:end_time],
+                        :start_day => day)
+        work.save
       end
     end
-
   end
 
 end
