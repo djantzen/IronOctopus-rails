@@ -25,46 +25,51 @@
       %br
       .row-fluid
         = link_to "Training Log", user_work_index_path(@user)
-    .span7.well
+    .span8
       .row-fluid
-        .span5
-          %h3
-            Programs
-        .span4
-          - if can? :create, Program.new, @user
-            = link_to "Create new program for #{@user.first_name}", new_user_program_path(@user), :class => "btn btn-primary"
-      %br
+        .well
+          = render :partial => "users/scores_by_day_panel"
       .row-fluid
-        - @user.programs.each do |program|
+        .well
           .row-fluid
+            .span5
+              %h3
+                Programs
             .span4
-              = link_to(program.name, user_program_path(@user, program))
-            .span2
-              - if can? :update, program
-                = link_to(edit_user_program_path(@user, program)) do
-                  Edit
-                  %i.icon-edit
-      %br
-      .row-fluid
-        .span5
-          %h3
-            Routines
-        .span4
-          - if can? :create, Routine.new, @user
-            = link_to "Create new routine for #{@user.first_name}", new_user_routine_path(@user), :class => "btn btn-primary"
-      %br
-      .row-fluid
-        - @routines.each do |routine|
+              - if can? :create, Program.new, @user
+                = link_to "Create new program for #{@user.first_name}", new_user_program_path(@user), :class => "btn btn-primary"
+          %br
           .row-fluid
+            - @user.programs.each do |program|
+              .row-fluid
+                .span4
+                  = link_to(program.name, user_program_path(@user, program))
+                .span2
+                  - if can? :update, program
+                    = link_to(edit_user_program_path(@user, program)) do
+                      Edit
+                      %i.icon-edit
+          %br
+          .row-fluid
+            .span5
+              %h3
+                Routines
             .span4
-              = link_to(routine.name, user_routine_path(@user, routine))
-            .span2
-              - if can? :update, routine
-                = link_to(edit_user_routine_path(@user, routine)) do
-                  Edit
-                  %i.icon-edit
-            .span3
-              - if can? :perform, routine
-                = link_to(perform_routine_path(@user, routine)) do
-                  Perform Routine
-                  %i.icon-fire
+              - if can? :create, Routine.new, @user
+                = link_to "Create new routine for #{@user.first_name}", new_user_routine_path(@user), :class => "btn btn-primary"
+          %br
+          .row-fluid
+            - @routines.each do |routine|
+              .row-fluid
+                .span4
+                  = link_to(routine.name, user_routine_path(@user, routine))
+                .span2
+                  - if can? :update, routine
+                    = link_to(edit_user_routine_path(@user, routine)) do
+                      Edit
+                      %i.icon-edit
+                .span3
+                  - if can? :perform, routine
+                    = link_to(perform_routine_path(@user, routine)) do
+                      Perform Routine
+                      %i.icon-fire

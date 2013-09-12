@@ -35,9 +35,18 @@ class Day < ActiveRecord::Base
 
   def self.from_date(date)
     raise ArgumentError "Argument must time" unless date.is_a? Date
+    day_of_week = case
+                    when date.sunday? then "Sunday"
+                    when date.monday? then "Monday"
+                    when date.tuesday? then "Tuesday"
+                    when date.wednesday? then "Wednesday"
+                    when date.thursday? then "Thursday"
+                    when date.friday? then "Friday"
+                    when date.saturday? then "Saturday"
+                  end
 
-    the_day = Day.new(:full_date => date, :year => date.year,
-                      :month => date.month, :day => date.day)
+    the_day = Day.new(:full_date => date, :year => date.year, :month => date.month,
+                      :day => date.day, :day_of_week => day_of_week)
     the_day.day_id = as_smart_id(date)
     the_day
   end

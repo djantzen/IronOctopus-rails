@@ -11,10 +11,11 @@
 //= require bootstrap
 //= require underscore
 //= require modernizr
+//= require bootstrap-datepicker
+//= require moment
 
 console.info("application load");
 
-//var to_identifier_regexp = new RegExp("[\\s(){}\"_'\-]", "g");
 var to_identifier_regexp = new RegExp("[^a-zA-Z0-9]", "g");
 String.prototype.toIdentifier = function() {
   return this.replace(to_identifier_regexp, '').toLowerCase();

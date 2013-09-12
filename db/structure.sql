@@ -465,6 +465,42 @@ CREATE TYPE valid_detail AS (
 );
 
 
+SET search_path = application, pg_catalog;
+
+--
+-- Name: score_metric(numrange, numrange); Type: FUNCTION; Schema: application; Owner: -
+--
+
+CREATE FUNCTION score_metric(prescribed numrange, actual numrange) RETURNS integer
+    LANGUAGE sql
+    AS $$
+  select case 
+    when prescribed = '[0,0]' then 0
+    when actual >= prescribed then 1
+    when actual < prescribed then -1
+    else 0
+  end
+$$;
+
+
+--
+-- Name: score_metric(int4range, int4range); Type: FUNCTION; Schema: application; Owner: -
+--
+
+CREATE FUNCTION score_metric(prescribed int4range, actual int4range) RETURNS integer
+    LANGUAGE sql
+    AS $$
+  select case 
+    when prescribed = '[0,1)' then 0
+    when actual >= prescribed then 1
+    when actual < prescribed then -1
+    else 0
+  end
+$$;
+
+
+SET search_path = public, pg_catalog;
+
 --
 -- Name: _st_3ddfullywithin(geometry, geometry, double precision); Type: FUNCTION; Schema: public; Owner: -
 --
@@ -6617,6 +6653,42 @@ END;
 $$;
 
 
+SET search_path = reporting, pg_catalog;
+
+--
+-- Name: score_metric(numrange, numrange); Type: FUNCTION; Schema: reporting; Owner: -
+--
+
+CREATE FUNCTION score_metric(prescribed numrange, actual numrange) RETURNS integer
+    LANGUAGE sql
+    AS $$
+        select case
+          when prescribed = '[0,0]' then 0
+          when actual = prescribed then 1
+          when actual > prescribed then 2
+          when actual < prescribed then -1
+        end
+      $$;
+
+
+--
+-- Name: score_metric(int4range, int4range); Type: FUNCTION; Schema: reporting; Owner: -
+--
+
+CREATE FUNCTION score_metric(prescribed int4range, actual int4range) RETURNS integer
+    LANGUAGE sql
+    AS $$
+        select case
+          when prescribed = '[0,1)' then 0
+          when actual = prescribed then 1
+          when actual > prescribed then 2
+          when actual < prescribed then -1
+        end
+      $$;
+
+
+SET search_path = public, pg_catalog;
+
 --
 -- Name: st_3dextent(geometry); Type: AGGREGATE; Schema: public; Owner: -
 --
@@ -8345,6 +8417,17 @@ ALTER SEQUENCE routines_routine_id_seq OWNED BY routines.routine_id;
 
 
 --
+-- Name: sales; Type: TABLE; Schema: application; Owner: -; Tablespace: 
+--
+
+CREATE TABLE sales (
+    year integer,
+    month integer,
+    qty integer
+);
+
+
+--
 -- Name: scheduled_programs; Type: TABLE; Schema: application; Owner: -; Tablespace: 
 --
 
@@ -8675,7 +8758,9 @@ CREATE TABLE days (
     year integer DEFAULT date_part('year'::text, now()) NOT NULL,
     month integer DEFAULT date_part('month'::text, now()) NOT NULL,
     day integer DEFAULT date_part('day'::text, now()) NOT NULL,
-    created_at timestamp with time zone DEFAULT now()
+    created_at timestamp with time zone DEFAULT now(),
+    day_of_week text DEFAULT 'Sunday'::text NOT NULL,
+    CONSTRAINT days_day_of_week_check CHECK ((day_of_week = ANY (ARRAY['Sunday'::text, 'Monday'::text, 'Tuesday'::text, 'Wednesday'::text, 'Thursday'::text, 'Friday'::text, 'Saturday'::text])))
 );
 
 
@@ -8684,6 +8769,30 @@ CREATE TABLE days (
 --
 
 COMMENT ON TABLE days IS 'A dimension for date-based reporting.';
+
+
+--
+-- Name: measurement_scores; Type: VIEW; Schema: reporting; Owner: -
+--
+
+CREATE VIEW measurement_scores AS
+    SELECT measurements.measurement_id, (((((((((CASE WHEN (measurements.cadence = '[0,0]'::numrange) THEN 0 ELSE 1 END + CASE WHEN (measurements.calories = '[0,1)'::int4range) THEN 0 ELSE 1 END) + CASE WHEN (measurements.distance = '[0,0]'::numrange) THEN 0 ELSE 1 END) + CASE WHEN (measurements.duration = '[0,1)'::int4range) THEN 0 ELSE 1 END) + CASE WHEN (measurements.heart_rate = '[0,1)'::int4range) THEN 0 ELSE 1 END) + CASE WHEN (measurements.incline = '[0,0]'::numrange) THEN 0 ELSE 1 END) + CASE WHEN (measurements.level = '[0,1)'::int4range) THEN 0 ELSE 1 END) + CASE WHEN (measurements.repetitions = '[0,1)'::int4range) THEN 0 ELSE 1 END) + CASE WHEN (measurements.resistance = '[0,0]'::numrange) THEN 0 ELSE 1 END) + CASE WHEN (measurements.speed = '[0,0]'::numrange) THEN 0 ELSE 1 END) AS measurement_score FROM application.measurements;
+
+
+--
+-- Name: routine_scores; Type: VIEW; Schema: reporting; Owner: -
+--
+
+CREATE VIEW routine_scores AS
+    SELECT routines.routine_id, routines.name AS routine_name, sum((measurement_scores.measurement_score * activity_set_groups.sets)) AS routine_score FROM (((application.routines JOIN application.activity_set_groups USING (routine_id)) JOIN application.activity_sets USING (activity_set_group_id)) JOIN measurement_scores USING (measurement_id)) GROUP BY routines.routine_id, routines.name;
+
+
+--
+-- Name: routines_by_day; Type: VIEW; Schema: reporting; Owner: -
+--
+
+CREATE VIEW routines_by_day AS
+    SELECT routines.routine_id, routine_scores.routine_name, users.login AS client_login, days.full_date, routine_scores.routine_score FROM ((((application.routines JOIN application.scheduled_programs USING (routine_id)) JOIN days ON ((scheduled_programs.scheduled_on = days.full_date))) JOIN application.users ON ((routines.client_id = users.user_id))) JOIN routine_scores USING (routine_id)) GROUP BY routines.routine_id, routine_scores.routine_name, days.full_date, routine_scores.routine_score, users.login UNION SELECT routines.routine_id, routine_scores.routine_name, users.login AS client_login, days.full_date, routine_scores.routine_score FROM ((((application.routines JOIN application.weekday_programs USING (routine_id)) JOIN routine_scores USING (routine_id)) JOIN days USING (day_of_week)) JOIN application.users ON ((routines.client_id = users.user_id))) GROUP BY routines.routine_id, routine_scores.routine_name, days.full_date, routine_scores.routine_score, users.login ORDER BY 4;
 
 
 --
@@ -8697,8 +8806,7 @@ CREATE TABLE work (
     measurement_id integer NOT NULL,
     unit_set_id integer NOT NULL,
     start_time timestamp with time zone NOT NULL,
-    end_time timestamp with time zone NOT NULL,
-    start_day_id integer NOT NULL,
+    day_id integer NOT NULL,
     prescribed_measurement_id integer DEFAULT 0 NOT NULL
 );
 
@@ -8708,6 +8816,14 @@ CREATE TABLE work (
 --
 
 COMMENT ON TABLE work IS 'A running log of metrics achieved during the performance of activities.';
+
+
+--
+-- Name: work_scores; Type: VIEW; Schema: reporting; Owner: -
+--
+
+CREATE VIEW work_scores AS
+    SELECT records.routine_id, records.routine_name, records.client_login, records.day_id, records.full_date, sum(records.work_score) AS work_score FROM (SELECT work.routine_id, routines.name AS routine_name, work.day_id, days.full_date, users.login AS client_login, (((((((((application.score_metric(prescribed.cadence, actual.cadence) + application.score_metric(prescribed.calories, actual.calories)) + application.score_metric(prescribed.distance, actual.distance)) + application.score_metric(prescribed.duration, actual.duration)) + application.score_metric(prescribed.incline, actual.incline)) + application.score_metric(prescribed.level, actual.level)) + application.score_metric(prescribed.repetitions, actual.repetitions)) + application.score_metric(prescribed.resistance, actual.resistance)) + application.score_metric(prescribed.speed, actual.speed)) + application.score_metric(prescribed.heart_rate, actual.heart_rate)) AS work_score FROM (((((work JOIN application.measurements prescribed ON ((work.prescribed_measurement_id = prescribed.measurement_id))) JOIN application.measurements actual ON ((work.measurement_id = actual.measurement_id))) JOIN application.routines USING (routine_id)) JOIN application.users USING (user_id)) JOIN days USING (day_id))) records GROUP BY records.routine_id, records.routine_name, records.client_login, records.day_id, records.full_date;
 
 
 SET search_path = application, pg_catalog;
@@ -9200,7 +9316,7 @@ ALTER TABLE ONLY days
 --
 
 ALTER TABLE ONLY work
-    ADD CONSTRAINT work_pkey PRIMARY KEY (user_id, start_day_id, routine_id, activity_id, measurement_id, start_time, end_time);
+    ADD CONSTRAINT work_pkey PRIMARY KEY (user_id, day_id, routine_id, activity_id, measurement_id, start_time);
 
 
 SET search_path = application, pg_catalog;
@@ -9217,6 +9333,62 @@ CREATE UNIQUE INDEX activities_permalink_idx ON activities USING btree (permalin
 --
 
 CREATE UNIQUE INDEX activity_attributes_permalink_idx ON activity_attributes USING btree (permalink);
+
+
+--
+-- Name: activity_set_groups_routine_id_idx; Type: INDEX; Schema: application; Owner: -; Tablespace: 
+--
+
+CREATE INDEX activity_set_groups_routine_id_idx ON activity_set_groups USING btree (routine_id);
+
+
+--
+-- Name: activity_set_groups_routine_id_idx1; Type: INDEX; Schema: application; Owner: -; Tablespace: 
+--
+
+CREATE INDEX activity_set_groups_routine_id_idx1 ON activity_set_groups USING btree (routine_id);
+
+
+--
+-- Name: activity_sets_activity_id_idx; Type: INDEX; Schema: application; Owner: -; Tablespace: 
+--
+
+CREATE INDEX activity_sets_activity_id_idx ON activity_sets USING btree (activity_id);
+
+
+--
+-- Name: activity_sets_activity_id_idx1; Type: INDEX; Schema: application; Owner: -; Tablespace: 
+--
+
+CREATE INDEX activity_sets_activity_id_idx1 ON activity_sets USING btree (activity_id);
+
+
+--
+-- Name: activity_sets_activity_set_group_id_idx; Type: INDEX; Schema: application; Owner: -; Tablespace: 
+--
+
+CREATE INDEX activity_sets_activity_set_group_id_idx ON activity_sets USING btree (activity_set_group_id);
+
+
+--
+-- Name: activity_sets_activity_set_group_id_idx1; Type: INDEX; Schema: application; Owner: -; Tablespace: 
+--
+
+CREATE INDEX activity_sets_activity_set_group_id_idx1 ON activity_sets USING btree (activity_set_group_id);
+
+
+--
+-- Name: activity_sets_measurement_id_idx; Type: INDEX; Schema: application; Owner: -; Tablespace: 
+--
+
+CREATE INDEX activity_sets_measurement_id_idx ON activity_sets USING btree (measurement_id);
+
+
+--
+-- Name: activity_sets_measurement_id_idx1; Type: INDEX; Schema: application; Owner: -; Tablespace: 
+--
+
+CREATE INDEX activity_sets_measurement_id_idx1 ON activity_sets USING btree (measurement_id);
 
 
 --
@@ -9464,6 +9636,13 @@ CREATE UNIQUE INDEX users_lower_idx ON users USING btree (lower(login));
 CREATE UNIQUE INDEX users_lower_idx1 ON users USING btree (lower(email));
 
 
+--
+-- Name: weekday_programs_day_of_week_idx; Type: INDEX; Schema: application; Owner: -; Tablespace: 
+--
+
+CREATE INDEX weekday_programs_day_of_week_idx ON weekday_programs USING btree (day_of_week);
+
+
 SET search_path = public, pg_catalog;
 
 --
@@ -9480,6 +9659,13 @@ SET search_path = reporting, pg_catalog;
 --
 
 CREATE UNIQUE INDEX days_day_month_year_idx ON days USING btree (day, month, year);
+
+
+--
+-- Name: days_full_date_day_of_week_idx; Type: INDEX; Schema: reporting; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX days_full_date_day_of_week_idx ON days USING btree (full_date, day_of_week);
 
 
 --
@@ -9937,7 +10123,7 @@ ALTER TABLE ONLY work
 --
 
 ALTER TABLE ONLY work
-    ADD CONSTRAINT work_start_day_id_fkey FOREIGN KEY (start_day_id) REFERENCES days(day_id) DEFERRABLE;
+    ADD CONSTRAINT work_start_day_id_fkey FOREIGN KEY (day_id) REFERENCES days(day_id) DEFERRABLE;
 
 
 --
@@ -10071,3 +10257,13 @@ INSERT INTO schema_migrations (version) VALUES ('20130707021853');
 INSERT INTO schema_migrations (version) VALUES ('20130707021863');
 
 INSERT INTO schema_migrations (version) VALUES ('20130818225917');
+
+INSERT INTO schema_migrations (version) VALUES ('20130825173725');
+
+INSERT INTO schema_migrations (version) VALUES ('20130825231134');
+
+INSERT INTO schema_migrations (version) VALUES ('20130828053456');
+
+INSERT INTO schema_migrations (version) VALUES ('20130828111837');
+
+INSERT INTO schema_migrations (version) VALUES ('20130912072400');

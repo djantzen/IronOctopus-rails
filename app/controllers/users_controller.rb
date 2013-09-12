@@ -73,11 +73,11 @@ class UsersController < ApplicationController
 
   def index
     authorize! :read, User.new, current_user
-    @users = User.all
+    @users = User.order(:created_at)
   end
 
   def show
-    @user = User.find_by_login(params['id'])
+    @user = User.find_by_login(params[:id])
     authorize! :read, @user
     @routines = @user.routines
     @todays_routines = @user.todays_routines
@@ -86,7 +86,31 @@ class UsersController < ApplicationController
     respond_with do |format|
       format.html { render :html => @user, :template => mobile_device? ? "users/mobile_show" : "users/show" }
     end
-     
+  end
+
+  def scores_by_day
+    user = User.find_by_login(params[:user_id])
+    start_date = Date.parse params[:start_date]
+    end_date = Date.parse params[:end_date]
+    scores = ByDayClientScore.find_by_user_and_dates(user, start_date, end_date)
+
+    legend = ["Prescribed Score", "Actual Score", "Total Prescribed Score", "Total Actual Score"]
+    x_axis_labels = []
+    prescribed_scores = []
+    actual_scores = []
+    total_prescribed_scores = []
+    total_actual_scores = []
+    scores.each do |score|
+      x_axis_labels << score.full_date.month.to_s + "-" + score.full_date.mday.to_s
+      prescribed_scores << score.routine_score
+      actual_scores << score.work_score
+      total_prescribed_scores << score.total_prescribed_score
+      total_actual_scores << score.total_actual_score
+    end
+
+    @chart_url = Gchart.line(:data => [prescribed_scores, actual_scores, total_prescribed_scores, total_actual_scores],
+                             :axis_with_labels => 'x', :line_colors => "FF0000,00FF00,00AA00,DDFF00",
+                             :axis_labels => [x_axis_labels.join('|')], :legend => legend, :size => '600x200')
   end
 
   def settings

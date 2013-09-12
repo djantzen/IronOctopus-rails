@@ -9,16 +9,16 @@ class WorkController < ApplicationController
     client = User.find_by_login(params[:user_id])
     @work = Work.where("user_id = #{client.user_id}")
                 .order("start_time desc")
-                .includes([:activity, :measurement, :routine, :start_day])
+                .includes([:activity, :measurement, :routine, :day])
                 .page(params[:page])
 
     @work_grouped_by_day_and_routine = Groupings.new
     current_routine = nil
-    current_start_day = nil
+    current_day = nil
     @work.each do |work|
-      if current_start_day.nil? || current_start_day != work.start_day
-        current_start_day = work.start_day and current_routine = nil
-        @work_grouped_by_day_and_routine << RoutinesForDay.new(current_start_day)
+      if current_day.nil? || current_day != work.day
+        current_day = work.day and current_routine = nil
+        @work_grouped_by_day_and_routine << RoutinesForDay.new(current_day)
       end
       if current_routine.nil? || current_routine != work.routine
         current_routine = work.routine
@@ -40,14 +40,14 @@ class WorkController < ApplicationController
   end
 
   class RoutinesForDay < Array
-    attr_accessor :start_day
+    attr_accessor :day
 
     def current_routine
       self[-1]
     end
 
-    def initialize(start_day)
-      @start_day = start_day
+    def initialize(day)
+      @day = day
     end
 
     def add_routine(routine)
@@ -55,7 +55,7 @@ class WorkController < ApplicationController
     end
 
     def to_s
-      "#{self.size} routines performed on #{@start_day}"
+      "#{self.size} routines performed on #{@day}"
     end
   end
 
@@ -71,7 +71,7 @@ class WorkController < ApplicationController
     end
 
     def to_s
-      "#{self.size} activities performed on #{@start_day} from #{@routine.name}"
+      "#{self.size} activities performed on #{@day} from #{@routine.name}"
     end
   end
 
@@ -101,7 +101,6 @@ class WorkController < ApplicationController
       prescribed_metric_map = Measurement.activity_set_to_metric_map(activity_set_map[:prescribed], unit_map)
 
       activity_set_map[:start_time] ||= client.local_time
-      activity_set_map[:end_time] ||= activity_set_map[:start_time]
 
       Work.transaction do
         measurement = Measurement.find_or_create(metric_map)
@@ -116,8 +115,7 @@ class WorkController < ApplicationController
                         :routine => routine,
                         :unit_set => unit_set,
                         :start_time => activity_set_map[:start_time],
-                        :end_time => activity_set_map[:end_time],
-                        :start_day => day)
+                        :day => day)
         work.save
       end
     end

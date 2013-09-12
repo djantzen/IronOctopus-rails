@@ -22,6 +22,9 @@ gem "kaminari", "0.14.1"
 gem "carrierwave", "~> 0.8.0"
 gem "rmagick", "2.13.2"
 gem "cancan", "1.6.10"
+gem "googlecharts", "~> 1.6.8"
+gem "bootstrap-datepicker-rails", "~> 1.1.1.7"
+gem "momentjs-rails", "~> 2.1.0"
 
 # Gems used only for assets and not required
 # in production environments by default.
