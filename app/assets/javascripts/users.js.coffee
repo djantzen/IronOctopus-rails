@@ -19,11 +19,7 @@ $(document).ready () ->
     }
   )
 
-  $("#scores-by-day-start-date").datepicker(
-    autoclose: true
-  )
-
-  $("#scores-by-day-end-date").datepicker(
+  $("#scores-by-day-start-date, #scores-by-day-end-date").datepicker(
     autoclose: true
   )
 
@@ -44,7 +40,7 @@ $(document).ready () ->
 
     url = window.location.pathname + "/scores_by_day"
     params = { "start_date": start_date.format("YYYY-MM-DD"), "end_date": end_date.format("YYYY-MM-DD") }
-    get_chart_data($("#scores-by-day-display-panel"), url, params)
+    Charts.fetch_data($("#scores-by-day-display-panel"), url, params)
 
   $("#scores-by-date-show-button").click ->
     get_scores_by_day()

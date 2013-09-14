@@ -98,21 +98,30 @@ class UsersController < ApplicationController
       row = []
       row << score.full_date.month.to_s + "-" + score.full_date.mday.to_s
       row << score.routine_score
+      row << (score.prescribed_routine_name.nil? ? nil : score.prescribed_routine_name + ": " + score.routine_score.to_s)
       row << score.work_score
+      row << (score.work_routine_name.nil? ? nil : score.work_routine_name + ": " + score.work_score.to_s)
       row << score.total_prescribed_score
       row << score.total_actual_score
       memo << row
-      memo
     end
 
     render :json => {
-      :type => "LineChart",
-      :cols => [["string", "Date"], ["number", "Prescribed Score"], ["number", "Actual Score"],
-                ["number", "Total Prescribed Score"], ["number", "Total Actual Score"]],
+      :type => "ComboChart",
+      :cols => [{:type => "string", :label => "Date", :role => "domain"},
+                {:type => "number", :label => "Prescribed Score", :role => "data"},
+                {:type => "string", :label => "Prescribed Routine", :role => "tooltip"},
+                {:type => "number", :label => "Actual Score", :role => "data"},
+                {:type => "string", :label => "Actual Routine", :role => "tooltip"},
+                {:type => "number", :label => "Total Prescribed Score", :role => "data"},
+                {:type => "number", :label => "Total Actual Score", :role => "data"}
+                ],
       :rows => rows,
       :options => {
         :title => "Client Score by Day",
-        :legend => "bottom"
+        :legend => "bottom",
+        :seriesType => "line",
+        :series => { 0 => { :type => "bars" }, 1 => { :type => "bars" } }
       }
     }
 
