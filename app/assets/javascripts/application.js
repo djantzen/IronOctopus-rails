@@ -14,7 +14,10 @@
 //= require bootstrap-datepicker
 //= require moment
 
+
 console.info("application load");
+
+google.load('visualization', '1', {packages:['corechart']});
 
 var to_identifier_regexp = new RegExp("[^a-zA-Z0-9]", "g");
 String.prototype.toIdentifier = function() {
@@ -76,6 +79,30 @@ jQuery.fn.visibilityToggle = function() {
   return this.css('visibility', function(i, visibility) {
     return (visibility == 'visible') ? 'hidden' : 'visible';
   });
+}
+
+var get_chart_data = function(chart_container, url, params) {
+
+  chart_container.find(".chart-container").html("");
+  chart_container.find(".loading-indicator").show();
+
+  // http://zargony.com/2012/02/29/google-charts-on-your-site-the-unobtrusive-way
+  $.getJSON(url, params, function (data) {
+    // Create DataTable from received chart data
+    var table = new google.visualization.DataTable();
+    $.each(data.cols, function () { table.addColumn.apply(table, this); });
+    table.addRows(data.rows);
+    // Draw the chart
+    var chart = new google.visualization.ChartWrapper();
+    chart.setChartType(data.type);
+    chart.setDataTable(table);
+    chart.setOptions(data.options);
+    chart.setOption('width', chart_container.width());
+    chart.setOption('height', chart_container.height());
+    chart_container.find(".loading-indicator").hide();
+    chart.draw(chart_container.find(".chart-container")[0]);
+  });
+
 }
 
 $(document).ready(function() {

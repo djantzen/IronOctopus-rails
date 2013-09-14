@@ -8,3 +8,14 @@ ul.ui-autocomplete {
   width: 20em;
   border: 1px solid;
 }
+
+#scores-by-day-display-panel {
+  width: 700px;
+  height: 250px;
+}
+
+#scores-by-day-display-panel .loading-indicator {
+  display: block;
+  margin-left: 46%;
+  margin-top: 10%;
+}

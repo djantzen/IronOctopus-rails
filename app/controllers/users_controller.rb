@@ -94,23 +94,28 @@ class UsersController < ApplicationController
     end_date = Date.parse params[:end_date]
     scores = ByDayClientScore.find_by_user_and_dates(user, start_date, end_date)
 
-    legend = ["Prescribed Score", "Actual Score", "Total Prescribed Score", "Total Actual Score"]
-    x_axis_labels = []
-    prescribed_scores = []
-    actual_scores = []
-    total_prescribed_scores = []
-    total_actual_scores = []
-    scores.each do |score|
-      x_axis_labels << score.full_date.month.to_s + "-" + score.full_date.mday.to_s
-      prescribed_scores << score.routine_score
-      actual_scores << score.work_score
-      total_prescribed_scores << score.total_prescribed_score
-      total_actual_scores << score.total_actual_score
+    rows = scores.inject([]) do |memo, score|
+      row = []
+      row << score.full_date.month.to_s + "-" + score.full_date.mday.to_s
+      row << score.routine_score
+      row << score.work_score
+      row << score.total_prescribed_score
+      row << score.total_actual_score
+      memo << row
+      memo
     end
 
-    @chart_url = Gchart.line(:data => [prescribed_scores, actual_scores, total_prescribed_scores, total_actual_scores],
-                             :axis_with_labels => 'x', :line_colors => "FF0000,00FF00,00AA00,DDFF00",
-                             :axis_labels => [x_axis_labels.join('|')], :legend => legend, :size => '600x200')
+    render :json => {
+      :type => "LineChart",
+      :cols => [["string", "Date"], ["number", "Prescribed Score"], ["number", "Actual Score"],
+                ["number", "Total Prescribed Score"], ["number", "Total Actual Score"]],
+      :rows => rows,
+      :options => {
+        :title => "Client Score by Day",
+        :legend => "bottom"
+      }
+    }
+
   end
 
   def settings

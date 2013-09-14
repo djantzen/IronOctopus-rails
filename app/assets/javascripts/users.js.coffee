@@ -42,16 +42,9 @@ $(document).ready () ->
       get_scores_by_day()
       return
 
-    url = window.location.pathname + "/scores_by_day?start_date=" +
-          start_date.format("YYYY-MM-DD") + "&end_date=" + end_date.format("YYYY-MM-DD")
-    $.ajax(
-      type: "GET",
-      url: url,
-      async: true,
-      dataType: "text",
-      success: (msg) ->
-        eval(msg)
-    )
+    url = window.location.pathname + "/scores_by_day"
+    params = { "start_date": start_date.format("YYYY-MM-DD"), "end_date": end_date.format("YYYY-MM-DD") }
+    get_chart_data($("#scores-by-day-display-panel"), url, params)
 
   $("#scores-by-date-show-button").click ->
     get_scores_by_day()
