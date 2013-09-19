@@ -118,14 +118,42 @@ class UsersController < ApplicationController
                 ],
       :rows => rows,
       :options => {
-        :title => "Client Score by Day",
+        :title => "#{user.full_name}'s Score by Day",
         :legend => "bottom",
         :seriesType => "line",
         :series => { 0 => { :type => "bars" }, 1 => { :type => "bars" } }
       }
     }
-
   end
+
+  def activity_level_by_day
+    user = User.find_by_login(params[:user_id])
+    start_date = params[:start_date] ? Date.parse(params[:start_date]) : DateTime.now.utc.to_date - 7.days
+    end_date = params[:end_date] ? Date.parse(params[:end_date]) : DateTime.now.utc.to_date
+    levels = Charts::ByDayClientActivityLevel.get_activity_levels(user, start_date, end_date)
+
+    rows = levels.inject([]) do |memo, level|
+      row = [view_context.link_to(level.client_name, level.client_login), level.score]
+      memo << row
+    end
+
+    render :json => {
+      :type => "Table",
+      :title => "Client Scores Compared to Prescribed Work (last 7 days)",
+      :cols => [{:type => "string", :label => "Client", :role => "domain"},
+                {:type => "number", :label => "Score", :role => "data"}],
+      :rows => rows,
+      :options => {
+        :allowHtml => true,
+        :showValue => false,
+        :drawZeroLine => true,
+        :colorPositive => "green",
+        :min => -200,
+        :max => 200
+      }
+    }
+  end
+
 
   def settings
     @user = User.find_by_login(params[:user_id])

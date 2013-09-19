@@ -1,7 +1,24 @@
 # The range syntax here is for Postgres, not Ruby
-cardio_one:
+zero:
+  measurement_id: 0
+distance_1000_incline_6:
   incline: "[6,6]"
   distance: "[1000,1000]"
-resistance_one:
+distance_1100_incline_6:
+  incline: "[6,6]"
+  distance: "[1100,1100]"
+resistance_35_repetitions_10:
+  resistance: "[35,35]"
+  repetitions: "[10,11)"
+resistance_60_repetitions_10:
+  resistance: "[60,60]"
+  repetitions: "[10,11)"
+resistance_135_repetitions_10:
   resistance: "[135,135]"
-  repetitions: "[10,10]"
+  repetitions: "[10,11)"
+resistance_135_repetitions_8:
+  resistance: "[135,135]"
+  repetitions: "[8,9)"
+resistance_140_repetitions_8:
+  resistance: "[140,140]"
+  repetitions: "[8,9)"

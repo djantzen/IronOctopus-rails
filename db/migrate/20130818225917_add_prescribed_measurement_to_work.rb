@@ -4,7 +4,7 @@ class AddPrescribedMeasurementToWork < ActiveRecord::Migration
     execute <<-OES
       alter table reporting.work add column prescribed_measurement_id integer not null default 0
         references application.measurements(measurement_id) deferrable;
-      create index reporting.work(prescribed_measurement_id);
+      create index on reporting.work (prescribed_measurement_id);
     OES
   end
 

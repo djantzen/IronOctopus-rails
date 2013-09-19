@@ -1,28 +1,35 @@
 sallys_push_pull_upper_bench_press:
   activity: bench_press
-  position: 1.0
-  measurement: resistance_one
+  position: 1
+  measurement: resistance_135_repetitions_10
   unit_set: resistance_in_pounds
   activity_set_group: sallys_push_pull_upper_bench_press_set_of_three
 
 sallys_push_pull_upper_curl_and_press:
   activity: curl_and_press
-  position: 2.0
-  measurement: resistance_one
+  position: 2
+  measurement: resistance_35_repetitions_10
   unit_set: resistance_in_pounds
   activity_set_group: sallys_push_pull_upper_curl_and_press_set_of_three
 
 sallys_whole_body_mix_squat:
   activity: squat
-  position: 1.0
-  measurement: resistance_one
+  position: 1
+  measurement: resistance_135_repetitions_10
   unit_set: resistance_in_pounds
   activity_set_group: sallys_whole_body_mix_squat_set_of_three
 
 sallys_whole_body_mix_treadmill_run:
   activity: treadmill_run
-  position: 2.0
-  measurement: cardio_one
-  unit_set: distance_in_miles
+  position: 2
+  measurement: distance_1000_incline_6
+  unit_set: distance_in_kilometers
   activity_set_group: none
-  activity_set_group: sallys_whole_body_mix_squat_treadmill_run
+  activity_set_group: sallys_whole_body_mix_treadmill_run
+
+sergios_olympic_lift_training_snatch:
+  activity: snatch
+  position: 1
+  measurement: resistance_60_repetitions_10
+  unit_set: resistance_in_kilograms
+  activity_set_group: sergios_olympic_lift_training_snatch_set_of_three

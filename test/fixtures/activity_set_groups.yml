@@ -2,7 +2,7 @@ sallys_whole_body_mix_squat_set_of_three:
   routine: sallys_whole_body_mix
   sets: 3
 
-sallys_whole_body_mix_squat_treadmill_run:
+sallys_whole_body_mix_treadmill_run:
   routine: sallys_whole_body_mix
   sets: 1
 
@@ -12,4 +12,8 @@ sallys_push_pull_upper_bench_press_set_of_three:
 
 sallys_push_pull_upper_curl_and_press_set_of_three:
   routine: sallys_push_pull_upper
+  sets: 3
+
+sergios_olympic_lift_training_snatch_set_of_three:
+  routine: sergios_olympic_lift_training
   sets: 3

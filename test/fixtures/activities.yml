@@ -39,6 +39,16 @@ curl_and_press:
   metrics: repetitions, resistance
   activity_attributes: pull, push, compound
 
+snatch:
+  name: Snatch
+  activity_type: olympic_lift
+  creator: bob_the_trainer
+  implements: barbell
+  body_parts: quadriceps, gluteus_maximus, hamstring
+  permalink: snatch
+  metrics: repetitions, resistance
+  activity_attributes: pull, push, compound
+
 squat:
   name: Squat
   activity_type: resistance

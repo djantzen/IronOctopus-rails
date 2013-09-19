@@ -1,19 +1,50 @@
-20120315:
-  day_id: 20120315
-  full_date: '2011-03-15'
-  year: 2012
-  month: 3
-  day: 15
-20120316:
-  day_id: 20120316
-  full_date: '2011-03-16'
-  year: 2012
-  month: 3
-  day: 16
-20120317:
-  day_id: 20120317
-  full_date: '2011-03-17'
-  year: 2012
-  month: 3
-  day: 17
-    
+20130901:
+  day_id: 20130901
+  full_date: '2013-09-01'
+  year: 2013
+  month: 9
+  day: 1
+  day_of_week: Sunday
+20130902:
+  day_id: 20130902
+  full_date: '2013-09-02'
+  year: 2013
+  month: 9
+  day: 2
+  day_of_week: Monday
+20130903:
+  day_id: 20130903
+  full_date: '2013-09-03'
+  year: 2013
+  month: 9
+  day: 3
+  day_of_week: Tuesday
+20130904:
+  day_id: 20130904
+  full_date: '2013-09-04'
+  year: 2013
+  month: 9
+  day: 4
+  day_of_week: Wednesday
+20130905:
+  day_id: 20130905
+  full_date: '2013-09-05'
+  year: 2013
+  month: 9
+  day: 5
+  day_of_week: Thursday
+20130906:
+  day_id: 20130906
+  full_date: '2013-09-06'
+  year: 2013
+  month: 9
+  day: 6
+  day_of_week: Friday
+20130907:
+  day_id: 20130907
+  full_date: '2013-09-07'
+  year: 2013
+  month: 9
+  day: 7
+  day_of_week: Saturday
+

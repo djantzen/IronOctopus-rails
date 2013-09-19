@@ -33,9 +33,9 @@ class User < ActiveRecord::Base
   has_many :areas, :through => :locations, :order => :name
   has_many :neighborhoods, :through => :locations, :order => :name
 
-  has_and_belongs_to_many :clients, :class_name => 'User', :foreign_key => :client_id, :association_foreign_key => :trainer_id,
+  has_and_belongs_to_many :trainers, :class_name => 'User', :foreign_key => :client_id, :association_foreign_key => :trainer_id,
                           :join_table => 'user_relationships', :order => 'last_name, first_name'#, :conditions => [ "trainer_id != client_id" ]
-  has_and_belongs_to_many :trainers, :class_name => 'User', :foreign_key => :trainer_id, :association_foreign_key => :client_id,
+  has_and_belongs_to_many :clients, :class_name => 'User', :foreign_key => :trainer_id, :association_foreign_key => :client_id,
                           :join_table => 'user_relationships'#, :conditions => [ "trainer_id != client_id" ]
   has_one :profile
 

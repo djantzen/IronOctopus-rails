@@ -15,11 +15,11 @@ class ProgramTest < ActiveSupport::TestCase
     program.save
 
     weekday_program_yesterday = WeekdayProgram.new(:routine => routine1, :program => program,
-                                                   :day_of_week => (Time.zone.today - 1.day).strftime("%A"))
+                                                   :day_of_week => (client.local_time.to_date - 1.day).strftime("%A"))
     weekday_program_yesterday.save
-    assert_equal(0, client.todays_routines.size)
+    assert_equal(0, client.reload.todays_routines.size)
     weekday_program_today = WeekdayProgram.new(:routine => routine2, :program => program,
-                                               :day_of_week => Time.zone.today.strftime("%A"))
+                                               :day_of_week => client.local_time.to_date.strftime("%A"))
     weekday_program_today.save
     assert_equal(1, client.reload.todays_routines.size)
     assert_equal("Olympic Lift Training 2", User.find_by_login("jim_the_client").todays_routines.first.name)
@@ -44,12 +44,12 @@ class ProgramTest < ActiveSupport::TestCase
                           :client => client, :trainer => trainer)
     program.save
     scheduled_program_yesterday = ScheduledProgram.new(:routine => routine1, :program => program,
-                                                       :scheduled_on => Time.zone.today - 1.day)
+                                                       :scheduled_on => client.local_time.to_date - 1.day)
     scheduled_program_yesterday.save
-    assert_equal(0, client.todays_routines.size)
+    assert_equal(0, client.reload.todays_routines.size)
 
     scheduled_program_today = ScheduledProgram.new(:routine => routine2, :program => program,
-                                                   :scheduled_on => Time.zone.today)
+                                                   :scheduled_on => client.local_time.to_date)
     scheduled_program_today.save
     assert_equal(1, client.reload.todays_routines.size)
     assert_equal("Olympic Lift Training 2", User.find_by_login("jim_the_client").todays_routines.first.name)

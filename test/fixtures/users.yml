@@ -39,6 +39,16 @@ jim_the_client:
   identity_confirmed: true
   city: chicago
 
+sergio_the_client:
+  login: sergio_the_client
+  password_digest: "$2a$10$LAY1h5ECJ6UzB8Pv3Zpw6OIh5rLLx13niKnOBF8PiS8CR33kg9ukS"
+  email: sergio_the_client@gmail.com
+  first_name: Sergio
+  last_name: Client
+  trainers: bob_the_trainer, sergio_the_client
+  identity_confirmed: true
+  city: chicago
+
 administrator:
   login: administrator
   password_digest: "$2a$10$LAY1h5ECJ6UzB8Pv3Zpw6OIh5rLLx13niKnOBF8PiS8CR33kg9ukS"

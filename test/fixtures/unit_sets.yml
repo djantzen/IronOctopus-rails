@@ -1,13 +1,27 @@
-resistance_in_pounds:
-  cadence_unit: none
-  distance_unit: none
-  resistance_unit: pound
-  duration_unit: none
-  speed_unit: none
-
 distance_in_miles:
   cadence_unit: none
   distance_unit: mile
   resistance_unit: none
+  duration_unit: none
+  speed_unit: none
+
+distance_in_kilometers:
+  cadence_unit: none
+  distance_unit: kilometer
+  resistance_unit: none
+  duration_unit: none
+  speed_unit: none
+
+resistance_in_kilograms:
+  cadence_unit: none
+  distance_unit: none
+  resistance_unit: kilogram
+  duration_unit: none
+  speed_unit: none
+
+resistance_in_pounds:
+  cadence_unit: none
+  distance_unit: none
+  resistance_unit: pound
   duration_unit: none
   speed_unit: none

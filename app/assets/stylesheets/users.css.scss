@@ -13,9 +13,23 @@ ul.ui-autocomplete {
   width: 750px;
   height: 250px;
 }
+#activity-score-display-panel .loading-indicator {
+  display: block;
+  margin-left: 46%;
+  margin-top: 10%;
+}
 
 #scores-by-day-display-panel .loading-indicator {
   display: block;
   margin-left: 46%;
   margin-top: 10%;
+}
+
+#activity-score-display-panel {
+  width: 300px;
+  height: 150px;
+}
+
+#activity-score-display-panel .chart-container img {
+  height: 15px;
 }

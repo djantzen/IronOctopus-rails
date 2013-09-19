@@ -1,28 +1,16 @@
-sallys_push_pull_upper_is_today:
+sallys_push_pull_upper_on_sept_1_2013:
   routine: sallys_push_pull_upper
   program: sallys_scheduled_program
-  scheduled_on: <%= Date.today %>
-sallys_whole_body_mix_is_tomorrow:
-  routine: sallys_whole_body_mix
-  program: sallys_scheduled_program
-  scheduled_on: <%= Date.today + 1.day %>
-sallys_push_pull_upper_is_two_days_from_now:
+  scheduled_on: "2013-09-01"
+sallys_push_pull_upper_on_sept_3_2013:
   routine: sallys_push_pull_upper
   program: sallys_scheduled_program
-  scheduled_on: <%= Date.today + 2.days %>
-sallys_whole_body_mix_is_three_days_from_now:
-  routine: sallys_whole_body_mix
-  program: sallys_scheduled_program
-  scheduled_on: <%= Date.today + 3.days %>
-sallys_push_pull_upper_is_four_days_from_now:
+  scheduled_on: "2013-09-03"
+sallys_push_pull_upper_on_sept_5_2013:
   routine: sallys_push_pull_upper
   program: sallys_scheduled_program
-  scheduled_on: <%= Date.today + 4.days %>
-sallys_whole_body_mix_is_five_days_from_now:
-  routine: sallys_whole_body_mix
-  program: sallys_scheduled_program
-  scheduled_on: <%= Date.today + 5.days %>
-sallys_push_pull_upper_is_six_days_from_now:
-  routine: sallys_push_pull_upper
-  program: sallys_scheduled_program
-  scheduled_on: <%= Date.today + 6.days %>
+  scheduled_on: "2013-09-05"
+sergios_olympic_lift_training_on_sept_6_2013:
+  routine: sergios_olympic_lift_training
+  program: sergios_scheduled_program
+  scheduled_on: "2013-09-06"

@@ -1,9 +1,119 @@
-sally_does_the_bench_press:
+sally_does_the_bench_press_on_sunday_2013_09_01_at_14_00_00Z:
   user: sally_the_client
   routine: sallys_push_pull_upper
   activity: bench_press
-  measurement: resistance_one
-  start_time: '2012-03-16 14:01:32Z'
-  end_time: '2012-03-16 14:02:15Z'
-  start_day_id: 20120316
+  prescribed_measurement: resistance_135_repetitions_10
+  measurement: resistance_135_repetitions_10
+  start_time: "2013-09-01 14:00:00Z"
+  day_id: 20130901
   unit_set: resistance_in_pounds
+
+sally_does_the_bench_press_on_sunday_2013_09_01_at_14_05_00Z:
+  user: sally_the_client
+  routine: sallys_push_pull_upper
+  activity: bench_press
+  prescribed_measurement: resistance_135_repetitions_10
+  measurement: resistance_135_repetitions_8
+  start_time: "2013-09-01 14:05:00Z"
+  day_id: 20130901
+  unit_set: resistance_in_pounds
+
+sally_does_the_bench_press_on_sunday_2013_09_01_at_14_10_00Z:
+  user: sally_the_client
+  routine: sallys_push_pull_upper
+  activity: bench_press
+  prescribed_measurement: resistance_135_repetitions_10
+  measurement: resistance_140_repetitions_8
+  start_time: "2013-09-01 14:10:00Z"
+  day_id: 20130901
+  unit_set: resistance_in_pounds
+
+sally_does_the_curl_and_press_on_sunday_2013_09_01_at_14_15_00Z:
+  user: sally_the_client
+  routine: sallys_push_pull_upper
+  activity: curl_and_press
+  prescribed_measurement: resistance_35_repetitions_10
+  measurement: resistance_35_repetitions_10
+  start_time: "2013-09-01 14:15:00Z"
+  day_id: 20130901
+  unit_set: resistance_in_pounds
+
+sally_does_the_curl_and_press_on_sunday_2013_09_01_at_14_20_00Z:
+  user: sally_the_client
+  routine: sallys_push_pull_upper
+  activity: curl_and_press
+  prescribed_measurement: resistance_35_repetitions_10
+  measurement: resistance_35_repetitions_10
+  start_time: "2013-09-01 14:20:00Z"
+  day_id: 20130901
+  unit_set: resistance_in_pounds
+
+sally_does_the_curl_and_press_on_sunday_2013_09_01_at_14_25_00Z:
+  user: sally_the_client
+  routine: sallys_push_pull_upper
+  activity: curl_and_press
+  prescribed_measurement: resistance_35_repetitions_10
+  measurement: resistance_35_repetitions_10
+  start_time: "2013-09-01 14:25:00Z"
+  day_id: 20130901
+  unit_set: resistance_in_pounds
+
+sally_does_the_squat_on_monday_2013_09_02_at_14_00_00Z:
+  user: sally_the_client
+  routine: sallys_whole_body_mix
+  activity: squat
+  prescribed_measurement: resistance_135_repetitions_10
+  measurement: resistance_135_repetitions_10
+  start_time: "2013-09-02 14:00:00Z"
+  day_id: 20130902
+  unit_set: resistance_in_pounds
+
+sally_does_the_squat_on_monday_2013_09_02_at_14_05_00Z:
+  user: sally_the_client
+  routine: sallys_whole_body_mix
+  activity: squat
+  prescribed_measurement: resistance_135_repetitions_10
+  measurement: resistance_135_repetitions_8
+  start_time: "2013-09-02 14:05:00Z"
+  day_id: 20130902
+  unit_set: resistance_in_pounds
+
+sally_does_the_squat_on_monday_2013_09_02_at_14_10_00Z:
+  user: sally_the_client
+  routine: sallys_whole_body_mix
+  activity: squat
+  prescribed_measurement: resistance_135_repetitions_10
+  measurement: resistance_135_repetitions_8
+  start_time: "2013-09-02 14:10:00Z"
+  day_id: 20130902
+  unit_set: resistance_in_pounds
+
+sally_does_the_treadmill_run_on_monday_2013_09_02_at_14_15_00Z:
+  user: sally_the_client
+  routine: sallys_whole_body_mix
+  activity: treadmill_run
+  prescribed_measurement: distance_1000_incline_6
+  measurement: distance_1100_incline_6
+  start_time: "2013-09-02 14:15:00Z"
+  day_id: 20130902
+  unit_set: distance_in_kilometers
+
+sally_does_the_bench_press_on_saturday_2013_09_07_at_14_00_00Z:
+  user: sally_the_client
+  routine: sallys_push_pull_upper
+  activity: bench_press
+  prescribed_measurement: resistance_135_repetitions_10
+  measurement: resistance_135_repetitions_10
+  start_time: "2013-09-07 14:00:00Z"
+  day_id: 20130907
+  unit_set: resistance_in_pounds
+
+sergio_does_the_snatch_on_thursday_2013_09_05_at_14_00_00Z:
+  user: sergio_the_client
+  routine: sergios_olympic_lift_training
+  activity: snatch
+  prescribed_measurement: resistance_60_repetitions_10
+  measurement: resistance_60_repetitions_10
+  start_time: "2013-09-05 14:00:00Z"
+  day_id: 20130905
+  unit_set: resistance_in_kilograms

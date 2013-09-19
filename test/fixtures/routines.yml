@@ -12,26 +12,12 @@ sallys_whole_body_mix:
   client: sally_the_client
   permalink: wholebodymix
 
-jims_olympic_lift_training_1:
-  name: Olympic Lift Training 1
+sergios_olympic_lift_training:
+  name: Olympic Lift Training
   goal: Explosive power
-  trainer: mary_the_trainer
-  client: jim_the_client
+  trainer: bob_the_trainer
+  client: sergio_the_client
   permalink: olympiclifttraining
-
-jims_olympic_lift_training_2:
-  name: Olympic Lift Training 2
-  goal: Explosive power
-  trainer: mary_the_trainer
-  client: jim_the_client
-  permalink: olympiclifttraining2
-
-jims_olympic_lift_training_3:
-  name: Olympic Lift Training 3
-  goal: Explosive power
-  trainer: mary_the_trainer
-  client: jim_the_client
-  permalink: olympiclifttraining3
 
 bobs_self_kick_butt:
   name: Kicking my own Butt

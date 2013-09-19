@@ -45,8 +45,8 @@ class CreateScoresByDayViews < ActiveRecord::Migration
         grant select on reporting.routine_scores to reader;
 
       create view reporting.work_scores as
-        select routine_id, routine_name, client_login, day_id, full_date, sum(work_score) as work_score from
-          (select routine_id, routines.name as routine_name, day_id, full_date, users.login as client_login,
+        select routine_name, client_login, full_date, sum(work_score) as work_score from
+          (select routines.name as routine_name, full_date, users.login as client_login,
             score_metric(prescribed.cadence, actual.cadence) +
               score_metric(prescribed.calories, actual.calories) +
               score_metric(prescribed.distance, actual.distance) +
@@ -64,27 +64,27 @@ class CreateScoresByDayViews < ActiveRecord::Migration
           join users using(user_id)
           join days using(day_id)
         ) records
-        group by routine_id, routine_name, client_login, day_id, full_date;
+        group by routine_name, client_login, full_date;
       grant select on reporting.work_scores to reader;
 
       create view reporting.routines_by_day as
         select
-          routine_id, routine_name, login as client_login, full_date, routine_score
+          login as client_login, routine_name, full_date, routine_score
         from application.routines
           join application.scheduled_programs using(routine_id)
           join days on scheduled_on = full_date
           join users on client_id = user_id
           join routine_scores using(routine_id)
-        group by routine_id, routine_name, full_date, routine_score, client_login
+        group by client_login, routine_name, full_date, routine_score
         union
         select
-          routine_id, routine_name, login as client_login, full_date, routine_score
+          login as client_login, routine_name, full_date, routine_score
         from application.routines
           join application.weekday_programs using(routine_id)
           join routine_scores using(routine_id)
           join days using(day_of_week)
           join users on client_id = user_id
-        group by routine_id, routine_name, full_date, routine_score, client_login
+        group by client_login, routine_name, full_date, routine_score
         order by full_date;
         grant select on reporting.routines_by_day to reader;
     EOS

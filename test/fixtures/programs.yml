@@ -10,3 +10,9 @@ sallys_scheduled_program:
   client: sally_the_client
   trainer: bob_the_trainer
   permalink: sallysscheduledprogram
+sergios_scheduled_program:
+  name: Sergio's Scheduled Program
+  goal: A finely tuned program
+  client: sergio_the_client
+  trainer: bob_the_trainer
+  permalink: sergiosscheduledprogram

@@ -24,7 +24,7 @@ $(document).ready () ->
   )
 
   init_scores_by_day_dates = () ->
-    $('#scores-by-day-start-date').datepicker('update', moment().subtract('weeks', 2).calendar());
+    $('#scores-by-day-start-date').datepicker('update', moment().subtract('weeks', 1).calendar());
     $("#scores-by-day-end-date").datepicker('update', new Date());
 
   init_scores_by_day_dates()
@@ -42,10 +42,16 @@ $(document).ready () ->
     params = { "start_date": start_date.format("YYYY-MM-DD"), "end_date": end_date.format("YYYY-MM-DD") }
     Charts.fetch_data($("#scores-by-day-display-panel"), url, params)
 
+  get_activity_score = () ->
+    url = window.location.pathname + "/activity_level_by_day"
+    Charts.fetch_data($("#activity-score-display-panel"), url)
+
   $("#scores-by-date-show-button").click ->
     get_scores_by_day()
 
   $("#scores-by-date-show-button").click()
+  if $("#activity-score-display-panel").size() == 1
+    get_activity_score()
 
   is_login_unique = (login) ->
     url = "/users/is_login_unique/" + login

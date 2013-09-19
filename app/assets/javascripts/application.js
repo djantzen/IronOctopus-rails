@@ -17,7 +17,7 @@
 
 console.info("application load");
 
-google.load('visualization', '1', {packages:['corechart']});
+google.load('visualization', '1.0', {packages:['corechart', 'table']});
 
 var to_identifier_regexp = new RegExp("[^a-zA-Z0-9]", "g");
 String.prototype.toIdentifier = function() {
