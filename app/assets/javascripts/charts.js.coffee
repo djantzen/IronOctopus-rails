@@ -12,7 +12,7 @@ class this.Charts
         data_table.addColumn(this))
       data_table.addRows(data.rows)
 
-      formatter = new google.visualization.TableBarFormat({drawZeroLine: true, base: 0, showValue: false, min: -200, max: 200, colorPositive: "green"});
+      formatter = new google.visualization.TableBarFormat({drawZeroLine: true, base: 0, showValue: true, min: -200, max: 200, colorPositive: "green"});
       formatter.format(data_table, 1);
 
       # Draw the chart

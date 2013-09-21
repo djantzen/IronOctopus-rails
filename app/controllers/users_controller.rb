@@ -92,7 +92,7 @@ class UsersController < ApplicationController
     user = User.find_by_login(params[:user_id])
     start_date = Date.parse params[:start_date]
     end_date = Date.parse params[:end_date]
-    scores = ByDayClientScore.find_by_user_and_dates(user, start_date, end_date)
+    scores = Charts::ByDayClientScore.find_by_user_and_dates(user, start_date, end_date)
 
     rows = scores.inject([]) do |memo, score|
       row = []

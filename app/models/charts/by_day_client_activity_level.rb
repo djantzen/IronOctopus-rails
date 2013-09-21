@@ -17,7 +17,8 @@ module Charts
       with clients as
         (select clients.login, clients.first_name, clients.last_name from users trainers
           join user_relationships on trainers.user_id = user_relationships.trainer_id
-          join users clients on user_relationships.client_id = clients.user_id where trainers.login = :trainer_login)
+          join users clients on user_relationships.client_id = clients.user_id
+          where trainers.login = :trainer_login)
       select
           routines_by_day.client_login
         , clients.first_name
@@ -33,7 +34,8 @@ module Charts
       with clients as
         (select clients.login, clients.first_name, clients.last_name from users trainers
           join user_relationships on trainers.user_id = user_relationships.trainer_id
-          join users clients on user_relationships.client_id = clients.user_id where trainers.login = :trainer_login)
+          join users clients on user_relationships.client_id = clients.user_id
+        where trainers.login = :trainer_login)
       select
           work_scores.client_login
         , clients.first_name

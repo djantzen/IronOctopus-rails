@@ -24,10 +24,11 @@
                 = link_to(routine.name, user_routine_path(@user, routine))
       .row-fluid
         = link_to "Training Log", user_work_index_path(@user)
-      .row-fluid
-        %h4
-          My Clients at a Glance
-        = render :partial => "users/client_activity_score_panel"
+      - if @user.is_trainer? and @user.eql? current_user
+        .row-fluid
+          %h4
+            My Clients at a Glance
+          = render :partial => "users/client_activity_score_panel"
     .span8
       - if @user.is_trainer? and @user.eql? current_user
         -# Show reports tab first
