@@ -1,0 +1,5 @@
+.chart-search-by-date-range-panel{:id => panel_id}
+  %input.input-small.chart-start-date
+  %input.input-small.chart-end-date
+  = render :partial => "shared/button", :locals => { :button_id => button_id,
+                                        :message => "Display", :type => "input"}

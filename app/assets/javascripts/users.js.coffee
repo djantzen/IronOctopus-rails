@@ -19,19 +19,19 @@ $(document).ready () ->
     }
   )
 
-  $("#scores-by-day-start-date, #scores-by-day-end-date, #activity-type-breakdown-by-day-start-date, #activity-type-breakdown-by-day-end-date").datepicker(
+  $(".chart-start-date, .chart-end-date").datepicker(
     autoclose: true
   )
 
   init_scores_by_day_dates = () ->
-    $('#scores-by-day-start-date').datepicker('update', moment().subtract('weeks', 1).calendar());
-    $("#scores-by-day-end-date").datepicker('update', new Date());
+    $("#scores-by-day-search-panel .chart-start-date").datepicker('update', moment().subtract('weeks', 1).calendar());
+    $("#scores-by-day-search-panel .chart-end-date").datepicker('update', new Date());
 
   init_scores_by_day_dates()
 
   get_scores_by_day = () ->
-    start_date = moment($("#scores-by-day-start-date").val())
-    end_date = moment($("#scores-by-day-end-date").val())
+    start_date = moment($("#scores-by-day-search-panel .chart-start-date").val())
+    end_date = moment($("#scores-by-day-search-panel .chart-end-date").val())
 
     if start_date >= end_date
       init_scores_by_day_dates()
@@ -43,14 +43,14 @@ $(document).ready () ->
     Charts.fetch_data($("#scores-by-day-display-panel"), url, params)
 
   init_activity_type_breakdown_by_day_dates = () ->
-    $('#activity-type-breakdown-by-day-start-date').datepicker('update', moment().subtract('weeks', 1).calendar());
-    $("#activity-type-breakdown-by-day-end-date").datepicker('update', new Date());
+    $("#activity-type-breakdown-by-day-search-panel .chart-start-date").datepicker('update', moment().subtract('weeks', 1).calendar());
+    $("#activity-type-breakdown-by-day-search-panel .chart-end-date").datepicker('update', new Date());
 
   init_activity_type_breakdown_by_day_dates()
 
   get_activity_type_breakdown_by_day = () ->
-    start_date = moment($("#activity-type-breakdown-by-day-start-date").val())
-    end_date = moment($("#activity-type-breakdown-by-day-end-date").val())
+    start_date = moment($("#activity-type-breakdown-by-day-search-panel .chart-start-date").val())
+    end_date = moment($("#activity-type-breakdown-by-day-search-panel .chart-end-date").val())
 
     if start_date >= end_date
       init_activity_type_breakdown_by_day_dates()

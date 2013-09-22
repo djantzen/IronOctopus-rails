@@ -177,7 +177,7 @@ class UsersController < ApplicationController
       :options => {
         :title => "#{user.full_name}'s Activity Type Breakdown by Day",
         :legend => "right",
-        :is3D => false
+        :is3d => false
       }
     }
 
