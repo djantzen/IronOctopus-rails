@@ -12,18 +12,19 @@ class this.Charts
         data_table.addColumn(this))
       data_table.addRows(data.rows)
 
-      formatter = new google.visualization.TableBarFormat({drawZeroLine: true, base: 0, showValue: true, min: -200, max: 200, colorPositive: "green"});
-      formatter.format(data_table, 1);
+      if data.formatter
+        if data.formatter.type == "TableBarFormat"
+          formatter = new google.visualization.TableBarFormat(data.formatter.options)
+        formatter.format(data_table, 1);
 
       # Draw the chart
       chart = new google.visualization.ChartWrapper()
       chart.setChartType(data.type)
-      console.log(data.options)
       chart.setDataTable(data_table)
       chart.setOption('width', chart_panel.width())
       chart.setOption('height', chart_panel.height())
       chart.setOptions(data.options)
 
       chart_panel.find(".loading-indicator").hide()
-      chart.draw(chart_panel.find(".chart-container")[0], data.options)
+      chart.draw(chart_panel.find(".chart-container")[0])
     )

@@ -1,0 +1,9 @@
+#activity-type-breakdown-by-day-search-panel.row-fluid
+  %input#activity-type-breakdown-by-day-start-date.input-small
+  %input#activity-type-breakdown-by-day-end-date.input-small
+  = render :partial => "shared/button", :locals => { :button_id => "activity-type-breakdown-by-day-show-button",
+                                        :message => "Show Breakdown", :type => "input"}
+#activity-type-breakdown-by-day-display-panel.row-fluid.chart-panel
+  .loading-indicator
+    = image_tag "ajax-loader.gif"
+  .chart-container

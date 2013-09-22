@@ -143,17 +143,45 @@ class UsersController < ApplicationController
       :cols => [{:type => "string", :label => "Client", :role => "domain"},
                 {:type => "number", :label => "Score", :role => "data"}],
       :rows => rows,
+      :formatter => {
+        :type => "TableBarFormat",
+        :options => {
+          :drawZeroLine => true,
+          :colorPositive => "green",
+          :min => -200,
+          :max => 200
+        }
+      },
       :options => {
         :allowHtml => true,
-        :showValue => false,
-        :drawZeroLine => true,
-        :colorPositive => "green",
-        :min => -200,
-        :max => 200
+        :showValue => false
       }
     }
   end
 
+  def activity_type_breakdown_by_day
+    user = User.find_by_login(params[:user_id])
+    start_date = Date.parse params[:start_date]
+    end_date = Date.parse params[:end_date]
+    breakdowns = Charts::ByDayActivityTypeBreakdown.find_by_user_and_dates(user, start_date, end_date)
+    rows = breakdowns.inject([]) do |memo, breakdown|
+      memo << [breakdown.activity_type_name, breakdown.count]
+      memo
+    end
+
+    render :json => {
+      :type => "PieChart",
+      :cols => [{:type => "string", :label => "Activity Type", :role => "domain"},
+                {:type => "number", :label => "Count", :role => "data"}],
+      :rows => rows,
+      :options => {
+        :title => "#{user.full_name}'s Activity Type Breakdown by Day",
+        :legend => "right",
+        :is3D => false
+      }
+    }
+
+  end
 
   def settings
     @user = User.find_by_login(params[:user_id])

@@ -103,6 +103,7 @@ IronOctopus::Application.routes.draw do
   get "/users/:user_id/routines" => "routines#by_client", :as => :routines_by_client
   get "/users/:user_id/scores_by_day" => "users#scores_by_day"
   get "/users/:user_id/activity_level_by_day" => "users#activity_level_by_day"
+  get "/users/:user_id/activity_type_breakdown_by_day" => "users#activity_type_breakdown_by_day"
 
   get "/trainers/:user_id/clients" => "users#clients", :as => :clients
   get "/trainers/:user_id/routines" => "routines#by_trainer", :as => :routines_by_trainer

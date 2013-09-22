@@ -19,7 +19,7 @@ $(document).ready () ->
     }
   )
 
-  $("#scores-by-day-start-date, #scores-by-day-end-date").datepicker(
+  $("#scores-by-day-start-date, #scores-by-day-end-date, #activity-type-breakdown-by-day-start-date, #activity-type-breakdown-by-day-end-date").datepicker(
     autoclose: true
   )
 
@@ -42,14 +42,36 @@ $(document).ready () ->
     params = { "start_date": start_date.format("YYYY-MM-DD"), "end_date": end_date.format("YYYY-MM-DD") }
     Charts.fetch_data($("#scores-by-day-display-panel"), url, params)
 
+  init_activity_type_breakdown_by_day_dates = () ->
+    $('#activity-type-breakdown-by-day-start-date').datepicker('update', moment().subtract('weeks', 1).calendar());
+    $("#activity-type-breakdown-by-day-end-date").datepicker('update', new Date());
+
+  init_activity_type_breakdown_by_day_dates()
+
+  get_activity_type_breakdown_by_day = () ->
+    start_date = moment($("#activity-type-breakdown-by-day-start-date").val())
+    end_date = moment($("#activity-type-breakdown-by-day-end-date").val())
+
+    if start_date >= end_date
+      init_activity_type_breakdown_by_day_dates()
+      get_activity_type_breakdown_by_day()
+      return
+
+    url = window.location.pathname + "/activity_type_breakdown_by_day"
+    params = { "start_date": start_date.format("YYYY-MM-DD"), "end_date": end_date.format("YYYY-MM-DD") }
+    Charts.fetch_data($("#activity-type-breakdown-by-day-display-panel"), url, params)
+
   get_activity_score = () ->
     url = window.location.pathname + "/activity_level_by_day"
     Charts.fetch_data($("#activity-score-display-panel"), url)
 
-  $("#scores-by-date-show-button").click ->
+  $("#scores-by-day-show-button").click ->
     get_scores_by_day()
+  $("#activity-type-breakdown-by-day-show-button").click ->
+    get_activity_type_breakdown_by_day()
 
-  $("#scores-by-date-show-button").click()
+  $("#scores-by-day-show-button").click()
+  $("#activity-type-breakdown-by-day-show-button").click()
   if $("#activity-score-display-panel").size() == 1
     get_activity_score()
 
