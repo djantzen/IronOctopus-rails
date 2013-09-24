@@ -149,12 +149,12 @@ class UsersController < ApplicationController
           :drawZeroLine => true,
           :colorPositive => "green",
           :min => -200,
-          :max => 200
+          :max => 200,
+          :showValue => false
         }
       },
       :options => {
-        :allowHtml => true,
-        :showValue => false
+        :allowHtml => true
       }
     }
   end
@@ -180,8 +180,31 @@ class UsersController < ApplicationController
         :is3d => false
       }
     }
-
   end
+
+  def body_part_breakdown_by_day
+    user = User.find_by_login(params[:user_id])
+    start_date = Date.parse params[:start_date]
+    end_date = Date.parse params[:end_date]
+    breakdowns = Charts::ByDayBodyPartBreakdown.find_by_user_and_dates(user, start_date, end_date)
+    rows = breakdowns.inject([]) do |memo, breakdown|
+      memo << [breakdown.body_region, breakdown.count]
+      memo
+    end
+
+    render :json => {
+      :type => "PieChart",
+      :cols => [{:type => "string", :label => "Body Region", :role => "domain"},
+                {:type => "number", :label => "Count", :role => "data"}],
+      :rows => rows,
+      :options => {
+        :title => "#{user.full_name}'s Body Region Breakdown by Day",
+        :legend => "right",
+        :is3d => false
+      }
+    }
+  end
+
 
   def settings
     @user = User.find_by_login(params[:user_id])

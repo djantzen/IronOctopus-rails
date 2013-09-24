@@ -42,6 +42,11 @@
                  :locals => { :panel_id => "activity-type-breakdown-by-day-search-panel",
                               :button_id => "activity-type-breakdown-by-day-show-button"}
         = render :partial => "shared/chart_display_panel", :locals => { :panel_id => "activity-type-breakdown-by-day-display-panel" }
+      .row-fluid.well
+        = render :partial => "shared/chart_search_by_date_range_panel",
+                 :locals => { :panel_id => "body-part-breakdown-by-day-search-panel",
+                              :button_id => "body-part-breakdown-by-day-show-button"}
+        = render :partial => "shared/chart_display_panel", :locals => { :panel_id => "body-part-breakdown-by-day-display-panel" }
       .row-fluid
         .well
           .row-fluid

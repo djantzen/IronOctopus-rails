@@ -13,8 +13,8 @@ $(document).ready () ->
             return {
               label: item[0] + ", " + item[1],
               value: item[0] + ", " + item[1]
-            }
-          ))
+            })
+          )
       )
     }
   )
@@ -65,13 +65,41 @@ $(document).ready () ->
     url = window.location.pathname + "/activity_level_by_day"
     Charts.fetch_data($("#activity-score-display-panel"), url)
 
+  init_activity_type_breakdown_by_day_dates = () ->
+    $("#activity-type-breakdown-by-day-search-panel .chart-start-date").datepicker('update', moment().subtract('weeks', 1).calendar());
+    $("#activity-type-breakdown-by-day-search-panel .chart-end-date").datepicker('update', new Date());
+
+  init_activity_type_breakdown_by_day_dates()
+
+  init_body_part_breakdown_by_day_dates = () ->
+    $("#body-part-breakdown-by-day-search-panel .chart-start-date").datepicker('update', moment().subtract('weeks', 1).calendar());
+    $("#body-part-breakdown-by-day-search-panel .chart-end-date").datepicker('update', new Date());
+
+  init_body_part_breakdown_by_day_dates()
+
+  get_body_part_breakdown_by_day = () ->
+    start_date = moment($("#body-part-breakdown-by-day-search-panel .chart-start-date").val())
+    end_date = moment($("#body-part-breakdown-by-day-search-panel .chart-end-date").val())
+
+    if start_date >= end_date
+      init_body_part_breakdown_by_day_dates()
+      get_body_part_breakdown_by_day()
+      return
+
+    url = window.location.pathname + "/body_part_breakdown_by_day"
+    params = { "start_date": start_date.format("YYYY-MM-DD"), "end_date": end_date.format("YYYY-MM-DD") }
+    Charts.fetch_data($("#body-part-breakdown-by-day-display-panel"), url, params)
+
   $("#scores-by-day-show-button").click ->
     get_scores_by_day()
   $("#activity-type-breakdown-by-day-show-button").click ->
     get_activity_type_breakdown_by_day()
+  $("#body-part-breakdown-by-day-show-button").click ->
+    get_body_part_breakdown_by_day()
 
   $("#scores-by-day-show-button").click()
   $("#activity-type-breakdown-by-day-show-button").click()
+  $("#body-part-breakdown-by-day-show-button").click()
   if $("#activity-score-display-panel").size() == 1
     get_activity_score()
 
