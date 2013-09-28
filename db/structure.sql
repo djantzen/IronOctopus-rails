@@ -6620,35 +6620,39 @@ $$;
 SET search_path = reporting, pg_catalog;
 
 --
--- Name: score_metric(numrange, numrange); Type: FUNCTION; Schema: reporting; Owner: -
+-- Name: range_to_median(numrange); Type: FUNCTION; Schema: reporting; Owner: -
 --
 
-CREATE FUNCTION score_metric(prescribed numrange, actual numrange) RETURNS integer
+CREATE FUNCTION range_to_median(the_range numrange) RETURNS numeric
     LANGUAGE sql
     AS $$
-        select case
-          when prescribed = '[0,0]' then 0
-          when actual = prescribed then 1
-          when actual > prescribed then 2
-          when actual < prescribed then -1
-        end
+        select ((upper(the_range) - lower(the_range)) / 2) + lower(the_range);
       $$;
 
 
 --
--- Name: score_metric(int4range, int4range); Type: FUNCTION; Schema: reporting; Owner: -
+-- Name: FUNCTION range_to_median(the_range numrange); Type: COMMENT; Schema: reporting; Owner: -
 --
 
-CREATE FUNCTION score_metric(prescribed int4range, actual int4range) RETURNS integer
+COMMENT ON FUNCTION range_to_median(the_range numrange) IS 'Returns the middle number (numeric) in the range';
+
+
+--
+-- Name: range_to_median(int4range); Type: FUNCTION; Schema: reporting; Owner: -
+--
+
+CREATE FUNCTION range_to_median(the_range int4range) RETURNS numeric
     LANGUAGE sql
     AS $$
-        select case
-          when prescribed = '[0,1)' then 0
-          when actual = prescribed then 1
-          when actual > prescribed then 2
-          when actual < prescribed then -1
-        end
+        select (((upper(the_range) - 1)::numeric - lower(the_range)::numeric) / 2) + lower(the_range);
       $$;
+
+
+--
+-- Name: FUNCTION range_to_median(the_range int4range); Type: COMMENT; Schema: reporting; Owner: -
+--
+
+COMMENT ON FUNCTION range_to_median(the_range int4range) IS 'Returns the middle number (numeric) in the range';
 
 
 SET search_path = public, pg_catalog;
@@ -8542,6 +8546,32 @@ COMMENT ON VIEW todays_routines IS 'A view describing the routines occurring tod
 
 
 --
+-- Name: user_relationships; Type: TABLE; Schema: application; Owner: -; Tablespace: 
+--
+
+CREATE TABLE user_relationships (
+    trainer_id integer NOT NULL,
+    client_id integer NOT NULL,
+    created_at timestamp with time zone DEFAULT now() NOT NULL
+);
+
+
+--
+-- Name: TABLE user_relationships; Type: COMMENT; Schema: application; Owner: -
+--
+
+COMMENT ON TABLE user_relationships IS 'A table to construct the graph of user relationships';
+
+
+--
+-- Name: trainers_and_clients; Type: VIEW; Schema: application; Owner: -
+--
+
+CREATE VIEW trainers_and_clients AS
+    SELECT trainers.login AS trainer_login, trainers.first_name AS trainer_first_name, trainers.last_name AS trainer_last_name, clients.login AS client_login, clients.first_name AS client_first_name, clients.last_name AS client_last_name FROM ((users trainers JOIN user_relationships ON ((trainers.user_id = user_relationships.trainer_id))) JOIN users clients ON ((user_relationships.client_id = clients.user_id)));
+
+
+--
 -- Name: unit_sets; Type: TABLE; Schema: application; Owner: -; Tablespace: 
 --
 
@@ -8619,24 +8649,6 @@ CREATE SEQUENCE units_unit_id_seq
 --
 
 ALTER SEQUENCE units_unit_id_seq OWNED BY units.unit_id;
-
-
---
--- Name: user_relationships; Type: TABLE; Schema: application; Owner: -; Tablespace: 
---
-
-CREATE TABLE user_relationships (
-    trainer_id integer NOT NULL,
-    client_id integer NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL
-);
-
-
---
--- Name: TABLE user_relationships; Type: COMMENT; Schema: application; Owner: -
---
-
-COMMENT ON TABLE user_relationships IS 'A table to construct the graph of user relationships';
 
 
 --
@@ -8729,7 +8741,14 @@ COMMENT ON TABLE days IS 'A dimension for date-based reporting.';
 --
 
 CREATE VIEW measurement_scores AS
-    SELECT measurements.measurement_id, (((((((((CASE WHEN (measurements.cadence = '[0,0]'::numrange) THEN 0 ELSE 1 END + CASE WHEN (measurements.calories = '[0,1)'::int4range) THEN 0 ELSE 1 END) + CASE WHEN (measurements.distance = '[0,0]'::numrange) THEN 0 ELSE 1 END) + CASE WHEN (measurements.duration = '[0,1)'::int4range) THEN 0 ELSE 1 END) + CASE WHEN (measurements.heart_rate = '[0,1)'::int4range) THEN 0 ELSE 1 END) + CASE WHEN (measurements.incline = '[0,0]'::numrange) THEN 0 ELSE 1 END) + CASE WHEN (measurements.level = '[0,1)'::int4range) THEN 0 ELSE 1 END) + CASE WHEN (measurements.repetitions = '[0,1)'::int4range) THEN 0 ELSE 1 END) + CASE WHEN (measurements.resistance = '[0,0]'::numrange) THEN 0 ELSE 1 END) + CASE WHEN (measurements.speed = '[0,0]'::numrange) THEN 0 ELSE 1 END) AS measurement_score FROM application.measurements;
+    SELECT measurements.measurement_id, (GREATEST(((((((((range_to_median(measurements.cadence) + (+ range_to_median(measurements.calories))) + (range_to_median(measurements.distance) / (100)::numeric)) + (range_to_median(measurements.duration) / (60)::numeric)) + range_to_median(measurements.heart_rate)) + (range_to_median(measurements.incline) * (10)::numeric)) + (range_to_median(measurements.level) * (5)::numeric)) + range_to_median(measurements.resistance)) + (range_to_median(measurements.speed) * (10)::numeric)), (1)::numeric) * GREATEST(range_to_median(measurements.repetitions), (1)::numeric)) AS measurement_score FROM application.measurements;
+
+
+--
+-- Name: VIEW measurement_scores; Type: COMMENT; Schema: reporting; Owner: -
+--
+
+COMMENT ON VIEW measurement_scores IS 'Calculates the score represented by an entire measurements record';
 
 
 --
@@ -8737,7 +8756,14 @@ CREATE VIEW measurement_scores AS
 --
 
 CREATE VIEW routine_scores AS
-    SELECT routines.routine_id, routines.name AS routine_name, sum((measurement_scores.measurement_score * activity_set_groups.sets)) AS routine_score FROM (((application.routines JOIN application.activity_set_groups USING (routine_id)) JOIN application.activity_sets USING (activity_set_group_id)) JOIN measurement_scores USING (measurement_id)) GROUP BY routines.routine_id, routines.name;
+    SELECT routines.routine_id, routines.name AS routine_name, sum((measurement_scores.measurement_score * (activity_set_groups.sets)::numeric)) AS routine_score FROM (((application.routines JOIN application.activity_set_groups USING (routine_id)) JOIN application.activity_sets USING (activity_set_group_id)) JOIN measurement_scores USING (measurement_id)) GROUP BY routines.routine_id, routines.name;
+
+
+--
+-- Name: VIEW routine_scores; Type: COMMENT; Schema: reporting; Owner: -
+--
+
+COMMENT ON VIEW routine_scores IS 'Collects the measurement_scores for an entire routine and calculates and single score';
 
 
 --
@@ -8746,6 +8772,13 @@ CREATE VIEW routine_scores AS
 
 CREATE VIEW routines_by_day AS
     SELECT users.login AS client_login, routine_scores.routine_name, days.full_date, routine_scores.routine_score FROM ((((application.routines JOIN application.scheduled_programs USING (routine_id)) JOIN days ON ((scheduled_programs.scheduled_on = days.full_date))) JOIN application.users ON ((routines.client_id = users.user_id))) JOIN routine_scores USING (routine_id)) GROUP BY users.login, routine_scores.routine_name, days.full_date, routine_scores.routine_score UNION SELECT users.login AS client_login, routine_scores.routine_name, days.full_date, routine_scores.routine_score FROM ((((application.routines JOIN application.weekday_programs USING (routine_id)) JOIN routine_scores USING (routine_id)) JOIN days USING (day_of_week)) JOIN application.users ON ((routines.client_id = users.user_id))) GROUP BY users.login, routine_scores.routine_name, days.full_date, routine_scores.routine_score ORDER BY 3;
+
+
+--
+-- Name: VIEW routines_by_day; Type: COMMENT; Schema: reporting; Owner: -
+--
+
+COMMENT ON VIEW routines_by_day IS 'Groups routines by client and date and sums associated routine_scores';
 
 
 --
@@ -8772,11 +8805,18 @@ COMMENT ON TABLE work IS 'A running log of metrics achieved during the performan
 
 
 --
--- Name: work_scores; Type: VIEW; Schema: reporting; Owner: -
+-- Name: work_scores_by_day; Type: VIEW; Schema: reporting; Owner: -
 --
 
-CREATE VIEW work_scores AS
-    SELECT records.routine_name, records.client_login, records.full_date, sum(records.work_score) AS work_score FROM (SELECT routines.name AS routine_name, days.full_date, users.login AS client_login, (((((((((score_metric(prescribed.cadence, actual.cadence) + score_metric(prescribed.calories, actual.calories)) + score_metric(prescribed.distance, actual.distance)) + score_metric(prescribed.duration, actual.duration)) + score_metric(prescribed.incline, actual.incline)) + score_metric(prescribed.level, actual.level)) + score_metric(prescribed.repetitions, actual.repetitions)) + score_metric(prescribed.resistance, actual.resistance)) + score_metric(prescribed.speed, actual.speed)) + score_metric(prescribed.heart_rate, actual.heart_rate)) AS work_score FROM (((((work JOIN application.measurements prescribed ON ((work.prescribed_measurement_id = prescribed.measurement_id))) JOIN application.measurements actual ON ((work.measurement_id = actual.measurement_id))) JOIN application.routines USING (routine_id)) JOIN application.users USING (user_id)) JOIN days USING (day_id))) records GROUP BY records.routine_name, records.client_login, records.full_date;
+CREATE VIEW work_scores_by_day AS
+    SELECT work.routine_id, routines.name AS routine_name, users.login AS client_login, days.full_date, sum(measurement_scores.measurement_score) AS work_score FROM ((((work JOIN application.routines USING (routine_id)) JOIN measurement_scores USING (measurement_id)) JOIN application.users USING (user_id)) JOIN days USING (day_id)) GROUP BY work.routine_id, routines.name, users.login, days.full_date;
+
+
+--
+-- Name: VIEW work_scores_by_day; Type: COMMENT; Schema: reporting; Owner: -
+--
+
+COMMENT ON VIEW work_scores_by_day IS 'Groups work records by routine, client and date and sums associated measurement_scores';
 
 
 SET search_path = application, pg_catalog;

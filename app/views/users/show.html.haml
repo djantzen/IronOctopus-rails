@@ -4,12 +4,12 @@
       .row-fluid
         %h3
           = @user.full_name
-        -#User since #{@user.created_at.to_date}
-        -#- if @user.is_trainer? and @user.eql? current_user
-        -#  - if @user.profile.nil?
-        -#    = link_to("Create a Trainer Profile", new_user_profile_path(@user))
-        -#  - else
-        -#    = link_to("Manage Trainer Profile", edit_user_profile_path(@user, @user.profile))
+        User since #{@user.created_at.to_date}
+        - if @user.is_trainer? and @user.eql? current_user
+          - if @user.profile.nil?
+            = link_to("Create a Trainer Profile", new_user_profile_path(@user))
+          - else
+            = link_to("Manage Trainer Profile", edit_user_profile_path(@user, @user.profile))
       .row-fluid
         - unless @todays_routines.empty?
           %h3

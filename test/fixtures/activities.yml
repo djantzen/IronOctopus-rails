@@ -19,15 +19,15 @@ box_jump:
   metrics: repetitions
   activity_attributes: push, compound
 
-dumbbell_bench_press:
-  name: Dumbbell Bench Press
+clean_and_jerk:
+  name: Clean and Jerk
   activity_type: resistance
-  creator: bob_the_trainer
-  body_parts: triceps_brachii
-  implements: dumbbell, bench
-  permalink: dumbbellbenchpress
+  creator: mary_the_trainer
+  implements: barbell
+  body_parts: quadriceps, gluteus_maximus, hamstring, posterior_deltoid
+  permalink: cleanandjerk
   metrics: repetitions, resistance
-  activity_attributes: push, compound
+  activity_attributes: pull, push, compound
 
 curl_and_press:
   name: Curl and Press
@@ -38,6 +38,25 @@ curl_and_press:
   permalink: curlandpress
   metrics: repetitions, resistance
   activity_attributes: pull, push, compound
+
+dumbbell_bench_press:
+  name: Dumbbell Bench Press
+  activity_type: resistance
+  creator: bob_the_trainer
+  body_parts: triceps_brachii
+  implements: dumbbell, bench
+  permalink: dumbbellbenchpress
+  metrics: repetitions, resistance
+  activity_attributes: push, compound
+
+hamstring_curl:
+  name: Hamstring Curl
+  activity_type: resistance
+  creator: mary_the_trainer
+  body_parts: hamstring
+  permalink: hamstringcurl
+  metrics: repetitions, resistance
+  activity_attributes: pull, isolation
 
 snatch:
   name: Snatch
@@ -58,25 +77,6 @@ squat:
   permalink: squat
   metrics: repetitions, resistance
   activity_attributes: push, compound
-
-hamstring_curl:
-  name: Hamstring Curl
-  activity_type: resistance
-  creator: mary_the_trainer
-  body_parts: hamstring
-  permalink: hamstringcurl
-  metrics: repetitions, resistance
-  activity_attributes: pull, isolation
-
-clean_and_jerk:
-  name: Clean and Jerk
-  activity_type: resistance
-  creator: mary_the_trainer
-  implements: barbell
-  body_parts: quadriceps, gluteus_maximus, hamstring, posterior_deltoid
-  permalink: cleanandjerk
-  metrics: repetitions, resistance
-  activity_attributes: pull, push, compound
 
 treadmill_run:
   name: Treadmill Run

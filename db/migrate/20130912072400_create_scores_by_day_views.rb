@@ -1,40 +1,33 @@
 class CreateScoresByDayViews < ActiveRecord::Migration
   def up
     execute <<-EOS
-      create function reporting.score_metric(prescribed numrange, actual numrange) returns integer as $$
-        select case
-          when prescribed = '[0,0]' then 0
-          when actual = prescribed then 1
-          when actual > prescribed then 2
-          when actual < prescribed then -1
-        end
+      create function reporting.range_to_median(the_range numrange) returns numeric as $$
+        select ((upper(the_range) - lower(the_range)) / 2) + lower(the_range);
       $$ language 'sql';
+      comment on function reporting.range_to_median(numrange) is 'Returns the middle number (numeric) in the range';
 
-      create function reporting.score_metric(prescribed int4range, actual int4range) returns integer as $$
-        select case
-          when prescribed = '[0,1)' then 0
-          when actual = prescribed then 1
-          when actual > prescribed then 2
-          when actual < prescribed then -1
-        end
+      create function reporting.range_to_median(the_range int4range) returns numeric as $$
+        select (((upper(the_range) - 1)::numeric - lower(the_range)::numeric) / 2) + lower(the_range);
       $$ language 'sql';
+      comment on function reporting.range_to_median(int4range) is 'Returns the middle number (numeric) in the range';
 
       create view reporting.measurement_scores as
         select
           measurement_id,
-          case when cadence = '[0,0]' then 0 else 1 end +
-          case when calories = '[0,1)' then 0 else 1 end +
-          case when distance = '[0,0]' then 0 else 1 end +
-          case when duration = '[0,1)' then 0 else 1 end +
-          case when heart_rate = '[0,1)' then 0 else 1 end +
-          case when incline = '[0,0]' then 0 else 1 end +
-          case when level = '[0,1)' then 0 else 1 end +
-          case when repetitions = '[0,1)' then 0 else 1 end +
-          case when resistance = '[0,0]' then 0 else 1 end +
-          case when speed = '[0,0]' then 0 else 1 end
-          as measurement_score
+          greatest(
+            range_to_median(cadence) +
+            + range_to_median(calories)
+            + range_to_median(distance) / 100
+            + range_to_median(duration) / 60
+            + range_to_median(heart_rate)
+            + range_to_median(incline) * 10
+            + range_to_median(level) * 5
+            + range_to_median(resistance)
+            + range_to_median(speed) * 10, 1)
+            * greatest(range_to_median(repetitions), 1) as measurement_score
         from measurements;
       grant select on reporting.measurement_scores to reader;
+      comment on view reporting.measurement_scores is 'Calculates the score represented by an entire measurements record';
 
       create view reporting.routine_scores as
         select routine_id, routines.name as routine_name, sum(measurement_score * sets) as routine_score from routines
@@ -42,30 +35,20 @@ class CreateScoresByDayViews < ActiveRecord::Migration
           join activity_sets using(activity_set_group_id)
           join measurement_scores using(measurement_id)
         group by routine_id, routines.name;
-        grant select on reporting.routine_scores to reader;
+      grant select on reporting.routine_scores to reader;
+      comment on view reporting.routine_scores is 'Collects the measurement_scores for an entire routine and calculates and single score';
 
-      create view reporting.work_scores as
-        select routine_name, client_login, full_date, sum(work_score) as work_score from
-          (select routines.name as routine_name, full_date, users.login as client_login,
-            score_metric(prescribed.cadence, actual.cadence) +
-              score_metric(prescribed.calories, actual.calories) +
-              score_metric(prescribed.distance, actual.distance) +
-              score_metric(prescribed.duration, actual.duration) +
-              score_metric(prescribed.incline, actual.incline) +
-              score_metric(prescribed.level, actual.level) +
-              score_metric(prescribed.repetitions, actual.repetitions) +
-              score_metric(prescribed.resistance, actual.resistance) +
-              score_metric(prescribed.speed, actual.speed) +
-              score_metric(prescribed.heart_rate, actual.heart_rate) as work_score
+      create view reporting.work_scores_by_day as
+        select
+          routine_id, routines.name as routine_name, users.login as client_login, full_date, sum(measurement_score) as work_score
         from reporting.work
-          join measurements prescribed on prescribed_measurement_id = prescribed.measurement_id
-          join measurements actual on work.measurement_id = actual.measurement_id
           join routines using(routine_id)
+          join measurement_scores using(measurement_id)
           join users using(user_id)
           join days using(day_id)
-        ) records
-        group by routine_name, client_login, full_date;
-      grant select on reporting.work_scores to reader;
+        group by routine_id, routine_name, client_login, full_date;
+      grant select on reporting.work_scores_by_day to reader;
+      comment on view reporting.work_scores_by_day is 'Groups work records by routine, client and date and sums associated measurement_scores';
 
       create view reporting.routines_by_day as
         select
@@ -86,18 +69,20 @@ class CreateScoresByDayViews < ActiveRecord::Migration
           join users on client_id = user_id
         group by client_login, routine_name, full_date, routine_score
         order by full_date;
-        grant select on reporting.routines_by_day to reader;
+      grant select on reporting.routines_by_day to reader;
+      comment on view reporting.routines_by_day is 'Groups routines by client and date and sums associated routine_scores';
     EOS
   end
 
   def down
     execute <<-EOS
-      drop view routines_by_day;
-      drop view reporting.work_scores;
+      drop view reporting.routines_by_day;
+      drop view reporting.work_scores_by_day;
       drop view reporting.routine_scores;
       drop view reporting.measurement_scores;
-      drop function reporting.score_metric(int4range, int4range);
-      drop function reporting.score_metric(numrange, numrange);
+
+      drop function reporting.range_to_median(numrange);
+      drop function reporting.range_to_median(int4range);
     EOS
   end
 end

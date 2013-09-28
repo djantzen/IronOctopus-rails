@@ -68,18 +68,18 @@ Feature: Create a new routine
   Scenario: Clearing facets restores list to full
     Given I log in as "bob_the_trainer" with "password"
     And I am on the /users/sally_the_client/routines/new page
-    Then there should be 10 activities in the list
+    Then there should be 11 activities in the list
     And I click "#facet-plyometric"
     Then there should be 1 activities in the list
     When I click "#facet-plyometric"
-    Then there should be 10 activities in the list
+    Then there should be 11 activities in the list
 
   @javascript
   Scenario: I can filter activities by clicking facets and searching together
     Given I log in as "bob_the_trainer" with "password"
     And I am on the /users/sally_the_client/routines/new page
     When I click "#facet-push"
-    Then there should be 6 activities in the list
+    Then there should be 7 activities in the list
     When I click "#facet-resistance"
     Then there should be 5 activities in the list
     When I click "#facet-compound"
@@ -95,7 +95,7 @@ Feature: Create a new routine
     When I click "#facet-compound"
     Then there should be 5 activities in the list
     When I click "#facet-resistance"
-    Then there should be 6 activities in the list
+    Then there should be 7 activities in the list
     When I fill in "activity-search-box" with "Dumbbell"
     Then there should be 2 activities in the list
 

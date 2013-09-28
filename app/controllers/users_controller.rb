@@ -132,6 +132,8 @@ class UsersController < ApplicationController
     end_date = params[:end_date] ? Date.parse(params[:end_date]) : DateTime.now.utc.to_date
     levels = Charts::ByDayClientActivityLevel.get_activity_levels(user, start_date, end_date)
 
+    cols = [{:type => "string", :label => "Client", :role => "domain"},
+            {:type => "number", :label => "Weekly Score Differential", :role => "data"}]
     rows = levels.inject([]) do |memo, level|
       row = [view_context.link_to(level.client_name, level.client_login), level.score]
       memo << row
@@ -139,18 +141,16 @@ class UsersController < ApplicationController
 
     render :json => {
       :type => "Table",
-      :title => "Client Scores Compared to Prescribed Work (last 7 days)",
-      :cols => [{:type => "string", :label => "Client", :role => "domain"},
-                {:type => "number", :label => "Score", :role => "data"}],
+      :cols => cols,
       :rows => rows,
       :formatter => {
         :type => "TableBarFormat",
         :options => {
           :drawZeroLine => true,
           :colorPositive => "green",
-          :min => -200,
-          :max => 200,
-          :showValue => false
+          :min => -2000,
+          :max => 1000,
+          :showValue => true
         }
       },
       :options => {
@@ -164,6 +164,9 @@ class UsersController < ApplicationController
     start_date = Date.parse params[:start_date]
     end_date = Date.parse params[:end_date]
     breakdowns = Charts::ByDayActivityTypeBreakdown.find_by_user_and_dates(user, start_date, end_date)
+
+    cols = [{:type => "string", :label => "Activity Type", :role => "domain"},
+          {:type => "number", :label => "Count", :role => "data"}]
     rows = breakdowns.inject([]) do |memo, breakdown|
       memo << [breakdown.activity_type_name, breakdown.count]
       memo
@@ -171,8 +174,7 @@ class UsersController < ApplicationController
 
     render :json => {
       :type => "PieChart",
-      :cols => [{:type => "string", :label => "Activity Type", :role => "domain"},
-                {:type => "number", :label => "Count", :role => "data"}],
+      :cols => cols,
       :rows => rows,
       :options => {
         :title => "#{user.full_name}'s Activity Type Breakdown by Day",
@@ -187,6 +189,9 @@ class UsersController < ApplicationController
     start_date = Date.parse params[:start_date]
     end_date = Date.parse params[:end_date]
     breakdowns = Charts::ByDayBodyPartBreakdown.find_by_user_and_dates(user, start_date, end_date)
+
+    cols = [{:type => "string", :label => "Body Region", :role => "domain"},
+            {:type => "number", :label => "Count", :role => "data"}]
     rows = breakdowns.inject([]) do |memo, breakdown|
       memo << [breakdown.body_region, breakdown.count]
       memo
@@ -194,8 +199,7 @@ class UsersController < ApplicationController
 
     render :json => {
       :type => "PieChart",
-      :cols => [{:type => "string", :label => "Body Region", :role => "domain"},
-                {:type => "number", :label => "Count", :role => "data"}],
+      :cols => cols,
       :rows => rows,
       :options => {
         :title => "#{user.full_name}'s Body Region Breakdown by Day",
