@@ -1,4 +1,4 @@
-.chart-display-panel.has-tooltip-bottom{:id => panel_id, :rel => "tooltip", :title => info_text}
+.chart-display-panel{:id => panel_id, :class => "has-tooltip-#{info_position}", :rel => "tooltip", :title => info_text}
   .loading-indicator
     = image_tag "ajax-loader.gif"
   .chart-container
