@@ -31,14 +31,14 @@ module Charts
     SQL = <<-EOS
       select
           days.full_date
-        , routines_by_day.routine_name as prescribed_routine_name
+        , routine_scores_by_day.routine_name as prescribed_routine_name
         , coalesce(routine_score, 0) as routine_score
         , work_scores_by_day.routine_name as work_routine_name
         , coalesce(work_score, 0) as work_score
-        , sum(routine_score) over (partition by coalesce(routines_by_day.client_login, :login) order by days.full_date) as total_prescribed_score
+        , sum(routine_score) over (partition by coalesce(routine_scores_by_day.client_login, :login) order by days.full_date) as total_prescribed_score
         , sum(work_score) over (partition by coalesce(work_scores_by_day.client_login, :login) order by days.full_date) as total_work_score
       from reporting.days
-        left join routines_by_day on days.full_date = routines_by_day.full_date and routines_by_day.client_login = :login
+        left join routine_scores_by_day on days.full_date = routine_scores_by_day.full_date and routine_scores_by_day.client_login = :login
         left join work_scores_by_day on days.full_date = work_scores_by_day.full_date and work_scores_by_day.client_login = :login
       where days.full_date between :start_date and :end_date
       order by days.full_date;

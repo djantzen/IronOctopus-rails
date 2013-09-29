@@ -20,13 +20,13 @@ module Charts
           join users clients on user_relationships.client_id = clients.user_id
           where trainers.login = :trainer_login)
       select
-          routines_by_day.client_login
+          routine_scores_by_day.client_login
         , clients.first_name
         , clients.last_name
         , sum(coalesce(routine_score, 0)) as score
-      from clients, routines_by_day
-      where clients.login = routines_by_day.client_login and routines_by_day.full_date between :start_date and :end_date
-      group by routines_by_day.client_login, clients.first_name, clients.last_name
+      from clients, routine_scores_by_day
+      where clients.login = routine_scores_by_day.client_login and routine_scores_by_day.full_date between :start_date and :end_date
+      group by routine_scores_by_day.client_login, clients.first_name, clients.last_name
       order by clients.first_name, clients.last_name;;
     EOS
 

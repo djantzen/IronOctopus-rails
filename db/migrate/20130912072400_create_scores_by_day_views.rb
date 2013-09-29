@@ -50,7 +50,7 @@ class CreateScoresByDayViews < ActiveRecord::Migration
       grant select on reporting.work_scores_by_day to reader;
       comment on view reporting.work_scores_by_day is 'Groups work records by routine, client and date and sums associated measurement_scores';
 
-      create view reporting.routines_by_day as
+      create view reporting.routine_scores_by_day as
         select
           login as client_login, routine_name, full_date, routine_score
         from application.routines
@@ -69,14 +69,14 @@ class CreateScoresByDayViews < ActiveRecord::Migration
           join users on client_id = user_id
         group by client_login, routine_name, full_date, routine_score
         order by full_date;
-      grant select on reporting.routines_by_day to reader;
-      comment on view reporting.routines_by_day is 'Groups routines by client and date and sums associated routine_scores';
+      grant select on reporting.routine_scores_by_day to reader;
+      comment on view reporting.routine_scores_by_day is 'Groups routines by client and date and sums associated routine_scores';
     EOS
   end
 
   def down
     execute <<-EOS
-      drop view reporting.routines_by_day;
+      drop view reporting.routine_scores_by_day;
       drop view reporting.work_scores_by_day;
       drop view reporting.routine_scores;
       drop view reporting.measurement_scores;
