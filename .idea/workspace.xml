@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="46f8a447-b9ed-44ae-be1c-95fe4e4f3fab" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/_chart_display_panel.html.haml" afterPath="$PROJECT_DIR$/app/views/shared/_chart_display_panel.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/users.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/users.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.css" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/_chart_search_by_date_range_panel.html.haml" afterPath="$PROJECT_DIR$/app/views/shared/_chart_search_by_date_range_panel.html.haml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/show.html.haml" afterPath="$PROJECT_DIR$/app/views/users/show.html.haml" />
     </list>
     <ignored path="IronOctopus-rails.iws" />
@@ -41,10 +43,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show.html.haml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="show.html.haml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/users/show.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="55" selection-start="1192" selection-end="1192" vertical-scroll-proportion="-5.625">
+            <state line="71" column="10" selection-start="3515" selection-end="3515" vertical-scroll-proportion="0.92840093">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="perform.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/routines/perform.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="16" selection-start="275" selection-end="275" vertical-scroll-proportion="-5.625">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_chart_search_by_date_range_panel.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/shared/_chart_search_by_date_range_panel.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="22" selection-start="158" selection-end="158" vertical-scroll-proportion="-2.5">
               <folding />
             </state>
           </provider>
@@ -91,20 +111,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="users_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="128" column="27" selection-start="4349" selection-end="4349" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="users.js.coffee" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="users.js.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/users.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="0" selection-start="1651" selection-end="1651" vertical-scroll-proportion="0.9354839">
-              <folding />
+            <state line="55" column="35" selection-start="1951" selection-end="1951" vertical-scroll-proportion="0.0">
+              <folding>
+                <marker date="1380482879000" expanded="true" signature="1026:1377" placeholder="{...}" />
+                <marker date="1380482879000" expanded="true" signature="1218:1273" placeholder="{...}" />
+                <marker date="1380482879000" expanded="true" signature="1617:1806" placeholder="{...}" />
+                <marker date="1380482879000" expanded="true" signature="1853:2034" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -131,10 +147,7 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/shared/_chart_search_by_date_range_panel.html.haml" />
-        <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/models/charts/by_day_body_part_breakdown.rb" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/users.js.coffee" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/users.css.scss" />
         <option value="$PROJECT_DIR$/app/models/charts/by_day_activity_measurements.rb" />
         <option value="$PROJECT_DIR$/app/views/activities/show.html.haml" />
@@ -145,8 +158,11 @@
         <option value="$PROJECT_DIR$/db/migrate/20130912072400_create_scores_by_day_views.rb" />
         <option value="$PROJECT_DIR$/app/models/charts/by_day_client_score.rb" />
         <option value="$PROJECT_DIR$/app/models/charts/by_day_client_activity_level.rb" />
-        <option value="$PROJECT_DIR$/app/views/users/show.html.haml" />
         <option value="$PROJECT_DIR$/app/views/shared/_chart_display_panel.html.haml" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/users.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/application.css" />
+        <option value="$PROJECT_DIR$/app/views/shared/_chart_search_by_date_range_panel.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/users/show.html.haml" />
       </list>
     </option>
   </component>
@@ -217,6 +233,46 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="IronOctopus-rails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IronOctopus-rails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IronOctopus-rails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IronOctopus-rails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IronOctopus-rails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shared" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -907,65 +963,9 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="128" column="27" selection-start="4349" selection-end="4349" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/fixtures/activities.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="0" selection-start="1730" selection-end="1730" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/features/create_a_routine.feature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="0" selection-start="3708" selection-end="3708" vertical-scroll-proportion="0.034642033">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/charts/by_day_client_score.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="117" selection-start="1463" selection-end="1463" vertical-scroll-proportion="0.6331058">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/charts/by_day_activity_measurements.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="33" selection-start="894" selection-end="894" vertical-scroll-proportion="0.41284403">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/charts/by_day_client_activity_level.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="0" selection-start="783" selection-end="783" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/routines/edit.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/routines/index.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/shared/_chart_search_by_date_range_panel.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="35" selection-start="124" selection-end="124" vertical-scroll-proportion="0.04761905">
           <folding />
         </state>
       </provider>
@@ -991,16 +991,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/users/show.html.haml">
+    <entry file="file://$PROJECT_DIR$/app/views/shared/_chart_display_panel.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="55" selection-start="1192" selection-end="1192" vertical-scroll-proportion="-5.625">
+        <state line="0" column="78" selection-start="78" selection-end="78" vertical-scroll-proportion="-0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/shared/_chart_display_panel.html.haml">
+    <entry file="file://$PROJECT_DIR$/app/models/measurement.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="78" selection-start="78" selection-end="78" vertical-scroll-proportion="-0.0">
+        <state line="86" column="0" selection-start="4336" selection-end="4336" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1014,7 +1014,68 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/users.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="0" selection-start="1651" selection-end="1651" vertical-scroll-proportion="0.9354839">
+        <state line="55" column="35" selection-start="1951" selection-end="1951" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1380482879000" expanded="true" signature="1026:1377" placeholder="{...}" />
+            <marker date="1380482879000" expanded="true" signature="1218:1273" placeholder="{...}" />
+            <marker date="1380482879000" expanded="true" signature="1617:1806" placeholder="{...}" />
+            <marker date="1380482879000" expanded="true" signature="1853:2034" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="9" selection-start="603" selection-end="603" vertical-scroll-proportion="0.44078946">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/routines/_measure_selector.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="35" selection-start="314" selection-end="314" vertical-scroll-proportion="0.1388889">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/shared/_chart_search_by_date_range_panel.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="22" selection-start="158" selection-end="158" vertical-scroll-proportion="-2.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="128" column="27" selection-start="4349" selection-end="4349" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/work.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/routines.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="95" column="0" selection-start="3331" selection-end="3331" vertical-scroll-proportion="0.37327188">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/routines/perform.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="16" selection-start="275" selection-end="275" vertical-scroll-proportion="-5.625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/users/show.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="71" column="10" selection-start="3515" selection-end="3515" vertical-scroll-proportion="0.92840093">
           <folding />
         </state>
       </provider>

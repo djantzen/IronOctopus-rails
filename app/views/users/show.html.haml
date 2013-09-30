@@ -4,7 +4,7 @@
       .row-fluid
         %h3
           = @user.full_name
-        User since #{@user.created_at.to_date}
+        -#User since #{@user.created_at.to_date}
         - if @user.is_trainer? and @user.eql? current_user
           - if @user.profile.nil?
             = link_to("Create a Trainer Profile", new_user_profile_path(@user))
@@ -33,73 +33,79 @@
                                 :info_position => "right",
                                 :info_text => "This represents how much work your clients have done in the last week compared to how much work you instructed them to do" }
     .span8
-      - if @user.is_trainer? and @user.eql? current_user
+      -#- if @user.is_trainer? and @user.eql? current_user
         -# Show reports tab first
-      .row-fluid.well
-        = render :partial => "shared/chart_search_by_date_range_panel",
-                 :locals => { :panel_id => "scores-by-day-search-panel",
-                              :button_id => "scores-by-day-show-button"}
-        = render :partial => "shared/chart_display_panel",
-                 :locals => { :panel_id => "scores-by-day-display-panel",
-                              :info_position => "bottom",
-                              :info_text => "Score represents the sum value of resistance, distance, duration, incline, level, heart rate multiplied by repetitions and set count" }
-      .row-fluid.well
-        = render :partial => "shared/chart_search_by_date_range_panel",
-                 :locals => { :panel_id => "activity-type-breakdown-by-day-search-panel",
-                              :button_id => "activity-type-breakdown-by-day-show-button"}
-        = render :partial => "shared/chart_display_panel",
-                 :locals => { :panel_id => "activity-type-breakdown-by-day-display-panel",
-                              :info_position => "bottom",
-                              :info_text => ''  }
-      .row-fluid.well
-        = render :partial => "shared/chart_search_by_date_range_panel",
-                 :locals => { :panel_id => "body-part-breakdown-by-day-search-panel",
-                              :button_id => "body-part-breakdown-by-day-show-button"}
-        = render :partial => "shared/chart_display_panel",
-                 :locals => { :panel_id => "body-part-breakdown-by-day-display-panel",
-                              :info_position => "bottom",
-                              :info_text => ''  }
-      .row-fluid
-        .well
-          .row-fluid
-            .span5
-              %h3
-                Programs
-            .span4
-              - if can? :create, Program.new, @user
-                = link_to "Create new program for #{@user.first_name}", new_user_program_path(@user), :class => "btn btn-primary"
-          %br
-          .row-fluid
-            - @user.programs.each do |program|
-              .row-fluid
-                .span4
-                  = link_to(program.name, user_program_path(@user, program))
-                .span2
-                  - if can? :update, program
-                    = link_to(edit_user_program_path(@user, program)) do
-                      Edit
-                      %i.icon-edit
-          %br
-          .row-fluid
-            .span5
-              %h3
-                Routines
-            .span4
-              - if can? :create, Routine.new, @user
-                = link_to "Create new routine for #{@user.first_name}", new_user_routine_path(@user), :class => "btn btn-primary"
-          %br
-          .row-fluid
-            - @routines.each do |routine|
-              .row-fluid
-                .span4
-                  = link_to(routine.name, user_routine_path(@user, routine))
-                .span2
-                  - if can? :update, routine
-                    = link_to(edit_user_routine_path(@user, routine)) do
-                      Edit
-                      %i.icon-edit
-                .span3
-                  - if can? :perform, routine
-                    = link_to(perform_routine_path(@user, routine)) do
-                      Perform Routine
-                      %i.icon-fire
+      .tabbable
+        %ul.nav.nav-tabs.nav-pills
+          %li.active
+            %a{:href => "#recent-performance-report-pane", "data-toggle" => "tab"}
+              Recent Performance
+          %li
+            %a{:href => "#routines-pane", "data-toggle" => "tab"}
+              Workout Routines
+        .tab-content
+          #recent-performance-report-pane.tab-pane.active
+            .row-fluid.well
+              = render :partial => "shared/chart_search_by_date_range_panel",
+                       :locals => { :panel_id => "charts-by-day-search-panel",
+                                    :button_id => "charts-by-day-show-button"}
+              %br
+              = render :partial => "shared/chart_display_panel",
+                       :locals => { :panel_id => "scores-by-day-display-panel",
+                                    :info_position => "left",
+                                    :info_text => "Client score is the sum value of load metrics like resistance, distance, duration, and heart rate multiplied by repetitions and set count" }
+              %br
+              = render :partial => "shared/chart_display_panel",
+                       :locals => { :panel_id => "activity-type-breakdown-by-day-display-panel",
+                                    :info_position => "left",
+                                    :info_text => "This is the distribution of exercise based upon activity type"  }
+              %br
+              = render :partial => "shared/chart_display_panel",
+                       :locals => { :panel_id => "body-part-breakdown-by-day-display-panel",
+                                    :info_position => "left",
+                                    :info_text => "This is the distribution of exercise across the body"  }
+          #routines-pane.tab-pane
+            .row-fluid
+              .well
+                .row-fluid
+                  .span5
+                    %h3
+                      Programs
+                  .span4
+                    - if can? :create, Program.new, @user
+                      = link_to "Create new program for #{@user.first_name}", new_user_program_path(@user), :class => "btn btn-primary"
+                %br
+                .row-fluid
+                  - @user.programs.each do |program|
+                    .row-fluid
+                      .span4
+                        = link_to(program.name, user_program_path(@user, program))
+                      .span2
+                        - if can? :update, program
+                          = link_to(edit_user_program_path(@user, program)) do
+                            Edit
+                            %i.icon-edit
+                %br
+                .row-fluid
+                  .span5
+                    %h3
+                      Routines
+                  .span4
+                    - if can? :create, Routine.new, @user
+                      = link_to "Create new routine for #{@user.first_name}", new_user_routine_path(@user), :class => "btn btn-primary"
+                %br
+                .row-fluid
+                  - @routines.each do |routine|
+                    .row-fluid
+                      .span4
+                        = link_to(routine.name, user_routine_path(@user, routine))
+                      .span2
+                        - if can? :update, routine
+                          = link_to(edit_user_routine_path(@user, routine)) do
+                            Edit
+                            %i.icon-edit
+                      .span3
+                        - if can? :perform, routine
+                          = link_to(perform_routine_path(@user, routine)) do
+                            Perform Routine
+                            %i.icon-fire
