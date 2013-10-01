@@ -41,6 +41,9 @@
             %a{:href => "#recent-performance-report-pane", "data-toggle" => "tab"}
               Recent Performance
           %li
+            %a{:href => "#historical-performance-report-pane", "data-toggle" => "tab"}
+              Performance Trends
+          %li
             %a{:href => "#routines-pane", "data-toggle" => "tab"}
               Workout Routines
         .tab-content
@@ -64,6 +67,50 @@
                        :locals => { :panel_id => "body-part-breakdown-by-day-display-panel",
                                     :info_position => "left",
                                     :info_text => "This is the distribution of exercise across the body"  }
+          #historical-performance-report-pane.tab-pane
+            .row-fluid.well
+              = select_tag("activity-performance-select", options_for_select(@user.activities_performed.map{|a| a.name}))
+              = render :partial => "shared/chart_display_panel",
+                       :locals => { :panel_id => "performance-trends-cadence-display-panel",
+                                    :info_position => "left",
+                                    :info_text => "Cadence over time" }
+              = render :partial => "shared/chart_display_panel",
+                       :locals => { :panel_id => "performance-trends-calories-display-panel",
+                                    :info_position => "left",
+                                    :info_text => "Calories over time" }
+              = render :partial => "shared/chart_display_panel",
+                       :locals => { :panel_id => "performance-trends-distance-display-panel",
+                                    :info_position => "left",
+                                    :info_text => "Distance over time" }
+              = render :partial => "shared/chart_display_panel",
+                        :locals => { :panel_id => "performance-trends-duration-display-panel",
+                                     :info_position => "left",
+                                     :info_text => "Duration over time" }
+              = render :partial => "shared/chart_display_panel",
+                        :locals => { :panel_id => "performance-trends-heart-rate-display-panel",
+                                     :info_position => "left",
+                                     :info_text => "Heart Rate over time" }
+              = render :partial => "shared/chart_display_panel",
+                        :locals => { :panel_id => "performance-trends-level-display-panel",
+                                     :info_position => "left",
+                                     :info_text => "Level over time" }
+              = render :partial => "shared/chart_display_panel",
+                        :locals => { :panel_id => "performance-trends-incline-display-panel",
+                                     :info_position => "left",
+                                     :info_text => "Incline over time" }
+              = render :partial => "shared/chart_display_panel",
+                        :locals => { :panel_id => "performance-trends-repetitions-display-panel",
+                                     :info_position => "left",
+                                     :info_text => "Repetitions over time" }
+              = render :partial => "shared/chart_display_panel",
+                        :locals => { :panel_id => "performance-trends-resistance-display-panel",
+                                     :info_position => "left",
+                                     :info_text => "Resistance over time" }
+              = render :partial => "shared/chart_display_panel",
+                        :locals => { :panel_id => "performance-trends-speed-display-panel",
+                                     :info_position => "left",
+                                     :info_text => "Speed over time" }
+              %br
           #routines-pane.tab-pane
             .row-fluid
               .well

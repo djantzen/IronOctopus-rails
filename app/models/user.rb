@@ -38,6 +38,8 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :clients, :class_name => 'User', :foreign_key => :trainer_id, :association_foreign_key => :client_id,
                           :join_table => 'user_relationships'#, :conditions => [ "trainer_id != client_id" ]
   has_one :profile
+  has_many :activities_performed, :class_name => "Activity", :through => :work,
+           :source => :activity, :uniq => true, :order => :name
 
   TIME_FORMAT = "%l:%M:%S %P"
 

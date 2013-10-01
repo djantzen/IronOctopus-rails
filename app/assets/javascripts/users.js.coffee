@@ -29,7 +29,7 @@ $(document).ready () ->
 
   init_charts_by_day_dates = () ->
     $("#charts-by-day-search-panel .chart-start-date").datepicker('update', moment().subtract('weeks', 1).calendar());
-    $("#charts-by-day-search-panel .chart-end-date").datepicker('update', new Date());
+    $("#charts-by-day-search-panel .chart-end-date").datepicker('update', moment());
 
   init_charts_by_day_dates()
 
@@ -56,6 +56,24 @@ $(document).ready () ->
     params = generate_date_params()
     Charts.fetch_data($("#body-part-breakdown-by-day-display-panel"), url, params)
 
+  get_activity_performance_over_time = () ->
+    url = window.location.pathname + "/activity_performance_over_time"
+    activity_name = $("#activity-performance-select").val()
+    params = { "activity_name" : activity_name }
+    display_panels =
+      "Cadence" : $("#performance-trends-cadence-display-panel")
+      "Calories" : $("#performance-trends-calories-display-panel")
+      "Distance" : $("#performance-trends-distance-display-panel")
+      "Duration" : $("#performance-trends-duration-display-panel")
+      "Heart Rate" : $("#performance-trends-heart-rate-display-panel")
+      "Incline" : $("#performance-trends-incline-display-panel")
+      "Level" : $("#performance-trends-level-display-panel")
+      "Repetitions" : $("#performance-trends-repetitions-display-panel")
+      "Resistance" : $("#performance-trends-resistance-display-panel")
+      "Speed" : $("#performance-trends-speed-display-panel")
+
+    Charts.fetch_multi_data(display_panels, url, params)
+
   $("#charts-by-day-show-button").click ->
     get_scores_by_day()
     get_activity_type_breakdown_by_day()
@@ -64,6 +82,10 @@ $(document).ready () ->
   $("#charts-by-day-show-button").click()
   if $("#activity-score-display-panel").size() == 1
     get_activity_score()
+  if $("#activity-performance-select").size() == 1
+    get_activity_performance_over_time()
+  $("#activity-performance-select").change ->
+    get_activity_performance_over_time()
 
   is_login_unique = (login) ->
     url = "/users/is_login_unique/" + login

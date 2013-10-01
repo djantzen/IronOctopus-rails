@@ -100,7 +100,7 @@ class WorkController < ApplicationController
       metric_map = Measurement.activity_set_to_metric_map(activity_set_map, unit_map)
       prescribed_metric_map = Measurement.activity_set_to_metric_map(activity_set_map[:prescribed], unit_map)
 
-      activity_set_map[:start_time] ||= client.local_time
+      activity_set_map[:start_time] ||= DateTime.now.utc # client.local_time # why did I want local time for this??
 
       Work.transaction do
         measurement = Measurement.find_or_create(metric_map)

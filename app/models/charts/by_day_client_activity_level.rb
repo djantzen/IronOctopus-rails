@@ -27,7 +27,7 @@ module Charts
       from clients, routine_scores_by_day
       where clients.login = routine_scores_by_day.client_login and routine_scores_by_day.full_date between :start_date and :end_date
       group by routine_scores_by_day.client_login, clients.first_name, clients.last_name
-      order by clients.first_name, clients.last_name;;
+      order by clients.first_name, clients.last_name;
     EOS
 
     ACTUAL_SCORE_SQL = <<-EOS
@@ -52,7 +52,7 @@ module Charts
       prescribed_scores = self.find_by_sql([PRESCRIBED_SCORE_SQL, search_params])
       actual_scores = self.find_by_sql([ACTUAL_SCORE_SQL, search_params])
 
-      prescribed_scores.map do |p_score|
+      prescribed_scores.each do |p_score|
 
         a_score = actual_scores.select { |temp_a_score|
           temp_a_score.client_login = p_score.client_login

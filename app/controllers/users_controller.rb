@@ -209,6 +209,35 @@ class UsersController < ApplicationController
     }
   end
 
+  def activity_performance_over_time
+    user = User.find_by_login(params[:user_id])
+    activity = Activity.find_by_name params[:activity_name]
+    performances = Charts::ByDayActivityMeasurements.find_by_user_date_and_activity(user, activity)
+    data_set = {}
+    Metric.list.each do |metric|
+      cols = [{:type => "date", :label => "Date", :role => "domain"},
+              {:type => "number", :label => metric.name, :role => "data"}]
+
+      rows = performances.inject([]) do |memo, performance|
+        memo << [performance.full_date, performance.send(metric.name.to_identifier)]
+        memo
+      end
+
+      data_set[metric.name] = {
+        :type => "ColumnChart",
+        :cols => cols,
+        :rows => rows,
+        :options => {
+          :title => metric.name,
+          :legend => "none",
+        }
+      }
+
+    end
+
+    render :json => data_set
+  end
+
 
   def settings
     @user = User.find_by_login(params[:user_id])
