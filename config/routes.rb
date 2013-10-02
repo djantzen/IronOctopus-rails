@@ -102,9 +102,9 @@ IronOctopus::Application.routes.draw do
   get "/users/:user_id/routines/:routine_id/activity_sets" => "routines#fetch_activity_sets", :as => :fetch_activity_sets
   get "/users/:user_id/routines" => "routines#by_client", :as => :routines_by_client
   get "/users/:user_id/scores_by_day" => "users#scores_by_day"
-  get "/users/:user_id/activity_level_by_day" => "users#activity_level_by_day"
-  get "/users/:user_id/activity_type_breakdown_by_day" => "users#activity_type_breakdown_by_day"
-  get "/users/:user_id/body_part_breakdown_by_day" => "users#body_part_breakdown_by_day"
+  get "/users/:user_id/client_score_differentials" => "users#client_score_differentials"
+  get "/users/:user_id/activity_type_breakdown" => "users#activity_type_breakdown"
+  get "/users/:user_id/body_part_breakdown" => "users#body_part_breakdown"
   get "/users/:user_id/activity_performance_over_time" => "users#activity_performance_over_time"
 
   get "/trainers/:user_id/clients" => "users#clients", :as => :clients

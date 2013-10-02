@@ -29,7 +29,7 @@
           %h4
             My Clients at a Glance
           = render :partial => "shared/chart_display_panel",
-                   :locals => { :panel_id => "activity-score-display-panel",
+                   :locals => { :panel_id => "client-score-differentials-display-panel",
                                 :info_position => "right",
                                 :info_text => "This represents how much work your clients have done in the last week compared to how much work you instructed them to do" }
     .span8
@@ -59,12 +59,12 @@
                                     :info_text => "Client score is the sum value of load metrics like resistance, distance, duration, and heart rate multiplied by repetitions and set count" }
               %br
               = render :partial => "shared/chart_display_panel",
-                       :locals => { :panel_id => "activity-type-breakdown-by-day-display-panel",
+                       :locals => { :panel_id => "activity-type-breakdown-display-panel",
                                     :info_position => "left",
                                     :info_text => "This is the distribution of exercise based upon activity type"  }
               %br
               = render :partial => "shared/chart_display_panel",
-                       :locals => { :panel_id => "body-part-breakdown-by-day-display-panel",
+                       :locals => { :panel_id => "body-part-breakdown-display-panel",
                                     :info_position => "left",
                                     :info_text => "This is the distribution of exercise across the body"  }
           #historical-performance-report-pane.tab-pane
@@ -77,43 +77,43 @@
                 %input{:type => "radio", :name => "units-radio-buttons", :id => "metric-units"}
                   Metric Units
               = render :partial => "shared/chart_display_panel",
-                       :locals => { :panel_id => "performance-trends-cadence-display-panel",
+                       :locals => { :panel_id => "activity-performance-cadence-display-panel",
                                     :info_position => "left",
                                     :info_text => "Cadence over time" }
               = render :partial => "shared/chart_display_panel",
-                       :locals => { :panel_id => "performance-trends-calories-display-panel",
+                       :locals => { :panel_id => "activity-performance-calories-display-panel",
                                     :info_position => "left",
                                     :info_text => "Calories over time" }
               = render :partial => "shared/chart_display_panel",
-                       :locals => { :panel_id => "performance-trends-distance-display-panel",
+                       :locals => { :panel_id => "activity-performance-distance-display-panel",
                                     :info_position => "left",
                                     :info_text => "Distance over time" }
               = render :partial => "shared/chart_display_panel",
-                        :locals => { :panel_id => "performance-trends-duration-display-panel",
+                        :locals => { :panel_id => "activity-performance-duration-display-panel",
                                      :info_position => "left",
                                      :info_text => "Duration over time" }
               = render :partial => "shared/chart_display_panel",
-                        :locals => { :panel_id => "performance-trends-heart-rate-display-panel",
+                        :locals => { :panel_id => "activity-performance-heart-rate-display-panel",
                                      :info_position => "left",
                                      :info_text => "Heart Rate over time" }
               = render :partial => "shared/chart_display_panel",
-                        :locals => { :panel_id => "performance-trends-level-display-panel",
+                        :locals => { :panel_id => "activity-performance-level-display-panel",
                                      :info_position => "left",
                                      :info_text => "Level over time" }
               = render :partial => "shared/chart_display_panel",
-                        :locals => { :panel_id => "performance-trends-incline-display-panel",
+                        :locals => { :panel_id => "activity-performance-incline-display-panel",
                                      :info_position => "left",
                                      :info_text => "Incline over time" }
               = render :partial => "shared/chart_display_panel",
-                        :locals => { :panel_id => "performance-trends-repetitions-display-panel",
+                        :locals => { :panel_id => "activity-performance-repetitions-display-panel",
                                      :info_position => "left",
                                      :info_text => "Repetitions over time" }
               = render :partial => "shared/chart_display_panel",
-                        :locals => { :panel_id => "performance-trends-resistance-display-panel",
+                        :locals => { :panel_id => "activity-performance-resistance-display-panel",
                                      :info_position => "left",
                                      :info_text => "Resistance over time" }
               = render :partial => "shared/chart_display_panel",
-                        :locals => { :panel_id => "performance-trends-speed-display-panel",
+                        :locals => { :panel_id => "activity-performance-speed-display-panel",
                                      :info_position => "left",
                                      :info_text => "Speed over time" }
               %br

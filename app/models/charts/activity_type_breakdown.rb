@@ -1,7 +1,7 @@
 module Charts
 
   # Pseudo model to encapsulate a reporting query showing breakdown of activity frequency by type
-  class ByDayActivityTypeBreakdown < Day
+  class ActivityTypeBreakdown < Day
 
     def activity_type_name
       attributes["activity_type_name"]

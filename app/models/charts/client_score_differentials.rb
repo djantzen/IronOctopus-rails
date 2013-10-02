@@ -1,5 +1,5 @@
 module Charts
-  class ByDayClientActivityLevel < Day
+  class ClientScoreDifferentials < Day
 
     def client_name
       "#{attributes["first_name"]} #{attributes['last_name']}"
@@ -47,7 +47,7 @@ module Charts
       order by clients.first_name, clients.last_name;
     EOS
 
-    def self.get_activity_levels(trainer, start_date, end_date)
+    def self.get_differentials(trainer, start_date, end_date)
       search_params = { :trainer_login => trainer.login, :start_date => start_date, :end_date => end_date}
       prescribed_scores = self.find_by_sql([PRESCRIBED_SCORE_SQL, search_params])
       actual_scores = self.find_by_sql([ACTUAL_SCORE_SQL, search_params])

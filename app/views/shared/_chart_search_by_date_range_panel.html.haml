@@ -1,7 +1,9 @@
 .chart-search-by-date-range-panel{:id => panel_id}
-  From
+  .label
+    From
   %input.input-small.chart-start-date{:name => "chart-start-date-label"}
-  to
+  .label
+    to
   %input.input-small.chart-end-date{:name => "chart-start-date-label"}
   = render :partial => "shared/button", :locals => { :button_id => button_id,
-                                        :message => "Display", :type => "input"}
+                                        :message => "Display", :type => "input", :button_class => "btn-primary"}

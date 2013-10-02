@@ -23,12 +23,12 @@ $(document).ready () ->
     autoclose: true
   )
 
-  get_activity_score = () ->
-    url = window.location.pathname + "/activity_level_by_day"
+  get_client_score_differentials = () ->
+    url = window.location.pathname + "/client_score_differentials"
     start_date = moment().subtract('weeks', 1)
     end_date = moment()
     params = { "start_date": start_date.format(), "end_date": end_date.format() }
-    Charts.fetch_data($("#activity-score-display-panel"), url, params)
+    Charts.fetch_data($("#client-score-differentials-display-panel"), url, params)
 
   init_charts_by_day_dates = () ->
     $("#charts-by-day-search-panel .chart-start-date").datepicker('update', moment().subtract('weeks', 1).toDate());
@@ -49,15 +49,15 @@ $(document).ready () ->
     params = generate_date_params()
     Charts.fetch_data($("#scores-by-day-display-panel"), url, params)
 
-  get_activity_type_breakdown_by_day = () ->
-    url = window.location.pathname + "/activity_type_breakdown_by_day"
+  get_activity_type_breakdown = () ->
+    url = window.location.pathname + "/activity_type_breakdown"
     params = generate_date_params()
-    Charts.fetch_data($("#activity-type-breakdown-by-day-display-panel"), url, params)
+    Charts.fetch_data($("#activity-type-breakdown-display-panel"), url, params)
 
-  get_body_part_breakdown_by_day = () ->
-    url = window.location.pathname + "/body_part_breakdown_by_day"
+  get_body_part_breakdown = () ->
+    url = window.location.pathname + "/body_part_breakdown"
     params = generate_date_params()
-    Charts.fetch_data($("#body-part-breakdown-by-day-display-panel"), url, params)
+    Charts.fetch_data($("#body-part-breakdown-display-panel"), url, params)
 
   get_activity_performance_over_time = () ->
     url = window.location.pathname + "/activity_performance_over_time"
@@ -66,27 +66,27 @@ $(document).ready () ->
       "activity_name" : activity_name
       "units" : (if $("#english-units").prop("checked") then "english" else "metric")
     display_panels =
-      "Cadence" : $("#performance-trends-cadence-display-panel")
-      "Calories" : $("#performance-trends-calories-display-panel")
-      "Distance" : $("#performance-trends-distance-display-panel")
-      "Duration" : $("#performance-trends-duration-display-panel")
-      "Heart Rate" : $("#performance-trends-heart-rate-display-panel")
-      "Incline" : $("#performance-trends-incline-display-panel")
-      "Level" : $("#performance-trends-level-display-panel")
-      "Repetitions" : $("#performance-trends-repetitions-display-panel")
-      "Resistance" : $("#performance-trends-resistance-display-panel")
-      "Speed" : $("#performance-trends-speed-display-panel")
+      "Cadence" : $("#activity-performance-cadence-display-panel")
+      "Calories" : $("#activity-performance-calories-display-panel")
+      "Distance" : $("#activity-performance-distance-display-panel")
+      "Duration" : $("#activity-performance-duration-display-panel")
+      "Heart Rate" : $("#activity-performance-heart-rate-display-panel")
+      "Incline" : $("#activity-performance-incline-display-panel")
+      "Level" : $("#activity-performance-level-display-panel")
+      "Repetitions" : $("#activity-performance-repetitions-display-panel")
+      "Resistance" : $("#activity-performance-resistance-display-panel")
+      "Speed" : $("#activity-performance-speed-display-panel")
 
     Charts.fetch_multi_data(display_panels, url, params)
 
   $("#charts-by-day-show-button").click ->
     get_scores_by_day()
-    get_activity_type_breakdown_by_day()
-    get_body_part_breakdown_by_day()
+    get_activity_type_breakdown()
+    get_body_part_breakdown()
 
   $("#charts-by-day-show-button").click()
-  if $("#activity-score-display-panel").size() == 1
-    get_activity_score()
+  if $("#client-score-differentials-display-panel").size() == 1
+    get_client_score_differentials()
   if $("#activity-performance-select").size() == 1
     get_activity_performance_over_time()
   $("#activity-performance-select").change ->

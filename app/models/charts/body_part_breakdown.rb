@@ -1,7 +1,7 @@
 module Charts
 
   # Pseudo model to encapsulate a reporting query showing breakdown of activity frequency by anatomy
-  class ByDayBodyPartBreakdown < Day
+  class BodyPartBreakdown < Day
 
     def body_region
       attributes["body_region"]

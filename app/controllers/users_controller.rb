@@ -105,7 +105,7 @@ class UsersController < ApplicationController
       row << score.routine_score
       row << (score.prescribed_routine_name.nil? ? nil : score.prescribed_routine_name + ": " + score.routine_score.to_s)
       row << score.work_score
-      row << (score.work_routine_name.nil? ? nil : score.work_routine_name + ": " + score.work_score.to_s)
+      row << (score.work_routine_name.nil? ? nil : "#{user.first_name} scored #{score.work_score.to_s} points while performing #{score.work_routine_name}")
       row << score.total_prescribed_score
       row << score.total_actual_score
       memo << row
@@ -113,7 +113,7 @@ class UsersController < ApplicationController
 
     render :json => {
       :type => "ComboChart",
-      :cols => [{:type => "date", :label => "Date", :role => "domain"},
+      :cols => [{:type => "string", :label => "Date", :role => "domain"},
                 {:type => "number", :label => "Prescribed Score", :role => "data"},
                 {:type => "string", :label => "Prescribed Routine", :role => "tooltip"},
                 {:type => "number", :label => "Actual Score", :role => "data"},
@@ -126,15 +126,16 @@ class UsersController < ApplicationController
         :title => "#{user.full_name}'s Score by Day",
         :legend => "bottom",
         :seriesType => "line",
-        :series => { 0 => { :type => "bars" }, 1 => { :type => "bars" } }
+        :series => { 0 => { :type => "bars" }, 1 => { :type => "bars" } },
+        :hAxis => { :slantedText => false }
       }
     }
   end
 
-  def activity_level_by_day
+  def client_score_differentials
     user = User.find_by_login(params[:user_id])
     start_date, end_date = get_date_range()
-    levels = Charts::ByDayClientActivityLevel.get_activity_levels(user, start_date, end_date)
+    levels = Charts::ClientScoreDifferentials.get_differentials(user, start_date, end_date)
 
     cols = [{:type => "string", :label => "Client", :role => "domain"},
             {:type => "number", :label => "Weekly Score Differential", :role => "data"}]
@@ -163,10 +164,10 @@ class UsersController < ApplicationController
     }
   end
 
-  def activity_type_breakdown_by_day
+  def activity_type_breakdown
     user = User.find_by_login(params[:user_id])
     start_date, end_date = get_date_range()
-    breakdowns = Charts::ByDayActivityTypeBreakdown.find_by_user_and_dates(user, start_date, end_date)
+    breakdowns = Charts::ActivityTypeBreakdown.find_by_user_and_dates(user, start_date, end_date)
 
     cols = [{:type => "string", :label => "Activity Type", :role => "domain"},
             {:type => "number", :label => "Count", :role => "data"}]
@@ -180,17 +181,17 @@ class UsersController < ApplicationController
       :cols => cols,
       :rows => rows,
       :options => {
-        :title => "#{user.full_name}'s Activity Type Breakdown by Day",
+        :title => "#{user.full_name}'s Activity Breakdown by Type",
         :legend => "right",
         :is3d => false
       }
     }
   end
 
-  def body_part_breakdown_by_day
+  def body_part_breakdown
     user = User.find_by_login(params[:user_id])
     start_date, end_date = get_date_range()
-    breakdowns = Charts::ByDayBodyPartBreakdown.find_by_user_and_dates(user, start_date, end_date)
+    breakdowns = Charts::BodyPartBreakdown.find_by_user_and_dates(user, start_date, end_date)
 
     cols = [{:type => "string", :label => "Body Region", :role => "domain"},
             {:type => "number", :label => "Count", :role => "data"}]
@@ -204,7 +205,7 @@ class UsersController < ApplicationController
       :cols => cols,
       :rows => rows,
       :options => {
-        :title => "#{user.full_name}'s Body Region Breakdown by Day",
+        :title => "#{user.full_name}'s Activity Breakdown by Body Region",
         :legend => "right",
         :is3d => false
       }
@@ -218,7 +219,7 @@ class UsersController < ApplicationController
     units = params[:units]
     data_set = {}
     Metric.list.each do |metric|
-      cols = [{:type => "date", :label => "Date", :role => "domain"},
+      cols = [{:type => "string", :label => "Date", :role => "domain"},
               {:type => "number", :label => metric.name, :role => "data"}]
 
       rows = performances.inject([]) do |memo, performance|
