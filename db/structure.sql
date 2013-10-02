@@ -465,42 +465,6 @@ CREATE TYPE valid_detail AS (
 );
 
 
-SET search_path = application, pg_catalog;
-
---
--- Name: score_metric(numrange, numrange); Type: FUNCTION; Schema: application; Owner: -
---
-
-CREATE FUNCTION score_metric(prescribed numrange, actual numrange) RETURNS integer
-    LANGUAGE sql
-    AS $$
-  select case 
-    when prescribed = '[0,0]' then 0
-    when actual >= prescribed then 1
-    when actual < prescribed then -1
-    else 0
-  end
-$$;
-
-
---
--- Name: score_metric(int4range, int4range); Type: FUNCTION; Schema: application; Owner: -
---
-
-CREATE FUNCTION score_metric(prescribed int4range, actual int4range) RETURNS integer
-    LANGUAGE sql
-    AS $$
-  select case 
-    when prescribed = '[0,1)' then 0
-    when actual >= prescribed then 1
-    when actual < prescribed then -1
-    else 0
-  end
-$$;
-
-
-SET search_path = public, pg_catalog;
-
 --
 -- Name: _st_3ddfullywithin(geometry, geometry, double precision); Type: FUNCTION; Schema: public; Owner: -
 --
@@ -776,7 +740,7 @@ DECLARE
   
 BEGIN
   
-  RAISE DEBUG '%,%', cur_path, ST_GeometryType(the_geom);
+  -- RAISE DEBUG '%,%', cur_path, ST_GeometryType(the_geom);
 
   -- Special case collections : iterate and return the DumpPoints of the geometries
 
@@ -1087,7 +1051,7 @@ BEGIN
 
 
 	-- Verify dimension
-	IF ( (new_dim >4) OR (new_dim <0) ) THEN
+	IF ( (new_dim >4) OR (new_dim <2) ) THEN
 		RAISE EXCEPTION 'invalid dimension';
 		RETURN 'fail';
 	END IF;
@@ -2744,7 +2708,7 @@ BEGIN
 	EXCEPTION
 		WHEN undefined_function THEN
 			rast_scr_ver := NULL;
-			RAISE NOTICE 'Function postgis_raster_scripts_installed() not found. Is raster support enabled and topology.sql installed?';
+			RAISE NOTICE 'Function postgis_raster_scripts_installed() not found. Is raster support enabled and rtpostgis.sql installed?';
 	END;
 
 	BEGIN
@@ -2752,7 +2716,7 @@ BEGIN
 	EXCEPTION
 		WHEN undefined_function THEN
 			rast_lib_ver := NULL;
-			RAISE NOTICE 'Function postgis_raster_lib_version() not found. Is raster support enabled and topology.sql installed?';
+			RAISE NOTICE 'Function postgis_raster_lib_version() not found. Is raster support enabled and rtpostgis.sql installed?';
 	END;
 
 	fullver = 'POSTGIS="' || libver;
@@ -2900,7 +2864,7 @@ CREATE FUNCTION postgis_proj_version() RETURNS text
 
 CREATE FUNCTION postgis_scripts_build_date() RETURNS text
     LANGUAGE sql IMMUTABLE
-    AS $$SELECT '2012-06-02 03:54:23'::text AS version$$;
+    AS $$SELECT '2013-03-30 17:48:16'::text AS version$$;
 
 
 --
@@ -2909,7 +2873,7 @@ CREATE FUNCTION postgis_scripts_build_date() RETURNS text
 
 CREATE FUNCTION postgis_scripts_installed() RETURNS text
     LANGUAGE sql IMMUTABLE
-    AS $$ SELECT '2.0.0'::text || ' r' || 9605::text AS version $$;
+    AS $$ SELECT '2.0.2'::text || ' r' || 10789::text AS version $$;
 
 
 --
@@ -8421,17 +8385,6 @@ ALTER SEQUENCE routines_routine_id_seq OWNED BY routines.routine_id;
 
 
 --
--- Name: sales; Type: TABLE; Schema: application; Owner: -; Tablespace: 
---
-
-CREATE TABLE sales (
-    year integer,
-    month integer,
-    qty integer
-);
-
-
---
 -- Name: scheduled_programs; Type: TABLE; Schema: application; Owner: -; Tablespace: 
 --
 
@@ -8593,6 +8546,32 @@ COMMENT ON VIEW todays_routines IS 'A view describing the routines occurring tod
 
 
 --
+-- Name: user_relationships; Type: TABLE; Schema: application; Owner: -; Tablespace: 
+--
+
+CREATE TABLE user_relationships (
+    trainer_id integer NOT NULL,
+    client_id integer NOT NULL,
+    created_at timestamp with time zone DEFAULT now() NOT NULL
+);
+
+
+--
+-- Name: TABLE user_relationships; Type: COMMENT; Schema: application; Owner: -
+--
+
+COMMENT ON TABLE user_relationships IS 'A table to construct the graph of user relationships';
+
+
+--
+-- Name: trainers_and_clients; Type: VIEW; Schema: application; Owner: -
+--
+
+CREATE VIEW trainers_and_clients AS
+    SELECT trainers.login AS trainer_login, trainers.first_name AS trainer_first_name, trainers.last_name AS trainer_last_name, clients.login AS client_login, clients.first_name AS client_first_name, clients.last_name AS client_last_name FROM ((users trainers JOIN user_relationships ON ((trainers.user_id = user_relationships.trainer_id))) JOIN users clients ON ((user_relationships.client_id = clients.user_id)));
+
+
+--
 -- Name: unit_sets; Type: TABLE; Schema: application; Owner: -; Tablespace: 
 --
 
@@ -8673,24 +8652,6 @@ ALTER SEQUENCE units_unit_id_seq OWNED BY units.unit_id;
 
 
 --
--- Name: user_relationships; Type: TABLE; Schema: application; Owner: -; Tablespace: 
---
-
-CREATE TABLE user_relationships (
-    trainer_id integer NOT NULL,
-    client_id integer NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL
-);
-
-
---
--- Name: TABLE user_relationships; Type: COMMENT; Schema: application; Owner: -
---
-
-COMMENT ON TABLE user_relationships IS 'A table to construct the graph of user relationships';
-
-
---
 -- Name: users_user_id_seq; Type: SEQUENCE; Schema: application; Owner: -
 --
 
@@ -8716,7 +8677,7 @@ SET search_path = public, pg_catalog;
 --
 
 CREATE VIEW geography_columns AS
-    SELECT current_database() AS f_table_catalog, n.nspname AS f_table_schema, c.relname AS f_table_name, a.attname AS f_geography_column, postgis_typmod_dims(a.atttypmod) AS coord_dimension, postgis_typmod_srid(a.atttypmod) AS srid, postgis_typmod_type(a.atttypmod) AS type FROM pg_class c, pg_attribute a, pg_type t, pg_namespace n WHERE ((((((t.typname = 'geography'::name) AND (a.attisdropped = false)) AND (a.atttypid = t.oid)) AND (a.attrelid = c.oid)) AND (c.relnamespace = n.oid)) AND (NOT pg_is_other_temp_schema(c.relnamespace)));
+    SELECT current_database() AS f_table_catalog, n.nspname AS f_table_schema, c.relname AS f_table_name, a.attname AS f_geography_column, postgis_typmod_dims(a.atttypmod) AS coord_dimension, postgis_typmod_srid(a.atttypmod) AS srid, postgis_typmod_type(a.atttypmod) AS type FROM pg_class c, pg_attribute a, pg_type t, pg_namespace n WHERE (((((((t.typname = 'geography'::name) AND (a.attisdropped = false)) AND (a.atttypid = t.oid)) AND (a.attrelid = c.oid)) AND (c.relnamespace = n.oid)) AND (NOT pg_is_other_temp_schema(c.relnamespace))) AND has_table_privilege(c.oid, 'SELECT'::text));
 
 
 --
@@ -8724,7 +8685,7 @@ CREATE VIEW geography_columns AS
 --
 
 CREATE VIEW geometry_columns AS
-    SELECT (current_database())::character varying(256) AS f_table_catalog, (n.nspname)::character varying(256) AS f_table_schema, (c.relname)::character varying(256) AS f_table_name, (a.attname)::character varying(256) AS f_geometry_column, COALESCE(NULLIF(postgis_typmod_dims(a.atttypmod), 2), postgis_constraint_dims((n.nspname)::text, (c.relname)::text, (a.attname)::text), 2) AS coord_dimension, COALESCE(NULLIF(postgis_typmod_srid(a.atttypmod), 0), postgis_constraint_srid((n.nspname)::text, (c.relname)::text, (a.attname)::text), 0) AS srid, (replace(replace(COALESCE(NULLIF(upper(postgis_typmod_type(a.atttypmod)), 'GEOMETRY'::text), (postgis_constraint_type((n.nspname)::text, (c.relname)::text, (a.attname)::text))::text, 'GEOMETRY'::text), 'ZM'::text, ''::text), 'Z'::text, ''::text))::character varying(30) AS type FROM pg_class c, pg_attribute a, pg_type t, pg_namespace n WHERE ((((((((t.typname = 'geometry'::name) AND (a.attisdropped = false)) AND (a.atttypid = t.oid)) AND (a.attrelid = c.oid)) AND (c.relnamespace = n.oid)) AND ((c.relkind = 'r'::"char") OR (c.relkind = 'v'::"char"))) AND (NOT pg_is_other_temp_schema(c.relnamespace))) AND (NOT ((n.nspname = 'public'::name) AND (c.relname = 'raster_columns'::name))));
+    SELECT (current_database())::character varying(256) AS f_table_catalog, (n.nspname)::character varying(256) AS f_table_schema, (c.relname)::character varying(256) AS f_table_name, (a.attname)::character varying(256) AS f_geometry_column, COALESCE(NULLIF(postgis_typmod_dims(a.atttypmod), 2), postgis_constraint_dims((n.nspname)::text, (c.relname)::text, (a.attname)::text), 2) AS coord_dimension, COALESCE(NULLIF(postgis_typmod_srid(a.atttypmod), 0), postgis_constraint_srid((n.nspname)::text, (c.relname)::text, (a.attname)::text), 0) AS srid, (replace(replace(COALESCE(NULLIF(upper(postgis_typmod_type(a.atttypmod)), 'GEOMETRY'::text), (postgis_constraint_type((n.nspname)::text, (c.relname)::text, (a.attname)::text))::text, 'GEOMETRY'::text), 'ZM'::text, ''::text), 'Z'::text, ''::text))::character varying(30) AS type FROM pg_class c, pg_attribute a, pg_type t, pg_namespace n WHERE (((((((((t.typname = 'geometry'::name) AND (a.attisdropped = false)) AND (a.atttypid = t.oid)) AND (a.attrelid = c.oid)) AND (c.relnamespace = n.oid)) AND ((c.relkind = 'r'::"char") OR (c.relkind = 'v'::"char"))) AND (NOT pg_is_other_temp_schema(c.relnamespace))) AND (NOT ((n.nspname = 'public'::name) AND (c.relname = 'raster_columns'::name)))) AND has_table_privilege(c.oid, 'SELECT'::text));
 
 
 --
@@ -8848,7 +8809,7 @@ COMMENT ON TABLE work IS 'A running log of metrics achieved during the performan
 --
 
 CREATE VIEW work_scores_by_day AS
-    SELECT work.routine_id, routines.name AS routine_name, users.login AS client_login, days.full_date, sum(measurement_scores.measurement_score) AS work_score FROM ((((work JOIN application.routines USING (routine_id)) JOIN measurement_scores USING (measurement_id)) JOIN application.users USING (user_id)) JOIN days USING (day_id)) GROUP BY work.routine_id, routines.name, users.login, days.full_date;
+    SELECT work.routine_id, routines.name AS routine_name, users.login AS client_login, (timezone(timezones.tzid, work.start_time))::date AS full_date, sum(measurement_scores.measurement_score) AS work_score FROM (((((work JOIN application.routines USING (routine_id)) JOIN measurement_scores USING (measurement_id)) JOIN application.users USING (user_id)) JOIN application.cities USING (city_id)) JOIN application.timezones ON (public.st_within(cities.the_geom, timezones.the_geom))) GROUP BY work.routine_id, routines.name, users.login, (timezone(timezones.tzid, work.start_time))::date;
 
 
 --
@@ -9375,24 +9336,10 @@ CREATE INDEX activity_set_groups_routine_id_idx ON activity_set_groups USING btr
 
 
 --
--- Name: activity_set_groups_routine_id_idx1; Type: INDEX; Schema: application; Owner: -; Tablespace: 
---
-
-CREATE INDEX activity_set_groups_routine_id_idx1 ON activity_set_groups USING btree (routine_id);
-
-
---
 -- Name: activity_sets_activity_id_idx; Type: INDEX; Schema: application; Owner: -; Tablespace: 
 --
 
 CREATE INDEX activity_sets_activity_id_idx ON activity_sets USING btree (activity_id);
-
-
---
--- Name: activity_sets_activity_id_idx1; Type: INDEX; Schema: application; Owner: -; Tablespace: 
---
-
-CREATE INDEX activity_sets_activity_id_idx1 ON activity_sets USING btree (activity_id);
 
 
 --
@@ -9403,24 +9350,10 @@ CREATE INDEX activity_sets_activity_set_group_id_idx ON activity_sets USING btre
 
 
 --
--- Name: activity_sets_activity_set_group_id_idx1; Type: INDEX; Schema: application; Owner: -; Tablespace: 
---
-
-CREATE INDEX activity_sets_activity_set_group_id_idx1 ON activity_sets USING btree (activity_set_group_id);
-
-
---
 -- Name: activity_sets_measurement_id_idx; Type: INDEX; Schema: application; Owner: -; Tablespace: 
 --
 
 CREATE INDEX activity_sets_measurement_id_idx ON activity_sets USING btree (measurement_id);
-
-
---
--- Name: activity_sets_measurement_id_idx1; Type: INDEX; Schema: application; Owner: -; Tablespace: 
---
-
-CREATE INDEX activity_sets_measurement_id_idx1 ON activity_sets USING btree (measurement_id);
 
 
 --
@@ -9705,6 +9638,13 @@ CREATE UNIQUE INDEX days_full_date_day_of_week_idx ON days USING btree (full_dat
 --
 
 CREATE UNIQUE INDEX days_full_date_idx ON days USING btree (full_date);
+
+
+--
+-- Name: work_prescribed_measurement_id_idx; Type: INDEX; Schema: reporting; Owner: -; Tablespace: 
+--
+
+CREATE INDEX work_prescribed_measurement_id_idx ON work USING btree (prescribed_measurement_id);
 
 
 SET search_path = public, pg_catalog;

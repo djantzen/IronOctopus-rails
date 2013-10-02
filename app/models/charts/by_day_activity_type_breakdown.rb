@@ -13,12 +13,13 @@ module Charts
 
     SQL = <<-EOS
       select activity_types.name as activity_type_name, count(1) as count
-      from days
-        join work using(day_id)
+      from work
         join users using(user_id)
         join activities using(activity_id)
         join activity_types using(activity_type_id)
-      where login = :login and full_date between :start_date and :end_date
+      where
+        login = :login
+        and start_time between :start_date and :end_date
       group by login, activity_types.name;
     EOS
 

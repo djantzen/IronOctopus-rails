@@ -40,13 +40,18 @@ class CreateScoresByDayViews < ActiveRecord::Migration
 
       create view reporting.work_scores_by_day as
         select
-          routine_id, routines.name as routine_name, users.login as client_login, full_date, sum(measurement_score) as work_score
+            routine_id
+          , routines.name as routine_name
+          , users.login as client_login
+          , timezone(timezones.tzid, start_time)::date as full_date
+          , sum(measurement_score) as work_score
         from reporting.work
           join routines using(routine_id)
           join measurement_scores using(measurement_id)
           join users using(user_id)
-          join days using(day_id)
-        group by routine_id, routine_name, client_login, full_date;
+          join cities using(city_id)
+          join timezones on st_within(cities.the_geom, timezones.the_geom)
+        group by routine_id, routine_name, client_login, timezone(timezones.tzid, start_time)::date;
       grant select on reporting.work_scores_by_day to reader;
       comment on view reporting.work_scores_by_day is 'Groups work records by routine, client and date and sums associated measurement_scores';
 

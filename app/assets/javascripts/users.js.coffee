@@ -25,11 +25,14 @@ $(document).ready () ->
 
   get_activity_score = () ->
     url = window.location.pathname + "/activity_level_by_day"
-    Charts.fetch_data($("#activity-score-display-panel"), url)
+    start_date = moment().subtract('weeks', 1)
+    end_date = moment()
+    params = { "start_date": start_date.format(), "end_date": end_date.format() }
+    Charts.fetch_data($("#activity-score-display-panel"), url, params)
 
   init_charts_by_day_dates = () ->
-    $("#charts-by-day-search-panel .chart-start-date").datepicker('update', moment().subtract('weeks', 1).calendar());
-    $("#charts-by-day-search-panel .chart-end-date").datepicker('update', moment());
+    $("#charts-by-day-search-panel .chart-start-date").datepicker('update', moment().subtract('weeks', 1).toDate());
+    $("#charts-by-day-search-panel .chart-end-date").datepicker('update', moment().toDate());
 
   init_charts_by_day_dates()
 
@@ -39,7 +42,7 @@ $(document).ready () ->
     if start_date >= end_date
       init_charts_by_day_dates()
       generate_date_params()
-    return { "start_date": start_date.format("YYYY-MM-DD"), "end_date": end_date.format("YYYY-MM-DD") }
+    return { "start_date": start_date.format(), "end_date": end_date.format() }
 
   get_scores_by_day = () ->
     url = window.location.pathname + "/scores_by_day"
@@ -59,7 +62,9 @@ $(document).ready () ->
   get_activity_performance_over_time = () ->
     url = window.location.pathname + "/activity_performance_over_time"
     activity_name = $("#activity-performance-select").val()
-    params = { "activity_name" : activity_name }
+    params =
+      "activity_name" : activity_name
+      "units" : (if $("#english-units").prop("checked") then "english" else "metric")
     display_panels =
       "Cadence" : $("#performance-trends-cadence-display-panel")
       "Calories" : $("#performance-trends-calories-display-panel")
@@ -85,6 +90,10 @@ $(document).ready () ->
   if $("#activity-performance-select").size() == 1
     get_activity_performance_over_time()
   $("#activity-performance-select").change ->
+    get_activity_performance_over_time()
+  $("#english-units").click ->
+    get_activity_performance_over_time()
+  $("#metric-units").click ->
     get_activity_performance_over_time()
 
   is_login_unique = (login) ->

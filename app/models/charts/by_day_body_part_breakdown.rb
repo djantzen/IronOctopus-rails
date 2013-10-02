@@ -12,14 +12,17 @@ module Charts
     end
 
     SQL = <<-EOS
-      select body_parts.region as body_region, count(1) as count
-      from days
-        join work using(day_id)
+      select
+        body_parts.region as body_region
+      , count(1) as count
+      from work
         join users using(user_id)
         join activities using(activity_id)
         join activities_body_parts using(activity_id)
         join body_parts using(body_part_id)
-      where login = :login and full_date between :start_date and :end_date
+      where
+        login = :login
+        and start_time between :start_date and :end_date
       group by login, body_parts.region;
     EOS
 

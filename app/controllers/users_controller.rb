@@ -88,10 +88,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def get_date_range
+    start_date = DateTime.parse(params[:start_date]).at_beginning_of_day.utc
+    end_date = DateTime.parse(params[:end_date]).end_of_day.utc
+    [start_date, end_date]
+  end
+
   def scores_by_day
     user = User.find_by_login(params[:user_id])
-    start_date = Date.parse params[:start_date]
-    end_date = Date.parse params[:end_date]
+    start_date, end_date = get_date_range()
     scores = Charts::ByDayClientScore.find_by_user_and_dates(user, start_date, end_date)
 
     rows = scores.inject([]) do |memo, score|
@@ -128,8 +133,7 @@ class UsersController < ApplicationController
 
   def activity_level_by_day
     user = User.find_by_login(params[:user_id])
-    start_date = params[:start_date] ? Date.parse(params[:start_date]) : DateTime.now.utc.to_date - 7.days
-    end_date = params[:end_date] ? Date.parse(params[:end_date]) : DateTime.now.utc.to_date
+    start_date, end_date = get_date_range()
     levels = Charts::ByDayClientActivityLevel.get_activity_levels(user, start_date, end_date)
 
     cols = [{:type => "string", :label => "Client", :role => "domain"},
@@ -161,12 +165,11 @@ class UsersController < ApplicationController
 
   def activity_type_breakdown_by_day
     user = User.find_by_login(params[:user_id])
-    start_date = Date.parse params[:start_date]
-    end_date = Date.parse params[:end_date]
+    start_date, end_date = get_date_range()
     breakdowns = Charts::ByDayActivityTypeBreakdown.find_by_user_and_dates(user, start_date, end_date)
 
     cols = [{:type => "string", :label => "Activity Type", :role => "domain"},
-          {:type => "number", :label => "Count", :role => "data"}]
+            {:type => "number", :label => "Count", :role => "data"}]
     rows = breakdowns.inject([]) do |memo, breakdown|
       memo << [breakdown.activity_type_name, breakdown.count]
       memo
@@ -186,8 +189,7 @@ class UsersController < ApplicationController
 
   def body_part_breakdown_by_day
     user = User.find_by_login(params[:user_id])
-    start_date = Date.parse params[:start_date]
-    end_date = Date.parse params[:end_date]
+    start_date, end_date = get_date_range()
     breakdowns = Charts::ByDayBodyPartBreakdown.find_by_user_and_dates(user, start_date, end_date)
 
     cols = [{:type => "string", :label => "Body Region", :role => "domain"},
@@ -213,13 +215,14 @@ class UsersController < ApplicationController
     user = User.find_by_login(params[:user_id])
     activity = Activity.find_by_name params[:activity_name]
     performances = Charts::ByDayActivityMeasurements.find_by_user_date_and_activity(user, activity)
+    units = params[:units]
     data_set = {}
     Metric.list.each do |metric|
       cols = [{:type => "date", :label => "Date", :role => "domain"},
               {:type => "number", :label => metric.name, :role => "data"}]
 
       rows = performances.inject([]) do |memo, performance|
-        memo << [performance.full_date, performance.send(metric.name.to_identifier)]
+        memo << [performance.full_date, performance.send(metric.name.to_identifier, units)]
         memo
       end
 

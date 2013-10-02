@@ -70,6 +70,12 @@
           #historical-performance-report-pane.tab-pane
             .row-fluid.well
               = select_tag("activity-performance-select", options_for_select(@user.activities_performed.map{|a| a.name}))
+              %label.inline.radio
+                %input{:type => "radio", :name => "units-radio-buttons", :id => "english-units", :checked => true}
+                  English Units
+              %label.inline.radio
+                %input{:type => "radio", :name => "units-radio-buttons", :id => "metric-units"}
+                  Metric Units
               = render :partial => "shared/chart_display_panel",
                        :locals => { :panel_id => "performance-trends-cadence-display-panel",
                                     :info_position => "left",
