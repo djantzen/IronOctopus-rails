@@ -101,7 +101,7 @@ class UsersController < ApplicationController
 
     rows = scores.inject([]) do |memo, score|
       row = []
-      row << score.full_date.month.to_s + "-" + score.full_date.mday.to_s
+      row << score.full_date
       row << score.routine_score
       row << (score.prescribed_routine_name.nil? ? nil : score.prescribed_routine_name + ": " + score.routine_score.to_s)
       row << score.work_score
@@ -113,7 +113,7 @@ class UsersController < ApplicationController
 
     render :json => {
       :type => "ComboChart",
-      :cols => [{:type => "string", :label => "Date", :role => "domain"},
+      :cols => [{:type => "date", :label => "Date", :role => "domain"},
                 {:type => "number", :label => "Prescribed Score", :role => "data"},
                 {:type => "string", :label => "Prescribed Routine", :role => "tooltip"},
                 {:type => "number", :label => "Actual Score", :role => "data"},

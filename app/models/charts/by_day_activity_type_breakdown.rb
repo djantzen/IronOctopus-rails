@@ -12,7 +12,9 @@ module Charts
     end
 
     SQL = <<-EOS
-      select activity_types.name as activity_type_name, count(1) as count
+      select
+        activity_types.name as activity_type_name
+      , count(1) as count
       from work
         join users using(user_id)
         join activities using(activity_id)

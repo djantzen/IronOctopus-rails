@@ -8,8 +8,14 @@ class this.Charts
     $.getJSON(url, params, (data) ->
       # Create DataTable from received chart data
       data_table = new google.visualization.DataTable()
-      $.each(data.cols, ->
-        data_table.addColumn(this))
+
+      $.each(data.cols, (col_index, col)->
+        if this["type"] == "date"
+          # Vivify dates so we can use Google Visualization Date magic
+          $.each(data.rows, (row_index, row) ->
+            data.rows[row_index][col_index] = new Date(row[col_index]))
+        data_table.addColumn(col))
+
       data_table.addRows(data.rows)
 
       if data.formatter
@@ -40,12 +46,12 @@ class this.Charts
 
         $.each(data, (key, stats)->
           data_table = new google.visualization.DataTable()
-          $.each(stats.cols, ->
-            data_table.addColumn(this))
-
-          # Vivify dates so we can use Google Visualization Date magic
-          $.each(stats.rows, (index, row) ->
-            stats.rows[index][0] = new Date(row[0]))
+          $.each(stats.cols, (col_index, col)->
+            if this["type"] == "date"
+              # Vivify dates so we can use Google Visualization Date magic
+              $.each(stats.rows, (row_index, row) ->
+                stats.rows[row_index][col_index] = new Date(row[col_index]))
+            data_table.addColumn(col))
 
           sum = 0
           $.each(stats.rows, (index, row) ->

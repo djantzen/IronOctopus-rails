@@ -28,6 +28,7 @@ module Charts
     end
 
     # BUG: If you record against more than one routine in a day then the per day point prescription gets inflated
+    # BUG: Shows dates out of range
     SQL = <<-EOS
       select
           days.full_date

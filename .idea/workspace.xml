@@ -3,15 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="46f8a447-b9ed-44ae-be1c-95fe4e4f3fab" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/users.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/users.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/charts.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/charts.js.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/work_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/work_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/charts/by_day_activity_measurements.rb" afterPath="$PROJECT_DIR$/app/models/charts/by_day_activity_measurements.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/charts/by_day_activity_type_breakdown.rb" afterPath="$PROJECT_DIR$/app/models/charts/by_day_activity_type_breakdown.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/charts/by_day_body_part_breakdown.rb" afterPath="$PROJECT_DIR$/app/models/charts/by_day_body_part_breakdown.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/show.html.haml" afterPath="$PROJECT_DIR$/app/views/users/show.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20130912072400_create_scores_by_day_views.rb" afterPath="$PROJECT_DIR$/db/migrate/20130912072400_create_scores_by_day_views.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/structure.sql" afterPath="$PROJECT_DIR$/db/structure.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/charts/by_day_client_score.rb" afterPath="$PROJECT_DIR$/app/models/charts/by_day_client_score.rb" />
     </list>
     <ignored path="IronOctopus-rails.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,16 +37,16 @@
       <file leaf-file-name="users_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="99" column="50" selection-start="2989" selection-end="2989" vertical-scroll-proportion="0.0">
+            <state line="128" column="73" selection-start="4401" selection-end="4401" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="charts.js.coffee" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="charts.js.coffee" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/charts.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="0" selection-start="1741" selection-end="1741" vertical-scroll-proportion="0.0">
+            <state line="51" column="52" selection-start="2007" selection-end="2007" vertical-scroll-proportion="0.44615385">
               <folding />
             </state>
           </provider>
@@ -60,7 +55,7 @@
       <file leaf-file-name="users.js.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/users.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="0" selection-start="1348" selection-end="1348" vertical-scroll-proportion="0.0">
+            <state line="63" column="9" selection-start="2302" selection-end="2303" vertical-scroll-proportion="-10.807693">
               <folding />
             </state>
           </provider>
@@ -69,25 +64,7 @@
       <file leaf-file-name="by_day_activity_type_breakdown.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/charts/by_day_activity_type_breakdown.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="16" selection-start="300" selection-end="300" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="by_day_client_score.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/charts/by_day_client_score.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="0" selection-start="1180" selection-end="1180" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="work_controller.rb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/controllers/work_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="102" column="0" selection-start="2569" selection-end="2569" vertical-scroll-proportion="0.6571429">
+            <state line="8" column="0" selection-start="229" selection-end="229" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -111,6 +88,8 @@
                 <marker date="0" expanded="true" signature="397:427" placeholder="select range..." />
                 <marker date="0" expanded="true" signature="649:718" placeholder="select ((upp..." />
                 <marker date="0" expanded="true" signature="890:983" placeholder="select (((up..." />
+                <marker date="0" expanded="true" signature="2321:2910" placeholder="create or re..work_scores_by_day..." />
+                <marker date="0" expanded="true" signature="2378:2910" placeholder="select routi..work..." />
               </folding>
             </state>
           </provider>
@@ -143,18 +122,18 @@
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/models/user.rb" />
         <option value="$PROJECT_DIR$/app/models/charts/by_day_client_activity_level.rb" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/charts.js.coffee" />
         <option value="$PROJECT_DIR$/app/views/users/show.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/users.css.scss" />
         <option value="$PROJECT_DIR$/app/controllers/work_controller.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20130912072400_create_scores_by_day_views.rb" />
-        <option value="$PROJECT_DIR$/app/models/charts/by_day_activity_type_breakdown.rb" />
         <option value="/Rails IronOctopus-rails: migrate_development" />
         <option value="$PROJECT_DIR$/app/models/charts/by_day_body_part_breakdown.rb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/users.js.coffee" />
         <option value="$PROJECT_DIR$/app/models/charts/by_day_activity_measurements.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
         <option value="$PROJECT_DIR$/app/models/charts/by_day_client_score.rb" />
+        <option value="$PROJECT_DIR$/app/models/charts/by_day_activity_type_breakdown.rb" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/charts.js.coffee" />
+        <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
       </list>
     </option>
   </component>
@@ -920,7 +899,7 @@
       <window_info id="Database" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22354813" sideWeight="0.75107294" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2442323" sideWeight="0.21793103" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24582338" sideWeight="0.57081544" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.42918456" sideWeight="0.97184825" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42918456" sideWeight="0.97184825" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32843652" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30472103" sideWeight="0.75703794" order="2" side_tool="false" content_ui="tabs" />
@@ -1044,23 +1023,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/users.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="0" selection-start="1348" selection-end="1348" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/charts/by_day_activity_measurements.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="65" column="0" selection-start="2042" selection-end="2042" vertical-scroll-proportion="0.21641791">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/charts/by_day_activity_type_breakdown.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="16" selection-start="300" selection-end="300" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1072,30 +1037,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/charts.js.coffee">
+    <entry file="file://$PROJECT_DIR$/app/controllers/work_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="0" selection-start="1741" selection-end="1741" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="50" selection-start="2989" selection-end="2989" vertical-scroll-proportion="0.0">
+        <state line="102" column="0" selection-start="2569" selection-end="2569" vertical-scroll-proportion="0.6571429">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/charts/by_day_client_score.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="0" selection-start="1180" selection-end="1180" vertical-scroll-proportion="0.0">
+        <state line="23" column="0" selection-start="535" selection-end="535" vertical-scroll-proportion="0.044510387">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/work_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/users.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="102" column="0" selection-start="2569" selection-end="2569" vertical-scroll-proportion="0.6571429">
+        <state line="63" column="9" selection-start="2302" selection-end="2303" vertical-scroll-proportion="-10.807693">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/users_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="128" column="73" selection-start="4401" selection-end="4401" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/charts/by_day_activity_type_breakdown.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="0" selection-start="229" selection-end="229" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/charts.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="52" selection-start="2007" selection-end="2007" vertical-scroll-proportion="0.44615385">
           <folding />
         </state>
       </provider>
