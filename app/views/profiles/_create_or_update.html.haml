@@ -19,8 +19,5 @@
       .field
         = form.label :email
         = form.text_field :email, :class => 'required'
-      .field
-        = render :partial => 'shared/upload_image', :locals => { :form => form }
-        = image_tag @profile.image_url
       .actions
         = form.submit "Save", :class => 'btn btn-primary btn-large'

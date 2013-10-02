@@ -8316,7 +8316,6 @@ CREATE TABLE profiles (
     gender text DEFAULT 'Male'::text NOT NULL,
     created_at timestamp with time zone DEFAULT now() NOT NULL,
     updated_at timestamp with time zone DEFAULT now() NOT NULL,
-    image text DEFAULT 'image_not_found.jpg'::text NOT NULL,
     CONSTRAINT profiles_gender_check CHECK ((gender = ANY (ARRAY['Female'::text, 'Male'::text])))
 );
 
@@ -8544,7 +8543,8 @@ CREATE TABLE users (
     created_at timestamp with time zone DEFAULT now() NOT NULL,
     updated_at timestamp with time zone DEFAULT now() NOT NULL,
     city_id integer DEFAULT 685 NOT NULL,
-    is_admin boolean DEFAULT false NOT NULL
+    is_admin boolean DEFAULT false NOT NULL,
+    image text DEFAULT 'image_not_found.jpg'::text NOT NULL
 );
 
 
@@ -10301,3 +10301,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130828053456');
 INSERT INTO schema_migrations (version) VALUES ('20130828111837');
 
 INSERT INTO schema_migrations (version) VALUES ('20130912072400');
+
+INSERT INTO schema_migrations (version) VALUES ('20131002195255');

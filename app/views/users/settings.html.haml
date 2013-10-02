@@ -11,6 +11,9 @@
         .ui-widget
           = form.label :city
           = text_field_tag :city, @user.city.display, :id => 'city-select', :class => 'ui-autocomplete-input required'
+      .field
+        = render :partial => 'shared/upload_image', :locals => { :form => form }
+        = image_tag @user.image_url
     .row
       .span3.btn-group
         = link_to "Cancel", user_path(@user), :class => "btn btn-large"

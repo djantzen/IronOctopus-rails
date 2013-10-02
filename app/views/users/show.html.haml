@@ -4,6 +4,7 @@
       .row-fluid
         %h3
           = @user.full_name
+          = image_tag @user.image_url
         -#User since #{@user.created_at.to_date}
         - if @user.is_trainer? and @user.eql? current_user
           - if @user.profile.nil?
@@ -39,10 +40,10 @@
         %ul.nav.nav-tabs.nav-pills
           %li.active
             %a{:href => "#recent-performance-report-pane", "data-toggle" => "tab"}
-              Recent Performance
+              Overall Performance
           %li
             %a{:href => "#historical-performance-report-pane", "data-toggle" => "tab"}
-              Performance Trends
+              Performance by Activity
           %li
             %a{:href => "#routines-pane", "data-toggle" => "tab"}
               Workout Routines

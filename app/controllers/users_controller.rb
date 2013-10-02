@@ -58,6 +58,12 @@ class UsersController < ApplicationController
       city_name, state_name = params[:city].split(/,/)
       city = City.find_by_name_and_state(city_name, state_name)
       @user.city = city
+      # Carrierwave works best(only?) with update_attributes so fake our hash
+      image_params = params
+      image_params[:user].delete(:new_password)
+      image_params[:user].delete(:confirm_password)
+      image_params[:user].delete(:city)
+      @user.update_attributes(image_params[:user])
       @user.save
     end
     @flash = "Settings Updated"

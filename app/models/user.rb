@@ -41,6 +41,8 @@ class User < ActiveRecord::Base
   has_many :activities_performed, :class_name => "Activity", :through => :work,
            :source => :activity, :uniq => true, :order => :name
 
+  mount_uploader :image, ImageUploader
+
   TIME_FORMAT = "%l:%M:%S %P"
 
   def local_time_from_utc(time)
