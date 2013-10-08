@@ -1,5 +1,8 @@
 - via_ajax = (defined?(via_ajax) ? via_ajax : false)
 .container-fluid
+  - if current_user.is_admin?
+    .row-fluid
+      = render :partial => "admin/proxied_pages/embedded_browser"
   #create-update-activity-form.row-fluid
     = form_for @activity, :remote => via_ajax do |form|
       #activity-basic-info.span3.well

@@ -268,6 +268,7 @@ DEPENDENCIES
   launchy
   modernizr-rails (~> 2.0.6)
   momentjs-rails (~> 2.1.0)
+  nokogiri (>= 1.5.0)
   pg
   rails (= 3.2.14)
   rest-client

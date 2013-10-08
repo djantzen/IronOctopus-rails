@@ -1,0 +1,27 @@
+.embedded-browser.well
+  .row-fluid
+    .span3
+      = render :partial => "admin/proxied_pages/embedded_browser_search_panel"
+    .span8
+      .tabbable
+        %ul.nav.nav-tabs.nav-pills
+          %li.active
+            %a{:href => "#web-search-pane", "data-toggle" => "tab"}
+              Web Results
+          %li
+            %a{:href => "#image-search-pane", "data-toggle" => "tab"}
+              Images
+          %li
+            %a{:href => "#video-search-pane", "data-toggle" => "tab"}
+              Videos
+  .row-fluid
+    .tab-content
+      #web-search-pane.tab-pane.active
+        = render :partial => "admin/proxied_pages/embedded_browser_window",
+                 :locals => { :browser_id => "web-search", :proxied_url => "https://www.google.com/search?" }
+      #image-search-pane.tab-pane
+        = render :partial => "admin/proxied_pages/embedded_browser_window",
+                 :locals => { :browser_id => "image-search", :proxied_url => "https://www.google.com/search?tbm=isch" }
+      #video-search-pane.tab-pane
+        = render :partial => "admin/proxied_pages/embedded_browser_window",
+                 :locals => { :browser_id => "video-search", :proxied_url => "https://www.google.com/search?tbm=vid" }

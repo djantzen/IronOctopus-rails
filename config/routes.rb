@@ -112,6 +112,8 @@ IronOctopus::Application.routes.draw do
   get "/trainers/:user_id/programs" => "programs#by_trainer", :as => :programs_by_trainer
   get "/tour/show" => "tour#show", :as => :tour
 
+  get "/admin/proxied_pages" => "admin/proxied_pages#get", :as => :proxied_pages
+
   #  match "/trainers/:user_id/invitations" => "users#invitations", :as => :invitations
 
   # This route can be invoked with purchase_url(:id => product.id)
