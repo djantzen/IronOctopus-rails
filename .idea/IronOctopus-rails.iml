@@ -107,11 +107,13 @@
     <orderEntry type="library" scope="PROVIDED" name="sass-rails (v3.2.6, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="selenium-webdriver (v2.35.1, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sexp_processor (v4.3.0, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="socksify (v1.5.0, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets (v2.2.2, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="systemu (v2.5.2, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="therubyracer (v0.12.0, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="thor (v0.18.1, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tilt (v1.4.1, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="tor (v0.1.2, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="treetop (v1.4.15, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tzinfo (v0.3.37, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="uglifier (v2.2.1, RVM: ruby-1.9.3-p392 [IronOctopus]) [gem]" level="application" />
