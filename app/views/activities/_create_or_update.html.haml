@@ -23,7 +23,7 @@
             Media
           - if @activity.activity_videos.empty?
             = form.label "activity[activity_videos][]", "YouTube Link"
-            = text_field_tag "activity[activity_videos][]", "", :class => "input-xxlarge valid_activity_video_link"
+            = text_field_tag "activity[activity_videos][]", "", :class => "input-xxlarge valid_activity_video_link", :id => "activity-video-link"
           - else
             - @activity.activity_videos.each do |video|
               = form.label "activity[activity_videos][]", "YouTube Link"

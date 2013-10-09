@@ -25,14 +25,18 @@ class this.EmbeddedBrowserWindow
     button.click =>
       if @pages.length > 1
         @pages.pop()
-        @render()
+        @render(false)
 
-  render: () =>
+  render: (init) =>
     page = @pages[@pages.length - 1]
     try
       @embedded_browser_window_panel.find(".proxied-page-contents").html(page)
     catch error
-    @rewrite_link_event_handlers(@embedded_browser_window_panel.find(".proxied-page-contents"))
+    contents = @embedded_browser_window_panel.find(".proxied-page-contents")
+    if init
+      @rewrite_link_event_handlers(contents)
+      @init_video_links(contents)
+      @init_image_links(contents)
 
   set_search_query: (query) =>
     @pages = []
@@ -42,25 +46,35 @@ class this.EmbeddedBrowserWindow
 
   add_page: (page) =>
     @pages.push(page)
-    @render()
+    @render(true)
 
   rewrite_link_event_handlers: (page)=>
     $.each($(page).find("a"), (index, a_tag)=>
       fetcher = new URLFetcher(this, $(a_tag).attr("href"))
       $(a_tag).click (e)=>
-#        e.preventDefault
         fetcher.go()
         false
     )
+
+  init_video_links: (page)=>
+    $(page).find(".video-wrapper button").click ->
+      link = $(this).siblings("a:first").attr("href")
+      $("#activity-video-link").val(link)
+
+  init_image_links: (page)=>
+    $(page).find(".image-wrapper button").click ->
+      link = $(this).siblings("a:first").attr("href")
+      $("#activity-video-link").val(link)
+
 
 class this.URLFetcher
   constructor: (@embedded_window, @proxied_url) ->
     @base_url = window.location.origin + "/admin/proxied_pages"
 
   go: =>
-    $.get(@base_url, {"url" : @proxied_url }, (data) =>
-      @embedded_window.add_page(data)
-    )
+    $.get(@base_url, { "url" : @proxied_url },
+          (data, status) =>
+            @embedded_window.add_page(data))
 
 
 $(document).ready ->
