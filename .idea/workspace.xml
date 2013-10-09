@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="46f8a447-b9ed-44ae-be1c-95fe4e4f3fab" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/admin/proxied_pages.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/admin/proxied_pages.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/admin/proxied_pages_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/admin/proxied_pages_controller.rb" />
     </list>
     <ignored path="IronOctopus-rails.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,7 +35,7 @@
       <file leaf-file-name="_embedded_browser_window.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/admin/proxied_pages/_embedded_browser_window.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="10" selection-start="96" selection-end="96" vertical-scroll-proportion="0.0">
+            <state line="2" column="10" selection-start="96" selection-end="96" vertical-scroll-proportion="-0.625">
               <folding />
             </state>
           </provider>
@@ -42,16 +44,7 @@
       <file leaf-file-name="proxied_pages_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/admin/proxied_pages_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="0" selection-start="335" selection-end="335" vertical-scroll-proportion="0.32330826">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fitness_bliss.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scrapers/fitness_bliss.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="96" column="5" selection-start="2902" selection-end="2902" vertical-scroll-proportion="0.22839506">
               <folding />
             </state>
           </provider>
@@ -87,7 +80,7 @@
       <file leaf-file-name="proxied_pages.js.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/admin/proxied_pages.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="0" selection-start="637" selection-end="637" vertical-scroll-proportion="0.0">
+            <state line="61" column="0" selection-start="1799" selection-end="1799" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -109,6 +102,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Rails console: IronOctopus-rails" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/views/programs/show.html.haml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/assets/stylesheets/sheet.css.scss" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -185,6 +179,16 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -252,31 +256,21 @@
         </subPane>
       </pane>
       <pane id="RailsProjectView" />
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="JdbcConsole.Extract.Separator" value="'" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="126" />
+    <property name="JdbcConsole.Extract.Separator" value="'" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="161" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="JdbcConsole.Connection.Autocommit" value="true" />
-    <property name="recentsLimit" value="5" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="191" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="recentsLimit" value="5" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="last_opened_file_path" value="/tmp" />
-    <property name="JdbcConsole.ResultInNewTab" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="123" />
+    <property name="JdbcConsole.ResultInNewTab" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="637" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="804" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="194" />
@@ -296,14 +290,14 @@
     <property name="options.lastSelected" value="preferences.pluginManager" />
     <property name="JdbcConsole.Extract.OpeningQuote" value="'" />
     <property name="JdbcConsole.Extract.ClosingQuote" value="'" />
-    <property name="JdbcConsole.EnableParameterPattern" value="false" />
     <property name="JdbcConsole.Extract.IncludeHeader" value="false" />
+    <property name="JdbcConsole.EnableParameterPattern" value="false" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="JdbcConsole.ParameterPattern" value="(\?\d*|\:\w+|\@\w+|\$\{[^$\{\}]*\}|\$\w+\$|\#\w+\#)" />
     <property name="JdbcConsole.ResultPageSize" value="1000" />
-    <property name="options.searchVisible" value="true" />
-    <property name="Ruby.ViewRefParam.DefaultExtension" value="html.haml" />
     <property name="dynamic.classpath" value="false" />
+    <property name="Ruby.ViewRefParam.DefaultExtension" value="html.haml" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -321,7 +315,7 @@
       <recent name="$PROJECT_DIR$/app/models" />
     </key>
   </component>
-  <component name="RunManager" selected="Rails.Development: IronOctopus-rails">
+  <component name="RunManager" selected="IRB console.Rails console: IronOctopus-rails">
     <configuration default="false" name="Clicking on an activity adds it to the routine" type="CucumberRunConfigurationType" factoryName="Cucumber" temporary="true">
       <predefined_log_file id="RUBY_CUCUMBER" enabled="true" />
       <module name="IronOctopus-rails" />
@@ -608,6 +602,13 @@
       <IRB_RUN_CONFIG NAME="IS_RAILS_CONSOLE" VALUE="false" />
       <method />
     </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote">
+      <JSRemoteDebuggerConfigurationSettings>
+        <option name="engineId" value="embedded" />
+        <option name="fileUrl" />
+      </JSRemoteDebuggerConfigurationSettings>
+      <method />
+    </configuration>
     <configuration default="true" type="CucumberRunConfigurationType" factoryName="Cucumber">
       <predefined_log_file id="RUBY_CUCUMBER" enabled="true" />
       <module name="" />
@@ -639,13 +640,6 @@
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_RUNNER_PATH" VALUE="" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_RUNNER" VALUE="false" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SETTINGS_VERSION" VALUE="2" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote">
-      <JSRemoteDebuggerConfigurationSettings>
-        <option name="engineId" value="embedded" />
-        <option name="fileUrl" />
-      </JSRemoteDebuggerConfigurationSettings>
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
@@ -788,21 +782,21 @@
       <method />
     </configuration>
     <list size="10">
-      <item index="0" class="java.lang.String" itemvalue="Cucumber.Clicking on an activity adds it to the routine" />
-      <item index="1" class="java.lang.String" itemvalue="Cucumber.create_a_trainer_profile" />
-      <item index="2" class="java.lang.String" itemvalue="Cucumber.create_a_routine" />
-      <item index="3" class="java.lang.String" itemvalue="IRB console.Rails console: IronOctopus-rails" />
-      <item index="4" class="java.lang.String" itemvalue="Ruby.exrx" />
-      <item index="5" class="java.lang.String" itemvalue="Rails.Production: IronOctopus-rails" />
-      <item index="6" class="java.lang.String" itemvalue="Rails.Development: IronOctopus-rails" />
-      <item index="7" class="java.lang.String" itemvalue="Rails.TestDB: IronOctopus-rails" />
-      <item index="8" class="java.lang.String" itemvalue="Rake.test" />
-      <item index="9" class="java.lang.String" itemvalue="Rake.spec" />
+      <item index="0" class="java.lang.String" itemvalue="Rails.Production: IronOctopus-rails" />
+      <item index="1" class="java.lang.String" itemvalue="Rails.Development: IronOctopus-rails" />
+      <item index="2" class="java.lang.String" itemvalue="Rails.TestDB: IronOctopus-rails" />
+      <item index="3" class="java.lang.String" itemvalue="Rake.test" />
+      <item index="4" class="java.lang.String" itemvalue="Rake.spec" />
+      <item index="5" class="java.lang.String" itemvalue="Cucumber.Clicking on an activity adds it to the routine" />
+      <item index="6" class="java.lang.String" itemvalue="Cucumber.create_a_trainer_profile" />
+      <item index="7" class="java.lang.String" itemvalue="Cucumber.create_a_routine" />
+      <item index="8" class="java.lang.String" itemvalue="IRB console.Rails console: IronOctopus-rails" />
+      <item index="9" class="java.lang.String" itemvalue="Ruby.exrx" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Ruby.exrx" />
-        <item index="1" class="java.lang.String" itemvalue="IRB console.Rails console: IronOctopus-rails" />
+        <item index="0" class="java.lang.String" itemvalue="IRB console.Rails console: IronOctopus-rails" />
+        <item index="1" class="java.lang.String" itemvalue="Ruby.exrx" />
         <item index="2" class="java.lang.String" itemvalue="Cucumber.create_a_routine" />
         <item index="3" class="java.lang.String" itemvalue="Cucumber.create_a_trainer_profile" />
         <item index="4" class="java.lang.String" itemvalue="Cucumber.create_a_routine" />
@@ -845,11 +839,11 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22354813" sideWeight="0.75107294" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2442323" sideWeight="0.21793103" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24582338" sideWeight="0.64827585" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35172415" sideWeight="0.97184825" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24582338" sideWeight="0.7986207" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20137931" sideWeight="0.97184825" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32843652" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.55172414" sideWeight="0.75703794" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27310345" sideWeight="0.75703794" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5737931" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38483548" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -923,11 +917,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/routines/fetch_activity_sets.js.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="115" selection-start="98" selection-end="155" vertical-scroll-proportion="0.04398827" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
@@ -972,7 +961,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/admin/proxied_pages/_embedded_browser_window.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="10" selection-start="96" selection-end="96" vertical-scroll-proportion="0.0">
+        <state line="2" column="10" selection-start="96" selection-end="96" vertical-scroll-proportion="-0.625">
           <folding />
         </state>
       </provider>
@@ -991,13 +980,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/admin/proxied_pages.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="637" selection-end="637" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/admin/proxied_pages/_embedded_browser.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="10" selection-start="46" selection-end="46" vertical-scroll-proportion="0.0">
@@ -1012,9 +994,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392@IronOctopus/gems/actionpack-3.2.14/lib/action_controller/metal/implicit_render.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="143" selection-end="143" vertical-scroll-proportion="0.1875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/admin/proxied_pages.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="0" selection-start="1799" selection-end="1799" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/admin/proxied_pages_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="335" selection-end="335" vertical-scroll-proportion="0.32330826">
+        <state line="96" column="5" selection-start="2902" selection-end="2902" vertical-scroll-proportion="0.22839506">
           <folding />
         </state>
       </provider>

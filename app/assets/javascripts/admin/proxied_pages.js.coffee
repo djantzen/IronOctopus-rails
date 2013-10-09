@@ -59,7 +59,6 @@ class this.URLFetcher
 
   go: =>
     $.get(@base_url, {"url" : @proxied_url }, (data) =>
-      console.log("got data")
       @embedded_window.add_page(data)
     )
 
