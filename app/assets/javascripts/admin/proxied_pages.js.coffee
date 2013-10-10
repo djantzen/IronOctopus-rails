@@ -34,6 +34,7 @@ class this.EmbeddedBrowserWindow
 
   init_back_button: () =>
     button = @embedded_browser_window_panel.find(".browser-back-button")
+    button.attr("disabled", true)
     button.click =>
       if @pages.length > 1
         @pages.pop()
@@ -41,6 +42,7 @@ class this.EmbeddedBrowserWindow
 
   init_bookmark_button: () =>
     button = @embedded_browser_window_panel.find(".browser-bookmark-button")
+    button.attr("disabled", true)
     button.click =>
       if @pages.length > 1
         page = @pages[@pages.length - 1]
@@ -51,6 +53,8 @@ class this.EmbeddedBrowserWindow
 
   render: () =>
     page = @pages[@pages.length - 1]
+    @embedded_browser_window_panel.find(".browser-back-button").attr("disabled", @pages.length <= 1);
+    @embedded_browser_window_panel.find(".browser-bookmark-button").attr("disabled", @pages.length <= 1);
     try
       @embedded_browser_window_panel.find(".proxied-page-contents").html(page.contents)
     catch error
@@ -85,7 +89,7 @@ class this.EmbeddedBrowserWindow
   init_image_links: (page_contents)=>
     $(page_contents).find(".image-wrapper button").click ->
       link = $(this).siblings("a:first").attr("href")
-      empty_image_fields = $(".activity-image-url").filter ->
+      empty_image_fields = $(".image-url-input").filter ->
         this.value == ""
       $(empty_image_fields[0]).val(link)
 

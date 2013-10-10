@@ -1,4 +1,6 @@
 .container-fluid
+  - if current_user.is_admin?
+    = render :partial => "admin/proxied_pages/embedded_browser"
   #create-update-implement-form.row-fluid
     #implement-basic-info.span3.well
       = form_for @implement, :html => {:multipart => true} do |form|
@@ -9,7 +11,7 @@
         = form.label :category, "Category"
         = form.select :category, Implement.all_categories, :selected => @implement.category
         = render :partial => "shared/upload_image", :locals => { :form => form }
-        = image_tag @implement.image_url
+        = image_tag @implement.image_url(:thumb)
         .row
           .btn-group
             = link_to "Cancel", user_path(current_user), :class => "btn"

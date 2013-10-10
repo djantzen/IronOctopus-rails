@@ -9,5 +9,5 @@
     .span2
       = link_to("Edit", edit_implement_path(@implement), :class => "btn btn-primary")
   .row
-    = image_tag @implement.image_url
+    = image_tag @implement.image_url(:thumb)
   = link_to("All Implements", implements_path)

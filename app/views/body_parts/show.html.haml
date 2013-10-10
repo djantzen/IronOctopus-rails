@@ -1,6 +1,6 @@
 %h2
   = @body_part.name
 = @body_part.region
-= image_tag @body_part.image_url
+= image_tag @body_part.image_url(:thumb)
 = link_to("Edit", edit_body_part_path(@body_part), :class => "btn btn-primary")
 = link_to("All Body Parts", body_parts_path)

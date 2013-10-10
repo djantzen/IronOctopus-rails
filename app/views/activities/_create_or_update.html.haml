@@ -1,117 +1,119 @@
 - via_ajax = (defined?(via_ajax) ? via_ajax : false)
 .container-fluid
   - if current_user.is_admin?
-    .row-fluid
-      = render :partial => "admin/proxied_pages/embedded_browser"
+    = render :partial => "admin/proxied_pages/embedded_browser"
   #create-update-activity-form.row-fluid
     = form_for @activity, :remote => via_ajax, html: {multipart: true} do |form|
-      #activity-basic-info.span3.well
-        = form.label :name, "Activity Name"
-        = form.text_field :name, :class => "required is_activity_name_unique",
-                          :minlength => @validations[:activity][:name][:minlength],
-                          :maxlength => @validations[:activity][:name][:maxlength]
-        = form.label :activity_type, "Activity Type"
-        = form.select :activity_type, @activity_types.map { |activity_type | [activity_type.name, activity_type.name] },
-                      :selected => @activity.activity_type.nil? ? nil : @activity.activity_type.activity_type_id
-        = link_to "You can use Markdown syntax here", "http://kramdown.rubyforge.org/quickref.html", :target => "_blank"
-        = form.label :instructions, "Instructions"
-        = form.text_area :instructions, :minlength => @validations[:activity][:instructions][:minlength],
-                         :maxlength => @validations[:activity][:instructions][:maxlength]
-      .span8.well
-        .tabbable
-          %ul.nav.nav-tabs.nav-pills
-            %li.active
-              %a{:href => "#activity-metadata-pane", "data-toggle" => "tab"}
-                Activity Metadata
-            %li
-              %a{:href => "#activity-media-pane", "data-toggle" => "tab"}
-                Media
-        .tab-content
-          #activity-metadata-pane.tab-pane.active
-            .row-fluid
-              .span3
-                .row-fluid
-                  %h4 Metrics
-                  %ul#available-metric-list.unstyled
-                    - @metrics.each do |metric|
-                      %li
-                        = check_box_tag "activity[metrics][]", metric.name, @activity.metrics.include?(metric) ? true : false
-                        = h metric.name
-                .row-fluid
-                  %h4 Attributes
-                  %ul#available-activity-attribute-list.unstyled
-                    - @activity_attributes.each do |attribute|
-                      %li
-                        = check_box_tag "activity[activity_attributes][]", attribute.name, @activity.activity_attributes.include?(attribute) ? true : false
-                        = h attribute.name
-              .span4
-                %h4 Anatomy Involved
-                %ul#available-body-part-list.unstyled
-                  - group_body_parts_by_region(@body_parts).each_pair do |region, body_parts|
-                    .region-container
-                      %li
-                        %h5
-                          = check_box_tag region, nil, true, { :class => "region" }
-                          = h region
-                      %ul
-                        - body_parts.each do |body_part|
-                          %li.body-part-entry
-                            = check_box_tag "activity[body_parts][]", body_part.name, @activity.body_parts.include?(body_part) ? true : false,
-                                            { :class => "body-part", :id => "activity-builder-#{body_part.name.to_identifier}" }
-                            = link_to body_part.name, body_part, { :class=>"has-tooltip-right", :rel => "tooltip", :title => "#{image_tag(body_part.image_url(:thumb))}" } # image tag must be in quotes
-
-              .span5
-                %h4 Equipment Used
-                %ul#available-implement-list.unstyled
-                  - group_implements_by_category(@implements).each_pair do |category, implements|
-                    %li
-                      %h5= category
-                    %ul.unstyled
-                      - implements.each do |implement|
+      - # Add a row here because the Rails secret token screws up alignment
+      .row-fluid
+        #activity-basic-info.span4.well
+          = form.label :name, "Activity Name"
+          = form.text_field :name, :class => "required is_activity_name_unique input-xlarge",
+                            :minlength => @validations[:activity][:name][:minlength],
+                            :maxlength => @validations[:activity][:name][:maxlength]
+          = form.label :activity_type, "Activity Type"
+          = form.select :activity_type, @activity_types.map { |activity_type | [activity_type.name, activity_type.name] },
+                        :selected => @activity.activity_type.nil? ? nil : @activity.activity_type.activity_type_id
+          = link_to "You can use Markdown syntax here", "http://kramdown.rubyforge.org/quickref.html", :target => "_blank"
+          = form.label :instructions, "Instructions"
+          = form.text_area :instructions, :class => "input-xlarge",
+                           :minlength => @validations[:activity][:instructions][:minlength],
+                           :maxlength => @validations[:activity][:instructions][:maxlength]
+        .span8.well
+          .tabbable
+            %ul.nav.nav-tabs.nav-pills
+              %li.active
+                %a{:href => "#activity-metadata-pane", "data-toggle" => "tab"}
+                  Activity Metadata
+              %li
+                %a{:href => "#activity-media-pane", "data-toggle" => "tab"}
+                  Media
+          .tab-content
+            #activity-metadata-pane.tab-pane.active
+              .row-fluid
+                .span3
+                  .row-fluid
+                    %h4 Metrics
+                    %ul#available-metric-list.unstyled
+                      - @metrics.each do |metric|
                         %li
-                          = check_box_tag "activity[implements][]", implement.name, @activity.implements.include?(implement) ? true : false
-                          = link_to implement.name, implement, { :class=>"has-tooltip-right", :rel => "tooltip", :title => "#{image_tag(implement.image_url(:thumb))}" } # image tag must be in quotes
+                          = check_box_tag "activity[metrics][]", metric.name, @activity.metrics.include?(metric) ? true : false
+                          = h metric.name
+                  .row-fluid
+                    %h4 Attributes
+                    %ul#available-activity-attribute-list.unstyled
+                      - @activity_attributes.each do |attribute|
+                        %li
+                          = check_box_tag "activity[activity_attributes][]", attribute.name, @activity.activity_attributes.include?(attribute) ? true : false
+                          = h attribute.name
+                .span4
+                  %h4 Anatomy Involved
+                  %ul#available-body-part-list.unstyled
+                    - group_body_parts_by_region(@body_parts).each_pair do |region, body_parts|
+                      .region-container
+                        %li
+                          %h5
+                            = check_box_tag region, nil, true, { :class => "region" }
+                            = h region
+                        %ul
+                          - body_parts.each do |body_part|
+                            %li.body-part-entry
+                              = check_box_tag "activity[body_parts][]", body_part.name, @activity.body_parts.include?(body_part) ? true : false,
+                                              { :class => "body-part", :id => "activity-builder-#{body_part.name.to_identifier}" }
+                              = link_to body_part.name, body_part, { :class=>"has-tooltip-right", :rel => "tooltip", :title => "#{image_tag(body_part.image_url(:thumb))}" } # image tag must be in quotes
+
+                .span5
+                  %h4 Equipment Used
+                  %ul#available-implement-list.unstyled
+                    - group_implements_by_category(@implements).each_pair do |category, implements|
+                      %li
+                        %h5= category
+                      %ul.unstyled
+                        - implements.each do |implement|
+                          %li
+                            = check_box_tag "activity[implements][]", implement.name, @activity.implements.include?(implement) ? true : false
+                            = link_to implement.name, implement, { :class=>"has-tooltip-right", :rel => "tooltip", :title => "#{image_tag(implement.image_url(:thumb))}" } # image tag must be in quotes
 
 
-          #activity-media-pane.tab-pane
-            .row-fluid
-              %h4
-                Video
-              - if @activity.activity_videos.empty?
-                = form.label "activity[activity_videos][]", "YouTube Link"
-                = text_field_tag "activity[activity_videos][]", "", :class => "input-xxlarge valid_activity_video_link", :id => "activity-video-link"
-              - else
-                - @activity.activity_videos.each do |video|
+            #activity-media-pane.tab-pane
+              .row-fluid
+                %h4
+                  Video
+                - if @activity.activity_videos.empty?
                   = form.label "activity[activity_videos][]", "YouTube Link"
-                  = text_field_tag "activity[activity_videos][]", video.video_uri, :class => "input-xxlarge valid_activity_video_link", :id => "activity-video-link"
-            .row-fluid
-              %h4
-                Images
-                = form.fields_for :activity_images do |image|
-                  .row-fluid
-                    - if image.object.image_url
-                      = image.text_field :image, :readonly => true
-                      = image_tag image.object.image_url(:thumb)
-                      Delete
-                      = image.check_box :remove_image
-                    - else
-                      = image.label :remote_image_url, "Remote image URL"
-                      = image.text_field :remote_image_url, :class => "activity-image-url input-xxlarge"
-            .row-fluid
-              %h4
-                Citations
-                = form.fields_for :activity_citations do |citation|
-                  .row-fluid
-                    - if citation.object.citation_url.blank?
-                      = citation.label :citation_url, "Remote citation URL"
-                      = citation.text_field :citation_url, :class => "activity-citation-url input-xxlarge"
-                    - else
-                      = citation.text_field :citation_url, :readonly => true
-        .row-fluid
-          .span3.btn-group.pull-right
-            - if via_ajax
-              = render :partial => "shared/button", :locals => { :button_id => "cancel-activity-builder-button", |
-                :message => "Cancel" }                                                                           |
-            - else
-              = link_to "Cancel", activities_path, :class => "btn"
-            = submit_tag "Save Activity", :id => "save-activity-button", :class => "btn btn-primary"
+                  = text_field_tag "activity[activity_videos][]", "", :class => "input-xxlarge valid_activity_video_link", :id => "activity-video-link"
+                - else
+                  - @activity.activity_videos.each do |video|
+                    = form.label "activity[activity_videos][]", "YouTube Link"
+                    = text_field_tag "activity[activity_videos][]", video.video_uri, :class => "input-xxlarge valid_activity_video_link", :id => "activity-video-link"
+              .row-fluid
+                %h4
+                  Images
+                  = form.fields_for :activity_images do |image|
+                    .row-fluid
+                      - if image.object.image_url
+                        = image.text_field :image, :readonly => true
+                        = image_tag image.object.image_url(:thumb)
+                        Delete
+                        = image.check_box :remove_image
+                      - else
+                        = image.label :remote_image_url, "Remote image URL"
+                        = image.text_field :remote_image_url, :class => "image-url-input input-xxlarge"
+              .row-fluid
+                %h4
+                  Citations
+                  = form.fields_for :activity_citations do |citation|
+                    .row-fluid
+                      - if citation.object.citation_url.blank?
+                        = citation.label :citation_url, "Remote citation URL"
+                        = citation.text_field :citation_url, :class => "activity-citation-url input-xxlarge"
+                      - else
+                        = citation.text_field :citation_url, :readonly => true
+          .row-fluid
+            .span3.btn-group.pull-right
+              - if via_ajax
+                = render :partial => "shared/button", :locals => { :button_id => "cancel-activity-builder-button", |
+                  :message => "Cancel" }                                                                           |
+              - else
+                = link_to "Cancel", activities_path, :class => "btn"
+              = submit_tag "Save Activity", :id => "save-activity-button", :class => "btn btn-primary"

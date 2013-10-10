@@ -1,4 +1,6 @@
 .container
+  - if current_user.is_admin?
+    = render :partial => "admin/proxied_pages/embedded_browser"
   = form_for @body_part, :html => {:multipart => true} do |form|
     = form.label :name, "Name"
     = form.text_field :name
@@ -7,7 +9,7 @@
     = form.label "body_part[newregion]", "New Region"
     = text_field_tag "body_part[newregion]"
     = render :partial => "shared/upload_image", :locals => { :form => form }
-    = image_tag @body_part.image_url
+    = image_tag @body_part.image_url(:thumb)
     .row
       .btn-group
         = link_to "Cancel", body_parts_path, :class => "btn"
