@@ -34,13 +34,13 @@
             = form.fields_for :activity_images do |image|
               .row-fluid
                 - if image.object.image_url
-                  = image.text_field :image
+                  = image.text_field :image, :readonly => true
                   = image_tag image.object.image_url(:thumb)
                   Delete
                   = image.check_box :remove_image
                 - else
                   = image.label :remote_image_url, "Remote image URL"
-                  = image.text_field :remote_image_url, :class => "activity-image-url"
+                  = image.text_field :remote_image_url, :class => "activity-image-url input-xxlarge"
         %br
         .row-fluid
           .span3

@@ -119,7 +119,7 @@ class ActivitiesController < ApplicationController
         remote_image_url = hash[:remote_image_url]
         if !image.blank?
           activity_image = ActivityImage.find_by_image(image)
-          if hash[:remove_image]
+          if hash[:remove_image] == "1"
             activity_image.delete
           else
             activity_image.assign_attributes(hash)

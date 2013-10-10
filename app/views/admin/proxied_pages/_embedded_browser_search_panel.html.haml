@@ -1,5 +1,6 @@
 #embedded-browser-search-panel
-  %input.input-medium.search-input
-  = render :partial => "shared/button",
-           :locals => { :button_id => "browser-search-button", :message => "Search", :type => "input",
-                        :button_class => "btn-primary browser-search-button" }
+  %form
+    %input.input-medium.search-input
+    = render :partial => "shared/button",
+             :locals => { :button_id => "browser-search-button", :message => "Search", :type => "input",
+                          :button_class => "btn-primary browser-search-button" }

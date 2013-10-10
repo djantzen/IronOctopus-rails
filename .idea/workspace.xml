@@ -2,18 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46f8a447-b9ed-44ae-be1c-95fe4e4f3fab" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/activity_citation.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/activity_image.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/activity_image_origin.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/admin/proxied_pages.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/admin/proxied_pages.js.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/activities_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/activities_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/activity.rb" afterPath="$PROJECT_DIR$/app/models/activity.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/activities/_create_or_update.html.haml" afterPath="$PROJECT_DIR$/app/views/activities/_create_or_update.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/activities/show.html.haml" afterPath="$PROJECT_DIR$/app/views/activities/show.html.haml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/admin/proxied_pages/_embedded_browser.html.haml" afterPath="$PROJECT_DIR$/app/views/admin/proxied_pages/_embedded_browser.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/database.yml" afterPath="$PROJECT_DIR$/config/database.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/structure.sql" afterPath="$PROJECT_DIR$/db/structure.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/admin/proxied_pages/_embedded_browser_search_panel.html.haml" afterPath="$PROJECT_DIR$/app/views/admin/proxied_pages/_embedded_browser_search_panel.html.haml" />
     </list>
     <ignored path="IronOctopus-rails.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,19 +35,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="proxied_pages.js.coffee" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="proxied_pages.js.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/admin/proxied_pages.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="0" selection-start="629" selection-end="629" vertical-scroll-proportion="0.6730769">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_embedded_browser.html.haml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/admin/proxied_pages/_embedded_browser.html.haml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="23" selection-start="550" selection-end="550" vertical-scroll-proportion="-6.75">
+            <state line="19" column="39" selection-start="668" selection-end="668" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -62,7 +47,7 @@
       <file leaf-file-name="_create_or_update.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/activities/_create_or_update.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="19" selection-start="2398" selection-end="2398" vertical-scroll-proportion="-24.833334">
+            <state line="36" column="62" selection-start="2168" selection-end="2168" vertical-scroll-proportion="-4.875">
               <folding />
             </state>
           </provider>
@@ -77,10 +62,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activities_controller.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="activities_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/activities_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="123" column="0" selection-start="4097" selection-end="4097" vertical-scroll-proportion="0.0">
+            <state line="126" column="13" selection-start="4215" selection-end="4215" vertical-scroll-proportion="5.658683">
               <folding />
             </state>
           </provider>
@@ -142,7 +127,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/controllers/admin/proxied_pages_controller.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20131009221658_add_activity_images.rb" />
         <option value="$PROJECT_DIR$/app/models/activity_citation.rb" />
         <option value="$PROJECT_DIR$/app/models/activity.rb" />
@@ -150,14 +134,15 @@
         <option value="$PROJECT_DIR$/config/database.yml" />
         <option value="/Rails IronOctopus-rails: migrate_development" />
         <option value="$PROJECT_DIR$/db/migrate/20131009221658_create_activity_images.rb" />
-        <option value="$PROJECT_DIR$/app/uploaders/image_uploader.rb" />
         <option value="$PROJECT_DIR$/app/models/activity_image_origin.rb" />
         <option value="$PROJECT_DIR$/app/models/activity_image.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20131009224310_create_activity_citations.rb" />
-        <option value="$PROJECT_DIR$/app/views/activities/_create_or_update.html.haml" />
-        <option value="$PROJECT_DIR$/app/controllers/activities_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/admin/proxied_pages/_embedded_browser.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/admin/proxied_pages.js.coffee" />
+        <option value="$PROJECT_DIR$/app/views/admin/proxied_pages/_embedded_browser_search_panel.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/activities/_create_or_update.html.haml" />
+        <option value="$PROJECT_DIR$/app/controllers/activities_controller.rb" />
+        <option value="$PROJECT_DIR$/app/uploaders/image_uploader.rb" />
       </list>
     </option>
   </component>
@@ -962,11 +947,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392@IronOctopus/gems/activerecord-3.2.14/lib/active_record/persistence.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="211" column="8" selection-start="8452" selection-end="8452" vertical-scroll-proportion="0.4038005" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/routines/_create_or_update.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="60" column="168" selection-start="3223" selection-end="3228" vertical-scroll-proportion="0.33333334" />
@@ -989,13 +969,6 @@
     <entry file="file://$PROJECT_DIR$/db/migrate/20131009221658_create_activity_images.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="0" selection-start="312" selection-end="312" vertical-scroll-proportion="0.28">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/uploaders/image_uploader.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="70" selection-start="669" selection-end="669" vertical-scroll-proportion="0.32735425">
           <folding />
         </state>
       </provider>
@@ -1035,13 +1008,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/activities/_create_or_update.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="19" selection-start="2398" selection-end="2398" vertical-scroll-proportion="-24.833334">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/admin/proxied_pages/_embedded_browser_window.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="24" selection-start="0" selection-end="24" vertical-scroll-proportion="0.0">
@@ -1049,23 +1015,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/activities_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/admin/proxied_pages/_embedded_browser_search_panel.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="123" column="0" selection-start="4097" selection-end="4097" vertical-scroll-proportion="0.0">
+        <state line="5" column="0" selection-start="223" selection-end="223" vertical-scroll-proportion="0.26041666">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/admin/proxied_pages/_embedded_browser.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="23" selection-start="550" selection-end="550" vertical-scroll-proportion="-6.75">
+        <state line="3" column="32" selection-start="79" selection-end="79" vertical-scroll-proportion="0.15625">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/admin/proxied_pages.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="629" selection-end="629" vertical-scroll-proportion="0.6730769">
+        <state line="19" column="39" selection-start="668" selection-end="668" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/activities/_create_or_update.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="62" selection-start="2168" selection-end="2168" vertical-scroll-proportion="-4.875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/uploaders/image_uploader.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="68" selection-start="667" selection-end="667" vertical-scroll-proportion="0.37125748">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/activities_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="126" column="13" selection-start="4215" selection-end="4215" vertical-scroll-proportion="5.658683">
           <folding />
         </state>
       </provider>

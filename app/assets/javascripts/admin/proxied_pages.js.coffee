@@ -17,7 +17,9 @@ class this.EmbeddedBrowser
 
   init_collapse_results_button: () ->
     $("#collapse-search-results").click ->
-      $(".embedded-browser-window").toggleClass("hidden")
+      $(".embedded-browser-window").addClass("hidden")
+    $(".embedded-browser-nav-pill").click ->
+      $(".embedded-browser-window").removeClass("hidden")
 
 class this.EmbeddedBrowserWindow
 
