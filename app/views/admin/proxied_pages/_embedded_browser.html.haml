@@ -2,7 +2,10 @@
   .row-fluid
     .span3
       = render :partial => "admin/proxied_pages/embedded_browser_search_panel"
-    .span8
+    .span1
+      .loading-indicator{:display => 'none'}
+        = image_tag "ajax-loader.gif"
+    .span7
       .tabbable
         %ul.nav.nav-tabs.nav-pills
           %li.active

@@ -6,6 +6,7 @@ class this.EmbeddedBrowser
       new EmbeddedBrowserWindow($(value)))
     @init_search_button()
     @init_collapse_results_button()
+    @embedded_browser_panel.find(".loading-indicator").hide()
 
   init_search_button: () ->
     button = @embedded_browser_panel.find(".browser-search-button")
@@ -36,7 +37,7 @@ class this.EmbeddedBrowserWindow
     button.click =>
       if @pages.length > 1
         @pages.pop()
-        @render(false)
+        @render()
 
   init_bookmark_button: () =>
     button = @embedded_browser_window_panel.find(".browser-bookmark-button")
@@ -48,16 +49,15 @@ class this.EmbeddedBrowserWindow
           this.value == ""
         $(empty_image_fields[0]).val(page.url)
 
-  render: (init) =>
+  render: () =>
     page = @pages[@pages.length - 1]
     try
       @embedded_browser_window_panel.find(".proxied-page-contents").html(page.contents)
     catch error
     page_contents = @embedded_browser_window_panel.find(".proxied-page-contents")
-    if init
-      @rewrite_link_event_handlers(page_contents)
-      @init_video_links(page_contents)
-      @init_image_links(page_contents)
+    @rewrite_link_event_handlers(page_contents)
+    @init_video_links(page_contents)
+    @init_image_links(page_contents)
 
   set_search_query: (query) =>
     @pages = []
@@ -67,7 +67,7 @@ class this.EmbeddedBrowserWindow
 
   add_page: (page) =>
     @pages.push(page)
-    @render(true)
+    @render()
 
   rewrite_link_event_handlers: (page_contents)=>
     $.each($(page_contents).find("a"), (index, a_tag)=>
@@ -94,9 +94,11 @@ class this.URLFetcher
     @base_url = window.location.origin + "/admin/proxied_pages"
 
   go: =>
+    $(".loading-indicator").show()
     $.get(@base_url, { "url" : @proxied_url },
-          (data, status) =>
-            @embedded_window.add_page(new Page(@proxied_url, data))
+      (data, status) =>
+        @embedded_window.add_page(new Page(@proxied_url, data))
+        $(".loading-indicator").hide()
     )
 
 
