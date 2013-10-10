@@ -5,6 +5,7 @@ class this.EmbeddedBrowser
     @windows = $.map(@embedded_browser_panel.find(".embedded-browser-window"), (value, index) ->
       new EmbeddedBrowserWindow($(value)))
     @init_search_button()
+    @init_collapse_results_button()
 
   init_search_button: () ->
     button = @embedded_browser_panel.find(".browser-search-button")
@@ -13,6 +14,10 @@ class this.EmbeddedBrowser
       $.each(@windows, (index, window) ->
         window.set_search_query(query)
       )
+
+  init_collapse_results_button: () ->
+    $("#collapse-search-results").click ->
+      $(".embedded-browser-window").toggleClass("hidden")
 
 class this.EmbeddedBrowserWindow
 
@@ -64,7 +69,9 @@ class this.EmbeddedBrowserWindow
   init_image_links: (page)=>
     $(page).find(".image-wrapper button").click ->
       link = $(this).siblings("a:first").attr("href")
-      $("#activity-video-link").val(link)
+      empty_image_fields = $(".activity-image-url").filter ->
+        this.value == ""
+      $(empty_image_fields[0]).val(link)
 
 
 class this.URLFetcher

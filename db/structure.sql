@@ -36,6 +36,20 @@ CREATE SCHEMA reporting;
 COMMENT ON SCHEMA reporting IS 'Reporting and analysis schema.';
 
 
+--
+-- Name: source; Type: SCHEMA; Schema: -; Owner: -
+--
+
+CREATE SCHEMA source;
+
+
+--
+-- Name: SCHEMA source; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON SCHEMA source IS 'Data import schema';
+
+
 SET search_path = public, pg_catalog;
 
 --
@@ -7537,6 +7551,45 @@ ALTER SEQUENCE activity_attributes_activity_attribute_id_seq OWNED BY activity_a
 
 
 --
+-- Name: activity_images; Type: TABLE; Schema: application; Owner: -; Tablespace: 
+--
+
+CREATE TABLE activity_images (
+    activity_image_id integer NOT NULL,
+    activity_id integer NOT NULL,
+    image text DEFAULT ''::text NOT NULL,
+    "position" integer DEFAULT 1 NOT NULL,
+    created_at timestamp with time zone DEFAULT now() NOT NULL
+);
+
+
+--
+-- Name: TABLE activity_images; Type: COMMENT; Schema: application; Owner: -
+--
+
+COMMENT ON TABLE activity_images IS 'Associated image filenames for activities.';
+
+
+--
+-- Name: activity_images_activity_image_id_seq; Type: SEQUENCE; Schema: application; Owner: -
+--
+
+CREATE SEQUENCE activity_images_activity_image_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: activity_images_activity_image_id_seq; Type: SEQUENCE OWNED BY; Schema: application; Owner: -
+--
+
+ALTER SEQUENCE activity_images_activity_image_id_seq OWNED BY activity_images.activity_image_id;
+
+
+--
 -- Name: activity_set_groups; Type: TABLE; Schema: application; Owner: -; Tablespace: 
 --
 
@@ -8810,7 +8863,7 @@ COMMENT ON VIEW routine_scores IS 'Collects the measurement_scores for an entire
 --
 
 CREATE VIEW routine_scores_by_day AS
-    SELECT users.login AS client_login, routine_scores.routine_name, days.full_date, routine_scores.routine_score FROM ((((application.routines JOIN application.scheduled_programs USING (routine_id)) JOIN days ON ((scheduled_programs.scheduled_on = days.full_date))) JOIN application.users ON ((routines.client_id = users.user_id))) JOIN routine_scores USING (routine_id)) GROUP BY users.login, routine_scores.routine_name, days.full_date, routine_scores.routine_score UNION SELECT users.login AS client_login, routine_scores.routine_name, days.full_date, routine_scores.routine_score FROM ((((application.routines JOIN application.weekday_programs USING (routine_id)) JOIN routine_scores USING (routine_id)) JOIN days USING (day_of_week)) JOIN application.users ON ((routines.client_id = users.user_id))) GROUP BY users.login, routine_scores.routine_name, days.full_date, routine_scores.routine_score ORDER BY 3;
+    SELECT users.login AS client_login, routine_scores.routine_name, days.full_date, routine_scores.routine_score FROM ((((application.routines JOIN application.scheduled_programs USING (routine_id)) JOIN days ON ((scheduled_programs.scheduled_on = days.full_date))) JOIN application.users ON ((routines.client_id = users.user_id))) JOIN routine_scores USING (routine_id)) GROUP BY users.login, routine_scores.routine_name, days.full_date, routine_scores.routine_score UNION ALL SELECT users.login AS client_login, routine_scores.routine_name, days.full_date, routine_scores.routine_score FROM ((((application.routines JOIN application.weekday_programs USING (routine_id)) JOIN routine_scores USING (routine_id)) JOIN days USING (day_of_week)) JOIN application.users ON ((routines.client_id = users.user_id))) GROUP BY users.login, routine_scores.routine_name, days.full_date, routine_scores.routine_score ORDER BY 3;
 
 
 --
@@ -8858,6 +8911,84 @@ CREATE VIEW work_scores_by_day AS
 COMMENT ON VIEW work_scores_by_day IS 'Groups work records by routine, client and date and sums associated measurement_scores';
 
 
+SET search_path = source, pg_catalog;
+
+--
+-- Name: activity_citations; Type: TABLE; Schema: source; Owner: -; Tablespace: 
+--
+
+CREATE TABLE activity_citations (
+    activity_citation_id integer NOT NULL,
+    activity_id integer NOT NULL,
+    citation_url text DEFAULT ''::text NOT NULL,
+    created_at timestamp with time zone DEFAULT now() NOT NULL
+);
+
+
+--
+-- Name: TABLE activity_citations; Type: COMMENT; Schema: source; Owner: -
+--
+
+COMMENT ON TABLE activity_citations IS 'Associated citation urls for activities.';
+
+
+--
+-- Name: activity_citations_activity_citation_id_seq; Type: SEQUENCE; Schema: source; Owner: -
+--
+
+CREATE SEQUENCE activity_citations_activity_citation_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: activity_citations_activity_citation_id_seq; Type: SEQUENCE OWNED BY; Schema: source; Owner: -
+--
+
+ALTER SEQUENCE activity_citations_activity_citation_id_seq OWNED BY activity_citations.activity_citation_id;
+
+
+--
+-- Name: activity_image_origins; Type: TABLE; Schema: source; Owner: -; Tablespace: 
+--
+
+CREATE TABLE activity_image_origins (
+    activity_image_origin_id integer NOT NULL,
+    activity_image_id integer NOT NULL,
+    origin_url text DEFAULT ''::text NOT NULL,
+    created_at timestamp with time zone DEFAULT now() NOT NULL
+);
+
+
+--
+-- Name: TABLE activity_image_origins; Type: COMMENT; Schema: source; Owner: -
+--
+
+COMMENT ON TABLE activity_image_origins IS 'Associated origin urls for activity images.';
+
+
+--
+-- Name: activity_image_origins_activity_image_origin_id_seq; Type: SEQUENCE; Schema: source; Owner: -
+--
+
+CREATE SEQUENCE activity_image_origins_activity_image_origin_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: activity_image_origins_activity_image_origin_id_seq; Type: SEQUENCE OWNED BY; Schema: source; Owner: -
+--
+
+ALTER SEQUENCE activity_image_origins_activity_image_origin_id_seq OWNED BY activity_image_origins.activity_image_origin_id;
+
+
 SET search_path = application, pg_catalog;
 
 --
@@ -8872,6 +9003,13 @@ ALTER TABLE ONLY activities ALTER COLUMN activity_id SET DEFAULT nextval('activi
 --
 
 ALTER TABLE ONLY activity_attributes ALTER COLUMN activity_attribute_id SET DEFAULT nextval('activity_attributes_activity_attribute_id_seq'::regclass);
+
+
+--
+-- Name: activity_image_id; Type: DEFAULT; Schema: application; Owner: -
+--
+
+ALTER TABLE ONLY activity_images ALTER COLUMN activity_image_id SET DEFAULT nextval('activity_images_activity_image_id_seq'::regclass);
 
 
 --
@@ -9035,6 +9173,24 @@ ALTER TABLE ONLY units ALTER COLUMN unit_id SET DEFAULT nextval('units_unit_id_s
 ALTER TABLE ONLY users ALTER COLUMN user_id SET DEFAULT nextval('users_user_id_seq'::regclass);
 
 
+SET search_path = source, pg_catalog;
+
+--
+-- Name: activity_citation_id; Type: DEFAULT; Schema: source; Owner: -
+--
+
+ALTER TABLE ONLY activity_citations ALTER COLUMN activity_citation_id SET DEFAULT nextval('activity_citations_activity_citation_id_seq'::regclass);
+
+
+--
+-- Name: activity_image_origin_id; Type: DEFAULT; Schema: source; Owner: -
+--
+
+ALTER TABLE ONLY activity_image_origins ALTER COLUMN activity_image_origin_id SET DEFAULT nextval('activity_image_origins_activity_image_origin_id_seq'::regclass);
+
+
+SET search_path = application, pg_catalog;
+
 --
 -- Name: activities_activity_attributes_pkey; Type: CONSTRAINT; Schema: application; Owner: -; Tablespace: 
 --
@@ -9081,6 +9237,14 @@ ALTER TABLE ONLY activities
 
 ALTER TABLE ONLY activity_attributes
     ADD CONSTRAINT activity_attributes_pkey PRIMARY KEY (activity_attribute_id);
+
+
+--
+-- Name: activity_images_pkey; Type: CONSTRAINT; Schema: application; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY activity_images
+    ADD CONSTRAINT activity_images_pkey PRIMARY KEY (activity_image_id);
 
 
 --
@@ -9351,6 +9515,24 @@ ALTER TABLE ONLY work
     ADD CONSTRAINT work_pkey PRIMARY KEY (user_id, day_id, routine_id, activity_id, measurement_id, start_time);
 
 
+SET search_path = source, pg_catalog;
+
+--
+-- Name: activity_citations_pkey; Type: CONSTRAINT; Schema: source; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY activity_citations
+    ADD CONSTRAINT activity_citations_pkey PRIMARY KEY (activity_citation_id);
+
+
+--
+-- Name: activity_image_origins_pkey; Type: CONSTRAINT; Schema: source; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY activity_image_origins
+    ADD CONSTRAINT activity_image_origins_pkey PRIMARY KEY (activity_image_origin_id);
+
+
 SET search_path = application, pg_catalog;
 
 --
@@ -9365,6 +9547,20 @@ CREATE UNIQUE INDEX activities_permalink_idx ON activities USING btree (permalin
 --
 
 CREATE UNIQUE INDEX activity_attributes_permalink_idx ON activity_attributes USING btree (permalink);
+
+
+--
+-- Name: activity_images_activity_id_idx; Type: INDEX; Schema: application; Owner: -; Tablespace: 
+--
+
+CREATE INDEX activity_images_activity_id_idx ON activity_images USING btree (activity_id);
+
+
+--
+-- Name: activity_images_activity_id_image_idx; Type: INDEX; Schema: application; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX activity_images_activity_id_image_idx ON activity_images USING btree (activity_id, image);
 
 
 --
@@ -9707,6 +9903,22 @@ CREATE UNIQUE INDEX days_full_date_day_of_week_idx ON days USING btree (full_dat
 CREATE UNIQUE INDEX days_full_date_idx ON days USING btree (full_date);
 
 
+SET search_path = source, pg_catalog;
+
+--
+-- Name: activity_citations_activity_id_idx; Type: INDEX; Schema: source; Owner: -; Tablespace: 
+--
+
+CREATE INDEX activity_citations_activity_id_idx ON activity_citations USING btree (activity_id);
+
+
+--
+-- Name: activity_image_origins_activity_image_id_idx; Type: INDEX; Schema: source; Owner: -; Tablespace: 
+--
+
+CREATE INDEX activity_image_origins_activity_image_id_idx ON activity_image_origins USING btree (activity_image_id);
+
+
 SET search_path = public, pg_catalog;
 
 --
@@ -9810,6 +10022,14 @@ ALTER TABLE ONLY activities_metrics
 
 ALTER TABLE ONLY activities_metrics
     ADD CONSTRAINT activities_metrics_metric_id_fkey FOREIGN KEY (metric_id) REFERENCES metrics(metric_id) DEFERRABLE;
+
+
+--
+-- Name: activity_images_activity_id_fkey; Type: FK CONSTRAINT; Schema: application; Owner: -
+--
+
+ALTER TABLE ONLY activity_images
+    ADD CONSTRAINT activity_images_activity_id_fkey FOREIGN KEY (activity_id) REFERENCES activities(activity_id) DEFERRABLE;
 
 
 --
@@ -10174,11 +10394,29 @@ ALTER TABLE ONLY work
     ADD CONSTRAINT work_user_id_fkey FOREIGN KEY (user_id) REFERENCES application.users(user_id) DEFERRABLE;
 
 
+SET search_path = source, pg_catalog;
+
+--
+-- Name: activity_citations_activity_id_fkey; Type: FK CONSTRAINT; Schema: source; Owner: -
+--
+
+ALTER TABLE ONLY activity_citations
+    ADD CONSTRAINT activity_citations_activity_id_fkey FOREIGN KEY (activity_id) REFERENCES application.activities(activity_id) ON DELETE CASCADE DEFERRABLE;
+
+
+--
+-- Name: activity_image_origins_activity_image_id_fkey; Type: FK CONSTRAINT; Schema: source; Owner: -
+--
+
+ALTER TABLE ONLY activity_image_origins
+    ADD CONSTRAINT activity_image_origins_activity_image_id_fkey FOREIGN KEY (activity_image_id) REFERENCES application.activity_images(activity_image_id) ON DELETE CASCADE DEFERRABLE;
+
+
 --
 -- PostgreSQL database dump complete
 --
 
-SET search_path TO application,reporting,public;
+SET search_path TO application,reporting,source,public;
 
 INSERT INTO schema_migrations (version) VALUES ('20120122034505');
 
@@ -10303,3 +10541,7 @@ INSERT INTO schema_migrations (version) VALUES ('20130828111837');
 INSERT INTO schema_migrations (version) VALUES ('20130912072400');
 
 INSERT INTO schema_migrations (version) VALUES ('20131002195255');
+
+INSERT INTO schema_migrations (version) VALUES ('20131009221658');
+
+INSERT INTO schema_migrations (version) VALUES ('20131009224310');

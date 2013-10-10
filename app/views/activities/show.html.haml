@@ -86,3 +86,9 @@
             function stopVideo() {
               player.stopVideo();
             }
+      .row-fluid
+        %h4
+          Images
+      .row-fluid
+        - @activity.activity_images.each do |image|
+          = image_tag image.image_url(:thumb)

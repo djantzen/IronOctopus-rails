@@ -8,9 +8,13 @@ class Activity < ActiveRecord::Base
   has_many :routines, :through => :activity_sets
   has_many :activity_sets
   has_many :activity_videos
+  has_many :activity_images
   has_and_belongs_to_many :activity_attributes
   has_and_belongs_to_many :body_parts
   has_and_belongs_to_many :implements
+  has_many :activity_citations
+
+  accepts_nested_attributes_for :activity_images
 
   before_validation { self.permalink = name.to_identifier }
   validates_uniqueness_of :permalink

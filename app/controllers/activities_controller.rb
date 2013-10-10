@@ -27,9 +27,8 @@ class ActivitiesController < ApplicationController
 
   def create
     @activity = create_or_update(params)
-    @activity.creator = current_user
 
-    if @activity.save
+    if @activity.errors.empty?
       respond_with do |format|
         format.html { render :html => @activity }
       end
@@ -56,7 +55,7 @@ class ActivitiesController < ApplicationController
     @activity = create_or_update(params)
     authorize! :update, @activity
 
-    if @activity.save
+    if @activity.errors.empty?
       respond_with do |format|
         format.html { render :html => @activity }
         format.json { render :json => @activity }
@@ -83,6 +82,7 @@ class ActivitiesController < ApplicationController
 
     Activity.transaction do
       activity.name = params[:activity][:name]
+      activity.creator = current_user
       activity.instructions = params[:activity][:instructions]
       activity.activity_type = ActivityType.find_by_name(params[:activity][:activity_type])
       activity.body_parts.clear
@@ -114,7 +114,28 @@ class ActivitiesController < ApplicationController
         activity_video = ActivityVideo.new({:video_uri => video_uri})
         activity.activity_videos << activity_video unless activity.activity_videos.include?(activity_video)
       end
+      (params[:activity][:activity_images_attributes] || {}).values.each do |hash|
+        image = hash[:image]
+        remote_image_url = hash[:remote_image_url]
+        if !image.blank?
+          activity_image = ActivityImage.find_by_image(image)
+          if hash[:remove_image]
+            activity_image.delete
+          else
+            activity_image.assign_attributes(hash)
+            activity_image.save
+          end
+        elsif !remote_image_url.blank?
+          activity_image = ActivityImage.new
+          activity_image.activity = activity
+          activity_image.assign_attributes(hash)
+          activity_image.save
+          ActivityImageOrigin.create(:activity_image => activity_image, :origin_url => remote_image_url)
+        end
+      end
+      activity.save
     end
+
     activity
   end
 
@@ -129,6 +150,7 @@ class ActivitiesController < ApplicationController
     @metrics = Metric.list
     @activity_types = ActivityType.order(:name)
     @activity_attributes = ActivityAttribute.order(:name)
+    4.times { @activity.activity_images.build }
   end
 
 end
