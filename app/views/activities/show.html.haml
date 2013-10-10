@@ -92,3 +92,11 @@
       .row-fluid
         - @activity.activity_images.each do |image|
           = image_tag image.image_url(:thumb)
+      .row-fluid
+        %h4
+          Additional Reading
+      %ul.unstyled
+        - @activity.activity_citations.each do |citation|
+          %li
+            %a{:href => citation.citation_url}
+              = citation.citation_url

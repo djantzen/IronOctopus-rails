@@ -27,6 +27,7 @@ gem "momentjs-rails", "~> 2.1.0"
 gem "nokogiri", ">= 1.5.0"
 gem "socksify"
 gem "tor"
+gem "validate_url"
 
 # Gems used only for assets and not required
 # in production environments by default.

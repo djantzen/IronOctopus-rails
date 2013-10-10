@@ -10,7 +10,7 @@ class CreateActivityCitations < ActiveRecord::Migration
       grant select on source.activity_citations to reader;
       grant delete, insert, update on source.activity_citations to writer;
 
-      create index on source.activity_citations(activity_id);
+      create unique index on source.activity_citations(activity_id, citation_url);
       grant select, usage, update on source.activity_citations_activity_citation_id_seq to writer;
 
       comment on table source.activity_citations is 'Associated citation urls for activities.';
@@ -24,7 +24,7 @@ class CreateActivityCitations < ActiveRecord::Migration
       grant select on source.activity_image_origins to reader;
       grant delete, insert, update on source.activity_image_origins to writer;
 
-      create index on source.activity_image_origins(activity_image_id);
+      create unique index on source.activity_image_origins(activity_image_id, origin_url);
       grant select, usage, update on source.activity_image_origins_activity_image_origin_id_seq to writer;
 
       comment on table source.activity_image_origins is 'Associated origin urls for activity images.';

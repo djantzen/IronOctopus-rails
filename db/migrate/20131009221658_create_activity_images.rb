@@ -11,7 +11,6 @@ class CreateActivityImages < ActiveRecord::Migration
       grant select on application.activity_images to reader;
       grant delete, insert, update on application.activity_images to writer;
 
-      create index on application.activity_images(activity_id);
       create unique index on application.activity_images(activity_id, image);
       grant select, usage, update on application.activity_images_activity_image_id_seq to writer;
 

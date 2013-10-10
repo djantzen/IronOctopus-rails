@@ -118,8 +118,8 @@ class ActivitiesController < ApplicationController
         image = hash[:image]
         remote_image_url = hash[:remote_image_url]
         if !image.blank?
-          activity_image = ActivityImage.find_by_image(image)
-          if hash[:remove_image] == "1"
+          activity_image = activity.activity_images.find_by_image(image)
+          if hash[:remove_image] == "1" # delete manually since carrier-wave just wants to set it to the empty string
             activity_image.delete
           else
             activity_image.assign_attributes(hash)
@@ -129,8 +129,18 @@ class ActivitiesController < ApplicationController
           activity_image = ActivityImage.new
           activity_image.activity = activity
           activity_image.assign_attributes(hash)
-          activity_image.save
-          ActivityImageOrigin.create(:activity_image => activity_image, :origin_url => remote_image_url)
+          activity.activity_images << activity_image
+          activity_image.activity_image_origin = ActivityImageOrigin.new(:activity_image => activity_image,
+                                                                         :origin_url => remote_image_url)
+        end
+      end
+      (params[:activity][:activity_citations_attributes] || {}).values.each do |hash|
+        unless hash[:citation_url].blank?
+          activity_citation = activity.activity_citations.find_by_citation_url(hash[:citation_url])
+          if activity_citation.nil?
+            activity_citation = ActivityCitation.new(:citation_url => hash[:citation_url])
+            activity.activity_citations << activity_citation
+          end
         end
       end
       activity.save
@@ -151,6 +161,7 @@ class ActivitiesController < ApplicationController
     @activity_types = ActivityType.order(:name)
     @activity_attributes = ActivityAttribute.order(:name)
     4.times { @activity.activity_images.build }
+    4.times { @activity.activity_citations.build }
   end
 
 end

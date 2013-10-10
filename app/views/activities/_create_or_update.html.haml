@@ -86,6 +86,16 @@
                       = check_box_tag "activity[implements][]", implement.name, @activity.implements.include?(implement) ? true : false
                       = link_to implement.name, implement, { :class=>"has-tooltip-right", :rel => "tooltip", :title => "#{image_tag(implement.image_url(:thumb))}" } # image tag must be in quotes
         .row-fluid
+          %h4
+            Citations
+            = form.fields_for :activity_citations do |citation|
+              .row-fluid
+                - if citation.object.citation_url.blank?
+                  = citation.label :citation_url, "Remote citation URL"
+                  = citation.text_field :citation_url, :class => "activity-citation-url input-xxlarge"
+                - else
+                  = citation.text_field :citation_url, :readonly => true
+        .row-fluid
           .span3.btn-group.pull-right
             - if via_ajax
               = render :partial => "shared/button", :locals => { :button_id => "cancel-activity-builder-button", |

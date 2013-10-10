@@ -21,11 +21,15 @@ class this.EmbeddedBrowser
     $(".embedded-browser-nav-pill").click ->
       $(".embedded-browser-window").removeClass("hidden")
 
+class this.Page
+  constructor: (@url, @contents) ->
+
 class this.EmbeddedBrowserWindow
 
   constructor: (@embedded_browser_window_panel) ->
     @pages = []
     @init_back_button()
+    @init_bookmark_button()
 
   init_back_button: () =>
     button = @embedded_browser_window_panel.find(".browser-back-button")
@@ -34,16 +38,26 @@ class this.EmbeddedBrowserWindow
         @pages.pop()
         @render(false)
 
+  init_bookmark_button: () =>
+    button = @embedded_browser_window_panel.find(".browser-bookmark-button")
+    button.click =>
+      if @pages.length > 1
+        page = @pages[@pages.length - 1]
+        # get page url
+        empty_image_fields = $(".activity-citation-url").filter ->
+          this.value == ""
+        $(empty_image_fields[0]).val(page.url)
+
   render: (init) =>
     page = @pages[@pages.length - 1]
     try
-      @embedded_browser_window_panel.find(".proxied-page-contents").html(page)
+      @embedded_browser_window_panel.find(".proxied-page-contents").html(page.contents)
     catch error
-    contents = @embedded_browser_window_panel.find(".proxied-page-contents")
+    page_contents = @embedded_browser_window_panel.find(".proxied-page-contents")
     if init
-      @rewrite_link_event_handlers(contents)
-      @init_video_links(contents)
-      @init_image_links(contents)
+      @rewrite_link_event_handlers(page_contents)
+      @init_video_links(page_contents)
+      @init_image_links(page_contents)
 
   set_search_query: (query) =>
     @pages = []
@@ -55,26 +69,25 @@ class this.EmbeddedBrowserWindow
     @pages.push(page)
     @render(true)
 
-  rewrite_link_event_handlers: (page)=>
-    $.each($(page).find("a"), (index, a_tag)=>
+  rewrite_link_event_handlers: (page_contents)=>
+    $.each($(page_contents).find("a"), (index, a_tag)=>
       fetcher = new URLFetcher(this, $(a_tag).attr("href"))
       $(a_tag).click (e)=>
         fetcher.go()
         false
     )
 
-  init_video_links: (page)=>
-    $(page).find(".video-wrapper button").click ->
+  init_video_links: (page_contents)=>
+    $(page_contents).find(".video-wrapper button").click ->
       link = $(this).siblings("a:first").attr("href")
       $("#activity-video-link").val(link)
 
-  init_image_links: (page)=>
-    $(page).find(".image-wrapper button").click ->
+  init_image_links: (page_contents)=>
+    $(page_contents).find(".image-wrapper button").click ->
       link = $(this).siblings("a:first").attr("href")
       empty_image_fields = $(".activity-image-url").filter ->
         this.value == ""
       $(empty_image_fields[0]).val(link)
-
 
 class this.URLFetcher
   constructor: (@embedded_window, @proxied_url) ->
@@ -83,7 +96,8 @@ class this.URLFetcher
   go: =>
     $.get(@base_url, { "url" : @proxied_url },
           (data, status) =>
-            @embedded_window.add_page(data))
+            @embedded_window.add_page(new Page(@proxied_url, data))
+    )
 
 
 $(document).ready ->

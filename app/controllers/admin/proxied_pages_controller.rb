@@ -25,7 +25,6 @@ class Admin::ProxiedPagesController < ApplicationController
 
   def get
     url_string = params[:url]
-    #new
     url = URI.parse(url_string)
     host = url.host
     scheme = url.scheme
@@ -49,19 +48,8 @@ class Admin::ProxiedPagesController < ApplicationController
           Nokogiri::HTML(response.body)
         end
       end
-    #
-    #end new
-
-    #old
-    #url = URI::decode(params[:url])
-    #url = open(url_string)
-    #
-    #scheme = url.base_uri.scheme
-    #host = url.base_uri.host
     url_root = "#{scheme}://#{host}"
-    #
-    #proxied_doc = Nokogiri::HTML(url)
-#end old
+
     handler =
       if proxied_doc.css("#ires").size() > 0
         GooglePageHandler.new(url_root, proxied_doc)
@@ -76,7 +64,10 @@ class Admin::ProxiedPagesController < ApplicationController
     def initialize(url_root, page)
       @url_root = url_root
       @page = page
-      @page.css("script").remove unless url_root =~ /youtube\.com/
+      unless url_root =~ /youtube\.com/
+        @page.css("script").remove
+        @page.css("head").remove
+      end
       @page.css("link").remove
       @page.css("meta").remove
       @page.css("style").remove

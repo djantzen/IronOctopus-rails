@@ -1,7 +1,11 @@
 .embedded-browser-window{:id => browser_id, :proxied_url => proxied_url}
   .row-fluid
     .span1
-      = render :partial => "shared/button",
-               :locals => { :button_id => browser_id + "-back-button", :message => "Back",
-                            :type => "input", :button_class => "btn-primary browser-back-button" }
+      .row-fluid
+        = render :partial => "shared/button",
+                 :locals => { :button_id => browser_id + "-back-button", :message => "Back",
+                              :type => "input", :button_class => "btn-primary browser-back-button" }
+        = render :partial => "shared/button",
+                 :locals => { :button_id => browser_id + "-bookmark-button", :message => "Bookmark",
+                              :type => "input", :button_class => "browser-bookmark-button" }
     .span10.proxied-page-contents.well-small.well

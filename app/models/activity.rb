@@ -14,6 +14,7 @@ class Activity < ActiveRecord::Base
   has_and_belongs_to_many :implements
   has_many :activity_citations
 
+  accepts_nested_attributes_for :activity_citations
   accepts_nested_attributes_for :activity_images
 
   before_validation { self.permalink = name.to_identifier }
