@@ -73,12 +73,10 @@ class Admin::ProxiedPagesController < ApplicationController
       @page.css("style").remove
     end
     def generate_link(proxied_url)
-      return if proxied_url.nil? or proxied_url =~ /^#/
+      return proxied_url if proxied_url.nil? or proxied_url =~ /^#/
+      proxied_url.gsub!(/\.\.?\//, "/")
       if proxied_url =~ /^\//
         return @url_root + proxied_url
-      end
-      if proxied_url =~ /^\./
-        return @url_root + "/" + proxied_url
       end
       proxied_url
     end
