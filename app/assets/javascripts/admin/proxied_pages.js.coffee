@@ -100,7 +100,9 @@ class this.URLFetcher
   go: =>
     $(".loading-indicator").show()
     $.get(@base_url, { "url" : @proxied_url },
-      (data, status) =>
+      (data, status, data_type) =>
+#        debugger
+#        console.log(data_type)
         @embedded_window.add_page(new Page(@proxied_url, data))
         $(".loading-indicator").hide()
     )

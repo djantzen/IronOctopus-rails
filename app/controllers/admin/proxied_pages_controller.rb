@@ -3,7 +3,7 @@ class Admin::ProxiedPagesController < ApplicationController
   require "socksify/http"
 
   respond_to :html
-  before_filter :authenticate_user
+  #before_filter :authenticate_user
   before_filter :ensure_anonymity
   AGENT = "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.17 Safari/537.36"
   TOR_HOST = "127.0.0.1"
@@ -42,6 +42,12 @@ class Admin::ProxiedPagesController < ApplicationController
           response = http.get(url.request_uri) # , { "User-Agent" => AGENT })
           Nokogiri::HTML(response.body)
         end
+      elsif url.request_uri.match(/\.jpeg|\.jpg|\.png$/)
+        Net::HTTP.SOCKSProxy(TOR_HOST, TOR_PORT).start(host, url.port) do |http|
+          response = http.get(url.request_uri, { "User-Agent" => AGENT })
+          send_data(response.body, :type => response.header["content-type"], :disposition => 'inline')
+          return
+        end
       else
         Net::HTTP.SOCKSProxy(TOR_HOST, TOR_PORT).start(host, url.port) do |http|
           response = http.get(url.request_uri, { "User-Agent" => AGENT })
@@ -72,6 +78,7 @@ class Admin::ProxiedPagesController < ApplicationController
       @page.css("meta").remove
       @page.css("style").remove
     end
+
     def generate_link(proxied_url)
       return proxied_url if proxied_url.nil? or proxied_url =~ /^#/
       proxied_url.gsub!(/\.\.?\//, "/")
@@ -88,10 +95,35 @@ class Admin::ProxiedPagesController < ApplicationController
       end
       @page.css("img").each do |img|
         proxied_url = img.attr("src")
-        img["src"] = generate_link(proxied_url)
+        img["src"] = "/admin/proxied_pages?url=" + generate_link(proxied_url)
       end
       wrap_images()
+      wrap_videos()
+      #wrap_body_parts()
       @page.to_html
+    end
+
+    def traverse_doc(node = @doc.css("html"))
+      unless node.is_a?(Nokogiri::XML::Text)
+        # recurse for children and collect all the returned
+        # nodes into an array
+        children = node.children.inject([]) { |acc, child|
+          acc += number_words(child, counter)
+        }
+        # replace the node's children
+        node.children = Nokogiri::XML::NodeSet.new(doc, children)
+        return [node]
+      end
+    end
+
+    def wrap_body_parts
+      BodyPart.all.each do |body_part|
+        @doc.css("p").each do |p|
+          p.text().gsub!(/(#{body_part.region})/i, "<body-part-region>#{$1}</body-part-region")
+          @text.gsub!(/(#{body_part.name})/i, "<body-part>#{$1}</body-part")
+          @text.gsub!(/(The)/i, "<body-part>#{$1}</body-part")
+        end
+      end
     end
 
     def wrap_images
@@ -140,6 +172,15 @@ class Admin::ProxiedPagesController < ApplicationController
           Rails.logger.warn("Couldn't parse " + original_href)
         end
       end
+      #results_div.xpath("//a[img]").each do |a|
+      #  proxied_url = a.attr("href")
+      #  a["src"] = "/admin/proxied_pages?url=" + generate_link(proxied_url)
+      #end
+      #results_div.css("img").each do |img|
+      #  proxied_url = img.attr("src")
+      #  img["src"] = "/admin/proxied_pages?url=" + URI::encode(generate_link(proxied_url))
+      #end
+
       wrap_images()
       wrap_videos()
       results_div.to_html

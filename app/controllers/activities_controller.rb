@@ -126,6 +126,9 @@ class ActivitiesController < ApplicationController
             activity_image.save
           end
         elsif !remote_image_url.blank?
+          if Rails.env == "production" # In production, proxy the request. Can't in development because of single threaded webrick
+            hash[:remote_image_url] = "#{view_context.proxied_pages_url}?url=#{remote_image_url}"
+          end
           activity_image = ActivityImage.new
           activity_image.activity = activity
           activity_image.assign_attributes(hash)
