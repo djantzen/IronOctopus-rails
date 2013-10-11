@@ -62,7 +62,7 @@ class ImplementsController < ApplicationController
     Implement.transaction do
       implement = params[:id] ? Implement.find_by_permalink(params[:id]) : Implement.new()
       if Rails.env == "production" # In production, proxy the request. Can't in development because of single threaded webrick
-        params[:implement][:remote_image_url] = "#{view_context.proxied_pages_url}?url=#{remote_image_url}"
+        params[:implement][:remote_image_url] = "#{view_context.proxied_pages_url}?url=#{params[:implement][:remote_image_url]}"
       end
       implement.assign_attributes(params[:implement])
       implement.creator ||= current_user

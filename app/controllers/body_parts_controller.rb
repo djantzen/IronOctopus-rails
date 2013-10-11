@@ -41,7 +41,7 @@ class BodyPartsController < ApplicationController
     params[:body_part][:region] = params[:body_part][:newregion] unless params[:body_part][:newregion].empty?
     params[:body_part].delete(:newregion)
     if Rails.env == "production" # In production, proxy the request. Can't in development because of single threaded webrick
-      params[:body_part][:remote_image_url] = "#{view_context.proxied_pages_url}?url=#{remote_image_url}"
+      params[:body_part][:remote_image_url] = "#{view_context.proxied_pages_url}?url=#{params[:body_part][:remote_image_url]}"
     end
     body_part.assign_attributes(params[:body_part])
     body_part

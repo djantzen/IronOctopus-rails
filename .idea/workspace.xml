@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46f8a447-b9ed-44ae-be1c-95fe4e4f3fab" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/admin/proxied_pages.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/admin/proxied_pages.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/admin/proxied_page.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/admin/proxied_page.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/admin/proxied_pages/_embedded_browser_window.html.haml" afterPath="$PROJECT_DIR$/app/views/admin/proxied_pages/_embedded_browser_window.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/body_parts_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/body_parts_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/implements_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/implements_controller.rb" />
     </list>
     <ignored path="IronOctopus-rails.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -51,10 +49,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="proxied_page.css.scss" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="proxied_page.css.scss" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/admin/proxied_page.css.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="1" selection-start="170" selection-end="170" vertical-scroll-proportion="0.44210526">
+            <state line="6" column="1" selection-start="88" selection-end="88" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="implements_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/implements_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="64" column="89" selection-start="1845" selection-end="1882" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="body_parts_controller.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/controllers/body_parts_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="43" column="104" selection-start="1318" selection-end="1318" vertical-scroll-proportion="0.5475638">
               <folding />
             </state>
           </provider>
@@ -134,12 +150,12 @@
         <option value="$PROJECT_DIR$/app/views/body_parts/show.html.haml" />
         <option value="$PROJECT_DIR$/app/controllers/admin/proxied_pages_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/activities_controller.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/implements_controller.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/body_parts_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/implements/_create_or_update.html.haml" />
         <option value="$PROJECT_DIR$/app/views/admin/proxied_pages/_embedded_browser_window.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/admin/proxied_pages.js.coffee" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/admin/proxied_page.css.scss" />
+        <option value="$PROJECT_DIR$/app/controllers/implements_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/body_parts_controller.rb" />
       </list>
     </option>
   </component>
@@ -993,23 +1009,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/implements_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="0" selection-start="1629" selection-end="1874" vertical-scroll-proportion="0.4477612">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/implements/_create_or_update.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="0" selection-start="759" selection-end="759" vertical-scroll-proportion="0.37969926">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/body_parts_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="47" selection-start="1375" selection-end="1375" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1051,7 +1053,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/admin/proxied_page.css.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="1" selection-start="170" selection-end="170" vertical-scroll-proportion="0.44210526">
+        <state line="6" column="1" selection-start="88" selection-end="88" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/implements_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="64" column="89" selection-start="1845" selection-end="1882" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/body_parts_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="104" selection-start="1318" selection-end="1318" vertical-scroll-proportion="0.5475638">
           <folding />
         </state>
       </provider>
