@@ -57,11 +57,12 @@ class this.EmbeddedBrowserWindow
     @embedded_browser_window_panel.find(".browser-bookmark-button").attr("disabled", @pages.length <= 1);
     try
       @embedded_browser_window_panel.find(".proxied-page-contents").html(page.contents)
+      page_contents = @embedded_browser_window_panel.find(".proxied-page-contents")
+      @rewrite_link_event_handlers(page_contents)
+      @init_video_links(page_contents)
+      @init_image_links(page_contents)
+      @embedded_browser_window_panel.find(".proxied-page-url").val(page.url)
     catch error
-    page_contents = @embedded_browser_window_panel.find(".proxied-page-contents")
-    @rewrite_link_event_handlers(page_contents)
-    @init_video_links(page_contents)
-    @init_image_links(page_contents)
 
   set_search_query: (query) =>
     @pages = []
