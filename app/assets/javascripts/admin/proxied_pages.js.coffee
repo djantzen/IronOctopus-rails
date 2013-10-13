@@ -89,7 +89,7 @@ class this.EmbeddedBrowserWindow
 
   init_image_links: (page_contents)=>
     $(page_contents).find(".image-wrapper button").click ->
-      link = $(this).siblings("a:first").attr("href")
+      link = $(this).siblings("a:first").attr("href") or $(this).siblings("img:first").attr("src")
       empty_image_fields = $(".image-url-input").filter ->
         this.value == ""
       $(empty_image_fields[0]).val(link)
@@ -102,10 +102,11 @@ class this.URLFetcher
     $(".loading-indicator").show()
     $.get(@base_url, { "url" : @proxied_url },
       (data, status, data_type) =>
-#        debugger
-#        console.log(data_type)
         @embedded_window.add_page(new Page(@proxied_url, data))
         $(".loading-indicator").hide()
+    ).fail( ->
+      $(".loading-indicator").hide()
+      # show error message
     )
 
 
