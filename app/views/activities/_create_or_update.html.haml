@@ -44,7 +44,9 @@
                     %ul#available-activity-attribute-list.unstyled
                       - @activity_attributes.each do |attribute|
                         %li
-                          = check_box_tag "activity[activity_attributes][]", attribute.name, @activity.activity_attributes.include?(attribute) ? true : false
+                          = check_box_tag "activity[activity_attributes][]", attribute.name,
+                                          @activity.activity_attributes.include?(attribute) ? true : false,
+                                          :id => "activity-builder-#{attribute.name.to_identifier}"
                           = h attribute.name
                 .span4
                   %h4 Anatomy Involved
@@ -53,7 +55,7 @@
                       .region-container
                         %li
                           %h5
-                            = check_box_tag region, nil, true, { :class => "region" }
+                            = check_box_tag region, nil, true, { :id => "activity-builder-#{region.to_identifier}", :class => "region" }
                             = h region
                         %ul
                           - body_parts.each do |body_part|
@@ -71,7 +73,9 @@
                       %ul.unstyled
                         - implements.each do |implement|
                           %li
-                            = check_box_tag "activity[implements][]", implement.name, @activity.implements.include?(implement) ? true : false
+                            = check_box_tag "activity[implements][]", implement.name,
+                                            @activity.implements.include?(implement) ? true : false,
+                                            :id => "activity-builder-#{implement.name.to_identifier}"
                             = link_to implement.name, implement, { :class=>"has-tooltip-right", :rel => "tooltip", :title => "#{image_tag(implement.image_url(:thumb))}" } # image tag must be in quotes
 
 

@@ -2,17 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46f8a447-b9ed-44ae-be1c-95fe4e4f3fab" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/admin/google_page_handler.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/admin/page_handler.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/data/wikipedia_bench_press.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/page_handler_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/IronOctopus-rails.iml" afterPath="$PROJECT_DIR$/.idea/IronOctopus-rails.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/admin/proxied_pages.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/admin/proxied_pages.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/utilities.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/utilities.js.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/admin/proxied_page.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/admin/proxied_page.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/admin/proxied_pages_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/admin/proxied_pages_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/application.rb" afterPath="$PROJECT_DIR$/config/application.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/activities/_create_or_update.html.haml" afterPath="$PROJECT_DIR$/app/views/activities/_create_or_update.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/admin/page_handler.rb" afterPath="$PROJECT_DIR$/lib/admin/page_handler.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/unit/page_handler_test.rb" afterPath="$PROJECT_DIR$/test/unit/page_handler_test.rb" />
     </list>
     <ignored path="IronOctopus-rails.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,10 +36,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="proxied_pages.js.coffee" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="proxied_pages.js.coffee" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/admin/proxied_pages.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="108" column="0" selection-start="3782" selection-end="3782" vertical-scroll-proportion="0.0">
+            <state line="54" column="0" selection-start="1760" selection-end="1760" vertical-scroll-proportion="0.32345015">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="utilities.js.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/utilities.js.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_create_or_update.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/activities/_create_or_update.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="58" column="0" selection-start="3295" selection-end="3295" vertical-scroll-proportion="-8.75">
               <folding />
             </state>
           </provider>
@@ -52,7 +66,7 @@
       <file leaf-file-name="proxied_pages_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/admin/proxied_pages_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="70" column="0" selection-start="2399" selection-end="2399" vertical-scroll-proportion="0.0">
+            <state line="49" column="0" selection-start="1594" selection-end="1594" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -61,41 +75,8 @@
       <file leaf-file-name="page_handler.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/admin/page_handler.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="101" column="55" selection-start="4003" selection-end="4003" vertical-scroll-proportion="0.0">
+            <state line="46" column="0" selection-start="1426" selection-end="1426" vertical-scroll-proportion="0.0">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Gemfile" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Gemfile">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="0" selection-start="704" selection-end="704" vertical-scroll-proportion="0.1212938">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="proxied_page.css.scss" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/admin/proxied_page.css.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="16" selection-start="457" selection-end="457" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Rails IronOctopus-rails: migrate_development" pinned="true" current="false" current-in-tab="false">
-        <entry file="mock:///Rails IronOctopus-rails: migrate_development">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="123" column="47" selection-start="5432" selection-end="5480" vertical-scroll-proportion="-10.689655">
-              <folding>
-                <marker date="0" expanded="true" signature="171:201" placeholder="select range..." />
-                <marker date="0" expanded="true" signature="397:427" placeholder="select range..." />
-                <marker date="0" expanded="true" signature="649:718" placeholder="select ((upp..." />
-                <marker date="0" expanded="true" signature="890:983" placeholder="select (((up..." />
-                <marker date="0" expanded="true" signature="5432:5480" placeholder="select * fro..body_parts..." />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -103,7 +84,7 @@
       <file leaf-file-name="page_handler_test.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/unit/page_handler_test.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="25" selection-start="1342" selection-end="1342" vertical-scroll-proportion="0.0">
+            <state line="43" column="0" selection-start="1593" selection-end="1593" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -127,31 +108,28 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="mock:///Rails console: IronOctopus-rails" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Rails console: IronOctopus-rails" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Rails console: IronOctopus-rails" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Rails console: IronOctopus-rails" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Rails console: IronOctopus-rails" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/views/programs/show.html.haml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/assets/stylesheets/sheet.css.scss" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/controllers/implements_controller.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/body_parts_controller.rb" />
         <option value="$PROJECT_DIR$/lib/nokogiri_traversal.rb" />
         <option value="$PROJECT_DIR$/lib/nokogiri_util.rb" />
         <option value="$PROJECT_DIR$/lib/page_handler.rb" />
         <option value="$PROJECT_DIR$/config/application.rb" />
         <option value="$PROJECT_DIR$/config/initializers/custom_load.rb" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/admin/proxied_pages.js.coffee" />
         <option value="$PROJECT_DIR$/app/controllers/admin/proxied_pages_controller.rb" />
         <option value="$PROJECT_DIR$/test/data/wikipedia_bench_press.html" />
         <option value="$PROJECT_DIR$/lib/admin/google_page_handler.rb" />
         <option value="/Rails IronOctopus-rails: migrate_development" />
+        <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/test/unit/page_handler_test.rb" />
+        <option value="$PROJECT_DIR$/app/views/activities/_create_or_update.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/admin/proxied_page.css.scss" />
         <option value="$PROJECT_DIR$/lib/admin/page_handler.rb" />
-        <option value="$PROJECT_DIR$/Gemfile" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/utilities.js.coffee" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/admin/proxied_pages.js.coffee" />
       </list>
     </option>
   </component>
@@ -290,18 +268,18 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="126" />
     <property name="JdbcConsole.Extract.Separator" value="'" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="126" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="161" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="JdbcConsole.Connection.Autocommit" value="true" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="191" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="recentsLimit" value="5" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="191" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="last_opened_file_path" value="/private/tmp/proxied_pages_controller.rb" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="123" />
     <property name="JdbcConsole.ResultInNewTab" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="123" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="637" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="804" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="194" />
@@ -321,14 +299,14 @@
     <property name="options.lastSelected" value="preferences.pluginManager" />
     <property name="JdbcConsole.Extract.OpeningQuote" value="'" />
     <property name="JdbcConsole.Extract.ClosingQuote" value="'" />
-    <property name="JdbcConsole.Extract.IncludeHeader" value="false" />
     <property name="JdbcConsole.EnableParameterPattern" value="false" />
+    <property name="JdbcConsole.Extract.IncludeHeader" value="false" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="JdbcConsole.ParameterPattern" value="(\?\d*|\:\w+|\@\w+|\$\{[^$\{\}]*\}|\$\w+\$|\#\w+\#)" />
     <property name="JdbcConsole.ResultPageSize" value="1000" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="Ruby.ViewRefParam.DefaultExtension" value="html.haml" />
     <property name="options.searchVisible" value="true" />
+    <property name="Ruby.ViewRefParam.DefaultExtension" value="html.haml" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -630,13 +608,6 @@
       <IRB_RUN_CONFIG NAME="IS_RAILS_CONSOLE" VALUE="false" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote">
-      <JSRemoteDebuggerConfigurationSettings>
-        <option name="engineId" value="embedded" />
-        <option name="fileUrl" />
-      </JSRemoteDebuggerConfigurationSettings>
-      <method />
-    </configuration>
     <configuration default="true" type="CucumberRunConfigurationType" factoryName="Cucumber">
       <predefined_log_file id="RUBY_CUCUMBER" enabled="true" />
       <module name="" />
@@ -668,6 +639,13 @@
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_RUNNER_PATH" VALUE="" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_RUNNER" VALUE="false" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SETTINGS_VERSION" VALUE="2" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote">
+      <JSRemoteDebuggerConfigurationSettings>
+        <option name="engineId" value="embedded" />
+        <option name="fileUrl" />
+      </JSRemoteDebuggerConfigurationSettings>
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
@@ -825,9 +803,9 @@
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.test_ugh" />
         <item index="1" class="java.lang.String" itemvalue="IRB console.Rails console: IronOctopus-rails" />
-        <item index="2" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.test_wikipedia" />
-        <item index="3" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.PageHandlerTest" />
-        <item index="4" class="java.lang.String" itemvalue="IRB console.Rails console: IronOctopus-rails" />
+        <item index="2" class="java.lang.String" itemvalue="IRB console.Rails console: IronOctopus-rails" />
+        <item index="3" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.test_wikipedia" />
+        <item index="4" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.PageHandlerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -863,7 +841,6 @@
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38482758" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22354813" sideWeight="0.57931036" order="3" side_tool="false" content_ui="tabs" />
@@ -872,8 +849,9 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.42068964" sideWeight="0.97184825" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32843652" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4275862" sideWeight="0.75703794" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31448275" sideWeight="0.75703794" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5737931" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38482758" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -943,24 +921,16 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="ruby-line">
           <url>file://$PROJECT_DIR$/test/unit/page_handler_test.rb</url>
-          <line>14</line>
+          <line>13</line>
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="ruby-line">
+          <url>file://$PROJECT_DIR$/test/unit/page_handler_test.rb</url>
+          <line>43</line>
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392@IronOctopus/gems/nokogiri-1.6.0/lib/nokogiri/xml/document.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="10" selection-start="2566" selection-end="2566" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/body_part.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="22" selection-start="1112" selection-end="1123" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/initializers/custom_load.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="0" selection-start="128" selection-end="128" vertical-scroll-proportion="0.10489511" />
@@ -969,13 +939,6 @@
     <entry file="file://$PROJECT_DIR$/config/application.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="0" selection-start="693" selection-end="693" vertical-scroll-proportion="0.6993007" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/admin/proxied_pages.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="108" column="0" selection-start="3782" selection-end="3782" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392@IronOctopus/gems/nokogiri-1.6.0/lib/nokogiri/xml/node_set.rb">
@@ -990,65 +953,74 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/data/wikipedia_bench_press.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="0" selection-start="12837" selection-end="12837" vertical-scroll-proportion="0.43161094">
-          <folding>
-            <marker date="1381521387000" expanded="true" signature="-1:-1" placeholder="{...}" />
-          </folding>
-        </state>
+        <state line="64" column="0" selection-start="12837" selection-end="12837" vertical-scroll-proportion="0.43161094" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/admin/google_page_handler.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="637" selection-end="637" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="15" column="0" selection-start="637" selection-end="637" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392@IronOctopus/gems/actionpack-3.2.14/lib/action_controller/metal/instrumentation.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="0" selection-start="1247" selection-end="1247" vertical-scroll-proportion="0.33153638">
+        <state line="37" column="0" selection-start="1247" selection-end="1247" vertical-scroll-proportion="0.33153638" />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392@IronOctopus/gems/nokogiri-1.6.0/lib/nokogiri/xml/node.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="377" column="10" selection-start="13232" selection-end="13232" vertical-scroll-proportion="0.33144477" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gemfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="0" selection-start="704" selection-end="704" vertical-scroll-proportion="0.1212938" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/unit/page_handler_test.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="0" selection-start="1593" selection-end="1593" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/admin/proxied_pages_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="0" selection-start="2399" selection-end="2399" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392@IronOctopus/gems/nokogiri-1.6.0/lib/nokogiri/xml/node.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="377" column="10" selection-start="13232" selection-end="13232" vertical-scroll-proportion="0.33144477">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/unit/page_handler_test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="25" selection-start="1342" selection-end="1342" vertical-scroll-proportion="0.0">
+        <state line="49" column="0" selection-start="1594" selection-end="1594" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/admin/proxied_page.css.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="16" selection-start="457" selection-end="457" vertical-scroll-proportion="0.0">
+        <state line="20" column="0" selection-start="238" selection-end="238" vertical-scroll-proportion="0.7574124">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/activities/_create_or_update.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="0" selection-start="3295" selection-end="3295" vertical-scroll-proportion="-8.75">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/admin/page_handler.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="101" column="55" selection-start="4003" selection-end="4003" vertical-scroll-proportion="0.0">
+        <state line="46" column="0" selection-start="1426" selection-end="1426" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile">
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/utilities.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="0" selection-start="704" selection-end="704" vertical-scroll-proportion="0.1212938">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/admin/proxied_pages.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="0" selection-start="1760" selection-end="1760" vertical-scroll-proportion="0.32345015">
           <folding />
         </state>
       </provider>

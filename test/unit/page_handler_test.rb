@@ -1,7 +1,6 @@
 require 'test_helper'
 #require 'ferret'
 class PageHandlerTest < ActiveSupport::TestCase
-  include Ferret
 
   test "wikipedia" do
     doc = Nokogiri::HTML(open(File.dirname(__FILE__) + "/../data/wikipedia_bench_press.html"))
@@ -38,7 +37,8 @@ class PageHandlerTest < ActiveSupport::TestCase
   end
 
   test "ugh" do
-    doc = Nokogiri::HTML(open(File.dirname(__FILE__) + "/../data/wikipedia_bench_press.html"))
+    #doc = Nokogiri::HTML(open(File.dirname(__FILE__) + "/../data/wikipedia_bench_press.html"))
+    doc = Nokogiri::HTML(open(File.dirname(__FILE__) + "/../data/exrx_squat.html"))
 
     handler = Admin::PageHandler.new("root", doc)
     text = handler.handle()

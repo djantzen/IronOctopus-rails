@@ -49,7 +49,11 @@ class this.EmbeddedBrowserWindow
         # get page url
         empty_image_fields = $(".activity-citation-url").filter ->
           this.value == ""
-        $(empty_image_fields[0]).val(page.url)
+        if $(empty_image_fields).size() > 0
+          $(empty_image_fields[0]).val(page.url)
+          Util.show_flash("Added citation")
+        else
+          Util.show_flash("No more citation slots, save activity and reopen", 2)
 
   render: () =>
     page = @pages[@pages.length - 1]
@@ -61,6 +65,7 @@ class this.EmbeddedBrowserWindow
       @rewrite_link_event_handlers(page_contents)
       @init_video_links(page_contents)
       @init_image_links(page_contents)
+      @init_keyword_links(page_contents)
       @embedded_browser_window_panel.find(".proxied-page-url").val(page.url)
     catch error
 
@@ -82,17 +87,29 @@ class this.EmbeddedBrowserWindow
         false
     )
 
+  init_keyword_links: (page_contents)=>
+    $(page_contents).find(".keyword-match .add-keyword").click ->
+      identifier = $(this).parent().attr("identifier")
+      Util.show_flash("Added " + $(this).parent().text())
+      $("#activity-builder-" + identifier).click()
+
   init_video_links: (page_contents)=>
     $(page_contents).find(".video-wrapper button").click ->
       link = $(this).siblings("a:first").attr("href")
-      $("#activity-video-link").val(link)
+      if $("#activity-video-link").size() > 0
+        Util.show_flash("Added video link")
+        $("#activity-video-link").val(link)
 
   init_image_links: (page_contents)=>
     $(page_contents).find(".image-wrapper button").click ->
       link = $(this).siblings("a:first").attr("href") or $(this).siblings("img:first").attr("src")
       empty_image_fields = $(".image-url-input").filter ->
         this.value == ""
-      $(empty_image_fields[0]).val(link)
+      if $(empty_image_fields).size() > 0
+        Util.show_flash("Added image link")
+        $(empty_image_fields[0]).val(link)
+      else
+        Util.show_flash("No more image slots, save activity and reopen", 2)
 
 class this.URLFetcher
   constructor: (@embedded_window, @proxied_url) ->
