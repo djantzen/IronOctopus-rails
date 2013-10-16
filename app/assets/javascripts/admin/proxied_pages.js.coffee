@@ -31,6 +31,7 @@ class this.EmbeddedBrowserWindow
     @pages = []
     @init_back_button()
     @init_bookmark_button()
+    @init_get_text_button()
 
   init_back_button: () =>
     button = @embedded_browser_window_panel.find(".browser-back-button")
@@ -55,10 +56,24 @@ class this.EmbeddedBrowserWindow
         else
           Util.show_flash("No more citation slots, save activity and reopen", 2)
 
+  init_get_text_button: () =>
+    button = @embedded_browser_window_panel.find(".browser-get-text-button")
+    button.attr("disabled", true)
+    button.click =>
+      selected = window.getSelection().toString()
+      instructions = $("#activity-instructions").text()
+      if instructions == "None"
+        Util.show_flash("Added text to instructions")
+        $("#activity-instructions").text(selected)
+      else
+        Util.show_flash("Appended text to instructions")
+        $("#activity-instructions").text(instructions + "\n" + selected)
+
   render: () =>
     page = @pages[@pages.length - 1]
     @embedded_browser_window_panel.find(".browser-back-button").attr("disabled", @pages.length <= 1);
     @embedded_browser_window_panel.find(".browser-bookmark-button").attr("disabled", @pages.length <= 1);
+    @embedded_browser_window_panel.find(".browser-get-text-button").attr("disabled", @pages.length <= 1);
     try
       @embedded_browser_window_panel.find(".proxied-page-contents").html(page.contents)
       page_contents = @embedded_browser_window_panel.find(".proxied-page-contents")

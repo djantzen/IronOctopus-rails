@@ -16,7 +16,7 @@
                         :selected => @activity.activity_type.nil? ? nil : @activity.activity_type.activity_type_id
           = link_to "You can use Markdown syntax here", "http://kramdown.rubyforge.org/quickref.html", :target => "_blank"
           = form.label :instructions, "Instructions"
-          = form.text_area :instructions, :class => "input-xlarge",
+          = form.text_area :instructions, :class => "input-xlarge", :id => "activity-instructions",
                            :minlength => @validations[:activity][:instructions][:minlength],
                            :maxlength => @validations[:activity][:instructions][:maxlength]
         .span8.well

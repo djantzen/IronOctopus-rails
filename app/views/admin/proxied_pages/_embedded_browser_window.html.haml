@@ -8,6 +8,9 @@
         = render :partial => "shared/button",
                  :locals => { :button_id => browser_id + "-bookmark-button", :message => "Bookmark",
                               :type => "input", :button_class => "browser-bookmark-button" }
+        = render :partial => "shared/button",
+                 :locals => { :button_id => browser_id + "-get-text-button", :message => "Get Text",
+                              :type => "input", :button_class => "browser-get-text-button" }
     .span10.well-small.well
       .row-fluid
         %input.proxied-page-url{:readonly => true}

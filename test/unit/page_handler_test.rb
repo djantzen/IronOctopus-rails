@@ -38,7 +38,7 @@ class PageHandlerTest < ActiveSupport::TestCase
 
   test "ugh" do
     #doc = Nokogiri::HTML(open(File.dirname(__FILE__) + "/../data/wikipedia_bench_press.html"))
-    doc = Nokogiri::HTML(open(File.dirname(__FILE__) + "/../data/exrx_squat.html"))
+    doc = Nokogiri::HTML(open(File.dirname(__FILE__) + "/../data/body_building_squat.html"))
 
     handler = Admin::PageHandler.new("root", doc)
     text = handler.handle()

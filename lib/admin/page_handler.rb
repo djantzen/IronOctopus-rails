@@ -50,7 +50,7 @@ module Admin
     end
     BODY_PARTS = BodyPart.order(:name).all.inject({}) do |hash, body_part|
       skip_words = ["Long", "Short", "Head", "Lateral", "Medial", "Lower", "Upper", "Middle", "Major", "Minor"]
-      keywords = body_part.name.split(" ").reject { |name| skip_words.include? name }.join("|")
+      keywords = body_part.name + "|" + body_part.name.split(" ").reject { |name| skip_words.include? name }.join("|")
       hash[body_part.name] = Regexp.new(/(#{PATTERN.gsub("KEYWORDS", keywords)})/i)
       hash
     end
@@ -60,9 +60,8 @@ module Admin
     end
     ACTIVITY_ATTRIBUTE_SYNONYMS = { "Pushing" => "Push", "Pulling" => "Pull" }
     ACTIVITY_ATTRIBUTES = ActivityAttribute.all.inject({}) do |hash, activity_attribute|
-      skip_words = ["utility", "impact", "high", "low", "mechanics", "force"]
-
-      keywords = activity_attribute.name.split(" ").reject { |name| skip_words.include? name }.join("|")
+      skip_words = ["Utility", "Impact", "High", "Low", "Mechanics", "Force"]
+      keywords = activity_attribute.name + "|" + activity_attribute.name.split(" ").reject { |name| skip_words.include? name }.join("|")
       hash[activity_attribute.name] = Regexp.new(/(#{PATTERN.gsub("KEYWORDS", keywords)})/i)
       hash
     end
@@ -70,7 +69,7 @@ module Admin
     def substitute_keywords!(the_text, keyword, regexp, color, keyword_type)
       the_text.gsub!(regexp,
                      "<span class='keyword-match has-tooltip-right' identifier='#{keyword.to_identifier.reverse}'" +
-                       "style='color:#{color};font-size:120%;' title='#{keyword_type}'>" +
+                       "style='color:#{color};font-size:120%;' title='#{keyword_type}: #{keyword.reverse}'>" +
                        "<i class='add-keyword icon-plus-sign'/><span>"  +
                        '\1</span></span>')
     end
@@ -91,6 +90,9 @@ module Admin
           substitute_keywords!(the_text, implement, regexp, "green", "Equipment")
         end
         the_text.scan(/identifier='(.*?)'/).each do |match|
+          the_text.gsub!(match[0], match[0].reverse)
+        end
+        the_text.scan(/title='.*?: (.*?)'/).each do |match|
           the_text.gsub!(match[0], match[0].reverse)
         end
 
