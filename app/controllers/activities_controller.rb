@@ -146,6 +146,13 @@ class ActivitiesController < ApplicationController
           end
         end
       end
+      activity.alternate_activity_names.each {|name| name.delete}
+      (params[:activity][:alternate_activity_names_attributes] || {}).values.each do |hash|
+        unless hash[:name].blank?
+          alternate_activity_name = AlternateActivityName.new(:name => hash[:name])
+          activity.alternate_activity_names << alternate_activity_name
+        end
+      end
       activity.save
     end
 
@@ -165,6 +172,7 @@ class ActivitiesController < ApplicationController
     @activity_attributes = ActivityAttribute.order(:name)
     4.times { @activity.activity_images.build }
     4.times { @activity.activity_citations.build }
+    2.times { @activity.alternate_activity_names.build }
   end
 
 end

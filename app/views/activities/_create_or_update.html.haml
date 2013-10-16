@@ -11,6 +11,9 @@
           = form.text_field :name, :class => "required is_activity_name_unique input-xlarge",
                             :minlength => @validations[:activity][:name][:minlength],
                             :maxlength => @validations[:activity][:name][:maxlength]
+          = form.fields_for :alternate_activity_names do |alternate_name|
+            = alternate_name.label :name, "Alternate Name"
+            = alternate_name.text_field :name, :class => "input-xlarge"
           = form.label :activity_type, "Activity Type"
           = form.select :activity_type, @activity_types.map { |activity_type | [activity_type.name, activity_type.name] },
                         :selected => @activity.activity_type.nil? ? nil : @activity.activity_type.activity_type_id
