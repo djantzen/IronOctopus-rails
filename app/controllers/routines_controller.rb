@@ -161,7 +161,8 @@ class RoutinesController < ApplicationController
     @client = params[:user_id].nil? ? nil : User.find_by_login(params[:user_id])
     @trainer = current_user
     @client_logins = current_user.clients.order(:last_name, :first_name).map { |u| ["#{u.first_name} #{u.last_name}", u.login] }
-    @activities = Activity.all(:include => [:body_parts, :implements, :activity_type], :order => :name)
+    @activities = Activity.all(:include => [:body_parts, :implements, :activity_type, :alternate_activity_names, :activity_images],
+                               :order => :name)
     @activity_types = ActivityType.order(:name)
     @implements = Implement.order(:category, :name)
     @body_parts = BodyPart.order(:region, :name)

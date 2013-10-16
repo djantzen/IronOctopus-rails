@@ -1,5 +1,7 @@
 %span.faceting-control
   = activity.name
+  - activity.alternate_activity_names.each do |alternate_name|
+    = alternate_name.name
   = activity.activity_type.name
   - group_body_parts_by_region(activity.body_parts).each_pair do |region, body_parts|
     = region
