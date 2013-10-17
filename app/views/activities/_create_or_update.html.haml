@@ -16,7 +16,7 @@
             = alternate_name.text_field :name, :class => "input-xlarge"
           = form.label :activity_type, "Activity Type"
           = form.select :activity_type, @activity_types.map { |activity_type | [activity_type.name, activity_type.name] },
-                        :selected => @activity.activity_type.nil? ? nil : @activity.activity_type.activity_type_id
+                        :selected => @activity.activity_type.nil? ? nil : @activity.activity_type.name
           = link_to "You can use Markdown syntax here", "http://kramdown.rubyforge.org/quickref.html", :target => "_blank"
           = form.label :instructions, "Instructions"
           = form.text_area :instructions, :class => "input-xlarge", :id => "activity-instructions",
