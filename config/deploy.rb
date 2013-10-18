@@ -72,6 +72,16 @@ namespace :database do
   end
 end
 
+namespace :media do
+  desc "backup the media files and pull them down"
+  task :backup do
+    today = "#{Date.today.year}#{Date.today.month}#{Date.today.day}"
+    filename = "iron_octopus_media_#{today}.tgz"
+    run "tar czf /tmp/#{filename} /var/www/shared/uploads"
+    download "/tmp/#{filename}", "/tmp/#{filename}"
+  end
+end
+
 namespace :bundle do
 
   desc "run bundle install and ensure all gem requirements are met"

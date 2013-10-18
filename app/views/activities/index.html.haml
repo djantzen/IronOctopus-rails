@@ -1,4 +1,31 @@
 .container
   = link_to("Create New Activity", new_activity_path, :class => "btn btn-primary")
-  - @activities.each do |activity|
-    %div= link_to(activity.name, activity)
+  - if current_user.is_admin?
+    .row
+      .span2
+        %h5
+          Name
+      .span1
+        %h5
+          Has Image?
+      .span1
+        %h5
+          Has Instructions?
+      .span1
+        %h5
+          Has Video?
+    - @activities.each do |activity|
+      .row
+        .span2
+          = link_to(activity.name, activity)
+        .span1{:class => activity.activity_images.size > 0 ? "activity-complete" : "activity-incomplete "}
+          = activity.activity_images.size > 0
+        .span1{:class => activity.instructions.length > 20 ? "activity-complete" : "activity-incomplete "}
+          = activity.instructions.length > 20
+        .span1{:class => activity.activity_videos.size > 0 ? "activity-complete" : "activity-incomplete "}
+          = activity.activity_videos.size > 0
+  - else
+    - @activities.each do |activity|
+      .row
+        .span2
+          = link_to(activity.name, activity)

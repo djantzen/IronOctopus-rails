@@ -47,7 +47,7 @@ class Admin::ProxiedPagesController < ApplicationController
           response = http.get(url.request_uri) # , { "User-Agent" => AGENT })
           Nokogiri::HTML(response.body)
         end
-      elsif url.request_uri.match(/\.jpeg|\.jpg|\.png|\.gif$/)
+      elsif url.request_uri.match(/\.jpeg|\.jpg|\.png|\.gif$/i)
         Net::HTTP.SOCKSProxy(TOR_HOST, TOR_PORT).start(host, url.port) do |http|
           response = http.get(url.request_uri, { "User-Agent" => AGENT })
           send_data(response.body, :type => response.header["content-type"], :disposition => 'inline')

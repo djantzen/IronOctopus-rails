@@ -1,4 +1,15 @@
 .container
   = link_to("Create New Implement", new_implement_path, :class => "btn btn-primary")
+  .row
+    .span2
+      %h5
+        Name
+    .span1
+      %h5
+        Has Image?
   - @implements.each do |implement|
-    %div= link_to(implement.name, edit_implement_path(implement))
+    .row
+      .span2
+        = link_to(implement.name, edit_implement_path(implement))
+      .span1{:class => implement.image_url.to_s.index("image_not_found").nil? ? "activity-complete" : "activity-incomplete"}
+        = implement.image_url.to_s.index("image_not_found").nil?
