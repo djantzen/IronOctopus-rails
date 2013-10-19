@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46f8a447-b9ed-44ae-be1c-95fe4e4f3fab" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/activities.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/activities.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/admin/proxied_pages_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/admin/proxied_pages_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/activities/index.html.haml" afterPath="$PROJECT_DIR$/app/views/activities/index.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/implements/index.html.haml" afterPath="$PROJECT_DIR$/app/views/implements/index.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/_upload_image.haml" afterPath="$PROJECT_DIR$/app/views/shared/_upload_image.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/deploy.rb" afterPath="$PROJECT_DIR$/config/deploy.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/activities_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/activities_controller.rb" />
     </list>
     <ignored path="IronOctopus-rails.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -51,15 +45,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="deploy.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/deploy.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="45" selection-start="2272" selection-end="2272" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="_create_or_update.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/activities/_create_or_update.html.haml">
           <provider selected="true" editor-type-id="text-editor">
@@ -69,28 +54,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activities_controller.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="activities_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/activities_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="85" column="62" selection-start="2270" selection-end="2270" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html.haml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/activities/index.html.haml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="0" selection-start="426" selection-end="579" vertical-scroll-proportion="-7.5">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html.haml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/views/implements/index.html.haml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="0" selection-start="301" selection-end="301" vertical-scroll-proportion="0.5524079">
+            <state line="166" column="0" selection-start="6666" selection-end="6666" vertical-scroll-proportion="1.7814727">
               <folding />
             </state>
           </provider>
@@ -99,7 +66,16 @@
       <file leaf-file-name="image_uploader.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/uploaders/image_uploader.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="35" selection-start="179" selection-end="179" vertical-scroll-proportion="0.0">
+            <state line="19" column="0" selection-start="599" selection-end="599" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/activities/index.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="12" selection-start="284" selection-end="284" vertical-scroll-proportion="-1.875">
               <folding />
             </state>
           </provider>
@@ -161,7 +137,6 @@
         <option value="$PROJECT_DIR$/app/views/routines/_activity_list_item.html.haml" />
         <option value="$PROJECT_DIR$/app/views/activities/_create_or_update.html.haml" />
         <option value="$PROJECT_DIR$/config/initializers/custom_load.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/activities_controller.rb" />
         <option value="$PROJECT_DIR$/app/uploaders/image_uploader.rb" />
         <option value="$PROJECT_DIR$/app/models/activity_image.rb" />
         <option value="$PROJECT_DIR$/app/models/activity.rb" />
@@ -174,6 +149,7 @@
         <option value="$PROJECT_DIR$/app/views/activities/index.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/activities.css.scss" />
         <option value="$PROJECT_DIR$/app/views/implements/index.html.haml" />
+        <option value="$PROJECT_DIR$/app/controllers/activities_controller.rb" />
       </list>
     </option>
   </component>
@@ -1041,13 +1017,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/uploaders/image_uploader.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="35" selection-start="179" selection-end="179" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/admin/proxied_pages_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="45" column="49" selection-start="1444" selection-end="1444" vertical-scroll-proportion="0.0">
@@ -1083,13 +1052,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/activities_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="62" selection-start="2270" selection-end="2270" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/activities.css.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="0" selection-start="250" selection-end="250" vertical-scroll-proportion="0.36">
@@ -1097,16 +1059,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/activities/index.html.haml">
+    <entry file="file://$PROJECT_DIR$/app/views/implements/index.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="426" selection-end="579" vertical-scroll-proportion="-7.5">
+        <state line="13" column="0" selection-start="301" selection-end="301" vertical-scroll-proportion="0.5524079">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/implements/index.html.haml">
+    <entry file="file://$PROJECT_DIR$/app/views/activities/index.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="301" selection-end="301" vertical-scroll-proportion="0.5524079">
+        <state line="13" column="12" selection-start="284" selection-end="284" vertical-scroll-proportion="-1.875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/uploaders/image_uploader.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="0" selection-start="599" selection-end="599" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/activities_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="166" column="0" selection-start="6666" selection-end="6666" vertical-scroll-proportion="1.7814727">
           <folding />
         </state>
       </provider>
