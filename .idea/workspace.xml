@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="46f8a447-b9ed-44ae-be1c-95fe4e4f3fab" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/activities_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/activities_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/activity_sets/_performance_form.html.haml" afterPath="$PROJECT_DIR$/app/views/activity_sets/_performance_form.html.haml" />
     </list>
     <ignored path="IronOctopus-rails.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,19 +46,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_create_or_update.html.haml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="_create_or_update.html.haml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/activities/_create_or_update.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="69" selection-start="714" selection-end="714" vertical-scroll-proportion="-3.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activities_controller.rb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/controllers/activities_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="166" column="0" selection-start="6666" selection-end="6666" vertical-scroll-proportion="1.7814727">
+            <state line="12" column="69" selection-start="714" selection-end="714" vertical-scroll-proportion="-1.5234375">
               <folding />
             </state>
           </provider>
@@ -134,7 +126,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/routines/_activity_list_item.html.haml" />
         <option value="$PROJECT_DIR$/app/views/activities/_create_or_update.html.haml" />
         <option value="$PROJECT_DIR$/config/initializers/custom_load.rb" />
         <option value="$PROJECT_DIR$/app/uploaders/image_uploader.rb" />
@@ -150,6 +141,7 @@
         <option value="$PROJECT_DIR$/app/assets/stylesheets/activities.css.scss" />
         <option value="$PROJECT_DIR$/app/views/implements/index.html.haml" />
         <option value="$PROJECT_DIR$/app/controllers/activities_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/activity_sets/_performance_form.html.haml" />
       </list>
     </option>
   </component>
@@ -975,20 +967,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392@IronOctopus/gems/carrierwave-0.8.0/lib/carrierwave/uploader/download.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="390" selection-end="390" vertical-scroll-proportion="0.67695963">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/body_part.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="6" selection-start="1180" selection-end="1180" vertical-scroll-proportion="0.63235295">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392@IronOctopus/gems/carrierwave-0.8.0/lib/carrierwave/uploader/store.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="53" column="7" selection-start="1553" selection-end="1553" vertical-scroll-proportion="1.8883611">
@@ -1080,9 +1058,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/activity_sets/_performance_form.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="0" selection-start="1774" selection-end="1774" vertical-scroll-proportion="0.83425415">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/activities_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="166" column="0" selection-start="6666" selection-end="6666" vertical-scroll-proportion="1.7814727">
+        <state line="148" column="51" selection-start="5780" selection-end="5780" vertical-scroll-proportion="1.104513">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/activities/_create_or_update.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="69" selection-start="714" selection-end="714" vertical-scroll-proportion="-1.5234375">
           <folding />
         </state>
       </provider>

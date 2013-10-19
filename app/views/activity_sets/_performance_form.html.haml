@@ -24,15 +24,14 @@
         .assigned-set-brief
           - activity_set.activity.metrics.each do |metric|
             - measure_value, unit = get_initial_value(activity_set, metric)
-            - if measure_value.defined? || template
-              .label.label-info
-                = metric.name
-                = measure_value.min
-                - if measure_value.range?
-                  to
-                  = measure_value.max
-                - if defined? unit and !unit.eql? 'Duration' and !unit.eql?(Unit::NONE)
-                  = unit.name.pluralize
+            .label.label-info
+              = metric.name
+              = measure_value.min
+              - if measure_value.range?
+                to
+                = measure_value.max
+              - if defined? unit and !unit.eql? 'Duration' and !unit.eql?(Unit::NONE)
+                = unit.name.pluralize
     .activity-set-attributes.accordion-body.collapse.in{:id => template ? nil : activity_set.position}
       .accordion-inner.container
         = hidden_field_tag "routine[activity_sets][][activity]", activity.name

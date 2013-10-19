@@ -163,6 +163,7 @@ class ActivitiesController < ApplicationController
         end
       end
       activity.save
+      # rollback directory rename if we didn't save properly
       if !activity.errors.empty? and rename_images_dir and File.exists?(new_activity_image_dir)
         `mv #{new_activity_image_dir} #{original_activity_image_dir}`
       end
