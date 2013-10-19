@@ -76,6 +76,8 @@ class this.EmbeddedBrowserWindow
     @embedded_browser_window_panel.find(".browser-get-text-button").attr("disabled", @pages.length <= 1);
     try
       @embedded_browser_window_panel.find(".proxied-page-contents").html(page.contents)
+    catch error
+    try
       page_contents = @embedded_browser_window_panel.find(".proxied-page-contents")
       @rewrite_link_event_handlers(page_contents)
       @init_video_links(page_contents)
@@ -96,10 +98,13 @@ class this.EmbeddedBrowserWindow
 
   rewrite_link_event_handlers: (page_contents)=>
     $.each($(page_contents).find("a"), (index, a_tag)=>
-      fetcher = new URLFetcher(this, $(a_tag).attr("href"))
-      $(a_tag).click (e)=>
-        fetcher.go()
-        false
+      if $(a_tag).find(".keyword-match").size() > 0
+        $(a_tag).click(-> false) # turn off links that contain clickable keywords
+      else
+        fetcher = new URLFetcher(this, $(a_tag).attr("href"))
+        $(a_tag).click (e)=>
+          fetcher.go()
+          false
     )
 
   init_keyword_links: (page_contents)=>

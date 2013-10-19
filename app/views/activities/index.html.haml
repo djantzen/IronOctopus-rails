@@ -7,23 +7,43 @@
           Name
       .span1
         %h5
-          Has Image?
+          Image Count
       .span1
         %h5
-          Has Instructions?
+          Instruction Length
       .span1
         %h5
           Has Video?
+      .span1
+        %h5
+          Citation Count
+      .span1
+        %h5
+          Metric Count
+      .span1
+        %h5
+          BodyPart Count
+      .span1
+        %h5
+          Attribute Count
     - @activities.each do |activity|
       .row
         .span2
           = link_to(activity.name, activity)
         .span1{:class => activity.activity_images.size > 0 ? "activity-complete" : "activity-incomplete "}
-          = activity.activity_images.size > 0
+          = activity.activity_images.size
         .span1{:class => activity.instructions.length > 20 ? "activity-complete" : "activity-incomplete "}
-          = activity.instructions.length > 20
+          = activity.instructions.length
         .span1{:class => activity.activity_videos.size > 0 ? "activity-complete" : "activity-incomplete "}
           = activity.activity_videos.size > 0
+        .span1{:class => activity.activity_citations.size > 0 ? "activity-complete" : "activity-incomplete "}
+          = activity.activity_citations.size
+        .span1{:class => activity.metrics.size > 0 ? "activity-complete" : "activity-incomplete "}
+          = activity.metrics.size
+        .span1{:class => activity.body_parts.size > 3 ? "activity-complete" : "activity-incomplete "}
+          = activity.body_parts.size
+        .span1{:class => activity.activity_attributes.size > 1 ? "activity-complete" : "activity-incomplete "}
+          = activity.activity_attributes.size
   - else
     - @activities.each do |activity|
       .row

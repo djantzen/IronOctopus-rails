@@ -81,7 +81,7 @@ class ActivitiesController < ApplicationController
     activity = params[:id] ? Activity.find_by_permalink(params[:id]) : Activity.new
     rename_images_dir = (activity.name != "" and activity.name != params[:activity][:name]) ? true : false
     original_activity_image_dir = activity.activity_images.size > 0 ? "public/" + activity.activity_images.first.image.store_dir : ""
-    new_activity_image_dir = original_activity_image_dir.gsub(activity.name.to_identifier, params[:activity][:name].to_identifier)
+    new_activity_image_dir = activity.name.blank? ? "" : original_activity_image_dir.gsub(activity.name.to_identifier, params[:activity][:name].to_identifier)
     # if name changed, we have to rename image directory, if it exists.
     if rename_images_dir and File.exists?(original_activity_image_dir)
       `mv #{original_activity_image_dir} #{new_activity_image_dir}`
