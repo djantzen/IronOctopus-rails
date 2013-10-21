@@ -4,7 +4,8 @@ class ActivitiesController < ApplicationController
   before_filter :authenticate_user
 
   def index
-    @activities = Activity.order(:name).includes([:activity_type])
+    @activities = Activity.order(:name).includes([:activity_type, :activity_attributes, :activity_images,
+                                                  :activity_videos, :implements, :metrics, :activity_citations])
 
     json_activities = @activities.map do |a|
       {
@@ -162,9 +163,9 @@ class ActivitiesController < ApplicationController
           activity.alternate_activity_names << alternate_activity_name
         end
       end
-      activity.save
+      success = activity.save
       # rollback directory rename if we didn't save properly
-      if !activity.errors.empty? and rename_images_dir and File.exists?(new_activity_image_dir)
+      if !success and rename_images_dir and File.exists?(new_activity_image_dir)
         `mv #{new_activity_image_dir} #{original_activity_image_dir}`
       end
     end

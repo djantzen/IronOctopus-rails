@@ -110,14 +110,14 @@ class this.EmbeddedBrowserWindow
   init_keyword_links: (page_contents)=>
     $(page_contents).find(".keyword-match .add-keyword").click ->
       identifier = $(this).parent().attr("identifier")
-      Util.show_flash("Added " + $(this).parent().text())
+      Util.show_flash("Added " + $(this).parent().text(), 1)
       $("#activity-builder-" + identifier).click()
 
   init_video_links: (page_contents)=>
     $(page_contents).find(".video-wrapper button").click ->
       link = $(this).siblings("a:first").attr("href")
       if $("#activity-video-link").size() > 0
-        Util.show_flash("Added video link")
+        Util.show_flash("Added video link", 1)
         $("#activity-video-link").val(link)
 
   init_image_links: (page_contents)=>
@@ -126,7 +126,7 @@ class this.EmbeddedBrowserWindow
       empty_image_fields = $(".image-url-input").filter ->
         this.value == ""
       if $(empty_image_fields).size() > 0
-        Util.show_flash("Added image link")
+        Util.show_flash("Added image link", 1)
         $(empty_image_fields[0]).val(link)
       else
         Util.show_flash("No more image slots, save activity and reopen", 2)

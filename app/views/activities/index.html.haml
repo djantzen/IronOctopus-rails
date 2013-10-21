@@ -2,7 +2,7 @@
   = link_to("Create New Activity", new_activity_path, :class => "btn btn-primary")
   - if current_user.is_admin?
     .row
-      .span2
+      .span3
         %h5
           Name
       .span1
@@ -28,21 +28,21 @@
           Attribute Count
     - @activities.each do |activity|
       .row
-        .span2
+        .span3
           = link_to(activity.name, activity)
-        .span1{:class => activity.activity_images.size > 0 ? "activity-complete" : "activity-incomplete "}
+        .span1{:class => activity.activity_images.size > 0 ? "activity-complete" : "activity-incomplete"}
           = activity.activity_images.size
-        .span1{:class => activity.instructions.length > 20 ? "activity-complete" : "activity-incomplete "}
+        .span1{:class => activity.instructions.length > 20 ? "activity-complete" : "activity-incomplete"}
           = activity.instructions.length
-        .span1{:class => activity.activity_videos.size > 0 ? "activity-complete" : "activity-incomplete "}
+        .span1{:class => activity.activity_videos.size > 0 ? "activity-complete" : "activity-incomplete"}
           = activity.activity_videos.size > 0
-        .span1{:class => activity.activity_citations.size > 0 ? "activity-complete" : "activity-incomplete "}
+        .span1{:class => activity.activity_citations.size > 0 ? "activity-complete" : "activity-incomplete"}
           = activity.activity_citations.size
-        .span1{:class => activity.metrics.size > 0 ? "activity-complete" : "activity-incomplete "}
+        .span1{:class => activity.metrics.size > 0 ? "activity-complete" : "activity-incomplete"}
           = activity.metrics.size
-        .span1{:class => activity.body_parts.size > 3 ? "activity-complete" : "activity-incomplete "}
+        .span1{:class => activity.body_parts.size > 3 ? "activity-complete" : "activity-incomplete"}
           = activity.body_parts.size
-        .span1{:class => activity.activity_attributes.size > 1 ? "activity-complete" : "activity-incomplete "}
+        .span1{:class => activity.activity_attributes.size > 1 ? "activity-complete" : "activity-incomplete"}
           = activity.activity_attributes.size
   - else
     - @activities.each do |activity|

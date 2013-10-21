@@ -2,9 +2,16 @@
   .row-fluid
     #basic-info.span3.well
       .row-fluid
-        %h3= @activity.name
-      %br
+        %h4= @activity.name
+      - if @activity.alternate_activity_names.size > 0
+        %h6
+          Also known as:
+        - @activity.alternate_activity_names.each do |alternate_name|
+          %h5
+            = alternate_name.name
       .row-fluid
+        %h5
+          Activity Type
         = @activity.activity_type.name
       %br
       .row-fluid
@@ -21,25 +28,25 @@
     .span8.well
       .row-fluid
         .span3
-          %h2 Anatomy
+          %h4 Anatomy
           %ul
             - @activity.body_parts.each do |body_part|
               %li
                 = body_part.name
         .span3
-          %h2 Equipment
+          %h4 Equipment
           %ul
             - @activity.implements.each do |implement|
               %li
                 = implement.name
         .span3
-          %h2 Metrics
+          %h4 Metrics
           %ul
             - @activity.metrics.each do |metric|
               %li
                 = metric.name
         .span3
-          %h2 Attributes
+          %h4 Attributes
           %ul
             - @activity.activity_attributes.each do |attribute|
               %li

@@ -30,7 +30,9 @@ class Admin::ProxiedPagesController < ApplicationController
 
   def get
     url_string = params[:url]
-    url = URI.parse(url_string)
+    escaped_url = URI::encode(url_string, /\s/)
+    Rails.logger.info("Fetching " + escaped_url)
+    url = URI.parse(escaped_url)
     host = url.host
     scheme = url.scheme
     proxied_doc =
