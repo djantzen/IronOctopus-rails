@@ -90,7 +90,7 @@ class ActivitiesController < ApplicationController
 
     Activity.transaction do
       activity.name = params[:activity][:name]
-      activity.creator = current_user
+      activity.creator = current_user if activity.creator.nil?
       activity.instructions = params[:activity][:instructions]
       activity.activity_type = ActivityType.find_by_name(params[:activity][:activity_type])
       activity.body_parts.clear
@@ -179,7 +179,7 @@ class ActivitiesController < ApplicationController
   end
 
   def new_or_edit
-    @body_parts = BodyPart.order(:region, :name)
+    @body_parts = BodyPart.order(:display_order, :name)
     @implements = Implement.order(:category, :name)
     @metrics = Metric.list
     @activity_types = ActivityType.order(:name)

@@ -110,8 +110,11 @@ class this.EmbeddedBrowserWindow
   init_keyword_links: (page_contents)=>
     $(page_contents).find(".keyword-match .add-keyword").click ->
       identifier = $(this).parent().attr("identifier")
-      Util.show_flash("Added " + $(this).parent().text(), 1)
-      $("#activity-builder-" + identifier).click()
+      unless $("#activity-builder-" + identifier).is(":checked")
+        Util.show_flash("Added " + $(this).parent().text(), 1)
+        $("#activity-builder-" + identifier).click()
+      else
+        Util.show_flash("Already added " + $(this).parent().text(), 1)
 
   init_video_links: (page_contents)=>
     $(page_contents).find(".video-wrapper button").click ->

@@ -7802,7 +7802,8 @@ CREATE TABLE body_parts (
     permalink text NOT NULL,
     created_at timestamp with time zone DEFAULT now() NOT NULL,
     updated_at timestamp with time zone DEFAULT now() NOT NULL,
-    image text DEFAULT 'image_not_found.jpg'::text NOT NULL
+    image text DEFAULT 'image_not_found.jpg'::text NOT NULL,
+    display_order integer DEFAULT 1 NOT NULL
 );
 
 
@@ -10581,3 +10582,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131009221658');
 INSERT INTO schema_migrations (version) VALUES ('20131009224310');
 
 INSERT INTO schema_migrations (version) VALUES ('20131016054104');
+
+INSERT INTO schema_migrations (version) VALUES ('20131021180406');

@@ -61,7 +61,7 @@ module Admin
     ACTIVITY_ATTRIBUTE_SYNONYMS = { "Pushing" => "Push", "Pulling" => "Pull" }
     ACTIVITY_ATTRIBUTES = ActivityAttribute.all.inject({}) do |hash, activity_attribute|
       skip_words = ["Utility", "Impact", "High", "Low", "Mechanics", "Force"]
-      split_keywords = activity_attribute.name.split(" ").reject { |name| skip_words.include? name }.join("|")
+      split_keywords = activity_attribute.name.split(" ").reject { |name| skip_words.include? name }.map{|name| name.sub(/ing/, '')}.join("|")
       keywords = split_keywords.blank? ? activity_attribute.name : activity_attribute.name + "|" + split_keywords
       hash[activity_attribute.name] = Regexp.new(/(#{PATTERN.gsub("KEYWORDS", keywords)})/i)
       hash
