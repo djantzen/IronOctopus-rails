@@ -3,7 +3,7 @@
     = render :partial => "admin/proxied_pages/embedded_browser"
   = form_for @body_part, :html => {:multipart => true} do |form|
     = form.label :name, "Name"
-    = form.text_field :name
+    = form.text_field :name, :class => "searchable-term"
     = form.label :name, "Display Order"
     = form.text_field :display_order
     = form.label :region, "Region"

@@ -4,9 +4,14 @@ class this.EmbeddedBrowser
 
     @windows = $.map(@embedded_browser_panel.find(".embedded-browser-window"), (value, index) ->
       new EmbeddedBrowserWindow($(value)))
+    @init_search_field()
     @init_search_button()
     @init_collapse_results_button()
     @embedded_browser_panel.find(".loading-indicator").hide()
+
+  init_search_field: () ->
+    default_term = $(".searchable-term:first").val()
+    $(".search-input:first").val(default_term)
 
   init_search_button: () ->
     button = @embedded_browser_panel.find(".browser-search-button")

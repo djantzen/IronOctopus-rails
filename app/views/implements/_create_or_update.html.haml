@@ -5,7 +5,7 @@
     #implement-basic-info.span3.well
       = form_for @implement, :html => {:multipart => true} do |form|
         = form.label :name, "Name"
-        = form.text_field :name, :class => "required is_implement_name_unique",
+        = form.text_field :name, :class => "required is_implement_name_unique searchable-term",
                           :minlength => @validations[:implement][:name][:minlength],
                           :maxlength => @validations[:implement][:name][:maxlength]
         = form.label :category, "Category"

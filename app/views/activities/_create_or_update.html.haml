@@ -8,7 +8,7 @@
       .row-fluid
         #activity-basic-info.span4.well
           = form.label :name, "Activity Name"
-          = form.text_field :name, :class => "required is_activity_name_unique input-xlarge",
+          = form.text_field :name, :class => "required is_activity_name_unique input-xlarge searchable-term",
                             :minlength => @validations[:activity][:name][:minlength],
                             :maxlength => @validations[:activity][:name][:maxlength]
           = form.fields_for :alternate_activity_names do |alternate_name|
