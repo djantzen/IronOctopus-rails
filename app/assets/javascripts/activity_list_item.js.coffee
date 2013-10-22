@@ -263,6 +263,7 @@ class this.WorkActivitySetListItem extends ActivitySetListItem
     if digital_to_seconds(rest_interval) > 0
       input = rest_timer_modal.find("input")
       input.val(rest_interval)
+      $("#rest-for").text("Rest for " + rest_interval)
       input.stopwatch("start")
       rest_timer_modal.modal()
       setTimeout((->

@@ -2,21 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46f8a447-b9ed-44ae-be1c-95fe4e4f3fab" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/routines/_rest_interval_timer.html.haml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/activity_list_item.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/activity_list_item.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/routines.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/routines.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/activities_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/activities_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/implements_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/implements_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/routines_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/routines_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/activity_sets/_form.html.haml" afterPath="$PROJECT_DIR$/app/views/activity_sets/_form.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/activity_sets/_group.html.haml" afterPath="$PROJECT_DIR$/app/views/activity_sets/_group.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/activity_sets/_performance_form.html.haml" afterPath="$PROJECT_DIR$/app/views/activity_sets/_performance_form.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/implements/index.html.haml" afterPath="$PROJECT_DIR$/app/views/implements/index.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/routines/_activity_list_item.html.haml" afterPath="$PROJECT_DIR$/app/views/routines/_activity_list_item.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/routines/perform.html.haml" afterPath="$PROJECT_DIR$/app/views/routines/perform.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/structure.sql" afterPath="$PROJECT_DIR$/db/structure.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/routines/_rest_interval_timer.html.haml" afterPath="$PROJECT_DIR$/app/views/routines/_rest_interval_timer.html.haml" />
     </list>
     <ignored path="IronOctopus-rails.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -61,7 +50,7 @@
       <file leaf-file-name="_performance_form.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/activity_sets/_performance_form.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="0" selection-start="52" selection-end="52" vertical-scroll-proportion="-0.625">
+            <state line="1" column="0" selection-start="52" selection-end="52" vertical-scroll-proportion="-0.3">
               <folding />
             </state>
           </provider>
@@ -70,7 +59,16 @@
       <file leaf-file-name="_rest_interval_timer.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/routines/_rest_interval_timer.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="10" selection-start="61" selection-end="61" vertical-scroll-proportion="-1.25">
+            <state line="3" column="9" selection-start="91" selection-end="91" vertical-scroll-proportion="-1.875">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routines.css.scss" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/routines.css.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="189" column="0" selection-start="2462" selection-end="2519" vertical-scroll-proportion="0.9478022">
               <folding />
             </state>
           </provider>
@@ -85,10 +83,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_list_item.js.coffee" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="activity_list_item.js.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/activity_list_item.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="269" column="0" selection-start="11217" selection-end="11217" vertical-scroll-proportion="0.72115386">
+            <state line="266" column="0" selection-start="11157" selection-end="11157" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -161,7 +159,6 @@
         <option value="$PROJECT_DIR$/app/controllers/implements_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/implements/index.html.haml" />
         <option value="$PROJECT_DIR$/lib/admin/page_handler.rb" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/routines.css.scss" />
         <option value="$PROJECT_DIR$/app/views/activity_sets/_form.html.haml" />
         <option value="$PROJECT_DIR$/db/migrate/20131022170208_add_rest_interval_to_activity_set_groups.rb" />
         <option value="/Rails IronOctopus-rails: migrate_development" />
@@ -170,9 +167,10 @@
         <option value="$PROJECT_DIR$/app/views/routines/perform.html.haml" />
         <option value="$PROJECT_DIR$/app/views/routines/_activity_list_item.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
-        <option value="$PROJECT_DIR$/app/views/routines/_rest_interval_timer.html.haml" />
         <option value="$PROJECT_DIR$/app/views/activity_sets/_performance_form.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/activity_list_item.js.coffee" />
+        <option value="$PROJECT_DIR$/app/views/routines/_rest_interval_timer.html.haml" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/routines.css.scss" />
       </list>
     </option>
   </component>
@@ -935,21 +933,21 @@
     <layout>
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38405037" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28275862" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16958359" sideWeight="0.7324239" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28275862" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18467996" sideWeight="0.97184825" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32843652" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5737931" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3293944" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2442323" sideWeight="0.21793103" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19010259" sideWeight="0.81532" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18467996" sideWeight="0.97184825" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32843652" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31374606" sideWeight="0.75703794" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5737931" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3293944" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1023,13 +1021,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/body_parts/_create_or_update.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="625" selection-end="670" vertical-scroll-proportion="0.4085603">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/work/_measure_selector.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -1058,13 +1049,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/routines/perform.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="120" selection-start="1459" selection-end="1459" vertical-scroll-proportion="-18.125">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/routines/_activity_list_item.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="114" selection-start="1015" selection-end="1015" vertical-scroll-proportion="-7.5">
@@ -1088,30 +1072,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/routines/_create_or_update.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="13" selection-start="21" selection-end="51" vertical-scroll-proportion="-0.625">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/activity_sets/_group.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="83" selection-start="545" selection-end="545" vertical-scroll-proportion="0.19536904">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/activity_sets/_performance_form.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="52" selection-end="52" vertical-scroll-proportion="-0.625">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/routines/_rest_interval_timer.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="10" selection-start="61" selection-end="61" vertical-scroll-proportion="-1.25">
           <folding />
         </state>
       </provider>
@@ -1130,9 +1093,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/routines/perform.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="120" selection-start="1459" selection-end="1459" vertical-scroll-proportion="-18.125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/activity_sets/_performance_form.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="52" selection-end="52" vertical-scroll-proportion="-0.3">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/routines/_create_or_update.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="13" selection-start="21" selection-end="51" vertical-scroll-proportion="-0.625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/activity_list_item.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="269" column="0" selection-start="11217" selection-end="11217" vertical-scroll-proportion="0.72115386">
+        <state line="266" column="0" selection-start="11157" selection-end="11157" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/routines/_rest_interval_timer.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="9" selection-start="91" selection-end="91" vertical-scroll-proportion="-1.875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/routines.css.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="189" column="0" selection-start="2462" selection-end="2519" vertical-scroll-proportion="0.9478022">
           <folding />
         </state>
       </provider>
