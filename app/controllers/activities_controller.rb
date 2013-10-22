@@ -157,6 +157,7 @@ class ActivitiesController < ApplicationController
         end
       end
       activity.alternate_activity_names.each {|name| name.delete}
+      activity.alternate_activity_names.clear
       (params[:activity][:alternate_activity_names_attributes] || {}).values.each do |hash|
         unless hash[:name].blank?
           alternate_activity_name = AlternateActivityName.new(:name => hash[:name])

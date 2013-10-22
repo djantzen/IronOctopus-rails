@@ -133,8 +133,8 @@ class RoutinesController < ApplicationController
 
       position = 0
       routine.activity_set_groups = (params[:activity_set_groups] || []).map do |activity_set_group_map|
-        activity_set_group = ActivitySetGroup.new(:sets => activity_set_group_map[:set_count],
-                                                  :name => activity_set_group_map[:group_name])
+        activity_set_group = ActivitySetGroup.new(:name => activity_set_group_map[:group_name], :sets => activity_set_group_map[:set_count],
+                                                  :rest_interval =>  Unit.convert_to_seconds(activity_set_group_map[:rest_interval], Unit::NONE))
 
         activity_set_group.activity_sets = (activity_set_group_map[:activity_sets] || []).map do |activity_set_map|
           position += 1
@@ -165,7 +165,7 @@ class RoutinesController < ApplicationController
                                :order => :name)
     @activity_types = ActivityType.order(:name)
     @implements = Implement.order(:category, :name)
-    @body_parts = BodyPart.order(:region, :name)
+    @body_parts = BodyPart.order(:display_order, :name)
     @activity_attributes = ActivityAttribute.order(:name)
     @activity = Activity.new
     @metrics = Metric.list

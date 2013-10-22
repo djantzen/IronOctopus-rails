@@ -1,15 +1,20 @@
 .container-fluid{ :class => (template ? "activity-set-group-template" : "activity-set-group")}
   .row.group-controls
-    .span3
-      %input.input-small{:name => "routine[activity_set_groups][][group_name]", :value => (template ? "" : group.name),
-                         :placeholder => "Group name"}
-    .span1.activity-set-set-count
-      %label.measure-label{:for => "routine[activity_set_groups][][set_count]"}
-        Sets
-      %input.measure-tiny.spinner.number.positive_number.required{:value => (template ? 1 : group.sets), :min => 1,
-                                                                  :name => "routine[activity_set_groups][][set_count]"}
-    .span1.handle.pull-right
-      %i.icon-resize-vertical
+    .span5
+      .row-fluid.handle
+        .span3.offset3
+          %input.activity-set-group-name.input-large{:name => "routine[activity_set_groups][][group_name]", :value => (template ? "" : group.name),
+                             :placeholder => "Group name"}
+      .row-fluid.measure-selector
+        .span3.offset2.activity-set-set-count
+          %label.measure-label{:for => "routine[activity_set_groups][][set_count]"}
+            Sets
+          %input.measure-tiny.spinner.number.positive_number.required{:value => (template ? 1 : group.sets), :min => 1,
+                                                                      :name => "routine[activity_set_groups][][set_count]"}
+        .span4.rest-interval
+          %label.measure-label{:for => "routine[activity_set_groups][][rest_interval]"}
+            Rest Interval
+          %input.measure.timespinner.is_duration_valid{:name => "routine[activity_set_groups][][rest_interval]", :value => (template ? "0:00" : Unit.seconds_to_digital(group.rest_interval))}
   .row.grouped-activity-sets
     - unless template
       - activity_sets.each do |activity_set|

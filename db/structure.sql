@@ -7598,7 +7598,8 @@ CREATE TABLE activity_set_groups (
     name text DEFAULT ''::text NOT NULL,
     routine_id integer NOT NULL,
     sets integer DEFAULT 1 NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL
+    created_at timestamp with time zone DEFAULT now() NOT NULL,
+    rest_interval integer DEFAULT 0 NOT NULL
 );
 
 
@@ -7607,6 +7608,13 @@ CREATE TABLE activity_set_groups (
 --
 
 COMMENT ON TABLE activity_set_groups IS 'Groups activity sets into common notions like supersets and circuits';
+
+
+--
+-- Name: COLUMN activity_set_groups.rest_interval; Type: COMMENT; Schema: application; Owner: -
+--
+
+COMMENT ON COLUMN activity_set_groups.rest_interval IS 'Seconds of rest between sets';
 
 
 --
@@ -10584,3 +10592,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131009224310');
 INSERT INTO schema_migrations (version) VALUES ('20131016054104');
 
 INSERT INTO schema_migrations (version) VALUES ('20131021180406');
+
+INSERT INTO schema_migrations (version) VALUES ('20131022170208');

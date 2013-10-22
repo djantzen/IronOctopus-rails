@@ -1,17 +1,15 @@
 .container-fluid{:class => "accordion-group #{defined?(template) && template ? "activity-set-form-template" : ""} "}
-  .accordion-heading.activity-display-name.row-fluid
+  .accordion-heading.activity-display-name.row-fluid.handle
     .span3.btn-group.activity-set-controls
       = render :partial => "shared/button", :locals => { :button_class => "delete-activity-set-button btn-small has-tooltip-left",
                                                          :icon => "icon-remove-sign", :tooltip => "Delete" }
-      = render :partial => "shared/button", :locals => { :button_class => "clone-activity-set-button btn-small has-tooltip-bottom",
-                                                         :icon => "icon-repeat", :tooltip => "Copy" }
+      -#= render :partial => "shared/button", :locals => { :button_class => "clone-activity-set-button btn-small has-tooltip-bottom",
+      -#                                                   :icon => "icon-repeat", :tooltip => "Copy" }
       = render :partial => "shared/button", :locals => { :button_class => "activity-set-comments-button btn-small has-tooltip-right",
                                                          :icon => "icon-comment", :tooltip => "Special Instructions" }
     .span5
       %a.accordion-toggle.activity-set-name{"data-parent" => "routine-activity-set-list", "data-toggle" => "collapse", :href => "##{template ? nil : activity_set.position}"}
         = activity.name
-    .span2.handle.pull-right
-      %i.icon-resize-vertical
   .row.activity-set-comments
     = render :partial => "activity_sets/create_or_update_comment",
              :locals => { :comments => template ? "" : activity_set.comments, :disabled => false }

@@ -15,7 +15,7 @@
               - activity_set_group.activity_sets.each do |activity_set|
                 %li.activity-set-form.work
                   = render :partial => "activity_sets/performance_form",
-                           :locals => { :activity => activity_set.activity,
+                           :locals => { :activity => activity_set.activity, :rest_interval => Unit.seconds_to_digital(activity_set_group.rest_interval),
                                         :activity_set => activity_set, :template => false }
       #activity-list-pane.tab-pane
         #activity-search-widget.well.well-small

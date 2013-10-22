@@ -3,13 +3,13 @@
     %a.has-tooltip-right{:rel => "tooltip", :title => "#{activity.activity_images.first ? image_tag(activity.activity_images.first.image_url(:thumb)): nil}" }
       = activity.name
     = render :partial => "activity_sets/performance_form",
-             :locals => { :activity => activity, :activity_set => nil, :template => true }
+             :locals => { :activity => activity, :activity_set => nil, :template => true, :rest_interval => "0:00" }
     = render :partial => "routines/faceting-controls", :locals => { :activity => activity }
 - else
   %li.activity.assigned.facet-included-activity{:tabindex => "2", :id => activity.name.to_identifier}
     %a.has-tooltip-right{:rel => "tooltip", :title => "#{activity.activity_images.first ? image_tag(activity.activity_images.first.image_url(:thumb)): nil}" }
       = activity.name
     = render :partial => "activity_sets/form",
-             :locals => { :activity => activity, :activity_set => nil, :template => true }
+             :locals => { :activity => activity, :activity_set => nil, :template => true, :rest_interval => "0:00" }
     = render :partial => "routines/faceting-controls", :locals => { :activity => activity }
 

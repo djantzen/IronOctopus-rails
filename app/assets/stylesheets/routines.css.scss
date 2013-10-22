@@ -32,14 +32,11 @@
   float: left;
 }
 
-.activity-set-set-count {
-  //@extend .activity-set-control-bar;
-}
-
 .handle {
   @extend .activity-set-control-bar;
   border: solid 1px #E5E5E5;
   cursor: move;
+  background-color: #D3D1E5;
 }
 .activity-set-name {
   float: left;

@@ -49,6 +49,7 @@ var ESC_KEY = 27;
 var DELETE_KEY = 46;
 var SPACE_KEY = 32;
 var digital_to_seconds = function(digital) {
+  digital = digital.trim();
   if (!digital.match(DIGITAL_FORMAT)) {
     return 0
   }

@@ -83,10 +83,18 @@ class this.ActivitySetGroup
   init_sorting: (activity_set_group_form) ->
     activity_set_group_form.find(".grouped-activity-sets").sortable({ handle: ".handle" }).disableSelection();
 
+  # Pressing enter in the group name causes the delete button to get fired
+  init_group_name: (activity_set_group_form) ->
+    activity_set_group_form.find(".activity-set-group-name").keypress (e)->
+      key = e.which
+      if (key == ENTER_KEY)
+        return false
+
   constructor: (@activity_set_group_form_template) ->
     this.init_spinners(@activity_set_group_form_template)
     this.init_finish_button(@activity_set_group_form_template)
     this.init_sorting(@activity_set_group_form_template)
+    this.init_group_name(@activity_set_group_form_template)
 
 class this.ActivitySetListItem
 
@@ -226,29 +234,41 @@ class this.ActivitySetListItem
 
 
 class this.WorkActivitySetListItem extends ActivitySetListItem
-  init_validator: (activity_set_form) ->
+  init_validator: (activity_set_form) =>
     form = activity_set_form.find("form.new_work")
     form.validate(
-      submitHandler: (form_element) ->
+      submitHandler: (form_element) =>
         form = $(form_element)
         if (form.valid())
           $.ajax(
             type: form.attr('method')
             url: form.attr('action')
             data: form.serialize()
-            success: () ->
+            success: () =>
               form.find(".collapse").collapse("hide")
               form.find(".performance-control-buttons").remove()
               form.find(".activity-set-done-label").show()
+              @show_rest_timer()
           )
           return true
         return false
     )
 
-#  init_spinners: (activity_set_form) ->
-#    # do nothing
-#  destroy_spinners: (activity_set_form) ->
-#    # do nothing
+  init_rest_timer: () ->
+    rest_timer_modal = $("#rest-interval-timer").find("input").stopwatch({format: "{M}:{ss}"})
+
+  show_rest_timer: () ->
+    rest_interval = @activity_set_form.find(".rest-interval").text().trim()
+    rest_timer_modal = $("#rest-interval-timer")
+    if digital_to_seconds(rest_interval) > 0
+      input = rest_timer_modal.find("input")
+      input.val(rest_interval)
+      input.stopwatch("start")
+      rest_timer_modal.modal()
+      setTimeout((->
+        input.stopwatch("stop")
+        input.stopwatch("reset")
+        rest_timer_modal.modal("hide")), digital_to_seconds(rest_interval) * 1000)
 
   init_instructions: (activity_set_form) ->
     activity_set_form.find(".show-instructions").click () ->
@@ -265,3 +285,4 @@ class this.WorkActivitySetListItem extends ActivitySetListItem
     id = Util.generate_random_id()
     @activity_set_form.find("a.accordion-toggle").attr("href", "#" + id)
     @activity_set_form.find("div.accordion-body").attr("id", id)
+    @init_rest_timer()
