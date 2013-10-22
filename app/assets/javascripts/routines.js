@@ -218,6 +218,14 @@ $(document).ready(function() {
     $("#modal-import-routine").modal();
   });
 
+  // Disable enter key since it somehow calls delete on the first activity set
+  $("#new_routine input").keypress(function(e) {
+    key = e.which;
+    if (key == ENTER_KEY) {
+      return false;
+    }
+  })
+
   $("#import-routine-submit-button").click(function() {
     var routine = $("#routines-for-client-dropdown").val();
     var url = "/users/" + $("#client-for-routines-dropdown").val() +

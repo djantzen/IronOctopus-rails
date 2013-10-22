@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="46f8a447-b9ed-44ae-be1c-95fe4e4f3fab" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/activity_list_item.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/activity_list_item.js.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/routines.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/routines.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/routines.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/routines.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/routines/_rest_interval_timer.html.haml" afterPath="$PROJECT_DIR$/app/views/routines/_rest_interval_timer.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/routines/_create_or_update.html.haml" afterPath="$PROJECT_DIR$/app/views/routines/_create_or_update.html.haml" />
     </list>
     <ignored path="IronOctopus-rails.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -50,7 +50,7 @@
       <file leaf-file-name="_performance_form.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/activity_sets/_performance_form.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="0" selection-start="52" selection-end="52" vertical-scroll-proportion="-0.3">
+            <state line="12" column="45" selection-start="647" selection-end="647" vertical-scroll-proportion="-7.5">
               <folding />
             </state>
           </provider>
@@ -65,10 +65,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routines.css.scss" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="routines.css.scss" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/routines.css.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="189" column="0" selection-start="2462" selection-end="2519" vertical-scroll-proportion="0.9478022">
+            <state line="159" column="27" selection-start="2102" selection-end="2102" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -77,7 +77,7 @@
       <file leaf-file-name="perform.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/routines/perform.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="120" selection-start="1459" selection-end="1459" vertical-scroll-proportion="-18.125">
+            <state line="12" column="0" selection-start="359" selection-end="359" vertical-scroll-proportion="-7.5">
               <folding />
             </state>
           </provider>
@@ -86,7 +86,7 @@
       <file leaf-file-name="activity_list_item.js.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/activity_list_item.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="266" column="0" selection-start="11157" selection-end="11157" vertical-scroll-proportion="0.0">
+            <state line="91" column="0" selection-start="3765" selection-end="3814" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -95,16 +95,25 @@
       <file leaf-file-name="routines.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/routines.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="203" column="5" selection-start="7436" selection-end="7436" vertical-scroll-proportion="-4.3846154">
+            <state line="29" column="28" selection-start="1160" selection-end="1160" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_create_or_update.html.haml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="mobile_show.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/users/mobile_show.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="0" selection-start="296" selection-end="296" vertical-scroll-proportion="-7.5">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_create_or_update.html.haml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/routines/_create_or_update.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="13" selection-start="21" selection-end="51" vertical-scroll-proportion="-0.625">
+            <state line="141" column="34" selection-start="7929" selection-end="7929" vertical-scroll-proportion="0.89346594">
               <folding />
             </state>
           </provider>
@@ -114,15 +123,6 @@
         <entry file="file://$PROJECT_DIR$/app/views/routines/_activity_list_item.html.haml">
           <provider selected="true" editor-type-id="text-editor">
             <state line="12" column="114" selection-start="1015" selection-end="1015" vertical-scroll-proportion="-7.5">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="routines_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/routines_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="5" selection-start="1485" selection-end="1485" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -155,8 +155,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/assets/javascripts/admin/proxied_pages.js.coffee" />
-        <option value="$PROJECT_DIR$/app/controllers/implements_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/implements/index.html.haml" />
         <option value="$PROJECT_DIR$/lib/admin/page_handler.rb" />
         <option value="$PROJECT_DIR$/app/views/activity_sets/_form.html.haml" />
@@ -164,13 +162,15 @@
         <option value="/Rails IronOctopus-rails: migrate_development" />
         <option value="$PROJECT_DIR$/app/controllers/routines_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/activity_sets/_group.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/routines/perform.html.haml" />
         <option value="$PROJECT_DIR$/app/views/routines/_activity_list_item.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
         <option value="$PROJECT_DIR$/app/views/activity_sets/_performance_form.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/activity_list_item.js.coffee" />
         <option value="$PROJECT_DIR$/app/views/routines/_rest_interval_timer.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/routines.css.scss" />
+        <option value="$PROJECT_DIR$/app/views/routines/perform.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/routines/_create_or_update.html.haml" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/routines.js" />
       </list>
     </option>
   </component>
@@ -312,7 +312,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="routines" />
+              <option name="myItemId" value="users" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1021,20 +1021,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/work/_measure_selector.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/work/index.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="34" selection-start="249" selection-end="249" vertical-scroll-proportion="0.2626459">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/activity_sets/_form.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="45" selection-start="1693" selection-end="1693" vertical-scroll-proportion="-12.5">
@@ -1086,41 +1072,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/routines.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="203" column="5" selection-start="7436" selection-end="7436" vertical-scroll-proportion="-4.3846154">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/routines/perform.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="120" selection-start="1459" selection-end="1459" vertical-scroll-proportion="-18.125">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/activity_sets/_performance_form.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="52" selection-end="52" vertical-scroll-proportion="-0.3">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/routines/_create_or_update.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="13" selection-start="21" selection-end="51" vertical-scroll-proportion="-0.625">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/activity_list_item.js.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="266" column="0" selection-start="11157" selection-end="11157" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/routines/_rest_interval_timer.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="9" selection-start="91" selection-end="91" vertical-scroll-proportion="-1.875">
@@ -1130,7 +1081,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/routines.css.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="189" column="0" selection-start="2462" selection-end="2519" vertical-scroll-proportion="0.9478022">
+        <state line="159" column="27" selection-start="2102" selection-end="2102" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/routines/perform.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="0" selection-start="359" selection-end="359" vertical-scroll-proportion="-7.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/activity_sets/_performance_form.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="45" selection-start="647" selection-end="647" vertical-scroll-proportion="-7.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/activity_list_item.js.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="91" column="0" selection-start="3765" selection-end="3814" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/routines.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="28" selection-start="1160" selection-end="1160" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/routines_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="5" selection-start="1485" selection-end="1485" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/users/mobile_show.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="0" selection-start="296" selection-end="296" vertical-scroll-proportion="-7.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/routines/_create_or_update.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="141" column="34" selection-start="7929" selection-end="7929" vertical-scroll-proportion="0.89346594">
           <folding />
         </state>
       </provider>
