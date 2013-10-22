@@ -1,4 +1,12 @@
-.container
+.container-fluid#mobile-user-show
+  - if @user.is_trainer?
+    .row
+      .span3.well
+        %h3
+          My Clients
+        - @user.clients.order(:first_name, :last_name).each do |client|
+          .client-record
+            = link_to(client.full_name, user_path(client), :class => 'btn btn-primary')
   .row
     .span3.well
       %h3

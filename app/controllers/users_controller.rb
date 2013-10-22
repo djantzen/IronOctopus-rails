@@ -58,12 +58,12 @@ class UsersController < ApplicationController
       city_name, state_name = params[:city].split(/,/)
       city = City.find_by_name_and_state(city_name, state_name)
       @user.city = city
-      # Carrierwave works best(only?) with update_attributes so fake our hash
+      # Carrierwave works best(only?) with assign_attributes so fake our hash
       image_params = params
       image_params[:user].delete(:new_password)
       image_params[:user].delete(:confirm_password)
       image_params[:user].delete(:city)
-      @user.update_attributes(image_params[:user])
+      @user.assign_attributes(image_params[:user])
       @user.save
     end
     @flash = "Settings Updated"
@@ -85,12 +85,13 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by_login(params[:id])
     authorize! :read, @user
-    @routines = @user.routines
+    @routines = @user.routines.order("created_at desc")
     @todays_routines = @user.todays_routines
     @programs = @user.programs
     @program_select =  @programs.map { |p| [p.name, p.permalink] }
     respond_with do |format|
       format.html { render :html => @user, :template => mobile_device? ? "users/mobile_show" : "users/show" }
+      #format.html { render :html => @user, :template => "users/mobile_show" } # here for development
     end
   end
 
