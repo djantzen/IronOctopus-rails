@@ -48,8 +48,8 @@
                       - @activity_attributes.each do |attribute|
                         %li
                           = check_box_tag "activity[activity_attributes][]", attribute.name,
-                                          @activity.activity_attributes.include?(attribute) ? true : false,
-                                          :id => "activity-builder-#{attribute.name.to_identifier}"
+                                          @activity.activity_attributes.include?(attribute) ? true : false, :class => "has-tooltip-right",
+                                          :id => "activity-builder-#{attribute.name.to_identifier}", :rel => "tooltip", :title => attribute.definition
                           = h attribute.name
                 .span4
                   %h4 Anatomy Involved

@@ -18,6 +18,11 @@ class Ability
       can :read, BodyPart
       can :create, BodyPart
       can :update, BodyPart
+
+      # activity attribute
+      can :read, ActivityAttribute
+      can :create, ActivityAttribute
+      can :update, ActivityAttribute
     else
 
       # users

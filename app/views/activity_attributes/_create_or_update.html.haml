@@ -1,0 +1,9 @@
+.container.well
+  = form_for(@activity_attribute) do |form|
+    .field
+      = form.label :name
+      = form.text_field :name
+    .field
+      = form.label :definition
+      = form.text_area :definition
+    = submit_tag "Save", :class => "btn btn-primary"

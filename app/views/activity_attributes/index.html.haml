@@ -1,0 +1,4 @@
+.container
+  - @activity_attributes.each do |attribute|
+    .row
+      = link_to(attribute.name, attribute)

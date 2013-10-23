@@ -7520,7 +7520,8 @@ CREATE TABLE activity_attributes (
     activity_attribute_id integer NOT NULL,
     name text NOT NULL,
     permalink text NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL
+    created_at timestamp with time zone DEFAULT now() NOT NULL,
+    definition text DEFAULT ''::text NOT NULL
 );
 
 
@@ -10594,3 +10595,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131016054104');
 INSERT INTO schema_migrations (version) VALUES ('20131021180406');
 
 INSERT INTO schema_migrations (version) VALUES ('20131022170208');
+
+INSERT INTO schema_migrations (version) VALUES ('20131023222523');

@@ -1,0 +1,9 @@
+.container-fluid
+  .row-fluid
+    .span4.well
+      %h3
+        = @activity_attribute.name
+      .span2
+        = link_to("Edit", edit_activity_attribute_path(@activity_attribute), :class => "btn btn-primary")
+    .span6.well
+      = @activity_attribute.definition
