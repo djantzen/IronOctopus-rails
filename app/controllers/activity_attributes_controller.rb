@@ -1,13 +1,14 @@
 class ActivityAttributesController < ApplicationController
+  before_filter :authenticate_user
 
   def index
-    authorize! :read, current_user
+    authorize! :read, ActivityAttribute.new, current_user
     @activity_attributes = ActivityAttribute.order(:name).all
   end
 
   def show
-    authorize! :read, current_user
     @activity_attribute = ActivityAttribute.find_by_permalink(params[:id])
+    authorize! :read, @activity_attribute, current_user
   end
 
   def new

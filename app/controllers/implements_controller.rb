@@ -4,7 +4,7 @@ class ImplementsController < ApplicationController
   respond_to :json, :html
 
   def index
-    authorize! :create, Implement
+    authorize! :read, Implement
     @implements = Implement.order(:name).all
   end
   

@@ -10,17 +10,14 @@ class Ability
       can :read, Feedback
 
       # implements
-      can :read, Implement
       can :create, Implement
       can :update, Implement
 
       # body part
-      can :read, BodyPart
       can :create, BodyPart
       can :update, BodyPart
 
       # activity attribute
-      can :read, ActivityAttribute
       can :create, ActivityAttribute
       can :update, ActivityAttribute
     else
@@ -49,10 +46,13 @@ class Ability
       end
 
       # activities
-      #can :read, Activity, :creator => user.id
+      can :read, BodyPart
+      can :read, Activity
+      can :read, Implement
       #can :read, Activity, :visible_to_all => true
       can :update, Activity, :creator_id => user.id
 
+      can :read, ActivityAttribute
     end
 
     # Define abilities for the passed in user here. For example:

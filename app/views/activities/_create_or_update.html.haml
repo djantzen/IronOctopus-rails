@@ -46,11 +46,11 @@
                     %h4 Attributes
                     %ul#available-activity-attribute-list.unstyled
                       - @activity_attributes.each do |attribute|
-                        %li
+                        %li{:class => "has-tooltip-right", :rel => "tooltip", :title => attribute.definition}
                           = check_box_tag "activity[activity_attributes][]", attribute.name,
-                                          @activity.activity_attributes.include?(attribute) ? true : false, :class => "has-tooltip-right",
-                                          :id => "activity-builder-#{attribute.name.to_identifier}", :rel => "tooltip", :title => attribute.definition
-                          = h attribute.name
+                                          @activity.activity_attributes.include?(attribute) ? true : false,
+                                          :id => "activity-builder-#{attribute.name.to_identifier}"
+                          = h link_to(attribute.name, attribute)
                 .span4
                   %h4 Anatomy Involved
                   %ul#available-body-part-list.unstyled

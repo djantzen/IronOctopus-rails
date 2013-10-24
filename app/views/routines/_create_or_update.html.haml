@@ -73,7 +73,7 @@
                   .accordion-inner
                     - @activity_attributes.each do |attribute|
                       .facet
-                        %a.has-tooltip-right{:id => "facet-#{attribute.name.to_identifier}", :rel => "tooltip", :title => attribute.definition}
+                        %a.has-tooltip-right{:id => "facet-#{attribute.name.to_identifier}", :rel => "tooltip", :title => attribute.definition, "data-delay" => 500, "data-container"=>"body"}
                           = attribute.name
                           %span.facet-count
                         %span.faceting-control

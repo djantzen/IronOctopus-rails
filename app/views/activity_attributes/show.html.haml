@@ -3,7 +3,10 @@
     .span4.well
       %h3
         = @activity_attribute.name
-      .span2
-        = link_to("Edit", edit_activity_attribute_path(@activity_attribute), :class => "btn btn-primary")
+      .span3
+        = link_to("All Attributes", activity_attributes_path)
+      - if can? :update, @activity_attribute
+        .span2
+          = link_to("Edit", edit_activity_attribute_path(@activity_attribute), :class => "btn btn-primary")
     .span6.well
       = @activity_attribute.definition
