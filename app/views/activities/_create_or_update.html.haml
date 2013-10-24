@@ -50,7 +50,7 @@
                           = check_box_tag "activity[activity_attributes][]", attribute.name,
                                           @activity.activity_attributes.include?(attribute) ? true : false,
                                           :id => "activity-builder-#{attribute.name.to_identifier}"
-                          = h link_to(attribute.name, attribute)
+                          = h link_to(attribute.name, attribute, :target => via_ajax ? "blank" : nil)
                 .span4
                   %h4 Anatomy Involved
                   %ul#available-body-part-list.unstyled
@@ -65,7 +65,8 @@
                             %li.body-part-entry
                               = check_box_tag "activity[body_parts][]", body_part.name, @activity.body_parts.include?(body_part) ? true : false,
                                               { :class => "body-part", :id => "activity-builder-#{body_part.name.to_identifier}" }
-                              = link_to body_part.name, body_part, { :class=>"has-tooltip-right", :rel => "tooltip", :title => "#{image_tag(body_part.image_url(:thumb))}" } # image tag must be in quotes
+                              = link_to body_part.name, body_part, { :class=>"has-tooltip-right", :target => via_ajax ? "blank" : nil,
+                                                                     :rel => "tooltip", :title => "#{image_tag(body_part.image_url(:thumb))}" } # image tag must be in quotes
 
                 .span5
                   %h4 Equipment Used
@@ -79,7 +80,8 @@
                             = check_box_tag "activity[implements][]", implement.name,
                                             @activity.implements.include?(implement) ? true : false,
                                             :id => "activity-builder-#{implement.name.to_identifier}"
-                            = link_to implement.name, implement, { :class=>"has-tooltip-right", :rel => "tooltip", :title => "#{image_tag(implement.image_url(:thumb))}" } # image tag must be in quotes
+                            = link_to implement.name, implement, { :class=>"has-tooltip-right", :target => via_ajax ? "blank" : nil,
+                                                                   :rel => "tooltip", :title => "#{image_tag(implement.image_url(:thumb))}" } # image tag must be in quotes
 
 
             #activity-media-pane.tab-pane

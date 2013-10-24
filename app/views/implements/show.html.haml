@@ -1,14 +1,14 @@
-%h2= @implement.name
-.container
-  .row
-    .span2.table-column-header
-      Category
-  .row
-    .span2
-      = @implement.category
-    - if can? :update, @implement
-      .span2
-        = link_to("Edit", edit_implement_path(@implement), :class => "btn btn-primary")
-  .row
-    = image_tag @implement.image_url(:thumb)
-  = link_to("All Implements", implements_path)
+.container-fluid
+  .row-fluid
+    .span4.well
+      %h3
+        = @implement.category
+      %h4
+        = @implement.name
+      .span4
+        = link_to("All Implements", implements_path)
+      - if can? :update, @implement
+        .span2
+          = link_to("Edit", edit_implement_path(@implement), :class => "btn btn-primary")
+    .span6.well
+      = image_tag @implement.image_url(:thumb)
