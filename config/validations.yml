@@ -10,7 +10,7 @@ activity:
     minlength: 4
     maxlength: 64
   instructions:
-    minlength: 4
+    minlength: 0
     maxlength: 2048
 implement:
   name:

@@ -91,7 +91,7 @@ class ActivitiesController < ApplicationController
     Activity.transaction do
       activity.name = params[:activity][:name]
       activity.creator = current_user if activity.creator.nil?
-      activity.instructions = params[:activity][:instructions]
+      activity.instructions = params[:activity][:instructions] if params[:activity][:instructions]
       activity.activity_type = ActivityType.find_by_name(params[:activity][:activity_type])
       activity.body_parts.clear
       (params[:activity][:body_parts] || []).each do |name|

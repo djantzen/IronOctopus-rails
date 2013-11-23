@@ -1,0 +1,26 @@
+.container-fluid
+  %h3
+    Create a custom activity
+  #mini-create-activity-form.row-fluid
+    = form_for @activity, :remote => true, html: {multipart: true} do |form|
+      - # Add a row here because the Rails secret token screws up alignment
+      .row-fluid
+        #activity-basic-info.span12.well
+          = form.label :name, "Activity Name"
+          = form.text_field :name, :class => "required is_activity_name_unique input-xlarge searchable-term",
+                            :minlength => @validations[:activity][:name][:minlength],
+                            :maxlength => @validations[:activity][:name][:maxlength]
+          = form.label :activity_type, "Activity Type"
+          = form.select :activity_type, @activity_types.map { |activity_type | [activity_type.name, activity_type.name] },
+                        :selected => @activity.activity_type.nil? ? nil : @activity.activity_type.name
+          %h4 This activity is measured by:
+          %ul#available-metric-list.unstyled
+            - @metrics.each do |metric|
+              %li
+                = check_box_tag "activity[metrics][]", metric.name, @activity.metrics.include?(metric) ? true : false
+                = h metric.name
+          .row-fluid
+            .span3.btn-group
+              = render :partial => "shared/button", :locals => { :button_id => "cancel-activity-builder-button",
+                :message => "Cancel" }
+              = submit_tag "Save Activity", :id => "save-activity-button", :class => "btn btn-primary"

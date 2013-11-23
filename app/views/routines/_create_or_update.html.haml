@@ -3,7 +3,7 @@
     = render :partial => "routines/import_routine", :locals => { :via_ajax => true }
 #modal-activity-builder.modal.hide.fade
   .modal-body
-    = render :partial => "activities/create_or_update", :locals => { :via_ajax => true }
+    = render :partial => "activities/mini_create", :locals => {  }
 #routine-builder-panel.container-fluid
   = render :partial => "activity_sets/group", :locals => { :template => true }
   #search-browse-choose-panel.row
