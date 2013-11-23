@@ -66,13 +66,14 @@ class this.EmbeddedBrowserWindow
     button.attr("disabled", true)
     button.click =>
       selected = window.getSelection().toString()
-      instructions = $("#activity-instructions").text()
+      # binding to the form_tag_generated id, underscores not dashes
+      instructions = $("#activity_instructions").text()
       if instructions == "None"
         Util.show_flash("Added text to instructions")
-        $("#activity-instructions").text(selected)
+        $("#activity_instructions").text(selected)
       else
         Util.show_flash("Appended text to instructions")
-        $("#activity-instructions").text(instructions + "\n" + selected)
+        $("#activity_instructions").text(instructions + "\n" + selected)
 
   render: () =>
     page = @pages[@pages.length - 1]

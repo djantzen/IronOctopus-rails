@@ -29,7 +29,7 @@ Feature: Create a new routine
     When I click "#benchpress"
     Then I should see "Added Bench Press to the routine"
     And there should be 1 activity sets
-    When I click "#routine-activity-set-list .activity-set-form:nth(1) .clone-activity-set-button"
+    When I click "#benchpress"
     Then there should be 2 activity sets
     When I click "#routine-activity-set-list .activity-set-form:nth(2) .delete-activity-set-button"
     Then there should be 1 activity sets
@@ -99,21 +99,21 @@ Feature: Create a new routine
     When I fill in "activity-search-box" with "Dumbbell"
     Then there should be 2 activities in the list
 
-  @javascript
-  Scenario: When I copy activity sets the metrics and units are copied to the new set
-    Given I log in as "bob_the_trainer" with "password"
-    And I am on the /users/sally_the_client/routines/new page
-    When I click "#benchpress"
-    Then I should see "Added Bench Press to the routine"
-    And there should be 1 activity sets
-    Given I find the 1st activity set
-    When I fill in minimum Resistance with "100"
-    And I select "Kilograms" from "routine_activity_set_groups__activity_sets__resistance_unit"
-    When I click "#routine-activity-set-list .activity-set-form:nth(1) .clone-activity-set-button"
-    Then there should be 2 activity sets
-    Given I find the 2nd activity set
-    Then minimum Resistance should be "100"
-    And Resistance units should be "Kilograms"
+#  @javascript
+#  Scenario: When I copy activity sets the metrics and units are copied to the new set
+#    Given I log in as "bob_the_trainer" with "password"
+#    And I am on the /users/sally_the_client/routines/new page
+#    When I click "#benchpress"
+#    Then I should see "Added Bench Press to the routine"
+#    And there should be 1 activity sets
+#    Given I find the 1st activity set
+#    When I fill in minimum Resistance with "100"
+#    And I select "Kilograms" from "routine_activity_set_groups__activity_sets__resistance_unit"
+#    When I click "#routine-activity-set-list .activity-set-form:nth(1) .clone-activity-set-button"
+#    Then there should be 2 activity sets
+#    Given I find the 2nd activity set
+#    Then minimum Resistance should be "100"
+#    And Resistance units should be "Kilograms"
 
   @javascript
   Scenario: When I choose a distance in kilometers it is stored in meters and returned in kilometers
@@ -153,10 +153,7 @@ Feature: Create a new routine
     Then "#modal-activity-builder" should not be visible
     When I click "#new-activity-button"
     And "#modal-activity-builder" should be visible
-    And I click "#activity-builder-trapezius"
-    And "#modal-activity-builder" should not be clear
     And I fill in "Activity Name" with "Triple Ab Blaster"
-    And I fill in "Instructions" with "Blast yer abs three times!"
     And I press "Save Activity"
     Then within "#activity-list" I should see "Triple Ab Blaster"
     And "#modal-activity-builder" should not be visible

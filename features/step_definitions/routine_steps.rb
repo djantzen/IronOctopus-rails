@@ -32,6 +32,9 @@ When /^"([^"]*)" should be clear$/ do |form|
     all('input[type=checkbox]').each do |checkbox|
       checkbox.should_not be_checked
     end
+    all('input[type=text]').each do |input|
+      input.value.should == ""
+    end
   end
 end
 

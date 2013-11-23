@@ -30,6 +30,7 @@ $(document).ready(function() {
   $.validator.addMethod("valid_activity_video_link", valid_activity_video_link, "Should look like http://www.youtube.com/watch?v=k3Mvyt4pBQQ");
 
   $("#create-update-activity-form form").validate();
+  $("#mini-create-activity-form form").validate();
 
   // Deselect regions on page load with body parts deselected
   $("input.body-part:not(:checked)").each(function() {

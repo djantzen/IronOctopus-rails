@@ -7,7 +7,7 @@
       .row-fluid
         #activity-basic-info.span12.well
           = form.label :name, "Activity Name"
-          = form.text_field :name, :class => "required is_activity_name_unique input-xlarge searchable-term",
+          = form.text_field :name, :class => "required is_activity_name_unique input-xlarge",
                             :minlength => @validations[:activity][:name][:minlength],
                             :maxlength => @validations[:activity][:name][:maxlength]
           = form.label :activity_type, "Activity Type"

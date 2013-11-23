@@ -208,10 +208,8 @@ $(document).ready(function() {
   $("#applied-filters-label").hide();
 
   $("#new-activity-button").click(function() {
-    var container = $(this).parents("#routine-builder-panel");
-    var modal = container.find(".modal-activity-select");
-    modal.modal("hide");
     $("#modal-activity-builder").modal();
+    $("#modal-activity-builder input[type='text']").focus(); // not working boo
   });
 
   $("#import-routine-button").click(function() {
@@ -268,9 +266,9 @@ $(document).ready(function() {
   $("#client-for-routines-dropdown").change();
 
   var clear_activity_form = function() {
-    $("#create-update-activity-form form")[0].reset();
+    $("#mini-create-activity-form form")[0].reset();
     // reset doesn't clear nested checkboxes...
-    $("#create-update-activity-form form:nth(0)").find("input:checkbox").removeAttr("checked");
+    $("#mini-create-activity-form form:nth(0)").find("input:checkbox").removeAttr("checked");
   }
 
   $("#modal-activity-builder form").bind('ajax:complete', function() {
