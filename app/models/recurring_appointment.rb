@@ -1,5 +1,5 @@
 class RecurringAppointment < ActiveRecord::Base
-  require Rails.root.to_s + '/lib/postgres_range_support'
+  require "#{Rails.root.to_s}/lib/postgres_range_support"
 
   belongs_to :trainer, :class_name => "User", :foreign_key => :trainer_id
   belongs_to :client, :class_name => "User", :foreign_key => :client_id

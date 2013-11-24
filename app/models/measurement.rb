@@ -1,5 +1,5 @@
 class Measurement < ActiveRecord::Base
-  require Rails.root.to_s + '/lib/postgres_range_support'
+  require "#{Rails.root.to_s}/lib/postgres_range_support"
 
   has_many :routines, :through => :activity_sets
 
