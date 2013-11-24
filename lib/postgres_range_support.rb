@@ -83,3 +83,39 @@ module ActiveRecord
 
   end
 end
+
+class RangeSupport
+  def self.string_to_range(val)
+    if val =~ /\[(\d+),(\d+)\]/
+      ($1.to_i .. $2.to_i)
+    elsif val =~ /\[(\d+),(\d+)\)/
+      ($1.to_i .. $2.to_i - 1)
+    elsif val =~ /\[(\d+\.\d+),(\d+\.\d+)\]/
+      ($1.to_f .. $2.to_f)
+    elsif val =~ /\[(\d+\.\d+),(\d+\.\d+)\)/
+      ($1.to_f .. $2.to_f - 1)
+    elsif val =~ /,/
+      begin
+        start_time = DateTime.parse(val.split(",")[0])
+        end_time = DateTime.parse(val.split(",")[1])
+        (start_time .. end_time)
+      rescue Exception => e
+      end
+    elsif val =~ /^(\d+)$/
+      ($1.to_i .. $1.to_i)
+    elsif val =~ /(\d+.\d+)/
+      ($1.to_f .. $1.to_f)
+    elsif val.kind_of?(Integer)
+      (val .. val)
+    end
+  end
+
+  def self.range_to_string(object)
+    from = object.begin.respond_to?(:infinite?) && object.begin.infinite? ? '' : object.begin
+    to   = object.end.respond_to?(:infinite?) && object.end.infinite? ? '' : object.end
+    v = "[#{from},#{to}#{object.exclude_end? ? ')' : ']'}"
+    puts v
+    v
+  end
+
+end

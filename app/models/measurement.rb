@@ -1,5 +1,6 @@
 class Measurement < ActiveRecord::Base
-  require 'postgres_range_support'
+  require Rails.root.to_s + '/lib/postgres_range_support'
+
   has_many :routines, :through => :activity_sets
 
   DEFAULTS = { :cadence => 0.0..0.0, :calories => 0..0, :distance => 0.0..0.0,
@@ -29,7 +30,7 @@ class Measurement < ActiveRecord::Base
     # to: resistance @> ['0.0','0.0']
     where = ''
     measurement_key.each_with_index do |tuple, idx|
-      where += "#{tuple[0]} = '#{Measurement.range_to_string(tuple[1])}'"
+      where += "#{tuple[0]} = '#{RangeSupport.range_to_string(tuple[1])}'"
       where += ' and ' unless idx == measurement_key.length - 1
     end
     measurement = Measurement.where(where).first
@@ -83,43 +84,15 @@ class Measurement < ActiveRecord::Base
     metric_map
   end
 
-  private
-
-  def self.string_to_range(val)
-    if val =~ /\[(\d+),(\d+)\]/
-      ($1.to_i .. $2.to_i)
-    elsif val =~ /\[(\d+),(\d+)\)/
-      ($1.to_i .. $2.to_i - 1)
-    elsif val =~ /\[(\d+\.\d+),(\d+\.\d+)\]/
-      ($1.to_f .. $2.to_f)
-    elsif val =~ /\[(\d+\.\d+),(\d+\.\d+)\)/
-      ($1.to_f .. $2.to_f - 1)
-    elsif val =~ /^(\d+)$/
-      ($1.to_i .. $1.to_i)
-    elsif val =~ /(\d+.\d+)/
-      ($1.to_f .. $1.to_f)
-    elsif val.kind_of?(Integer)
-      (val .. val)
-    end
-  end
-
-  def self.range_to_string(object)
-    from = object.begin.respond_to?(:infinite?) && object.begin.infinite? ? '' : object.begin
-    to   = object.end.respond_to?(:infinite?) && object.end.infinite? ? '' : object.end
-    "[#{from},#{to}#{object.exclude_end? ? ')' : ']'}"
-  end
-
   def from_ranges
     metrics.each do |metric|
-      s = Measurement.range_to_string(self[metric])
-      self[metric] = s
+      self[metric] = RangeSupport.range_to_string(self[metric])
     end
   end
 
   def to_ranges
     metrics.each do |metric|
-      r = Measurement.string_to_range(self[metric])
-      self[metric] = r
+      self[metric] = RangeSupport.string_to_range(self[metric])
     end
   end
 
