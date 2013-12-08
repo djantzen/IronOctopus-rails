@@ -73,6 +73,7 @@ IronOctopus::Application.routes.draw do
     resources :programs
     resources :licenses
     resources :invitations
+    resource :day_planner
     resource :profile
   end
 

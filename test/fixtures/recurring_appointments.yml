@@ -4,3 +4,14 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
+sally_on_tuesdays_at_four_pm:
+  trainer: bob_the_trainer
+  client: sally_the_client
+  day_of_week: Tuesday
+  time_slot: "[16:00:00,17:00:00)"
+
+sally_on_thursdays_at_ten_am:
+  trainer: bob_the_trainer
+  client: sally_the_client
+  day_of_week: Thursday
+  time_slot: "[10:00:00,11:00:00)"

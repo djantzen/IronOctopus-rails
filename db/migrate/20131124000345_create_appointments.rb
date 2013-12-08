@@ -4,17 +4,20 @@ class CreateAppointments < ActiveRecord::Migration
       create table application.appointments(
         trainer_id integer not null references application.users(user_id) deferrable,
         client_id integer not null references application.users(user_id) deferrable,
-        time_slot tstzrange not null,
+        date_time_slot tstzrange not null,
+        confirmation_status text not null default 'Unconfirmed'
+          check(confirmation_status in ('Confirmed', 'Pending',  'Rejected', 'Unconfirmed')),
         created_at timestamptz not null default now(),
-        primary key (trainer_id, client_id, time_slot)
+        exclude using gist (trainer_id with =, date_time_slot WITH &&),
+        exclude using gist (client_id with =, date_time_slot WITH &&),
+        primary key (trainer_id, date_time_slot)
       );
 
       comment on table application.appointments is 'Records the time range that a trainer is scheduled to meet with a client';
+      comment on column application.appointments.confirmation_status is 'A new appointment is Unconfirmed; when an email is sent it is Pending; it can be Confirmed or Rejected';
 
       grant select on application.appointments to reader;
       grant insert, update, delete on application.appointments to writer;
-
-      create unique index on application.appointments (time_slot);
     EOS
   end
 

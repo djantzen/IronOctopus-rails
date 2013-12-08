@@ -41,7 +41,9 @@ class User < ActiveRecord::Base
   has_many :activities_performed, :class_name => "Activity", :through => :work,
            :source => :activity, :uniq => true, :order => :name
 
+  # These are mapped from the trainer perspective only for use in the day planner
   has_many :appointments, :foreign_key => :trainer_id
+  has_many :upcoming_recurring_appointments, :foreign_key => :trainer_id
 
   mount_uploader :image, ImageUploader
 

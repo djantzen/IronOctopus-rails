@@ -10,6 +10,8 @@ module ActiveRecord
             :string
           when /^int4range$/
             :string
+          when /^timerange$/
+            :string
           # Numeric and monetary types
           when /^(?:real|double precision)$/
             :float

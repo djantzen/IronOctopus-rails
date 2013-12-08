@@ -50,6 +50,17 @@ CREATE SCHEMA source;
 COMMENT ON SCHEMA source IS 'Data import schema';
 
 
+SET search_path = application, pg_catalog;
+
+--
+-- Name: timerange; Type: TYPE; Schema: application; Owner: -
+--
+
+CREATE TYPE timerange AS RANGE (
+    subtype = time without time zone
+);
+
+
 SET search_path = public, pg_catalog;
 
 --
@@ -479,42 +490,6 @@ CREATE TYPE valid_detail AS (
 );
 
 
-SET search_path = application, pg_catalog;
-
---
--- Name: score_metric(numrange, numrange); Type: FUNCTION; Schema: application; Owner: -
---
-
-CREATE FUNCTION score_metric(prescribed numrange, actual numrange) RETURNS integer
-    LANGUAGE sql
-    AS $$
-  select case 
-    when prescribed = '[0,0]' then 0
-    when actual >= prescribed then 1
-    when actual < prescribed then -1
-    else 0
-  end
-$$;
-
-
---
--- Name: score_metric(int4range, int4range); Type: FUNCTION; Schema: application; Owner: -
---
-
-CREATE FUNCTION score_metric(prescribed int4range, actual int4range) RETURNS integer
-    LANGUAGE sql
-    AS $$
-  select case 
-    when prescribed = '[0,1)' then 0
-    when actual >= prescribed then 1
-    when actual < prescribed then -1
-    else 0
-  end
-$$;
-
-
-SET search_path = public, pg_catalog;
-
 --
 -- Name: _st_3ddfullywithin(geometry, geometry, double precision); Type: FUNCTION; Schema: public; Owner: -
 --
@@ -790,7 +765,7 @@ DECLARE
   
 BEGIN
   
-  RAISE DEBUG '%,%', cur_path, ST_GeometryType(the_geom);
+  -- RAISE DEBUG '%,%', cur_path, ST_GeometryType(the_geom);
 
   -- Special case collections : iterate and return the DumpPoints of the geometries
 
@@ -1101,7 +1076,7 @@ BEGIN
 
 
 	-- Verify dimension
-	IF ( (new_dim >4) OR (new_dim <0) ) THEN
+	IF ( (new_dim >4) OR (new_dim <2) ) THEN
 		RAISE EXCEPTION 'invalid dimension';
 		RETURN 'fail';
 	END IF;
@@ -2758,7 +2733,7 @@ BEGIN
 	EXCEPTION
 		WHEN undefined_function THEN
 			rast_scr_ver := NULL;
-			RAISE NOTICE 'Function postgis_raster_scripts_installed() not found. Is raster support enabled and topology.sql installed?';
+			RAISE NOTICE 'Function postgis_raster_scripts_installed() not found. Is raster support enabled and rtpostgis.sql installed?';
 	END;
 
 	BEGIN
@@ -2766,7 +2741,7 @@ BEGIN
 	EXCEPTION
 		WHEN undefined_function THEN
 			rast_lib_ver := NULL;
-			RAISE NOTICE 'Function postgis_raster_lib_version() not found. Is raster support enabled and topology.sql installed?';
+			RAISE NOTICE 'Function postgis_raster_lib_version() not found. Is raster support enabled and rtpostgis.sql installed?';
 	END;
 
 	fullver = 'POSTGIS="' || libver;
@@ -2914,7 +2889,7 @@ CREATE FUNCTION postgis_proj_version() RETURNS text
 
 CREATE FUNCTION postgis_scripts_build_date() RETURNS text
     LANGUAGE sql IMMUTABLE
-    AS $$SELECT '2012-06-02 03:54:23'::text AS version$$;
+    AS $$SELECT '2013-03-30 17:48:16'::text AS version$$;
 
 
 --
@@ -2923,7 +2898,7 @@ CREATE FUNCTION postgis_scripts_build_date() RETURNS text
 
 CREATE FUNCTION postgis_scripts_installed() RETURNS text
     LANGUAGE sql IMMUTABLE
-    AS $$ SELECT '2.0.0'::text || ' r' || 9605::text AS version $$;
+    AS $$ SELECT '2.0.2'::text || ' r' || 10789::text AS version $$;
 
 
 --
@@ -7767,8 +7742,10 @@ COMMENT ON TABLE alternate_activity_names IS 'Acceptable variations of the activ
 CREATE TABLE appointments (
     trainer_id integer NOT NULL,
     client_id integer NOT NULL,
-    time_slot tstzrange NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL
+    date_time_slot tstzrange NOT NULL,
+    confirmation_status text DEFAULT 'Unconfirmed'::text NOT NULL,
+    created_at timestamp with time zone DEFAULT now() NOT NULL,
+    CONSTRAINT appointments_confirmation_status_check CHECK ((confirmation_status = ANY (ARRAY['Confirmed'::text, 'Pending'::text, 'Rejected'::text, 'Unconfirmed'::text])))
 );
 
 
@@ -7777,6 +7754,13 @@ CREATE TABLE appointments (
 --
 
 COMMENT ON TABLE appointments IS 'Records the time range that a trainer is scheduled to meet with a client';
+
+
+--
+-- Name: COLUMN appointments.confirmation_status; Type: COMMENT; Schema: application; Owner: -
+--
+
+COMMENT ON COLUMN appointments.confirmation_status IS 'A new appointment is Unconfirmed; when an email is sent it is Pending; it can be Confirmed or Rejected';
 
 
 --
@@ -8478,7 +8462,7 @@ CREATE TABLE recurring_appointments (
     trainer_id integer NOT NULL,
     client_id integer NOT NULL,
     day_of_week text DEFAULT 'Monday'::text NOT NULL,
-    time_slot tsrange NOT NULL,
+    time_slot timerange NOT NULL,
     created_at timestamp with time zone DEFAULT now() NOT NULL,
     CONSTRAINT recurring_appointments_day_of_week_check CHECK ((day_of_week = ANY (ARRAY['Sunday'::text, 'Monday'::text, 'Tuesday'::text, 'Wednesday'::text, 'Thursday'::text, 'Friday'::text, 'Saturday'::text])))
 );
@@ -8489,13 +8473,6 @@ CREATE TABLE recurring_appointments (
 --
 
 COMMENT ON TABLE recurring_appointments IS 'Contains days of the week and time slots that recur weekly';
-
-
---
--- Name: COLUMN recurring_appointments.time_slot; Type: COMMENT; Schema: application; Owner: -
---
-
-COMMENT ON COLUMN recurring_appointments.time_slot IS 'Timestamps because there are no time ranges (that work with ActiveRecord)';
 
 
 --
@@ -8546,17 +8523,6 @@ CREATE SEQUENCE routines_routine_id_seq
 --
 
 ALTER SEQUENCE routines_routine_id_seq OWNED BY routines.routine_id;
-
-
---
--- Name: sales; Type: TABLE; Schema: application; Owner: -; Tablespace: 
---
-
-CREATE TABLE sales (
-    year integer,
-    month integer,
-    qty integer
-);
 
 
 --
@@ -8722,6 +8688,32 @@ COMMENT ON VIEW todays_routines IS 'A view describing the routines occurring tod
 
 
 --
+-- Name: user_relationships; Type: TABLE; Schema: application; Owner: -; Tablespace: 
+--
+
+CREATE TABLE user_relationships (
+    trainer_id integer NOT NULL,
+    client_id integer NOT NULL,
+    created_at timestamp with time zone DEFAULT now() NOT NULL
+);
+
+
+--
+-- Name: TABLE user_relationships; Type: COMMENT; Schema: application; Owner: -
+--
+
+COMMENT ON TABLE user_relationships IS 'A table to construct the graph of user relationships';
+
+
+--
+-- Name: trainers_and_clients; Type: VIEW; Schema: application; Owner: -
+--
+
+CREATE VIEW trainers_and_clients AS
+    SELECT trainers.login AS trainer_login, trainers.first_name AS trainer_first_name, trainers.last_name AS trainer_last_name, clients.login AS client_login, clients.first_name AS client_first_name, clients.last_name AS client_last_name FROM ((users trainers JOIN user_relationships ON ((trainers.user_id = user_relationships.trainer_id))) JOIN users clients ON ((user_relationships.client_id = clients.user_id)));
+
+
+--
 -- Name: unit_sets; Type: TABLE; Schema: application; Owner: -; Tablespace: 
 --
 
@@ -8801,22 +8793,46 @@ CREATE SEQUENCE units_unit_id_seq
 ALTER SEQUENCE units_unit_id_seq OWNED BY units.unit_id;
 
 
+SET search_path = reporting, pg_catalog;
+
 --
--- Name: user_relationships; Type: TABLE; Schema: application; Owner: -; Tablespace: 
+-- Name: days; Type: TABLE; Schema: reporting; Owner: -; Tablespace: 
 --
 
-CREATE TABLE user_relationships (
-    trainer_id integer NOT NULL,
-    client_id integer NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL
+CREATE TABLE days (
+    day_id integer DEFAULT (replace((((now())::date)::character varying)::text, '-'::text, ''::text))::integer NOT NULL,
+    full_date date DEFAULT (now())::date NOT NULL,
+    year integer DEFAULT date_part('year'::text, now()) NOT NULL,
+    month integer DEFAULT date_part('month'::text, now()) NOT NULL,
+    day integer DEFAULT date_part('day'::text, now()) NOT NULL,
+    created_at timestamp with time zone DEFAULT now(),
+    day_of_week text DEFAULT 'Sunday'::text NOT NULL,
+    CONSTRAINT days_day_of_week_check CHECK ((day_of_week = ANY (ARRAY['Sunday'::text, 'Monday'::text, 'Tuesday'::text, 'Wednesday'::text, 'Thursday'::text, 'Friday'::text, 'Saturday'::text])))
 );
 
 
 --
--- Name: TABLE user_relationships; Type: COMMENT; Schema: application; Owner: -
+-- Name: TABLE days; Type: COMMENT; Schema: reporting; Owner: -
 --
 
-COMMENT ON TABLE user_relationships IS 'A table to construct the graph of user relationships';
+COMMENT ON TABLE days IS 'A dimension for date-based reporting.';
+
+
+SET search_path = application, pg_catalog;
+
+--
+-- Name: upcoming_recurring_appointments; Type: VIEW; Schema: application; Owner: -
+--
+
+CREATE VIEW upcoming_recurring_appointments AS
+    SELECT recurring_appointments.trainer_id, recurring_appointments.client_id, u.login, u.first_name, u.last_name, u.email, tstzrange(timezone(tz.tzid, (days.full_date + lower(recurring_appointments.time_slot))), timezone(tz.tzid, (days.full_date + upper(recurring_appointments.time_slot)))) AS date_time_slot FROM ((((recurring_appointments JOIN reporting.days USING (day_of_week)) JOIN users u ON ((recurring_appointments.client_id = u.user_id))) JOIN cities c USING (city_id)) JOIN timezones tz ON (public.st_within(c.the_geom, tz.the_geom))) ORDER BY (days.full_date + lower(recurring_appointments.time_slot));
+
+
+--
+-- Name: VIEW upcoming_recurring_appointments; Type: COMMENT; Schema: application; Owner: -
+--
+
+COMMENT ON VIEW upcoming_recurring_appointments IS 'Maps the day of week and time slot directives of recurring appointments to actual timestamp ranges';
 
 
 --
@@ -8845,7 +8861,7 @@ SET search_path = public, pg_catalog;
 --
 
 CREATE VIEW geography_columns AS
-    SELECT current_database() AS f_table_catalog, n.nspname AS f_table_schema, c.relname AS f_table_name, a.attname AS f_geography_column, postgis_typmod_dims(a.atttypmod) AS coord_dimension, postgis_typmod_srid(a.atttypmod) AS srid, postgis_typmod_type(a.atttypmod) AS type FROM pg_class c, pg_attribute a, pg_type t, pg_namespace n WHERE ((((((t.typname = 'geography'::name) AND (a.attisdropped = false)) AND (a.atttypid = t.oid)) AND (a.attrelid = c.oid)) AND (c.relnamespace = n.oid)) AND (NOT pg_is_other_temp_schema(c.relnamespace)));
+    SELECT current_database() AS f_table_catalog, n.nspname AS f_table_schema, c.relname AS f_table_name, a.attname AS f_geography_column, postgis_typmod_dims(a.atttypmod) AS coord_dimension, postgis_typmod_srid(a.atttypmod) AS srid, postgis_typmod_type(a.atttypmod) AS type FROM pg_class c, pg_attribute a, pg_type t, pg_namespace n WHERE (((((((t.typname = 'geography'::name) AND (a.attisdropped = false)) AND (a.atttypid = t.oid)) AND (a.attrelid = c.oid)) AND (c.relnamespace = n.oid)) AND (NOT pg_is_other_temp_schema(c.relnamespace))) AND has_table_privilege(c.oid, 'SELECT'::text));
 
 
 --
@@ -8853,7 +8869,7 @@ CREATE VIEW geography_columns AS
 --
 
 CREATE VIEW geometry_columns AS
-    SELECT (current_database())::character varying(256) AS f_table_catalog, (n.nspname)::character varying(256) AS f_table_schema, (c.relname)::character varying(256) AS f_table_name, (a.attname)::character varying(256) AS f_geometry_column, COALESCE(NULLIF(postgis_typmod_dims(a.atttypmod), 2), postgis_constraint_dims((n.nspname)::text, (c.relname)::text, (a.attname)::text), 2) AS coord_dimension, COALESCE(NULLIF(postgis_typmod_srid(a.atttypmod), 0), postgis_constraint_srid((n.nspname)::text, (c.relname)::text, (a.attname)::text), 0) AS srid, (replace(replace(COALESCE(NULLIF(upper(postgis_typmod_type(a.atttypmod)), 'GEOMETRY'::text), (postgis_constraint_type((n.nspname)::text, (c.relname)::text, (a.attname)::text))::text, 'GEOMETRY'::text), 'ZM'::text, ''::text), 'Z'::text, ''::text))::character varying(30) AS type FROM pg_class c, pg_attribute a, pg_type t, pg_namespace n WHERE ((((((((t.typname = 'geometry'::name) AND (a.attisdropped = false)) AND (a.atttypid = t.oid)) AND (a.attrelid = c.oid)) AND (c.relnamespace = n.oid)) AND ((c.relkind = 'r'::"char") OR (c.relkind = 'v'::"char"))) AND (NOT pg_is_other_temp_schema(c.relnamespace))) AND (NOT ((n.nspname = 'public'::name) AND (c.relname = 'raster_columns'::name))));
+    SELECT (current_database())::character varying(256) AS f_table_catalog, (n.nspname)::character varying(256) AS f_table_schema, (c.relname)::character varying(256) AS f_table_name, (a.attname)::character varying(256) AS f_geometry_column, COALESCE(NULLIF(postgis_typmod_dims(a.atttypmod), 2), postgis_constraint_dims((n.nspname)::text, (c.relname)::text, (a.attname)::text), 2) AS coord_dimension, COALESCE(NULLIF(postgis_typmod_srid(a.atttypmod), 0), postgis_constraint_srid((n.nspname)::text, (c.relname)::text, (a.attname)::text), 0) AS srid, (replace(replace(COALESCE(NULLIF(upper(postgis_typmod_type(a.atttypmod)), 'GEOMETRY'::text), (postgis_constraint_type((n.nspname)::text, (c.relname)::text, (a.attname)::text))::text, 'GEOMETRY'::text), 'ZM'::text, ''::text), 'Z'::text, ''::text))::character varying(30) AS type FROM pg_class c, pg_attribute a, pg_type t, pg_namespace n WHERE (((((((((t.typname = 'geometry'::name) AND (a.attisdropped = false)) AND (a.atttypid = t.oid)) AND (a.attrelid = c.oid)) AND (c.relnamespace = n.oid)) AND ((c.relkind = 'r'::"char") OR (c.relkind = 'v'::"char"))) AND (NOT pg_is_other_temp_schema(c.relnamespace))) AND (NOT ((n.nspname = 'public'::name) AND (c.relname = 'raster_columns'::name)))) AND has_table_privilege(c.oid, 'SELECT'::text));
 
 
 --
@@ -8880,29 +8896,6 @@ CREATE TABLE spatial_ref_sys (
 
 
 SET search_path = reporting, pg_catalog;
-
---
--- Name: days; Type: TABLE; Schema: reporting; Owner: -; Tablespace: 
---
-
-CREATE TABLE days (
-    day_id integer DEFAULT (replace((((now())::date)::character varying)::text, '-'::text, ''::text))::integer NOT NULL,
-    full_date date DEFAULT (now())::date NOT NULL,
-    year integer DEFAULT date_part('year'::text, now()) NOT NULL,
-    month integer DEFAULT date_part('month'::text, now()) NOT NULL,
-    day integer DEFAULT date_part('day'::text, now()) NOT NULL,
-    created_at timestamp with time zone DEFAULT now(),
-    day_of_week text DEFAULT 'Sunday'::text NOT NULL,
-    CONSTRAINT days_day_of_week_check CHECK ((day_of_week = ANY (ARRAY['Sunday'::text, 'Monday'::text, 'Tuesday'::text, 'Wednesday'::text, 'Thursday'::text, 'Friday'::text, 'Saturday'::text])))
-);
-
-
---
--- Name: TABLE days; Type: COMMENT; Schema: reporting; Owner: -
---
-
-COMMENT ON TABLE days IS 'A dimension for date-based reporting.';
-
 
 --
 -- Name: measurement_scores; Type: VIEW; Schema: reporting; Owner: -
@@ -8939,7 +8932,7 @@ COMMENT ON VIEW routine_scores IS 'Collects the measurement_scores for an entire
 --
 
 CREATE VIEW routine_scores_by_day AS
-    SELECT users.login AS client_login, routine_scores.routine_name, days.full_date, routine_scores.routine_score FROM ((((application.routines JOIN application.scheduled_programs USING (routine_id)) JOIN days ON ((scheduled_programs.scheduled_on = days.full_date))) JOIN application.users ON ((routines.client_id = users.user_id))) JOIN routine_scores USING (routine_id)) GROUP BY users.login, routine_scores.routine_name, days.full_date, routine_scores.routine_score UNION ALL SELECT users.login AS client_login, routine_scores.routine_name, days.full_date, routine_scores.routine_score FROM ((((application.routines JOIN application.weekday_programs USING (routine_id)) JOIN routine_scores USING (routine_id)) JOIN days USING (day_of_week)) JOIN application.users ON ((routines.client_id = users.user_id))) GROUP BY users.login, routine_scores.routine_name, days.full_date, routine_scores.routine_score ORDER BY 3;
+    SELECT users.login AS client_login, routine_scores.routine_name, days.full_date, routine_scores.routine_score FROM ((((application.routines JOIN application.scheduled_programs USING (routine_id)) JOIN days ON ((scheduled_programs.scheduled_on = days.full_date))) JOIN application.users ON ((routines.client_id = users.user_id))) JOIN routine_scores USING (routine_id)) GROUP BY users.login, routine_scores.routine_name, days.full_date, routine_scores.routine_score UNION SELECT users.login AS client_login, routine_scores.routine_name, days.full_date, routine_scores.routine_score FROM ((((application.routines JOIN application.weekday_programs USING (routine_id)) JOIN routine_scores USING (routine_id)) JOIN days USING (day_of_week)) JOIN application.users ON ((routines.client_id = users.user_id))) GROUP BY users.login, routine_scores.routine_name, days.full_date, routine_scores.routine_score ORDER BY 3;
 
 
 --
@@ -9356,11 +9349,27 @@ ALTER TABLE ONLY activity_videos
 
 
 --
+-- Name: appointments_client_id_date_time_slot_excl; Type: CONSTRAINT; Schema: application; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY appointments
+    ADD CONSTRAINT appointments_client_id_date_time_slot_excl EXCLUDE USING gist (client_id WITH =, date_time_slot WITH &&);
+
+
+--
 -- Name: appointments_pkey; Type: CONSTRAINT; Schema: application; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY appointments
-    ADD CONSTRAINT appointments_pkey PRIMARY KEY (trainer_id, client_id, time_slot);
+    ADD CONSTRAINT appointments_pkey PRIMARY KEY (trainer_id, date_time_slot);
+
+
+--
+-- Name: appointments_trainer_id_date_time_slot_excl; Type: CONSTRAINT; Schema: application; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY appointments
+    ADD CONSTRAINT appointments_trainer_id_date_time_slot_excl EXCLUDE USING gist (trainer_id WITH =, date_time_slot WITH &&);
 
 
 --
@@ -9500,11 +9509,27 @@ ALTER TABLE ONLY programs
 
 
 --
+-- Name: recurring_appointments_client_id_day_of_week_time_slot_excl; Type: CONSTRAINT; Schema: application; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY recurring_appointments
+    ADD CONSTRAINT recurring_appointments_client_id_day_of_week_time_slot_excl EXCLUDE USING gist (client_id WITH =, day_of_week WITH =, time_slot WITH &&);
+
+
+--
 -- Name: recurring_appointments_pkey; Type: CONSTRAINT; Schema: application; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY recurring_appointments
     ADD CONSTRAINT recurring_appointments_pkey PRIMARY KEY (trainer_id, day_of_week, time_slot);
+
+
+--
+-- Name: recurring_appointments_trainer_id_day_of_week_time_slot_excl; Type: CONSTRAINT; Schema: application; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY recurring_appointments
+    ADD CONSTRAINT recurring_appointments_trainer_id_day_of_week_time_slot_excl EXCLUDE USING gist (trainer_id WITH =, day_of_week WITH =, time_slot WITH &&);
 
 
 --
@@ -9642,13 +9667,6 @@ CREATE UNIQUE INDEX activity_attributes_permalink_idx ON activity_attributes USI
 
 
 --
--- Name: activity_images_activity_id_idx; Type: INDEX; Schema: application; Owner: -; Tablespace: 
---
-
-CREATE INDEX activity_images_activity_id_idx ON activity_images USING btree (activity_id);
-
-
---
 -- Name: activity_images_activity_id_image_idx; Type: INDEX; Schema: application; Owner: -; Tablespace: 
 --
 
@@ -9663,24 +9681,10 @@ CREATE INDEX activity_set_groups_routine_id_idx ON activity_set_groups USING btr
 
 
 --
--- Name: activity_set_groups_routine_id_idx1; Type: INDEX; Schema: application; Owner: -; Tablespace: 
---
-
-CREATE INDEX activity_set_groups_routine_id_idx1 ON activity_set_groups USING btree (routine_id);
-
-
---
 -- Name: activity_sets_activity_id_idx; Type: INDEX; Schema: application; Owner: -; Tablespace: 
 --
 
 CREATE INDEX activity_sets_activity_id_idx ON activity_sets USING btree (activity_id);
-
-
---
--- Name: activity_sets_activity_id_idx1; Type: INDEX; Schema: application; Owner: -; Tablespace: 
---
-
-CREATE INDEX activity_sets_activity_id_idx1 ON activity_sets USING btree (activity_id);
 
 
 --
@@ -9691,24 +9695,10 @@ CREATE INDEX activity_sets_activity_set_group_id_idx ON activity_sets USING btre
 
 
 --
--- Name: activity_sets_activity_set_group_id_idx1; Type: INDEX; Schema: application; Owner: -; Tablespace: 
---
-
-CREATE INDEX activity_sets_activity_set_group_id_idx1 ON activity_sets USING btree (activity_set_group_id);
-
-
---
 -- Name: activity_sets_measurement_id_idx; Type: INDEX; Schema: application; Owner: -; Tablespace: 
 --
 
 CREATE INDEX activity_sets_measurement_id_idx ON activity_sets USING btree (measurement_id);
-
-
---
--- Name: activity_sets_measurement_id_idx1; Type: INDEX; Schema: application; Owner: -; Tablespace: 
---
-
-CREATE INDEX activity_sets_measurement_id_idx1 ON activity_sets USING btree (measurement_id);
 
 
 --
@@ -9730,13 +9720,6 @@ CREATE INDEX activity_videos_activity_id_idx ON activity_videos USING btree (act
 --
 
 CREATE UNIQUE INDEX alternate_activity_names_permalink_idx ON alternate_activity_names USING btree (permalink);
-
-
---
--- Name: appointments_time_slot_idx; Type: INDEX; Schema: application; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX appointments_time_slot_idx ON appointments USING btree (time_slot);
 
 
 --
@@ -10009,20 +9992,27 @@ CREATE UNIQUE INDEX days_full_date_day_of_week_idx ON days USING btree (full_dat
 CREATE UNIQUE INDEX days_full_date_idx ON days USING btree (full_date);
 
 
+--
+-- Name: work_prescribed_measurement_id_idx; Type: INDEX; Schema: reporting; Owner: -; Tablespace: 
+--
+
+CREATE INDEX work_prescribed_measurement_id_idx ON work USING btree (prescribed_measurement_id);
+
+
 SET search_path = source, pg_catalog;
 
 --
--- Name: activity_citations_activity_id_idx; Type: INDEX; Schema: source; Owner: -; Tablespace: 
+-- Name: activity_citations_activity_id_citation_url_idx; Type: INDEX; Schema: source; Owner: -; Tablespace: 
 --
 
-CREATE INDEX activity_citations_activity_id_idx ON activity_citations USING btree (activity_id);
+CREATE UNIQUE INDEX activity_citations_activity_id_citation_url_idx ON activity_citations USING btree (activity_id, citation_url);
 
 
 --
--- Name: activity_image_origins_activity_image_id_idx; Type: INDEX; Schema: source; Owner: -; Tablespace: 
+-- Name: activity_image_origins_activity_image_id_origin_url_idx; Type: INDEX; Schema: source; Owner: -; Tablespace: 
 --
 
-CREATE INDEX activity_image_origins_activity_image_id_idx ON activity_image_origins USING btree (activity_image_id);
+CREATE UNIQUE INDEX activity_image_origins_activity_image_id_origin_url_idx ON activity_image_origins USING btree (activity_image_id, origin_url);
 
 
 SET search_path = public, pg_catalog;
@@ -10703,3 +10693,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131023222523');
 INSERT INTO schema_migrations (version) VALUES ('20131124000345');
 
 INSERT INTO schema_migrations (version) VALUES ('20131124014126');
+
+INSERT INTO schema_migrations (version) VALUES ('20131208023522');
