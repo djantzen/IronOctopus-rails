@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
 
   # These are mapped from the trainer perspective only for use in the day planner
   has_many :appointments, :foreign_key => :trainer_id
-  has_many :upcoming_recurring_appointments, :foreign_key => :trainer_id
+  has_many :recurring_appointments, :foreign_key => :trainer_id
 
   mount_uploader :image, ImageUploader
 

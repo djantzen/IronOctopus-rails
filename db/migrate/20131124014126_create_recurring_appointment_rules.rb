@@ -1,4 +1,4 @@
-class CreateRecurringAppointments < ActiveRecord::Migration
+class CreateRecurringAppointmentRules < ActiveRecord::Migration
 
   def up
     execute <<-EOS
@@ -6,7 +6,7 @@ class CreateRecurringAppointments < ActiveRecord::Migration
         subtype = time
       );
 
-      create table application.recurring_appointments (
+      create table application.recurring_appointment_rules (
         trainer_id integer not null references application.users(user_id) deferrable,
         client_id integer not null references application.users(user_id) deferrable,
         day_of_week text not null default 'Monday' check
@@ -18,17 +18,17 @@ class CreateRecurringAppointments < ActiveRecord::Migration
         primary key (trainer_id, day_of_week, time_slot)
       );
 
-      comment on table application.recurring_appointments is 'Contains days of the week and time slots that recur weekly';
+      comment on table application.recurring_appointment_rules is 'Contains days of the week and time slots that recur weekly';
 
-      grant select on application.recurring_appointments to reader;
-      grant insert, update, delete on application.recurring_appointments to writer;
+      grant select on application.recurring_appointment_rules to reader;
+      grant insert, update, delete on application.recurring_appointment_rules to writer;
 
     EOS
   end
 
   def down
     execute <<-EOS
-      drop table application.recurring_appointments;
+      drop table application.recurring_appointment_rules;
       drop type timerange;
     EOS
   end

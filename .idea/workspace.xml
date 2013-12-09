@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46f8a447-b9ed-44ae-be1c-95fe4e4f3fab" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/recurring_appointments.yml" afterPath="$PROJECT_DIR$/test/fixtures/recurring_appointments.yml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/models/upcoming_recurring_appointment.rb" afterPath="$PROJECT_DIR$/app/models/recurring_appointment_rule.rb" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/db/migrate/20131124014126_create_recurring_appointments.rb" afterPath="$PROJECT_DIR$/db/migrate/20131124014126_create_recurring_appointment_rules.rb" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/db/migrate/20131208023522_create_upcoming_recurring_appointments_view.rb" afterPath="$PROJECT_DIR$/db/migrate/20131208023522_create_recurring_appointments_view.rb" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/fixtures/recurring_appointments.yml" afterPath="$PROJECT_DIR$/test/fixtures/recurring_appointment_rules.yml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/test/unit/upcoming_recurring_appointments_test.rb" afterPath="$PROJECT_DIR$/test/unit/recurring_appointments_test.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/recurring_appointment.rb" afterPath="$PROJECT_DIR$/app/models/recurring_appointment.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/user.rb" afterPath="$PROJECT_DIR$/app/models/user.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/structure.sql" afterPath="$PROJECT_DIR$/db/structure.sql" />
     </list>
     <ignored path="IronOctopus-rails.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,72 +38,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="day_planners_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/day_planners_controller.rb">
+      <file leaf-file-name="20131208023522_create_recurring_appointments_view.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20131208023522_create_recurring_appointments_view.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="0" selection-start="819" selection-end="819" vertical-scroll-proportion="0.0">
-              <folding>
-                <marker date="1386520906000" expanded="true" signature="143:150" placeholder=" ... end" />
-                <marker date="1386520906000" expanded="true" signature="174:827" placeholder=" ... end" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="recurring_appointments.feature" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/features/recurring_appointments.feature">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="0" selection-start="210" selection-end="210" vertical-scroll-proportion="0.0">
+            <state line="11" column="35" selection-start="318" selection-end="318" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="upcoming_recurring_appointments_test.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/unit/upcoming_recurring_appointments_test.rb">
+      <file leaf-file-name="20131124014126_create_recurring_appointment_rules.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20131124014126_create_recurring_appointment_rules.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="0" selection-start="521" selection-end="521" vertical-scroll-proportion="0.0">
+            <state line="0" column="37" selection-start="37" selection-end="37" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="recurring_appointments.yml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test/fixtures/recurring_appointments.yml">
+      <file leaf-file-name="recurring_appointments_test.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test/unit/recurring_appointments_test.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="26" selection-start="369" selection-end="369" vertical-scroll-proportion="0.25485438">
+            <state line="13" column="48" selection-start="665" selection-end="665" vertical-scroll-proportion="0.4276316">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Rails IronOctopus-rails: migrate_development" pinned="true" current="false" current-in-tab="false">
-        <entry file="mock:///Rails IronOctopus-rails: migrate_development">
+      <file leaf-file-name="user.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/user.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="0" selection-start="168" selection-end="168" vertical-scroll-proportion="-2.0689654">
+            <state line="45" column="29" selection-start="2380" selection-end="2380" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".application.appointments" pinned="false" current="false" current-in-tab="false">
-        <entry file="dbDummy://dbElement:/acde7800/e114101d-da44-4b65-8ce7-1aa84795f0ca/.application.appointments">
-          <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".application.recurring_appointments" pinned="false" current="false" current-in-tab="false">
-        <entry file="dbDummy://dbElement:/acde7800/e114101d-da44-4b65-8ce7-1aa84795f0ca/.application.recurring_appointments">
-          <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="upcoming_recurring_appointment.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/upcoming_recurring_appointment.rb">
+      <file leaf-file-name="recurring_appointment.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/recurring_appointment.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="0" selection-start="261" selection-end="261" vertical-scroll-proportion="0.0">
+            <state line="0" column="6" selection-start="6" selection-end="6" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -116,30 +98,28 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Rails console: IronOctopus-rails" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/views/programs/show.html.haml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Rails console: IronOctopus-rails" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/assets/stylesheets/sheet.css.scss" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/db/migrate/20131124000345_create_appointments.rb" />
-        <option value="$PROJECT_DIR$/db/migrate/20131124014126_create_recurring_appointments.rb" />
-        <option value="$PROJECT_DIR$/lib/postgres_range_support.rb" />
-        <option value="/Rails IronOctopus-rails: development" />
-        <option value="$PROJECT_DIR$/app/models/appointment.rb" />
         <option value="/Rails IronOctopus-rails: migrate_development" />
         <option value="$PROJECT_DIR$/app/views/day_planners/create_or_update.html.haml" />
         <option value="$PROJECT_DIR$/app/controllers/day_planners_controller.rb" />
         <option value="/Rails IronOctopus-rails: test" />
         <option value="$PROJECT_DIR$/db/migrate/20131208023522_create_upcoming_recurring_appointments_view.rb" />
-        <option value="$PROJECT_DIR$/app/models/user.rb" />
         <option value="$PROJECT_DIR$/app/models/upcoming_recurring_appointment.rb" />
         <option value="$PROJECT_DIR$/features/recurring_appointments.feature" />
         <option value="$PROJECT_DIR$/Gemfile" />
-        <option value="$PROJECT_DIR$/test/unit/upcoming_recurring_appointments_test.rb" />
         <option value="$PROJECT_DIR$/test/fixtures/recurring_appointments.yml" />
+        <option value="$PROJECT_DIR$/app/models/recurring_appointment_rule.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20131208023522_create_recurring_appointments_view.rb" />
+        <option value="$PROJECT_DIR$/app/models/user.rb" />
+        <option value="$PROJECT_DIR$/test/unit/upcoming_recurring_appointments_test.rb" />
+        <option value="$PROJECT_DIR$/app/models/recurring_appointment.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20131124014126_create_recurring_appointment_rules.rb" />
+        <option value="$PROJECT_DIR$/test/unit/recurring_appointments_test.rb" />
       </list>
     </option>
   </component>
@@ -194,6 +174,17 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="RailsProjectView" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -260,32 +251,21 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="RailsProjectView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="126" />
     <property name="JdbcConsole.Extract.Separator" value="'" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="126" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="161" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="JdbcConsole.Connection.Autocommit" value="true" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="191" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="recentsLimit" value="5" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="191" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/sql.sql" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="123" />
     <property name="JdbcConsole.ResultInNewTab" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="123" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="637" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="804" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="194" />
@@ -306,14 +286,14 @@
     <property name="options.lastSelected" value="preferences.pluginManager" />
     <property name="JdbcConsole.Extract.OpeningQuote" value="'" />
     <property name="JdbcConsole.Extract.ClosingQuote" value="'" />
-    <property name="JdbcConsole.Extract.IncludeHeader" value="false" />
     <property name="JdbcConsole.EnableParameterPattern" value="false" />
+    <property name="JdbcConsole.Extract.IncludeHeader" value="false" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="JdbcConsole.ParameterPattern" value="(\?\d*|\:\w+|\@\w+|\$\{[^$\{\}]*\}|\$\w+\$|\#\w+\#)" />
     <property name="JdbcConsole.ResultPageSize" value="1000" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="Ruby.ViewRefParam.DefaultExtension" value="html.haml" />
     <property name="options.searchVisible" value="true" />
+    <property name="Ruby.ViewRefParam.DefaultExtension" value="html.haml" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -331,43 +311,7 @@
       <recent name="$PROJECT_DIR$/app/views/shared" />
     </key>
   </component>
-  <component name="RunManager" selected="Test::Unit/Shoulda/Minitest.UpcomingRecurringAppointments">
-    <configuration default="false" name="create_a_routine" type="CucumberRunConfigurationType" factoryName="Cucumber" temporary="true">
-      <predefined_log_file id="RUBY_CUCUMBER" enabled="true" />
-      <module name="IronOctopus-rails" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$PROJECT_DIR$" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
-      <envs>
-        <env name="ANSICON" value="" />
-        <env name="JRUBY_OPTS" value="-X+O" />
-      </envs>
-      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="true" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
-        <COVERAGE_PATTERN ENABLED="true">
-          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
-        </COVERAGE_PATTERN>
-      </EXTENSION>
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*.feature" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$PROJECT_DIR$/features/create_a_routine.feature" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_TAGS_FILTER" VALUE="" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_NAME_FILTER" VALUE="" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_ARGS" VALUE="--color -r features" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_VERSION" VALUE="" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="VERBOSE_OPTION" VALUE="false" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_RUNNER_PATH" VALUE="" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_RUNNER" VALUE="false" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SETTINGS_VERSION" VALUE="2" />
-      <RunnerSettings RunnerId="RubyRunner" />
-      <ConfigurationWrapper RunnerId="RubyRunner" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Test::Unit/Shoulda/Minitest.recurring_appointments_test">
     <configuration default="false" name="routine_builder_spec" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true">
       <predefined_log_file id="RUBY_RSPEC" enabled="true" />
       <module name="IronOctopus-rails" />
@@ -420,7 +364,7 @@
         </COVERAGE_PATTERN>
       </EXTENSION>
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$PROJECT_DIR$/test/unit/upcoming_recurring_appointments_test.rb" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$PROJECT_DIR$/test/unit/recurring_appointments_test.rb" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_METHOD_NAME" VALUE="test_mph_to_kph_to_mph" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_METHOD" />
@@ -459,7 +403,7 @@
       <ConfigurationWrapper RunnerId="RubyRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="UpcomingRecurringAppointments" type="TestUnitRunConfigurationType" factoryName="Test::Unit/Shoulda/Minitest" temporary="true">
+    <configuration default="false" name="recurring_appointments_test" type="TestUnitRunConfigurationType" factoryName="Test::Unit/Shoulda/Minitest" temporary="true">
       <predefined_log_file id="RUBY_TESTUNIT" enabled="true" />
       <module name="IronOctopus-rails" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift) -Itest" />
@@ -478,15 +422,13 @@
         </COVERAGE_PATTERN>
       </EXTENSION>
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
-      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$PROJECT_DIR$/test/unit/upcoming_recurring_appointments_test.rb" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$PROJECT_DIR$/test/unit/recurring_appointments_test.rb" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_METHOD_NAME" VALUE="" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_OPTIONS" VALUE="" />
-      <RunnerSettings RunnerId="RubyDebugRunner" />
       <RunnerSettings RunnerId="RubyRunner" />
-      <ConfigurationWrapper RunnerId="RubyDebugRunner" />
       <ConfigurationWrapper RunnerId="RubyRunner" />
       <method />
     </configuration>
@@ -625,13 +567,6 @@
       <IRB_RUN_CONFIG NAME="IS_RAILS_CONSOLE" VALUE="false" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote">
-      <JSRemoteDebuggerConfigurationSettings>
-        <option name="engineId" value="embedded" />
-        <option name="fileUrl" />
-      </JSRemoteDebuggerConfigurationSettings>
-      <method />
-    </configuration>
     <configuration default="true" type="CucumberRunConfigurationType" factoryName="Cucumber">
       <predefined_log_file id="RUBY_CUCUMBER" enabled="true" />
       <module name="" />
@@ -663,6 +598,13 @@
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_RUNNER_PATH" VALUE="" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_RUNNER" VALUE="false" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SETTINGS_VERSION" VALUE="2" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote">
+      <JSRemoteDebuggerConfigurationSettings>
+        <option name="engineId" value="embedded" />
+        <option name="fileUrl" />
+      </JSRemoteDebuggerConfigurationSettings>
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
@@ -804,25 +746,24 @@
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_PREREQS" VALUE="false" />
       <method />
     </configuration>
-    <list size="10">
-      <item index="0" class="java.lang.String" itemvalue="Rails.Production: IronOctopus-rails" />
-      <item index="1" class="java.lang.String" itemvalue="Rails.Development: IronOctopus-rails" />
-      <item index="2" class="java.lang.String" itemvalue="Rails.TestDB: IronOctopus-rails" />
-      <item index="3" class="java.lang.String" itemvalue="Rake.test" />
-      <item index="4" class="java.lang.String" itemvalue="Rake.spec" />
-      <item index="5" class="java.lang.String" itemvalue="Cucumber.create_a_routine" />
-      <item index="6" class="java.lang.String" itemvalue="RSpec.routine_builder_spec" />
-      <item index="7" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.test_mph_to_kph_to_mph" />
-      <item index="8" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.unit_test" />
-      <item index="9" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.UpcomingRecurringAppointments" />
+    <list size="9">
+      <item index="0" class="java.lang.String" itemvalue="RSpec.routine_builder_spec" />
+      <item index="1" class="java.lang.String" itemvalue="Rails.Production: IronOctopus-rails" />
+      <item index="2" class="java.lang.String" itemvalue="Rails.Development: IronOctopus-rails" />
+      <item index="3" class="java.lang.String" itemvalue="Rails.TestDB: IronOctopus-rails" />
+      <item index="4" class="java.lang.String" itemvalue="Rake.test" />
+      <item index="5" class="java.lang.String" itemvalue="Rake.spec" />
+      <item index="6" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.test_mph_to_kph_to_mph" />
+      <item index="7" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.unit_test" />
+      <item index="8" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.recurring_appointments_test" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.UpcomingRecurringAppointments" />
-        <item index="1" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.unit_test" />
-        <item index="2" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.test_mph_to_kph_to_mph" />
-        <item index="3" class="java.lang.String" itemvalue="RSpec.routine_builder_spec" />
-        <item index="4" class="java.lang.String" itemvalue="Cucumber.create_a_routine" />
+        <item index="0" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.recurring_appointments_test" />
+        <item index="1" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.UpcomingRecurringAppointments" />
+        <item index="2" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.test_Sally_is_scheduled_on_the_next_Tuesday_afternoon_(Wednesday_UTC)" />
+        <item index="3" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.unit_test" />
+        <item index="4" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.test_mph_to_kph_to_mph" />
       </list>
     </recent_temporary>
   </component>
@@ -856,19 +797,19 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38344827" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25139222" sideWeight="0.69655174" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2442323" sideWeight="0.21793103" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28241846" sideWeight="0.69655174" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28241846" sideWeight="0.69655174" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29793105" sideWeight="0.97184825" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32843652" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3034483" sideWeight="0.75703794" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5737931" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38344827" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -944,94 +885,24 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test/unit/page_handler_test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/unit/program_test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/day_planners_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="0" selection-start="819" selection-end="819" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1386520906000" expanded="true" signature="143:150" placeholder=" ... end" />
-            <marker date="1386520906000" expanded="true" signature="174:827" placeholder=" ... end" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="0" selection-start="1305" selection-end="1305" vertical-scroll-proportion="0.7580645">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/unit/unit_test.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/upcoming_recurring_appointment.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="261" selection-end="261" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/fixtures/days.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="14" selection-start="263" selection-end="273" vertical-scroll-proportion="0.5825243">
-          <folding />
-        </state>
+        <state line="16" column="14" selection-start="263" selection-end="273" vertical-scroll-proportion="0.5825243" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/fixtures/users.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="376" selection-end="376" vertical-scroll-proportion="0.40048543">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/unit/upcoming_recurring_appointments_test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="521" selection-end="521" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/features/recurring_appointments.feature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="210" selection-end="210" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbElement:/acde7800/e114101d-da44-4b65-8ce7-1aa84795f0ca/.application.appointments">
-      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbElement:/acde7800/e114101d-da44-4b65-8ce7-1aa84795f0ca/.application.recurring_appointments">
-      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
-        <state />
+        <state line="11" column="0" selection-start="376" selection-end="376" vertical-scroll-proportion="0.40048543" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/day_planners/create_or_update.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="61" selection-end="61" vertical-scroll-proportion="-1.25">
-          <folding />
-        </state>
+        <state line="2" column="0" selection-start="61" selection-end="61" vertical-scroll-proportion="-1.25" />
       </provider>
     </entry>
     <entry file="dbDummy://dbElement:/acde7800/e114101d-da44-4b65-8ce7-1aa84795f0ca/.application.upcoming_recurring_appointments">
@@ -1039,16 +910,67 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20131208023522_create_upcoming_recurring_appointments_view.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/day_planners_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="498" selection-end="498" vertical-scroll-proportion="0.5263158">
+        <state line="31" column="0" selection-start="819" selection-end="819" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/recurring_appointment_rule.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="17" selection-start="452" selection-end="452" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/fixtures/recurring_appointment_rules.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="26" selection-start="369" selection-end="369" vertical-scroll-proportion="0.25485438" />
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbElement:/acde7800/e114101d-da44-4b65-8ce7-1aa84795f0ca/.application.recurring_appointments">
+      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbElement:/acde7800/e114101d-da44-4b65-8ce7-1aa84795f0ca/.application.appointments">
+      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="29" selection-start="2380" selection-end="2380" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/fixtures/recurring_appointments.yml">
+    <entry file="file://$PROJECT_DIR$/app/models/recurring_appointment.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="26" selection-start="369" selection-end="369" vertical-scroll-proportion="0.25485438">
+        <state line="0" column="6" selection-start="6" selection-end="6" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/features/recurring_appointments.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="0" selection-start="210" selection-end="210" vertical-scroll-proportion="0.19736843" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20131124014126_create_recurring_appointment_rules.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="37" selection-start="37" selection-end="37" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20131208023522_create_recurring_appointments_view.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="35" selection-start="318" selection-end="318" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/unit/recurring_appointments_test.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="48" selection-start="665" selection-end="665" vertical-scroll-proportion="0.4276316">
           <folding />
         </state>
       </provider>

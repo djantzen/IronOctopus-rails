@@ -1,4 +1,4 @@
-class UpcomingRecurringAppointment < ActiveRecord::Base
+class RecurringAppointmentRule < ActiveRecord::Base
   require "#{Rails.root.to_s}/lib/postgres_range_support"
 
   belongs_to :trainer, :class_name => "User", :foreign_key => :trainer_id
@@ -8,11 +8,12 @@ class UpcomingRecurringAppointment < ActiveRecord::Base
   before_save :from_ranges # translate to database ranges
 
   def from_ranges
-    self[:date_time_slot] = RangeSupport.range_to_string(self[:date_time_slot])
+    self[:time_slot] = RangeSupport.range_to_string(self[:time_slot])
   end
 
   def to_ranges
-    self[:date_time_slot] = RangeSupport.string_to_range(self[:date_time_slot])
+    self[:time_slot] = RangeSupport.string_to_range(self[:time_slot])
   end
+
 
 end

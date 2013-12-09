@@ -8,12 +8,11 @@ class RecurringAppointment < ActiveRecord::Base
   before_save :from_ranges # translate to database ranges
 
   def from_ranges
-    self[:time_slot] = RangeSupport.range_to_string(self[:time_slot])
+    self[:date_time_slot] = RangeSupport.range_to_string(self[:date_time_slot])
   end
 
   def to_ranges
-    self[:time_slot] = RangeSupport.string_to_range(self[:time_slot])
+    self[:date_time_slot] = RangeSupport.string_to_range(self[:date_time_slot])
   end
-
 
 end
