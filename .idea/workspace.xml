@@ -2,25 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46f8a447-b9ed-44ae-be1c-95fe4e4f3fab" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/upcoming_recurring_appointment.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/day_planners/create_or_update.html.haml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/day_planners/new.html.haml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/features/recurring_appointments.feature" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/upcoming_recurring_appointments_test.rb" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/scrapers/fitness_bliss.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/spec/routine_builder_spec.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/spec/spec_helper.rb" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/appointment.rb" afterPath="$PROJECT_DIR$/app/models/appointment.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/user.rb" afterPath="$PROJECT_DIR$/app/models/user.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20131124000345_create_appointments.rb" afterPath="$PROJECT_DIR$/db/migrate/20131124000345_create_appointments.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20131124014126_create_recurring_appointments.rb" afterPath="$PROJECT_DIR$/db/migrate/20131124014126_create_recurring_appointments.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/structure.sql" afterPath="$PROJECT_DIR$/db/structure.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/postgres_range_support.rb" afterPath="$PROJECT_DIR$/lib/postgres_range_support.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/weekday.rb" afterPath="$PROJECT_DIR$/lib/weekday.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/recurring_appointments.yml" afterPath="$PROJECT_DIR$/test/fixtures/recurring_appointments.yml" />
     </list>
     <ignored path="IronOctopus-rails.iws" />
@@ -53,7 +34,10 @@
         <entry file="file://$PROJECT_DIR$/app/controllers/day_planners_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state line="31" column="0" selection-start="819" selection-end="819" vertical-scroll-proportion="0.0">
-              <folding />
+              <folding>
+                <marker date="1386520906000" expanded="true" signature="143:150" placeholder=" ... end" />
+                <marker date="1386520906000" expanded="true" signature="174:827" placeholder=" ... end" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -70,7 +54,7 @@
       <file leaf-file-name="upcoming_recurring_appointments_test.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/unit/upcoming_recurring_appointments_test.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="26" selection-start="49" selection-end="49" vertical-scroll-proportion="0.0">
+            <state line="10" column="0" selection-start="521" selection-end="521" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -79,16 +63,7 @@
       <file leaf-file-name="recurring_appointments.yml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/fixtures/recurring_appointments.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="34" selection-start="443" selection-end="443" vertical-scroll-proportion="0.34562212">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="create_or_update.html.haml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/day_planners/create_or_update.html.haml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="0" selection-start="61" selection-end="61" vertical-scroll-proportion="-1.25">
+            <state line="7" column="26" selection-start="369" selection-end="369" vertical-scroll-proportion="0.25485438">
               <folding />
             </state>
           </provider>
@@ -103,12 +78,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="20131208023522_create_upcoming_recurring_appointments_view.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/migrate/20131208023522_create_upcoming_recurring_appointments_view.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="0" selection-start="694" selection-end="694" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
+      <file leaf-file-name=".application.appointments" pinned="false" current="false" current-in-tab="false">
+        <entry file="dbDummy://dbElement:/acde7800/e114101d-da44-4b65-8ce7-1aa84795f0ca/.application.appointments">
+          <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".application.recurring_appointments" pinned="false" current="false" current-in-tab="false">
+        <entry file="dbDummy://dbElement:/acde7800/e114101d-da44-4b65-8ce7-1aa84795f0ca/.application.recurring_appointments">
+          <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
+            <state />
           </provider>
         </entry>
       </file>
@@ -881,9 +861,9 @@
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38344827" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25139222" sideWeight="0.69655174" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25139222" sideWeight="0.69655174" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2442323" sideWeight="0.21793103" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28241846" sideWeight="0.69655174" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28241846" sideWeight="0.69655174" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29793105" sideWeight="0.97184825" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32843652" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
@@ -964,23 +944,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="dbDummy://dbElement:/acde7800/e114101d-da44-4b65-8ce7-1aa84795f0ca/.application.upcoming_recurring_appointments">
-      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbElement:/acde7800/e114101d-da44-4b65-8ce7-1aa84795f0ca/.reporting.days">
-      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="81" selection-start="2296" selection-end="2296" vertical-scroll-proportion="0.14106584">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/unit/page_handler_test.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -998,14 +961,10 @@
     <entry file="file://$PROJECT_DIR$/app/controllers/day_planners_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="31" column="0" selection-start="819" selection-end="819" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/features/recurring_appointments.feature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="210" selection-end="210" vertical-scroll-proportion="0.0">
-          <folding />
+          <folding>
+            <marker date="1386520906000" expanded="true" signature="143:150" placeholder=" ... end" />
+            <marker date="1386520906000" expanded="true" signature="174:827" placeholder=" ... end" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1046,16 +1005,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/unit/upcoming_recurring_appointments_test.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="26" selection-start="49" selection-end="49" vertical-scroll-proportion="0.0">
+        <state line="10" column="0" selection-start="521" selection-end="521" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20131208023522_create_upcoming_recurring_appointments_view.rb">
+    <entry file="file://$PROJECT_DIR$/features/recurring_appointments.feature">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="0" selection-start="694" selection-end="694" vertical-scroll-proportion="0.0">
+        <state line="6" column="0" selection-start="210" selection-end="210" vertical-scroll-proportion="0.0">
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbElement:/acde7800/e114101d-da44-4b65-8ce7-1aa84795f0ca/.application.appointments">
+      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
+        <state />
       </provider>
     </entry>
     <entry file="dbDummy://dbElement:/acde7800/e114101d-da44-4b65-8ce7-1aa84795f0ca/.application.recurring_appointments">
@@ -1063,9 +1027,28 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/day_planners/create_or_update.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="61" selection-end="61" vertical-scroll-proportion="-1.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbElement:/acde7800/e114101d-da44-4b65-8ce7-1aa84795f0ca/.application.upcoming_recurring_appointments">
+      <provider selected="true" editor-type-id="com.intellij.persistence.database.editor.DatabaseTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20131208023522_create_upcoming_recurring_appointments_view.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="0" selection-start="498" selection-end="498" vertical-scroll-proportion="0.5263158">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test/fixtures/recurring_appointments.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="34" selection-start="443" selection-end="443" vertical-scroll-proportion="0.34562212">
+        <state line="7" column="26" selection-start="369" selection-end="369" vertical-scroll-proportion="0.25485438">
           <folding />
         </state>
       </provider>
