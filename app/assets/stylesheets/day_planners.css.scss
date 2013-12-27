@@ -1,3 +1,17 @@
 // Place all the styles related to the day_planners controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#day-planner .day-planner-cell {
+  width: 12%;
+  //border: solid 1px;
+}
+
+#day-planner .day-planner-header {
+  @extend .day-planner-cell;
+  font-weight: bold;
+}
+
+#day-planner .day-planner-time-slot {
+  @extend .day-planner-cell;
+  font-size: 85%;
+}

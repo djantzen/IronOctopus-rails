@@ -100,7 +100,7 @@ class RangeSupport
       begin
         start_time = DateTime.parse(val.split(",")[0])
         end_time = DateTime.parse(val.split(",")[1])
-        (start_time .. end_time)
+        DateTimeRange.new(start_time, end_time)
       rescue Exception => e
       end
     elsif val =~ /^(\d+)$/
