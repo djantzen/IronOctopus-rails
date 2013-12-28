@@ -2,17 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46f8a447-b9ed-44ae-be1c-95fe4e4f3fab" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/day_planners/_weekly_calendar.html.haml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/date_time_range.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/date_time_range_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/day_planners.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/day_planners.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/day_planners_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/day_planners_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/day_planners/create_or_update.html.haml" afterPath="$PROJECT_DIR$/app/views/day_planners/create_or_update.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/postgres_range_support.rb" afterPath="$PROJECT_DIR$/lib/postgres_range_support.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/weekday.rb" afterPath="$PROJECT_DIR$/lib/weekday.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20131124000345_create_appointments.rb" afterPath="$PROJECT_DIR$/db/migrate/20131124000345_create_appointments.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/structure.sql" afterPath="$PROJECT_DIR$/db/structure.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/date_time_range.rb" afterPath="$PROJECT_DIR$/lib/date_time_range.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/unit/date_time_range_test.rb" afterPath="$PROJECT_DIR$/test/unit/date_time_range_test.rb" />
     </list>
     <ignored path="IronOctopus-rails.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -61,25 +54,25 @@
       <file leaf-file-name="_weekly_calendar.html.haml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/day_planners/_weekly_calendar.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="0" selection-start="1476" selection-end="1476" vertical-scroll-proportion="0.7368421">
+            <state line="3" column="0" selection-start="209" selection-end="209" vertical-scroll-proportion="0.13157895">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="date_time_range.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/date_time_range.rb">
+      <file leaf-file-name="appointments.yml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/fixtures/appointments.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="0" selection-start="180" selection-end="180" vertical-scroll-proportion="0.0">
+            <state line="6" column="0" selection-start="302" selection-end="302" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="postgres_range_support.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/postgres_range_support.rb">
+      <file leaf-file-name="Rails IronOctopus-rails: test" pinned="true" current="false" current-in-tab="false">
+        <entry file="mock:///Rails IronOctopus-rails: test">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="103" column="26" selection-start="2708" selection-end="2708" vertical-scroll-proportion="0.0">
+            <state line="0" column="37" selection-start="37" selection-end="37" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
@@ -111,15 +104,18 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="mock:///Rails console: IronOctopus-rails" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Rails console: IronOctopus-rails" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Rails console: IronOctopus-rails" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Rails console: IronOctopus-rails" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Rails console: IronOctopus-rails" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/views/programs/show.html.haml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Rails console: IronOctopus-rails" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Rails console: IronOctopus-rails" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Rails console: IronOctopus-rails" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/assets/stylesheets/sheet.css.scss" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/test/fixtures/recurring_appointments.yml" />
-        <option value="$PROJECT_DIR$/app/models/recurring_appointment_rule.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20131208023522_create_recurring_appointments_view.rb" />
         <option value="$PROJECT_DIR$/app/models/user.rb" />
         <option value="$PROJECT_DIR$/test/unit/upcoming_recurring_appointments_test.rb" />
@@ -130,10 +126,12 @@
         <option value="$PROJECT_DIR$/app/controllers/day_planners_controller.rb" />
         <option value="$PROJECT_DIR$/lib/weekday.rb" />
         <option value="$PROJECT_DIR$/app/views/day_planners/create_or_update.html.haml" />
-        <option value="$PROJECT_DIR$/test/unit/date_time_range_test.rb" />
-        <option value="$PROJECT_DIR$/lib/date_time_range.rb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/day_planners.css.scss" />
         <option value="$PROJECT_DIR$/app/views/day_planners/_weekly_calendar.html.haml" />
+        <option value="$PROJECT_DIR$/db/migrate/20131124000345_create_appointments.rb" />
+        <option value="/Rails IronOctopus-rails: test" />
+        <option value="$PROJECT_DIR$/lib/date_time_range.rb" />
+        <option value="$PROJECT_DIR$/test/unit/date_time_range_test.rb" />
       </list>
     </option>
   </component>
@@ -244,7 +242,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="unit" />
+              <option name="myItemId" value="fixtures" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -402,27 +400,6 @@
       <ConfigurationWrapper RunnerId="RubyRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="Rails console: IronOctopus-rails" type="IrbRunConfigurationType" factoryName="IRB console" temporary="true">
-      <module name="IronOctopus-rails" />
-      <IRB_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
-      <IRB_RUN_CONFIG NAME="WORK DIR" VALUE="$PROJECT_DIR$" />
-      <IRB_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
-      <IRB_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
-      <IRB_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
-      <envs />
-      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
-        <COVERAGE_PATTERN ENABLED="true">
-          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
-        </COVERAGE_PATTERN>
-      </EXTENSION>
-      <IRB_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$PROJECT_DIR$/script/rails" />
-      <IRB_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="console" />
-      <IRB_RUN_CONFIG NAME="IS_RAILS_CONSOLE" VALUE="true" />
-      <RunnerSettings RunnerId="RubyRunner" />
-      <ConfigurationWrapper RunnerId="RubyRunner" />
-      <method />
-    </configuration>
     <configuration default="false" name="test_to_identifier_works" type="TestUnitRunConfigurationType" factoryName="Test::Unit/Shoulda/Minitest" temporary="true">
       <predefined_log_file id="RUBY_TESTUNIT" enabled="true" />
       <module name="IronOctopus-rails" />
@@ -480,6 +457,27 @@
       <RunnerSettings RunnerId="RubyDebugRunner" />
       <RunnerSettings RunnerId="RubyRunner" />
       <ConfigurationWrapper RunnerId="RubyDebugRunner" />
+      <ConfigurationWrapper RunnerId="RubyRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Rails console: IronOctopus-rails" type="IrbRunConfigurationType" factoryName="IRB console" temporary="true">
+      <module name="IronOctopus-rails" />
+      <IRB_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
+      <IRB_RUN_CONFIG NAME="WORK DIR" VALUE="$PROJECT_DIR$" />
+      <IRB_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
+      <IRB_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
+      <IRB_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
+      <envs />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
+      <IRB_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$PROJECT_DIR$/script/rails" />
+      <IRB_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="console test" />
+      <IRB_RUN_CONFIG NAME="IS_RAILS_CONSOLE" VALUE="true" />
+      <RunnerSettings RunnerId="RubyRunner" />
       <ConfigurationWrapper RunnerId="RubyRunner" />
       <method />
     </configuration>
@@ -805,17 +803,17 @@
       <item index="4" class="java.lang.String" itemvalue="Rake.spec" />
       <item index="5" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.unit_test" />
       <item index="6" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.recurring_appointments_test" />
-      <item index="7" class="java.lang.String" itemvalue="IRB console.Rails console: IronOctopus-rails" />
-      <item index="8" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.test_to_identifier_works" />
-      <item index="9" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.DateTimeRangeTest" />
+      <item index="7" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.test_to_identifier_works" />
+      <item index="8" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.DateTimeRangeTest" />
+      <item index="9" class="java.lang.String" itemvalue="IRB console.Rails console: IronOctopus-rails" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.DateTimeRangeTest" />
-        <item index="1" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.test_to_identifier_works" />
+        <item index="1" class="java.lang.String" itemvalue="IRB console.Rails console: IronOctopus-rails" />
         <item index="2" class="java.lang.String" itemvalue="IRB console.Rails console: IronOctopus-rails" />
-        <item index="3" class="java.lang.String" itemvalue="IRB console.Rails console: IronOctopus-rails" />
-        <item index="4" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.recurring_appointments_test" />
+        <item index="3" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.test_to_identifier_works" />
+        <item index="4" class="java.lang.String" itemvalue="IRB console.Rails console: IronOctopus-rails" />
       </list>
     </recent_temporary>
   </component>
@@ -851,18 +849,18 @@
     <frame x="0" y="0" width="1280" height="800" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38344827" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2813793" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25139222" sideWeight="0.6165517" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25139222" sideWeight="0.59034485" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2442323" sideWeight="0.21793103" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28241846" sideWeight="0.59034485" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28241846" sideWeight="0.59034485" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29793105" sideWeight="0.97184825" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32843652" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.40965518" sideWeight="0.75703794" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5737931" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38344827" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -937,34 +935,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$APPLICATION_HOME_DIR$/rubystubs193/class.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="138" column="13" selection-start="4671" selection-end="4671" vertical-scroll-proportion="1.3978261">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/scripts/init_timezones.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/postgres_range_support.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="103" column="26" selection-start="2708" selection-end="2708" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20131208023522_create_recurring_appointments_view.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="17" selection-start="282" selection-end="282" vertical-scroll-proportion="0.2616279">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/user.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="76" column="5" selection-start="2921" selection-end="2921" vertical-scroll-proportion="0.3579235">
@@ -1007,23 +977,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/unit/date_time_range_test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="151" selection-end="151" vertical-scroll-proportion="0.25210086">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/unit/unit_test.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="37" selection-start="135" selection-end="135" vertical-scroll-proportion="0.19788918">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/date_time_range.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="180" selection-end="180" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1042,9 +998,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test/fixtures/recurring_appointment_rules.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20131124000345_create_appointments.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="39" selection-start="535" selection-end="535" vertical-scroll-proportion="0.39244187">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/fixtures/appointments.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="0" selection-start="302" selection-end="302" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/unit/date_time_range_test.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="16" selection-start="1096" selection-end="1096" vertical-scroll-proportion="0.46218488">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/date_time_range.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="0" selection-start="444" selection-end="444" vertical-scroll-proportion="0.6302521">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/postgres_range_support.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="103" column="26" selection-start="2708" selection-end="2708" vertical-scroll-proportion="0.22427441">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/day_planners/_weekly_calendar.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="1476" selection-end="1476" vertical-scroll-proportion="0.7368421">
+        <state line="3" column="0" selection-start="209" selection-end="209" vertical-scroll-proportion="0.13157895">
           <folding />
         </state>
       </provider>

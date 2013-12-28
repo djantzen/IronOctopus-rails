@@ -26,4 +26,13 @@ class DateTimeRangeTest < ActiveSupport::TestCase
     assert_equal(dtr, DateTimeRange.from_identifier("from-2013-01-01_12:00:00-08:00-to-2013-01-01_12:59:59-08:00"))
   end
 
+  test "to_query generates a postgres range" do
+    Time.zone = "America/Los_Angeles"
+    from = Time.new(2013, 9, 4, 12, 0, 0).to_datetime
+    to = Time.new(2013, 9, 4, 13, 59, 59).to_datetime
+    dtr = DateTimeRange.new(from, to)
+    assert_equal("[\"2013-09-04T12:00:00-07:00\",\"2013-09-04T13:59:59-07:00\")", dtr.to_query)
+  end
+
+
 end

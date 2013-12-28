@@ -12,4 +12,8 @@ class DateTimeRange < Range
     DateTimeRange.new(DateTime.parse(from), DateTime.parse(to))
   end
 
+  def to_query
+    "[\"#{min.iso8601}\",\"#{max.iso8601}\")"
+  end
+
 end

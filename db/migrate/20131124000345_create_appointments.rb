@@ -7,6 +7,7 @@ class CreateAppointments < ActiveRecord::Migration
         date_time_slot tstzrange not null,
         confirmation_status text not null default 'Unconfirmed'
           check(confirmation_status in ('Confirmed', 'Pending',  'Rejected', 'Unconfirmed')),
+        notes text not null default '',
         created_at timestamptz not null default now(),
         exclude using gist (trainer_id with =, date_time_slot WITH &&),
         exclude using gist (client_id with =, date_time_slot WITH &&),
