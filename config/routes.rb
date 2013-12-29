@@ -1,5 +1,9 @@
 IronOctopus::Application.routes.draw do
 
+  get "appointments/create"
+
+  get "appointments/destroy"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -75,6 +79,7 @@ IronOctopus::Application.routes.draw do
     resources :invitations
     resource :day_planner
     resource :profile
+    resources :appointments
   end
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.

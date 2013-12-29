@@ -1,0 +1,4 @@
+!= "console.log('##{escape_javascript(@date_time_slot_id)}');"
+!= "$('##{escape_javascript(@date_time_slot_id.gsub(":", "\\:"))}').html('#{escape_javascript(render :template => "appointments/show",
+                                                            :locals => { })}');"
+-#!= "Util.show_flash('Created Appointment');"

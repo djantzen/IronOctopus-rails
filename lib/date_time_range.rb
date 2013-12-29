@@ -13,7 +13,7 @@ class DateTimeRange < Range
   end
 
   def to_query
-    "[\"#{min.iso8601}\",\"#{max.iso8601}\")"
+    "[\"#{min.iso8601}\",\"#{max.iso8601}\"]"
   end
 
 end

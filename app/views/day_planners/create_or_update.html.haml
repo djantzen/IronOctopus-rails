@@ -1,8 +1,11 @@
 #day-planner.container-fluid
   #day-planner-panel.row-fluid
-    #client-list.span3.well
-      - @clients.each do |client|
-        .row-fluid
-          = client.full_name
+    #day-planner-client-list-panel.span3.well
+      %ul#day-planner-client-list
+        - @clients.each do |client|
+          %li.client
+            .login.hidden
+              = client.login
+            = client.full_name
     #weekdays.span9.well
       = render :partial => "day_planners/weekly_calendar"
