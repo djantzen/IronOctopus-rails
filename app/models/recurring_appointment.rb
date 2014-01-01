@@ -15,4 +15,10 @@ class RecurringAppointment < ActiveRecord::Base
     self[:date_time_slot] = RangeSupport.string_to_range(self[:date_time_slot])
   end
 
+  def local_date_time_slot
+    date_time_slot_min_in_time_zone = date_time_slot.min.in_time_zone(trainer.timezone.tzid)
+    date_time_slot_max_in_time_zone = date_time_slot.max.in_time_zone(trainer.timezone.tzid)
+    DateTimeRange.new(date_time_slot_min_in_time_zone, date_time_slot_max_in_time_zone)
+  end
+
 end
