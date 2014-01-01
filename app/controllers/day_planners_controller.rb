@@ -27,6 +27,7 @@ class DayPlannersController < ApplicationController
     # 6am and 8pm LOCAL time. I need to convert appointments from UTC to the users local time
 
     @clients = @trainer.clients # order by last appointment
+    #@today = DateTime.now.in_time_zone(@trainer.timezone.tzid).to_date
     @today = Date.today
     @last_week = (@today.beginning_of_week - 1.week .. @today.end_of_week - 1.week)
 
@@ -36,7 +37,10 @@ class DayPlannersController < ApplicationController
       [ date, date_to_date_time_ranges(date, @trainer.timezone.tzid) ]
     end
     @next_week = (@today.beginning_of_week(:sunday) + 1.week .. @today.end_of_week(:sunday) + 1.week)
-    @appointments = @trainer.appointments
+    @appointments = @trainer.appointments.where("lower(date_time_slot) > '#{@today.beginning_of_week(:sunday).iso8601}'").inject({}) do |hash, appt|
+      hash[appt.local_date_time_slot.to_identifier] = appt
+      hash
+    end
     @recurring_appointments = @trainer.recurring_appointments
 
 

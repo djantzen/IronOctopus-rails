@@ -10,8 +10,8 @@ class AppointmentsController < ApplicationController
 
   def destroy
     trainer = User.find_by_login(params[:user_id])
-    date_time_slot = DateTimeRange.from_identifier(params[:appointment][:date_time_slot_id])
-    appt = Appointment.where(:trainer_id => trainer.id, :date_time_slot => date_time_slot.to_query).first
-    appt.delete
+    @date_time_slot_id = params[:id]
+    date_time_slot = DateTimeRange.from_identifier(@date_time_slot_id)
+    Appointment.delete_all(:trainer_id => trainer.id, :date_time_slot => date_time_slot.to_query)
   end
 end

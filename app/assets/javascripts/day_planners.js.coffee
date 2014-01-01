@@ -1,11 +1,13 @@
 class this.DayPlannerCell
   add_appointment: (cell, client_login) ->
-    trainer_login = document.URL.match(/\/users\/(\w+)\//)[1]
-    url = document.URL.match(/(.*?)day_planner/)[1]
-    url += "appointments"
+    url = document.URL.match(/(.*?)day_planner/)[1] + "appointments"
     id = cell.id
-    $.post(url, { "appointment" : { "client_login": client_login, "date_time_slot_id" : id }})
-
+    $.post(
+      url,
+      appointment :
+        client_login : client_login,
+        date_time_slot_id : id
+    )
 
   constructor: (@day_planner_cell_div) ->
     @day_planner_cell_div.droppable(
@@ -23,3 +25,6 @@ $(document).ready () ->
   $(".day-planner-time-slot").each ->
     new DayPlannerCell($(this))
 
+  $(".appointment").each ->
+    if $(this).html().trim() != ""
+      new Appointment($(this))
