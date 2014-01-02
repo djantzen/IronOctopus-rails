@@ -96,12 +96,21 @@ class RangeSupport
       ($1.to_f .. $2.to_f)
     elsif val =~ /\[(\d+\.\d+),(\d+\.\d+)\)/
       ($1.to_f .. $2.to_f - 1)
-    elsif val =~ /,/
+    elsif val =~ /"\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}[+-]\d+","\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}[+-]\d+"/
       begin
         start_time = DateTime.parse(val.split(",")[0])
         end_time = DateTime.parse(val.split(",")[1])
         DateTimeRange.new(start_time, end_time)
       rescue Exception => e
+        Rails.logger.error("Whoa! #{e.message}")
+      end
+    elsif val =~ /\d{2}:\d{2}:\d{2},\d{2}:\d{2}:\d{2}/
+      begin
+        start_time = SimpleTime.parse(val.split(",")[0])
+        end_time = SimpleTime.parse(val.split(",")[1])
+        SimpleTimeRange.new(start_time, end_time)
+      rescue Exception => e
+        Rails.logger.error("Whoa! #{e.message}")
       end
     elsif val =~ /^(\d+)$/
       ($1.to_i .. $1.to_i)

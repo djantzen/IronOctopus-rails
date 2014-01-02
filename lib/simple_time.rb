@@ -24,4 +24,9 @@ class SimpleTime
     sprintf("%02d:%02d:%02d", @hour, @minute, @second)
   end
 
+  def self.parse(string)
+    string =~ /(\d{2}):(\d{2}):(\d{2})/
+    SimpleTime.new($1.to_i, $2.to_i, $3.to_i)
+  end
+
 end

@@ -22,10 +22,6 @@ class DayPlannersController < ApplicationController
     # longer historical views can be provided via proper reports
     # need to load: routine info, client list,
 
-    # If I am in pacific standard, my calendar should be displayed in that. Converted to and from UTC.
-    # recurring appointments and appointments should be converted to local time. Calendar is always between
-    # 6am and 8pm LOCAL time. I need to convert appointments from UTC to the users local time
-
     @clients = @trainer.clients # order by last appointment
     @today = DateTime.now.in_time_zone(@trainer.timezone.tzid).to_date
     @last_week = (@today.beginning_of_week - 1.week .. @today.end_of_week - 1.week)
