@@ -1,6 +1,24 @@
+.hidden.client-login
+  = appointment.client.login
 .row-fluid.client
-  = client.full_name
+  = appointment.client.full_name
 .row-fluid.delete-appointment
   .btn.btn-small
     Cancel
     %i.icon-remove
+.row-fluid.routine
+  .display-name
+    = appointment.routines.first.name unless appointment.routines.empty?
+    = render :partial => "shared/button", :locals => { :button_class => "edit-selected-routine-button",
+             :icon => "icon-edit"}                                                                             
+  .modal.modal-routine-select.hide.fade
+    .modal-body
+      = select_tag "program[dates][#{appointment.date.iso8601}]",
+        options_for_select(appointment.client.routines, appointment.routines.empty? ? nil : appointment.routines.first),
+        :prompt => "-- Select a Routine --", :class => "routine-select"
+      .btn-group
+        = render :partial => "shared/button", :locals => { :button_class => "btn-primary okay-selected-routine-button",
+          :icon => "icon-ok"}
+        -#
+        = render :partial => "shared/button", :locals => { :button_class => "new-routine-button",
+          :message => "New Routine"}

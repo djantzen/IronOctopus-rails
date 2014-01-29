@@ -33,7 +33,6 @@ $(document).ready(function() {
   });
 
   $("#cancel-routine-builder-button").click(function() {
-    debugger;
     $("#modal-routine-builder").modal('hide');
     clear_routine_form();
   });

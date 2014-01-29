@@ -96,7 +96,7 @@ class RangeSupport
       ($1.to_f .. $2.to_f)
     elsif val =~ /\[(\d+\.\d+),(\d+\.\d+)\)/
       ($1.to_f .. $2.to_f - 1)
-    elsif val =~ /"\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}[+-]\d+","\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}[+-]\d+"/
+    elsif val =~ /\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}[+-]\d+","\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}[+-]\d+/ or val =~ /\[\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}[+-]\d+:\d+,\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}[+-]\d+:\d+\]/
       begin
         start_time = DateTime.parse(val.split(",")[0])
         end_time = DateTime.parse(val.split(",")[1])

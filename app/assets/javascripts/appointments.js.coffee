@@ -14,5 +14,13 @@ class this.Appointment
           eval(msg)
       )
 
+  init_create_routine_button : () =>
+    button = @appointment_div.find(".edit-selected-routine-button")
+    button.click =>
+      login = @appointment_div.find(".client-login").text().trim()
+      $("form#new_routine").attr("action", "/users/" + login + "/routines")
+      $("#modal-routine-builder").modal()
+
   constructor: (@appointment_div) ->
     this.init_delete_button()
+    this.init_create_routine_button()

@@ -2,8 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #day-planner .day-planner-cell {
-  width: 12%;
-  //border: solid 1px;
+  width: 13%;
+  border: solid 1 px;
+  margin-left: 0.5%;
+  margin-bottom: 0.5%;
+}
+
+#day-planner .timestamp {
+  width: 5%;
+  font-weight: bold;
 }
 
 #day-planner .day-planner-header {
@@ -14,5 +21,5 @@
 #day-planner .day-planner-time-slot {
   @extend .day-planner-cell;
   font-size: 85%;
-  height: 100px;
+  height: 120px;
 }

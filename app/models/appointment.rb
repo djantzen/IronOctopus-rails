@@ -3,6 +3,7 @@ class Appointment < ActiveRecord::Base
 
   belongs_to :trainer, :class_name => "User", :foreign_key => :trainer_id
   belongs_to :client, :class_name => "User", :foreign_key => :client_id
+  has_and_belongs_to_many :routines
 
   after_find :to_ranges # translate from database ranges
   after_save :to_ranges # repair the one in memory after save
@@ -14,6 +15,10 @@ class Appointment < ActiveRecord::Base
 
   def to_ranges
     self[:date_time_slot] = RangeSupport.string_to_range(self[:date_time_slot])
+  end
+
+  def date
+    date_time_slot.min.to_date
   end
 
   def local_date_time_slot

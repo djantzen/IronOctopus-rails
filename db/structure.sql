@@ -7740,6 +7740,7 @@ COMMENT ON TABLE alternate_activity_names IS 'Acceptable variations of the activ
 --
 
 CREATE TABLE appointments (
+    appointment_id integer NOT NULL,
     trainer_id integer NOT NULL,
     client_id integer NOT NULL,
     date_time_slot tstzrange NOT NULL,
@@ -7762,6 +7763,85 @@ COMMENT ON TABLE appointments IS 'Records the time range that a trainer is sched
 --
 
 COMMENT ON COLUMN appointments.confirmation_status IS 'A new appointment is Unconfirmed; when an email is sent it is Pending; it can be Confirmed or Rejected';
+
+
+--
+-- Name: appointments_appointment_id_seq; Type: SEQUENCE; Schema: application; Owner: -
+--
+
+CREATE SEQUENCE appointments_appointment_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: appointments_appointment_id_seq; Type: SEQUENCE OWNED BY; Schema: application; Owner: -
+--
+
+ALTER SEQUENCE appointments_appointment_id_seq OWNED BY appointments.appointment_id;
+
+
+--
+-- Name: routines; Type: TABLE; Schema: application; Owner: -; Tablespace: 
+--
+
+CREATE TABLE routines (
+    routine_id integer NOT NULL,
+    name text NOT NULL,
+    permalink text NOT NULL,
+    trainer_id integer NOT NULL,
+    client_id integer NOT NULL,
+    goal text DEFAULT 'Not specified'::text NOT NULL,
+    days_of_week integer DEFAULT 0 NOT NULL,
+    created_at timestamp with time zone DEFAULT now() NOT NULL,
+    updated_at timestamp with time zone DEFAULT now() NOT NULL
+);
+
+
+--
+-- Name: TABLE routines; Type: COMMENT; Schema: application; Owner: -
+--
+
+COMMENT ON TABLE routines IS 'A grouping of activity sets that may be assigned to a user.';
+
+
+--
+-- Name: COLUMN routines.days_of_week; Type: COMMENT; Schema: application; Owner: -
+--
+
+COMMENT ON COLUMN routines.days_of_week IS 'A representation of days in binary: 1 Sunday, 2 Monday, 4 Tuesday, etc.';
+
+
+--
+-- Name: scheduled_programs; Type: TABLE; Schema: application; Owner: -; Tablespace: 
+--
+
+CREATE TABLE scheduled_programs (
+    routine_id integer NOT NULL,
+    program_id integer NOT NULL,
+    scheduled_on date NOT NULL,
+    meridian text DEFAULT 'AM'::text NOT NULL,
+    created_at timestamp with time zone DEFAULT now() NOT NULL,
+    CONSTRAINT scheduled_programs_meridian_check CHECK ((meridian = ANY (ARRAY['AM'::text, 'PM'::text])))
+);
+
+
+--
+-- Name: TABLE scheduled_programs; Type: COMMENT; Schema: application; Owner: -
+--
+
+COMMENT ON TABLE scheduled_programs IS 'A table mapping routines to programs at times';
+
+
+--
+-- Name: appointments_routines; Type: VIEW; Schema: application; Owner: -
+--
+
+CREATE VIEW appointments_routines AS
+    SELECT appointments.appointment_id, routines.routine_id FROM ((appointments JOIN routines USING (client_id)) JOIN scheduled_programs USING (routine_id)) WHERE (appointments.date_time_slot <@ tstzrange((scheduled_programs.scheduled_on)::timestamp with time zone, ((scheduled_programs.scheduled_on + '1 day'::interval))::timestamp with time zone));
 
 
 --
@@ -8565,37 +8645,6 @@ COMMENT ON VIEW recurring_appointments IS 'Maps the day of week and time slot di
 
 
 --
--- Name: routines; Type: TABLE; Schema: application; Owner: -; Tablespace: 
---
-
-CREATE TABLE routines (
-    routine_id integer NOT NULL,
-    name text NOT NULL,
-    permalink text NOT NULL,
-    trainer_id integer NOT NULL,
-    client_id integer NOT NULL,
-    goal text DEFAULT 'Not specified'::text NOT NULL,
-    days_of_week integer DEFAULT 0 NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL,
-    updated_at timestamp with time zone DEFAULT now() NOT NULL
-);
-
-
---
--- Name: TABLE routines; Type: COMMENT; Schema: application; Owner: -
---
-
-COMMENT ON TABLE routines IS 'A grouping of activity sets that may be assigned to a user.';
-
-
---
--- Name: COLUMN routines.days_of_week; Type: COMMENT; Schema: application; Owner: -
---
-
-COMMENT ON COLUMN routines.days_of_week IS 'A representation of days in binary: 1 Sunday, 2 Monday, 4 Tuesday, etc.';
-
-
---
 -- Name: routines_routine_id_seq; Type: SEQUENCE; Schema: application; Owner: -
 --
 
@@ -8612,27 +8661,6 @@ CREATE SEQUENCE routines_routine_id_seq
 --
 
 ALTER SEQUENCE routines_routine_id_seq OWNED BY routines.routine_id;
-
-
---
--- Name: scheduled_programs; Type: TABLE; Schema: application; Owner: -; Tablespace: 
---
-
-CREATE TABLE scheduled_programs (
-    routine_id integer NOT NULL,
-    program_id integer NOT NULL,
-    scheduled_on date NOT NULL,
-    meridian text DEFAULT 'AM'::text NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL,
-    CONSTRAINT scheduled_programs_meridian_check CHECK ((meridian = ANY (ARRAY['AM'::text, 'PM'::text])))
-);
-
-
---
--- Name: TABLE scheduled_programs; Type: COMMENT; Schema: application; Owner: -
---
-
-COMMENT ON TABLE scheduled_programs IS 'A table mapping routines to programs at times';
 
 
 --
@@ -9104,6 +9132,13 @@ ALTER TABLE ONLY activity_videos ALTER COLUMN activity_video_id SET DEFAULT next
 
 
 --
+-- Name: appointment_id; Type: DEFAULT; Schema: application; Owner: -
+--
+
+ALTER TABLE ONLY appointments ALTER COLUMN appointment_id SET DEFAULT nextval('appointments_appointment_id_seq'::regclass);
+
+
+--
 -- Name: area_id; Type: DEFAULT; Schema: application; Owner: -
 --
 
@@ -9362,7 +9397,7 @@ ALTER TABLE ONLY appointments
 --
 
 ALTER TABLE ONLY appointments
-    ADD CONSTRAINT appointments_pkey PRIMARY KEY (trainer_id, date_time_slot);
+    ADD CONSTRAINT appointments_pkey PRIMARY KEY (appointment_id);
 
 
 --
@@ -9371,6 +9406,14 @@ ALTER TABLE ONLY appointments
 
 ALTER TABLE ONLY appointments
     ADD CONSTRAINT appointments_trainer_id_date_time_slot_excl EXCLUDE USING gist (trainer_id WITH =, date_time_slot WITH &&);
+
+
+--
+-- Name: appointments_trainer_id_date_time_slot_key; Type: CONSTRAINT; Schema: application; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY appointments
+    ADD CONSTRAINT appointments_trainer_id_date_time_slot_key UNIQUE (trainer_id, date_time_slot);
 
 
 --
@@ -10696,3 +10739,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131124000345');
 INSERT INTO schema_migrations (version) VALUES ('20131124014126');
 
 INSERT INTO schema_migrations (version) VALUES ('20131208023522');
+
+INSERT INTO schema_migrations (version) VALUES ('20140105054631');

@@ -1,19 +1,5 @@
--# need to be able to drag and drop appointments. (and prompt to send email). All email sent should be visible in a log
--# somewhere.
--# AJAX: Making an appointment recurring/not, confirming a recurring appt.
--# When a new calendar loads, only recurring appointments show
--#   When I click to send confirmation email I see the color change. An appointment is created in the backend 'Unconfirmed'
--#   The recurring appointment is now an appointment
--#   If I cancel an appointment it is removed from the calendar, email sent.
--#
--# When I edit an existing calendar:
--#   I'm loading both recurring and real appointments. If a recurring appointment overlaps with an appointment, the
--#   appointment wins. So on edit, we want to merge appointments and recurring appointments where the key is
--# trainer_id and timeslot.
--# rendering this: for every day, for every hour slot, if the time slot matches, add class "appointment".
--# each hour slot gets a natural key for the time range. UTC?
-
 #day-planner-header.row-fluid
+  .span1.timestamp
   - (0 .. 6).each do |day_idx|
     .span2.day-planner-cell.day-planner-header
       .row-fluid
@@ -23,11 +9,11 @@
 #day-planner-body
   - (0 .. 14).each do |time_slot_idx|
     .row-fluid
+      .span1.timestamp
+        = @this_week[0][1][time_slot_idx].min.strftime("%l %P")
       - (0 .. 6).each do |day_idx|
         - date_time_id_slot = @this_week[day_idx][1][time_slot_idx].to_identifier
         .span2.well.well-small.day-planner-cell.day-planner-time-slot{:id => date_time_id_slot}
-          .row-fluid.timestamp
-            = @this_week[day_idx][1][time_slot_idx].min.strftime("%l %P")
           .row-fluid.appointment
             - if @appointment_map.has_key?(date_time_id_slot)
-              = render :template => "appointments/show", :locals => { :client => @appointment_map[date_time_id_slot].client }
+              = render :template => "appointments/show", :locals => { :appointment => @appointment_map[date_time_id_slot] }

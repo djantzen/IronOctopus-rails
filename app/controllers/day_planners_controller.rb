@@ -18,10 +18,6 @@ class DayPlannersController < ApplicationController
 
   def create_or_update
     @trainer = User.find_by_login(params[:user_id])
-    # return last week, this week and next week
-    # longer historical views can be provided via proper reports
-    # need to load: routine info, client list,
-
     @clients = @trainer.clients # order by last appointment
     @today = DateTime.now.in_time_zone(@trainer.timezone.tzid).to_date
     @last_week = (@today.beginning_of_week - 1.week .. @today.end_of_week - 1.week)
@@ -33,20 +29,16 @@ class DayPlannersController < ApplicationController
 
     clause = "lower(date_time_slot) between '#{@today.beginning_of_week(:sunday).iso8601}' and '#{@today.end_of_week(:sunday).iso8601}'"
     @appointment_map = {}
-    @trainer.recurring_appointments.where(clause).each do |appt|
-      @appointment_map[appt.local_date_time_slot.to_identifier] = appt
+    @trainer.recurring_appointments.where(clause).each do |appointment|
+      @appointment_map[appointment.local_date_time_slot.to_identifier] = appointment
     end
-    @trainer.appointments.where(clause).each do |appt|
-      @appointment_map[appt.local_date_time_slot.to_identifier] = appt
+    @trainer.appointments.where(clause).each do |appointment|
+      @appointment_map[appointment.local_date_time_slot.to_identifier] = appointment
     end
-
-
-    #@appointment_map = appointments.inject({}) do |hash, appt|
-    #  hash[appt.local_date_time_slot.to_identifier] = appt
-    #  hash
-    #end
-
+    routine_builder_attributes
   end
+
+  private
 
   def date_to_date_time_ranges(date, trainer_timezone_id)
     Time.zone = trainer_timezone_id
@@ -57,6 +49,19 @@ class DayPlannersController < ApplicationController
     end
     Time.zone = "UTC"
     ranges
+  end
+
+  def routine_builder_attributes
+    @routine = Routine.new
+    @client_logins = current_user.clients.map { |u| ["#{u.first_name} #{u.last_name}", u.login] }
+    @client = User.first # dummy
+    @activities = Activity.all(:include => [:body_parts, :implements, :activity_type], :order => :name)
+    @activity_types = ActivityType.order(:name)
+    @implements = Implement.order(:category, :name)
+    @body_parts = BodyPart.order(:region, :name)
+    @activity_attributes = ActivityAttribute.order(:name)
+    @metrics = Metric.all(:conditions => "name != 'None'")
+    @activity = Activity.new
   end
 
 end

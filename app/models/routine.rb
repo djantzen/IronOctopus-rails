@@ -10,6 +10,7 @@ class Routine < ActiveRecord::Base
 
   has_many :weekday_programs
   has_many :scheduled_programs
+  has_and_belongs_to_many :appointments
 
   VALIDATIONS = IronOctopus::Configuration.instance.validations[:routine]
   validates :name, :length => {

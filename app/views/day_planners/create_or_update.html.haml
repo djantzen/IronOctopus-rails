@@ -1,11 +1,14 @@
+#modal-routine-builder.modal.hide.fade
+  .modal-body
+    = render :partial => "routines/create_or_update", :locals => { :via_ajax => true }
 #day-planner.container-fluid
   #day-planner-panel.row-fluid
-    #day-planner-client-list-panel.span3.well
+    #day-planner-client-list-panel.span2.well
       %ul#day-planner-client-list
         - @clients.each do |client|
           %li.client
             .login.hidden
               = client.login
             = client.full_name
-    #weekdays.span9.well
+    #weekdays.span10.well
       = render :partial => "day_planners/weekly_calendar"

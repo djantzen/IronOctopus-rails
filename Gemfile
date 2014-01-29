@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-gem "rails", "3.2.14"
+gem "rails", "3.2.16"
 gem "pg"
 gem "json"
 gem "bootstrap-sass", "~> 2.3.1.2"
@@ -41,6 +41,7 @@ group :assets do
 end
 
 group :development do
+  gem "thin"
   gem "ruby-debug19"
   gem "ruby-debug-base19"
 end

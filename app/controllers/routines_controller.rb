@@ -123,7 +123,7 @@ class RoutinesController < ApplicationController
       routine.trainer = User.find_by_login(params[:trainer]) if routine.trainer.nil?
       routine.name = params[:name]
       routine.goal = params[:goal]
-      routine.client = User.find_by_login(params[:client]) if routine.client.nil?
+      routine.client = User.find_by_login(params[:user_id]) if routine.client.nil?
 
       # Delete all existing ActivitySetGroups and ActivitySets
       routine.activity_set_groups.each do |group|
