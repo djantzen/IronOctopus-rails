@@ -1,0 +1,6 @@
+!= "$('#routine_name').attr('value', '#{@routine.name}');"
+!= "$('#routine_goal').val('#{@routine.goal}');"
+- group_activity_sets_by_group(@routine.activity_sets).each_pair do |group, activity_sets|
+  != "var group = '#{ escape_javascript(render :partial => "activity_sets/group", :locals => { :group => group, :activity_sets => activity_sets, :template => false } ) }';"
+  != "$('#routine-activity-set-list').append(group);"
+!= "$('.activity-set-group').each(function() { new ActivitySetGroup($(this)); })"

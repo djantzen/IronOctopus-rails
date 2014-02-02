@@ -18,9 +18,26 @@ class this.Appointment
     button = @appointment_div.find(".edit-selected-routine-button")
     button.click =>
       login = @appointment_div.find(".client-login").text().trim()
-      $("form#new_routine").attr("action", "/users/" + login + "/routines")
+      routine_name = @appointment_div.find(".routine-name").text().trim();
       $("#routine_client").val(login)
+      if routine_name
+        $("form#new_routine").attr("method", "PUT")
+        $("form#new_routine").attr("action", "/users/" + login + "/routines/" + routine_name.toIdentifier())
+        url = "/users/" + login + "/routines/" + routine_name.toIdentifier() + ".js"
+        $.ajax(
+          url : url,
+          type : "GET",
+          dataType: "text",
+          error : (e) ->
+            console.log(e.message)
+          success : (msg) ->
+            eval(msg)
+        )
+      else
+        $("form#new_routine").attr("method", "POST")
+        $("form#new_routine").attr("action", "/users/" + login + "/routines")
       $("#modal-routine-builder").modal()
+      $("#ajax-source-id").text(@appointment_div.parent().attr("id"))
 
   constructor: (@appointment_div) ->
     this.init_delete_button()

@@ -7,10 +7,10 @@
     Cancel
     %i.icon-remove
 .row-fluid.routine
-  .display-name
+  .routine-name
     = appointment.routine.name if appointment.routine
-    = render :partial => "shared/button", :locals => { :button_class => "edit-selected-routine-button",
-             :icon => "icon-edit"}                                                                             
+  = render :partial => "shared/button", :locals => { :button_class => "edit-selected-routine-button",
+           :icon => "icon-edit"}
   .modal.modal-routine-select.hide.fade
     .modal-body
       -#= select_tag "program[dates][#{appointment.date.iso8601}]",

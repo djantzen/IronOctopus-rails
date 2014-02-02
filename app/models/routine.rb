@@ -1,7 +1,7 @@
 class Routine < ActiveRecord::Base
 
-  belongs_to :trainer, :class_name => 'User', :foreign_key => :trainer_id
-  belongs_to :client, :class_name => 'User', :foreign_key => :client_id
+  belongs_to :trainer, :class_name => "User", :foreign_key => :trainer_id
+  belongs_to :client, :class_name => "User", :foreign_key => :client_id
  
   has_many :activities, :through => :activity_sets
   has_many :measurements, :through => :activity_sets
@@ -10,7 +10,7 @@ class Routine < ActiveRecord::Base
 
   has_many :weekday_programs
   has_many :scheduled_programs
-  has_and_belongs_to_many :appointments
+  has_many :date_time_slots, :class_name => "RoutineDateTimeSlot", :foreign_key => :routine_id
 
   VALIDATIONS = IronOctopus::Configuration.instance.validations[:routine]
   validates :name, :length => {

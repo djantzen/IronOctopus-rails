@@ -22,13 +22,17 @@ $(document).ready(function() {
 
   var clear_routine_form = function() {
     $("#routine-form-panel form")[0].reset();
-    $("#modal-routine-builder .activity-set-form").remove();
+    $("#routine_name").attr("value", null);
+    $("#routine_goal").attr("value", "None specified");
+    $("#modal-routine-builder .activity-set-group").remove();
   }
 
   $("#routine-builder-panel form").bind('ajax:complete', function() {
     var routine_name = $("#routine_name").val();
     $("select.routine-select").append("<option value=" + routine_name.toIdentifier() + ">" + routine_name + "</option>");
     $("#modal-routine-builder").modal('hide');
+    var source_id = $("#ajax-source-id").text().replace(/:/g, "\\:");
+    $("#" + source_id).find(".routine-name").text(routine_name);
     clear_routine_form();
   });
 

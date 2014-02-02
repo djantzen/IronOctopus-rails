@@ -106,7 +106,7 @@ IronOctopus::Application.routes.draw do
   get "/users/:user_id/routines/:routine_id/sheet" => "routines#sheet", :as => "routine_sheet"
   get "/users/:user_id/routines/:routine_id/perform" => "routines#perform", :as => "perform_routine"
   get "/users/:user_id/settings" => "users#settings", :as => "user_settings"
-  get "/users/:user_id/routines/:routine_id/activity_sets" => "routines#fetch_activity_sets", :as => :fetch_activity_sets
+  #get "/users/:user_id/routines/:routine_id/activity_sets" => "routines#fetch_routine", :as => :fetch_routine
   get "/users/:user_id/routines" => "routines#by_client", :as => :routines_by_client
   get "/users/:user_id/scores_by_day" => "users#scores_by_day"
   get "/users/:user_id/client_score_differentials" => "users#client_score_differentials"

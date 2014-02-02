@@ -50,6 +50,7 @@ class RoutinesController < ApplicationController
     authorize! :read, @routine
     respond_with do |format|
       format.html { render :html => @routine }
+      format.html { render :json => @routine }
     end
   end
 
