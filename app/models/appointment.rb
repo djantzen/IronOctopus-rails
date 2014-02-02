@@ -3,7 +3,8 @@ class Appointment < ActiveRecord::Base
 
   belongs_to :trainer, :class_name => "User", :foreign_key => :trainer_id
   belongs_to :client, :class_name => "User", :foreign_key => :client_id
-  has_and_belongs_to_many :routines
+  has_one :appointment_routine
+  has_one :routine, :through => :appointment_routine
 
   after_find :to_ranges # translate from database ranges
   after_save :to_ranges # repair the one in memory after save

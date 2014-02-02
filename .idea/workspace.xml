@@ -2,29 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46f8a447-b9ed-44ae-be1c-95fe4e4f3fab" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/postgres_range_support_test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/IronOctopus-rails.iml" afterPath="$PROJECT_DIR$/.idea/IronOctopus-rails.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/appointment_routine.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20131124000340_create_routine_date_time_ranges.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/migrate/20140105054631_create_appointment_routines_view.rb" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/db/migrate/20140105054631_create_appointments_routines_view.rb" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/appointments.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/appointments.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/programs.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/programs.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/day_planners.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/day_planners.css.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/appointments_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/appointments_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/day_planners_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/day_planners_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/routines_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/routines_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/appointment.rb" afterPath="$PROJECT_DIR$/app/models/appointment.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/recurring_appointment.rb" afterPath="$PROJECT_DIR$/app/models/recurring_appointment.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/routine.rb" afterPath="$PROJECT_DIR$/app/models/routine.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/appointments/create.js.haml" afterPath="$PROJECT_DIR$/app/views/appointments/create.js.haml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/appointments/show.html.haml" afterPath="$PROJECT_DIR$/app/views/appointments/show.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/day_planners/_weekly_calendar.html.haml" afterPath="$PROJECT_DIR$/app/views/day_planners/_weekly_calendar.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/day_planners/create_or_update.html.haml" afterPath="$PROJECT_DIR$/app/views/day_planners/create_or_update.html.haml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20131124000345_create_appointments.rb" afterPath="$PROJECT_DIR$/db/migrate/20131124000345_create_appointments.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20131124014126_create_recurring_appointment_rules.rb" afterPath="$PROJECT_DIR$/db/migrate/20131124014126_create_recurring_appointment_rules.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20131208023522_create_recurring_appointments_view.rb" afterPath="$PROJECT_DIR$/db/migrate/20131208023522_create_recurring_appointments_view.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/structure.sql" afterPath="$PROJECT_DIR$/db/structure.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/postgres_range_support.rb" afterPath="$PROJECT_DIR$/lib/postgres_range_support.rb" />
     </list>
     <ignored path="IronOctopus-rails.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -52,28 +43,91 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="appointments_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/appointments_controller.rb">
+      <file leaf-file-name="20140201191348_create_recurring_routine_rules.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20140201191348_create_recurring_routine_rules.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="4" selection-start="539" selection-end="539" vertical-scroll-proportion="0.0">
+            <state line="8" column="86" selection-start="492" selection-end="492" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routines_controller.rb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/controllers/routines_controller.rb">
+      <file leaf-file-name="20140201225223_create_recurring_routines_view.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20140201225223_create_recurring_routines_view.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="120" column="38" selection-start="3561" selection-end="3561" vertical-scroll-proportion="0.51715684">
+            <state line="15" column="0" selection-start="686" selection-end="686" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="create.js.haml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/appointments/create.js.haml">
+      <file leaf-file-name="user.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/user.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="26" selection-start="265" selection-end="265" vertical-scroll-proportion="-1.25">
+            <state line="46" column="0" selection-start="2415" selection-end="2415" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show.html.haml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/appointments/show.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="10" selection-start="158" selection-end="158" vertical-scroll-proportion="0.15280136">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Rails IronOctopus-rails: development" pinned="true" current="false" current-in-tab="false">
+        <entry file="mock:///Rails IronOctopus-rails: development">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="20" selection-start="50" selection-end="221" vertical-scroll-proportion="-1.0344827">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="20140105054631_create_appointment_routines_view.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/migrate/20140105054631_create_appointment_routines_view.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="23" selection-start="23" selection-end="23" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="appointment.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/appointment.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="30" selection-start="274" selection-end="274" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="appointment_routine.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/appointment_routine.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="21" selection-start="93" selection-end="93" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_weekly_calendar.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/day_planners/_weekly_calendar.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="0" selection-start="289" selection-end="289" vertical-scroll-proportion="-5.625">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="create_or_update.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/day_planners/create_or_update.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="0" selection-start="449" selection-end="449" vertical-scroll-proportion="-8.125">
               <folding />
             </state>
           </provider>
@@ -94,28 +148,30 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Rails console: IronOctopus-rails" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/views/programs/show.html.haml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Rails console: IronOctopus-rails" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/assets/stylesheets/sheet.css.scss" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/day_planners/create_or_update.html.haml" />
-        <option value="$PROJECT_DIR$/app/controllers/day_planners_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/appointments/show.html.haml" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/appointments.js.coffee" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/programs.js" />
-        <option value="$PROJECT_DIR$/app/controllers/routines_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/routines/_create_or_update.html.haml" />
-        <option value="$PROJECT_DIR$/Gemfile" />
-        <option value="$PROJECT_DIR$/app/views/appointments/create.js.haml" />
-        <option value="$PROJECT_DIR$/app/models/appointment.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20140201191348_unlink_programs.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20140201191348_create_days_routines.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20131208023522_create_recurring_appointments_view.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20131124014126_create_recurring_appointment_rules.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20140201225223_create_recurring_routines_view.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20140201191348_create_recurring_routine_rules.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20131124000340_create_routines_date_time_ranges.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20131124000340_create_routine_date_time_ranges.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20131124000345_create_appointments.rb" />
-        <option value="/Rails IronOctopus-rails: migrate_test" />
-        <option value="$PROJECT_DIR$/lib/postgres_range_support.rb" />
+        <option value="/Rails IronOctopus-rails: migrate_development" />
+        <option value="$PROJECT_DIR$/db/migrate/off_20140105054631_create_appointments_routines_view.rb" />
+        <option value="$PROJECT_DIR$/app/models/appointment_routine.rb" />
+        <option value="$PROJECT_DIR$/app/models/appointment.rb" />
         <option value="/Rails IronOctopus-rails: development" />
-        <option value="$PROJECT_DIR$/app/controllers/appointments_controller.rb" />
-        <option value="$PROJECT_DIR$/test/unit/postgres_range_support_test.rb" />
+        <option value="$PROJECT_DIR$/app/views/appointments/show.html.haml" />
       </list>
     </option>
   </component>
@@ -127,8 +183,9 @@
     <option name="CUSTOM_FILTER" value="" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1280" />
-    <option name="height" value="800" />
+    <option name="x" value="-1920" />
+    <option name="width" value="1920" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -170,7 +227,16 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="RailsProjectView" />
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -203,33 +269,42 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
           <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IronOctopus-rails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="IronOctopus-rails" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="RailsProjectView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="121" />
     <property name="JdbcConsole.Extract.Separator" value="'" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="121" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="154" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="JdbcConsole.Connection.Autocommit" value="true" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="194" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="recentsLimit" value="5" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="194" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/sql.sql" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="118" />
     <property name="JdbcConsole.ResultInNewTab" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="118" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="640" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="834" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="198" />
@@ -250,22 +325,22 @@
     <property name="options.lastSelected" value="preferences.pluginManager" />
     <property name="JdbcConsole.Extract.OpeningQuote" value="'" />
     <property name="JdbcConsole.Extract.ClosingQuote" value="'" />
-    <property name="JdbcConsole.Extract.IncludeHeader" value="false" />
     <property name="JdbcConsole.EnableParameterPattern" value="false" />
+    <property name="JdbcConsole.Extract.IncludeHeader" value="false" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="JdbcConsole.ParameterPattern" value="(\?\d*|\:\w+|\@\w+|\$\{[^$\{\}]*\}|\$\w+\$|\#\w+\#)" />
     <property name="JdbcConsole.ResultPageSize" value="1000" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="Ruby.ViewRefParam.DefaultExtension" value="html.haml" />
     <property name="options.searchVisible" value="true" />
+    <property name="Ruby.ViewRefParam.DefaultExtension" value="html.haml" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/db/migrate" />
       <recent name="$PROJECT_DIR$/test/unit" />
       <recent name="$PROJECT_DIR$/lib" />
       <recent name="$PROJECT_DIR$/features" />
       <recent name="$PROJECT_DIR$/test/fixtures" />
-      <recent name="$PROJECT_DIR$/app/models" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/lib/admin" />
@@ -275,7 +350,7 @@
       <recent name="$PROJECT_DIR$/app/views/shared" />
     </key>
   </component>
-  <component name="RunManager" selected="Test::Unit/Shoulda/Minitest.PostgresRangeSupportTest">
+  <component name="RunManager" selected="IRB console.Rails console: IronOctopus-rails">
     <configuration default="false" name="RecurringAppointmentRuleTest" type="TestUnitRunConfigurationType" factoryName="Test::Unit/Shoulda/Minitest" temporary="true">
       <predefined_log_file id="RUBY_TESTUNIT" enabled="true" />
       <module name="IronOctopus-rails" />
@@ -365,27 +440,6 @@
       <ConfigurationWrapper RunnerId="RubyRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="Rails console: IronOctopus-rails" type="IrbRunConfigurationType" factoryName="IRB console" temporary="true">
-      <module name="IronOctopus-rails" />
-      <IRB_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
-      <IRB_RUN_CONFIG NAME="WORK DIR" VALUE="$PROJECT_DIR$" />
-      <IRB_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
-      <IRB_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
-      <IRB_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
-      <envs />
-      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
-        <COVERAGE_PATTERN ENABLED="true">
-          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
-        </COVERAGE_PATTERN>
-      </EXTENSION>
-      <IRB_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$PROJECT_DIR$/script/rails" />
-      <IRB_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="console" />
-      <IRB_RUN_CONFIG NAME="IS_RAILS_CONSOLE" VALUE="true" />
-      <RunnerSettings RunnerId="RubyRunner" />
-      <ConfigurationWrapper RunnerId="RubyRunner" />
-      <method />
-    </configuration>
     <configuration default="false" name="PostgresRangeSupportTest" type="TestUnitRunConfigurationType" factoryName="Test::Unit/Shoulda/Minitest" temporary="true">
       <predefined_log_file id="RUBY_TESTUNIT" enabled="true" />
       <module name="IronOctopus-rails" />
@@ -414,6 +468,27 @@
       <RunnerSettings RunnerId="RubyDebugRunner" />
       <RunnerSettings RunnerId="RubyRunner" />
       <ConfigurationWrapper RunnerId="RubyDebugRunner" />
+      <ConfigurationWrapper RunnerId="RubyRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Rails console: IronOctopus-rails" type="IrbRunConfigurationType" factoryName="IRB console" temporary="true">
+      <module name="IronOctopus-rails" />
+      <IRB_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
+      <IRB_RUN_CONFIG NAME="WORK DIR" VALUE="$PROJECT_DIR$" />
+      <IRB_RUN_CONFIG NAME="SHOULD_USE_SDK" VALUE="false" />
+      <IRB_RUN_CONFIG NAME="ALTERN_SDK_NAME" VALUE="" />
+      <IRB_RUN_CONFIG NAME="myPassParentEnvs" VALUE="true" />
+      <envs />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
+      <IRB_RUN_CONFIG NAME="SCRIPT_PATH" VALUE="$PROJECT_DIR$/script/rails" />
+      <IRB_RUN_CONFIG NAME="SCRIPT_ARGS" VALUE="console" />
+      <IRB_RUN_CONFIG NAME="IS_RAILS_CONSOLE" VALUE="true" />
+      <RunnerSettings RunnerId="RubyRunner" />
       <ConfigurationWrapper RunnerId="RubyRunner" />
       <method />
     </configuration>
@@ -552,13 +627,6 @@
       <IRB_RUN_CONFIG NAME="IS_RAILS_CONSOLE" VALUE="false" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote">
-      <JSRemoteDebuggerConfigurationSettings>
-        <option name="engineId" value="embedded" />
-        <option name="fileUrl" />
-      </JSRemoteDebuggerConfigurationSettings>
-      <method />
-    </configuration>
     <configuration default="true" type="CucumberRunConfigurationType" factoryName="Cucumber">
       <predefined_log_file id="RUBY_CUCUMBER" enabled="true" />
       <module name="" />
@@ -590,6 +658,13 @@
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_RUNNER_PATH" VALUE="" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_RUNNER" VALUE="false" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SETTINGS_VERSION" VALUE="2" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote">
+      <JSRemoteDebuggerConfigurationSettings>
+        <option name="engineId" value="embedded" />
+        <option name="fileUrl" />
+      </JSRemoteDebuggerConfigurationSettings>
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
@@ -740,16 +815,16 @@
       <item index="5" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.RecurringAppointmentRuleTest" />
       <item index="6" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.SimpleTimeRangeTest" />
       <item index="7" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.DateTimeRangeTest" />
-      <item index="8" class="java.lang.String" itemvalue="IRB console.Rails console: IronOctopus-rails" />
-      <item index="9" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.PostgresRangeSupportTest" />
+      <item index="8" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.PostgresRangeSupportTest" />
+      <item index="9" class="java.lang.String" itemvalue="IRB console.Rails console: IronOctopus-rails" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.PostgresRangeSupportTest" />
-        <item index="1" class="java.lang.String" itemvalue="IRB console.Rails console: IronOctopus-rails" />
-        <item index="2" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.RecurringAppointmentRuleTest" />
-        <item index="3" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.DateTimeRangeTest" />
-        <item index="4" class="java.lang.String" itemvalue="IRB console.Rails console: IronOctopus-rails" />
+        <item index="0" class="java.lang.String" itemvalue="IRB console.Rails console: IronOctopus-rails" />
+        <item index="1" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.PostgresRangeSupportTest" />
+        <item index="2" class="java.lang.String" itemvalue="IRB console.Rails console: IronOctopus-rails" />
+        <item index="3" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.RecurringAppointmentRuleTest" />
+        <item index="4" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.DateTimeRangeTest" />
       </list>
     </recent_temporary>
   </component>
@@ -782,19 +857,19 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <frame x="-1920" y="0" width="1920" height="1080" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32689655" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32655138" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25139222" sideWeight="0.617931" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25039536" sideWeight="0.6734486" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2442323" sideWeight="0.21793103" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28241846" sideWeight="0.617931" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38206896" sideWeight="0.97184825" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24670532" sideWeight="0.6734486" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28179044" sideWeight="0.9826041" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32843652" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34068966" sideWeight="0.75703794" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3397762" sideWeight="0.75703794" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5737931" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -863,108 +938,206 @@
           <url>file://$PROJECT_DIR$/app/controllers/routines_controller.rb</url>
           <line>161</line>
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$PROJECT_DIR$/app/controllers/routines_controller.rb</url>
-          <line>32</line>
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392@IronOctopus/gems/activesupport-3.2.16/lib/active_support/callbacks.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="440" column="0" selection-start="14819" selection-end="14819" vertical-scroll-proportion="0.33333334" />
+    <entry file="uml://DATABASE/3aa07c9a-3734-403f-a75a-77c5a2c5c928">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>DATABASE</ID>
+          <OriginalElement>3aa07c9a-3734-403f-a75a-77c5a2c5c928</OriginalElement>
+          <nodes>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.areas</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.neighborhoods_neighborhood_id_seq</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:reporting.measurement_scores</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.locations_areas</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.unit_sets</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.timezones</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.activity_attributes</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.states</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.locations_users</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.measurements</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.alternate_activity_names</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.body_parts</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.locations_location_id_seq</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.activity_images</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:reporting.routine_scores</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.routines</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.profiles</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.routines_routine_id_seq</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.confirmations</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.activities_body_parts</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.activities_implements</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.weekday_programs</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.licenses_license_id_seq</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.activities_activity_id_seq</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.activity_sets</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.activity_images_activity_image_id_seq</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.activity_videos</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.cities_city_id_seq</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.feedback</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.activity_set_groups</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.invitations</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.devices_device_id_seq</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.implements</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.units_unit_id_seq</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.todays_routines</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.activities</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.activity_attributes_activity_attribute_id_seq</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.licenses</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.user_relationships</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.timezones_timezone_id_seq</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.programs_program_id_seq</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.sales</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.activity_set_groups_activity_set_group_id_seq</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:reporting.routine_scores_by_day</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.scheduled_programs</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.programs</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.locations</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.activity_types</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.password_reset_requests_password_reset_request_id_seq</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.appointments</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.devices</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.units</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.cities</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.body_parts_body_part_id_seq</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.metrics_metric_id_seq</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.metrics</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.activity_types_activity_type_id_seq</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:reporting.days</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:reporting.work_scores_by_day</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.feedback_feedback_id_seq</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.implements_implement_id_seq</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.users_user_id_seq</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.unit_sets_unit_set_id_seq</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.invitations_invitation_id_seq</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.activity_videos_activity_video_id_seq</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.recurring_appointments</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.users</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:reporting.work</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.areas_area_id_seq</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.neighborhoods</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.states_state_id_seq</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.activities_activity_attributes</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.activities_metrics</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.measurements_measurement_id_seq</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.recurring_appointment_rules</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.password_reset_requests</node>
+            <node x="" y="">3aa07c9a-3734-403f-a75a-77c5a2c5c928.table:application.locations_neighborhoods</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.705110007097232" x="2119.5" y="1333.181660899654" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Key columns</Category>
+            <Category>Columns</Category>
+          </Categories>
+        </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392@IronOctopus/gems/activerecord-3.2.16/lib/active_record/attribute_methods.rb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20131208023522_create_recurring_appointments_view.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="0" selection-start="1021" selection-end="1021" vertical-scroll-proportion="0.35380116" />
+        <state line="26" column="0" selection-start="64" selection-end="988" vertical-scroll-proportion="0.70143884">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20131124000340_create_routine_date_time_ranges.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="51" selection-start="276" selection-end="276" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20131124000345_create_appointments.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+        <state line="20" column="0" selection-start="1179" selection-end="1243" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/unit/simple_time_range_test.rb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20131124014126_create_recurring_appointment_rules.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+        <state line="9" column="0" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/unit/recurring_appointment_rule_test.rb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20121001200425_create_weekday_programs.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="0" selection-end="118" vertical-scroll-proportion="0.19430052" />
+        <state line="5" column="79" selection-start="296" selection-end="296" vertical-scroll-proportion="0.12690355">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/date_time_range.rb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20121001200430_create_scheduled_programs.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="11" selection-start="191" selection-end="191" vertical-scroll-proportion="0.3116883" />
+        <state line="11" column="0" selection-start="546" selection-end="546" vertical-scroll-proportion="0.27918783">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/unit/date_time_range_test.rb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20140201225223_create_recurring_routines_view.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="42" selection-start="999" selection-end="999" vertical-scroll-proportion="0.65268064" />
+        <state line="15" column="0" selection-start="686" selection-end="686" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/unit/postgres_range_support_test.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/day_planners/create_or_update.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="71" selection-start="636" selection-end="636" vertical-scroll-proportion="0.48951048">
+        <state line="13" column="0" selection-start="449" selection-end="449" vertical-scroll-proportion="-8.125">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/day_planners/_weekly_calendar.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="0" selection-start="289" selection-end="289" vertical-scroll-proportion="-5.625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20140201191348_create_recurring_routine_rules.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="86" selection-start="492" selection-end="492" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20140105054631_create_appointment_routines_view.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="23" selection-start="23" selection-end="23" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="0" selection-start="2415" selection-end="2415" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/appointment_routine.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="21" selection-start="93" selection-end="93" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/appointment.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="563" selection-end="563" vertical-scroll-proportion="0.46563193">
+        <state line="5" column="30" selection-start="274" selection-end="274" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/appointments/create.js.haml">
+    <entry file="file://$PROJECT_DIR$/app/views/appointments/show.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="26" selection-start="265" selection-end="265" vertical-scroll-proportion="-1.25">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/postgres_range_support.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="100" column="0" selection-start="2724" selection-end="2724" vertical-scroll-proportion="0.5588235">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/appointments_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="4" selection-start="539" selection-end="539" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/routines/_create_or_update.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="0" selection-start="6107" selection-end="6107" vertical-scroll-proportion="-0.625">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392@IronOctopus/gems/activerecord-3.2.16/lib/active_record/dynamic_matchers.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="0" selection-start="1075" selection-end="1075" vertical-scroll-proportion="0.3316062">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392@IronOctopus/gems/activesupport-3.2.16/lib/active_support/hash_with_indifferent_access.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="0" selection-start="746" selection-end="746" vertical-scroll-proportion="0.3316062">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/routines_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="120" column="38" selection-start="3561" selection-end="3561" vertical-scroll-proportion="0.51715684">
+        <state line="6" column="10" selection-start="158" selection-end="158" vertical-scroll-proportion="0.15280136">
           <folding />
         </state>
       </provider>

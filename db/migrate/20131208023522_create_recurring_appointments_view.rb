@@ -5,10 +5,6 @@ class CreateRecurringAppointmentsView < ActiveRecord::Migration
       select
           trainer_id
         , client_id
-        , u.login
-        , u.first_name
-        , u.last_name
-        , u.email
         , tstzrange((full_date + lower(time_slot)) at time zone tz.tzid,
                     (full_date + upper(time_slot)) at time zone tz.tzid) as date_time_slot
       from recurring_appointment_rules

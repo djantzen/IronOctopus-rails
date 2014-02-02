@@ -5,18 +5,19 @@ class CreateAppointments < ActiveRecord::Migration
         appointment_id serial primary key,
         trainer_id integer not null references application.users(user_id) deferrable,
         client_id integer not null references application.users(user_id) deferrable,
-        date_time_slot tstzrange not null,
+        date_time_slot tstzrange not null default ('[' || now()::date || ' 08:00:00,' || now()::date || ' 09:00:00)')::tstzrange,
         confirmation_status text not null default 'Unconfirmed'
           check(confirmation_status in ('Confirmed', 'Pending',  'Rejected', 'Unconfirmed')),
         notes text not null default '',
         created_at timestamptz not null default now(),
         exclude using gist (trainer_id with =, date_time_slot with &&),
-        exclude using gist (client_id with =, date_time_slot with &&),
-        unique (trainer_id, date_time_slot)
+        exclude using gist (client_id with =, date_time_slot with &&)
       );
 
       comment on table application.appointments is 'Records the time range that a trainer is scheduled to meet with a client';
       comment on column application.appointments.confirmation_status is 'A new appointment is Unconfirmed; when an email is sent it is Pending; it can be Confirmed or Rejected';
+
+      create index on application.appointments(date_time_slot);
 
       grant select on application.appointments to reader;
       grant insert, update, delete on application.appointments to writer;

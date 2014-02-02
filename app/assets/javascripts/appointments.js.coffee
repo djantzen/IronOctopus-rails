@@ -19,6 +19,7 @@ class this.Appointment
     button.click =>
       login = @appointment_div.find(".client-login").text().trim()
       $("form#new_routine").attr("action", "/users/" + login + "/routines")
+      $("#routine_client").val(login)
       $("#modal-routine-builder").modal()
 
   constructor: (@appointment_div) ->

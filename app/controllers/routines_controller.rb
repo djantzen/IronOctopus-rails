@@ -30,7 +30,7 @@ class RoutinesController < ApplicationController
   end
 
   def create
-    @routine = create_or_update(Routine.new, params[:routine])
+    @routine = create_or_update(Routine.new)
     if @routine.errors.empty?
       respond_with do |format|
         format.html { render :html => @routine }
@@ -80,7 +80,7 @@ class RoutinesController < ApplicationController
     @client = User.find_by_login(params[:user_id])
     @routine = Routine.where(:client_id => @client.user_id, :permalink => params[:id]).first
 
-    @routine = create_or_update(@routine, params[:routine])
+    @routine = create_or_update(@routine)
     if @routine.errors.empty?
       respond_with do |format|
         format.html { render :html => @routine }
@@ -118,11 +118,11 @@ class RoutinesController < ApplicationController
 
   private
 
-  def create_or_update(routine, params)
+  def create_or_update(routine)
     Routine.transaction do
-      routine.trainer = User.find_by_login(params[:trainer]) if routine.trainer.nil?
-      routine.name = params[:name]
-      routine.goal = params[:goal]
+      routine.trainer = User.find_by_login(params[:routine][:trainer]) if routine.trainer.nil?
+      routine.name = params[:routine][:name]
+      routine.goal = params[:routine][:goal]
       routine.client = User.find_by_login(params[:user_id]) if routine.client.nil?
 
       # Delete all existing ActivitySetGroups and ActivitySets
@@ -132,7 +132,7 @@ class RoutinesController < ApplicationController
       routine.activity_set_groups.clear
 
       position = 0
-      routine.activity_set_groups = (params[:activity_set_groups] || []).map do |activity_set_group_map|
+      routine.activity_set_groups = (params[:routine][:activity_set_groups] || []).map do |activity_set_group_map|
         activity_set_group = ActivitySetGroup.new(:name => activity_set_group_map[:group_name], :sets => activity_set_group_map[:set_count],
                                                   :rest_interval =>  Unit.convert_to_seconds(activity_set_group_map[:rest_interval], Unit::NONE))
 
