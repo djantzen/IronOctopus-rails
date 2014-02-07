@@ -121,6 +121,7 @@ class RoutinesController < ApplicationController
 
   def create_or_update(routine)
     Routine.transaction do
+
       routine.trainer = User.find_by_login(params[:routine][:trainer]) if routine.trainer.nil?
       routine.name = params[:routine][:name]
       routine.goal = params[:routine][:goal]
@@ -151,6 +152,12 @@ class RoutinesController < ApplicationController
         end
 
         activity_set_group
+      end
+
+      date_time_slot = DateTimeRange.from_identifier(params[:routine][:routine_date_time_slot])
+      routine_date_time_slot = RoutineDateTimeSlot.new(:routine => routine, :date_time_slot => date_time_slot)
+      if routine.routine_date_time_slots.select { |slot| slot.date_time_slot == routine_date_time_slot.date_time_slot }.empty?
+        routine.routine_date_time_slots << routine_date_time_slot
       end
       routine.save
     end

@@ -1,6 +1,5 @@
 class RecurringAppointment < Appointment
-  set_table_name "recurring_appointments"
-
+  self.table_name = "recurring_appointments"
 
   #require "#{Rails.root.to_s}/lib/postgres_range_support"
   #

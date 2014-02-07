@@ -116,6 +116,7 @@
         = form_for [@client, @routine], :remote => via_ajax do |form|
           #basic-routine-info
             = hidden_field_tag "routine[trainer]", @trainer.login
+            = hidden_field_tag "routine[routine_date_time_slot]", @routine.date_time_slot
             .row
               .span2
                 = form.label "routine[client]", "For Client"

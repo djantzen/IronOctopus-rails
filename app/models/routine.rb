@@ -5,12 +5,19 @@ class Routine < ActiveRecord::Base
  
   has_many :activities, :through => :activity_sets
   has_many :measurements, :through => :activity_sets
-  has_many :activity_set_groups, :dependent => :delete_all
-  has_many :activity_sets, :through => :activity_set_groups, :order => :position
+  has_many :activity_set_groups, :dependent => :destroy
+  has_many :activity_sets, :through => :activity_set_groups, :order => :position, :dependent => :destroy
 
   has_many :weekday_programs
   has_many :scheduled_programs
-  has_many :date_time_slots, :class_name => "RoutineDateTimeSlot", :foreign_key => :routine_id
+
+  has_many :routine_date_time_slots, :dependent => :delete_all
+
+  def date_time_slot
+    routine_date_time_slots.empty? ? nil : routine_date_time_slots.first.date_time_slot
+  end
+
+  #has_many :recurrences, :class_name => "RoutineRecurrences"
 
   VALIDATIONS = IronOctopus::Configuration.instance.validations[:routine]
   validates :name, :length => {

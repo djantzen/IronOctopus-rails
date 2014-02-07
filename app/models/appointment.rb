@@ -5,10 +5,17 @@ class Appointment < ActiveRecord::Base
   belongs_to :client, :class_name => "User", :foreign_key => :client_id
   has_one :appointment_routine
   has_one :routine, :through => :appointment_routine
+  has_one :routine_date_time_slot, :through => :routine
 
   after_find :to_ranges # translate from database ranges
   after_save :to_ranges # repair the one in memory after save
   before_save :from_ranges # translate to database ranges
+
+  after_destroy :unschedule_routine
+
+  def unschedule_routine
+    puts "hi"
+  end
 
   def from_ranges
     self[:date_time_slot] = RangeSupport.range_to_string(self[:date_time_slot])

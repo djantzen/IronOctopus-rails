@@ -15,6 +15,10 @@ class AppointmentsController < ApplicationController
     trainer = User.find_by_login(params[:user_id])
     @date_time_slot_id = params[:id]
     date_time_slot = DateTimeRange.from_identifier(@date_time_slot_id)
-    Appointment.delete_all(:trainer_id => trainer.id, :date_time_slot => date_time_slot.to_query)
+    appointment = Appointment.where(:trainer_id => trainer.id, :date_time_slot => date_time_slot.to_query).first
+    if appointment.routine.routine_date_time_slots.size == 1 # if this is the only usage of the routine
+      appointment.routine.destroy # get rid of all dependent objects
+    end
+    appointment.delete
   end
 end
