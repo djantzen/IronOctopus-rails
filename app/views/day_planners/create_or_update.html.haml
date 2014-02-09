@@ -7,7 +7,7 @@
       %ul#day-planner-client-list
         - @clients.each do |client|
           %li.client
-            .login.hidden
+            .client-login.hidden
               = client.login
             = client.full_name
     #weekdays.span10.well

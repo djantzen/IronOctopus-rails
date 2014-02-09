@@ -125,7 +125,7 @@
                   = select_tag "routine[client]", options_for_select(@client_logins, :selected => current_user.login)
                 - else
                   = hidden_field_tag "routine[client]", @client.login
-                  %span
+                  %span#client-full-name
                     = @client.first_name
                     = @client.last_name
             .row
