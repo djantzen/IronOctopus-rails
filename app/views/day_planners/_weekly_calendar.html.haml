@@ -18,6 +18,6 @@
             = @this_week[day_idx][1][time_slot_idx].min
           .hidden.to_date_time
             = @this_week[day_idx][1][time_slot_idx].max
-          .row-fluid.appointment-container
+          .row-fluid
             - if @appointment_map.has_key?(date_time_id_slot)
               = render :template => "appointments/show", :locals => { :appointment => @appointment_map[date_time_id_slot] }

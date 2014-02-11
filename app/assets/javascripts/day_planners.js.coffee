@@ -12,11 +12,12 @@ class this.DayPlannerCell
   update_appointment: (old_cell, new_cell, appointment) ->
     console.log(old_cell.attr("id"))
     console.log(new_cell.attr("id"))
+    #move the routine
     url = document.URL.match(/(.*?)day_planner/)[1] + "appointments/" + old_cell.attr("id")
     $.ajax(
       url : url,
       type : "PUT",
-      dataType: "json",
+      dataType: "text",
       data :
         new_date_time_slot_id : new_cell.attr("id")
       error : (e) ->
@@ -28,9 +29,9 @@ class this.DayPlannerCell
 
   constructor: (@day_planner_cell_div) ->
     @day_planner_cell_div.droppable(
-      tolerance: "pointer"
-      # if there's content, then we need to call move appointment. Move appointment must delete the old content, draw new content, move the routine if it exists
-      drop: (event, ui) =>
+      tolerance : "pointer"
+      disabled : @day_planner_cell_div.find(".appointment").size() != 0
+      drop : (event, ui) =>
         if (ui.draggable.hasClass("appointment"))
           old_day_planner_cell = ui.draggable.parents(".day-planner-time-slot")
           @update_appointment(old_day_planner_cell, $(event.target), ui.draggable.find(".appointment"))
@@ -41,8 +42,8 @@ class this.DayPlannerCell
 
 $(document).ready () ->
   $('#day-planner-client-list .client').draggable(
-    cursor: 'move'
-    helper: "clone"
+    cursor : 'move'
+    helper : "clone"
   );
 
   # TODO only on future timeslots

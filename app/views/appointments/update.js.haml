@@ -1,0 +1,5 @@
+!= "$('##{escape_javascript(@date_time_slot_id.to_html_id)} .appointment').attr('style', '');"
+!= "$('##{escape_javascript(@date_time_slot_id.to_html_id)} .appointment').appendTo($('##{escape_javascript(@new_date_time_slot_id.to_html_id)}'));"
+!= "$('##{escape_javascript(@date_time_slot_id.to_html_id)}').droppable('option', 'disabled', false);"
+!= "$('##{escape_javascript(@new_date_time_slot_id.to_html_id)}').droppable('option', 'disabled', true);"
+

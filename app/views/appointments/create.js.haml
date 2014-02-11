@@ -1,3 +1,5 @@
-!= "var appt = $('##{escape_javascript(@date_time_slot_id.gsub(":", "\\:"))} .appointment-container')"
-!= "appt.html('#{escape_javascript(render :template => "appointments/show", :locals => { :appointment => @appointment, :client => @client })}');"
-!= "new Appointment(appt)"
+!= "var date_time_slot = $('##{escape_javascript(@date_time_slot_id.gsub(":", "\\:"))}')"
+!= "date_time_slot.html('#{escape_javascript(render :template => "appointments/show", :locals => { :appointment => @appointment, :client => @client })}');"
+!= "var appointment = date_time_slot.find('.appointment');"
+!= "new Appointment(appointment)"
+!= "date_time_slot.droppable('option', 'disabled', true);"

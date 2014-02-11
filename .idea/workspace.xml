@@ -2,16 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46f8a447-b9ed-44ae-be1c-95fe4e4f3fab" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/appointments/update.js.haml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/appointments.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/appointments.js.coffee" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/day_planners.js.coffee" afterPath="$PROJECT_DIR$/app/assets/javascripts/day_planners.js.coffee" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/appointments_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/appointments_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/appointments/create.js.haml" afterPath="$PROJECT_DIR$/app/views/appointments/create.js.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/appointments/destroy.js.haml" afterPath="$PROJECT_DIR$/app/views/appointments/destroy.js.haml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/appointments/show.html.haml" afterPath="$PROJECT_DIR$/app/views/appointments/show.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/appointments/update.js.haml" afterPath="$PROJECT_DIR$/app/views/appointments/update.js.haml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/day_planners/_weekly_calendar.html.haml" afterPath="$PROJECT_DIR$/app/views/day_planners/_weekly_calendar.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/day_planners/create_or_update.html.haml" afterPath="$PROJECT_DIR$/app/views/day_planners/create_or_update.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/routines/_create_or_update.html.haml" afterPath="$PROJECT_DIR$/app/views/routines/_create_or_update.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/string.rb" afterPath="$PROJECT_DIR$/lib/string.rb" />
     </list>
     <ignored path="IronOctopus-rails.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,19 +37,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="appointments_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="appointments_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/appointments_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="0" selection-start="524" selection-end="524" vertical-scroll-proportion="0.29680365">
+            <state line="12" column="0" selection-start="511" selection-end="511" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="update.js.haml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="update.js.haml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/appointments/update.js.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -60,16 +58,7 @@
       <file leaf-file-name="show.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/appointments/show.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="0" selection-start="1058" selection-end="1058" vertical-scroll-proportion="-15.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_weekly_calendar.html.haml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/day_planners/_weekly_calendar.html.haml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="69" selection-start="593" selection-end="615" vertical-scroll-proportion="-9.375">
+            <state line="4" column="12" selection-start="99" selection-end="99" vertical-scroll-proportion="-2.5">
               <folding />
             </state>
           </provider>
@@ -78,7 +67,7 @@
       <file leaf-file-name="appointments.js.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/appointments.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="0" selection-start="1206" selection-end="1206" vertical-scroll-proportion="0.0">
+            <state line="4" column="0" selection-start="130" selection-end="130" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -87,7 +76,16 @@
       <file leaf-file-name="create.js.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/appointments/create.js.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="99" selection-start="99" selection-end="99" vertical-scroll-proportion="-0.0">
+            <state line="3" column="33" selection-start="339" selection-end="339" vertical-scroll-proportion="-1.875">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="destroy.js.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/appointments/destroy.js.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="49" selection-start="29" selection-end="49" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
@@ -96,27 +94,7 @@
       <file leaf-file-name="day_planners.js.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/day_planners.js.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="20" selection-start="656" selection-end="656" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Rails IronOctopus-rails: development" pinned="true" current="false" current-in-tab="false">
-        <entry file="mock:///Rails IronOctopus-rails: development">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="38" selection-start="502" selection-end="502" vertical-scroll-proportion="-6.206897">
-              <folding>
-                <marker date="0" expanded="true" signature="411:461" placeholder="delete from ..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_create_or_update.html.haml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/routines/_create_or_update.html.haml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="127" column="24" selection-start="7366" selection-end="7366" vertical-scroll-proportion="-20.875">
+            <state line="26" column="0" selection-start="710" selection-end="753" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -137,16 +115,12 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Rails console: IronOctopus-rails" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/views/programs/show.html.haml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Rails console: IronOctopus-rails" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/assets/stylesheets/sheet.css.scss" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/models/appointment.rb" />
-        <option value="/Rails IronOctopus-rails: development" />
         <option value="/Rails IronOctopus-rails: test" />
         <option value="$PROJECT_DIR$/app/models/recurring_appointment.rb" />
         <option value="$PROJECT_DIR$/test/unit/routine_test.rb" />
@@ -154,11 +128,13 @@
         <option value="$PROJECT_DIR$/app/models/routine.rb" />
         <option value="$PROJECT_DIR$/app/views/routines/_create_or_update.html.haml" />
         <option value="$PROJECT_DIR$/app/views/day_planners/create_or_update.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/appointments/show.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/day_planners/_weekly_calendar.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/appointments/create.js.haml" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/appointments.js.coffee" />
         <option value="$PROJECT_DIR$/app/controllers/appointments_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/appointments/create.js.haml" />
+        <option value="$PROJECT_DIR$/app/views/appointments/show.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/day_planners/_weekly_calendar.html.haml" />
+        <option value="$PROJECT_DIR$/lib/string.rb" />
+        <option value="$PROJECT_DIR$/app/views/appointments/destroy.js.haml" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/day_planners.js.coffee" />
         <option value="$PROJECT_DIR$/app/views/appointments/update.js.haml" />
       </list>
@@ -226,6 +202,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="RailsProjectView" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -394,22 +371,21 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="RailsProjectView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="121" />
     <property name="JdbcConsole.Extract.Separator" value="'" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="121" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="154" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="JdbcConsole.Connection.Autocommit" value="true" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="194" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="recentsLimit" value="5" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="194" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/sql.sql" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="118" />
     <property name="JdbcConsole.ResultInNewTab" value="false" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="118" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="640" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="834" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="198" />
@@ -430,14 +406,14 @@
     <property name="options.lastSelected" value="editor.preferences.tabs" />
     <property name="JdbcConsole.Extract.OpeningQuote" value="'" />
     <property name="JdbcConsole.Extract.ClosingQuote" value="'" />
-    <property name="JdbcConsole.Extract.IncludeHeader" value="false" />
     <property name="JdbcConsole.EnableParameterPattern" value="false" />
+    <property name="JdbcConsole.Extract.IncludeHeader" value="false" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="JdbcConsole.ParameterPattern" value="(\?\d*|\:\w+|\@\w+|\$\{[^$\{\}]*\}|\$\w+\$|\#\w+\#)" />
     <property name="JdbcConsole.ResultPageSize" value="1000" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="Ruby.ViewRefParam.DefaultExtension" value="js.haml" />
     <property name="options.searchVisible" value="true" />
+    <property name="Ruby.ViewRefParam.DefaultExtension" value="js.haml" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -730,13 +706,6 @@
       <IRB_RUN_CONFIG NAME="IS_RAILS_CONSOLE" VALUE="false" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote">
-      <JSRemoteDebuggerConfigurationSettings>
-        <option name="engineId" value="embedded" />
-        <option name="fileUrl" />
-      </JSRemoteDebuggerConfigurationSettings>
-      <method />
-    </configuration>
     <configuration default="true" type="CucumberRunConfigurationType" factoryName="Cucumber">
       <predefined_log_file id="RUBY_CUCUMBER" enabled="true" />
       <module name="" />
@@ -768,6 +737,13 @@
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_RUNNER_PATH" VALUE="" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_RUNNER" VALUE="false" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SETTINGS_VERSION" VALUE="2" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote">
+      <JSRemoteDebuggerConfigurationSettings>
+        <option name="engineId" value="embedded" />
+        <option name="fileUrl" />
+      </JSRemoteDebuggerConfigurationSettings>
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
@@ -961,25 +937,25 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1920" y="0" width="1920" height="1080" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32655138" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3293944" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25039536" sideWeight="0.71820956" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2442323" sideWeight="0.21793103" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23774381" sideWeight="0.71820956" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15709014" sideWeight="0.71820956" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28179044" sideWeight="0.99947315" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32843652" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3397762" sideWeight="0.75703794" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5737931" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32655138" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28077313" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3293944" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1041,108 +1017,103 @@
           <url>file://$PROJECT_DIR$/app/models/appointment.rb</url>
           <line>16</line>
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="ruby-line">
-          <url>file://$PROJECT_DIR$/app/controllers/appointments_controller.rb</url>
-          <line>13</line>
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/models/appointment.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="0" selection-start="645" selection-end="645" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/date_time_range.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="219" selection-end="219" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/routine.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="55" selection-start="343" selection-end="343" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/routines.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="249" column="30" selection-start="8846" selection-end="8846" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/activity_set_group.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="215" selection-end="215" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/activities/show.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="40" selection-end="40" vertical-scroll-proportion="-0.625">
-          <folding />
-        </state>
+        <state line="1" column="0" selection-start="40" selection-end="40" vertical-scroll-proportion="-0.625" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/unit/routine_test.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="78" selection-start="219" selection-end="219" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="5" column="78" selection-start="219" selection-end="219" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/day_planners/create_or_update.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="45" selection-start="501" selection-end="501" vertical-scroll-proportion="0.30805686">
-          <folding />
-        </state>
+        <state line="13" column="45" selection-start="501" selection-end="501" vertical-scroll-proportion="0.30805686" />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392@IronOctopus/gems/actionpack-3.2.16/lib/action_controller/metal/rescue.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="0" selection-start="1023" selection-end="1023" vertical-scroll-proportion="0.6849315">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/appointments/show.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="0" selection-start="1058" selection-end="1058" vertical-scroll-proportion="-15.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/day_planners/_weekly_calendar.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="69" selection-start="593" selection-end="615" vertical-scroll-proportion="-9.375">
-          <folding />
-        </state>
+        <state line="30" column="0" selection-start="1023" selection-end="1023" vertical-scroll-proportion="0.6849315" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/routines/_create_or_update.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="127" column="24" selection-start="7366" selection-end="7366" vertical-scroll-proportion="-20.875">
+        <state line="127" column="24" selection-start="7366" selection-end="7366" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392@IronOctopus/gems/ruby-debug-base19-0.11.25/lib/ruby-debug-base.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.rvm/gems/ruby-1.9.3-p392@IronOctopus/gems/actionpack-3.2.16/lib/action_controller/metal/implicit_render.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="101" selection-end="101" vertical-scroll-proportion="0.0913242">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/appointments.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="0" selection-start="1206" selection-end="1206" vertical-scroll-proportion="0.0">
+        <state line="4" column="0" selection-start="130" selection-end="130" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/appointments/show.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="12" selection-start="99" selection-end="99" vertical-scroll-proportion="-2.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/day_planners/_weekly_calendar.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="20" selection-start="838" selection-end="838" vertical-scroll-proportion="-12.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/string.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="25" selection-start="126" selection-end="126" vertical-scroll-proportion="0.15981735">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/appointments/destroy.js.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="49" selection-start="29" selection-end="49" vertical-scroll-proportion="-0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/appointments/create.js.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="33" selection-start="339" selection-end="339" vertical-scroll-proportion="-1.875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/appointments_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="0" selection-start="511" selection-end="511" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/day_planners.js.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="20" selection-start="656" selection-end="656" vertical-scroll-proportion="0.0">
+        <state line="26" column="0" selection-start="710" selection-end="753" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1150,13 +1121,6 @@
     <entry file="file://$PROJECT_DIR$/app/views/appointments/update.js.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/appointments_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="524" selection-end="524" vertical-scroll-proportion="0.29680365">
           <folding />
         </state>
       </provider>
