@@ -29,4 +29,8 @@ class SimpleTime
     SimpleTime.new($1.to_i, $2.to_i, $3.to_i)
   end
 
+  def self.from_date(date)
+    parse date.to_s
+  end
+
 end

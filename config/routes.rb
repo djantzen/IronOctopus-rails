@@ -80,6 +80,7 @@ IronOctopus::Application.routes.draw do
     resource :day_planner
     resource :profile
     resources :appointments
+    resources :recurring_appointment_rules
   end
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
