@@ -15,6 +15,34 @@ class AppointmentsControllerTest < ActionController::TestCase
     assert_not_nil(Appointment.where(:trainer_id => trainer.user_id, :date_time_slot => date_time_slot.to_query).first)
   end
 
+  test "update an appointment" do
+    date_time_slot = DateTimeRange.new(DateTime.new(2013, 9, 5, 3, 0, 0), DateTime.new(2013, 9, 5, 4, 59, 59))
+    trainer = User.find_by_login("bob_the_trainer")
+    create_params = {
+      :format => "js",
+      :user_id => trainer.login,
+      :appointment => {:client_login => "sally_the_client", :date_time_slot_id => date_time_slot.to_identifier}
+    }
+
+    post :create, create_params
+    assert_response :success
+    assert_not_nil(Appointment.where(:trainer_id => trainer.user_id, :date_time_slot => date_time_slot.to_query).first)
+
+    new_date_time_slot = DateTimeRange.new(DateTime.new(2013, 9, 5, 5, 0, 0), DateTime.new(2013, 9, 5, 6, 59, 59))
+    update_params = {
+      :format => "js",
+      :user_id => trainer.login,
+      :id => date_time_slot.to_identifier,
+      :appointment => {:client_login => "sally_the_client", :new_date_time_slot_id => new_date_time_slot.to_identifier}
+    }
+
+    put :update, update_params
+    assert_response :success
+    assert_nil(Appointment.where(:trainer_id => trainer.user_id, :date_time_slot => date_time_slot.to_query).first)
+    assert_not_nil(Appointment.where(:trainer_id => trainer.user_id, :date_time_slot => new_date_time_slot.to_query).first)
+
+  end
+
   test "delete an appointment" do
     date_time_slot = DateTimeRange.new(DateTime.new(2013, 9, 5, 3, 0, 0), DateTime.new(2013, 9, 5, 4, 59, 59))
     trainer_1 = User.find_by_login("bob_the_trainer")

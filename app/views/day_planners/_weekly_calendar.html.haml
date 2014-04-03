@@ -1,17 +1,19 @@
 #day-planner-header.row-fluid
   .span1.timestamp
-  - (0 .. 6).each do |day_idx|
+  - (Weekday::SUNDAY.day_of_week .. Weekday::SATURDAY.day_of_week).each do |day_idx|
     .span2.day-planner-cell.day-planner-header
       .row-fluid
         = Weekday.from_day_of_week(@this_week[day_idx][0].wday).name
       .row-fluid
         = @this_week[day_idx][0].to_date
 #day-planner-body
-  - (0 .. 14).each do |time_slot_idx|
+  - six_am = 0
+  - eight_pm = 14
+  - (six_am .. eight_pm).each do |time_slot_idx|
     .row-fluid
       .span1.timestamp
         = @this_week[0][1][time_slot_idx].min.strftime("%l %P")
-      - (0 .. 6).each do |day_idx|
+      - (Weekday::SUNDAY.day_of_week .. Weekday::SATURDAY.day_of_week).each do |day_idx|
         - date_time_id_slot = @this_week[day_idx][1][time_slot_idx].to_identifier
         .span2.well.well-small.day-planner-cell.day-planner-time-slot{:id => date_time_id_slot}
           .hidden.from_date_time

@@ -3,6 +3,8 @@
     = appointment.client.login
   .row-fluid.client
     = appointment.client.full_name
+  .row-fluid.toggle-recurring-appointment
+    %input{:type => "checkbox", :checked => 'is there a recurring appt rule for this slot?'}
   .row-fluid.delete-appointment
     .btn.btn-small
       Cancel

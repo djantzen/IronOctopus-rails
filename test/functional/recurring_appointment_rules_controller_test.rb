@@ -63,4 +63,29 @@ class RecurringAppointmentRulesControllerTest < ActionController::TestCase
 
   end
 
+  #test "update a rule" do
+  #  date_time_slot = DateTimeRange.new(DateTime.new(2013, 9, 5, 3, 0, 0), DateTime.new(2013, 9, 5, 3, 59, 59))
+  #  weekday = Weekday.from_day_of_week(date_time_slot.min.cwday)
+  #  time_slot = SimpleTimeRange.new(SimpleTime.parse(date_time_slot.min.iso8601), SimpleTime.parse(date_time_slot.max.iso8601))
+  #  trainer = User.find_by_login("bob_the_trainer")
+  #  client = User.find_by_login("sally_the_client")
+  #  create_params = {
+  #    :format => "js",
+  #    :user_id => trainer.login,
+  #    :recurring_appointment_rule => {:client_login => client.login, :date_time_slot_id => date_time_slot.to_identifier}
+  #  }
+  #
+  #  update_params = {
+  #    :format => "js",
+  #    :user_id => trainer.login,
+  #    :recurring_appointment_rule => {:client_login => client.login, :date_time_slot_id => date_time_slot.to_identifier}
+  #  }
+  #
+  #  post :update, create_params
+  #  assert_response :success
+  #  assert_not_nil(RecurringAppointmentRule.where(:trainer_id => trainer.user_id, :day_of_week => weekday.name, :time_slot => time_slot.to_query).first)
+  #
+  #end
+
+
 end
