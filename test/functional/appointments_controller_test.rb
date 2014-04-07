@@ -33,7 +33,7 @@ class AppointmentsControllerTest < ActionController::TestCase
       :format => "js",
       :user_id => trainer.login,
       :id => date_time_slot.to_identifier,
-      :appointment => {:client_login => "sally_the_client", :new_date_time_slot_id => new_date_time_slot.to_identifier}
+      :appointment => {:client_login => "sally_the_client", :date_time_slot_id => new_date_time_slot.to_identifier}
     }
 
     put :update, update_params

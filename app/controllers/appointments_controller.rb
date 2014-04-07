@@ -13,13 +13,13 @@ class AppointmentsController < ApplicationController
   def update
     trainer = User.find_by_login(params[:user_id])
     @date_time_slot_id = params[:id]
-    @new_date_time_slot_id = params[:appointment][:new_date_time_slot_id]
+    @new_date_time_slot_id = params[:appointment][:date_time_slot_id]
     client = User.find_by_login(params[:appointment][:client_login])
-    @date_time_slot = DateTimeRange.from_identifier(@date_time_slot_id)
-    @new_date_time_slot = DateTimeRange.from_identifier(@new_date_time_slot_id)
+    date_time_slot = DateTimeRange.from_identifier(@date_time_slot_id)
+    new_date_time_slot = DateTimeRange.from_identifier(@new_date_time_slot_id)
     appointment = Appointment.where(:trainer_id => trainer.id, :client_id => client.id,
-                                    :date_time_slot => @date_time_slot.to_query).first
-    appointment.date_time_slot = @new_date_time_slot
+                                    :date_time_slot => date_time_slot.to_query).first
+    appointment.date_time_slot = new_date_time_slot
     appointment.client = client
     appointment.save
   end

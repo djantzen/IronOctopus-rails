@@ -1,33 +1,36 @@
 class RecurringAppointmentRulesController < ApplicationController
 
   def create
-    date_time_slot = DateTimeRange.from_identifier(params[:recurring_appointment_rule][:date_time_slot_id])
-    weekday = Weekday.from_day_of_week(date_time_slot.min.cwday)
-    time_slot = SimpleTimeRange.new(SimpleTime.parse(date_time_slot.min.iso8601), SimpleTime.parse(date_time_slot.max.iso8601))
+    time_slot = SimpleTimeRange.from_identifier(params[:recurring_appointment_rule][:time_slot_id])
+    weekday = params[:recurring_appointment_rule][:day_of_week]
     trainer = User.find_by_login(params[:user_id])
     client = User.find_by_login(params[:recurring_appointment_rule][:client_login])
-    RecurringAppointmentRule.create(:trainer => trainer, :client => client, :time_slot => time_slot, :day_of_week => weekday.name)
+    RecurringAppointmentRule.create(:trainer => trainer, :client => client, :time_slot => time_slot, :day_of_week => weekday)
   end
 
   def destroy
-    date_time_slot = DateTimeRange.from_identifier(params[:id])
-    weekday = Weekday.from_day_of_week(date_time_slot.min.cwday)
-    time_slot = SimpleTimeRange.new(SimpleTime.parse(date_time_slot.min.iso8601), SimpleTime.parse(date_time_slot.max.iso8601))
+    time_slot = SimpleTimeRange.from_identifier(params[:time_slot_id])
+    weekday = params[:day_of_week]
     trainer = User.find_by_login(params[:user_id])
-    RecurringAppointmentRule.delete_all(:trainer_id => trainer.user_id, :time_slot => time_slot.to_query, :day_of_week => weekday.name)
+    RecurringAppointmentRule.delete_all(:trainer_id => trainer.user_id, :time_slot => time_slot.to_query, :day_of_week => weekday)
   end
 
   def update
-    @date_time_slot_id = params[:id]
-    @new_date_time_slot_id = params[:new_date_time_slot_id]
-    weekday = Weekday.from_day_of_week(date_time_slot.min.cwday)
-    @date_time_slot = DateTimeRange.from_identifier(@date_time_slot_id)
-    @new_date_time_slot = DateTimeRange.from_identifier(@new_date_time_slot_id)
-    recurring_appointment_rule = RecurringAppointmentRule.where(:trainer_id => trainer.id, :day_of_week => weekday.day_of_week,
-                                                                :date_time_slot => @date_time_slot.to_query).first
-    recurring_appointment_rule.date_time_slot = @new_date_time_slot
-    recurring_appointment_rule.day_of_week = weekday.day_of_week
-    recurring_appointment_rule.save
+    trainer = User.find_by_login(params[:user_id])
+    day_of_week = params[:day_of_week]
+    time_slot = SimpleTimeRange.from_identifier(params[:time_slot_id])
+
+    new_time_slot = SimpleTimeRange.from_identifier(params[:recurring_appointment_rule][:time_slot_id])
+    new_day_of_week = params[:recurring_appointment_rule][:day_of_week]
+    client = User.find_by_login(params[:recurring_appointment_rule][:client_login])
+
+    RecurringAppointmentRule.transaction do
+      RecurringAppointmentRule.delete_all(:trainer_id => trainer.id, :day_of_week => day_of_week,
+                                          :time_slot => time_slot.to_query)
+
+      RecurringAppointmentRule.create(:trainer => trainer, :client => client, :time_slot => new_time_slot,
+                                      :day_of_week => new_day_of_week)
+    end
   end
 
 end

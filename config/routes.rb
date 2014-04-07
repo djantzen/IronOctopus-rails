@@ -80,7 +80,7 @@ IronOctopus::Application.routes.draw do
     resource :day_planner
     resource :profile
     resources :appointments
-    resources :recurring_appointment_rules
+    #resources :recurring_appointment_rules
   end
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
@@ -127,4 +127,7 @@ IronOctopus::Application.routes.draw do
   # This route can be invoked with purchase_url(:id => product.id)
   #  match '/users/:user_id/routines/:role' => 'routines#index', :as => :routines
 
+  post "/users/:user_id/recurring_appointment_rules" => "recurring_appointment_rules#create"
+  put "/users/:user_id/recurring_appointment_rules/:day_of_week/:time_slot_id" => "recurring_appointment_rules#update"
+  delete "/users/:user_id/recurring_appointment_rules/:day_of_week/:time_slot_id" => "recurring_appointment_rules#destroy"
 end
