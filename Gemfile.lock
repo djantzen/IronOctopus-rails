@@ -115,7 +115,8 @@ GEM
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
-    kramdown (1.2.0)
+    kramdown (2.3.0)
+      rexml
     later_dude (0.3.3)
     launchy (2.3.0)
       addressable (~> 2.3)
@@ -174,6 +175,7 @@ GEM
     ref (1.0.5)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    rexml (3.2.4)
     rmagick (2.13.2)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
